@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 이미지 태그 사용법 -->
+	<div>
+		<img src="" alt="망상토끼" />
+	</div>
+</body>
+</html>
