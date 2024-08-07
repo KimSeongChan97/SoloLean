@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HTML연습, select 연습</title>
 </head>
 <body>
 	<form>
@@ -14,9 +14,9 @@
 				<label for="telecom">이동통신사 선택</label>
 				<!-- 드롭다운 메뉴 -->
 				<select name="telecom" id="telecom">
-					<!-- 기본 선택 옵션 -->
+					<!-- 기본 선택 옵션: 이 옵션은 사용자가 선택할 수 있는 유효한 옵션을 선택할 때까지 선택되어 있을 수 있습니다. -->
 					<option>--------선택하세요--------</option>
-					<!-- SKTelecom 옵션 -->
+					<!-- SKTelecom 옵션: value 속성은 폼이 제출될 때 서버로 전송될 값을 정의합니다. -->
 					<option value="SKT">SKTelecom</option>
 					<!-- KT 옵션 -->
 					<option value="KT">KT</option>
@@ -35,9 +35,9 @@
 				<!-- 드롭다운(멀티타입) -->
 				<!-- 드롭다운 메뉴의 레이블 -->
 				<label for="smartphone">스마트폰 운영체제</label>
-				<!-- 드롭다운 메뉴: multiple 속성으로 여러 개의 옵션 선택 가능 -->
+				<!-- 드롭다운 메뉴: multiple 속성으로 여러 개의 옵션 선택 가능. size 속성은 표시되는 항목의 수를 설정합니다. -->
 				<select name="smartphone" id="smartphone" multiple size="5">
-					<!-- 안드로이드 옵션: 기본적으로 선택되어 있음 (selected="selected") -->
+					<!-- 안드로이드 옵션: 기본적으로 선택되어 있음 (selected="selected"). value 속성은 폼이 제출될 때 서버로 전송될 값을 정의합니다. -->
 					<option value="android" selected="selected">안드로이드</option>
 					<!-- IOS 옵션 -->
 					<option value="IOS">IOS</option>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table</title>
+</head>
+<body>
+	<table>
+		<!-- 제목 영역 -->
+		<thead>
+		
+		</thead>
+		
+		<!-- 본문 영역 -->
+		<tbody>
+		
+		</tbody>
+		
+		<!-- 하단 영역 -->
+		<tfoot>
+		</tfoot>
+		
+	</table>
+</body>
+</html>
