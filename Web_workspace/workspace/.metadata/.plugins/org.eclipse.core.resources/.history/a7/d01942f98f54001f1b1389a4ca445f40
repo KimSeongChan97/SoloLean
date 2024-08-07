@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table03</title>
+</head>
+<body>
+    <!-- 제목: 셀과 내용 사이의 여백을 설명 -->
+	<h1>Cell과 내용 사이의 여백 - cellpadding</h1>
+	<!-- border: 테이블 외곽선 두께
+	     cellpadding: 셀과 내용물 사이의 여백 설정 (픽셀 단위) -->
+	<table border="1" cellpadding="30">
+		<tr>
+			<!-- 테이블의 첫 번째 행 -->
+			<td>1-1</td>
+			<td>1-2</td>
+		</tr>
+	</table>
+	<hr/>
+	
+	<!-- 제목: 셀과 셀 사이의 여백을 설명 -->
+	<h1>Cell과 Cell 사이의 여백 - cellspacing</h1>
+	<!-- border: 테이블 외곽선 두께
+	     cellspacing: 셀 간의 여백 설정 (픽셀 단위) -->
+	<table border="1" cellspacing="10">
+		<tr>
+			<!-- 테이블의 첫 번째 행 -->
+			<td>1-1</td>
+			<td>1-2</td>
+		</tr>
+	</table>
+	<hr/>
+	<!-- 테이블 설정: border로 외곽선 두께를 설정하고
+	     cellpadding으로 셀 내부 여백을 설정,
+	     cellspacing으로 셀 간의 여백을 설정 -->
+	<table border="1" cellpadding="5" cellspacing="0">
+		<tr>
+			<!-- 테이블의 첫 번째 행 -->
+			<td>1-1</td>
+			<td>1-2</td>
+		</tr>
+
+		<tr>
+			<!-- 테이블의 두 번째 행 -->
+			<td>2-1</td>
+			<td>2-2</td>
+		</tr>
+
+		<tr>
+			<!-- 테이블의 세 번째 행: 셀 두 개를 병합하여 하나의 셀로 만듦
+			     colspan="2"으로 두 개의 열을 병합, align="center"로 내용 가운데 정렬 -->
+			<td colspan="2" align="center">3-1</td>
+		</tr>
+
+		<tr>
+			<!-- 테이블의 네 번째 행: 첫 번째 셀은 두 개의 행을 병합하여 하나의 셀로 만듦
+			     rowspan="2"으로 두 개의 행을 병합 -->
+			<td rowspan="2">
+			    
+			    <!-- 이미지 삽입: 상대 경로를 사용하여 이미지 파일 위치 지정,
+			         width와 height로 이미지 크기 지정 -->
+			    <!-- 이미지를 클릭하면 네이버로 이동 -->     
+			    <img src="../image/img1.gif" width="100" height="100" onclick="">
+			</td>
+			<td>4-2</td>
+		</tr>
+		<tr>
+			<!-- 테이블의 다섯 번째 행 -->
+			<td>5-2</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+<!-- 
+    cellpadding: 셀의 내용과 셀 경계 사이의 여백을 설정하는 속성.
+    margin: 요소의 외부 여백을 설정하는 CSS 속성으로, 테이블의 내부 여백과는 관계없음.
+ -->

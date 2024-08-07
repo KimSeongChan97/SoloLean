@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>result와 연동</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<!-- 
+submit ~ action
+- <form>태그 안에 있는 입력상자의 데이터를 들고 페이지 이동
+
+* button    
+button ~ onclick
+<inpt type="button" />
+<button  />
+
+* 이미지
+<img src="" alt="" />
+<input type="image" src="" alt="" />
+ -->

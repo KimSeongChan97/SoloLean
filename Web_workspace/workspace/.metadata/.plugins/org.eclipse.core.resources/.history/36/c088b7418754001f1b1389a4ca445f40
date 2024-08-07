@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table02</title>
+</head>
+<body>
+	<table border="1" width="300">
+		<thead>
+			<tr>
+				<th colspan="2">획득 포인트</th>
+			</tr>	
+		</thead>
+		
+		<tbody>
+		
+		</tbody>
+		
+		<tfoot>
+		
+		</tfoot>
+	</table>
+</body>
+</html>

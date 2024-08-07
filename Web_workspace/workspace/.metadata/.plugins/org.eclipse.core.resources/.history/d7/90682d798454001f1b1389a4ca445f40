@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RESULT, exam09-form2연결</title>
+<!-- 웹 페이지 제목을 "RESULT, exam09-form2연결"로 설정합니다. -->
+</head>
+<body>
+	<!-- HTML 문서의 본문 시작 -->
+	<h1>입력결과를 전송받기 위한 페이지</h1>
+	<!-- h1 태그는 페이지의 주요 제목을 지정합니다. -->
+	<p>사용자가 form에 입력한 내용을 전송받아서, 후속 처리를 수행하게 됩니다.</p>
+	<!-- p 태그는 문단을 정의하며, 여기서는 사용자가 폼에 입력한 내용을 처리할 것임을 설명합니다. -->
+	<br/>
+	<input type="button" value="뒤로" onclick="'history.go(-1)'" />
+</body>
+<!-- HTML 문서의 본문 끝 -->
+</html>

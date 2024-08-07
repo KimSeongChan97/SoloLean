@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>result와 연동</title>
+</head>
+<body>
+	<p>
+	<form action="result.html">
+			<fieldset>
+				<legend>이름입력하기</legend>
+				<div>
+					<label for="user_name">이름 : </label>
+					<input type="text" name="user_name" id="user_name"/>
+				</div>
+				<br/>
+				<div>
+					<input type="submit" value="입력완료"/>
+				</div>
+			</fieldset>
+	</form>
+</body>
+</html>
+
+<!-- 
+submit ~ action
+- <form>태그 안에 있는 입력상자의 데이터를 들고 페이지 이동
+
+* button    
+button ~ onclick
+<inpt type="button" />
+<button  />
+
+* 이미지
+<img src="" alt="" />
+<input type="image" src="" alt="" />
+
+페이지 이동
+1. Get 방식 (default)
+:: Query String (주소표시줄) 을 통해 이동함.
+
+2. Post 방식
+
+ -->

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>a태그</title>
+<style type="text/css">
+/* a 태그 기본 스타일 설정 - 링크 전 상태 (방문하지 않은 링크) */
+a:link { color: black; text-decoration: none; }
+/* a 태그 방문한 링크 스타일 설정 - 링크를 방문한 후의 스타일 */
+a:visited { color: green; text-decoration: none; }
+/* a 태그 마우스 오버 시 링크 스타일 설정 - 링크에 마우스를 올렸을 때의 스타일 */
+a:hover { color: red; text-decoration: underline; }
+/* a 태그 클릭 중인 링크 스타일 설정 - 링크를 클릭할 때의 스타일 */
+a:active { color: magenta; text-decoration: none; }
+
+/* num 클래스의 링크 기본 스타일 설정 - 링크 전 상태 (방문하지 않은 링크) */
+.num:link{ color: black; text-decoration: none; }
+/* num 클래스의 방문한 링크 스타일 설정 - 링크를 방문한 후의 스타일 */
+.num:visited{ color: black; text-decoration: none; }
+/* num 클래스의 마우스 오버 시 링크 스타일 설정 - 링크에 마우스를 올렸을 때의 스타일 */
+.num:hover{ color: hotpink; text-decoration: underline; }
+/* num 클래스의 클릭 중인 링크 스타일 설정 - 링크를 클릭할 때의 스타일 */
+.num:active{ color: black; text-decoration: none; }
+
+/* span 태그의 스타일 설정 - 테두리, 패딩 설정 */
+span{
+	border: 1px solid black; /* 검은색 실선 테두리 */
+	padding: 3px 5px 3px 5px; /* 패딩: 시계방향으로 위쪽, 오른쪽, 아래쪽, 왼쪽 순 */
+}
+</style>
+</head>
+<body>
+	<div id="content">
+		<!-- 게시판 제목 영역 -->
+		<div id="title">
+			<h1>공지사항</h1>
+			<!-- 사이트의 새로운 소식을 알리는 부제목 -->
+			<h2>우리 사이트의 새로운 소식을 알려드립니다.</h2>
+		</div>
+		<!-- 제목과 내용 사이의 구분선을 위한 수평선 -->
+		<hr/>
+		
+		<!-- 게시물 리스트 영역 -->
+		<div id="list">
+			<!-- 게시물 리스트를 표 형태로 구성 -->
+			<table border="1" width="800" align="center">
+				<!-- 테이블 헤더 (머리글) -->
+				<thead>
+					<tr>
+						<!-- 각 열의 제목을 정의 -->
+						<th width="50">번호</th>
+						<th>제목</th>
+						<th width="100">작성자</th>
+						<th width="70">조회수</th>
+						<th width="120">작성일</th>
+					</tr>
+				</thead>
+				<!-- 테이블 본문 영역 (글 목록) -->
+				<tbody>
+					<tr>
+						<!-- 게시물 번호 -->
+						<td align="center">3</td>
+						<!-- 게시물 제목 (클릭 가능한 링크) -->
+						<td><a href="#">웹 표준 + 웹 접근성 실무완성 수강안내</a></td>
+						<!-- 게시물 작성자 -->
+						<td align="center">관리자</td>
+						<!-- 게시물 조회수 -->
+						<td align="center">123</td>
+						<!-- 게시물 작성일 -->
+						<td align="center">2020-05-01</td>
+					</tr>
+					<tr>
+						<td align="center">2</td>
+						<td><a href="#">HTML5+반응형 웹 수강안내</a></td>
+						<td align="center">관리자</td>
+						<td align="center">123</td>
+						<td align="center">2020-05-01</td>
+					</tr>
+					<tr>
+						<td align="center">1</td>
+						<td><a href="#">JAVAScript+jQuery+AJax 수강안내</a></td>
+						<td align="center">관리자</td>
+						<td align="center">123</td>
+						<td align="center">2020-05-01</td>
+					</tr>
+				</tbody>
+				
+				<!-- 테이블 하단 영역 (페이지 번호 및 쓰기 링크), 하나는 id(#), 여러개는 class(.) -->
+				<tfoot>
+					<tr>
+						<!-- 페이지 번호를 표시하는 열, 전체 테이블을 가로지름 -->
+						<td colspan="5" align="center">
+							<!-- 페이지 번호 링크 -->
+							<!-- 1번 페이지 번호는 span 태그로 감싸져 있어 패딩과 테두리가 적용됨 -->
+							<span><a href="#" class="num">1</a></span>
+							<a href="#" class="num">2</a>
+							<a href="#" class="num">3</a>
+							<a href="#" class="num">4</a>
+							<a href="#" class="num">5</a>
+						</td>
+					</tr>
+					<tr>
+						<!-- 새 글 쓰기 링크를 표시하는 열, 전체 테이블을 가로지름 -->
+						<td colspan="5" align="right">
+							<!-- 새 글 쓰기 링크 -->
+							<a href="#">새 글 쓰기</a>
+						</td>
+					</tr>		
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

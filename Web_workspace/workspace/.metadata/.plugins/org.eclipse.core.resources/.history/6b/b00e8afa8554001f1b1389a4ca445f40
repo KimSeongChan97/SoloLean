@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table</title>
+</head>
+<body>
+	<table border="1" width="300">
+		<!-- 제목 영역 -->
+		<thead>
+			<tr><!-- 행, 줄이라고 한다. -->
+				<th width="50%" height="50">NO</th> <!-- 열, 칸 -->
+				<th>획득 포인트</th>
+			</tr>
+		</thead>
+		
+		<!-- 본문 영역 -->
+		<tbody>
+		
+		</tbody>
+		
+		<!-- 하단 영역 -->
+		<tfoot>
+		</tfoot>
+		
+	</table>
+</body>
+</html>
