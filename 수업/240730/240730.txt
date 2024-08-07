@@ -1,0 +1,183 @@
+네트워크
+네트워크는 여러 컴퓨터들을 통신 회선으로 연결한 것이다.
+
+서버 : 서비스를 제공하는 프로그램
+클라이언트 : 서비스를 요청하는 프로그램
+
+IP
+컴퓨터에도 고유한 주소가 있는데 그것이 IP이다.
+IP주소는 네트워크 어댑터마다 할당된다.
+IP 주소는 xxx.xxx.xxx.xxx 형식이고, 숫자는 0~255사이의 정수값이다.
+IP 주소를 모르면 서로 통신할 수 없다. 그래서 DNS(Domain Name System)를 이용해서 컴퓨터의 IP 주소를 검색할 수 있다.
+
+naver.com
+DNS(Domain Name System)
+DNS는 도메인 이름으로 IP를 등록하는 저장소이다.
+
+웹 브라우저는 웹 서버와 통신하는 클라이언트이다.
+사용자가 입력한 도메인으로 DNS에서 IP 주소를 검색해 찾은 다음 웹 서버와 연결해서 웹 페이지를 받는다.
+
+Port
+Port는 운영체제가 관리하는 서버 프로그램의 연결번호이다.
+한 대의 컴퓨터에는 다양한 서버 프로그램들을 실행할 수 있다. IP는 컴퓨터의 네트워크 어댑터까지만 갈 수 있는 정보이기 때문에 컴퓨터 내부에서 실행하는 서버를 선택하기 위해서는 추가적인 Port 번호가 필요하다.
+
+정해진 포트번호
+예) http → 80
+    https → 443
+    oracle → 1521
+    ftp → 21
+
+프로토콜
+IP 주소로 프로그램들이 통신하기 위해서는 약속된 데이터 전송 규약이 있다.
+인터넷에서 전송용 프로토콜은 TCP / UDP 가 있다.
+
+TCP ( email -- 수신확인 )
+연결형 프로토콜
+클라이언트가 연결 요청을 하고 서버가 수락하면 통신 회선이 고정된다.
+고정된 회선을 통해 데이터가 전달된다.
+보낸 데이터가 순서대로 전달되고, 손실이 발생하지 않는다.
+TCP는 IP와 함께 사용하기 때문에 TCP/IP라고도 한다.
+TCP는 웹 브라우저가 웹 서버에 연결할 때 사용된다. - 이메일, 파일 전송, DB 연동
+ServerSocket – 클라이언트의 연결을 수락하는 서버쪽 클래스에서 작성
+               생성 시 바인딩할 Port 번호를 지정해야 한다.
+               accept() 메소드로 연결을 수락하고 Socket를 생성한다.
+
+(핸드폰 = Socket) = 양쪽에서 송수신
+Socket – 클라이언트에서 연결 요청할 때 사용
+         클라이언트와 서버에서 데이터를 주고받을 때 사용
+
+UDP ( 은행보안,ActiveX... )
+발신자가 일방적으로 수신자에게 데이터를 보내는 방식이다
+TCP처럼 연결 요청, 수락 과정이 없다.
+TCP처럼 고정회선이 아니라 여러 회선을 통해서 데이터가 전송된다.
+- 회선의 속도에 따라 데이터가 순서대로 전달되지 않거나 잘못된 회선으로 데이턴 손실이 발생할 수 있다.
+- 실시간 영상 스트리밍에서 한 컷의 영상이 손실되더라도 영상은 계속 수신되므로 문제가 되지는 않는다.
+데이터 전달의 신뢰성보다 속도가 중요하다면 UDP를 사용하고, 데이터 전달의 신뢰성이 중요하다면 TCP를 사용해야 한다.
+DatagramSocket – 발신점과 수신점에 해당
+                - 객체 생성 시 Port 번호를 주어야 한다.
+DatagramPacket – 주고 받는 데이터에 해당
+
+
+hwp - > 스레드, 네트워크
+
+URL ->
+프로토콜://도메인:포트/파일(메인화면)
+( DNS에 의해 IP로 변경)
+http://www.naver.com(:80/index.html) 
+https:// 443
+ftp:// 21
+
+URI
+
+IO Stream
+1. byte단위
+접미사
+InputStream
+OutputStream
+
+2. 문자 단위
+접미사
+Reader
+Writer
+
+{
+웹브라우저 ->
+url.openStream() => InputStream 타입으로 가져옴
+
+컴퓨터 ->
+ (파일-> 일때 FileReader)
+ (키보드(System.in)=InputStream 일때 InputStreamReader
+InputStreamReader => InputStream 을 읽어드림.
+
+buffer -> 
+BufferedReader
+
+URL.java.
+}
+
+Socket 으로 서버와 클라이언트 오고가기
+{
+ProtocolClient <-->
+data : 안녕
+BufferedReader 입력
+BufferedWriter 출력
+Buffer <-->
+InputStreamReader 입력
+OutputStreamWriter 출력
+Socket //Client역할<-->
+socket.getInputStream() 입력
+socket.getOutputStream() 출력
+----------------------------
+Socket //Server역할 <-->
+
+Buffer <-->
+
+ProtocolServer
+[길동] 안녕
+
+}
+
+================================
+Git 이어서..
+
+브랜치와 머지 에 대해
+브랜치 Branch
+작업 가지
+
+머지 Merge
+특정 규칙에 따라 순서대로 둘 이상의 파일을 합쳐
+하나의 파일로 합치는 것.
+
+
+브랜치 확인
+git branch
+
+브랜치 만들기
+git branch 브랜치명
+
+포인터 변경
+git checkout 브랜치명
+
+변경된 내용 합치기
+git merge 병합할_브랜치명
+(master로 포인터를 옮긴 후 master에 브랜치를 머지함)
+
+브랜치 삭제
+git branch -d 브랜치명
+
+저장소를 만들게 되면 기본 브랜치는 master 브랜치이다.
+* git branch -M main ( main 으로 변경하는것 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

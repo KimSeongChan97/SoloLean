@@ -101,6 +101,7 @@ select width_bucket(74, 0, 100, 10) from dual;  -- 0에서 100까지를 10개의
 
 -- 공백제거 : ltrim(왼), rtrim(오른), trim(양쪽)
 select rtrim('test   ') || 'exam' from dual;  -- 오른쪽 공백 제거 후 'exam'과 결합, 결과는 'testexam'
+select rtrim('test ') || 'exam' from dual;
 
 -- sysdate : 시스템에 설정된 시간 표시
 select sysdate from dual;  -- 현재 날짜와 시간 조회
@@ -109,42 +110,43 @@ select to_char(sysdate, 'HH"시" MI"분" SS"초"') as 오늘날짜 from dual;  -
 select to_char(sysdate, 'HH24"시" MI"분" SS"초"') as 오늘날짜 from dual;  -- 현재 시간을 24시간 형식으로 '시 분 초' 형식으로 표시
 
 -- add_months(date, 달수) : 날짜에 달수 더하기
-select add_months(sysdate, 7) from dual;  -- 현재 날짜에 7개월 더하기
+select add_months(sysdate, 5) from dual;  -- 현재 날짜에 7개월 더하기
 
 -- last_day(date) : 해당 달의 마지막 날
 select last_day(sysdate) from dual;  -- 현재 날짜의 해당 달의 마지막 날 조회
-select last_day('2004-02-01') from dual; -- 2004년 2월의 마지막 날 조회, 결과는 2004-02-29 (윤년)
-select last_day('2005-02-01') from dual; -- 2005년 2월의 마지막 날 조회, 결과는 2005-02-28
+select last_day('2024-02-01') from dual; -- 2004년 2월의 마지막 날 조회, 결과는 2004-02-29 (윤년)
+select last_day('2025-02-01') from dual; -- 2005년 2월의 마지막 날 조회, 결과는 2005-02-28
 
 -- 오늘부터 이번 달 말까지 총 남은 날수를 구하시오
 select last_day(sysdate) - sysdate as 남은날수 from dual;  -- 현재 날짜부터 해당 달의 마지막 날까지 남은 일 수 계산
 
--- months_between(date1, date2) : 두 날짜 사이의 달 수
+-- months_between(date1, date2) : 두 날짜 사이의 달 수 (강제형변환)
 select round(months_between('95-10-21', '94-10-20'), 0) from dual; -- 두 날짜 사이의 달 수를 반올림하여 계산, 결과는 12
 
 -- 명시적인 변환(강제)
-select last_name, to_char(salary, 'L99,999.00') 
+select last_name, to_char(salary, 'L99,999.00') -- 통화기준 L
 from employees
 where last_name = 'King';  -- last_name이 'King'인 사원의 급여를 통화 형식으로 변환하여 출력
 
--- 날짜 형식 변환 예시
+-- 날짜 형식 변환 예시 :  년도의 앞의 2자리는 시스템의 날짜로부터 가져온다
 select to_char(to_date('97/9/30', 'YY-MM-DD') , 'YYYY-MON-DD') from dual; -- 2097년 9월 30일로 변환
 select to_char(to_date('97/9/30', 'RR-MM-DD') , 'RRRR-MON-DD') from dual; -- 1997년 9월 30일로 변환
 select to_char(to_date('17/9/30', 'YY-MM-DD') , 'YYYY-MON-DD') from dual; -- 2017년 9월 30일로 변환
 select to_char(to_date('17/9/30', 'RR-MM-DD') , 'RRRR-MON-DD') from dual; -- 2017년 9월 30일로 변환
 
 -- 2005년 이전에 고용된 사원을 찾으시오
-select employee_id, last_name, hire_date
+select last_name, to_char(hire_date, 'dd-mon-yyyy')
 from employees
-where hire_date < to_date('2005-01-01', 'YYYY-MM-DD');  -- 고용일이 2005년 1월 1일 이전인 사원 검색
+where hire_date < '2005-01-01'; -- 고용일이 2005년 1월 1일 이전인 사원 검색
 
 -- fm 형식 : 형식과 데이터가 반드시 일치해야함(fm - fm 사이 값만 일치)
 -- fm를 표시하면 숫자 앞의 0을 나타나지 않는다.
 select last_name, hire_date from employees where hire_date = '05/09/30';
 select last_name, hire_date from employees where hire_date = '05/9/30';
+select last_name, hire_date from employees where hire_date = to_date('05/09/30', 'YY/MM/DD');
+
 select to_char(sysdate, 'YYYY-MM-DD') from dual;  -- 현재 날짜를 'YYYY-MM-DD' 형식으로 출력
 select to_char(sysdate, 'YYYY-fmMM-DD') from dual;  -- 현재 날짜를 'YYYY-fmMM-DD' 형식으로 출력, 월 앞의 0 제거
-
 -- 날짜 형식 변환 예시
 select to_char(to_date('2011-03-01', 'YYYY-MM-DD'), 'YYYY-MM-DD') from dual;  -- '2011-03-01'을 'YYYY-MM-DD' 형식으로 출력
 select to_char(to_date('2011-03-01', 'YYYY-MM-DD'), 'YYYY-fmMM-DD') from dual;  -- '2011-03-01'을 'YYYY-fmMM-DD' 형식으로 출력, 월 앞의 0 제거
@@ -159,40 +161,55 @@ trunc(avg(salary), 0),  -- 급여의 평균값을 소수 이하 절삭
 to_char(sum(salary), 'L9,999,999')  -- 급여의 합을 세 자리마다 콤마 찍고 통화 형식으로 표시
 from employees;
 
+select count(*) from employees; -- 전체 사원 수
 -- 커미션(commission_pct)을 받지 않은 사원의 인원수를 구하시오
-select count(*) 
-from employees 
-where commission_pct is null;  -- 커미션을 받지 않은 사원의 인원수 계산
+select count(*) from employees where commission_pct is null;  -- 커미션을 받지 않은 사원의 인원수 계산
+select count(nvl(commission_pct, 0)) from employees where commission_pct is null;
+-- 전체 직원 수에서 커미션을 받지 않는 직원 수를 뺀 결과를 구하는 쿼리
+SELECT 
+(SELECT COUNT(*) FROM employees) - 
+(SELECT COUNT(*) FROM employees WHERE commission_pct IS NULL) AS "커미션 받은 직원 수"
+FROM dual;
 
 -- employees 테이블에서 없는 부서를 포함해서 총 부서의 수를 구하시오
-select count(distinct department_id) from employees;  -- 중복되지 않는 부서 ID의 수 계산
-select count(distinct nvl(department_id, 0)) from employees;  -- 없는 부서를 0으로 대체하여 중복되지 않는 부서 ID의 수 계산
+select department_id from employees; -- 107
+select count(department_id) from employees; -- 106
+select count(*) from employees; -- 107
+select count(distinct department_id) from employees; -- 11
+select count(distinct nvl(department_id, 0)) from employees; -- 12
+select distinct nvl(department_id, 0) from employees; -- nvl은 null값을 0으로 대치
 
--- decode(표현식, 검색1, 결과1, 검색2, 결과2....[default])
--- : 표현식과 검색을 비교하여 결과 값을 반환 다르면 default
+
+-- ① decode(표현식, 검색1,결과1, 검색2,결과2....[default])
+-- : 표현식과 검색을 비교하여 결과 값을 반환 다르면 default 
+-- ② case  value  when  표현식  then  구문1
+--                when  표현식  then  구문2 
+--                else  구문3
+--                end case
+
 -- 업무 ID가 'SA_MAN' 또는 ‘SA_REP'이면 'Sales Dept' 그 외 부서이면 'Another'로 표시
 -- 조건) 분류별로 오름차순 정렬
 select job_id, decode(job_id,
-'SA_MAN', 'Sales Dept', 
-'SA_REP', 'Sales Dept', 
-'Another') "분류"
+                    'SA_MAN', 'Sales Dept', 
+                    'SA_REP', 'Sales Dept', 
+                    'Another') "분류"
 from employees 
 order by 2;  -- 분류별로 오름차순 정렬
 
 -- case 문 사용
 select job_id, case job_id
-when 'SA_MAN' then 'Sales Dept' 
-when 'SA_REP' then 'Sales Dept' 
-else 'Another'
-end "분류"
+                when 'SA_MAN' then 'Sales Dept' 
+                when 'SA_REP' then 'Sales Dept' 
+                else 'Another'
+                end "분류"
 from employees 
 order by 2;  -- 분류별로 오름차순 정렬
 
 select job_id, case
-when job_id = 'SA_MAN' then 'Sales Dept' 
-when job_id = 'SA_REP' then 'Sales Dept' 
-else 'Another'
-end "분류"
+                when job_id = 'SA_MAN' then 'Sales Dept' 
+                when job_id = 'SA_REP' then 'Sales Dept' 
+                else 'Another'
+                end "분류"
 from employees 
 order by 2;  -- 분류별로 오름차순 정렬
 
@@ -202,13 +219,15 @@ order by 2;  -- 분류별로 오름차순 정렬
 -- case 사용하시오
 select employee_id as 사원번호, 
 first_name || ' ' || last_name as 사원명, 
-case 
-when salary < 10000 then '초급' 
-when salary < 20000 then '중급' 
-else '고급' 
-end as 구분
+    case 
+        when salary < 10000 then '초급' 
+        when salary < 20000 then '중급' 
+        else '고급' 
+    end as "구분"
 from employees
 order by 구분 asc, 사원명 asc;  -- 구분을 기준으로 오름차순 정렬, 같으면 사원명을 기준으로 오름차순 정렬
+-- order by 3 asc, 2 asc;
+-- order by 3, 2;
 
 -- rank 함수 : 전체 값을 대상으로 순위를 구함
 -- rank(표현식) within group(order by 표현식)
@@ -226,7 +245,8 @@ select employee_id, salary, rank() over(order by salary desc) as "rank" from emp
 select employee_id,
 salary, 
 department_id,
-first_value(salary) over(partition by department_id order by salary desc) as "highsal_deptID" 
+first_value(salary) over(partition by department_id order by salary desc) 
+as "highsal_deptID" 
 from employees;
 
 -- ★ PARTITION BY 절은 GROUP BY 절과 동일한 역할을 진행합니다.
@@ -238,28 +258,45 @@ select employee_id,
 last_name, 
 salary, 
 department_id,
-row_number() over (PARTITION BY department_id ORDER BY salary DESC) as rnum 
+row_number() over (PARTITION BY department_id ORDER BY salary DESC) as "부서ID 기준 내림차순" 
 from employees;
-
 -- 부서별 급여를 내림차순으로 정렬 했을 경우 Row Number
 -- 부서 번호가 바뀔 때 Row Number는 새로 시작되는 것을 확인할 수 있습니다.
 -- NULL 값은 정렬 시 가장 큰 값으로 인식 (기본설정)
 
--- 사원 테이블에서 사원번호, 이름, 급여, 커미션, 연봉을 출력하시오
+-- 사원 테이블에서 사원번호, 사원명, 급여, 커미션, 연봉을 출력하시오
 -- 연봉은 $ 표시와 세 자리마다 콤마를 사용하시오
 -- 연봉 = 급여 * 12 + (급여 * 12 * 커미션)
 -- 커미션을 받지 않는 사원도 포함해서 출력하시오
 select employee_id as 사원번호, 
-first_name || ' ' || last_name as 이름, 
+last_name as 사원명, 
 salary as 급여, 
-nvl(commission_pct, 0) as 커미션,  -- 커미션이 NULL인 경우 0으로 대체
+nvl(commission_pct, 0) as 커미션,  -- 커미션이 NULL인 경우
 to_char(salary * 12 + (salary * 12 * nvl(commission_pct, 0)), 'L9,999,999') as 연봉  -- 연봉 계산 후 $ 표시와 세 자리마다 콤마 추가
-from employees;
+from employees; -- 9,999 할시 #### 으로 자릿수 부족이 나옴
+
+-- 커미션이 있는 경우
+SELECT employee_id AS 사원번호, 
+last_name AS 사원명, 
+salary AS 급여, 
+commission_pct AS 커미션,  -- 커미션 값을 그대로 표시
+TO_CHAR(salary * 12 + (salary * 12 * commission_pct), 'L9,999,999') AS 연봉  -- 연봉 계산 후 $ 표시와 세 자리마다 콤마 추가
+FROM employees
+WHERE commission_pct IS NOT NULL;  -- 커미션이 있는 경우만 선택
 
 -- 매니저가 없는 사원의 MANAGER_ID를 1000번으로 표시
 -- 제목은 사원번호, 이름, 매니저ID
 -- 모든 사원을 표시하시오
 select employee_id as 사원번호, 
-first_name || ' ' || last_name as 이름, 
+last_name as 이름, 
 nvl(manager_id, 1000) as 매니저ID  -- 매니저가 없는 경우 manager_id를 1000으로 표시
 from employees;
+
+-- ---------------------------------------------------문제풀이
+select sum(price) as 판매액
+from sellings
+where created_at like '%11%';
+-- ----------------------------------------------------
+
+
+

@@ -1,0 +1,12 @@
+127.0.0.1 - - [07/Aug/2024:12:25:18 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:25:18 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 200 126
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:29:11 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 200 587
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:29:11 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:29:34 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 200 579
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:31:06 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:34:11 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 200 962
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:39:11 +0900] "GET /HTML5/html/exam05-Checkbox.html HTTP/1.1" 200 1019
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:39:26 +0900] "GET /HTML5/html/exam06-select.html HTTP/1.1" 200 527
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:42:09 +0900] "GET /HTML5/html/exam06-select.html HTTP/1.1" 200 996
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:43:49 +0900] "GET /HTML5/html/exam06-select.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Aug/2024:12:45:18 +0900] "GET /HTML5/html/exam06-select.html HTTP/1.1" 200 1016

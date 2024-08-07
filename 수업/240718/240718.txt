@@ -1,0 +1,120 @@
+package ~
+
+Object
+1. Java의 최상위 클래스
+2. Java의 모든 클래스는 Object로 부터 상속받는다
+3. extends Object라고 직접 쓰지 않아도 된다
+4. Object에서는 == , equals() 가 모두 참조값(reference) 만으로 비교한다. 
+단, String만이 equals()가 내용(문자열)을 비교한다.
+
+
+추상 클래스 !
+추상클래스 - Sub class 제어
+
+1. 추상화 작업
+
+2. 메소드에 body { } 가 없는 메소드를 추상메소드라고 한다. 
+추상메소드에는 abstract 라는 키워드를 써야 한다 
+추상메소드는 {} body 없이 ;를 써야한다
+
+3. 추상메소드가 있는 클래스는 반드시 추상클래스이어야 한다.
+
+4. 추상메소드가 없는 추상클래스를 의미상의 추상클래스라고 한다. 
+의미상의 추상클래스의 메소드는 모두 빈body로 되어 있다.
+
+5. 추상클래스는 자신의 클래스로 메모리 생성을 할 수 없다 
+=> 생성하려면
+가. Sub Class를 이용 (반드시 Sub Class가 추상메소드를 Override 해야 한다) 
+나. 메소드를 이용
+
+6. 추상메소드는 반드시 Sub Class에서 Override 꼭 해 주어야 한다. 
+Override를 안하면 Sub Class 마저도 abstract 가 되어야 한다.
+
+**
+it.hasNext() - 항목이 있으면 true
+		- 항목이 없으면 false
+
+it.next() - 항목을 꺼내고 임시공간에 보관하고, 다음으로 이동
+
+it.remove() - it.next()를 통해서 임시공간에 보관한 항목을 제거
+
+**
+""" 중첩 """
+
+중첩클래스
+has~a 관계 ( " 가지다 " )
+다른 클래스 내부에 정의 되는 클래스를 중첩클래스(nested class)라고 한다.
+중첩클래스는 독립적으로 오브젝트로 만들어질 수 있는 스태틱 클래스(static class)와 자신이 정의된 클래 
+스의 오브젝트 안에서만 만들어질 수 있는 내부 클래스(inner class)로 구분된다.
+
+내부클래스는 다시 범위에 따라 세 가지로 구분된다.
+멤버필드처럼 오브젝트 레벨에 정의되는 멤버 내부 클래스(member inner class)와 메소드 레벨에서 로컬 
+변수를 선언하여 사용하듯 선언된 메소드 내에서만 사용 가능한 로컬 내부 클래스(local inner class), 그 
+리고 이름을 갖지 않는 익명 내부 클래스(anonymous inner class)다.
+
+Member  Inner  Class
+안쪽에 있는 클래스는 바깥쪽 클래스의 모든 멤버에 접근 가능 
+하지만 바깥쪽 클래스는 안쪽의 클래스의 멤버에 접근 불가능 
+단 안쪽의 클래스로 객체를 선언하면 접근 가능하다.
+
+
+class 클래스 {
+	static class {
+	
+	}
+
+	Member inner class {
+	
+	}
+	
+	 method () {
+		local inner class {
+		}
+	}
+	(익명 내부) class {
+	}
+}
+
+
+
+**
+
+interface
+
+1. implements
+-> 모든 추상 메소드 Override
+
+2. 대신 Override 해주는 클래스
+
+3. method
+
+4. 익명 inner class
+
+2. Comparator (java.util)
+- 기본 정렬기준 외에 다른 기준으로 정렬하고자할 때 사용 
+- public int compare(T o1, T o2)
+public boolean equals(Object obj)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
