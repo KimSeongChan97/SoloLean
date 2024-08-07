@@ -1,0 +1,130 @@
+## CompanyDAO 클래스 분석 및 상세 설명
+
+### 클래스 개요
+`CompanyDAO` 클래스는 데이터베이스와 상호작용하는 기능을 담당합니다. 이 클래스는 직원 정보를 저장하고, 업데이트하며, 조회하는 다양한 기능을 제공합니다. 이 클래스는 싱글톤 패턴을 사용하여 단일 인스턴스를 유지합니다.
+
+### 멤버 변수
+- `driver`: 데이터베이스 드라이버 클래스의 이름을 저장합니다. 이는 JDBC를 사용하여 데이터베이스에 연결하기 위해 필요합니다.
+- `url`: 데이터베이스 URL을 저장합니다. 이 URL은 데이터베이스 서버의 위치와 포트를 포함합니다.
+- `user`: 데이터베이스 사용자 이름을 저장합니다.
+- `password`: 데이터베이스 사용자 비밀번호를 저장합니다.
+- `con`: 데이터베이스 연결 객체입니다.
+- `pstmt`: SQL 문을 실행하기 위한 객체입니다.
+- `rs`: SQL 쿼리 실행 결과를 저장하는 객체입니다.
+- `instance`: 싱글톤 패턴을 사용하여 `CompanyDAO`의 단일 인스턴스를 유지합니다.
+
+### 생성자 및 초기화 블록
+- `CompanyDAO()`: 생성자는 클래스가 생성될 때 호출되며, JDBC 드라이버를 메모리에 로드합니다. 드라이버 클래스가 없을 경우 `ClassNotFoundException` 예외가 발생합니다.
+- `static { instance.initialize(); }`: 이 초기화 블록은 클래스가 로드될 때 실행됩니다. 이는 `initialize()` 메서드를 호출하여 인스턴스를 초기화합니다.
+
+### 메서드 상세 설명
+
+#### `initialize()`
+- 이 메서드는 데이터베이스 연결을 설정하고, `company_status` 테이블을 초기화합니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: `company_status` 테이블을 초기화하는 SQL 쿼리입니다. 모든 직원의 출근 시간을 현재 날짜의 09:00으로 설정하고, 퇴근 시간은 `null`로 설정합니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.executeUpdate()`: SQL 쿼리를 실행합니다.
+- `finally` 블록: `PreparedStatement` 및 `Connection` 객체를 닫습니다. 이는 자원 누수를 방지하기 위해 필요합니다.
+
+#### `getConnection()`
+- 데이터베이스와의 연결을 설정합니다.
+- `con = DriverManager.getConnection(url, user, password)`: 데이터베이스 연결을 설정합니다. 이 메서드는 `SQLException` 예외를 처리합니다.
+
+#### `regist(String name, String id, String pw, String phone)`
+- 새로운 직원을 등록합니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: 새로운 직원 정보를 `company` 테이블에 삽입하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, name)`: 첫 번째 매개변수에 이름을 설정합니다.
+- `pstmt.setString(2, id)`: 두 번째 매개변수에 아이디를 설정합니다.
+- `pstmt.setString(3, pw)`: 세 번째 매개변수에 비밀번호를 설정합니다.
+- `pstmt.setString(4, phone)`: 네 번째 매개변수에 전화번호를 설정합니다.
+- `pstmt.executeUpdate()`: SQL 쿼리를 실행하여 데이터를 삽입합니다.
+- 두 번째 `String sql2`: 새로운 직원의 출근 상태를 `company_status` 테이블에 삽입하는 SQL 쿼리입니다.
+- 동일한 과정으로 `sql2`를 실행하여 데이터를 삽입합니다.
+- `finally` 블록: `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+
+#### `isExistId(String id)`
+- 주어진 아이디의 중복 여부를 확인합니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: 주어진 아이디가 `company` 테이블에 존재하는지 확인하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, id)`: 첫 번째 매개변수에 아이디를 설정합니다.
+- `rs = pstmt.executeQuery()`: SQL 쿼리를 실행하여 결과 집합을 반환합니다.
+- `if (rs.next())`: 결과 집합에 데이터가 있으면 `exist`를 `true`로 설정합니다.
+- `finally` 블록: `ResultSet`, `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+- `return exist`: 아이디 중복 여부를 반환합니다.
+
+#### `list(CompanyDTO companyDTO)`
+- 모든 직원의 정보를 출력합니다.
+- `SimpleDateFormat sdf`: 날짜 형식을 지정하는 객체입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: `company` 테이블과 `company_status` 테이블을 조인하여 모든 직원 정보를 가져오는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `rs = pstmt.executeQuery()`: SQL 쿼리를 실행하여 결과 집합을 반환합니다.
+- `while (rs.next())`: 결과 집합에서 각 행의 데이터를 출력합니다.
+- `finally` 블록: `ResultSet`, `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+
+#### `login(String id, String pw)`
+- 출결 체크용 로그인 메서드입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: 주어진 아이디와 비밀번호로 로그인 확인하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, id)`: 첫 번째 매개변수에 아이디를 설정합니다.
+- `pstmt.setString(2, pw)`: 두 번째 매개변수에 비밀번호를 설정합니다.
+- `rs = pstmt.executeQuery()`: SQL 쿼리를 실행하여 결과 집합을 반환합니다.
+- `while (rs.next())`: 결과 집합에서 이름을 추출하여 `name`에 저장합니다.
+- `finally` 블록: `ResultSet`, `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+- `return name`: 로그인된 사용자의 이름을 반환합니다.
+
+#### `checkin(String id)`
+- 출근 체크 메서드입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: 출근 상태를 업데이트하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, id)`, `pstmt.setString(2, id)`, `pstmt.setString(3, id)`: 각 매개변수에 아이디를 설정합니다.
+- `pstmt.executeUpdate()`: SQL 쿼리를 실행하여 상태를 업데이트합니다.
+- `finally` 블록: `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+
+#### `checkout(String id)`
+- 퇴근 체크 메서드입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql`: 퇴근 상태를 업데이트하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, id)`, `pstmt.setString(2, id)`, `pstmt.setString(3, id)`: 각 매개변수에 아이디를 설정합니다.
+- `pstmt.executeUpdate()`: SQL 쿼리를 실행하여 상태를 업데이트합니다.
+- `finally` 블록: `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+
+#### `delete(String id, String pw)`
+- 퇴사 처리 메서드입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `String sql1`: 퇴사자의 이름을 가져오는 SQL 쿼리입니다.
+- `String sql2`: `company` 테이블에서 데이터를 삭제하는 SQL 쿼리입니다.
+- `String sql3`: `company_status` 테이블에서 데이터를 삭제하는 SQL 쿼리입니다.
+- `String sql4`: `leaveperson` 테이블에 퇴사한 인원의 데이터를 삽입하는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql1)`: SQL 쿼리를 준비합니다.
+- `pstmt.setString(1, id)`, `pstmt.setString(2, pw)`: 각 매개변수에 아이디와 비밀번호를 설정합니다.
+- `rs = pstmt.executeQuery()`: SQL 쿼리를 실행하여 결과 집합을 반환합니다.
+- `while (rs.next())`: 결과 집합에서 이름을 추출하여 `name`에 저장합니다.
+- `if (name != null)`: 이름이 존재하면 퇴사 처리 절차를 진행합니다.
+  - `pstmt = con.prepareStatement(sql4)`: SQL 쿼리를 준비합니다.
+  - `pstmt.setString(1, name)`, `pstmt.setString(2, id)`, `pstmt.setString(3, id)`: 각 매개변수에 이름
+
+과 아이디를 설정합니다.
+  - `pstmt.executeUpdate()`: SQL 쿼리를 실행하여 데이터를 삽입합니다.
+  - 동일한 과정으로 `sql2`와 `sql3`를 실행하여 데이터를 삭제합니다.
+- `finally` 블록: `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+- `return name`: 퇴사자의 이름을 반환합니다.
+
+#### `leavelist(CompanyDTO companyDTO)`
+- 퇴사 사원 목록 출력 메서드입니다.
+- `getConnection()`: 데이터베이스와의 연결을 설정합니다.
+- `SimpleDateFormat sdf`: 날짜 형식을 지정하는 객체입니다.
+- `String sql`: `leaveperson` 테이블에서 모든 데이터를 가져오는 SQL 쿼리입니다.
+- `pstmt = con.prepareStatement(sql)`: SQL 쿼리를 준비합니다.
+- `rs = pstmt.executeQuery()`: SQL 쿼리를 실행하여 결과 집합을 반환합니다.
+- `while (rs.next())`: 결과 집합에서 각 행의 데이터를 출력합니다.
+- `finally` 블록: `ResultSet`, `PreparedStatement` 및 `Connection` 객체를 닫습니다.
+
+이 클래스는 데이터베이스와의 상호작용을 통해 직원 정보를 관리하며, 각 메서드는 특정 기능을 수행하도록 설계되어 있습니다. 이러한 설계는 유지보수와 확장을 용이하게 합니다.
