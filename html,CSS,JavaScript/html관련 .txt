@@ -1,0 +1,112 @@
+HTML
+
+Tomcat
+- Servlet, JSP의 컨테이너 역할.
+
+tomcat.apache.org
+
+SpringBoot 는 10버전이 내장되어있음.
+그 외는 JSP 까지..
+EL/JSTL 제공하는 9버전으로
+9.0.93
+
+1.
+-> 서비스 설치프로그램
+apache-tomcat-9.0.93.exe
+2.
+full 버전
+포트번호 8080
+3.
+C 드라이브에 바로 들어가게 폴더 지정
+오라클	톰캣
+실행		중지
+자동		수동
+
+톰캣은 수동으로 변경
+
+4. 확인
+C:\Tomcat 9.0\bin\Tomcat9w.exe (환경설정)
+실행은 9.exe
+
+5. 실행 ( Tomcat 서버 열린 창 )
+http://localhost:8080/index.jsp
+http://localhost:8080/
+
+C:\Tomcat 9.0\webapps\ROOT
+에서 확인 가능 (Context) -- Eclipse 에서 만든 Project와 같은 의미
+
+6. editplus 에서 html 파일 ..
+
+C:\Tomcat 9.0\webapps\ROOT 에다가 저장해야함.
+(파일명은 대소문자를 가림)
+
+7.
+http://localhost:8080/hello.html
+
+8.
+<html> : 여는 태그
+</html> : 닫는 태그
+
+<body>
+	</body>
+
+<head>
+	<meta charset="UTF-8"
+</head> // 한글 설정
+
+나의 파일
+http://192.168.0.55:8080/hello.html
+
+9. Tomcat 연결
+이클립스 -> 윈도우 -> Preferences - Server -> Runtime En..
+add -> apache 9.0 -> Create loacl folder
+
+실행의 Server 창 더블클릭
+
+Tomcat admin port 8005
+Tomcat 8005 연결
+
+cmd의 Tomcat 종료
+
+10. 이클립스의 tomcat 실행
+
+11. 이클립스 내부에서 톰캣과 연결 완료
+
+:: 모든 한글 -> UTF-8로 맞춰야함
+윈도우 -> Preferences -> encoding 검색 (뜨는거 전부 한글변경)
+
+이제 프로젝트 만들거임
+
+Project : (단순한 html은 static)
+		Dynamic Web Project
+Generate 생성
+
+
+파일생성...
+========================================
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML연습</title>
+	</head>
+	<body>
+		<h3>Hello 성찬 !!</h3>
+		
+	</body>
+</html>
+
+--========================================
+Component (도구)
+- 연필, 샤프..
+- 망치, 못..
+
+Container
+- 필통
+- 공구함
+
+
+NodeJs (서버 역할)
+
+But
+서버용 프로그램이 필요함..

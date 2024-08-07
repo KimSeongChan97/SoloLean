@@ -1,0 +1,107 @@
+AddGameTest 포스팅
+
+     *변수
+자료형 변수명
+int      a           -> a(4byte)
+
+ 
+------------------------------
+**** 배 열 **** A r r a y
+java에서 주소는 실제 주소가 아닌 참조(refernce)주소이다.
+
+1. 동일한 자료형의 모임
+2. 연속적인 메모리 할당
+3. 첨자가 0부터 시작
+4. 한번 잡은 배열의 크기는 수정할 수 없다
+
+* 배열은 메모리의 큰 공간에 잡힌다.
+ -> 연속적인 공간. // 크기 조정 X // 
+ -> 한계극복 java: collection(=>ArrayList, Map) // Linked  
+-> 전철 구조와 비슷
+
+1.   1차원 배열
+[형식]
+자료형 [ ] 배열명
+자료형     배열명[]
+
+- 자료형[] 배열명 = {값1, 값2,...}; 
+- 자료형[] 배열명;
+배열명 = new 자료형[개수];
+- 자료형[] 배열명 = new int[]{값1, 값2,...}; 
+
+ex)
+
+int a;      int[ ]  ar X
+	    int[ ]  ar;
+		ar = new int[ 3 ] ; //  배열3 주소 설정	
+        ★ 시작은 0번 부터 !
+    ar -> (ar[0]) / (ar[1]) / (ar[2])
+	0번에 25의 값을 넣을 때 :: ar[0] = 25; // ar=25; XX
+
+
+1. int[] ar = {10, 20, 30};
+2. int[] ar;
+ar = new int[3]; 
+ar[0] = 10; 
+ar[1] = 20;
+ar[2] = 30;
+3. int[] ar = new int[]{10, 20, 30};
+4. int[] ar = new int[3]{10, 20, 30}; - X
+5. int[] ar;
+ar = {10, 20, 30}; - X
+
+**예외처리
+Exception
+- 컴파일 할 때 : IOException => throws, try-catch
+- 실행 할 때 : java.lang.ArrayIndexOutOfBoundsException
+ ( Index 0 out of bounds for length 0 at array)=>개발자 실수
+
+class Test {
+	int a; // 필드, 인스턴스 변수
+	static int c; // 필드, 클래스 변수
+
+	public static void main(String[] args) { // []은 함수의 괄호 안에 
+들어옴, 선언된 변수를 매개변수 라고 부른다. (parameter) / 
+			 인수(argument)
+		int b; // 변수
+	
+		for(int i=1; ~ ) {
+		} // 지역변수	
+	
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
