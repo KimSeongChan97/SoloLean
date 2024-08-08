@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>복습용HMTL파일, person</title>
+<style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+	<form action="#" method="post">
+		<table>
+			<tr>
+				<th>이름</th>
+					<td>
+						<input type="text" name="name" placeholder="이름입력" />
+					</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+					<td>
+						<input type="radio" name="gender" value="male" checked> 남자
+                    	<input type="radio" name="gender" value="female"> 여자
+                </td>
+			</tr>
+			<tr>
+				<th>색깔</th>
+                <td>
+                    <select name="color">
+                        <option value="red" selected>빨강</option>
+                        <option value="green">초록</option>
+                        <option value="blue">파랑</option>
+                        <option value="magenta">보라</option>
+                        <option value="cyan">하늘</option>
+                    </select>
+                </td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

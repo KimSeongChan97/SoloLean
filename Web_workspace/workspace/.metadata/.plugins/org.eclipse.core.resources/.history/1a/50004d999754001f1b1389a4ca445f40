@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>복습용HMTL파일, person</title>
+</head>
+<body>
+	<form action="#" method="post">
+		<table>
+			<tr>
+				<th>이름</th>
+					<td>
+						<input type="text" name="name" placeholder="이름입력" />
+					</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
