@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 이 문서가 HTML5 문서임을 선언합니다. -->
+    <meta charset="UTF-8">
+    <!-- 문서의 문자 인코딩을 UTF-8로 설정하여, 다양한 언어의 문자를 올바르게 표시할 수 있도록 합니다. -->
+    <title>Insert title here</title>
+    <!-- 웹 브라우저의 탭이나 제목 표시줄에 표시될 페이지의 제목을 정의합니다. -->
+
+    <style type="text/css">
+        /* 페이지 전체의 기본 스타일을 설정합니다. */
+        body {
+            font-family: "Times New Roman", Serif;
+            /* 본문 텍스트에 사용할 글꼴을 설정합니다. 여기서는 "Times New Roman" 글꼴을 사용하고, 이 글꼴을 사용할 수 없는 경우 serif 계열 글꼴을 사용합니다. */
+            font-size: large;
+            /* 본문 텍스트의 기본 글자 크기를 'large'로 설정합니다. 이는 브라우저 기본 설정에 따라 다를 수 있습니다. */
+        }
+
+        h3 {
+            font: italic bold 40px consolas, sans-serif;
+            /* h3 헤딩 요소에 대한 글꼴 스타일을 설정합니다.
+               - 글꼴 스타일은 기울임꼴(italic),
+               - 글꼴 굵기는 굵게(bold),
+               - 글자 크기는 40px,
+               - 글꼴은 'consolas'를 사용하고, 사용할 수 없을 경우 sans-serif 계열 글꼴을 사용합니다. */
+        }
+    </style>
+</head>
+<body>
+    <!-- 문서의 본문이 시작되는 부분입니다. -->
+
+    <h3>Consolas font</h3>
+    <!-- h3 헤딩 요소로, 위에서 설정한 스타일에 따라 'Consolas font'라는 텍스트가 표시됩니다. -->
+
+    <hr>
+    <!-- 수평선을 그려 페이지의 구분을 명확히 합니다. -->
+
+    <p style="font-weight: 900">font-weight 900</p>
+    <!-- 글꼴의 굵기를 매우 굵게(900) 설정한 단락입니다. 글자들이 일반 텍스트보다 훨씬 더 두껍게 보입니다. -->
+
+    <p style="font-weight: 100">font-weight 100</p>
+    <!-- 글꼴의 굵기를 매우 얇게(100) 설정한 단락입니다. 글자들이 일반 텍스트보다 훨씬 더 가늘게 보입니다. -->
+
+    <p style="font-style: italic">font-style : Italic</p>
+    <!-- 글꼴 스타일을 기울임꼴(italic)로 설정한 단락입니다. 텍스트가 오른쪽으로 약간 기울어집니다. -->
+
+    <p style="font-style: oblique">font-style : Oblique</p>
+    <!-- 글꼴 스타일을 'oblique'로 설정한 단락입니다. 이 역시 텍스트가 기울어지지만, 'italic'과는 약간 다릅니다. 'oblique'는 강제로 기울임 효과를 적용합니다. -->
+
+    <p>현재 크기의 <span style="font-size: 1.5em;">1.5배</span> 크기로</p>
+    <!-- 이 단락은 기본 텍스트 크기로 시작하여, '1.5배'라는 단어를 '1.5em'으로 설정해 기존 텍스트보다 1.5배 더 크게 표시합니다. 'em' 단위는 현재 글꼴 크기의 배수로 설정할 수 있습니다. -->
+</body>
+</html>
