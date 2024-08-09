@@ -96,7 +96,32 @@ WHERE
     AND ST.SYEAR = 1         -- 1학년 학생만 선택
     AND CO.CNAME = '일반화학'; -- 일반화학 코스만 선택
 
--- 아래의 문제는 나중에 푸니까 제외
--- 문제3) 학생중에 동명이인을 검색하여 이름으로 오름차순하고, 만약 같은 이름은 번호로 오름차순하시오
+-- 문제3) 학생중에 동명이인을 검색하여 이름으로 오름차순하고, 만약 같은 이름은 번호로 오름차순하시오(self join)
 -- 테이블 : STUDENT
 -- 컬럼 : SNO, SNAME
+
+-- 첫 번째 쿼리: 동명이인을 찾기 위해 SELF JOIN을 사용하여 이름이 같고 번호가 다른 경우를 찾는다.
+-- DISTINCT를 사용하여 중복된 결과를 제거함으로써 각 학생의 번호(SNO)와 이름(SNAME)을 가져온다.
+select distinct a.sno, b.sname
+from student a, student b
+-- 자기 자신을 제외한 다른 학생들 중에서 같은 이름을 가진 학생들을 찾는다.
+where a.sno != b.sno and a.sname = b.sname
+-- 결과를 학생 번호(SNO)를 기준으로 오름차순 정렬한다.
+order by 1;
+
+-- 두 번째 쿼리: 동일한 로직을 JOIN 문법으로 표현한 예제.
+select distinct a.sno, b.sname
+from student a
+-- JOIN 조건에서 학생 번호(SNO)가 다르고, 이름(SNAME)이 같은 경우를 찾는다.
+join student b on (a.sno != b.sno and a.sname = b.sname)
+-- 결과를 학생 번호(SNO)를 기준으로 오름차순 정렬한다.
+order by 1;
+
+-- 세 번째 쿼리: SELF JOIN을 사용하여 이름이 같은 학생들을 찾고, 이름과 번호로 정렬하는 예제.
+SELECT a.SNO, b.SNAME
+FROM STUDENT a
+-- JOIN 조건에서 이름이 같은 경우를 찾는다.
+JOIN STUDENT b ON a.SNAME = b.SNAME
+-- 결과를 이름(SNAME)을 기준으로 먼저 오름차순 정렬하고, 
+-- 같은 이름의 경우에는 학생 번호(SNO)로 오름차순 정렬한다.
+ORDER BY SNAME ASC, SNO ASC;

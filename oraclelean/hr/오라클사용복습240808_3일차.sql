@@ -1,3 +1,82 @@
+-- Join using에 대한 형식: 공통된 컬럼명을 기준으로 테이블을 결합
+SELECT 컬럼명1, 컬럼명2, ...
+FROM 테이블1
+[INNER | LEFT | RIGHT] JOIN 테이블2
+USING (공통컬럼명);  -- 공통 컬럼명을 사용해 테이블을 결합하며, 이 경우 동일한 컬럼명은 한 번만 사용됩니다.
+
+-- join on에 대한 형식: 특정 컬럼들을 명시적으로 지정하여 테이블을 결합
+SELECT 컬럼명1, 컬럼명2, ...
+FROM 테이블1
+[INNER | LEFT | RIGHT] JOIN 테이블2
+ON 테이블1.컬럼명 = 테이블2.컬럼명;  -- 테이블1과 테이블2의 특정 컬럼이 일치하는 행을 결합합니다.
+
+-- inner join: 두 테이블 간의 일치하는 행만 반환
+SELECT 컬럼명1, 컬럼명2, ...
+FROM 테이블1
+INNER JOIN 테이블2
+ON 테이블1.컬럼명 = 테이블2.컬럼명;  -- INNER JOIN은 두 테이블 간에 조건에 일치하는 데이터만 반환합니다.
+
+-- left join on: 왼쪽 테이블의 모든 행을 반환하며, 오른쪽 테이블에서 일치하는 데이터가 없으면 NULL로 표시
+SELECT 컬럼명1, 컬럼명2, ...
+FROM 테이블1
+LEFT JOIN 테이블2
+ON 테이블1.컬럼명 = 테이블2.컬럼명;  -- LEFT JOIN은 왼쪽 테이블의 모든 데이터를 포함하며, 오른쪽 테이블에 일치하는 데이터가 없으면 NULL로 채워집니다.
+
+-- right join on: 오른쪽 테이블의 모든 행을 반환하며, 왼쪽 테이블에서 일치하는 데이터가 없으면 NULL로 표시
+SELECT 컬럼명1, 컬럼명2, ...
+FROM 테이블1
+RIGHT JOIN 테이블2
+ON 테이블1.컬럼명 = 테이블2.컬럼명;  -- RIGHT JOIN은 오른쪽 테이블의 모든 데이터를 포함하며, 왼쪽 테이블에 일치하는 데이터가 없으면 NULL로 채워집니다.
+
+-- 다른 컬럼 명을 사용하는 경우
+-- using은 공통된 컬럼명만 사용할 수 있지만, on은 두 테이블에서 다른 컬럼명을 사용
+SELECT orders.order_id, customers.name
+FROM orders
+INNER JOIN customers ON orders.cust_id = customers.id;  -- orders 테이블의 cust_id와 customers 테이블의 id가 일치하는 경우, 주문 ID와 고객 이름을 반환합니다.
+
+-- 다중 조건을 사용하는 경우
+-- 두 개 이상의 조건을 사용하여 테이블을 결합
+SELECT orders.order_id, products.product_name
+FROM orders
+INNER JOIN products ON orders.product_id = products.id  -- 첫 번째 조건: 주문의 product_id와 제품의 id가 일치해야 합니다.
+AND orders.order_date = products.release_date;          -- 두 번째 조건: 주문 날짜가 제품 출시일과 일치해야 합니다.
+
+-- 복잡한 조건
+SELECT orders.order_id, customers.name
+FROM orders
+INNER JOIN customers ON orders.cust_id = customers.id  -- 첫 번째 조건: 주문의 고객 ID와 고객의 ID가 일치해야 합니다.
+AND customers.status = 'Active';                       -- 두 번째 조건: 고객의 상태가 'Active'여야 합니다.
+
+-- Self Join: 같은 테이블의 데이터를 서로 비교하기 위해 자기 자신과 조인
+SELECT e1.name AS employee_name, e2.name AS manager_name
+FROM employees e1
+INNER JOIN employees e2 ON e1.manager_id = e2.employee_id;  -- employees 테이블을 두 번 참조하여 자기 자신과 조인합니다. e1의 manager_id와 e2의 employee_id가 일치하는 행을 결합하여, 직원과 그 직원의 매니저 이름을 반환합니다.
+
+-- cross join: 모든 조합을 반환하는 조인, 두 테이블의 카르테시안 곱을 반환
+SELECT a.column1, b.column2
+FROM table1 a
+CROSS JOIN table2 b
+WHERE a.column3 = b.column3;  -- 모든 조합을 반환한 후, 특정 조건(column3의 값이 동일)을 만족하는 행만 반환합니다.
+
+-- Non Equi Join (비등가 조인): = 연산자 외의 연산자를 사용하여 테이블을 결합
+SELECT e.name, s.salary_grade
+FROM employees e
+INNER JOIN salary_grades s ON e.salary BETWEEN s.low_salary AND s.high_salary;  -- employees 테이블의 salary가 salary_grades 테이블의 low_salary와 high_salary 사이에 있을 경우 두 테이블을 결합하여 이름과 급여 등급을 반환합니다.
+
+-- 여러 개의 테이블을 조인 (N개의 테이블 조인)
+SELECT o.order_id, c.name, p.product_name
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.customer_id  -- 첫 번째 조인: orders 테이블과 customers 테이블을 customer_id를 기준으로 결합
+INNER JOIN order_details od ON o.order_id = od.order_id  -- 두 번째 조인: orders 테이블과 order_details 테이블을 order_id를 기준으로 결합
+INNER JOIN products p ON od.product_id = p.product_id;  -- 세 번째 조인: order_details 테이블과 products 테이블을 product_id를 기준으로 결합
+
+SELECT o.order_id, c.name, p.product_name
+FROM orders o
+INNER JOIN customers c USING (customer_id)  -- 첫 번째 조인: customer_id를 기준으로 orders 테이블과 customers 테이블을 결합, customer_id는 결과에서 한 번만 표시됩니다.
+INNER JOIN order_details od USING (order_id)  -- 두 번째 조인: order_id를 기준으로 orders 테이블과 order_details 테이블을 결합, order_id는 결과에서 한 번만 표시됩니다.
+INNER JOIN products p USING (product_id);  -- 세 번째 조인: product_id를 기준으로 order_details 테이블과 products 테이블을 결합, product_id는 결과에서 한 번만 표시됩니다.
+
+-- ----------------------------------------
 
 -- 사원테이블에서 급여의 평균을 구하시오 
 -- 조건) 소수 이하는 절삭, 세 자리마다 콤마(,) 표시
@@ -163,6 +242,7 @@ from employees e
 join employees m on(m.employee_id = e.manager_id);
 
 -- ex12) cross join : 모든 행에 대해 가능한 모든 조합을 생성하는 조인 
+-- 많이 사용 안됨.
 select * from countries, locations; → -- 575레코드
 select * from countries cross join locations; 
 
@@ -230,3 +310,38 @@ JOIN COUNTRIES USING(COUNTRY_ID) -- 도로 주소가 'Ch', 'Sh', 'Rd' 패턴을 
 WHERE STREET_ADDRESS LIKE '%Ch%' OR STREET_ADDRESS LIKE '%Sh%' OR STREET_ADDRESS LIKE '%Rd%'
 -- 결과를 나라이름, 도시, 부서이름 순으로 정렬
 ORDER BY 6, 4, 3;
+
+-- GROUP BY / HAVING
+-- 문제1) 화학과를 제외하고 학과별로 학생들의 평점 평균을 검색하시오 (GROUP, HAVING)
+--       평균을 소수이하 2째 자리에서 반올림
+--       테이블 : STUDENT
+select * from student; -- STUDENT 테이블의 모든 데이터를 조회하여 테이블 구조와 데이터를 확인
+
+-- 화학과를 제외하고 학과별 평균 평점을 계산 (GROUP BY와 HAVING 사용)
+select major, round(avg(avr), 2) as "평점 평균" -- 학과별 평균 평점을 소수점 둘째자리까지 반올림
+from student
+group by major -- 학과별로 그룹화
+having major != '화학'; -- 화학과를 제외한 학과들만 선택
+
+-- WHERE 절을 사용하여 화학과를 제외하고 학과별 평균 평점을 계산
+select major, round(avg(avr), 2) as "평점 평균" -- 학과별 평균 평점을 소수점 둘째자리까지 반올림
+from student
+where major <> '화학' -- 화학과를 제외
+group by major -- 학과별로 그룹화
+having avg(avr) is not null; -- 평균 평점이 NULL이 아닌 그룹만 선택
+
+-- 문제2) 화학과를 제외한 각 학과별 평균 평점 중에 평점이 2.0 미만인 정보를 검색하시오
+--       테이블 : STUDENT
+-- 학과별로 그룹화하여 평균 평점을 계산하고, 화학과를 제외하고, 평균 평점이 2.0 미만인 학과 선택
+select major, round(avg(avr), 2) as "평점 평균" -- 학과별 평균 평점을 소수점 둘째자리까지 반올림
+from student
+group by major -- 학과별로 그룹화
+having major != '화학' and round(avg(avr), 2) < 2.0; -- 화학과를 제외하고, 평균 평점이 2.0 미만인 학과 선택
+
+-- WHERE 절을 사용하여 화학과를 제외하고 학과별 평균 평점을 계산, 평균 평점이 2.0 미만인 학과 선택
+select major, round(avg(avr), 2) as "평점 평균"
+from student
+where major <> '화학' -- 화학과를 제외
+group by major -- 학과별로 그룹화
+having avg(avr) < 2.0; -- 평균 평점이 2.0 미만인 학과 선택
+
