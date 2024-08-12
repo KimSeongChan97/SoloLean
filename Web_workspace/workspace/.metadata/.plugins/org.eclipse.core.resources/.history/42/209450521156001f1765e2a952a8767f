@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>복습용HMTL파일, person</title>
+</head>
+<body>
+    <form>
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <th width="70">이름</th> 
+                <td>
+                    <input type="text" name="name" id="" size="20" placeholder="이름입력" />
+                </td>
+            </tr>
+
+            <tr>
+                <th>성별</th> <!-- 제목 셀: "성별" -->
+                <td> <!--  gender 값을 배열로 받을 수 있음 -->
+                    <input type="radio" name="gender" value="0" checked> 남자
+                    <input type="radio" name="gender" value="1"> 여자
+                </td>
+            </tr>
+
+            <tr>
+                <th>색깔</th> <!-- 제목 셀: "색깔" -->
+                <td>
+                    <select name="color" style="width: 100px;">
+                    	<optgroup label="색깔">
+                        <option value="red">빨강</option>
+                        <option value="green">초록</option>
+                        <option value="blue" selected>파랑</option>
+                        <option value="magenta">보라</option>
+                        <option value="cyan">하늘</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+	
+            <tr>
+                <th>취미</th> <!-- 제목 셀: "취미" -->
+                <td> <!--  hobby 값을 배열로 받을 수 있음. -->
+                    <label><input type="checkbox" name="hobby" value="독서" checked="checked"> 독서</label>
+                    <label><input type="checkbox" name="hobby" value="영화"> 영화</label>
+                    <label><input type="checkbox" name="hobby" value="음악"> 음악</label>
+                    <label><input type="checkbox" name="hobby" value="게임"> 게임</label>
+                    <label><input type="checkbox" name="hobby" value="운동"> 운동</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th>과목</th> <!-- 제목 셀: "과목" -->
+                <td>
+                    <select name="subject" multiple size="6">
+                        <option value="java">JAVA</option>
+                        <option value="servlet">Servlet</option>
+                        <option value="html" selected>HTML</option>
+                        <option value="spring">Spring</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- 여섯 번째 행: 전송 및 초기화 버튼 -->
+            <tr>
+                <td colspan="2" style="text-align: center;"> <!-- 셀 두 개 합침, 가운데 정렬 -->
+                    <input type="submit" value="SEND">
+                    <input type="reset" value="CANCEL">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

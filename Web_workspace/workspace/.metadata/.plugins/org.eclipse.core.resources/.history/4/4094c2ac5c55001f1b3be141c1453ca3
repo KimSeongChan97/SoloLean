@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>video 요소를 이용한 동영상 삽입</h1>
+	<video style="width: 576; height: 360" controls autoplay muted loop>
+		<!-- muted를 써야 autoplay 속성이 된다. -> 크롬의 저작권 때문에) -->
+		<source src="../video/BigBuck.mp4" type="video/mp4">
+		video 요소를 지원하지 않아요..ㅠㅠ
+	</video>
+</body>
+</html>
+
+
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>date 타입을 이용한 날짜 선택</h1>
+	<form action="">
+		태어난 날짜와 시간을 선택하시오<br><br>
+		<input type="date" name="birthday"> <br>
+		<input type="time" name="birthtime">
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>
+
+<!-- 
+input type 공부한 것들...
+	<input type="text"
+				"hidden"
+				"image" 자동 submit
+				"file"  파일 업로드
+				"checkbox" 여러개 선택
+				"radio" 하나 선택	
+				"number" 숫자
+				"range" 범위
+				"date" 날짜
+				"time" 시간 >
+				
+				
+
+ -->

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	background: ghostwhite;
+}
+span {
+	background: deepskyblue;
+}
+	
+</style>
+</head>
+<body>
+	<div class="box">
+		<span>DIVDIVDIV</span>
+	</div>
+</body>
+</html>

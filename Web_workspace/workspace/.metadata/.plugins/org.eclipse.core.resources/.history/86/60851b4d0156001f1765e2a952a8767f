@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>링크 목록</title>
+</head>
+<body>
+    <h1>유용한 링크 모음</h1>
+    <ul>
+        <li><a href="https://html5.validator.nu/" target="_blank">HTML5 Validator</a></li>
+        <li><a href="http://www.css-validator.org/validator.html.ko" target="_blank">CSS Validator</a></li>
+        <li><a href="http://www.html5.org" target="_blank">HTML5.org</a></li>
+    </ul>
+</body>
+</html>

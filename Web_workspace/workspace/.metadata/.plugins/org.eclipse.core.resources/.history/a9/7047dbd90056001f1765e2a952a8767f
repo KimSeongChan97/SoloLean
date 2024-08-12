@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>과일사진</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>제목 1</th>
+            <th>제목 2</th>
+            <th>제목 3</th>
+        </tr>
+        <tr>
+            <td>데이터 1</td>
+            <td>데이터 2</td>
+            <td>데이터 3</td>
+        </tr>
+        <tr>
+            <td>데이터 4</td>
+            <td>데이터 5</td>
+            <td>데이터 6</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+h3, li {
+	color: brown;
+}
+
+/* 자식 셀렉터(div -> strong 간다고 가정한다면...) */
+div > div > strong {
+	background: yellow;
+}
+
+/* ul -> strong, 자손 셀렉터 */
+ul strong {
+	color: dodgerblue;	
+}
+
+/* warning을 red로 할려면? */
+.warning {
+	color: red;
+}
+
+/* body 태그 변경 */
+body.main {
+	background: aliceblue;
+}
+
+</style>
+</head>
+<body class="main">
+		<h3>Web Programming</h3>
+		<hr>
+		<div>
+			<div>2학기 <strong>학습 내용</strong>입니다.</div>
+			<ul id="list">
+				<li><span>HTML5</span></li>
+				<li><strong>CSS</strong></li>
+				<li>JAVASCRIPT</li>
+			</ul>
+			<div class="warning">60점 이하는 F</div>	
+		</div>
+</body>
+</html>
+
+<!-- 
+* 가상 선택자
+CSS에는 가상 요소(:pseudo-element)와 가상 클래스(:pseudo-class)가 있다.
+이것들을 사용해서 html 문서의 수정 없이 CSS만으로 디자인적 요소를 추가할 수 있다.
+가상 클래스는 콜론을 한 개(:), 가상 요소는 콜론을 두 개(::) 쓴다.
+하지만 콜론을 한 개(:)만 써도 대부분의 브라우저에서 제대로 작동한다.
+
+* 가상 요소
+가상 클래스가 실제로 존재하는 요소에 클래스 추가 없이 디자인을 입히기 위한 것이라면, 
+가상 요소는 아예 실제로 존재하지 않는 요소를 만들게 해준다.
+가상 요소를 이용하면 특정 요소 앞에 문자열이나 이미지를 넣을 수 있다.
+HTML을 변경하지 않고 요소를 추가할 수 있는 유용한 선택자이다.
+
+* 가상 클래스 기법
+------------------------------------------------------
+가상 클래스               의미
+------------------------------------------------------
+:first-child      여러 개의 반복되는 태그들중에서 첫 번째 요소
+:last-child         여러 개의 반복되는 태그들중에서 마지막 요소
+:link            링크의 기본 상태
+:active            요소 위에서 마우스가 눌려져 있는 상태
+:hover            요소에 마우스가 올라가 있는 상태
+:visited         방문했던 경험이 있는 링크
+:focus            요소에 포커스가 지정된 상태
+:checked         체크박스나 라디오버튼 등이 체크된 상태
+:selected         드롭다운에서 선택된 요소
+
+* 자식 셀렉터
+1. > 기호로 지정한다.
+2. 중간 태그를 건너 띄면 절대 안된다.
+
+* 자손(후손) 셀렉터
+1. 공백으로 지정한다.
+2. 중간 태그를 건너 띄어도 안된다.
+
+
+ -->

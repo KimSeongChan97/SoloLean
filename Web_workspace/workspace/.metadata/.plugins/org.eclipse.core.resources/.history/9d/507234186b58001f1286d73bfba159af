@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	weight: 200px;
+	height: 200px;
+	font-color: blueviolet;
+	fonr-size: 16;
+	background: skyblue;
+	border-width: 100px;
+}
+
+</style>
+</head>
+<body>
+	<h3>div 박스에 배경 꾸미기</h3>
+	<hr>
+	<div>스폰지밥은 다른 캐릭터들을 짜증하게 하는 지나치게 낙관적인 스폰지이다.</div>
+</body>
+</html>

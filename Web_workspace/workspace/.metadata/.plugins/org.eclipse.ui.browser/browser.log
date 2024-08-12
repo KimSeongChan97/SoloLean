@@ -1,0 +1,13 @@
+
+8월 08, 2024 17:33:19.81 NEW SESSION
+8월 08, 2024 17:33:19.82 Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 08, 2024 17:34:16.61 [21356:10148:0808/173416.611:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for kor.pe.kr failed:
+8월 08, 2024 17:34:16.61 ----- Certificate i=0 (O=My Company Ltd,L=Newbury,ST=Berkshire,C=GB) -----
+8월 08, 2024 17:34:16.61 ERROR: No matching issuer found
+8월 08, 2024 17:34:16.61 
+8월 08, 2024 17:34:16.61 
+8월 08, 2024 17:35:42.81 [21356:20680:0808/173542.815:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for kor.pe.kr failed:
+8월 08, 2024 17:35:42.81 ----- Certificate i=0 (O=My Company Ltd,L=Newbury,ST=Berkshire,C=GB) -----
+8월 08, 2024 17:35:42.81 ERROR: No matching issuer found
+8월 08, 2024 17:35:42.81 
+8월 08, 2024 17:35:42.81 

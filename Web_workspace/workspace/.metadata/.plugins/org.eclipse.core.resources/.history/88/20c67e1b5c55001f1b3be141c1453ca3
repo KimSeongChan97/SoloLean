@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>audio 요소를 이용한 소리 삽입</h1>
+	<audio controls>
+		<source src="../audio/Maps.mp3" type="audio/mp3">
+		audio 요소를 지원하지 않아요..
+	</audio>
+</body>
+</html>

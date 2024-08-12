@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>도시 소개</title>
+
+</head>
+<body>
+
+</body>
+</html>
+
+<!-- 
+dl 태그:
+정의 목록을 만들 때 사용됩니다.
+dt 태그는 정의되는 항목의 이름을 나타냅니다.
+dd 태그는 정의 항목의 설명을 나타냅니다.
+-->

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.header {
+		width: 100%; 
+		height: 15%;
+		background: yellow;
+	}
+</style>
+</head>
+<body>
+	<!-- 시멘틱 태그 -->
+	<header class="header"></header>
+	<nav class="nav">nav</nav>
+	<section class="section">section</section>
+	<aside class="aside">aside</aside>
+	<footer class="footer">footer</footer>
+</body>
+</html>
+

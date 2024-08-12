@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>신체 검사</h1>
+	<hr/>
+	<table>	학생 신체검사표
+		<thead width="50">
+            <tr>
+                <th>이름</th>
+                <th>키</th>
+                <th>체중</th>
+                <th>시력</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>홍길동</td>
+                <td>179</td>
+                <td>67</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>고길동</td>
+                <td>177</td>
+                <td>77</td>
+                <td>2.0</td>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>165</td>
+                <td>57</td>
+                <td>1.2</td>
+            </tr>
+            <tr>
+                <td>평균</td>
+                <td>173</td>
+                <td>67</td>
+                <td>1.4</td>
+            </tr>
+		</tbody>
+	</table>
+</body>
+</html>

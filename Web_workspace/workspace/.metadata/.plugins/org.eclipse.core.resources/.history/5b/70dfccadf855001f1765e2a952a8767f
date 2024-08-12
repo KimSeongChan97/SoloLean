@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나의 셀카</title>
+</head>
+<body>
+	<h1>나의 셀카</h1>
+	<hr>
+		<table>
+			
+			<src image="../image/1.jpg, img1.gif, ok.png">
+		</table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>과일사진</title>
+    <style>
+        table {
+            width: 50%; /* 테이블 너비를 50%로 설정 */
+            border-collapse: collapse; /* 테이블 경계선을 하나로 합침 */
+            margin: 0 auto; /* 테이블을 가운데 정렬 */
+        }
+        th, td {
+            border: 1px solid black; /* 모든 셀에 검은색 경계선 추가 */
+            padding: 10px; /* 셀 안의 내용에 여백 설정 */
+            text-align: left; /* 모든 셀의 내용을 좌측 정렬 */
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>제목 1</th>
+            <th>제목 2</th>
+            <th>제목 3</th>
+        </tr>
+        <tr>
+            <td>데이터 1</td>
+            <td>데이터 2</td>
+            <td>데이터 3</td>
+        </tr>
+        <tr>
+            <td>데이터 4</td>
+            <td>데이터 5</td>
+            <td>데이터 6</td>
+        </tr>
+    </table>
+</body>
+</html>

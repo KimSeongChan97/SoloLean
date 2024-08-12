@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!-- 문서의 메타데이터를 설정합니다. 예를 들어, 문자 인코딩을 UTF-8로 설정합니다. -->
+</head>
+<body>
+    <!-- h1 요소는 문서의 주요 제목을 나타냅니다. -->
+    <h1>date 타입을 이용한 날짜 선택</h1>
+    <!-- form 요소는 사용자로부터 데이터를 수집하는데 사용됩니다. action 속성은 데이터를 제출할 URL을 지정합니다. -->
+    <form action="">
+        <!-- 안내 문구를 표시합니다. -->
+        태어난 날짜와 시간을 선택하시오<br><br>
+        <!-- input 요소는 사용자로부터 데이터를 입력받는 데 사용됩니다. type 속성이 "date"인 경우 달력 인터페이스를 통해 날짜를 선택할 수 있습니다. -->
+        <input type="date" name="birthday"> <br>
+        <!-- input 요소의 type 속성이 "time"인 경우 시간 선택 인터페이스를 통해 시간을 선택할 수 있습니다. -->
+        <input type="time" name="birthtime">
+        <!-- 폼 데이터를 서버로 전송하는 버튼입니다. -->
+        <input type="submit" value="전송">
+    </form>
+</body>
+</html>
+
+<!-- 
+input type 공부한 것들...
+    <input type="text">          <!-- 텍스트 입력 -->
+    <input type="hidden">        <!-- 숨겨진 입력 필드 -->
+    <input type="image">         <!-- 이미지를 클릭하면 자동으로 제출 -->
+    <input type="file">          <!-- 파일 업로드 -->
+    <input type="checkbox">      <!-- 여러 개 선택 가능 체크박스 -->
+    <input type="radio">         <!-- 하나만 선택 가능한 라디오 버튼 -->
+    <input type="number">        <!-- 숫자 입력 -->
+    <input type="range">         <!-- 범위 입력 -->
+    <input type="date">          <!-- 날짜 입력 -->
+    <input type="time">          <!-- 시간 입력 -->
+    -->

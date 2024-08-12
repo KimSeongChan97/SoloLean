@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+</body>
+</html>
+
+<!-- 
+- DL(Definition List)의 약자.
+  정의 목록 : 어떤 용어를 정의하여 풀어 나열한다.
+- DT(Definition Term)
+  정의 : <dd>는 <dt>가 적용된 곳에서 한 탭 들여쓰기 적용된다.
+- DD(Definition Description)과 함께 쓴다.
+  정의에 대한 해설, <br>태그 속성이 포함된다.
+
+[형식]
+<dl>
+   <dt></dt>
+  <dd></dd>
+</dl>
+ -->

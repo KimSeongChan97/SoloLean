@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- <pre> 태그는 서식이 있는 텍스트를 표시할 때 사용됩니다. 여기서는 HTML, CSS, JavaScript 코드 예제를 보여주기 위해 사용됩니다. -->
+	<pre>
+		<!-- <code> 태그는 코드 스니펫을 표시할 때 사용됩니다. -->
+		<code>
+			&lt;script src="js/jquery.js"&gt;&lt;/script&gt; <!-- jQuery 라이브러리를 로드하는 스크립트 태그입니다. -->
+			&lt;script^gt; <!-- 스크립트 태그를 열어 JavaScript 코드를 삽입합니다. 오타가 있는 부분입니다. 'script' 다음의 'gt'를 '>'로 수정해야 합니다. -->
+			$(".selector").clik(function(){ <!-- jQuery를 사용하여 ".selector" 클래스를 가진 요소를 선택하고, 클릭 이벤트 핸들러를 추가합니다. 'clik'는 오타이며 'click'으로 수정해야 합니다. -->
+				$(".box").hide(); <!-- ".box" 클래스를 가진 요소를 숨깁니다. -->
+			});
+			&lt;/script&gt; <!-- 스크립트 태그를 닫습니다. -->
+		</code>
+	</pre>
+</body>
+</html>
+
+<!-- 
+* <pre>
+- img, big, small, sub, sup, ins, del, label, input, select, textarea, button, noscript 태그 등의
+  텍스트를 장식하기 위한 요소로 사용하면 안된다.
+- 폼과 스크립트 관련 요소도 포함할 수 없다.
+- 일반적으로 코드의 예제를 보여주기 위한 방안으로 활용된다.
+- 내용을 있는 그대로 보여줄 때 사용한다.
+	
+	&nbsp: - 한칸 띄우기
+	&emsp: - 여러칸 띄우기
+	
+* <code>
+- 코드임을 알리는 용도이다.
+ -->

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	padding: 0;
+	margin: 0;
+	/* 여백 없애고 초기화 시킴 */
+}
+div {
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+
+</style>
+</head>
+<body>
+	<h3>CSS3 색 활용</h3>
+	<hr>
+	<div style="background-color: deepskyblue;">deepskyblue(#00BFF)</div>
+	<div style="background-color: brown;">brown(#A52A2A)</div>
+	<div style="background-color: fuchsia;">fuchsia(#FF00FF)</div>
+	<div style="background-color: darkorange;">darkorange(#FF8C00)</div>
+	<div style="background-color: darkcyan;">darkcyan(#008B8B)</div>
+	<div style="background-color: olivedrab;">olivedrab (#6B8E23)</div>
+</body>
+</html>

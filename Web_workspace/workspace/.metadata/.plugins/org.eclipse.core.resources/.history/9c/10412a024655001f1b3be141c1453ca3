@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>인라인과 블럭에 대해서 배워보자</title>
+</head>
+<body>
+    <!-- 
+    h1~h6, div, p 태그들은 모두 블록 레벨 요소입니다.
+    블록 레벨 요소는 가로 폭 전체를 차지하며, 기본적으로 줄 바꿈이 일어납니다.
+    아래 예시에서 각각의 블록 레벨 요소는 주황색 배경을 가지고 있습니다.
+    -->
+	<h1 style="background: orange;">block-level elements</h1>
+	<h2 style="background: orange;">block-level elements</h2>
+	<h3 style="background: orange;">block-level elements</h3>
+	<h4 style="background: orange;">block-level elements</h4>
+	<h5 style="background: orange;">block-level elements</h5>
+	<h6 style="background: orange;">block-level elements</h6>
+	<div style="background: orange;">block-level elements</div>
+	<p style="background: orange;">block-level elements</p>
+	
+    <!-- 
+    em, span 태그는 인라인 레벨 요소입니다.
+    인라인 레벨 요소는 콘텐츠의 흐름을 끊지 않고 이어지며, 기본적으로 줄 바꿈이 일어나지 않습니다.
+    아래 예시에서 각각의 인라인 레벨 요소는 주황색 배경을 가지고 있습니다.
+    -->
+	<em style="background: orange;">inline-level elements</em>
+	<span style="background: orange;">inline-level elements</span>
+
+	    <span style="background: yellow;">inline-level elements,
+	    inline-level elements,inline-level elements,inline-level elements,
+	    inline-level elements,inline-level elements,inline-level elements,
+	    inline-level elements,inline-level elements,inline-level elements,</span>
+</body>
+</html>
+
+<!-- 
+① 블록 레벨 요소 ( <div>, <p>, <h1~6> ) 
+  - 블록 레벨 요소는 화면 크기에 따라 반응형으로 변화합니다.
+  - 블록 레벨 요소는 자신을 감싸는 상위 요소가 허용한 가로 폭 전체를 차지합니다.
+  - 블록 레벨 요소는 너비(width)나 높이(height)를 지정할 수 있으며, 기본적으로 줄 바꿈 속성을 가집니다.
+  - 화면 크기가 변하면, 이 요소들도 크기에 맞추어 적응합니다.
+
+② 인라인 레벨 요소 ( <span>, <em> )
+  - 인라인 레벨 요소는 블록 레벨 요소와 달리 줄 바꿈을 일으키지 않습니다.
+  - 인라인 레벨 요소는 너비(width)나 높이(height)를 지정할 수 없으며, 콘텐츠의 크기만큼만 공간을 차지합니다.
+  - 인라인 레벨 요소는 주로 텍스트의 일부를 스타일링할 때 사용되며, 텍스트의 흐름을 끊지 않고 이어집니다.
+  - 줄이 바뀌지 않지만, 내용이 많아서 상위 블록 요소의 영역을 가득 채우게 되면 줄 바꿈이 발생합니다.
+ -->

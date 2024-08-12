@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>신체 검사</title>
+    <style>
+        table {
+            width: 50%; /* 테이블의 너비를 50%로 설정 */
+            border-collapse: collapse; /* 테이블 셀의 경계선을 하나로 합침 */
+            margin: 0 auto; /* 테이블을 페이지 중앙에 배치 */
+        }
+        th, td {
+            border: 1px solid black; /* 모든 셀에 검은색 경계선을 추가 */
+            padding: 8px; /* 셀 내부에 여백을 설정 */
+            text-align: center; /* 모든 셀의 텍스트를 가운데 정렬 */
+        }
+        th {
+            font-weight: bold; /* 제목 셀의 글자를 굵게 설정 */
+        }
+    </style>
+</head>
+<body>
+    <h1>신체 검사</h1>
+    <hr/>
+    <table>
+        <caption>학생 신체검사표</caption>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>키</th>
+                <th>체중</th>
+                <th>시력</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>홍길동</td>
+                <td>179</td>
+                <td>67</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>고길동</td>
+                <td>177</td>
+                <td>77</td>
+                <td>2.0</td>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>165</td>
+                <td>57</td>
+                <td>1.2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>평균</td>
+                <td>173</td>
+                <td>67</td>
+                <td>1.4</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

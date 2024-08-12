@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 문서가 HTML5로 작성되었음을 선언 -->
+    <meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 UTF-8로 설정하여 한글 및 다양한 언어가 올바르게 표시되도록 설정 -->
+    <title>버튼 예제</title> <!-- 브라우저 탭에 표시될 문서의 제목을 설정 -->
+</head>
+<body>
+    <!-- 페이지의 첫 번째 제목을 설정, <h1>은 가장 중요한 제목 요소로 사용됨 -->
+    <h1>버튼 예제</h1>
+    <hr/>
+    <form action="#">
+    	<div>
+    		<button>1</button>&nbsp;
+    		<button>2</button>&nbsp;
+    		<button>3</button>
+    	</div>
+    	<div>
+    		<button>4</button>&nbsp;
+    		<button>5</button>&nbsp;
+    		<button>6</button>
+    	</div>		
+    	<div>
+    		<button>7</button>&nbsp;
+    		<button>8</button>&nbsp;
+    		<button>9</button>
+    	</div>
+    </form>
+</body>
+</html>
