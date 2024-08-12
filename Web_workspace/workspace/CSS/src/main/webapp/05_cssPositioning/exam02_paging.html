@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* .paging 클래스에 적용되는 스타일 */
+.paging {
+	text-align: center; /* 자식 요소들을 중앙에 정렬 */
+}
+
+/* .paging 클래스의 자식 a 태그에 적용되는 스타일 */
+.paging > a {
+	display: inline-block; /* a 태그를 인라인 블록 요소로 설정하여 크기 조절이 가능하게 함 */
+	border: 1px solid #ccc; /* a 태그의 테두리를 두께 1px, 회색(#ccc)으로 설정 */
+	padding: 5px 8px; /* a 태그 내부 텍스트와 테두리 사이에 상하 5px, 좌우 8px의 여백을 설정 */
+	border-color: black; /* 테두리 색상을 검은색으로 설정 */
+	font-weight: bold; /* a 태그의 텍스트를 굵게 표시 */
+}
+
+</style>
+</head>
+<body>
+	<!-- class가 paging인 p 요소, 페이지 번호 링크들을 포함 -->
+	<p class="paging" style="border: 1px solid red;">
+		<!-- 각 페이지 번호에 대한 링크, 중앙 정렬된 인라인 블록으로 표시 -->
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">4</a>
+		<a href="#">5</a>
+	</p>
+	<!-- 
+		p 태그에 직접 적용된 스타일: 
+		- border: 1px solid red; => p 태그의 테두리를 두께 1px, 빨간색으로 설정 
+		- 이 스타일은 페이지 번호 링크들을 감싸는 p 태그에 테두리를 추가하여 페이지네이션 영역을 명확히 구분하는 데 사용됨
+	-->
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.paging {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<p class="paging" style="border: 1px solid red;">
+		<a href="#">1</a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">4</a>
+		<a href="#">5</a>
+</body>
+</html>

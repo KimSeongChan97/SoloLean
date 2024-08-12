@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+		<h1>LOGO</h1>
+		<p>This website is...</p>
+		</div> <!-- header -->
+		
+		<div id="container">
+			<div class="nav">
+				<h2>Navigation</h2>
+				<ul>
+					<li><a href="#">Menu 1</a></li>
+					<li><a href="#">Menu 2</a></li>
+					<li><a href="#">Menu 3</a></li>
+				</ul>
+			</div> <!-- nav -->
+		</div><!-- container -->
+	</div>
+</body>
+</html>

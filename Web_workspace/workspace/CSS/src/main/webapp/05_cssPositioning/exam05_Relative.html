@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- CSS 스타일 선언 -->
+<style type="text/css">
+/* div 요소의 기본 스타일 설정 */
+div {
+	display: inline-block; /* div 요소를 인라인 블록으로 설정하여 서로 나란히 배치되도록 함 */
+	width: 50px; /* div의 너비를 50px로 설정 */
+	height: 50px; /* div의 높이를 50px로 설정 */
+	border: 1px solid lightgray; /* div의 테두리를 연한 회색으로 설정 */
+	text-align: center; /* div 내부의 텍스트를 가운데 정렬 */
+	color: white; /* 텍스트 색상을 흰색으로 설정 */
+	background: red; /* div의 배경색을 빨간색으로 설정 */
+}
+
+/* id가 "down"인 요소에 대한 hover 스타일 설정 */
+#down:hover {
+	position: relative; /* 요소를 자신의 위치를 기준으로 상대적으로 배치 */
+	left: 20px; /* 요소를 오른쪽으로 20px 이동 */
+	top: 20px; /* 요소를 아래쪽으로 20px 이동 */
+	background-color: blue; /* 요소가 hover 상태일 때 배경색을 파란색으로 변경 */
+}
+
+/* id가 "up"인 요소에 대한 hover 스타일 설정 */
+#up:hover {
+	position: relative; /* 요소를 자신의 위치를 기준으로 상대적으로 배치 */
+	left: -20px; /* 요소를 왼쪽으로 20px 이동 */
+	top: -20px; /* 요소를 위쪽으로 20px 이동 */
+	background-color: blue; /* 요소가 hover 상태일 때 배경색을 파란색으로 변경 */
+}
+</style>
+</head>
+<body>
+	<h3>상대배치, relative</h3> <!-- 제목으로 "상대배치, relative"를 표시 -->
+	<hr> <!-- 수평선(hr)을 그어 시각적으로 구분 -->
+
+	<!-- div 요소들로 구성된 단어를 나열 -->
+	<div>T</div> <!-- 인라인 블록으로 'T' 글자를 표시 -->
+	<div id="down">h</div> <!-- 인라인 블록으로 'h' 글자를 표시하며, hover 시 이동 효과 적용 -->
+	<div>a</div> <!-- 인라인 블록으로 'a' 글자를 표시 -->
+	<div>n</div> <!-- 인라인 블록으로 'n' 글자를 표시 -->
+	<div id="up">k</div> <!-- 인라인 블록으로 'k' 글자를 표시하며, hover 시 이동 효과 적용 -->
+	<div>s</div> <!-- 인라인 블록으로 's' 글자를 표시 -->
+</body>
+</html>

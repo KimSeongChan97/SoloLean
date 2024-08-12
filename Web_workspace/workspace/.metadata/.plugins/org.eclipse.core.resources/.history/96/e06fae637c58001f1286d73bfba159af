@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid red;
+	display: inline-block;
+	
+}
+
+div > p {
+	border: 1px solid blue;
+}
+
+
+</style>
+</head>
+<body>
+	<h3>Merry Christmas !!</h3>
+	<hr>
+	<p>메리 크리스마스</p>
+	<div>
+		<img src="../image/christmastree.png" width="200" height="200" alt="크리스마스 트리">
+		<p style="left: 50px; top: 30px;">M</p>
+		<p style="left: 100px; top: 0px;">E</p>
+		<p style="left: 100px; top: 80px;">R</p>
+		<p style="left: 150px; top: 110px;">R</p>
+		<p style="left: 30px; top: 130px;">Y</p>
+	</div>
+	
+	<div id="fixed">메리 크리스마스</div>
+</body>
+</html>
