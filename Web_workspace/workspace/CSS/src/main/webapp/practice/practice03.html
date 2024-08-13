@@ -4,27 +4,33 @@
 <meta charset="UTF-8">
 <title>hover 활용</title>
 <style type="text/css">
-
-/* 이미지가 포함된 div 요소 안의 모든 img 태그에 적용될 스타일입니다. */
-#img img {
-	display: none; /* 기본적으로 모든 이미지를 숨깁니다. */
-	width: 150px;  /* 이미지의 너비를 150px로 고정합니다. */
-	height: 225px; /* 이미지의 높이를 225px로 고정합니다. */
+/* 테이블의 기본 너비를 설정 */
+table {
+	width: 350px; /* 테이블의 너비를 350px로 설정 */
 }
 
-/* 첫 번째 이미지(카드 뒷면)에 대한 스타일입니다. */
-#img img:first-child {
-	display: block; /* 첫 번째 이미지를 화면에 표시합니다. */
+table:hover {
+	width: 250px;
 }
 
-/* 사용자가 마우스를 이미지 영역에 올렸을 때 적용되는 스타일입니다. */
-#img:hover img:first-child {
-	display: none; /* 첫 번째 이미지(카드 뒷면)를 숨깁니다. */
+/* div 요소의 초기 상태를 정의 */
+div {
+	display: none; /* div 요소를 숨김. 즉, 페이지가 로드될 때 div 요소는 보이지 않음 */
+	background-image: none; /* 초기 상태에서는 배경 이미지를 설정하지 않음 */
+	width: 100px; /* div 요소의 너비를 100px로 설정 */
+	height: 140px; /* div 요소의 높이를 140px로 설정 */
+	background-size: 100px 140px; /* 배경 이미지를 div 요소 크기에 맞게 조정 */
 }
 
-/* 사용자가 마우스를 이미지 영역에 올렸을 때, 두 번째 이미지(카드 앞면)를 보여줍니다. */
-#img:hover img:last-child {
-	display: block; /* 두 번째 이미지를 화면에 표시합니다. */
+/* 테이블에 마우스를 올렸을 때의 상태를 정의 */
+table:hover div { /* 마우스가 hover 되면 div 영역 표시 */
+	display: block; /* div 요소를 표시함. table에 마우스를 올리면 div 요소가 나타남 */
+	background-image: url("../image/back.png"); /* 배경 이미지로 뒷면 카드를 보여줌 */
+}
+
+/* table에 마우스를 올린 상태에서, 특정 div(id="img")에 다시 마우스를 올렸을 때의 상태를 정의 */
+table:hover div#img:hover { /* dic#img:hover {} 도 가능함 */
+	background-image: url("../image/spade-7.png"); /* 배경 이미지를 카드의 앞면으로 변경 */
 }
 
 </style>
@@ -34,11 +40,12 @@
 	<hr>
 	<table> 
 		<tr> 
+			<!-- 첫 번째 셀: 설명 텍스트 -->
 			<td>마우스를 올리면 카드의 앞면이 보인다.</td> 
-			<td><div id="img"> <!-- 이미지를 담을 div 컨테이너. -->
-			<img src="../image/back.png" alt="카드 뒷면"> 
-			<img src="../image/spade-7.png" alt="카드 앞면"> 
-			</div></td> <!-- 두 개의 이미지를 포함하는 div를 테이블 셀에 배치. -->
+			<!-- 두 번째 셀: 이미지가 표시될 div 요소 -->
+			<td>
+				<div id="img"></div> <!-- 초기 상태에서는 div가 숨겨져 있음 -->
+			</td> 
 		</tr>
 	</table>
 </body>
