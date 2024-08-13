@@ -257,7 +257,7 @@ group by cube(department_name, job_title);
 -- 1. grouping sets을 사용하여 직무별 평균 급여와 전체 평균 급여를 각각 계산하여 조회합니다.
 select job_title, round(avg(salary), 2) as "Avg_sal" 
 from employees
-join departments using(department_id) 
+-- join departments using(department_id)
 join jobs using(job_id)
 group by grouping sets((job_title), ( )); -- ← () All Rows의 역활
 -- 이 쿼리는 'grouping sets'을 사용하여 직무별 평균 급여와 전체 평균 급여를 계산합니다.
