@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>마켓컬리처럼 사이트 만들기</title>
@@ -51,22 +51,22 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    border-top: 1px solid #ddd; /* 상단 경계선 추가 */
-    border-bottom: 1px solid #ddd; /* 하단 경계선 추가 */
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .status nav ul li {
-    flex: 1; /* 각 항목이 동일한 너비를 가지도록 설정 */
-    border-left: 1px solid #ddd; /* 좌측 경계선 추가 */
-    border-right: 1px solid #ddd; /* 우측 경계선 추가 */
+    flex: 1;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 .status nav ul li:first-child {
-    border-left: none; /* 첫 번째 항목의 좌측 경계선 제거 */
+    border-left: none;
 }
 
 .status nav ul li:last-child {
-    border-right: none; /* 마지막 항목의 우측 경계선 제거 */
+    border-right: none;
 }
 
 .status nav ul li a {
@@ -78,7 +78,7 @@ body {
 }
 
 .status nav ul li a:hover {
-    background: #f7f7f7; 
+    background: #f7f7f7;
     color: violet;
 }
 
@@ -177,14 +177,14 @@ body {
     background-color: #f9f9f9;
     font-weight: bold;
 }
-/* 최상단으로 이동하는 버튼 스타일링 */
+
+/* "맨 위로" 버튼 스타일 */
 #topBtn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    display: none;
-    background-color: aliceblue;
-    color: violet;
+    background-color: green;
+    color: yellow;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -194,7 +194,7 @@ body {
 }
 
 #topBtn:hover {
-    background-color: #f0f8ff;
+    background-color: darkgreen;
 }
 
 </style>
@@ -216,7 +216,7 @@ body {
 
         <!-- 상품설명 섹션 -->
         <div id="description" class="content-section">
-        	<h2>상품설명</h2>
+            <h2>상품설명</h2>
             <img src="../practice_image/SuVack.png" alt="수박 이미지">
             <h2>수분 가득 달콤한 수박</h2>
             <h3>[KF365] 당도선별 수박</h3>
@@ -326,24 +326,15 @@ body {
             </div>
             문의 추가글 적을 내용
         </div>
-         <button id="topBtn">Top</button>
+
+        <!-- "맨 위로" 버튼 -->
+        <button id="topBtn" onclick="scrollToTop()">맨 위로</button>
     </div>
     
-     <script>
-    // 스크롤 이벤트 및 버튼 클릭 이벤트 핸들러
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("topBtn").style.display = "block";
-        } else {
-            document.getElementById("topBtn").style.display = "none";
-        }
-    }
-
-    document.getElementById("topBtn").onclick = function() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+    <script>
+    // "맨 위로" 버튼 클릭 시 페이지 상단으로 스크롤 이동
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     </script>
 </body>
