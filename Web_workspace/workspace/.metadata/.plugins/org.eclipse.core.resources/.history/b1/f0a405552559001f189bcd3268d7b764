@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover 활용</title>
+<style type="text/css">
+table {
+	width: 350px;
+}
+
+div {
+
+}
+
+
+/* 
+#img img {
+	display: none; 
+	width: 150px;  
+	height: 225px; 
+}
+
+#img img:first-child {
+	display: block;
+}
+
+#img:hover img:first-child {
+	display: none; 
+}
+
+#img:hover img:last-child {
+	display: block; 
+} */
+
+</style>
+</head>
+<body>
+	<h3> :hover 활용 </h3> 
+	<hr>
+	<table> 
+		<tr> 
+			<td>마우스를 올리면 카드의 앞면이 보인다.</td> 
+			<td><div id="img">
+			<img src="../image/back.png" alt="카드 뒷면"> 
+			<img src="../image/spade-7.png" alt="카드 앞면"> 
+			</div></td> 
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="menubar">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Espresso</a></li>
+			<li><a href="#">Cappuccino</a></li>
+			<li><a href="#">Cafe Latte</a></li>
+			<li><a href="#">F.A.Q</a></li>
+		</ul>
+	</div>
+</body>
+</html>

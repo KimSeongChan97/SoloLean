@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	
+</style>
+</head>
+<body>
+	<h3>다양한 Transform</h3>
+	아래는 회전(rotate), 기울임(skew), 이동(translate), 확대/축소(scale)가 적용된 사례이다.
+	또한 마우스를 올리면 추가적 변환이 일어난다.
+	<hr/>
+	<div id="rotate">rotate(20deg)</div>
+	<div id="skew">skew(0, -20deg)</div>
+	<div id="translate">translateY(100px)</div>
+	<div id="scale">scale(3, 1)</div>
+</body>
+</html>
+
+
+<!-- 
+transform: scale
+box안의 이미지를 확대할 때 사용한다.
+... rotate, skew, translate, scale
+
+transition
+시간의 흐름을 줘서 부드럽게 확대되도록 설정한다.
+ease : 기본값, 느리게 시작해서 빠르게 전환한 다음 다시 천천히 종료
+linear : 처음부터 끝까지 같은 속도로 전환-->

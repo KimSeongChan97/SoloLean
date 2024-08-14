@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover활용</title>
+</head>
+<body>
+	<h3> :hover 활용 </h3>
+	<hr>
+	<table>
+		<tr>
+			<td>마우스를 올리면 카드의 앞면이 보인다.</td>
+			<td><div id="img">
+			<img src="../image/back.png">
+			<img src="../image/spade-7.png">
+			</div></td>
+		</tr>
+	</table>
+</body>
+</html>

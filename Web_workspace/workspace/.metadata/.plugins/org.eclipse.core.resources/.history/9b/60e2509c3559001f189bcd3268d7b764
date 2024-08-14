@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+		/* visibility: hidden; 영역은 살아있지만 보이지만 않음.
+		display: none;  영역 자체를 안보이게 함. */
+	span {
+		visibility: hidden;	
+	}
+	
+	li:hover span {
+		visibility: visible;
+		color: red;
+	}		
+	
+	
+		
+</style>
+</head>
+<body>
+	<h3>다음 빈 곳에 숨은 단어?</h3>
+	<hr>
+	<ul>
+		<li>I (<span>love</span>) you.
+		<li>CSS is Cascadig
+			(<span>Style</span>) Sheet.
+		<li>응답하라 (<span>1988</span>).	
+	</ul>
+</body>
+</html>
+
+<!-- 
+[문제] 괄호 안에 () 마우스르 올리면 답이 빨간색으로 보여주시오.
+visibility: visible 사용.
+ -->

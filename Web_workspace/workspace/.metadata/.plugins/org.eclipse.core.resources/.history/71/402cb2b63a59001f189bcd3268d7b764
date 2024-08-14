@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="imgDiv">
+		<img src="../image/img1.gif" alt="망상토끼">
+	</div>
+</body>
+</html>
+
+<!-- 
+transform: scale
+box안의 이미지를 확대할 때 사용한다.
+
+transition
+시간의 흐름을 줘서 부드럽게 확대되도록 설정한다.
+ease : 기본값, 느리게 시작해서 빠르게 전환한 다음 다시 천천히 종료
+linear : 처음부터 끝까지 같은 속도로 전환-->

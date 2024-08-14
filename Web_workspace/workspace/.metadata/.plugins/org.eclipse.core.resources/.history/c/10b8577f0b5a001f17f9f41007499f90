@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Map 그리기</title> <!-- 웹페이지의 제목을 설정합니다. 브라우저 탭에 표시됩니다. -->
+<style type="text/css">
+	/* HTML과 BODY의 높이를 100%로 설정하여 페이지 전체를 차지하게 합니다. */
+	html { height: 100%; }
+	body { height: 100%; margin: 0; padding: 0; }
+	/* 지도를 표시할 div 요소의 크기를 설정합니다. */
+	
+	#map { width: 100%; height: 100%; }	
+	
+</style>
+</head>
+<body>
+	<!-- 지도를 표시할 div 요소입니다. 이 요소에 Kakao Maps가 그려질 것입니다. -->
+	<div id="map"></div>
+	
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=568c98168813e76854874945789763e9"></script>
+<!-- 
+Kakao Maps API를 사용하기 위한 JavaScript 파일을 로드합니다.
+여기서는 Kakao에서 제공하는 지도 API를 사용하여 지도를 그릴 것입니다.
+appkey는 API를 사용하기 위한 인증키로, 사용자의 계정에 따라 다릅니다. 
+-->
+<script type="text/javascript">
+window.onload=function(){
+	/* 지도의 중심이 될 좌표를 설정합니다. 
+	   여기서는 위도 37.49940065922884, 경도 127.02901856459081 위치를 중심으로 설정합니다. */
+	var position = new daum.maps.LatLng( 37.49940065922884, 127.02901856459081 );
+	
+	/* 지도를 표시할 div 요소를 가져옵니다. */
+	var container = document.getElementById("map");
+	
+	/* 지도 옵션을 설정합니다. */
+	var options = {
+		center: position, // 지도 중심 좌표를 설정합니다.
+		level: 3 // 지도의 확대 레벨을 설정합니다. (값이 작을수록 더 확대된 상태)
+	}
+	
+	/* 지도 객체를 생성하고, 지도를 표시합니다. */
+	var map = new daum.maps.Map(container, options); // 지도 생성
+	
+	/* 마커를 생성하여 지도 위에 표시합니다. */
+	var marker = new daum.maps.Marker({
+		position: position // 마커를 표시할 위치를 설정합니다. 여기서는 지도 중심 좌표와 동일하게 설정합니다.
+	});
+	
+	/* 생성된 마커를 지도에 표시합니다. */
+	marker.setMap(map); // 마커 표시.
+}
+</script>
+</body>
+</html>
+
+<!-- 
+JavaScript는 일반적으로 head 태그 안에 들어가는 것이 맞습니다.
+그러나 처리 속도에 따른 문제로, 때로는 body 태그 안에 넣기도 합니다. 
+이 경우, HTML이 로드된 후에 JavaScript가 실행되므로 DOM 요소를 안전하게 조작할 수 있습니다.
+
+뷰포트 선언<meta name="viewport">
+- content="width=device-width" : 디바이스 크기에 맞추겠다고 선언합니다.
+- initial-scale=1.0 : 초기 크기(스케일)을 설정합니다.
+- minimum-scale=1.0 : 최소 크기를 설정합니다. (범위: 0~10.0)
+- maximum-scale=1.0 : 최대 크기를 설정합니다. (범위: 0~10.0)
+- user-scalable=no : 사용자 확대 기능 사용 여부를 설정합니다. (yes/no)
+
+Kakao Maps API:
+다양한 기능과 소스를 제공합니다.
+참고 링크: https://apis.map.kakao.com/web/sample/enableDisableZoomInOut/
+
+지도 생성 샘플:
+샘플 코드와 문서를 보려면, https://apis.map.kakao.com/web/documentation/ 에서 
+'지도 생성하기 샘플보기'를 클릭하십시오.
+-->

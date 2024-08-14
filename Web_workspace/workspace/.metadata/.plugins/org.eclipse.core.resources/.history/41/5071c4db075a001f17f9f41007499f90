@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Map 그리기</title>
+</head>
+<body>
+	<div id="map"></div>
+</body>
+</html>

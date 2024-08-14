@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+div {
+	padding: 5px;
+	
+}
+
+</style>
+</head>
+<body>
+	<h3>CONTACT_US</h3>
+	<hr/>
+	<form>
+		<div>
+			<label>Name</label>
+			<input type="text" placeholder="이름 입력">
+		</div>
+		<div>
+			<label>Email</label>
+			<input type="email" placeholder="xxx@gmail.com">
+		</div>
+		<div>
+			<label>Comment</label>
+			<textarea rows="5" cols="25" placeholder="메시지를 남겨주세요"></textarea>
+		</div>
+		<div>
+			<label></label>
+			<input type="submit" value="submit">
+		</div>
+	</form>
+</body>
+</html>

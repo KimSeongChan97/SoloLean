@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+table {
+	border-collapse: collapse; /* 이중 테두리 제거 */
+}
+
+th, td {
+	text-align: left;
+	padding: 5px;
+	width: 100px;
+	height: 15px;
+}
+
+thead, tfoot {
+	background: darkgray;
+	color: yellow;
+}
+
+/* tr의 자식들 중에서 짝수만, 1부터 시작하여 셈, even(짝수), odd(홀수) */
+tbody > tr:nth-child(even) {
+	background: aliceblue;	
+}
+
+tbody > tr:hover {
+	background: pink;
+}
+
+
+</style>
+</head>
+<body>
+	<h3>1학기 성적</h3>
+	<hr>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>HTML</th>
+				<th>CSS</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td>홍길동</td><td>80</td><td>70</td>
+			</tr>
+			<tr>
+				<td>라이언</td><td>95</td><td>99</td>
+			</tr>
+			<tr>
+				<td>프로도</td><td>85</td><td>90</td>
+			</tr>
+			<tr>
+				<td>어피치</td><td>50</td><td>48</td>
+			</tr>				
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<th>합</th><th>310</th><th>299</th>
+			</tr>
+		</tfoot>		
+	</table>
+</body>
+</html>

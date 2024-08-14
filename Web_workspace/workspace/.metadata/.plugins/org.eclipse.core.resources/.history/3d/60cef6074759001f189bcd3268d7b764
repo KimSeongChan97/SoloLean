@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마켓컬리처럼 사이트 만들기</title>
+<style>
+    /* 간단한 스타일을 추가하여 레이아웃을 조정합니다. */
+    .status {
+        margin-bottom: 20px;
+    }
+    .status nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .status nav ul li {
+        display: inline;
+        margin-right: 15px;
+    }
+    .status nav ul li a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #333;
+    }
+    .content-section {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .content-section img {
+        max-width: 100%;
+        height: auto;
+    }
+    .content-section h2, .content-section h3 {
+        margin: 10px 0;
+    }
+    .content-section p {
+        margin: 10px 20px;
+        text-align: left;
+    }
+    .image-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+</style>
+</head>
+<body>
+	<h3>마켓컬리처럼 사이트 만들기</h3>
+	<hr/>
+	<div class="status">
+		<nav class="stay">
+			<ul>
+				<li>
+					<a href="#description">
+						<span class="name">상품설명</span>
+					</a>
+				</li>
+				<li>
+					<a href="#details">
+						<span class="name">상세정보</span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="name">후기</span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="name">문의</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+    <!-- 상품설명 섹션 -->
+	<div id="description" class="content-section">
+		<img src="../practice_image/SuVack.png" alt="수박 이미지">
+		<h2>수분 가득 달콤한 수박</h2>
+		<h3>[KF365] 당도선별 수박</h3>
+		<p>통통 두드려 나는 소리로 가늠해봐도 마음에 드는 수박을 고르기란 쉽지 않지요. 
+		컬리는 고민 없이 즐길 수 있도록 11브릭스 비파괴 당도선별 수박을 가져왔어요. 
+		그때그때 가장 맛있는 수박을 골라 보내드려 달고 시원한 수박을 맛볼 수 있답니다. 
+		반달 모양으로 잘라 한입 두입 베어 물면 풍부한 과즙이 담뿍 배어 나올 거예요. 
+		냉장고에 차갑게 두었다가 꺼내 더욱 진한 달콤함을 만끽해 보세요.</p>
+	</div>
+
+    <!-- 상세정보 섹션 -->
+	<div id="details" class="content-section">
+		<hr/>
+		<h2>상세정보</h2>
+        <div class="image-grid">
+            <div>
+                <img src="../practice_image/SuVackAid.png" alt="수박 음료 이미지">
+            </div>
+            <div>
+                <img src="../practice_image/SuVackBox.png" alt="수박 포장 박스 이미지">
+            </div>
+            <div style="grid-column: span 2;">
+                <img src="../practice_image/SuVackSonZil.png" alt="수박 손질 방법 이미지">
+            </div>
+        </div>
+	</div>
+</body>
+</html>

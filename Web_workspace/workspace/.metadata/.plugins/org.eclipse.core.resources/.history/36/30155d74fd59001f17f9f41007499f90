@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>박스 그림자 만들기</h3>
+	<hr>
+	<div class="redBox">뚱이와 함께</div>
+	<div class="blurBox">뚱이와 함께</div>
+	<div class="multiEffect">뚱이와 함께</div>
+</body>
+</html>

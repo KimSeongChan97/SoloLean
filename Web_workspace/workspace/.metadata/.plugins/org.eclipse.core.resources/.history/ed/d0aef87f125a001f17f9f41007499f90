@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>webPage</title>
+</head>
+<body>
+<dl class="skip">
+	<dt>skip naigation</dt>
+	<dd><a href="#content">skip to content</a>
+</dl> <!-- //skip -->
+<hr>
+
+<div id="wrap">
+	<div id="header">
+	
+	</div><!-- header -->
+	<hr>
+	
+	<div id="container">
+	
+	</div><!-- container -->
+	
+	<div id="footer">
+	
+	</div><!-- footer -->
+	
+</div> <!-- wrap -->
+
+
+
+</body>
+</html>

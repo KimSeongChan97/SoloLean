@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마켓컬리처럼 사이트 만들기</title>
+</head>
+<body>
+	<h3>마켓컬리처럼 사이트 만들기</h3>
+	<hr>
+	<div class="status">
+		<nav class="stay">
+			<ul>
+				<li>
+					<a href="">
+						<span class="name">상품설명</span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="name">상세정보</span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="name">후기</span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="name">문의</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div>
+		<img src="../practice_image/SuVack.png" alt="수박 이미지">
+	</div>
+	<div>
+		<hr>
+		<h2>수분 가득 달콤한 수박</h2>
+		<h3>[KF365] 당도선별 수박</h3>
+		<p>통통 두드려 나는 소리로 가늠해봐도 마음에 드는 수박을 고르기란 쉽지 않지요. 
+		컬리는 고민 없이 즐길 수 있도록 11브릭스 비파괴 당도선별 수박을 가져왔어요. 
+		그때그때 가장 맛있는 수박을 골라 보내드려 달고 시원한 수박을 맛볼 수 있답니다. 
+		반달 모양으로 잘라 한입 두입 베어 물면 풍부한 과즙이 담뿍 배어 나올 거예요. 
+		냉장고에 차갑게 두었다가 꺼내 더욱 진한 달콤함을 만끽해 보세요.</p>
+	</div>
+</body>
+</html>

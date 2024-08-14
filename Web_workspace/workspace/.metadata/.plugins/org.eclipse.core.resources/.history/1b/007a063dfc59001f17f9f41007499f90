@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShdowCursor</title>
+<style type="text/css">
+	div {
+		font: normal 24px Verdana;
+	}
+	
+	.dropText {
+		text-shadow: 3px 3px; /* x축 3, y축 3 */
+	}
+	
+	.redText {
+		text-shadow: 3px 3px red;
+	}
+	
+	.blurText {
+		text-shadow: 3px 3px skyblue;
+	}
+	
+	.glowText {
+	
+	}
+	
+	.wordArtEffect {
+	
+	}
+	
+	.threeDeffect {
+	
+	}
+	
+</style>
+</head>
+<body>
+	<h3>텍스트 그림자 만들기</h3>
+	<hr/>
+	<div class="dropText">Drop Shadow</div>
+	<div class="redText">Color Shadow</div>
+	<div class="blurText">Blur Shadow</div>
+	<div class="glowText">Glow Shadow</div>
+	<div class="wordArtEffect">wordArtEffect Shadow</div>
+	<div class="threeDeffect">threeDeffect</div>
+	<div class="multiEffect">multiEffect</div>
+</body>
+</html>
+
+<!-- 
+text-shadow: offset-x offset-y blur-radius color | none | initial | inherit
+offset-x : 그림자의 수평 거리를 정합니다. (필수)
+         offset-x의 값을 증가시키면 그림자의 위치가 오른쪽으로 이동합니다.
+offset-y : 그림자의 수직 거리를 정합니다. (필수)
+         offset-y의 값을 증가시키면 그림자의 위치가 아래로 이동합니다.
+blur-radius : 흐림 정도를 정합니다. (선택 : 값을 정하지 않으면 0)
+            blur-radius의 값을 증가시키면 그림자가 흐려집니다.
+color : 색을 정합니다. (선택 : 값을 정하지 않으면 브라우저 기본값)
+none : 글림자 효과를 없앱니다.
+initial : 기본값으로 설정합니다.
+inherit : 부모 요소의 속성값을 상속받습니다.
+ -->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Company Info - my website</title>
+</head>
+<body>
+<dl class="skip">
+	<dt class="blind">skip naigation</dt>
+	<dd><a href="#content">skip to content</a>
+</dl> <!-- //skip -->
+<hr/>
+
+<div id="wrap">
+	<div id="header">
+		<h1 class="logo"><a href="#">LOGO</a></h1>
+		
+		<dl class="topnav"> <!-- 목록 리스트 -->
+			<dt class="blind">top navigation</dt> <!-- 목록 설명 단어 -->
+			<dd><a href="#">Login</a></dd> <!-- 목록들... -->
+			<dd><a href="#">Member join</a></dd>
+			<dd><a href="#">Sitemap</a></dd>
+		</dl>
+		
+		<h2 class="blind">main navigation</h2>
+		<ul class="mainnav">
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact us</a></li>
+		</ul>
+	</div><!-- header -->
+	
+	<hr/>
+	
+	<div id="container">
+		<div class="snb"></div> <!-- snb -->
+		<hr/>
+		
+		<div id="content"></div> <!-- content -->
+	</div><!-- container -->
+	<hr/>
+	
+	<div id="footer">
+	
+	</div><!-- footer -->	
+</div> <!-- wrap -->
+
+
+
+</body>
+</html>

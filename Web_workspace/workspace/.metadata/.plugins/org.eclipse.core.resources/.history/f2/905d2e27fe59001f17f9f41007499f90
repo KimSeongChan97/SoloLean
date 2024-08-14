@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		width: 150px;
+		height: 70px;
+		padding: 10px;
+		border: 10px solid gold;
+		background-image: url("../imgae/img1.gif");
+		background-size: 150px 100px; /* width(너비), height(높이) */
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	.redBox {
+		box-shadow: 10px 10px red;
+	}
+	
+	.blurBox {
+		box-shadow: 10px 10px 5px skyblue;
+	}
+	
+	.multiEffect {
+		box-shadow: 2px 2px 2px blackl,
+					0 0 25px blue,
+					0 0 5px darkblue;
+	}
+	
+</style>
+</head>
+<body>
+	<h3>박스 그림자 만들기</h3>
+	<hr>
+	<div class="redBox">뚱이와 함께</div><br>
+	<div class="blurBox">뚱이와 함께</div><br>
+	<div class="multiEffect">뚱이와 함께</div><br>
+</body>
+</html>

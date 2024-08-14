@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃을 위한 기본 설정 */
+body {
+    font-family: '돋움', dotum, Helvetica, sans-serif;
+    /* 사이트 전체에 사용할 기본 글꼴을 설정합니다. */
+    font-size: 12px;
+    /* 전체 텍스트의 기본 크기를 설정합니다. */
+    color: #444;
+    /* 기본 글자색을 설정합니다. */
+    line-height: 1.5;
+    /* 텍스트 줄 간격을 설정하여 가독성을 높입니다. */
+    margin: 0;
+    padding: 0;
+}
+
+/* 페이지 전체를 감싸는 래퍼 */
+#wrap {
+    width: 100%;
+    /* 페이지 전체 너비를 100%로 설정하여 화면에 꽉 차도록 합니다. */
+    margin: 0 auto;
+    /* 가운데 정렬을 위해 좌우 마진을 자동으로 설정합니다. */
+}
+
+/* 헤더 스타일 */
+#header {
+    background-color: #f8f8f8;
+    /* 헤더 배경색을 밝은 회색으로 설정합니다. */
+    padding: 20px 0;
+    /* 위아래로 20px의 패딩을 설정해 헤더의 높이를 조정합니다. */
+    border-bottom: 2px solid #e8e8e8;
+    /* 헤더 하단에 경계선을 추가하여 구분합니다. */
+}
+
+#header h1.logo a {
+    text-decoration: none;
+    /* 로고 텍스트의 밑줄을 제거합니다. */
+    font-size: 24px;
+    /* 로고 텍스트의 크기를 24px로 설정합니다. */
+    color: #333;
+    /* 로고 텍스트 색상을 진한 회색으로 설정합니다. */
+}
+
+/* 상단 네비게이션 스타일 */
+.topnav dd {
+    display: inline-block;
+    margin-right: 20px;
+    /* 네비게이션 항목 사이의 간격을 20px로 설정합니다. */
+}
+
+.topnav a {
+    text-decoration: none;
+    /* 링크 텍스트에서 기본 밑줄을 제거합니다. */
+    color: #666;
+    /* 링크 텍스트 색상을 회색으로 설정합니다. */
+}
+
+.topnav a:hover {
+    color: #000;
+    /* 링크에 마우스를 올렸을 때 색상을 검은색으로 변경합니다. */
+}
+
+/* 메인 네비게이션 스타일 */
+.mainnav {
+    margin-top: 10px;
+    /* 메인 네비게이션의 위쪽에 10px의 마진을 추가합니다. */
+}
+
+.mainnav li {
+    display: inline;
+    margin-right: 15px;
+    /* 네비게이션 항목 사이의 간격을 15px로 설정합니다. */
+}
+
+.mainnav a {
+    text-decoration: none;
+    /* 메인 네비게이션의 링크 텍스트에서 기본 밑줄을 제거합니다. */
+    color: #333;
+    /* 메인 네비게이션 링크의 기본 색상을 진한 회색으로 설정합니다. */
+}
+
+.mainnav a:hover {
+    color: #000;
+    /* 메인 네비게이션 링크에 마우스를 올렸을 때 색상을 검은색으로 변경합니다. */
+}
+
+/* 사이드바 스타일 */
+.snb {
+    float: left;
+    width: 200px;
+    /* 사이드바의 너비를 200px로 설정합니다. */
+    margin-right: 20px;
+    /* 본문 콘텐츠와의 간격을 20px로 설정합니다. */
+}
+
+.snb ul {
+    list-style: none;
+    /* 목록의 기본 스타일(점)을 제거합니다. */
+    padding: 0;
+}
+
+.snb li {
+    margin-bottom: 10px;
+    /* 각 목록 항목 사이에 10px의 간격을 설정합니다. */
+}
+
+.snb a {
+    text-decoration: none;
+    /* 링크의 기본 밑줄을 제거합니다. */
+    color: #444;
+    /* 링크의 색상을 어두운 회색으로 설정합니다. */
+}
+
+.snb a:hover {
+    color: #000;
+    /* 링크에 마우스를 올렸을 때 색상을 검은색으로 변경합니다. */
+}
+
+/* 본문 콘텐츠 스타일 */
+#content {
+    float: left;
+    width: calc(100% - 240px);
+    /* 본문 콘텐츠의 너비를 계산하여 설정합니다(전체 너비 - 사이드바 너비 - 간격). */
+}
+
+.locate {
+    font-size: 12px;
+    /* 위치 내비게이션의 글자 크기를 12px로 설정합니다. */
+    color: #666;
+    /* 위치 내비게이션의 글자 색상을 회색으로 설정합니다. */
+}
+
+.locate a {
+    text-decoration: none;
+    /* 링크의 기본 밑줄을 제거합니다. */
+    color: #333;
+    /* 링크의 색상을 진한 회색으로 설정합니다. */
+}
+
+.locate a:hover {
+    text-decoration: underline;
+    /* 링크에 마우스를 올렸을 때 밑줄을 추가합니다. */
+}
+
+.thum img {
+    width: 100px;
+    height: auto;
+    /* 썸네일 이미지를 100px 너비로 설정하고, 높이는 자동으로 조절되도록 합니다. */
+    margin-bottom: 20px;
+    /* 썸네일 이미지 아래에 20px의 간격을 추가합니다. */
+}
+
+/* 푸터 스타일 */
+#footer {
+    background-color: #f8f8f8;
+    /* 푸터의 배경색을 밝은 회색으로 설정합니다. */
+    padding: 20px 0;
+    /* 푸터의 위아래 패딩을 20px로 설정하여 높이를 조정합니다. */
+    text-align: center;
+    /* 푸터 내 텍스트를 가운데 정렬합니다. */
+    border-top: 2px solid #e8e8e8;
+    /* 푸터 상단에 경계선을 추가하여 구분합니다. */
+}
+
+.btmnav dd {
+    display: inline-block;
+    margin-right: 15px;
+    /* 하단 네비게이션 항목 사이의 간격을 15px로 설정합니다. */
+}
+
+.btmnav a {
+    text-decoration: none;
+    /* 링크의 기본 밑줄을 제거합니다. */
+    color: #666;
+    /* 링크의 색상을 회색으로 설정합니다. */
+}
+
+.btmnav a:hover {
+    color: #000;
+    /* 링크에 마우스를 올렸을 때 색상을 검은색으로 변경합니다. */
+}
+
+.copy {
+    font-size: 11px;
+    /* 저작권 정보 텍스트의 크기를 11px로 설정합니다. */
+    color: #999;
+    /* 저작권 정보 텍스트의 색상을 밝은 회색으로 설정합니다. */
+}
