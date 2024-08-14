@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title> <!-- 웹페이지의 제목을 설정합니다. 브라우저 탭에 표시됩니다. -->
+<style type="text/css">
+	div {
+		width: 150px; /* div 요소의 너비를 150px로 설정합니다. */
+		height: 70px; /* div 요소의 높이를 70px로 설정합니다. */
+		padding: 10px; /* div 요소 내부의 콘텐츠와 테두리 사이에 10px의 여백을 줍니다. */
+		border: 10px solid gold; /* div 요소에 10px 두께의 금색 테두리를 추가합니다. */
+		background-image: url("../imgae/img1.gif"); /* 배경 이미지로 img1.gif를 사용합니다. (경로에 오타가 있을 수 있습니다. "imgae" -> "image"로 수정해야 할 수 있음) */
+		background-size: 150px 100px; /* width(너비), height(높이) */
+		/* 배경 이미지의 크기를 너비 150px, 높이 100px로 설정합니다.
+		   이 설정은 이미지를 div 요소에 맞게 조정하는 역할을 합니다. */
+		background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정합니다. */
+		background-position: center; /* 배경 이미지를 div 요소의 중앙에 배치합니다. */
+	}
+	
+	.redBox { /* 빨간색 그림자를 추가하는 클래스 */
+		box-shadow: 10px 10px red;
+		/* box-shadow 속성을 사용하여 div 요소에 그림자를 추가합니다.
+		   여기서는 그림자가 x축과 y축으로부터 10px씩 이동하고, 그림자의 색상은 빨간색(red)입니다.
+		   이 설정으로 인해 div 요소 오른쪽 아래에 빨간색 그림자가 생깁니다. */
+	}
+	
+	.blurBox { /* 흐린 그림자를 추가하는 클래스 */
+		box-shadow: 10px 10px 5px skyblue;
+		/* 이 클래스는 그림자에 흐림 효과를 추가합니다.
+		   그림자는 x축과 y축으로부터 10px씩 이동하며, 흐림 반경은 5px입니다.
+		   그림자의 색상은 하늘색(skyblue)으로 설정되어 있으며, 흐림 효과로 인해 그림자가 부드럽게 퍼져 보입니다. */
+	}
+	
+	.multiEffect { /* 여러 가지 그림자 효과를 동시에 적용하는 클래스 */
+		box-shadow: 2px 2px 2px black, /* 기본 그림자: x축과 y축으로부터 2px씩 이동, 검정색 */
+					0 0 25px blue, /* 발광 효과: 흐림 반경 25px, 파란색 */
+					0 0 5px darkblue; /* 추가 그림자: 흐림 반경 5px, 짙은 파란색 */
+		/* 이 클래스는 여러 개의 그림자 효과를 동시에 적용합니다:
+		   1. 첫 번째 그림자는 x축과 y축으로부터 2px씩 이동한 검정색 그림자입니다.
+		   2. 두 번째 그림자는 흐림 반경이 25px인 파란색 발광 효과입니다.
+		   3. 세 번째 그림자는 흐림 반경이 5px인 짙은 파란색 그림자입니다.
+		   이 효과들이 결합되어 박스에 입체적이고 화려한 효과를 줍니다. */
+	}
+	
+</style>
+</head>
+<body>
+	<h3>박스 그림자 만들기</h3> <!-- 페이지의 제목을 설정합니다. -->
+	<hr> <!-- 제목 아래에 수평선을 그립니다. -->
+	<div class="redBox">뚱이와 함께</div><br> <!-- 빨간색 그림자가 적용된 박스 -->
+	<div class="blurBox">뚱이와 함께</div><br> <!-- 흐린 그림자가 적용된 박스 -->
+	<div class="multiEffect">뚱이와 함께</div> <!-- 여러 가지 그림자 효과가 적용된 박스 -->
+</body>
+</html>

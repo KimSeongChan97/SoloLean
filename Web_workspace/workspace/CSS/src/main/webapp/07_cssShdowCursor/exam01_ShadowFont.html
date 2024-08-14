@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShdowCursor</title> <!-- 웹페이지의 제목을 설정합니다. 브라우저 탭에 표시됩니다. -->
+<style type="text/css">
+	/* 전체적으로 적용되는 스타일 */
+	div {
+		font: normal 24px Verdana; /* div 요소에 적용되는 폰트 스타일을 지정합니다. 폰트 크기는 24px, 폰트는 Verdana입니다. */
+	}
+	
+	.dropText { /* 그림자를 줌 */
+		text-shadow: 3px 3px; /* x축 3, y축 3 */
+		/* text-shadow 속성을 사용하여 텍스트에 그림자를 추가합니다. 
+		   여기서 3px 3px은 그림자의 x축과 y축으로부터의 오프셋(이동거리)을 의미합니다.
+		   이 경우 그림자가 오른쪽 아래로 3px씩 이동합니다. 
+		   색상은 지정하지 않았으므로 기본 색상인 검정색 그림자가 적용됩니다. */
+	}
+	
+	.redText { /* 그림자에 색을 줌 */
+		text-shadow: 3px 3px red;
+		/* 이 클래스는 그림자에 색상을 추가합니다.
+		   그림자는 x축과 y축으로부터 3px 이동하며, 색상은 빨간색(red)입니다. */
+	}
+	
+	.blurText { /* 그림자에 흐림 정도를 줌 */
+		text-shadow: 3px 3px 5px skyblue; /* x축, y축, 색 */
+		/* 여기에서는 blur-radius 값을 추가하여 그림자가 흐려지도록 설정합니다.
+		   3px 3px은 x축과 y축의 오프셋이고, 5px은 그림자의 흐림 정도(반경)를 나타냅니다.
+		   그림자는 하늘색(skyblue)으로 지정되어 있습니다. */
+	}
+	
+	.glowEffect { /* 텍스트에 발광 효과를 추가함 */
+		text-shadow: 0px 0px 3px red;
+		/* 이 클래스는 발광 효과(glow effect)를 생성합니다.
+		   x축과 y축 오프셋은 0이므로 그림자가 텍스트 뒤에 직접 위치하며,
+		   blur-radius 값이 3px로 설정되어 있어 그림자가 흐릿하게 발광하는 효과를 냅니다.
+		   그림자의 색상은 빨간색(red)입니다. */
+	}
+	
+	.wordArtEffect { /* 워드아트와 같은 효과를 추가함 */
+		color: white;
+		text-shadow: 0px 0px 3px darkblue;
+		/* 이 클래스는 워드아트처럼 텍스트에 색상과 그림자를 결합하여 독특한 효과를 만듭니다.
+		   텍스트 색상은 흰색이고, 그림자는 0px의 오프셋을 가지며 흐림 정도는 3px입니다.
+		   그림자의 색상은 짙은 파란색(darkblue)으로 설정되어 있어 워드아트 스타일의 효과를 줍니다. */
+	}
+	
+	.threeDeffect { /* 텍스트에 3D 효과를 줌 */
+		color: white;
+		text-shadow: 2px 2px 4px black;
+		/* 이 클래스는 텍스트에 3D 효과를 줍니다.
+		   텍스트 색상은 흰색이며, 그림자는 오른쪽 아래로 2px 이동하여 텍스트가 입체적으로 보이도록 만듭니다.
+		   흐림 정도는 4px로 설정되어 그림자가 부드럽게 퍼집니다.
+		   그림자의 색상은 검정색(black)입니다. */
+	}
+	
+	.multiEffect { /* 한번에 여러가지 효능을 줄 수 있음 */
+		color: yellow;
+		text-shadow: 2px 2px black,  /* 기본 그림자: 2px씩 이동, 검정색 */
+					 0 0 25px blue, /* 발광 효과: 흐림 정도 25px, 파란색 */
+					 0 0 5px darkblue; /* 추가 그림자: 흐림 정도 5px, 짙은 파란색 */
+		/* 이 클래스는 텍스트에 여러 가지 그림자 효과를 동시에 적용합니다.
+		   텍스트 색상은 노란색(yellow)이며, 세 가지 그림자 효과가 적용됩니다:
+		   1. 첫 번째 그림자는 2px 오프셋을 가진 검정색 그림자입니다.
+		   2. 두 번째 그림자는 흐림 반경이 25px인 파란색 발광 효과입니다.
+		   3. 세 번째 그림자는 흐림 반경이 5px인 짙은 파란색 그림자입니다. 
+		   이러한 효과를 조합하여 텍스트에 더욱 화려하고 입체적인 느낌을 줍니다. */
+	}	
+</style>
+</head>
+<body>
+	<h3>텍스트 그림자 만들기</h3>
+	<hr/>
+	<div class="dropText">Drop Shadow</div> <!-- 단순 그림자 효과가 적용된 텍스트 -->
+	<div class="redText">Color Shadow</div> <!-- 빨간색 그림자 효과가 적용된 텍스트 -->
+	<div class="blurText">Blur Shadow</div> <!-- 흐린 그림자 효과가 적용된 텍스트 -->
+	<div class="glowEffect">Glow Shadow</div> <!-- 발광 효과가 적용된 텍스트 -->
+	<div class="wordArtEffect">wordArtEffect Shadow</div> <!-- 워드아트 스타일 효과가 적용된 텍스트 -->
+	<div class="threeDeffect">threeDeffect</div> <!-- 3D 효과가 적용된 텍스트 -->
+	<div class="multiEffect">multiEffect</div> <!-- 여러 가지 효과가 동시에 적용된 텍스트 -->
+</body>
+</html>
+
+<!-- 
+text-shadow: offset-x offset-y blur-radius color | none | initial | inherit
+offset-x : 그림자의 수평 거리를 정합니다. (필수)
+         offset-x의 값을 증가시키면 그림자의 위치가 오른쪽으로 이동합니다.
+offset-y : 그림자의 수직 거리를 정합니다. (필수)
+         offset-y의 값을 증가시키면 그림자의 위치가 아래로 이동합니다.
+blur-radius : 흐림 정도를 정합니다. (선택 : 값을 정하지 않으면 0)
+            blur-radius의 값을 증가시키면 그림자가 흐려집니다.
+color : 색을 정합니다. (선택 : 값을 정하지 않으면 브라우저 기본값)
+none : 그림자 효과를 없앱니다.
+initial : 기본값으로 설정합니다.
+inherit : 부모 요소의 속성값을 상속받습니다.
+-->
