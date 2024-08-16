@@ -234,7 +234,8 @@ with read only; -- 생성된 뷰에 대해 읽기만 가능하도록 설정하�
 select * from bs_view;
 SELECT 책제목, 저자, 총판매금액 FROM bs_view; -- 컬럼명을 지정하여 데이터 확인
 -- --------------------------------------------------------------------
-
+-- sub Query ( select 안에 select )
+-- 인라인은 select ~ from select 에서 from에 들어감. = select ~ from ( select ~ ) .
 -- ex5) 뷰 - 인라인
 -- 사원 테이블을 가지고 부서별 평균급여를 뷰(v_view7)로 작성하시오 
 -- 조건1) 반올림해서 100단위까지 구하시오
@@ -248,7 +249,7 @@ SELECT 책제목, 저자, 총판매금액 FROM bs_view; -- 컬럼명을 지정�
 create or replace view v_view7("부서ID", "부서평균") 
 -- 뷰의 이름을 v_view7로 지정하고, 출력될 컬럼의 별칭을 "부서ID"와 "부서평균"으로 설정합니다.
 as select nvl(department_id, 5000) as "부서ID",
--- department_id가 NULL인 경우 5000으로 표시하기 위해 NVL 함수를 사용합니다.
+-- department_id가 NULL인 경우 5000으로 표시하기 위해 NVL 함수(비어있는 값을 채움)를 사용합니다.
              round(avg(salary), -3) as "부서평균" 
 -- 부서별 평균 급여를 계산한 후, 이를 100 단위로 반올림하여 출력합니다.
 from employees
@@ -270,7 +271,7 @@ select 부서ID, 부서평균
 -- 최종적으로 부서ID와 부서평균을 선택합니다.
 from (
     select nvl(department_id, 5000) "부서ID",
-           round( avg(salary), -3) "부서평균" 
+           round(avg(salary), -3) "부서평균" 
     -- 내부 쿼리에서 부서별 평균 급여를 계산하고, 이를 100 단위로 반올림한 후, 부서ID가 NULL인 경우 5000으로 대체합니다.
     from employees
     group by department_id 
@@ -279,35 +280,125 @@ from (
 
 -- [문제5] 
 -- 5-1. 부서별 최대급여를 받는 사원의 부서명, 최대급여를 출력하시오 
--- 5-2. 1번 문제에 최대급여를 받는 사원의 이름도 구하시오
+-- 5-2. 5-1번 문제에 최대급여를 받는 사원의 이름도 구하시오
 
 -- 문제 5-1:
 -- 이 쿼리는 각 부서에서 가장 높은 급여를 받는 사원을 찾고, 그 사원의 부서명과 최대 급여를 출력합니다.
-select d.department_name, -- 부서명
-       max(e.salary) as 최대급여 -- 해당 부서의 최대 급여
+select d.department_name, -- 부서명 (부서 테이블의 department_name 컬럼을 선택합니다.)
+       max(e.salary) as 최대급여 -- 해당 부서의 최대 급여 (사원 테이블의 salary 컬럼에서 각 부서의 최대값을 찾습니다.)
 from employees e
+-- employees 테이블의 별칭으로 e를 사용하여 사원 데이터를 참조합니다.
 join departments d on e.department_id = d.department_id
--- 사원 테이블과 부서 테이블을 조인하여 부서명과 사원의 정보를 결합합니다.
+-- employees 테이블과 departments 테이블을 부서 ID(department_id)로 조인하여 부서명과 사원의 데이터를 결합합니다.
 group by d.department_name;
--- 부서명으로 그룹화하여 각 부서의 최대 급여를 계산합니다.
+-- 부서명으로 그룹화하여 각 부서별 최대 급여를 계산합니다.
+--JOIN: employees 테이블과 departments 테이블을 부서 ID를 기준으로 조인함으로써 각 사원이 속한 부서의 이름을 가져옵니다.
+--GROUP BY: 부서명으로 그룹화하여, 각 부서에서 가장 높은 급여를 가진 사원을 찾습니다.
+--MAX 함수: 그룹화된 부서별로 salary의 최대값을 계산합니다.
+
+select department_name as 부서명, -- departments 테이블의 department_name 컬럼을 부서명으로 선택합니다.
+       max(salary) as 최대급여 -- employees 테이블의 salary 컬럼에서 각 부서별 최대 급여를 구해 최대급여로 표시합니다.
+from employees
+-- employees 테이블을 참조합니다.
+join departments using(department_id)
+-- employees 테이블과 departments 테이블을 department_id를 기준으로 조인합니다.
+group by department_name;
+-- department_name으로 그룹화하여 각 부서별로 최대 급여를 계산합니다.
+
+select 부서명, 최대급여 -- 서브쿼리에서 반환된 부서명과 최대급여를 선택합니다.
+from (
+    -- 서브쿼리 시작
+    select department_name as 부서명, -- 부서명을 선택하고 부서명으로 표시합니다.
+           max(salary) as 최대급여 -- 해당 부서의 최대 급여를 최대급여로 표시합니다.
+    from employees
+    -- employees 테이블을 참조합니다.
+    join departments using(department_id)
+    -- employees와 departments 테이블을 department_id로 조인합니다.
+    group by department_name
+    -- department_name으로 그룹화하여 각 부서별로 최대 급여를 계산합니다.
+);
+-- 서브쿼리의 결과에 대해 메인 쿼리에서 사용할 수 있도록 max_salaries라는 별칭을 부여합니다.
+
 
 -- 문제 5-2:
 -- 이 쿼리는 부서별 최대 급여를 받는 사원의 이름도 함께 출력합니다.
-select d.department_name, -- 부서명
-       e.last_name, -- 최대 급여를 받는 사원의 이름
-       e.salary as 최대급여 -- 최대 급여
+select d.department_name, -- 부서명 (부서 테이블에서 각 부서의 이름을 출력)
+       e.last_name, -- 최대 급여를 받는 사원의 성 (사원 테이블에서 해당 사원의 last_name을 출력)
+       e.salary as 최대급여 -- 최대 급여 (사원 테이블에서 해당 사원의 급여를 출력)
 from employees e
+-- employees 테이블의 별칭을 e로 설정하고 사원 데이터를 참조합니다.
 join departments d on e.department_id = d.department_id
+-- departments 테이블과 employees 테이블을 부서 ID로 조인하여 부서명과 사원의 데이터를 결합합니다.
 where e.salary = (
+    -- 이 서브쿼리는 각 부서에서 가장 높은 급여를 반환합니다.
     select max(salary) 
     from employees 
     where department_id = e.department_id
+    -- 서브쿼리 내에서 department_id가 외부 쿼리의 department_id와 동일한 사원들의 급여 중 최대값을 구합니다.
 )
--- 서브쿼리를 사용하여 해당 부서에서 가장 높은 급여를 받는 사원을 찾습니다.
 order by d.department_name;
 -- 결과를 부서명으로 정렬합니다.
 
+select department_name as 부서명,
+       last_name as 사원명,
+       salary as 최대급여
+from employees
+join departments using(department_id)
+-- departments와 employees 테이블을 department_id로 조인합니다.
+where salary = (
+    -- 서브쿼리를 사용하여 해당 부서에서 가장 높은 급여를 찾습니다.
+    select max(salary)
+    from employees
+    where department_id = department_id
+)
+-- 조건에 맞는 사원들만 선택합니다.
+order by department_name;
+-- 결과를 부서명 기준으로 정렬합니다.      
+
+select 이름, 부서명, 최대급여
+-- 외부 쿼리에서 '이름', '부서명', '최대급여'를 선택합니다.
+from (
+    -- 서브쿼리 시작: 각 부서별로 최대 급여를 받는 사원의 정보를 가져옵니다.
+    select last_name as 이름, -- 사원의 성(last_name)을 '이름'으로 선택합니다.
+           department_name as 부서명, -- 부서 이름(department_name)을 '부서명'으로 선택합니다.
+           salary as 최대급여 -- 사원의 급여(salary)를 '최대급여'로 선택합니다.
+    from employees
+    -- employees 테이블을 참조합니다.
+    join departments using(department_id)
+    -- employees 테이블과 departments 테이블을 department_id로 조인하여 각 사원이 속한 부서명을 가져옵니다.
+    where (department_id, salary) = any 
+    -- 이 조건은 서브쿼리의 결과와 일치하는 department_id와 최대급여(salary)를 가진 레코드만 필터링합니다.
+    (select department_id, max(salary)
+    -- 각 부서(department_id)에서 가장 높은 급여(max(salary))를 찾는 서브쿼리입니다.
+    from employees
+    -- employees 테이블을 참조하여 각 부서의 사원 급여 정보를 분석합니다.
+    group by department_id
+    -- 부서별로 그룹화하여 각 부서에서 가장 높은 급여를 계산합니다.
+    )
+);
+-- 외부 쿼리는 서브쿼리의 결과를 사용하여 각 부서에서 최대 급여를 받는 사원의 이름, 부서명, 급여를 출력합니다.
+
+select last_name as 이름, -- 사원의 성(last_name)을 '이름'으로 선택합니다.
+       department_name as 부서명, -- 부서명(department_name)을 '부서명'으로 선택합니다.
+       max(salary) over(partition by department_id) as 최대급여 -- 각 부서별 최대 급여를 '최대급여'로 선택합니다.
+from employees
+-- employees 테이블을 참조합니다.
+join departments using(department_id)
+-- employees 테이블과 departments 테이블을 department_id로 조인하여 부서명과 사원의 데이터를 결합합니다.
+where (department_id, salary) = any 
+-- 조건: department_id와 salary가 서브쿼리의 결과와 일치하는 레코드를 필터링합니다.
+    (select department_id, max(salary)
+    -- 서브쿼리: 각 부서(department_id)에서 가장 높은 급여(max(salary))를 구합니다.
+    from employees
+    -- employees 테이블을 참조하여 각 부서의 사원 급여 정보를 가져옵니다.
+    group by department_id
+    -- 부서별로 그룹화하여 각 부서에서 가장 높은 급여를 계산합니다.
+    );
+-- 외부 쿼리는 서브쿼리의 결과와 일치하는 사원들의 이름, 부서명, 그리고 그들의 최대급여를 출력합니다.
+               
+-- --------------------------------------
 -- ex6) Top N분석
+-- hidden column : rownum
 -- 급여를 가장 많이 받는 사원 3명의 이름, 급여를 표시 하시오 
 -- Top N 분석은 상위 N개의 레코드를 추출할 때 사용됩니다.
 -- 여기서는 급여가 가장 높은 사원 3명의 이름과 급여를 출력합니다.
@@ -316,14 +407,11 @@ select rownum, -- 각 결과에 순번을 매깁니다.
        last_name, -- 사원 이름
        salary -- 사원의 급여
 from (
-    select last_name, 
-           nvl(salary,0) as salary 
+    select last_name, nvl(salary,0) as salary 
     -- 급여가 NULL인 경우 0으로 처리하여 계산합니다.
-    from employees
-    order by salary desc 
+    from employees order by salary desc 
     -- 급여를 기준으로 내림차순 정렬하여 상위 3명을 선택합니다.
-) 
-where rownum <= 3; 
+    ) where rownum <= 3; 
 -- 상위 3개의 레코드만 선택합니다.
 
 -- ex7) 최고급여를 받는 사원 1명을 구하시오
@@ -346,22 +434,17 @@ where rownum = 1;
 -- ex8) 급여의 순위를 내림차순 정렬 했을 때, 3개씩 묶어서 2번째 그룹을 출력하시오 
 -- 이 쿼리는 급여 순위에서 4, 5, 6위에 해당하는 사원들을 출력합니다.
 -- 페이징 처리 기법을 사용하여, 순위를 3개씩 묶고 두 번째 페이지(그룹)를 선택합니다.
-
-select * 
-from (
+-- round / ceil 로 반올림. (페이지 번호 적용한다면...
+select * from (
     select rownum, -- 결과에 순번을 매깁니다.
            ceil(rownum/3) as page, -- 순번을 3으로 나누어 페이지 번호를 매깁니다.
            tt.* 
     from (
-        select last_name, 
-               nvl(salary, 0) as salary 
+        select last_name, nvl(salary, 0) as salary 
         -- 급여가 NULL인 경우 0으로 처리합니다.
-        from employees
-        order by salary desc 
+        from employees order by salary desc 
         -- 급여를 내림차순으로 정렬합니다.
-    ) tt 
-) 
-where page = 2;
+    ) tt ) where page = 2;
 -- 두 번째 페이지(순위 4~6위)를 선택합니다.
 
 -- 아래의 쿼리는 다른 방법으로 4, 5, 6위 사원들을 선택합니다.
@@ -384,21 +467,33 @@ where rn >= 4 and rn <= 6;
 -- 조건1) 연봉 = 급여*12+(급여*12*커미션)
 -- 조건2) 타이틀은 사원이름, 부서명, 연봉 
 -- 조건3) 연봉은 ￦25,000 형식으로 하시오
-
 -- 이 문제는 사원의 연봉을 계산한 후, 연봉이 낮은 순서대로 5명의 사원을 추출하는 것입니다.
 -- 연봉은 급여 * 12 + (급여 * 12 * 커미션)으로 계산됩니다.
 -- 계산된 연봉은 '￦25,000' 형식으로 출력됩니다.
-
-select last_name as 사원이름, -- 사원의 이름
-       department_name as 부서명, -- 부서명
-       to_char((salary * 12) + (salary * 12 * nvl(commission_pct, 0)), 'L999,999') as 연봉 
-       -- 연봉을 계산하고, 이를 통화 형식으로 변환합니다.
-from employees e
-join departments d on e.department_id = d.department_id
-order by 연봉 asc 
--- 연봉을 오름차순으로 정렬하여 낮은 순서대로 5명을 추출합니다.
-fetch first 5 rows only; 
--- 오라클 12c 이상에서는 'fetch first' 절을 사용하여 상위 5개의 행만 가져올 수 있습니다.
+select * from(
+    select rownum rn, tt.* 
+    from (
+        select last_name as 사원이름,
+               department_name as 부서명,
+               to_char((salary * 12) + (salary * 12 * nvl(commission_pct, 0)), 'L999,999') as 연봉
+        from employees
+        join departments using(department_id)
+        order by 연봉 asc
+    ) tt ) where rn <= 5; -- rownum으로 5명의 사원을 필터링.
+-- 다른 답안 --------------------------
+SELECT last_name AS 사원이름,  -- 'last_name' 컬럼을 '사원이름'이라는 별칭으로 선택
+       department_name AS 부서명,  -- 'department_name' 컬럼을 '부서명'이라는 별칭으로 선택
+       TO_CHAR(salary, 'L999,999,999') AS 연봉  -- 'salary' 값을 통화 형식으로 변환하여 '연봉'이라는 별칭으로 선택
+FROM ( SELECT last_name,  -- 서브쿼리 내부에서 'last_name' 컬럼 선택
+               department_name,  -- 서브쿼리 내부에서 'department_name' 컬럼 선택
+               salary*1300* 12 + (salary*1300* 12 * nvl(commission_pct, 0)) AS salary  -- 연봉을 계산. 연봉은 기본 급여 * 12 + (커미션이 있는 경우 이를 포함하여 계산)
+        FROM employees  -- 'employees' 테이블에서 데이터를 조회
+        JOIN departments USING(department_id)  -- 'departments' 테이블과 'department_id' 컬럼을 기준으로 조인
+        ORDER BY 3)  -- 계산된 연봉 기준으로 정렬 ('ORDER BY 3'는 세 번째 컬럼인 salary를 기준으로 정렬)
+WHERE ROWNUM <= 5;  -- 서브쿼리의 결과 중에서 상위 5개의 행만 선택
+--이 쿼리는 employees 테이블과 departments 테이블을 department_id를 기준으로 조인한 후, 각 사원의 연봉을 계산하여 상위 5명의 사원이름, 부서명, 연봉을 출력합니다.
+--연봉 계산은 연간 기본 급여(salary * 12)에, 커미션 비율(commission_pct)이 있는 경우 이를 추가하여 계산합니다.
+--TO_CHAR 함수를 사용해 연봉을 통화 형식으로 변환하고, ROWNUM을 사용해 상위 5명의 사원만 선택합니다.
 
 -- [ SYNONYM ]
 -- Synonym은 오라클 객체(테이블, 뷰, 시퀀스, 프로시저)에 대한 대체이름(Alias)를 말한다 
