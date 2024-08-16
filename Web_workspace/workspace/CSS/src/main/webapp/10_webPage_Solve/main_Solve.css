@@ -1,1 +1,280 @@
-@charset "UTF-8";
+@charset "UTF-8"; /* CSS 파일의 인코딩을 UTF-8로 지정하여, 다국어를 제대로 처리할 수 있도록 설정합니다. */
+
+@import url("./reset.css"); /* 기본 스타일을 초기화하는 reset.css 파일을 불러옵니다. */
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); /* 나눔고딕 웹폰트를 활용합니다. 웹 페이지에서 사용될 글꼴을 지정합니다. */
+
+hr {
+    display: none; /* 수평선 요소를 화면에 표시하지 않도록 설정합니다. */
+}
+
+.blind {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: -1000em; /* 시각적으로 요소를 화면에서 제거하지만 스크린 리더에서는 읽을 수 있습니다. */
+}
+
+/* skip css */
+.skip a {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: -1000em;
+    z-index: 9999;
+    width: 100%;
+    background-color: navy;
+    color: white;
+    font: bold 1.3em Tahoma, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    /* 이 링크들은 시각적으로 숨겨져 있지만, 키보드 탐색을 통해 접근이 가능합니다. 웹 접근성 향상을 위해 사용됩니다. */
+}
+
+.skip a:hover, .skip a:active, .skip a:focus {
+    top: 0; /* 포커스되면 스킵 네비게이션 링크가 화면에 표시되도록 위치를 조정합니다. */
+    padding: 0.5em 0; /* 링크의 높이를 증가시켜 사용자가 쉽게 볼 수 있도록 만듭니다. */
+}
+
+/* 가로 너비 지정 및 가운데 정렬 */
+#wrap {
+    width: 760px; /* 페이지의 전체 너비를 760px로 고정합니다. */
+    margin: 0 auto; /* 페이지를 가운데 정렬합니다. */
+}
+
+/* header 시작 */
+/* 어떤 영역에 'position: absolute' 를 지정할 경우에는,
+    그 영역을 감싸는 부분에 반드시 'position: relative' 를 지정한다.
+    그 상위 영역이 'absolute' 위치의 기준이 된다. */
+#header {
+    position: relative; /* 내부의 절대 위치 요소가 이 요소를 기준으로 삼도록 설정합니다. */
+    padding-bottom: 99px; /* 하단 패딩을 추가하여 헤더 하단과 다른 요소 간의 간격을 만듭니다. */
+    border-bottom: 1px solid #cccccc; /* 하단에 구분선을 추가하여 헤더와 본문을 구분합니다. */
+    background: url("../image/bg_header.png") no-repeat 50% 100%; /* 배경 이미지를 중앙 하단에 배치하고 반복을 금지합니다. */
+}
+
+/* 로고의 여백 설정 */
+.logo {
+    padding: 12px 0 12px 26px; /* 위쪽과 아래쪽에 12px 패딩, 왼쪽에 26px 패딩을 설정합니다. */
+}
+
+/* 로고 링크 스타일 */
+.logo a {
+    display: block; /* 링크를 블록 요소로 설정하여 클릭 가능한 영역을 확장합니다. */
+    overflow: hidden; /* 내부 콘텐츠가 넘칠 경우 숨깁니다. */
+    width: 90px; /* 로고의 너비를 90px로 설정합니다. */
+    height: 30px; /* 로고의 높이를 30px로 설정합니다. */
+    background: url("../image/logo.png") no-repeat; /* 로고 이미지를 배경으로 설정하고 반복을 금지합니다. */
+    text-indent: -9999em; /* 텍스트를 화면에서 숨기지만 스크린 리더에서는 읽을 수 있습니다. */
+}
+
+.topnav {
+    position: absolute; /* 상단 탐색 메뉴를 절대 위치로 설정하여 헤더 내에서 배치됩니다. */
+    right: 35px; /* 오른쪽에서 35px 떨어진 위치에 배치됩니다. */
+    top: 18px; /* 상단에서 18px 떨어진 위치에 배치됩니다. */
+}   
+
+.topnav dd {
+    float: left; /* 탐색 항목을 왼쪽으로 정렬하여 수평으로 나열합니다. */
+    padding-right: 11px; /* 오른쪽에 11px 패딩을 추가하여 항목 간 간격을 줍니다. */
+    margin-right: 10px; 
+    background: url("../image/bg_topnav.png") no-repeat 100% 50%; 
+    /* 배경 이미지를 오른쪽 끝과 세로 중앙에 배치하여 항목 뒤에 아이콘이 표시되도록 합니다. */
+}
+
+.topnav dd:last-child {
+    padding-right: 0; /* 마지막 항목은 패딩을 제거하여 여백을 없앱니다. */
+    margin-right: 0; 
+    background: none; /* 마지막 항목에는 배경 이미지를 설정하지 않습니다. */
+}
+
+.topnav dd a {
+    color: black; /* 링크 텍스트를 검정색으로 설정합니다. */
+    font-size: 9pt; /* 링크 텍스트의 크기를 9pt로 설정합니다. */
+}
+
+/* 메인 내비게이션 스타일 */
+.mainnav {
+    padding-left: 50px; /* 왼쪽에 50px 패딩을 추가하여 내비게이션 항목들을 정렬합니다. */
+    background-color: #005B9B; /* 내비게이션 배경색을 파란색으로 설정합니다. */
+}
+
+.mainnav:after {
+    content: ''; /* float 해제를 위해 비어 있는 콘텐츠를 추가합니다. */
+    display: block; 
+    clear: both; /* float 속성으로 인해 깨질 수 있는 레이아웃을 정리합니다. */
+}
+
+.mainnav li {
+    float: left; /* 내비게이션 항목을 왼쪽으로 정렬하여 수평으로 배치합니다. */
+}
+
+.mainnav li a {
+    display: block; /* 링크를 블록 요소로 설정하여 클릭 가능한 영역을 확대합니다. */
+    padding: 0 13px; /* 좌우에 13px의 패딩을 추가하여 항목 사이의 간격을 설정합니다. */
+    background-color: #005B9B; /* 링크의 배경색을 파란색으로 설정합니다. */
+    color: #ffffff; /* 텍스트 색상을 흰색으로 설정합니다. */
+    font: bold 16px/40px 'Nanum Gothic', sans-serif; /* 글꼴 설정: 굵은 글씨, 16px 크기, 40px 줄 높이, 나눔고딕 */
+    text-transform: uppercase; /* 텍스트를 대문자로 변환합니다. */
+    text-decoration: none; /* 링크의 밑줄을 제거합니다. */
+}
+
+/* 메인 내비게이션 항목에 마우스를 올렸을 때 스타일 */
+.mainnav li a:hover {
+    color: #660000; /* 텍스트 색상을 어두운 빨간색으로 변경합니다. */
+    background-color: #ffcc00; /* 배경색을 노란색으로 변경합니다. */
+}
+
+/* header 끝 */
+
+/* container 시작 */
+#container {
+    background: url("../image/bg_snb.png") repeat-y 170px 0; /* 왼쪽에서 170px 떨어진 위치에 배경 이미지를 반복적으로 표시합니다. */
+    padding-bottom: 20px; /* 컨테이너 하단에 20px 패딩을 추가하여 푸터와의 간격을 조정합니다. */
+}
+
+#container:after { 
+    content: '';
+    display: block;
+    clear: both; /* float 속성 해제를 위해 사용됩니다. */
+}
+
+/* 서브 내비게이션 스타일 시작 */
+.snb {
+    float: left; /* 서브 내비게이션을 왼쪽에 배치합니다. */
+    width: 170px; /* 서브 내비게이션의 너비를 170px로 설정합니다. */
+}
+
+.snb h2 {
+    padding: 28px 14px 8px 0; /* 상단에 28px 패딩, 오른쪽에 14px 패딩, 하단에 8px 패딩을 설정합니다. */
+    margin-left: 11px; /* 왼쪽에 11px 마진을 추가합니다. */
+    margin-bottom: 15px; /* 하단에 15px 마진을 추가하여 제목과 내용 사이의 간격을 조정합니다. */
+    border-bottom: 1px solid #cccccc; /* 하단에 연한 회색 실선을 추가합니다. */
+    color: #005B9B; /* 제목 텍스트 색상을 파란색으로 설정합니다. */
+    font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 폰트를 사용하여 텍스트를 스타일링합니다. */
+    font-size: 18px; /* 텍스트 크기를 18px로 설정합니다. */
+    font-weight: bold; /* 텍스트를 굵게 설정합니다. */
+    text-align: right; /* 텍스트를 오른쪽으로 정렬합니다. */
+}
+
+.snb ul {
+    margin-left: 11px; /* 왼쪽에 11px 마진을 추가하여 목록이 페이지와 떨어져 보이도록 합니다. */
+}
+
+.snb ul a {
+    display: block; /* 링크를 블록 요소로 설정하여 클릭 가능한 영역을 확대합니다. */
+    padding-right: 14px; /* 오른쪽에 14px 패딩을 추가하여 항목 간 간격을 조정합니다. */
+    color: #005B9B; /* 링크 텍스트 색상을 파란색으로 설정합니다. */
+    font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 폰트를 사용합니다. */
+    font-size: 14px; /* 텍스트 크기를 14px로 설정합니다. */
+    font-weight: bold; /* 텍스트를 굵게 설정합니다. */
+    text-align: right; /* 텍스트를 오른쪽으로 정렬합니다. */
+    text-decoration: none; /* 링크의 밑줄을 제거합니다. */
+    line-height: 30px; /* 줄 높이를 30px로 설정하여 항목 간 간격을 조정합니다. */
+}
+
+.snb ul a:hover {
+    color: #660000; /* 링크에 마우스를 올렸을 때 텍스트 색상을 어두운 빨간색으로 변경합니다. */
+    text-decoration: underline; /* 링크에 마우스를 올렸을 때 밑줄을 추가합니다. */
+}
+/* 서브 내비게이션 끝 */
+
+/* content 시작 */
+#content {
+    position: relative; /* 콘텐츠 내부에서 절대 위치 요소가 이 요소를 기준으로 삼도록 설정합니다. */
+    float: right; /* 콘텐츠를 오른쪽에 배치합니다. */
+    width: 560px; /* 콘텐츠의 너비를 560px로 설정합니다. */
+}
+
+.locate {
+    position: absolute; /* 위치 정보를 절대 위치로 설정하여 콘텐츠 내에서 배치합니다. */
+    right: 28px; /* 오른쪽에서 28px 떨어진 위치에 배치합니다. */
+    top: 26px; /* 상단에서 26px 떨어진 위치에 배치합니다. */
+    color: #ccc; /* 텍스트 색상을 연한 회색으로 설정합니다. */
+    font-size: 0.9em; /* 텍스트 크기를 0.9em로 설정합니다. */
+    word-spacing: 0.3em; /* 단어 간 간격을 0.3em로 설정합니다. */
+}
+
+.locate a {
+    color: #666666; /* 링크 텍스트 색상을 중간 회색으로 설정합니다. */
+}
+
+.locate strong {
+    font-weight: normal; /* 굵은 글씨를 일반 글씨로 변경합니다. */
+    color: #666666; /* 텍스트 색상을 중간 회색으로 설정합니다. */
+    word-spacing: 0em; /* 단어 간 간격을 기본값으로 설정합니다. */
+}
+
+#content h2 {
+    padding: 24px 0; /* 상단과 하단에 24px 패딩을 추가하여 콘텐츠 제목과 본문 간의 간격을 설정합니다. */
+    color: #005B9B; /* 제목 텍스트 색상을 파란색으로 설정합니다. */
+    font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 폰트를 사용합니다. */
+    font-size: 24px; /* 텍스트 크기를 24px로 설정합니다. */
+    font-weight: bold; /* 텍스트를 굵게 설정합니다. */
+}
+
+#content .thum {
+    float: left; /* 썸네일 이미지를 왼쪽에 배치합니다. */
+    margin-left: 14px; /* 왼쪽에 14px 마진을 추가하여 썸네일과 텍스트 간의 간격을 조정합니다. */
+}
+
+#content .thum img {
+    width: 114px; /* 썸네일 이미지의 너비를 114px로 설정합니다. */
+    height: 111px; /* 썸네일 이미지의 높이를 111px로 설정합니다. */
+    border: 1px solid #cccccc; /* 연한 회색 테두리를 추가합니다. */
+}
+
+#content .text {
+    margin-left: 148px; /* 왼쪽에 148px 마진을 추가하여 썸네일 이미지와 텍스트 간의 간격을 조정합니다. */
+}
+
+#content .text div {
+    margin-bottom: 15px; /* 하단에 15px 마진을 추가하여 각 텍스트 블록 간의 간격을 설정합니다. */
+    line-height: 1.4; /* 줄 높이를 1.4로 설정하여 텍스트 간격을 조정합니다. */
+}
+/* content 끝 */
+
+/* container 끝 */
+
+/* footer 시작 */
+#footer {
+    border-top: 1px solid #cccccc; /* 상단에 구분선 추가 */
+    padding: 18px 30px 40px 20px; /* 상단 18px, 우측 30px, 하단 40px, 좌측 20px 패딩을 설정합니다. */
+    color: #666; /* 텍스트 색상을 중간 회색으로 설정합니다. */
+    font-size: 0.9em; /* 텍스트 크기를 0.9em로 설정합니다. */
+}
+
+/* float 해제를 위해 비어 있는 콘텐츠를 추가하여 레이아웃 정리 */
+#footer:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 하단 내비게이션 스타일 */
+.btmnav {
+    float: right; /* 하단 내비게이션을 오른쪽에 배치합니다. */
+}
+
+.btmnav dd {
+    float: left; /* 항목을 왼쪽으로 정렬하여 수평으로 나열합니다. */
+}
+
+.btmnav dd:after {
+    content: '|'; /* 항목 간 구분선으로 파이프 기호를 추가합니다. */
+    padding: 0 0.7em; /* 구분선 좌우에 0.7em의 여백을 추가합니다. */
+    color: #999; /* 구분선 색상을 연한 회색으로 설정합니다. */
+}
+
+.btmnav dd:last-child:after {
+    content: ''; /* 마지막 항목에는 구분선을 표시하지 않도록 설정합니다. */
+    padding: 0 0;
+}
+
+/* 저작권 정보 스타일 */
+.copy {
+    float: left; /* 저작권 정보를 왼쪽에 배치합니다. */
+    line-height: 1.8; /* 줄 높이를 1.8로 설정하여 가독성을 높입니다. */
+}
+/* footer 끝 */
