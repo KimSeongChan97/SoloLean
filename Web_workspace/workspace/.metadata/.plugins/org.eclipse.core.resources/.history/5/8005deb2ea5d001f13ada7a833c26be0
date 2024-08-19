@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+//if
+let score = prompt("당신의 점수 입력 : ");
+
+
+</script>
+</body>
+</html>

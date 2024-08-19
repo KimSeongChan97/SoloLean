@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+    <title>자바스크립트의 변수</title>
+</head>
+<body>
+
+<script type="text/javascript">
+//지역변수, 구역단위
+let a = 100;
+a = 250;
+console.log(a)
+</script>
+
+</body>
+</html>

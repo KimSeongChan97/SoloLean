@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VAR</title>
+</head>
+<body>
+
+<script type="text/javascript">
+//전역변수 (전체변수)
+var a = 100;
+a = 250;
+console.log(a) // 250
+
+{
+	var a = 200;
+	console.log(a) // 200
+	{
+		var a = 300;
+		console.log(a) // 300
+		{
+			var a = 400;
+			console.log(a) // 400
+		}
+		console.log(a) // 400
+	}
+	console.log(a) // 400
+}
+
+console.log(a) // 400
+
+
+</script>
+
+</body>
+</html>

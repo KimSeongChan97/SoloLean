@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>LET</title>
+</head>
+<body>
+
+<script type="text/javascript">
+//지역변수, 구역단위
+let a = 100;
+a = 250;
+console.log(a) // 250
+
+{
+	let a = 200;
+	console.log(a) // 200
+	}
+
+
+
+</script>
+
+</body>
+</html>

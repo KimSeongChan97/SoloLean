@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>증감 연산자</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// 증감 연산자
+
+let num = 5;
+
+num++; //6 , 후행
+document.write("num = " + num + "<br>");
+
+
+++num; //7 , 선행
+document.write("num = " + num + "<br>");
+
+</script>
+</body>
+</html>

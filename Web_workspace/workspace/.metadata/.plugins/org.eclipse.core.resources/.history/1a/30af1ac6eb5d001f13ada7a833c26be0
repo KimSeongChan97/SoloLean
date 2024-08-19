@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IF 적용하기</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // if 문: 조건에 따라 코드를 실행하는 제어문입니다.
+    // 사용자가 입력한 점수를 바탕으로 학점을 계산하는 코드입니다.
+
+    // prompt() 함수는 사용자에게 입력을 요청하는 함수입니다.
+    // 사용자가 입력한 값은 문자열로 반환되기 때문에, 숫자로 비교하려면 필요에 따라 변환이 필요합니다.
+    // 여기서는 단순히 사용자가 입력한 점수를 score 변수에 저장합니다.
+    let score = prompt("당신의 점수 입력 : ");
+
+    // 조건문 if-else if-else를 사용하여 점수에 따라 학점을 부여합니다.
+    // 조건은 위에서부터 차례로 평가되며, 가장 먼저 해당되는 조건의 코드를 실행하고 이후의 조건은 무시됩니다.
+    
+    if(score >= 90) {
+        // 점수가 90 이상일 경우, grade는 "A학점"이 됩니다.
+        grade = "A학점";
+    }
+    else if(score >= 80) {
+        // 점수가 80 이상 90 미만일 경우, grade는 "B학점"이 됩니다.
+        grade = "B학점";
+    }
+    else if(score >= 70) {
+        // 점수가 70 이상 80 미만일 경우, grade는 "C학점"이 됩니다.
+        grade = "C학점";
+    }
+    else if(score >= 60) {
+        // 점수가 60 이상 70 미만일 경우, grade는 "D학점"이 됩니다.
+        grade = "D학점";
+    }
+    else {
+        // 위의 모든 조건에 해당하지 않으면, grade는 "F학점"이 됩니다.
+        grade = "F학점";
+    }
+
+    // document.write()를 사용하여 결과를 화면에 출력합니다.
+    // 사용자에게 입력받은 점수와 그에 따른 학점을 출력합니다.
+    document.write("당신의 점수는 " + score + "점 이므로 " + grade + " 입니다. ");
+
+</script>
+</body>
+</html>

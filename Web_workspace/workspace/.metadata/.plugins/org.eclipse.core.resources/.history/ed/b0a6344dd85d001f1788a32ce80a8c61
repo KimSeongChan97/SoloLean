@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	
+</body>
+</html>
+
+<!--
+HTML 페이지에 결과 출력
+
+HTML 페이지의 <body> 태그 안을 document(문서)라고 부른다.
+Document document;
+
+<body> 안에 새로운 내용을 출력
+document.write("출력할 내용");
+
+<body> 태그 안에 출력되는 내용이므로, 다른 HTML 태그를 포함하여 출력할 수 있다.
+-->

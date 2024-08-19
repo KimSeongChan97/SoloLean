@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebPage만들어보기</title>
+<link rel="stylesheet" href="./main.css">
+</head>
+<body>
+	<dl class="skip">
+		<dt class="blind">skip naigation</dt>
+		<dd>
+			<a href="#content">skip to content</a>
+	</dl>
+	<!-- //skip -->
+	<hr />
+	
+	<div id="wrap">
+		<div id="header">
+			<h1 class="logo">
+				<a href="#">LOGO</a>
+			</h1>
+
+			<dl class="topnav">
+				<!-- 목록 리스트 -->
+				<dt class="blind">top navigation</dt>
+				<!-- 목록 설명 단어 -->
+				<dd>
+					<a href="#">Login</a>
+				</dd>
+				<!-- 목록들... -->
+				<dd>
+					<a href="#">Member join</a>
+				</dd>
+				<dd>
+					<a href="#">Sitemap</a>
+				</dd>
+			</dl>
+
+			<h2 class="blind">main navigation</h2>
+			<ul class="mainnav">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact us</a></li>
+			</ul>
+		</div>
+		<!-- header -->
+		<hr />
+
+		<div id="container">
+			<div class="snb">
+				<h2>About</h2>
+				<ul>
+					<li><a href="#">Company Info</a></li>
+					<li><a href="#">History</a></li>
+					<li><a href="#">Location</a></li>
+				</ul>
+			</div>
+			<!-- snb -->
+			<hr />
+
+			<div id="content">
+				<p class="locate">
+					<a href="#">Home</a> &gt;
+					<a href="#">About</a> &gt;
+					<strong>Company Info</strong> 
+				</p>
+				
+				<h2>Company Info</h2>
+				<p class="thum">
+					<img src="../image/treethum.png" alt="tree thumnail photo">
+				</p>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Iusto, ea, impedit ut perspiciatis assumenda ipsam minus veritatis
+					tenetur nisi commodi laboriosam quae sint nulla? Obcaecati,
+					corrupti, placeat, quasi repudiandae deleniti quod aliquam facere
+					vitae cumque sapiente sequi qui asperiores eos ipsum perferendis
+					tenetur veritatis nesciunt dolores corporis sint nisi numquam
+					excepturi dolor aspernatur natus provident et itaque quaerat saepe
+					unde quo quidem odit sunt soluta animi incidunt beatae. Quod, amet
+					recusandae earum iste debitis! Amet, expedita, aperiam, sint omnis
+					fuga magnam eos quidem alias soluta nobis sunt unde incidunt!
+					Ratione, autem eligendi molestiae saepe et numquam facilis pariatur
+					voluptates ipsum!</p>
+					<br>					
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Iusto, ea, impedit ut perspiciatis assumenda ipsam minus veritatis
+					tenetur nisi commodi laboriosam quae sint nulla? Obcaecati,
+					corrupti, placeat, quasi repudiandae deleniti quod aliquam facere
+					vitae cumque sapiente sequi qui asperiores eos ipsum perferendis
+					tenetur veritatis nesciunt dolores corporis sint nisi numquam
+					excepturi dolor aspernatur natus provident et itaque quaerat saepe
+					unde quo quidem odit sunt soluta animi incidunt beatae. Quod, amet
+					recusandae earum iste debitis! Amet, expedita, aperiam, sint omnis
+					fuga magnam eos quidem alias soluta nobis sunt unde incidunt!
+					Ratione, autem eligendi molestiae saepe et numquam facilis pariatur
+					voluptates ipsum!</p>
+				</div><!-- class=text -->
+			</div>
+			<!-- content -->
+		</div>
+		<!-- container -->
+		<hr />
+
+		<div id="footer">
+			<dl class="btmnav">
+				<dt class="blind">bottom navigation</dt>
+				<dd>
+					<a href="#">About</a>
+				</dd>
+				<dd>
+					<a href="#">Services</a>
+				</dd>
+				<dd>
+					<a href="#">Portfolio</a>
+				</dd>
+				<dd>
+					<a href="#">Contact us</a>
+				</dd>
+				<dd>
+					<a href="#">Location</a>
+				</dd>
+			</dl>
+
+			<p class="copy">
+				Copyright &copy; COMPANY Design<br> Powered by Webazit, e-mail 
+				: webmaster@company.com
+			</p>
+		</div>
+		<!-- footer -->
+	</div>
+	<!-- wrap -->
+
+</body>
+</html>
+
+<!-- 
+Skip Navigation
+Skip Navigation 사용하는 가장 큰 이유는 사용자 편의 및 웹 접근성이다.
+
+웹 접근성이라고 하면 우리나라에서는 장애인에 대한 편의를 제공하는 것이다.
+
+본문으로 이동하기 위해서는 대 메뉴와 좌측 메뉴 등과 같이 반복적으로 제공되는 링크를 모두 거쳐야만 한다. 즉, Tab키/방향키을 반복적으로 눌러야하는 불필요한 행동을 해야하는 것이다. 이는 웹 접근성을 저해하는 주요인이 된다. 그래서 사용자 특히 장애인이 반복적인 링크들로 인해 불편해 하지 않고, 원하는 영역 즉 ‘본문’으로 바로 이동할 수 있는 건너뛰기 링크를 반드시 제공해야 한다.
+
+하지만 더 큰 범위에서는 정상적으로 쓸 수 없는 상황에 대해서도 편의를 제공하는 것이다.
+
+가령 내가 마우스가 고장났다면?
+또는 키보드를 못쓴다면? 
+
+여기서 Skip Navigation는 키보드만으로 접근을 하는 사용자를 위한 편의를 제공하는 경우도 있다
+마우스로 우리가 보고자 하는 본문 내용 쪽으로 포커스를 움직인다면 편리하겠지만, 
+키보드만으로 쓰는 경우는 본문으로 가기까지 거쳐야 하는 메뉴들이 많다. 
+그래서 HTML 가장 상단에 Skip Navigation를 만들어 놓는다.
+
+Skip Navigation는 <body>다음으로 나오는 것이 가장 적절하다
+
+[본문 바로가기]  [메뉴 바로가기]  [하단정보 바로가기]
+등의 Skip Navigation가 가장 많다.
+
+HTML
+<div class="skipnav">
+<ul>
+    <li><a href="본문 아이디값">본문으로 이동</a></li>
+    <li><a href="하단정보 아이디값">하단정보 바로가기</a></li>
+</ul>
+</div>
+
+CSS
+.skipnav a {display:none}
+.skipnav a:focus,
+.skipnav a:active {display:block;}
+
+css 는 만들기 나름이다. js나 css3를 써서 움직임을 줄 수도 있고, 
+position을 이용하여 display:none이 아닌 화면에서 보이지 않게 한 후 포커스가 가면 나오게 할 수도 있다. -->
