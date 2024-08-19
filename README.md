@@ -7,20 +7,20 @@ https://blog.naver.com/sck2270
 - ...
 - https://developers.kakao.com/
 - 이용하기..
+.
+.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.
+.
+.
+.
+.
+.
+.
+.
+JSP
+(JSON)
+FE -> Script 더욱더 자세히 공부하기
 이력서를
 잡코리아/사람인/노동부 에 기재하면서 
 원하는 기술스택들을 찾아봐야 한다..!
