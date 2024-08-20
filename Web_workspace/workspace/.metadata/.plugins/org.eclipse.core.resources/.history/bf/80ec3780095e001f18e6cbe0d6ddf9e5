@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+</head>
+<body>
+	<h3>1~10 사이의 덧셈 문제를 발생합니다.</h3>
+	
+	<p>덧셈 문제(난수) 구하기</p>
+	
+	<input type="button" value="문제 생성" onclick="start()" />
+	
+	 <!-- 문제와 결과 버튼 -->
+	<p id="problem">문제 표시</p>
+	
+	<!-- 결과 표시 -->
+	<p id="result">결과</p>
+	
+<script type="text/javascript">
+// 난수 생성
+function start() {
+	var x = Math.floor(Math.random() * 10) + 1;
+	var y = Math.floor(Math.random() * 10) + 1;
+	
+	//문제 표출
+	document.getElementById("problem").innerHTML = x + " + " + y + " = ? <br>";
+	//결과보기 버튼 및 답 표사
+	document.getElementById("problem").innerHTML 
+	+= '<input type="button" value="결과보기" onclick="printResult(' + x + ',' + y + ')" />';
+	
+}
+
+//결과 보여주기
+function printResult(x, y) {
+	// 계산
+	var result = x + y;
+	//결과
+	document.getElementById("result").innerHTML =
+		'<span style="color: red;">답: ' + result + '</span>';
+}
+
+</script>
+</body>
+</html>
+
+
+<!-- 
+코드 분석:
+
+1. start() 함수:
+   - 사용자가 "문제 생성" 버튼을 클릭하면 이 함수가 호출됩니다.
+   - 이 함수는 1~10 사이의 두 난수를 생성하고, 그 숫자들로 덧셈 문제를 화면에 표시합니다.
+   - 화면에 문제를 표시할 때 '결과보기' 버튼도 함께 표시되며, 이 버튼을 클릭하면 printResult() 함수가 호출됩니다.
+
+2. printResult() 함수:
+   - '결과보기' 버튼을 클릭하면 이 함수가 호출됩니다.
+   - 이 함수는 앞서 생성된 두 난수를 더한 결과를 계산하고, 그 결과를 빨간색으로 화면에 표시합니다.
+
+3. DOM 제어:
+   - document.getElementById("problem")를 사용하여 HTML에서 id가 'problem'인 <p> 태그를 가져옵니다. 그 내용(innerHTML)을 덧셈 문제와 '결과보기' 버튼으로 업데이트합니다.
+   - 결과는 document.getElementById("result")로 가져온 <p> 태그에 빨간색으로 표시됩니다.
+
+4. Math.random():
+   - Math.random()을 사용하여 0 이상 1 미만의 난수를 생성하고, 여기에 10을 곱한 후 Math.floor()로 소수점을 버려 1~10 사이의 정수를 만듭니다.
+
+이 코드의 주요 개념은 이벤트 처리, 난수 생성, DOM 제어 및 동적으로 HTML 요소를 업데이트하는 방법을 학습하는 데 있습니다. 초보자도 이해하기 쉬운 방식으로 구성되었습니다.
+-->

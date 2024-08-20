@@ -1,0 +1,12 @@
+// 먼저, 빈 객체로 생성
+/*
+
+ //클래스 선언
+public class Calc {
+}
+
+//객체 생성
+Calc calc = new Calc();
+
+*/
+var calc = {}

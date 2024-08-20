@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>연습문제 또다른 답안</title>
+    <!-- 페이지의 문자 인코딩을 UTF-8로 설정하여 한글이 깨지지 않게 함 -->
+</head>
+<body>
+
+<h3>1~10사이의 덧셈 문제를 발생합니다.</h3><br>
+<!-- 사용자에게 1부터 10 사이의 숫자 덧셈 문제를 제시할 것을 설명하는 제목 -->
+
+<!-- 문제를 생성하는 버튼. 버튼을 클릭하면 start() 함수가 실행됨 -->
+<input type="button" value="문제 생성" onclick="start()" />
+
+<h3>결과보기 버튼을 누르면 답이 빨간색으로 보인다.</h3>
+<!-- 덧셈 문제의 답을 빨간색으로 표시할 것을 설명하는 제목 -->
+
+<!-- 문제를 표시할 영역 -->
+<div id="question"></div>
+
+<!-- 결과를 보여주는 버튼. 버튼을 클릭하면 printResult() 함수가 실행됨 -->
+<input type="button" value="결과보기" onclick="printResult()" />
+
+<!-- 덧셈 문제의 결과를 출력할 영역 -->
+<div id="result"></div>
+
+<script type="text/javascript">
+// 변수를 선언하여 전역에서 사용할 수 있도록 설정. 덧셈 문제에 사용될 숫자 x와 y
+let x;
+let y;
+
+// 덧셈 문제를 생성하는 함수
+function start() {
+    // Math.random()은 0과 1 사이의 난수를 생성하므로 이를 10을 곱하고 정수로 변환한 후 1을 더해 1부터 10까지의 숫자를 만듦
+    x = parseInt(Math.random() * 10 + 1);
+    y = parseInt(Math.random() * 10 + 1);
+    
+    // 생성된 덧셈 문제를 id가 "question"인 div 요소에 표시
+    document.getElementById("question").innerText = x + " + " + y + " = ?";
+}
+
+// 덧셈 문제의 답을 출력하는 함수
+function printResult() {
+    // x와 y의 합을 구하여 total 변수에 저장
+    let total = x + y;
+    
+    // 이전에 주석 처리된 document.write() 방식 대신, id가 "result"인 요소의 innerHTML을 사용해 결과를 표시
+    // 결과를 빨간색으로 표시하기 위해 <font color='red'> 태그를 사용
+    document.getElementById("result").innerHTML = x + " + " + y + " = <font color='red'>" + total + "</font>";
+}
+</script>
+</body>
+</html>

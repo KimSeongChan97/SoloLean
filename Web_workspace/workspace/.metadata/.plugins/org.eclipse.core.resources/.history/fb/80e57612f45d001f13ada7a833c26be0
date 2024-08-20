@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// java 라면.. public int f(int x, int y) { ...};
+function f(x, y) { 
+	var z = x + y;
+	
+	if (z < 10) {
+		return; // 함수를 벗어나라
+	}
+	return z; // 반환
+}
+
+let a = f(2, 1);
+
+document.write("<h3>" + a + "</h3>"); // undefined , a에 지정 값이 없음
+
+let b = f(5, 7);
+let c = f(10.9, 5.4);
+
+document.write("<h3>" + b + "</h3>"); // 12
+document.write("<h3>" + c + "</h3>"); // 16.200000000000003
+
+
+</script>
+</body>
+</html>

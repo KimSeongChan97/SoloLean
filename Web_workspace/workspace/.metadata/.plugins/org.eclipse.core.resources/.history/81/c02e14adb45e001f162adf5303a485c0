@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+</head>
+<body>
+	<h3>1~10 사이의 덧셈 문제를 발생합니다.</h3>
+		
+	<input type="button" value="문제 생성" onclick="start()" />
+	
+	<p id="problem">문제 표시</p>
+	
+	<p id="result">결과</p>
+	
+<script type="text/javascript">
+	function start() {
+		var x = Math.floor(Math.random() * 10) + 1;
+		var y = Math.floor(Math.random() * 10) + 1;
+		
+		document.getElementById("problem").innerHTML = x + " + " + y + " = ? <br>";
+		document.getElementById("problem").innerHTML 
+		+= '<input type="button" value="결과보기" onclick="printResult(' + x + ',' + y + ')" />';
+	}
+
+	function printResult(x, y) {
+		var result = x + y;
+		
+		document.getElementById("result").innerHTML =
+			'<span style="color: red;">답: ' + result + '</span>';
+	}
+
+</script>
+</body>
+</html>

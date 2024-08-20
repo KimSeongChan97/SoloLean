@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.myid {
+	background: #ff0; /* 노란색 배경 */
+	font-size: 20px; /* 글씨 크기 20px */
+	font-weight: bold; /* 글씨를 굵게 설정 */
+	color: #00f; /* 글씨 색상을 파란색으로 설정 */
+}
+</style>
+</head>
+<body>
+
+	<h1 class="myid">안녕하세요.</h1>
+	<h1 class="myid">자바스크립트 입니다.</h1>
+	<h1 class="myid">강의 참 재미있죠?</h1>
+
+	<a href="#" onclick="doPrint()">자바스크립트 함수 호출하기</a>
+
+		<script type="text/javascript">
+			function doPrint() {
+				var myTags = document.getElementsByClassName("myid");
+				alert(myTags);
+				
+				for(var i=0; i<myTags.length; i++) {
+					myTags[i].innerText = "스크립트가 실행되었습니다.";
+				}
+				
+			}		
+		</script>
+</body>
+</html>
+
+<!--
+    속성 class="" 로 지정된 Element 얻어오기
+    
+getElementsByClassName()
+HTMLCollection 타입 리턴 (객체 타입)
+
+    CSS 선택자를 이용하여 지정된 Element 얻어오기
+    
+1. querySelector()
+1개
+파라메터로 CSS 선택자를 넣어준다.
+
+    
+2. querySelectorAll()
+여러개
+파라메터로 CSS 선택자를 넣어준다.
+NodeList 타입 리턴
+-->

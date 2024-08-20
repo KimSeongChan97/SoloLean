@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* class가 myid인 요소에 대해 CSS 스타일을 지정합니다.
+   배경색은 노란색(#ff0), 글자 크기는 20px, 글씨는 굵게, 글자색은 파란색(#00f)으로 설정 */
+.myid {
+	background: #ff0; /* 노란색 배경 */
+	font-size: 20px; /* 글씨 크기 20px */
+	font-weight: bold; /* 글씨를 굵게 설정 */
+	color: #00f; /* 글씨 색상을 파란색으로 설정 */
+}
+</style>
+</head>
+<body>
+
+	<!-- 세 개의 h1 요소에 공통적으로 class="myid"가 지정되어 있습니다. 
+	     이를 통해 동일한 스타일이 적용되며, 자바스크립트를 통해 한꺼번에 제어할 수 있습니다. -->
+	<h1 class="myid">안녕하세요.</h1>
+	<h1 class="myid">자바스크립트 입니다.</h1>
+	<h1 class="myid">강의 참 재미있죠?</h1>
+
+	<!-- 사용자가 클릭할 수 있는 링크입니다. 클릭 시 자바스크립트의 doPrint 함수가 호출되도록 설정 -->
+	<a href="#" onclick="doPrint()">자바스크립트 함수 호출하기</a>
+
+	<script type="text/javascript">
+			/* querySelectorAll()은 CSS 선택자와 일치하는 모든 요소를 NodeList 객체로 반환합니다.
+			   여기서는 class가 'myid'인 모든 h1 요소를 선택합니다. */
+			var myTags = document.querySelectorAll(".myid");
+			
+			// alert() 함수로 myTags 객체가 NodeList임을 확인할 수 있습니다.
+			// 여기서는 NodeList가 반환되므로 세 개의 h1 요소가 모두 포함됩니다.
+			alert(myTags);
+			
+			/* for 루프를 사용하여 myTags의 모든 요소에 접근합니다.
+			   myTags는 NodeList이므로 배열처럼 인덱스를 사용하여 각 요소에 접근할 수 있습니다.
+			   루프를 통해 각 요소의 innerText 속성을 '스크립트가 실행되었습니다.'로 변경합니다.
+			   따라서 세 개의 h1 요소가 모두 동일한 텍스트로 변경됩니다. */
+			for(var i=0; i<myTags.length; i++) {
+				myTags[i].innerText = "스크립트가 실행되었습니다.";
+			}
+	</script>
+</body>
+</html>
+
+<!--
+    querySelectorAll() 함수는 CSS 선택자와 일치하는 모든 요소를 선택하여 NodeList로 반환합니다.
+    이 예제에서는 class="myid"인 모든 h1 요소를 선택하고, 각각의 요소에 대해 반복문을 실행하여
+    텍스트를 변경합니다.
+    
+    NodeList는 배열과 유사한 객체로, 인덱스를 사용해 각 요소에 접근할 수 있으며,
+    이 예제에서는 for 루프를 사용하여 모든 h1 요소의 innerText 속성을
+    '스크립트가 실행되었습니다.'로 변경합니다.
+
+    주의: NodeList는 배열과 비슷하지만 완전한 배열은 아니므로, 필요할 경우 
+    Array.from()을 사용해 배열로 변환할 수 있습니다.
+-->

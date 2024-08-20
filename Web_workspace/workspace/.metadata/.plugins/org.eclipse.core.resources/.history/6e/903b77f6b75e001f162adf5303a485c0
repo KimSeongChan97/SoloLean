@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* doPrint 함수는 num이라는 매개변수를 받아 실행된 횟수에 대한 메시지를 
+   alert로 표시하고, HTML 요소의 내용을 해당 메시지로 변경하는 역할을 합니다. */
+function doPrint(num) { // 구현
+	// msg 변수에 실행 횟수를 알려주는 문자열을 저장합니다.
+	var msg ="doPrint()가 " + num + "회 실행되었습니다.";
+	
+	// 경고창(alert)을 통해 msg의 내용을 사용자에게 출력합니다.
+	alert(msg);
+	
+	// id가 'myid'인 HTML 요소의 내부 텍스트를 msg의 내용으로 변경합니다.
+	// innerHTML은 해당 요소의 내부 HTML을 설정하는 속성입니다.
+	document.getElementById("myid").innerHTML = msg;
+}
+
+// 페이지가 로드될 때 최초로 doPrint 함수가 호출되며, num 값으로 1을 전달합니다.
+// 따라서 페이지가 로드될 때 'doPrint()가 1회 실행되었습니다.'라는 경고창이 뜨고,
+// 해당 메시지가 <h1> 요소에 표시됩니다.
+doPrint(1); // 호출
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		// 페이지 로드 후 두 번째로 doPrint 함수가 호출되며, num 값으로 2를 전달합니다.
+		// 따라서 'doPrint()가 2회 실행되었습니다.'라는 메시지가 경고창으로 출력되고
+		// <h1> 요소의 내용이 다시 변경됩니다.
+		doPrint(2); // 호출
+	</script>
+	
+	<!-- 이 <h1> 요소는 초기 텍스트로 '안녕하세요.'라는 문구를 가지고 있지만,
+	     JavaScript doPrint 함수에 의해 이 텍스트는 실행 횟수를 알려주는 메시지로 변경됩니다. -->
+	<h1 id="myid">안녕하세요.</h1>
+	
+	<script type="text/javascript">
+		// 세 번째로 doPrint 함수가 호출되며, num 값으로 3을 전달합니다.
+		// 경고창에는 'doPrint()가 3회 실행되었습니다.'라는 메시지가 출력되고,
+		// <h1> 요소의 내용은 다시 이 메시지로 변경됩니다.
+		doPrint(3); // 호출
+	</script>
+	
+	
+</body>
+</html>
+
+<!-- doPrint(num) 함수: 이 함수는 매개변수로 받은 num 값을 기반으로, 몇 번째로 함수가 실행되었는지를 알리는 메시지를 경고창(alert)으로 
+표시하고, 동시에 해당 메시지를 HTML 요소의 내용으로 변경합니다.
+
+경고창과 HTML 요소 업데이트: alert(msg)를 통해 사용자에게 알림창이 표시되고, 
+document.getElementById("myid").innerHTML = msg;는 id가 "myid"인 <h1> 요소의 내용을 해당 메시지로 변경합니다.
+
+함수 호출:
+처음 페이지가 로드되면서 첫 번째로 doPrint(1)이 호출됩니다. 이때 경고창이 뜨고 <h1> 요소의 내용이 변경됩니다.
+이어서 두 번째, 세 번째 호출도 각각 num 값에 맞게 경고창과 <h1> 요소의 내용이 업데이트됩니다. -->

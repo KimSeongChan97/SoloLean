@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body {
+		text-align: center;
+		font-family: Arial, sans-serif;
+		background-color: #f4f4f4;
+		margin: 0;
+		padding: 20px;
+	}
+	.choices {
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+	}
+	.choices img {
+		width: 100px;
+		height: 100px;
+		margin: 0 20px;
+		cursor: pointer;
+	}
+	.result {
+		margin-top: 30px;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	
+</style>
+</head>
+<body>
+
+	<h1> 가위 바위 보 게임 </h1>
+	
+	<div class="choises">
+		<img src="rock.png" alt="바위" id="rock">
+		<img src="paper.png" alt="보" id="paper">
+		<img src="scissors.png" alt="가위" id="scissors">
+	</div>
+	
+	<div class="result" id="result"></div>
+	
+	
+</body>
+</html>

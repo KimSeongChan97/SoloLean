@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보 게임 만들기</title>
+<style type="text/css">
+/* 페이지의 기본 스타일을 정의하는 CSS 코드 */
+body {
+	text-align: center; /* 텍스트를 중앙 정렬 */
+	font-family: Arial, sans-serif; /* 웹 페이지의 기본 글꼴을 Arial로 설정 */
+	background-color: #f4f4f4; /* 페이지 배경색을 밝은 회색으로 설정 */
+	margin: 0; /* 페이지의 기본 여백을 없앰 (브라우저의 기본 여백 제거) */
+	padding: 20px; /* 페이지 전체에 20px의 내부 여백(padding)을 줌 */
+}
+
+/* 선택지 이미지를 담는 컨테이너 스타일 */
+.choices {
+	display: flex; /* 컨테이너 안의 아이템들을 가로로 정렬 (flexbox 사용) */
+	justify-content: center; /* 아이템들을 가로 방향으로 중앙에 배치 */
+	margin-top: 20px; /* 컨테이너와 그 위의 요소 간의 간격을 20px로 설정 */
+	gap: 20px; /* 선택지 이미지들 간의 간격을 20px로 설정 (간격이 일정해짐) */
+}
+
+/* 각 이미지에 대한 스타일 */
+.choices img {
+	width: 100px; /* 이미지의 가로 크기를 100px로 설정 */
+	height: 100px; /* 이미지의 세로 크기를 100px로 설정 */
+	margin: 0 20px; /* 각 이미지 간의 좌우 간격을 20px로 설정 */
+	cursor: pointer; /* 이미지 위에 마우스를 올렸을 때 손가락 모양 커서로 변경 */
+}
+
+/* 결과 텍스트의 스타일 */
+.result {
+	margin-top: 30px; /* 결과 텍스트와 그 위의 요소 간에 30px 간격을 둠 */
+	font-size: 30px; /* 텍스트의 크기를 30px로 설정 (크게 보임) */
+	font-weight: bold; /* 텍스트를 굵게 설정 */
+	color: blue; /* 텍스트 색상을 파란색으로 설정 */
+}
+
+/* 남은 금액과 베팅 금액 텍스트의 스타일 */
+.status {
+	margin-top: 20px; /* 상태 텍스트와 그 위의 요소 간에 20px 간격을 둠 */
+	font-size: 20px; /* 텍스트 크기를 20px로 설정 (결과 텍스트보다 작음) */
+	font-weight: bold; /* 텍스트를 굵게 설정 */
+	color: red; /* 텍스트 색상을 빨간색으로 설정 */
+}
+
+</style>
+</head>
+<body>
+
+	<h1>가위 바위 보 게임</h1>
+	<!-- 페이지 상단에 게임의 제목을 표시 -->
+
+	<!-- 입력 -->
+	<div>
+		<!-- 사용자가 초기 금액을 입력할 수 있는 입력 필드와 게임을 시작하는 버튼 -->
+		<label for="money">초기 금액을 입력하세요 (원): </label> 
+		<input type="number" id="money" value="1000"> 
+		<!-- 사용자가 초기 금액을 입력하는 필드, 기본값은 1000원 -->
+		
+		<button onclick="startGame()">게임 시작</button> 
+		<!-- 버튼을 클릭하면 startGame() 함수가 실행되어 게임이 시작됨 -->
+	</div>
+
+	<!-- 선택 -->
+	<div class="choises" id="gameArea" style="display: none;">
+		<!-- 가위, 바위, 보 이미지를 선택하는 영역 (게임 시작 전에는 숨겨져 있음) -->
+		<img src="../image/rock.png" alt="바위" onclick="Game('바위')"> 
+		<!-- 사용자가 바위 이미지를 클릭하면 'Game' 함수에 '바위' 값이 전달되어 게임이 진행됨 -->
+		
+		<img src="../image/paper.png" alt="보" onclick="Game('보')"> 
+		<!-- 사용자가 보 이미지를 클릭하면 'Game' 함수에 '보' 값이 전달되어 게임이 진행됨 -->
+		
+		<img src="../image/scissors.png" alt="가위" onclick="Game('가위')"> 
+		<!-- 사용자가 가위 이미지를 클릭하면 'Game' 함수에 '가위' 값이 전달되어 게임이 진행됨 -->
+	</div>
+
+	<!-- 결과 -->
+	<div class="result" id="result"></div>
+	<!-- 게임 결과를 표시할 영역. 게임이 진행될 때마다 여기에 결과가 출력됨 -->
+
+	<!-- 남은 금액과 베팅 금액 -->
+	<div class="status" id="status"></div>
+	<!-- 남은 금액과 베팅 금액을 표시할 영역. 초기에는 비어있고, 게임이 진행되면서 업데이트됨 -->
+
+	<script type="text/javascript">
+		// JavaScript 코드 시작
+		
+		var choices = ['가위', '바위', '보']; 
+		// choices 배열은 컴퓨터가 무작위로 선택할 수 있는 '가위', '바위', '보' 값을 가짐
+		
+		var resultText = document.getElementById('result'); 
+		// 게임 결과를 표시할 HTML 요소(result ID)를 참조하는 변수
+		
+		var statusText = document.getElementById('status'); 
+		// 남은 금액과 베팅 금액을 표시할 HTML 요소(status ID)를 참조하는 변수
+		
+		var betting = 0; 
+		// 사용자의 남은 금액을 저장하는 변수. 게임이 시작될 때 사용자가 입력한 초기 금액이 할당됨
+		
+		// 게임 시작 함수
+		function startGame() {
+			// 사용자가 게임 시작 버튼을 클릭하면 호출되는 함수
+			
+			var moneyInput = document.getElementById('money').value; 
+			// 사용자가 입력한 초기 금액 값을 가져옴
+			
+			betting = parseInt(moneyInput); 
+			// 입력받은 초기 금액을 숫자로 변환하여 betting 변수에 저장 (남은 금액 관리)
+			
+			if (betting > 0) { 
+				// 사용자가 유효한 금액(0보다 큰 값)을 입력했는지 확인
+				
+				document.getElementById('gameArea').style.display = 'flex'; 
+				// 게임 선택 영역을 화면에 표시 (게임 시작 전에는 숨겨져 있었음)
+				
+				statusText.textContent = '남은 금액: ' + betting + ' 원'; 
+				// 현재 남은 금액을 상태 텍스트에 출력
+			} else {
+				alert('초기 금액이 0원 이상이어야 합니다!'); 
+				// 초기 금액이 0 이하일 경우 경고 메시지 표시
+			}
+		}
+		
+		
+		function Game(me) {
+			// 사용자가 가위, 바위, 보 중 하나를 클릭하면 호출되는 함수
+			// me 매개변수는 사용자가 선택한 값을 나타냄
+			
+			if (betting >= 100) { 
+				// 남은 돈이 100원 이상일 때만 게임을 진행할 수 있음
+				
+				betting -= 100; 
+				// 게임이 시작되면 100원이 차감됨 (게임당 100원 고정)
+				
+				var com = choices[Math.floor(Math.random() * 3)]; 
+				// 컴퓨터가 무작위로 '가위', '바위', '보' 중 하나를 선택함
+				
+				var result; 
+				// 게임 결과를 저장할 변수
+				
+				// 결과 계산
+				if(me === com) {
+					// 사용자의 선택(me)와 컴퓨터의 선택(com)이 같으면 비김
+					result = ' 비겼습니다! ';
+				} else if(
+					(me === '가위' && com === '보') || 
+					// 사용자가 가위를 선택하고, 컴퓨터가 보를 선택한 경우
+					(me === '바위' && com === '가위') || 
+					// 사용자가 바위를 선택하고, 컴퓨터가 가위를 선택한 경우
+					(me === '보' && com === '바위') 
+					// 사용자가 보를 선택하고, 컴퓨터가 바위를 선택한 경우
+				) {
+					// 사용자가 이기는 경우의 조건
+					result = '이겼습니다!';
+				} else {
+					// 사용자가 지는 경우
+					result = ' 졌습니다.. ';
+				}
+				
+				// 결과, 베팅 금액, 남은 금액 표시
+				resultText.textContent = '[ 컴퓨터: ' + com + ' ] / [ 나: ' + me + ' ] // 결과: ' + result;
+				// 게임 결과를 화면에 출력 (컴퓨터의 선택, 사용자의 선택, 결과)
+				
+				statusText.textContent = '베팅한 금액: 100원, 남은 금액: ' + betting + '원';
+				// 매번 게임이 진행될 때 베팅 금액(100원)과 남은 금액을 상태 텍스트에 출력
+				
+				// 남은 금액이 0원이면 게임 종료
+				if (betting < 100) {
+					alert('돈이 모두 소진되었습니다. 게임이 종료됩니다.');
+					// 남은 금액이 100원 미만이면 경고 메시지를 띄우고 게임을 종료시킴
+					
+					document.getElementById('gameArea').style.display = 'none'; 
+					// 게임 선택 영역을 다시 숨김 (게임 종료)
+				}
+			} else {
+				// 남은 돈이 100원 미만일 때 게임을 진행할 수 없음을 경고
+				alert('돈이 부족하여 게임을 진행할 수 없습니다.');
+				
+				document.getElementById('gameArea').style.display = 'none'; 
+				// 게임 선택 영역을 숨김 (더 이상 진행 불가)
+			} 
+	 	}
+	</script>
+
+</body>
+</html>

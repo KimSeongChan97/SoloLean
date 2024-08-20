@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+</head>
+<body>
+	<h3>1~10 사이의 덧셈 문제를 발생합니다.</h3>
+	
+	<p>덧셈 문제(난수) 구하기</p>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+<!-- 1~10 사이의 난수를 발생합니다. -->
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+</head>
+<body>
+	<h3>1~10 사이의 덧셈 문제를 발생합니다.</h3>
+	
+	<p>덧셈 문제(난수) 구하기</p>
+	
+	<input type="button" value="문제 생성" onclick="printResult()" />
+	
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+<!-- 1~10 사이의 덧셈 문제를 생성. 
+	문제를 생성시 예를들어,
+	3 + 7 = ?	[결과보기]
+				결과보기의 button 생성, 답이 red색으로 보여줘야 함.
+	결과보기 버튼을 누르면 답이 빨간색으로 보인다.
+	
+	난수 발생 => Math.random() 을 이용하여 난수를 만든다
+			( 0 <= 난수 < 1 ) 가 생성됨.			
+
+-->
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* class가 myid인 요소에 대해 CSS 스타일을 지정합니다.
+   배경색은 노란색(#ff0), 글자 크기는 20px, 글씨는 굵게, 글자색은 파란색(#00f)으로 설정 */
+.myid {
+	background: #ff0; /* 노란색 배경 */
+	font-size: 20px; /* 글씨 크기 20px */
+	font-weight: bold; /* 글씨를 굵게 설정 */
+	color: #00f; /* 글씨 색상을 파란색으로 설정 */
+}
+</style>
+</head>
+<body>
+
+	<!-- 세 개의 h1 요소에 공통적으로 class="myid"가 지정되어 있습니다. 
+	     이를 통해 동일한 스타일이 적용되며, 자바스크립트를 통해 제어할 수 있습니다. -->
+	<h1 class="myid">안녕하세요.</h1>
+	<h1 class="myid">자바스크립트 입니다.</h1>
+	<h1 class="myid">강의 참 재미있죠?</h1>
+
+	<!-- 사용자가 클릭할 수 있는 링크입니다. 클릭 시 자바스크립트 함수가 호출되도록 설정 -->
+	<a href="#" onclick="doPrint()">자바스크립트 함수 호출하기</a>
+
+	<script type="text/javascript">
+			/* querySelector()는 첫 번째로 일치하는 요소를 선택합니다.
+			   여기서는 class가 'myid'인 첫 번째 h1 요소를 선택합니다. */
+			var myTag = document.querySelector(".myid");
+			
+			// alert를 사용해 myTag가 올바르게 선택되었는지 확인하기 위해, 선택된 요소를 알림창에 표시합니다.
+			// 여기서 myTag는 첫 번째 h1 요소를 참조하게 됩니다.
+			alert(myTag);
+			
+			/* querySelector로 선택된 첫 번째 h1 요소의 텍스트를 
+			   '스크립트가 실행되었습니다.'로 변경합니다. 
+			   따라서 첫 번째 h1 요소의 텍스트만 바뀌고 나머지는 그대로 유지됩니다. */
+			myTag.innerText = "스크립트가 실행되었습니다.";
+	</script>
+</body>
+</html>
+
+
+<!--
+    querySelector() 함수는 CSS 선택자와 일치하는 첫 번째 요소를 반환합니다.
+    이 예제에서는 class="myid"를 가진 첫 번째 h1 요소를 선택하게 됩니다.
+    
+    선택된 첫 번째 h1 요소는 변수 myTag에 저장되며, 
+    이후 innerText 속성을 통해 해당 요소의 텍스트를 변경할 수 있습니다.
+
+    주의: querySelector()는 일치하는 첫 번째 요소만 반환하므로,
+    페이지 내에서 여러 요소를 대상으로 변경 작업을 수행하고 싶다면 
+    querySelectorAll() 함수를 사용해야 합니다. 이 함수는 모든 일치하는 요소를
+    NodeList로 반환하여 반복문을 통해 각각의 요소를 처리할 수 있게 해줍니다.
+-->
