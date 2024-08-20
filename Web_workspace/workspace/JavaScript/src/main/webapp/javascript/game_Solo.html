@@ -65,7 +65,7 @@ body {
 	</div>
 
 	<!-- 선택 -->
-	<div class="choises" id="gameArea" style="display: none;">
+	<div class="choices" id="gameArea" style="display: none;">
 		<!-- 가위, 바위, 보 이미지를 선택하는 영역 (게임 시작 전에는 숨겨져 있음) -->
 		<img src="../image/rock.png" alt="바위" onclick="Game('바위')"> 	
 		<!-- '바위' 이미지를 클릭하면 'Game' 함수가 호출되고 '바위'라는 값이 함수로 전달됨 -->
@@ -137,10 +137,14 @@ body {
 				var result; 
 				// 게임 결과를 저장할 변수
 				
+				var change; 
+				// 금액의 변동을 저장할 변수
+				
 				// 결과 계산
 				if(me === com) {
 					// 사용자의 선택(me)와 컴퓨터의 선택(com)이 같으면 비김
 					result = ' 비겼습니다! ';
+					change = 0;
 				} else if(
 					(me === '가위' && com === '보') || 
 					// 사용자가 가위를 선택하고, 컴퓨터가 보를 선택한 경우
@@ -151,14 +155,17 @@ body {
 				) {
 					// 사용자가 이기는 경우의 조건
 					result = '이겼습니다!';
+					betting += 200; // 이겼을 경우 베팅 금액에서 100원을 뺀 뒤 다시 200원을 더함 (총 +100)
+					change = 100;   // 금액 변동 저장
 				} else {
 					// 사용자가 지는 경우
 					result = ' 졌습니다.. ';
+					change = -100;  // 금액 변동 저장
 				}			
 				
 				// 결과, 베팅 금액, 남은 금액 표시
-				resultText.textContent = '[ 컴퓨터: ' + com + ' ] / [ 나: ' + me + ' ] // 결과: ' + result;	
-				// 결과를 화면에 표시함 (컴퓨터 선택, 사용자 선택, 결과)
+				resultText.textContent = '[ 컴퓨터: ' + com + ' ] / [ 나: ' + me + ' ] // 결과: ' + result + ' (' + change + '원)';	
+				// 결과를 화면에 표시함 (컴퓨터 선택, 사용자 선택, 결과 및 금액 변동)
 				
 				statusText.textContent = '베팅한 금액: 100원, 남은 금액: ' + betting + '원';
 				// 베팅 금액과 남은 금액을 화면에 표시함
