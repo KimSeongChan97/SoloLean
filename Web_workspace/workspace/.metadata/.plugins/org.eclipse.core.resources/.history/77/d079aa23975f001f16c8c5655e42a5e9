@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 다른 답안</title>
+<style type="text/css">
+#gugudan {
+	white-space: pre;
+}
+
+
+
+</style>
+</head>
+<body>
+	
+	<div id="gugudan"></div>
+		
+    <script type="text/javascript">
+        for(let i=1; i<=9; i++){
+        	let line = "";
+        	
+            for(let dan=2; dan<=9; dan++){
+            	line += `${dan}*${i}=${dan*i}`;
+            } // for
+            document.getElementById("gugudan").innerHTML += line + "\n";
+        }
+    </script>
+</body>
+</html>
