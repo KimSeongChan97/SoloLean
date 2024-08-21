@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	let a = 20;
+	const b = 30;
+	const str1 = a + '와 ' + b + '의 합은 ' + (a+b);
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

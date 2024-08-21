@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열-concat</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	//concat : 배열 합치기, 새로운 배열이 생성, 원본은 변경X (변경할려면 concat으로 복사하고 복사본에 변경)
+	let arr1 = [10, 20, 30];
+	let arr2 = ["사과", "딸기", "바나나"];	
+	let arr3 = arr1.concat(); // 복사본의 의미
+	let arr4 = arr1.concat(arr2);
+	
+	console.log("arr1 = " + arr1);
+	document.write("arr1 = " + arr1 + "<br>");
+	document.write(`arr3 = ${arr3}<br>`);
+	document.write(`arr4 = ${arr4}<br>`);
+	document.write("<hr/>");
+	
+	//배열 요소 추가
+	//push : 배열의 요소에 추가할 때 사용 됨 ( 뒤에다가 추가 )
+	arr1.push(40);
+	arr1.push(50);
+	document.write(`arr1 = ${arr1}<br>`);
+	
+	arr2.push("복숭아", "수박");
+	document.write(`arr2 = ${arr2}<br>`);
+	
+	document.write("<hr/>");
+	
+	//unshift : 배열의 요소에 추가할 때 사용 됨 ( 앞에다가 추가 )
+	arr2.unshift("망고");
+	document.write(`arr2 = ${arr2}<br>`);
+	document.write("<hr/>");
+	// push를 많이 사용한다.. (append 도 있긴 하다.)
+	document.write("<hr/>");
+	
+	//배열 요소 삭제
+	//pop : 배열의 요소에 삭제할 때 사용 됨 ( 뒤에다가 삭제 )
+	arr1.pop();
+	document.write(`arr1 = ${arr1}<br>`);
+	document.write("<hr/>");
+	//shift : 배열의 요소에 삭제할 때 사용 됨 ( 뒤에다가 삭제 )
+		
+	document.write("<hr/>");
+	
+	
+</script>
+</body>
+</html>
+
+<!-- 
+
+함수들에 대한 자세한 설명
+
+ -->

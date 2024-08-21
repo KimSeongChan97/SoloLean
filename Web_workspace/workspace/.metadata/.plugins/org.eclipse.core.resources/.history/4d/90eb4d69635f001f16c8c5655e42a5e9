@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+    text-align: center;
+    font-weight: bold;
+}
+#result{
+    color: red;
+}
+</style>
+</head>
+<body onload = "find()">
+    
+    <h1>3의 배수 찾기</h1>
+    <div id = list></div>
+    <div id = result>
+    <span class = str></span>까지의 3의 배수의 개수 : <span id = count></span><br>
+    <span class = str></span>까지의 3의 배수의 합 : <span id = hap></span>
+    </div>
+<script type="text/javascript">
+function find(){
+    let str = parseInt(prompt("몇 까지의 3의 배수를 찾을까요?", ""));
+    let hap = 0;
+    let num = [];
+    let count = 0;
+    for(let i = 3; i <= str; i+=3){
+        document.getElementById("list").innerHTML += i + ", "
+        hap = hap + i
+        count++;
+    }
+    let mytags = document.querySelectorAll(".str");
+    for(let i = 0; i < mytags.length; i++){
+        mytags[i].innerHTML = str;
+    }
+    document.getElementById("count").innerHTML = count + "개"
+    document.getElementById("hap").innerHTML = hap
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열-1</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	//concat
+	let arr1 = [10, 20, 30];
+	let arr2 = ["사과", "딸기", "바나나"]
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화살표 함수</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+<!-- 
+① 매개변수가 없을 경우
+function(){} → () => { ... }
+
+② 매개변수가 한 개인 경우, 소괄호를 생략 가능
+function(x){} → (x) => { ... }
+
+③ 매개변수가 여러 개인 경우, 소괄호를 생략할 수 없다.
+function(x, y){} → (x, y) => { ... } 
+
+Java 의 람다 표현식과 비교하여..
+
+-->

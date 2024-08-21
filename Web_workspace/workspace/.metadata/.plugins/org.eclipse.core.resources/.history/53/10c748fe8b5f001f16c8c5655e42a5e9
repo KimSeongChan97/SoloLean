@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단 출력</title>
+</head>
+<body>
+    <h1>2단부터 9단까지 구구단 출력</h1>
+    <div id="gugudan"></div>
+
+    <script>
+        // 구구단을 2단부터 9단까지 출력하는 함수
+        function printGugudan() {
+            let output = ''; // 출력할 내용을 저장할 변수
+            for (let i = 2; i <= 9; i++) { // 2단부터 9단까지 반복
+                output += `<h3>${i}단</h3>`; // 각 단의 제목을 출력
+                for (let j = 1; j <= 9; j++) { // 각 단의 1~9까지 반복
+                    output += `${i} * ${j} = ${i * j}<br>`; // 구구단 내용을 출력
+                }
+                output += '<br>'; // 단 사이에 공백을 추가
+            }
+            document.getElementById('gugudan').innerHTML = output; // 결과를 HTML에 출력
+        }
+
+        // 페이지가 로드되면 자동으로 구구단을 출력
+        window.onload = printGugudan;
+    </script>
+</body>
+</html>

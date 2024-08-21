@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>새로 열린 창</h1> <!-- 새로 열린 팝업 창에 표시되는 제목입니다. -->
+	<div>
+		<!-- 사용자가 클릭하면 팝업 창이 닫히도록 하는 링크입니다. -->
+		<a href="#" onclick="window.close(); return false;">창 닫기</a> <!-- window.close() 메서드는 현재 열린 창을 닫습니다. -->
+	</div>
+	
+</body>
+</html>

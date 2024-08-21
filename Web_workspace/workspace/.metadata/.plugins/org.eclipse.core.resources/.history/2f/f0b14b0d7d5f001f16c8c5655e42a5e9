@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+</head>
+<body onload="startTime()">
+	<h1 id="timer">현재 시간을 보여줍니다. </h1>
+
+<script type="text/javascript">
+	/* let now = new Date(); //내장객체
+	document.write(now+"<br/>");
+	document.write(now.toLocaleString()); */
+	
+	function startTime(){ //구현
+		setInterval(() => {
+			let today = new Date();
+			document.write(today.toLocaleString());
+		}, 1000); // 1000 은 1초 (기준은 밀리세컨드)
+	}
+	
+	
+</script>
+</body>
+</html>

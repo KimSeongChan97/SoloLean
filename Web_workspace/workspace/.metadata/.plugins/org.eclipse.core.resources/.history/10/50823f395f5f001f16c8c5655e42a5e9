@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제, 3의 배수 찾기 다른 답안</title>
+</head>
+<body>
+
+	<h1>3의 배수 찾기</h1>
+	
+	<script type="text/javascript">
+		let num = prompt("몇 까지 3의 배수를 찾는가?"); 
+		
+		let count = 0;
+		let sum = 0;
+		
+		alert(num)
+		if (num != null) {
+			for (let i = 1; i <= num; i++) {
+				if (i % 3 == 0) {
+					count++;
+					sum += i;
+					document.write(i + ", ");
+				}
+			}
+			document.write("<div><font color='red'>" + num + "까지 3의 배수의 갯수 : " + count + "</font></div>");
+			document.write("<div><font color='blue'>" + num + "까지 3의 배수의 합 : " + sum + "</font></dic>");
+		}
+	</script>
+</body>
+</html>

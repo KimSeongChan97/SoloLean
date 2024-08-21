@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제, 3의 배수 찾기</title>
+<style type="text/css">
+/* 페이지 전체 레이아웃과 스타일을 설정 */
+body {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 정렬 */
+	justify-content: center; /* 세로 축에서 중앙 정렬 */
+	align-items: center; /* 가로 축에서 중앙 정렬 */
+	height: 100vh; /* 화면 높이의 100%로 설정 */
+	font-size: 1.4em; /* 기본 글씨 크기 설정 */
+}
+
+p {
+	color: red; /* 텍스트 색상 빨간색으로 설정 */
+	font-weight: bold; /* 텍스트 굵게 설정 */
+}
+</style>
+</head>
+<body>
+
+	<h1>3의 배수 찾기</h1>
+	
+	<script type="text/javascript">
+		// 사용자가 입력한 숫자(Number)까지 3의 배수를 찾는 프로그램
+		let Number = parseInt(prompt("몇 까지 3의 배수를 찾는가?", "")); // 사용자에게 숫자를 입력 받음
+		let count = 0; // 3의 배수 갯수를 저장할 변수
+		let sum = 0;   // 3의 배수들의 합을 저장할 변수
+		
+		// 사용자가 숫자를 입력했을 경우에만 실행
+		if (Number !== null) {
+			// 1부터 사용자가 입력한 숫자까지 반복
+			for (let i = 1; i <= Number; i++) {
+				// i가 3의 배수인 경우
+				if (i % 3 === 0) {
+					count++; // 3의 배수 갯수를 증가
+					sum += i; // 3의 배수를 합산
+					document.write(`${i} `); // 3의 배수를 화면에 출력
+				}
+			}
+			// 3의 배수 갯수와 합을 출력
+			document.write(`<p>${Number}까지 3의 배수의 갯수 : ${count}</p>`);
+			document.write(`<p>${Number}까지 3의 배수의 합 : ${sum}</p>`);
+		}
+	</script>
+</body>
+</html>

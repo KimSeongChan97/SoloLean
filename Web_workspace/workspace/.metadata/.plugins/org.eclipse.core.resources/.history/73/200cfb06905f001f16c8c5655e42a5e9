@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단 출력</title>
+    <style>
+        .dan-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .dan {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2단부터 9단까지 구구단</h1>
+
+    <div id="dan" class="dan-container"></div>
+
+    <script>
+        function printDan() {
+            let output = '';
+
+            for (let i = 2; i <= 9; i++) {
+                output += `<div class="dan"><h3>${i}단</h3>`;
+
+                for (let j = 1; j <= 9; j++) {
+                    output += `${i} * ${j} = ${i * j}<br>`;
+                }
+
+                output += '</div>';
+            }
+
+            document.getElementById('dan').innerHTML = output;
+        }
+
+        window.onload = printDan;
+    </script>
+</body>
+</html>

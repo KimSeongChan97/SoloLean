@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제, 3의 배수 찾기</title>
+<style type="text/css">
+body {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 정렬 (위에서 아래로 요소들이 배치됨) */
+	justify-content: center; /* 세로 축에서 중앙 정렬 (세로 가운데에 위치) */
+	align-items: center; /* 가로 축에서 중앙 정렬 (가로 가운데에 위치) */
+	height: 100vh; /* 화면 높이의 100%로 설정 (화면 전체를 사용) */
+	font-size: 1.4em; /* 기본 글씨 크기를 1.4배로 설정 (약간 큰 글씨체) */
+}
+
+p {
+	color: red; /* 텍스트 색상을 빨간색으로 설정 (강조 효과) */
+	font-weight: bold; /* 텍스트 굵게 설정 (강조 효과를 추가) */
+}
+</style>
+</head>
+<body>
+
+	<h1>3의 배수 찾기</h1>
+	
+	<script type="text/javascript">
+		// 사용자에게 숫자를 입력 받음
+		// prompt 함수를 사용해 사용자에게 입력을 요구하고, 입력받은 값을 정수로 변환
+		// "몇 까지 3의 배수를 찾는가?"라는 질문을 띄움
+		let Number = parseInt(prompt("몇 까지 3의 배수를 찾는가?", "")); 
+		
+		let count = 0; // 3의 배수 갯수를 저장할 변수 (초기값은 0)
+		let sum = 0;   // 3의 배수들의 합을 저장할 변수 (초기값은 0)
+		
+		// 사용자가 숫자를 입력했을 경우에만 실행
+		// Number 값이 null이 아니라면 (즉, 사용자가 취소를 누르지 않았을 경우)
+		if (Number !== null) {
+			// 1부터 사용자가 입력한 숫자(Number)까지 반복
+			// for 루프는 i를 1부터 시작해서 i가 Number보다 작거나 같을 때까지 반복
+			for (let i = 1; i <= Number; i++) {
+				// i가 3의 배수인 경우
+				// i % 3 === 0은 i를 3으로 나눈 나머지가 0이라는 뜻, 즉 i가 3의 배수임을 의미
+				if (i % 3 === 0) {
+					count++; // 3의 배수 갯수를 증가 (3의 배수를 찾을 때마다 1씩 증가)
+					sum += i; // 3의 배수를 합산 (sum 변수에 i 값을 더해줌)
+					// 화면에 3의 배수를 출력 (HTML 문서에 직접 출력, 공백으로 구분)
+					// document.write는 HTML 문서에 문자열을 출력하는 함수
+					document.write(`${i} `); // 3의 배수를 화면에 출력, i 값을 텍스트로 출력
+				}
+			}
+			// 3의 배수 갯수와 합을 출력
+			// ${Number}는 템플릿 리터럴을 사용해 변수 Number의 값을 출력
+			// ${count}는 찾아낸 3의 배수의 갯수
+			document.write(`<p>${Number}까지 3의 배수의 갯수 : ${count}</p>`); // 3의 배수의 갯수를 출력
+			document.write(`<p>${Number}까지 3의 배수의 합 : ${sum}</p>`); // 3의 배수의 합을 출력
+		}
+		// 만약 사용자가 입력을 취소하거나 숫자를 입력하지 않으면 아무것도 출력하지 않음
+	</script>
+</body>
+</html>

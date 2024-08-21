@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>History2</title>
+</head>
+<body>
+	<h1>History 객체2</h1>
+	<br>
+	<a href="#" onclick="history.back(); return false;">이전 페이지로 이동</a>
+</body>
+</html>

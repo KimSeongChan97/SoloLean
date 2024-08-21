@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	let today = new Date();
+	let time = today.getTime();
+	
+	document.write(`time = ${time}`); 
+	// 1970년 1월 1일 자정 이후 부터 밀리세컨드를 기준으로 오늘 날까지의 시간을 가져온다
+	
+	document.write(`일 = ${time*3600000}`);
+	
+	
+	
+</script>
+</body>
+</html>

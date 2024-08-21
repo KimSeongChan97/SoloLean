@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 연습 문제</title>
+</head>
+<body>
+	<h1>2단 ~ 9단까지 구하시오.</h1>
+	<div id="dan"></div>
+	
+	<script type="text/javascript">
+		function printDan() {
+			let output = ''; // 내용 저장
+				for (let i=2; i<=9; i++) { //  반복
+					output += '<h3>${i} 단</h3>'; 
+					for (let j=1; j<=9; j++) { // 반복
+						output += `${i} * ${j} = ${i * j}<br>`;
+					}
+					output += '<br>';
+				}
+			document.getElementById('dan').innerHTML = output;
+		}
+		
+		
+	</script>
+</body>
+</html>

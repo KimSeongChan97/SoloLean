@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보 게임 만들기</title>
+<style type="text/css">
+body {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.choices {
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+}
+
+.choices img {
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+
+.result {
+	margin-top: 30px;
+	font-size: 30px;
+	font-weight: bold;
+	color: blue;
+}
+
+.status {
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+}
+
+.status:hover {
+	color: #ff5e62;
+	background-color: #fff;
+}
+
+</style>
+</head>
+<body>
+
+	<h1>가위 바위 보 게임</h1>
+
+	<div>
+		<label for="money">초기 금액을 입력하세요 (원): </label> 
+		<input type="number" id="money" value="1000"> 
+		<button onclick="startGame()">게임 시작</button> 
+	</div>
+
+	<div class="choices" id="gameArea" style="display: none;">
+		<img src="../image/rock.png" alt="바위" onclick="Game('바위')"> 	
+		<img src="../image/paper.png" alt="보" onclick="Game('보')"> 	
+		<img src="../image/scissors.png" alt="가위" onclick="Game('가위')"> 
+	</div>
+
+	<div class="result" id="result"></div>
+	<div class="status" id="status"></div>
+
+	<script type="text/javascript">
+		var choices = ['가위', '바위', '보']; 
+		var resultText = document.getElementById('result'); 
+		var statusText = document.getElementById('status'); 
+		var betting = 0; 
+	
+		function startGame() {
+			var moneyInput = document.getElementById('money').value; 
+			betting = parseInt(moneyInput); 
+			
+			if (betting > 0) { 
+				document.getElementById('gameArea').style.display = 'flex'; 
+				statusText.textContent = '남은 금액: ' + betting + ' 원'; 
+			} else {
+				alert('초기 금액이 0원 이상이어야 합니다!'); 
+			}
+		}
+				
+		function Game(me) {
+			if (betting >= 100) { 
+				betting -= 100; 
+				var com = choices[Math.floor(Math.random() * 3)]; 
+				var result; 
+				var change; 
+				
+				if(me === com) {
+					result = ' 비겼습니다! ';
+					change = 0;
+				} else if(
+					(me === '가위' && com === '보') || 
+					(me === '바위' && com === '가위') || 
+					(me === '보' && com === '바위') 
+				) {
+					result = '이겼습니다!';
+					betting += 200;
+					change = 100;  
+				} else {
+					result = ' 졌습니다.. ';
+					change = -100;  
+				}			
+				
+				resultText.textContent = '[ 컴퓨터: ' + com + ' ] / [ 나: ' + me + ' ] // 결과: ' + result + ' (' + change + '원)';	
+				statusText.textContent = '베팅한 금액: 100원, 남은 금액: ' + betting + '원';
+				
+				if (betting < 100) {
+					alert('돈이 모두 소진되었습니다. 게임이 종료됩니다.');
+					document.getElementById('gameArea').style.display = 'none'; 
+				}
+			} else {
+				alert('돈이 부족하여 게임을 진행할 수 없습니다.');			
+				document.getElementById('gameArea').style.display = 'none'; 
+			} 
+	 	}
+	</script>
+</body>
+</html>

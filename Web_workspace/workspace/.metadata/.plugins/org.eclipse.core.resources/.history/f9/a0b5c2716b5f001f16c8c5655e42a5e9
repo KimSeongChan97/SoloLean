@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열-concat</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	//concat : 배열 합치기
+	let arr1 = [10, 20, 30];
+	let arr2 = ["사과", "딸기", "바나나"];	
+	let arr3 = arr1.concat(); // 복사본의 의미
+	let arr4 = arr1.concat(arr2);
+	
+	console.log("arr1 = " + arr1);
+	document.write("arr1 = " + arr1 + "<br>");
+	document.write(`arr3 = ${arr3}`);
+	
+	
+</script>
+</body>
+</html>

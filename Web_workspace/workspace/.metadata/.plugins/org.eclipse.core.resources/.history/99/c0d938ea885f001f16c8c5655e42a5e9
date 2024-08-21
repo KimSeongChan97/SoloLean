@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!--
+history.forward()
+브라우저가 세션에 저장된 앞 페이지로 이동시켜준다
+다음 페이지가 없으면 아무것도 하지 않는다.
+
+history.back(), history.go(-1)
+  -->

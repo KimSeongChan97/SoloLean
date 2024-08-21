@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+    display: flex; /* Flexbox 레이아웃을 사용하여 요소들을 유연하게 배치 */
+    flex-direction: column; /* 세로 방향으로 정렬 (위에서 아래로 요소들이 배치됨) */
+    justify-content: center; /* 세로 축에서 중앙 정렬 (세로 가운데에 위치) */
+    align-items: center; /* 가로 축에서 중앙 정렬 (가로 가운데에 위치) */
+    height: 100%; /* 화면 높이의 100%를 사용 */
+    font-size: 1.4em; /* 기본 글씨 크기를 1.4배로 설정 */
+}
+
+div {
+color: red; /* div 태그의 텍스트 색상을 빨간색으로 설정 (강조 효과) */
+}
+</style>
+</head>
+<body>
+<h1>3의 배수 찾기</h1>
+    <!-- su라는 id를 가진 p 태그는 3의 배수 목록을 출력할 공간 -->
+    <p id="su"></p>
+    <!-- count라는 id를 가진 div 태그는 3의 배수의 갯수를 출력할 공간 -->
+    <div id="count"></div>
+    <!-- sum이라는 id를 가진 div 태그는 3의 배수의 합을 출력할 공간 -->
+    <div id="sum"></div>
+    
+<script type="text/javascript">
+    // 사용자에게 몇까지 3의 배수를 찾을지 물어봄
+    // prompt 함수를 통해 입력을 받으며, 사용자가 입력한 값은 문자열로 반환됨
+    let num = prompt("몇 까지 3의 배수를 찾는가?"); 
+
+    // 3의 배수의 갯수를 저장할 변수, 처음엔 0으로 초기화
+    let count = 0;
+
+    // 3의 배수들의 합을 저장할 변수, 역시 0으로 초기화
+    let sum = 0;
+
+    // 사용자가 숫자를 입력한 경우에만 아래 코드가 실행됨
+    // null이면 사용자가 입력을 취소했거나 아무것도 입력하지 않았음을 의미
+    if (num != null) {
+        // 1부터 num까지 반복문을 실행하여 3의 배수를 찾음
+        // i는 1부터 시작해 num까지 1씩 증가하면서 각 숫자가 3의 배수인지 확인함
+        for (let i = 1; i <= num; i++) {
+            // i를 3으로 나눈 나머지가 0이면 i는 3의 배수임
+            if (i % 3 == 0) { 
+                count++; // 3의 배수를 찾을 때마다 count 값을 1씩 증가시킴
+                sum += i; // 3의 배수인 i 값을 sum에 더하여 3의 배수의 합을 누적시킴
+
+                // su라는 id를 가진 p 태그에 i 값을 추가로 출력함
+                // innerHTML을 사용하여 공백(&nbsp;)을 포함한 3의 배수 목록을 화면에 출력
+                document.getElementById("su").innerHTML += i + ", &nbsp;";
+            }
+        } // for 문 종료
+
+        // count라는 id를 가진 div 태그에 3의 배수의 갯수를 출력함
+        // innerText를 사용해 사용자에게 입력한 숫자(num)까지 3의 배수의 갯수를 보여줌
+        document.getElementById("count").innerText = num + "까지 3의 배수의 갯수 : " + count;
+
+        // sum이라는 id를 가진 div 태그에 3의 배수의 합을 출력함
+        // innerText를 사용해 사용자에게 입력한 숫자(num)까지의 3의 배수의 합을 보여줌
+        document.getElementById("sum").innerText = num + "까지 3의 배수의 합 : " + sum;
+    
+    } // if 문 종료
+</script>
+</body>
+</html>

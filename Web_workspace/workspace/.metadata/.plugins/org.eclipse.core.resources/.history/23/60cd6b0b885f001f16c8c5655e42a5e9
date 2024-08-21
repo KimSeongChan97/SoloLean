@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입시 인증번호</title>
+</head>
+<body onload="autoNo()">
+	<p>
+		고객님의 인증번호는 <strong id="auth">00000</strong>입니다.
+	</p>
+	
+	<input type="button" value="인증번호 새로 받기" onclick="refresh()"/>	
+	<input type="button" value="네이버로 이동하기" onclick="goNaver()"/>
+	
+	
+<script type="text/javascript">
+function random(x, y) {
+	return Math.floor(Math.random() * (y-x+1) + x); // x~y 사이의 난수 발생
+} 
+
+
+function autoNo() {
+	let value = "";
+		for(let i=1; i<=5; i++){
+			value += random(0, 9); // value = value + (random(0, 9))	
+		}
+	document.getElementById("auth").innerText = value;	
+}
+
+function refresh() {
+	location.reload();
+}
+
+
+</script>
+</body>
+</html>

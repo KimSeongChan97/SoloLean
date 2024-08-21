@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단 출력</title>
+    <style>
+        .dan-container {
+            display: flex; /* 가로배치 */
+            flex-wrap: wrap; /* 반응형, 화면크기에 따라 변화 */
+            justify-content: space-around; /* 단이 동일한 간격 유지하도록 배치 */
+        }
+		
+        .dan {
+            margin: 20px; /* 단의 여백 */
+        }
+    </style>
+</head>
+<body>
+    <h1>2단부터 9단까지 구구단</h1>
+
+    <div id="dan" class="dan-container"></div>
+
+    <script>
+        function printDan() { // 출력
+            let output = ''; //출력을 담을 변수(문자열)
+			// 2~9단 반복(제목)
+            for (let i = 2; i <= 9; i++) {
+                output += `<div class="dan"><h3>${i}단</h3>`;
+				// 2~9단 곱한 결과 반복
+                for (let j = 1; j <= 9; j++) {
+                    output += `${i} * ${j} = ${i * j}<br>`;
+                }
+				// 단 끝나면 div 닫기
+                output += '</div>';
+            } // for
+			
+            document.getElementById('dan').innerHTML = output;
+        } // function
+
+        window.onload = printDan;
+    </script>
+</body>
+</html>

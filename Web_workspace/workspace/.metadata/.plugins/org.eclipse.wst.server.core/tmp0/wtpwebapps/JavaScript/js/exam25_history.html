@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>History1</title>
+</head>
+<body>
+	<h1>History 객체1</h1>
+	<!-- examHistory.html로 이동하는 링크 -->
+	<a href="examHistory.html">페이지 이동</a>
+	<br>
+	<!-- 사용자가 클릭하면 history.forward() 함수가 호출되어 브라우저의 앞으로 이동 -->
+	<a href="#" onclick="history.forward(); return false;">앞 페이지로 이동</a>
+	<!-- href="#"는 링크가 페이지 상단으로 이동하는 기본 동작을 가집니다. 
+		 하지만 onclick 이벤트에서 return false를 사용하여 기본 동작을 방지하고 자바스크립트 동작만 수행하도록 합니다. 
+		 history.forward()는 브라우저 세션 기록에서 앞으로 이동하는 기능을 수행합니다.
+		 예를 들어, 사용자가 여러 페이지를 뒤로 돌아간 후에 이 링크를 클릭하면 이전에 이동했던 다음 페이지로 다시 이동하게 됩니다.
+		 만약 세션 기록상 다음 페이지가 없으면 아무 동작도 수행하지 않습니다. -->
+	
+</body>
+</html>
+
+<!--
+history.forward()
+브라우저가 세션에 저장된 앞 페이지로 이동시켜준다
+다음 페이지가 없으면 아무것도 하지 않는다.
+
+history.back(), history.go(-1)
+  -->
+
