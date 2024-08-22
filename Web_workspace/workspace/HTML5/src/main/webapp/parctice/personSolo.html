@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>복습용HMTL파일, personSolo</title>
+<style>
+        /* 테이블 스타일 설정 */
+        table {
+            border-collapse: collapse; /* 테두리 겹침 방지 */
+            width: 50%; /* 테이블 너비 50% */
+            margin: auto; /* 테이블을 가운데 정렬 */
+        }
+        /* 테이블 셀 스타일 설정 */
+        td, th {
+            border: 1px solid black; /* 테두리 검정색 실선 */
+            padding: 12px; /* 셀 내부 여백 12px */
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+        /* 텍스트 입력 필드 스타일 설정 */
+        input[type="text"] {
+            width: 100%; /* 텍스트 입력 필드 너비 설정 (값 수정 필요) */
+        }
+    </style>
+</head>
+<body>
+    <!-- 폼 태그: 데이터를 전송하기 위한 폼 -->
+    <form action="#" method="post">
+        <!-- 테이블 태그: 데이터를 테이블 형식으로 정렬 -->
+        <table>
+            <!-- 첫 번째 행: 이름 입력 -->
+            <tr>
+                <th>이름</th> <!-- 제목 셀: "이름" -->
+                <td>
+                    <!-- 텍스트 입력 필드: 이름 입력 -->
+                    <input type="text" name="name" placeholder="이름입력" />
+                    <!-- 사용자가 이름을 입력할 수 있는 텍스트 입력 필드 -->
+                </td>
+            </tr>
+            <!-- 두 번째 행: 성별 선택 -->
+            <tr>
+                <th>성별</th> <!-- 제목 셀: "성별" -->
+                <td>
+                    <!-- 라디오 버튼: 남자 선택 (기본 선택) -->
+                    <input type="radio" name="gender" value="male" checked> 남자
+                    <!-- 사용자가 남자를 선택할 수 있는 라디오 버튼, 기본 선택값 -->
+                    <!-- 라디오 버튼: 여자 선택 -->
+                    <input type="radio" name="gender" value="female"> 여자
+                    <!-- 사용자가 여자를 선택할 수 있는 라디오 버튼 -->
+                </td>
+            </tr>
+            <!-- 세 번째 행: 색깔 선택 -->
+            <tr>
+                <th>색깔</th> <!-- 제목 셀: "색깔" -->
+                <td>
+                    <!-- 드롭다운 메뉴: 색깔 선택 -->
+                    <select name="color">
+                        <!-- 옵션: 빨강 (기본 선택) -->
+                        <option value="red" selected>빨강</option>
+                        <!-- 사용자가 빨강을 선택할 수 있는 옵션, 기본 선택값 -->
+                        <!-- 옵션: 초록 -->
+                        <option value="green">초록</option>
+                        <!-- 사용자가 초록을 선택할 수 있는 옵션 -->
+                        <!-- 옵션: 파랑 -->
+                        <option value="blue">파랑</option>
+                        <!-- 사용자가 파랑을 선택할 수 있는 옵션 -->
+                        <!-- 옵션: 보라 -->
+                        <option value="magenta">보라</option>
+                        <!-- 사용자가 보라를 선택할 수 있는 옵션 -->
+                        <!-- 옵션: 하늘 -->
+                        <option value="cyan">하늘</option>
+                        <!-- 사용자가 하늘을 선택할 수 있는 옵션 -->
+                    </select>
+                </td>
+            </tr>
+            <!-- 네 번째 행: 취미 선택 -->
+            <tr>
+                <th>취미</th> <!-- 제목 셀: "취미" -->
+                <td>
+                    <!-- 체크박스: 독서 -->
+                    <input type="checkbox" name="hobby" value="reading" checked="checked"> 독서
+                    <!-- 사용자가 독서를 취미로 선택할 수 있는 체크박스 -->
+                    <!-- 체크박스: 영화 -->
+                    <input type="checkbox" name="hobby" value="movie"> 영화
+                    <!-- 사용자가 영화를 취미로 선택할 수 있는 체크박스 -->
+                    <!-- 체크박스: 음악 -->
+                    <input type="checkbox" name="hobby" value="music"> 음악
+                    <!-- 사용자가 음악을 취미로 선택할 수 있는 체크박스 -->
+                    <!-- 체크박스: 게임 -->
+                    <input type="checkbox" name="hobby" value="game"> 게임
+                    <!-- 사용자가 게임을 취미로 선택할 수 있는 체크박스 -->
+                    <!-- 체크박스: 운동 -->
+                    <input type="checkbox" name="hobby" value="sports"> 운동
+                    <!-- 사용자가 운동을 취미로 선택할 수 있는 체크박스 -->
+                </td>
+            </tr>
+            <!-- 다섯 번째 행: 과목 선택 -->
+            <tr>
+                <th>과목</th> <!-- 제목 셀: "과목" -->
+                <td>
+                    <!-- 다중 선택 박스: 과목 선택 (여러 개 선택 가능) -->
+                    <select name="subject" multiple size="6">
+                        <!-- 옵션: JAVA -->
+                        <option value="java">JAVA</option>
+                        <!-- 사용자가 JAVA 과목을 선택할 수 있는 옵션 -->
+                        <!-- 옵션: Servlet -->
+                        <option value="servlet">Servlet</option>
+                        <!-- 사용자가 Servlet 과목을 선택할 수 있는 옵션 -->
+                        <!-- 옵션: HTML (기본 선택) -->
+                        <option value="html" selected>HTML</option>
+                        <!-- 사용자가 HTML 과목을 선택할 수 있는 옵션, 기본 선택값 -->
+                        <!-- 옵션: Spring -->
+                        <option value="spring">Spring</option>
+                        <!-- 사용자가 Spring 과목을 선택할 수 있는 옵션 -->
+                    </select>
+                    <!-- 사용자가 여러 과목을 동시에 선택할 수 있는 다중 선택 박스 -->
+                </td>
+            </tr>
+            <!-- 여섯 번째 행: 전송 및 초기화 버튼 -->
+            <tr>
+                <td colspan="2" style="text-align: center;"> <!-- 셀 두 개 합침, 가운데 정렬 -->
+                    <!-- 전송 버튼: 폼 데이터를 전송 -->
+                    <input type="submit" value="SEND">
+                    <!-- 사용자가 폼 데이터를 전송하는 버튼 -->
+                    <!-- 초기화 버튼: 폼 데이터 초기화 -->
+                    <input type="reset" value="CANCEL">
+                    <!-- 사용자가 폼 데이터를 초기화하는 버튼 -->
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
