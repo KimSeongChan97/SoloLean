@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML연습, checkbox연습</title>
+</head>
+<body>
+	<form>
+		<!-- 여기에 체크박스 그룹을 포함한 필드셋이 있습니다 -->
+		<fieldset>
+			<div>
+				<!-- 체크박스 (취미 선택) -->
+				<!-- '축구' 체크박스: 기본적으로 선택되어 있음 (checked="checked") -->
+				<input type="checkbox" name="hobby" id="hobby1" value="축구" checked="checked" />
+				<label for="hobby1">축구</label>
+				
+				<!-- '농구' 체크박스: 기본적으로 선택되어 있지 않음 -->
+				<input type="checkbox" name="hobby" id="hobby2" value="농구" />
+				<label for="hobby2">농구</label>
+				
+				<!-- '야구' 체크박스: 기본적으로 선택되어 있지 않음 -->
+				<input type="checkbox" name="hobby" id="hobby3" value="야구" />
+				<label for="hobby3">야구</label>
+			</div>
+		</fieldset>
+		
+		<!-- 여기에 라디오 버튼 그룹을 포함한 필드셋이 있습니다 -->
+		<fieldset>
+			<!-- 필드셋의 제목 (전설) -->
+			<legend>성별 선택하기</legend>
+			<div>
+				<!-- 라디오 버튼 (성별 선택) -->
+				<!-- '남자' 라디오 버튼: 기본적으로 선택되어 있음 (checked) -->
+				<input type="radio" name="gender" id="gender_m" value="M" checked />
+				<label for="gender_m">남자</label>
+				
+				<!-- '여자' 라디오 버튼: 기본적으로 선택되어 있지 않음 -->
+				<input type="radio" name="gender" id="gender_f" value="F" />
+				<label for="gender_f">여자</label>
+			</div>
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>로또 번호 생성기</h1>
+	<div id="lotto"></div>
+	
+	<script type="text/javascript">
+		function generateLotto() {
+			
+			while (lottoNumbers.length < 6) {
+				let number = Math.floor(Math.random() * 45) + 1;
+				
+				if (!lottoNumbers.includes(number)) {
+					lottoNumbers.push(number);
+				}
+			}
+			lottoNumbers.sort((a, b) => a - b);
+			
+			let lottoHTML = '';
+			
+			for (let i = 0; i < lottoNumbers.length; i++){
+				let colorClass = '';
+				
+				if (i < 3) {
+					colorClass = 'blue';
+				} else if (i < 5) {
+					colorClass = 'orange';
+				} else {
+					colorClass = 'gray';
+				}
+				
+				lottoHTML += '<div class="lotto-number ' + colorClass + '">' + lottoNumbers[i] + '</div>';
+				
+			}
+			document.getElementById('lotto').innerHTML = lottoHTML;
+		}
+		window.onload = generateLotto;
+		
+	</script>
+</body>
+</html>
