@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 외부 CSS 파일을 연결합니다. 이 파일에서 전체적인 디자인 및 스타일링을 정의합니다. -->
+<link rel="stylesheet" href="../css/scroll.css">
+</head>
+<body>
+
+<div class="gradientStyle">
+	<!-- 페이지 중앙에 스크롤 이벤트에 대한 제목을 표시합니다. -->
+	<h1 align="center">스크롤 이벤트</h1>
+	
+	<!-- 스크롤 이벤트에 반응할 텍스트를 출력할 영역입니다. -->
+	<div id="console">없드아ㅏㅏ</div>
+</div>
+
+<!-- jQuery 라이브러리를 외부 CDN에서 불러옵니다. 이를 통해 jQuery 이벤트 처리 기능을 사용할 수 있습니다. -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 사용자가 페이지를 스크롤할 때 발생하는 이벤트를 처리합니다.
+	$(window).scroll(function(){
+		// 스크롤이 발생하면 #console 영역에 '스크롤이 이동되었습니다.'라는 텍스트를 출력합니다.
+		$('#console').html('스크롤이 이동되었습니다.');
+		
+		// 3초(3000밀리초) 후에 #console 영역의 내용을 '초기화 되었음'으로 변경합니다.
+		// setTimeout은 지정된 시간이 지난 후에 특정 동작을 수행하는 JavaScript 함수입니다.
+		setTimeout(function(){
+			$('#console').html('초기화 되었음');
+		}, 3000); // 3초 후 실행 (단위는 밀리세컨드: 1000ms = 1초)
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>토글 이용</title>
+<style type="text/css">
+
+/* 기본적으로 적용할 박스 스타일 box1 */
+.box1 {
+    margin: 10px auto; /* 자동으로 좌우 중앙 배치 */
+    border: 5px solid #ccc; /* 연한 회색 테두리 */
+    padding: 30px; /* 내부 여백 설정 */
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    color: black; /* 기본 폰트 색상을 검정색으로 설정 */
+    background-color: white; /* 기본 배경색은 흰색으로 설정 */
+}
+
+/* box2 스타일은 box1과 다르게 보이도록 다른 스타일을 적용 */
+.box2 {
+    margin: 10px auto; /* 자동으로 좌우 중앙 배치 */
+    border: 10px solid #ff00ff; /* 진한 핑크색 테두리 */
+    background-color: #ff0; /* 노란색 배경 */
+    padding: 25px; /* 내부 여백 설정 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+    color: blue; /* 기본 폰트 색상을 파란색으로 설정 */
+}
+        
+</style>
+</head>
+<body>
+    <!-- 타이틀을 페이지 중앙에 정렬 -->
+	<h1 align="center">CSS 제어하기</h1>
+    
+    <!-- 기본적으로 box1 클래스를 적용한 박스 -->
+	<div id="box" class="box1">
+        <h1>테스트 영역 입니다.</h1> <!-- 박스 안에 들어가는 텍스트 -->
+    </div>
+	
+	<!-- 폰트 색상 변경 버튼들 -->
+	<input type="button" id="btn1" value="(폰트) red" />
+	<input type="button" id="btn2" value="(폰트) green" />
+	<input type="button" id="btn3" value="(폰트) blue" />
+	
+	<!-- 배경 색상 변경 버튼들 -->
+	<input type="button" id="btn4" value="(배경) red" />
+	<input type="button" id="btn5" value="(배경) green" />
+	<input type="button" id="btn6" value="(배경) blue" />
+	
+	<!-- 너비 속성 변경 버튼들 -->
+	<input type="button" id="btn7" value="width=50%" />
+	<input type="button" id="btn8" value="width=auto" />
+	
+	<!-- 클래스 적용 버튼들 -->
+	<input type="button" id="btn9" value="box1 클래스 적용" />
+	<input type="button" id="btn10" value="box2 클래스 적용" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 버튼 1: 박스 내부 폰트 색상을 빨간색으로 변경
+	$('#btn1').click(function(){
+        $('#box').css('color', 'red'); // .css() 메서드로 color 속성을 red로 설정
+    });
+	
+	// 버튼 2: 박스 내부 폰트 색상을 초록색으로 변경
+	$('#btn2').click(function(){
+        $('#box').css('color', 'green'); // .css() 메서드로 color 속성을 green으로 설정
+    });
+	
+	// 버튼 3: 박스 내부 폰트 색상을 파란색으로 변경
+	$('#btn3').click(function(){
+        $('#box').css('color', 'blue'); // .css() 메서드로 color 속성을 blue로 설정
+    });
+	
+	// 버튼 4: 박스의 배경 색상을 빨간색으로 변경
+	$('#btn4').click(function(){
+        $('#box').css('background-color', 'red'); // 배경색을 red로 설정
+    });
+	
+	// 버튼 5: 박스의 배경 색상을 초록색으로 변경
+	$('#btn5').click(function(){
+        $('#box').css('background-color', 'green'); // 배경색을 green으로 설정
+    });
+	
+	// 버튼 6: 박스의 배경 색상을 파란색으로 변경
+	$('#btn6').click(function(){
+        $('#box').css('background-color', 'blue'); // 배경색을 blue로 설정
+    });
+	
+	// 버튼 7: 박스의 너비를 50%로 설정
+	$('#btn7').click(function(){
+        $('#box').css('width', '50%'); // 너비를 50%로 설정
+    });
+	
+	// 버튼 8: 박스의 너비를 auto로 설정 (원래 크기로 복귀)
+	$('#btn8').click(function(){
+        $('#box').css('width', 'auto'); // 너비를 auto로 설정하여 기본 값으로 복원
+    });
+	
+	// 버튼 9: 박스에 box1 클래스를 적용하고 box2 클래스는 제거
+	$('#btn9').click(function(){
+        $('#box').addClass('box1'); // box1 클래스를 추가하여 해당 스타일을 적용
+        $('#box').removeClass('box2'); // box2 클래스를 제거하여 스타일이 적용되지 않도록 함
+    });
+	
+	// 버튼 10: 박스에 box2 클래스를 적용하고 box1 클래스는 제거
+	$('#btn10').click(function(){
+        $('#box').addClass('box2'); // box2 클래스를 추가하여 해당 스타일을 적용
+        $('#box').removeClass('box1'); // box1 클래스를 제거하여 스타일이 적용되지 않도록 함
+    });
+	
+});
+</script>
+</body>
+</html>
+
+<!-- 
+
+스타일 지정
+(1) 속성값 읽기
+var 변수명 = $("요소").css("CSS 속성이름"); // jQuery를 사용해 특정 요소의 특정 CSS 속성 값을 읽어와 변수에 저장
+
+(2) 속성값 변경 및 추가하기
+$("요소").css("속성이름", "값"); // 단일 속성의 값을 변경
+$("요소").css({
+    "속성1이름": "값",
+    "속성2이름": "값",
+    "속성3이름": "값"
+}); // 여러 개의 속성을 한 번에 설정 가능
+
+
+클래스 속성 지정
+(1) CSS 클래스의 적용 여부 알기
+var 변수 = $("요소").hasClass("클래스이름"); // 요소에 특정 클래스가 적용되어 있는지 여부 확인
+
+(2) 클래스의 적용과 해제
+$("요소").addClass("클래스이름"); // 요소에 특정 클래스를 추가하여 스타일을 적용
+$("요소").removeClass("클래스이름"); // 요소에서 특정 클래스를 제거하여 스타일 해제
+
+(3) 클래스의 적용과 해제의 반복 처리 (토글 방식)
+$("요소").toggleClass("클래스이름"); // 해당 클래스가 있으면 제거하고, 없으면 추가하는 방식으로 토글 처리
+
+ -->

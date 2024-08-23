@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>전체 선택 기능 구현하기</h1>
+	<form name="form1">
+		<fieldset>
+			<legend>취미</legend>
+			<p>
+				<input type="checkbox" id="all_check" value="Y">
+				<label for="all_check">전체 선택 / 해제 </label>
+			</p>
+			<p>
+				<input type="checkbox" id="hobby1" class="hobby_check" value="축구" />
+				<label for="hobby_check">축구 </label>
+				<input type="checkbox" id="all_check" value="Y">
+				<label for="all_check">전체 선택 / 해제 </label>
+				<input type="checkbox" id="all_check" value="Y">
+				<label for="all_check">전체 선택 / 해제 </label>
+			</p>
+			
+		</fieldset>
+	</form>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+});
+</script>
+</body>
+</html>

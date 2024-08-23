@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 align="center">아이디와 비밀번호</h1>
+	<form name="form1">
+		<fieldset>
+			<legend align="center">로그인</legend>
+			<input type="text" name="user_id" id="id" />
+			<input type="password" name="user_pw" id="pw" />
+		</fieldset>
+	</form>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>

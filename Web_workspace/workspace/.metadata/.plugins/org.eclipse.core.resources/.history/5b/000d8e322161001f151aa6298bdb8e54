@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+/* 필드셋 스타일링 - 너비와 높이 설정 */
+fieldset { 
+    width: 270px; /* 필드셋의 너비를 270px로 설정 */
+    height: 100px; /* 필드셋의 높이를 100px로 설정 */
+}
+
+/* 모든 input 요소에 공통으로 적용될 스타일 */
+input {
+    border: 1px solid #ccc; /* 연한 회색 테두리 */
+    width: 240px; /* input 요소의 너비 설정 */
+    height: 25px; /* input 요소의 높이 설정 */
+    padding: 3px 10px 3px 10px; /* 상, 우, 하, 좌에 패딩 설정 */
+    margin: 5px 10px; /* input 요소의 상하 및 좌우에 여백 설정 */
+    background-image: url(../image/input.png); /* 배경 이미지 설정 */
+    background-repeat: no-repeat; /* 배경 이미지를 반복하지 않도록 설정 */
+}
+
+/* 아이디 입력 필드에만 적용되는 스타일 */
+input#id { 
+    background-position: 10px -3px; /* 배경 이미지의 위치를 조정 (좌: 10px, 상: -3px) */
+}
+
+/* 비밀번호 입력 필드에만 적용되는 스타일 */
+input#pw { 
+    background-position: 10px -43px; /* 배경 이미지의 위치를 조정 (좌: 10px, 상: -43px) */
+}
+
+</style>
+</head>
+<body>
+	<!-- 페이지 중앙에 제목을 배치 -->
+	<h1 align="center">아이디와 비밀번호</h1>
+	
+	<!-- 로그인 폼 -->
+	<form name="form1">
+		<fieldset>
+			<legend>로그인</legend> <!-- 필드셋에 설명을 달기 위한 legend 태그 -->
+			
+			<!-- 아이디 입력 필드 -->
+			<input type="text" name="user_id" id="id" />
+			
+			<!-- 비밀번호 입력 필드 -->
+			<input type="password" name="user_pw" id="pw" />
+		</fieldset>
+	</form>
+
+<!-- jQuery 라이브러리 추가 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    // 아이디와 비밀번호 입력 필드에 포커스가 있을 때 발생하는 이벤트 처리
+	$('#id, #pw').focus(function(){
+		$(this).css('background-image', 'none'); // 포커스가 있을 때 배경 이미지를 제거
+	});
+	
+    // 아이디와 비밀번호 입력 필드에서 포커스가 벗어날 때 발생하는 이벤트 처리
+	$('#id, #pw').blur(function(){
+        // 입력 필드에 값이 있을 경우 배경 이미지를 제거
+		if($(this).val())
+			$(this).css('background-image', 'none'); // 입력값이 있으면 배경 이미지를 없앰
+		else
+			$(this).css('background-image', 'url("../image/input.png")'); // 입력값이 없으면 배경 이미지를 다시 추가
+	});
+	
+});
+</script>
+</body>
+</html>

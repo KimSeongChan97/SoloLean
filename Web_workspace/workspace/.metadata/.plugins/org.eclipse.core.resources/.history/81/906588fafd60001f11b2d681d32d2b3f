@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 외부 CSS 파일을 연결합니다. 이 파일에서 전체적인 디자인 및 스타일링을 정의합니다. -->
+<link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+	<h1>this의 사용</h1>
+	<!-- 단일 및 다중 개체에 대해 클릭 이벤트를 처리할 수 있는 영역을 정의합니다. -->
+	<div id="input">
+	
+	<!-- 단독 개체의 확인을 위한 버튼 -->
+	<h2>단독 개체의 확인</h2>
+		<div id="singleButton"> 클릭하세요. </div>
+	
+	<!-- 복수 개체의 확인을 위한 여러 개의 버튼을 포함하는 영역 -->
+	<h2>복수 개체의 확인</h2>
+		<div>
+			<!-- 각 버튼은 동일한 클래스 'multiButton'을 가집니다. 이는 여러 개의 요소에 동일한 이벤트 핸들러를 적용할 때 사용됩니다. -->
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+		</div>
+	</div>
+
+<!-- jQuery 라이브러리를 외부 CDN에서 불러옵니다. 이를 통해 jQuery 이벤트 처리 기능을 사용할 수 있습니다. -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    // 단일 개체에 대한 클릭 이벤트 핸들러입니다.
+	$('#singleButton').click(function(){
+		// $('#singleButton').html("감사합니다.");와 동일한 동작이지만, $(this)를 사용해 좀 더 효율적으로 처리합니다.
+		// $(this)는 현재 클릭된 요소(즉, #singleButton 요소)를 가리킵니다.
+		$(this).html("감사합니다."); // $(this)를 사용하여 클릭된 요소의 내용을 변경합니다.
+	});
+	
+    // 여러 개의 버튼(multiButton 클래스)을 대상으로 하는 클릭 이벤트 핸들러입니다.
+	$('.multiButton').click(function(){
+		// $('.multiButton').html("감사합니다.");를 사용하면 모든 버튼의 텍스트가 한꺼번에 변경됩니다.
+		// $(this)는 클릭된 요소만을 가리킵니다.
+		
+		// 이 예제에서는 클릭한 버튼만 텍스트가 변경되도록 $(this)를 사용하여 처리합니다.
+		$(this).html("감사합니다?");
+		
+		// 버튼의 인덱스를 계산하여 해당 버튼이 몇 번째 버튼인지 결과를 출력합니다.
+		let index = $(this).index(); // .index()는 동일한 클래스 내에서 몇 번째 요소가 클릭되었는지 계산합니다.
+		let result = index + '번 째 요소를 선택'; // 인덱스 값과 함께 텍스트를 생성합니다.
+		$(this).html(result); // 클릭된 버튼의 내용을 인덱스와 함께 변경합니다.
+	});
+});
+</script>
+</body>
+</html>
+
+<!--
+
+코드 분석:
+
+1. **단독 개체와 다중 개체의 클릭 이벤트 처리**
+   - `#singleButton`: 단일 개체에 대해 클릭 이벤트가 발생하면 그 개체의 내용이 "감사합니다."로 변경됩니다.
+   - `.multiButton`: 여러 개의 버튼 중 하나를 클릭하면 해당 버튼만이 "감사합니다?"로 변경되며, 그 버튼이 몇 번째 버튼인지 표시됩니다.
+
+2. **this의 사용**
+   - `$(this)`는 이벤트 핸들러 내에서 현재 이벤트가 발생한 요소를 가리킵니다. 
+   - 예를 들어, `.multiButton` 클래스의 여러 버튼 중 하나를 클릭하면 그 클릭된 요소만이 변경됩니다.
+
+3. **.index() 메서드**
+   - `.index()` 메서드는 동일한 클래스 내에서 현재 클릭된 요소가 몇 번째인지 계산합니다. 이 메서드를 통해 해당 버튼이 몇 번째인지 알 수 있습니다.
+   - 이를 활용해 "X번 째 요소를 선택"이라는 메시지를 출력합니다.
+
+4. **중복된 클래스와 ID의 차이점**
+   - `.multiButton` 클래스는 여러 요소에 적용되어 여러 개체가 한꺼번에 변경될 수 있습니다.
+   - 반대로, `#singleButton`은 단일 ID이므로 하나의 요소에만 이벤트가 적용됩니다.
+
+ -->

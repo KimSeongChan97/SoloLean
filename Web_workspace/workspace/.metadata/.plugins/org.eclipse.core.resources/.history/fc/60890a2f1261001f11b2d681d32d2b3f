@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>전체 선택 기능 구현하기</h1>
+	<form name="form1">
+		<fieldset>
+			<legend>취미</legend>
+			<p>
+				<!-- 전체 선택 / 해제 체크박스 -->
+				<input type="checkbox" id="all_check" value="Y">
+				<label for="all_check">전체 선택 / 해제 </label>
+			</p>
+			<p>
+				<!-- 개별 선택 체크박스들 -->
+				<input type="checkbox" id="hobby1" class="hobby_check" value="축구" />
+				<label for="hobby1">축구 </label>
+				<input type="checkbox" id="hobby1" class="hobby_check" value="농구" />
+				<label for="hobby1">농구 </label>
+				<input type="checkbox" id="hobby1" class="hobby_check" value="야구" />
+				<label for="hobby1">야구 </label>
+			</p>
+		</fieldset>
+	</form>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// jQuery의 기본 구조로, $(function() {...})는 문서가 로드된 후 DOM이 완전히 준비되었을 때 실행됩니다.
+	// 이를 통해 HTML이 모두 렌더링된 이후에 스크립트가 실행되도록 보장합니다.
+
+	// #all_check 요소에 change 이벤트 핸들러를 추가합니다.
+	// 사용자가 전체 선택 / 해제 체크박스를 클릭할 때마다 이 함수가 실행됩니다.
+	$('#all_check').change(function(){
+		// 전체 선택 / 해제 체크박스의 현재 상태를 저장하는 변수입니다.
+		// $(this)는 현재 클릭된 #all_check 요소를 가리킵니다.
+		// .is(':checked')는 체크박스가 체크되었는지 여부를 boolean 값으로 반환합니다.
+		// true: 체크됨, false: 체크되지 않음
+		let isChk = $(this).is(':checked'); // 전체 선택 체크박스의 상태(true/false)를 저장합니다.
+		console.log(isChk); // 현재 체크박스의 상태(true: 체크됨, false: 체크 안됨)를 콘솔에 출력합니다.
+		
+		// $('.hobby_check')는 모든 취미 체크박스를 선택합니다.
+		// .prop('checked', isChk)는 모든 취미 체크박스의 체크 상태를 변경합니다.
+		// prop() 메서드는 자바스크립트 속성(Property) 값을 설정하거나 반환합니다.
+		// 이 경우, 각 체크박스의 'checked' 속성 값을 isChk로 설정합니다.
+		// 만약 isChk가 true라면, 모든 체크박스가 체크되고,
+		// false라면 모든 체크박스가 해제됩니다.
+		$('.hobby_check').prop('checked', isChk); // 문자열이 아닌 값으로 인식하게 함
+		// 이 코드로 인해 전체 선택 체크박스가 체크되면 모든 취미 체크박스가 체크되고,
+		// 전체 선택 체크박스가 해제되면 모든 취미 체크박스도 해제됩니다.
+	});
+	
+	
+});
+</script>
+</body>
+</html>
+
+<!-- 
+
+.attr 를 사용하면 전체선택/전체해제가 잘 된다...
+하지만 전체 선택 후 부분적으로 해제하면 전체선택/전체해제가 제대로 안된다.
+=> 해결방법 : .prop
+ 문자열이 아닌 값으로
+
+ -->
+
+
+
+ 
+ <!-- 
+ [문제]
+ 전체 선택 후 1개라도 해제하면 all_check 는 해제가 되도록 해야한다.
+ 
+ 
+ 
+  -->
+ 
+ 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Change</title>
+<link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+
+	<h1>Change 이벤트 확인하기</h1>
+    <div id="input">
+        <h3>이름</h3>
+        <input type="text" name="user_name"/>
+        
+      	<h3>성별</h3>
+          <label><input type="radio" name="gender" value="man"/>남자</label>
+          <label><input type="radio" name="gender" value="woman"/>여자</label>
+      
+      	<h3>취미</h3>
+          <label><input type="checkbox" name="hobby" value="축구"/>축구</label>
+          <label><input type="checkbox" name="hobby" value="농구"/>농구</label>
+          <label><input type="checkbox" name="hobby" value="야구"/>야구</label>
+      	
+      	
+      	<h3>직업</h3>  
+          <select name="job">
+              <option value="프로그래머" selected="selected">프로그래머</option>
+              <option value="퍼블리셔">퍼블리셔</option>
+              <option value="디자이너">디자이너</option>
+              <option value="기획">기획</option>
+          </select>
+    </div>
+    
+    <h2>결과</h2>
+    <div id="result"></div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('input[name="user_name"]').change(function(){
+		$('#result').text('이름의 입력값이 변경되었습니다.');
+	});
+	
+	$('input[name="gender"]').change(function(){
+		$('#result').text('성별이 변경되었습니다.');
+	});
+});
+</script>
+
+</body>
+</html>

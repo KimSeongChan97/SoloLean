@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btn1">slideUp</button>
+	<button id="btn2">slideDown</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn3">fadeIn</button>
+	<button id="btn4">fadeOut</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn5">slide toggle</button>
+	<button id="btn6">toggle</button>
+	
+	<p></p>
+		<img src="../image/1.jpg" alt="카카오 단체사진">
+	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>

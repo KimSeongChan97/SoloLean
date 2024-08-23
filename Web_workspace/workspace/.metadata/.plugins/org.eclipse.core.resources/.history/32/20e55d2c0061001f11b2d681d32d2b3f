@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p><a href="#">Link</a></p>
+	
+	<input type="checkbox" name="" id="check" checked="checked">체크박스
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	console.log('attr = ' + $('a').attr('href')); // #
+	// a 태그에서 href 에 있는 속성을 가져옴(문자열)
+	
+	console.log('prop = ' + $('a').prop('href')); // http://localhost:8080/jQuery/03_jQueryAttr/exam01_Link_check.html
+	// a 태그에서 href 에 있는 값을 가져옴
+	
+	
+	let check = $('#check');
+	console.log('check = ' + check); // check = [object Object]
+	// check 의 값은 객체 이기 때문에 해당 결과가 나온다
+	
+	console.log('check = ' + check);
+	
+	
+	
+});
+</script>
+</body>
+</html>
+
+<!--
+
+속성 ( <> 안에 들어가 있는 것 ) - Attribute, Property
+ 
+attr() / prop()
+jQuery 1.6버전 이전에는 attr() 만으로 가능하던 처리를 1.6 업데이트로 attr()과 prop() 으로 나뉘어졌다.
+이전에는 attr() 하나로 많은 것을 처리하려다 보니 버그 및 문제가 발생하여 업데이트를 통해 불완전을 해소했다고 한다.
+
+attr()
+HTML에 작성된 속성값을 문자열로 받아온다
+
+[형식]
+1. 속성 값 가져오기
+var 변수명 = $("요소").attr("속성이름"); // 꺼내오는 것
+
+2. 속성 값 넣기
+$("요소").attr("속성이름", "값"); // 가져오는 것 (단일)
+
+$("요소").attr({
+        "속성1이름": "값",
+        "속성2이름": "값",
+        "속성3이름": "값"
+}); // 가져오는 것 (여러 개)
+
+prop()
+지정한 선택자를 가진 첫번째 요소의 속성값을 가져오거나 속성값을 추가한다
+
+자바스크립트의 프로퍼티를 가져온다
+주의할 점은 HTML 입장에서의 속성(attribute)이 아닌 JavaScript 입장에서의 속성(property)이라는 것이다
+자바스크립트의 프로퍼티 값이 넘어오기 때문에 boolean, date, function 등도 가져올 수 있다
+
+[형식]
+.prop("속성이름")         → 속성값을 가져온다
+.prop("속성이름", "값")   → 속성값을 추가한다
+
+-- --------------------------------------------------------------
+console.log('check = ' + check.prop('tagName')); //INPUT
+
+여기서 console.log('check = ' + check.tagName); 이라고 하면 undefined 이라고 뜬다.
+=> console.log('check = ' + check.prop('tagName')); 하던가
+   console.log('check = ' + check.get(0).tagName); 해야한다.
+
+제이쿼리 선택자는 제이쿼리 객체로 묶어버려서 object 형식으로 나타난다.
+그래서 제이쿼리 선택자에서 DOM으로 다시 접근한 다음 지정해줘야 제대로 된 접근된다.
+
+console.log('check = ' + check.get(0).tagName);
+get을 이용해서 DOM에 접근해야한다.
+-->
+
+<!--
+.get()
+.get()메서드는 각 jQuery 개체의 기본이 되는 DOM 노드에 대한 액세스 권한을 부여합니다
+.get()은 선택한 요소를 배열(Array)로 가져옵니다.
+
+[형식]
+.get()
+선택한 모든 요소를 가져옵니다.
+
+.get( index )
+선택한 요소 중 특정한 것만 가져옵니다.
+
+[예]
+var ar = $("p").get();
+p태그의 요소를 배열로 가져옵니다.
+-->

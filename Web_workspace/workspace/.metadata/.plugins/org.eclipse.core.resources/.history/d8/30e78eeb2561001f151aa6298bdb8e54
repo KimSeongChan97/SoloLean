@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+* { 
+  padding: 0;
+  margin: 0; 
+ }
+
+#container { 
+    width: 500px;
+    margin: 20px auto; 
+}
+
+ul.tab {
+    list-style: none;
+    position: relative;
+    z-index: 100;
+}
+
+ul.tab li {
+    width: 100px;
+    height: 40px;
+    float: left;
+}
+
+ul:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+ul.tab li a {
+    background: url("../image/tab.jpg");
+    display: block;
+    color: #222;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+}
+
+ul.tab li a.selected {
+    background: url("../image/tab_selected.jpg");
+}
+
+p.panel {
+    border: 1px solid #9FB7D4;
+    position: relative;
+    padding: 10px;
+    margin: 0;
+    top: -1px;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="container">
+	<!-- 탭 버튼 영역 -->
+	<ul class="tab">
+		<li><a href="../txt/html5.txt" class="selected">HTML5</a></li>
+		<li><a href="../txt/jquery.txt" >jQuery</a></li>
+		<li><a href="../txt/bootstrap.txt" >Bootstrap3</a></li>
+	</ul>
+	
+	<!-- 내용 영역 -->
+	<p class="panel">파일로부터 읽어드린 내용 출력 </p>
+	
+	</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// class="selected" 클래스 속성에서 selected 로 설정된 파일의 내용을 읽어오기
+	console.log( $('.selected').attr('href') ); // ../txt/html5.txt
+	console.log( $('ul.tab > li > a.selected').attr('href') ); // ../txt/html5.txt
+	
+	$('p.panel').load($('ul.tab > li > a.selected').attr('href'));
+	
+	$('ul.tab > li > a').click(function(){
+		console.log('this = ' + this); //this = http://localhost:8080/jQuery/txt/bootstrap.txt
+		console.log('$(this) = ' + $(this)); // $(this) = [object Object]
+		
+		// 클릭한 요소를 뺀 나머지에서 class="selected" 속성를 제거한다. : .mot() 사용...
+		$('ul.tab > li > a').not(this).removeClass('selected');
+		
+		// 클릭한 요소에 class="selected" 속성을 추가
+		
+		
+		// 클리한 요소에 href 속성을 가져와서 파일에 로드한다.
+		
+		
+		return false;
+	});
+	
+});
+</script>
+</body>
+</html>
+
+
+<!-- 
+
+파일의 내용을 읽어오는 함수 => load()
+
+.not()
+제이쿼리로 선택한 선택자(요소)들 중에서, 특정 선택자(요소)만을 제외하는 함수
+
+this / $(this)
+=> this는 자바스크립트이고 $(this) 제이쿼리 문법이다.
+=> this의 경우 해당 이벤트가 발생한 요소를 표시해주고
+   $(this)는 이벤트가 발생하면 발생한 태그를 Object로 보여준다는게 다른점이다.
+=> this와 같은 데이터를 갖기 위해서는 $(this)[0] 을 사용하면 된다.
+   this === $(this)[0]
+
+
+ -->

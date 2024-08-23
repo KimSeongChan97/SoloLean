@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btn1">slideUp</button>
+	<button id="btn2">slideDown</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn1">slideUp</button>
+	<button id="btn2">slideDown</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn1">slideUp</button>
+	<button id="btn2">slideDown</button>&nbsp;&nbsp;&nbsp;
+	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload</title>
+</head>
+<body>
+	<h1>활성/비활성 구현하기</h1>
+	<form name="form1">
+		<input type="checkbox" id="upload_file_check" value="Y" />
+		<input type="file" id="file_finder" disabled />
+	</form>
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>

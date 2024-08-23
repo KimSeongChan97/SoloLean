@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+	<h1>this의 사용</h1>
+	<div id="input">
+	
+	<h2>단독 개체의 확인</h2>
+		<div id="singleButton"> 클릭하세요. </div>
+	
+	<h2>복수 개체의 확인</h2>
+		<div>
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+			<button class="multiButton">클릭하세요.</button>
+		</div>
+	</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#singleButton').click(function(){
+		//$('#singleButton').html("감사합니다.");
+		$(this).html("감사합니다."); // $(this) 는 클릭한 자기 자신을 의미한다.
+	});
+	
+	$('.multiButton').click(function(){
+		$('.multiButton').html("감사합니다."); // class 속성을 가지고 있기 때문에 전체 한꺼번에 변경된다.
+		
+	});
+});
+</script>
+</body>
+</html>

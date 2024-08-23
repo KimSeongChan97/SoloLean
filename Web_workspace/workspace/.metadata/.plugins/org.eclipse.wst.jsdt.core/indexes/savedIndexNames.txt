@@ -1,24 +1,6 @@
-<<<<<<< HEAD
 INDEX VERSION 1.4+D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-917635176.index
-1667600158.index
-2489268459.index
 4079492467.index
-4062899757.index
-1774658671.index
-2981581382.index
-569009434.index
-660542370.index
-3908634200.index
-=======
-INDEX VERSION 1.4+C:\Web\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 2489268459.index
 917635176.index
-1572969236.index
-4079492467.index
-4097657943.index
-3669339355.index
 2981581382.index
-4251671994.index
-226414352.index
->>>>>>> 84ae6bc565a86312aa814b93b06fda049dbbb1f4
+1646484190.index

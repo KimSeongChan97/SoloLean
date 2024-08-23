@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+* { 
+  padding: 0;
+  margin: 0; 
+ }
+
+#container { 
+    width: 500px;
+    margin: 20px auto; 
+}
+
+ul.tab {
+    list-style: none;
+    position: relative;
+    z-index: 100;
+}
+
+ul.tab li {
+    width: 100px;
+    height: 40px;
+    float: left;
+}
+
+ul:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+ul.tab li a {
+    background: url("../image/tab.jpg");
+    display: block;
+    color: #222;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+}
+
+ul.tab li a.selected {
+    background: url("../image/tab_selected.jpg");
+}
+
+p.panel {
+    border: 1px solid #9FB7D4;
+    position: relative;
+    padding: 10px;
+    margin: 0;
+    top: -1px;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="container">
+	<!-- 탭 버튼 영역 -->
+	<ul class="tab">
+		<li><a href="../txt/html5.txt" class="selected">HTML5</a></li>
+		<li><a href="../txt/jquery.txt">jQuery</a></li>
+		<li><a href="../txt/bootstrap.txt">Bootstrap3</a></li>
+	</ul>
+	
+	<!-- 내용 영역 -->
+	<p class="panel">파일로부터 읽어드린 내용 출력 </p>
+	
+	</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+});
+</script>
+</body>
+</html>

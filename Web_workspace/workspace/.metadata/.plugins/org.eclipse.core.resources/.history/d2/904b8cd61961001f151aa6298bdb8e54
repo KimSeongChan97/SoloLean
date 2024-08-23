@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>
+
+<!-- 
+스타일 지정
+(1) 속성값 읽기
+var 변수명 = $("요소").css("CSS 속성이름");
+
+(2) 속성값 변경 및 추가하기
+$("요소").css("속성이름", "값");
+
+$("요소").css({
+    "속성1이름": "값",
+    "속성2이름": "값",
+    "속성3이름": "값"
+});
+
+
+클래스 속성 지정
+(1) CSS 클래스의 적용 여부 알기
+var 변수 = $("요소").hasClass("클래스이름");
+
+(2) 클래스의 적용과 해제
+$("요소").addClass("클래스이름");
+$("요소").removeClass("클래스이름");
+
+(3) 클래스의 적용과 해제의 반복 처리
+HTML 태그 요소의 CSS 클래스에 대한 적용과 해제를 자동 순환 반복
+$("요소").toggleClass("클래스이름");
+ -->

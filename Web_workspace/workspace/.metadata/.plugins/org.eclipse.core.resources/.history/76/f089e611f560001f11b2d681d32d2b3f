@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+
+<h1>회원가입</h1>
+	<form name="form1">
+		<div id="input">
+			<h3>저장되었습니다.</h3>
+				<input type="button" id="backBtn" value="이전페이지로 이동" class="myButton" />
+		</div>
+	</form>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('myButton').click(function(){
+		history.go(-1)
+	});
+});
+</script>
+</body>
+</html>
