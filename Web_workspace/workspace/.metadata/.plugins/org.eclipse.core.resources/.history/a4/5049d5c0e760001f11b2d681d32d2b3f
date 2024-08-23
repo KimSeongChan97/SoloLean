@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="hello"></h1>
+    <!-- 이 태그는 h1 요소로, id가 "hello"인 요소입니다. 이 요소는 나중에 jQuery를 사용하여 내용을 변경할 것입니다. 
+         id 속성은 HTML 요소를 고유하게 식별할 수 있도록 하며, 이 경우 JavaScript나 jQuery에서 이 요소에 쉽게 접근할 수 있게 해줍니다. -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- 이 부분은 외부 서버에서 jQuery 3.7.1 버전을 불러오는 스크립트입니다.
+이 링크를 통해 jQuery를 사용할 수 있습니다. jQuery는 자바스크립트 라이브러리로 DOM(Document Object Model)을 쉽게 조작하고,
+이벤트 처리 등을 보다 간단하게 구현할 수 있게 도와줍니다. 3.7.1 버전은 최신 안정 버전입니다. -->
+
+<script type="text/javascript">
+jQuery(function($) {
+    // jQuery(function($) {...})는 페이지가 로드되었을 때 실행되는 함수입니다.
+    // 이 구문은 $(document).ready()의 단축형으로, DOM이 준비되면 즉시 실행됩니다.
+    // $는 jQuery 객체를 나타내며, 이를 통해 jQuery 메서드를 사용할 수 있습니다.
+    // 이 함수는 페이지의 모든 리소스가 로드되기 전, DOM이 준비된 순간에 실행되기 때문에, 페이지 로드 속도가 개선됩니다.
+
+    var h1 = $('#hello')
+    // $('#hello')는 jQuery 선택자를 사용하여 id가 'hello'인 h1 요소를 선택합니다.
+    // jQuery의 선택자 문법은 CSS 선택자와 매우 유사하며, $()는 DOM에서 요소를 선택하는 가장 기본적인 jQuery 함수입니다.
+    // 이 코드에서 h1 변수는 선택된 jQuery 객체를 참조하게 되며, 다양한 jQuery 메서드를 호출할 수 있습니다.
+
+    h1.html('Hello jQuery')
+    // h1.html('Hello jQuery')는 h1 요소의 내부 HTML을 'Hello jQuery'로 설정합니다.
+    // 이 메서드는 HTML 콘텐츠를 설정하거나 가져오는 역할을 합니다.
+    // 여기서는 h1 요소 내부에 'Hello jQuery'라는 HTML 콘텐츠가 삽입됩니다.
+    // 예를 들어, '<b>Hello</b>'와 같은 HTML 태그를 삽입하면 이를 HTML로 처리합니다.
+
+    h1.text('Hello jQuery')
+    // h1.text('Hello jQuery')는 h1 요소의 텍스트 내용을 'Hello jQuery'로 설정합니다.
+    // text() 메서드는 요소의 텍스트 콘텐츠를 설정하거나 반환합니다.
+    // html() 메서드와의 차이점은 text()는 순수한 텍스트만을 설정한다는 것입니다. 즉, HTML 태그가 무시되고 텍스트 그대로 삽입됩니다.
+    // 여기서는 이전에 설정한 HTML 콘텐츠가 이 메서드로 인해 덮어씌워져 순수한 텍스트 'Hello jQuery'만 남게 됩니다.
+});
+</script>
+</body>
+</html>

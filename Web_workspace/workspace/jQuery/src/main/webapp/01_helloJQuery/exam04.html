@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="hello"></h1>
+	<p id="text">안녕하세요 제이쿼리!!</p>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var h1 = $('#hello')
+	
+	h1.css('color', 'red')
+	
+	h1.html('Hello jQuery')
+	h1.text('Hello jQuery') //h1 태그에 값은 넣는다
+	
+	alert( $('#text').text() ) //h1태그의 값을 꺼내온다.
+
+});
+</script>
+</body>
+</html>
+
+<!-- 
+1. $는 제이쿼리 문서 객체 선택자의 메소드를 나타낸다.
+2. $에 익명한수를 사용하면 <body> 영역의 문서를 모두 로딩한 후에 제이쿼리를 실행하라는 의미이다.
+
+① $(document).ready(function(){});
+② $(function(){});
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

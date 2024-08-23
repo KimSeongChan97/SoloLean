@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div#container {
+    width: auto;
+    border: 5px solid #ff00ff;
+    padding: 10px;
+}
+div#container > h1#title {
+    background-color: #d5d5d5;
+    padding: 10px;
+}
+div#container div.box {
+    padding: 10px;
+    background-color: #ffff00;
+    font: 20px '굴림';
+}
+div#container > ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0px;
+    width: auto;
+    border: 5px solid #00ff00;
+}
+/* div#container > ul > li:first-child, div#container > ul > li:last-child { */
+div#container  li:first-child, div#container  li:last-child {
+    border: 3px dotted red;
+    padding: 3px 10px;
+}
+pre {
+    font: 14px/130% 'Courier New';
+    background: #eee;
+    padding: 10px 20px;
+    margin: 10px auto; 
+    border: 1px solid #555;
+	border-radius: 20px;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<h1 id="title"></h1>
+		<div class="box"></div>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<p></p>
+    <pre></pre>
+    <pre name="source"></pre>
+	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#title').html('두번째 항목')
+	$('#title').text('두번째 항목')
+	$('h1[id="title"]').html('두번째 항목')
+	
+	$('div#container > h1#title').html('제목 입니다.')
+	
+	$('div#container > div.box').html('안녕하세요')
+	
+	$('ul > li').html('목록입니다')
+	
+	$('ul > li:eq(1)').html('jQuery의 고유의 방식도 있습니다')
+	
+	$('p, pre').html('다중 요소 선택')
+	
+	$('pre[name="source"]').html('CSS의 선택자')
+	
+	$('ul > li:first-child').html('First-Child')
+	$('ul > li:last-child').html('Last-Child')
+});
+</script>
+</body>
+</html>
+
+<!-- 
+CSS 셀렉터
+jQuery에서 제어할 대상에 접근하는 방법
+- jQuery는 제어할 요소를 획득하기 위해서 $() 함수안에 대상을 의미하는 CSS 셀렉터를 파라미터로 전달한다.
+예) var mytag = $("h1");       // h1 태그 객체 획득하기
+예) var mytag = $(".hello");   // "hello" 라는 class 속성값을 갖는 요소의 객체 획득하기
+예) var mytag = $("#hello");   // "hello" 라는 id 속성값을 갖는 요소의 객체 획득하기
+ -->
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
