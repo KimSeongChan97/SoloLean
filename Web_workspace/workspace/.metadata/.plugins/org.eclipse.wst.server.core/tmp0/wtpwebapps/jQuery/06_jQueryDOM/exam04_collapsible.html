@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+    background: #252422;
+    /* 페이지의 배경색을 어두운 색(#252422)으로 설정하여 전체적인 디자인 톤을 맞추고 있습니다. */
+}
+ul {
+    padding: 0;
+    margin: 50px auto;
+    list-style: none;
+    width: 800px;
+    /* ul 요소의 마진을 페이지 가운데 배치하며, 목록의 폭을 800px로 설정하여 넓이를 조절합니다. */
+}
+.title {
+    padding: 0;
+    margin: 0;
+    /* 제목인 h2 태그의 padding과 margin을 없애고 기본적인 스타일을 초기화합니다. */
+}
+.title > a {
+    display: block;
+    padding-top: 12px;
+    font-size: 14px;
+    text-indent: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    height: 23px;
+    background: url('../image/background.jpg');
+    /* 각 제목의 링크를 블록 형식으로 만들고, 백그라운드 이미지를 설정하며, 텍스트와 링크의 스타일을 정의합니다. */
+}
+.selected {
+    background: url('../image/background-selected.jpg') !important;
+    /* 선택된 항목은 특별히 다른 백그라운드 이미지로 강조됩니다. !important로 스타일 적용을 강제합니다. */
+}
+.content {
+    margin: 0;
+    background: #D4D0C8;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    /* 내용 영역의 배경색을 밝게 하고, 높이를 고정하며, 스크롤이 생길 수 있도록 설정합니다. */
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li class="collapsible">
+			<h2 class="title"><a href="../txt/html5.txt">HTML5</a></h2>
+            <p class="content"></p>
+            <!-- 이 부분은 HTML5 관련 내용을 동적으로 불러와서 표시하는 영역입니다. -->
+		</li>
+		<li class="collapsible">
+			<h2 class="title"><a href="../txt/jquery.txt">jQuery</a></h2>
+            <p class="content"></p>
+            <!-- 이 부분은 jQuery 관련 내용을 동적으로 불러와서 표시하는 영역입니다. -->
+		</li>
+		<li class="collapsible">
+			<h2 class="title">
+				<a href="../txt/bootstrap.txt">bootstrap</a>
+			</h2>
+            <p class="content">파일안의 내용</p>
+            <!-- 이 부분은 bootstrap 관련 내용을 동적으로 불러와서 표시하는 영역입니다. -->
+		</li>
+	</ul>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//첫 번째 항목이 펼쳐져 있도록 처리한다.
+    //탭의 내용은 첫 번째 항목 안의 <a>태그가 가리키는 txt 파일을 읽어와서 출력시킨다.
+    // 첫 번째 항목의 링크된 파일 경로를 가져와서 해당 파일의 내용을 첫 번째 항목의 <p class="content"> 요소에 로드합니다.
+    $('.collapsible:eq(0) .content').load($('.collapsible:eq(0) .title a').attr('href'));
+    
+  	//첫 번째 항목의 <a>에게 class="selected" 속성를 적용하여 준다.
+    //실행하면 첫번째 항목이 오렌지색으로 바뀐다.
+    // 이 코드는 첫 번째 항목의 <a> 태그에 'selected' 클래스를 추가하여 스타일이 변경되도록 합니다.
+    $('.collapsible:eq(0) a').addClass('selected');
+  	
+  	//첫 번째 항목 이외의 나머지 항목들 안에 있는 class="content" 속성를 숨긴다.
+  	// 첫 번째 항목 외의 다른 항목들은 기본적으로 접힌 상태로 설정됩니다.
+  	$('.collapsible').not(':eq(0)').find('.content').hide();
+    
+    // .title 내의 모든 <a> 태그에 클릭 이벤트를 연결합니다.
+    $('.collapsible .title a').click(function(){
+    	// 클릭된 항목의 selected 클래스를 토글합니다.
+        // 사용자가 제목을 클릭할 때마다, 해당 제목에 selected 클래스가 적용/제거됩니다.
+    	$(this).toggleClass('selected');
+    	
+    	//클릭된 나 자신을 제외한 나머지 링크들은 class="selected" 속성를 무조건 삭제한다.
+    	// 다른 모든 링크에서 'selected' 클래스를 제거하여 클릭된 항목 외에는 선택되지 않도록 합니다.
+    	$('.collapsible .title a').not(this).removeClass('selected');
+    	
+    	//펼칠 대상 검색
+    	// 클릭된 <a> 태그의 부모 <h2>의 다음 형제 요소인 <p class="content">를 선택합니다.
+    	let target = $(this).parent().next();
+    	
+    	//나머지 대상들을 검색
+    	// 클릭된 <a> 태그와 관련된 <p class="content">를 제외한 다른 모든 <p class="content"> 요소를 선택합니다.
+    	let other = $('.content').not(target);
+    	
+    	//선택된 content를 슬라이드 토글로 펼치거나 접고, 다른 모든 content 요소는 슬라이드 업으로 접는다.
+    	target.slideToggle(300);  // 클릭된 항목의 내용을 300ms 동안 펼치거나 접음.
+        other.slideUp(300);  // 나머지 항목들은 무조건 300ms 동안 접음.
+        
+        //파일 읽어오기
+        // 클릭된 <a> 태그의 href 속성에 지정된 파일 경로를 통해 파일의 내용을 target 요소에 로드합니다.
+        // 만약 해당 파일이 이미 로드된 상태라면 다시 로드될 수 있으므로, 이전 로드된 내용을 갱신할 수 있습니다.
+        target.load($(this).attr('href'));
+        
+    	return false;  // 기본 동작인 링크로의 이동을 방지합니다.
+        // 이 동작이 없다면 <a> 태그의 기본 동작인 페이지 이동이 발생할 수 있습니다.
+    });
+});
+</script>
+</body>
+</html>
+
+<!-- 
+$().css('display')
+=> display 속성은 요소를 어떻게 보여줄지를 결정한다
+display 속성은 HTML 요소의 배치 방식을 제어합니다.
+
+① none : 보이지 않음
+    - 요소가 완전히 숨겨지고 공간을 차지하지 않습니다.
+② block : 블록 요소로 취급 (div, p 등)
+    - 요소가 독립된 블록으로 처리되며, 너비는 부모 요소에 맞춰 자동으로 확장됩니다.
+③ inline : 인라인 요소로 취급 (span, a 등)
+    - 요소가 텍스트와 같은 인라인 흐름에 맞게 배치됩니다. 너비와 높이가 고정되지 않음.
+④ inline-block : 인라인 요소처럼 배치되지만, 블록처럼 너비와 높이를 가질 수 있음.
+    - 블록처럼 크기를 지정할 수 있지만, 인라인 요소처럼 다른 인라인 요소와 함께 배치됩니다.
+-->

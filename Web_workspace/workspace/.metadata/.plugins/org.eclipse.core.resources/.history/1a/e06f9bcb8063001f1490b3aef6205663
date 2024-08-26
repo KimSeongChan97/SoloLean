@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bind 연습</title>
+</head>
+<body>
+	<div id="demo2">
+		<button>add</button>
+		<ul>
+			<li>test1</li>
+			<li>test2</li>
+			<li>test3</li>
+		</ul>
+	</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 초기 페이지에 있는 <li> 요소들에 클릭 이벤트를 바인딩함.
+	// 각 <li> 요소를 클릭하면 해당 요소의 텍스트를 알림 창으로 표시한다.
+	$('#demo2 li').bind('click', function(){
+		alert($(this).text());
+		// $(this).text()는 클릭한 <li> 요소의 텍스트(예: 'test1', 'test2')를 가져온다.
+		// 이 값을 alert()로 사용자에게 보여준다.
+	});
+	
+	/*
+		// 나중에 들어온 애들한테는 이벤트가 안걸린다.
+		// 아래 코드는 새로운 <li> 요소를 추가하지만, 해당 요소에 대한 클릭 이벤트가 바인딩되지 않는다.
+		// 기존에 바인딩된 클릭 이벤트는 초기 페이지에 존재하는 <li> 요소들에만 적용되기 때문에,
+		// 동적으로 추가된 <li> 요소들에는 적용되지 않는다.
+		$('#demo2 button').bind('click', function(){
+			$('#demo2 ul').append('<li>added</li>');
+		});
+		// 이 방식에서는 나중에 추가된 <li>는 클릭해도 이벤트가 발생하지 않는다.
+	*/
+
+	// 'add' 버튼을 클릭하면 동작하는 코드
+	$('#demo2 button').bind('click', function(){
+		// 기존 <li> 요소들에 바인딩된 클릭 이벤트를 모두 제거한다.
+		// 이 작업을 하는 이유는, 새로운 <li> 요소에 동일한 이벤트를 적용하기 위해 초기화하기 위함이다.
+		$('#demo2 li').unbind('click');
+
+		// 새로운 <li> 요소를 추가한 후, 모든 <li> 요소를 다시 선택하여 클릭 이벤트를 바인딩한다.
+		// .append() 메서드를 사용해 <ul> 태그 내부에 새로운 <li> 요소를 추가한다.
+		// .find($('li'))로 <ul> 내부의 모든 <li> 요소를 다시 선택한 후, 그들 각각에 클릭 이벤트를 바인딩한다.
+		$('#demo2 ul').append('<li>added</li>').find($('li')).click(function(){
+			// 클릭한 <li> 요소의 텍스트를 알림 창으로 표시한다.
+			// 동적으로 추가된 <li> 요소도 이 이벤트 핸들러를 통해 클릭 시 알림 창을 보여줄 수 있게 된다.
+			alert($(this).text());
+		});
+	});
+	
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bind 연습</title>
+</head>
+<body>
+	<div id="demo2">
+		<button>add</button>
+		<ul>
+			<li>test1</li>
+			<li>test2</li>
+			<li>test3</li>
+		</ul>
+	</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#demo2 li').bind('click', function(){
+		alert($(this).text());
+	});
+	
+	$('#demo2 button').bind('click', function(){
+		
+	});
+});
+</script>
+
+</body>
+</html>

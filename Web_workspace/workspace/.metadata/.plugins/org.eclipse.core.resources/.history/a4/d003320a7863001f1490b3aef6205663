@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Append</title>
+</head>
+<body>
+
+	<!-- '추가' 버튼을 클릭하면 목록이 추가됩니다. -->
+	<input type="button" value="추가" />
+	
+	<!-- '삭제' 버튼을 클릭하면 목록이 모두 삭제됩니다. -->
+	<input type="button" value="삭제" />
+		
+	<!-- 동적으로 <li> 항목이 추가될 <ul> 요소 -->
+	<ul></ul>
+	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 항목의 번호를 관리할 변수 i를 1로 초기화
+	// 새로운 항목이 추가될 때마다 이 값이 증가하여 고유 번호를 생성합니다.
+	let i = 1;
+	
+	//$('input[value="추가"]').click;  // 주석 처리된 코드 (의미는 '추가' 버튼을 클릭하는 이벤트를 준비하는 코드이지만, 주석으로 처리됨)
+	
+	// '추가' 버튼(첫 번째 버튼)을 클릭하면 발생하는 이벤트 처리
+	$('input:eq(0)').click(function(){
+		// <li> 태그 생성
+		// 첫 번째 <li> 태그는 빨간색 텍스트로 '추가 항목'과 번호를 출력합니다.
+		let li1 = $('<li>').css('color', 'red').html('추가 항목 ' + (i++));
+		// 두 번째 <li> 태그는 녹색 텍스트로 '추가 항목'과 번호를 출력합니다.
+		let li2 = $('<li>').css('color', 'green').html('추가 항목 ' + (i++));
+		// 세 번째 <li> 태그는 파란색 텍스트로 '추가 항목'과 번호를 출력합니다.
+		let li3 = $('<li>').css('color', 'blue').html('추가 항목 ' + (i++));
+		
+		// <ul> 에 태그 추가
+		// li1 (빨간색 항목)을 <ul>의 마지막에 추가합니다.
+		$('ul').append(li1);
+		// li2 (녹색 항목)을 <ul>의 마지막에 추가합니다.
+		$('ul').append(li2);
+		// li3 (파란색 항목)을 <ul>의 마지막에 추가합니다.
+		$(li3).appendTo('ul');  // appendTo() 메서드를 사용하여 같은 동작을 수행합니다. 
+		// append()와 appendTo()는 동작은 같지만 표현 방식이 다릅니다.
+		// A.append(B) -> A에 B를 추가한다.
+		// B.appendTo(A) -> B를 A에 추가한다.
+		// append는 끝에 붙는다.
+		
+	});
+	
+	// 삭제 버튼 클릭 시 동작하는 이벤트 처리
+	// '삭제' 버튼(두 번째 버튼)을 클릭하면 발생하는 이벤트 처리
+	$('input:eq(1)').click(function(){
+		// <ul> 안의 모든 <li> 요소를 제거합니다.
+		// 즉, 동적으로 추가된 모든 항목이 삭제됩니다.
+		$('ul').empty();  // 전체를 비움 (모든 자식 요소 삭제)
+		
+	});
+});
+</script>
+
+</body>
+</html>
+
+<!-- 
+
+A.append(B) -> A에 B를 추가한다.
+B.appendTo(A) -> B를 A에 추가한다.
+
+append 는 끝에 붙는다
+
+ -->
