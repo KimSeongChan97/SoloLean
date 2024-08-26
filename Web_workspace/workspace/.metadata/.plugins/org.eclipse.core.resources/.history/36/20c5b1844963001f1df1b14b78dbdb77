@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id='glayLayer'></div>
+	<div id='overLayer'></div>
+	
+	<ul>
+		<li>
+			<a href="../image/photo1.jpg" class="modal">
+				<img src="../image/thum1.jpg" alt="샹드리아"></a>
+	
+	</ul>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+
+</body>
+</html>

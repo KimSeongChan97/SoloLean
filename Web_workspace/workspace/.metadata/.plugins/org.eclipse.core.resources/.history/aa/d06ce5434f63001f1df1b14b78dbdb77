@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Item</title>
+</head>
+<body>
+	<ul id="thumb">
+		<li>
+			<a href="../image/1.jpg" class="item"><img src="../image/1.jpg"></a>
+		</li>
+		<li>
+			<a href="../image/2.jpg" class="item"><img src="../image/2.jpg"></a>
+		</li>
+		<li>
+			<a href="../image/3.jpg" class="item"><img src="../image/3.jpg"></a>
+		</li>
+	</ul>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>
