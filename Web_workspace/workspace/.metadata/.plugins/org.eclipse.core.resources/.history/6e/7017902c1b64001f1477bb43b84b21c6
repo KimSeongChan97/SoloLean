@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>On함수를 이용한 게시판 작성</title>
+<style type="text/css">
+
+/* 모든 요소에 기본적인 패딩과 마진을 제거하고, 텍스트 색상을 설정합니다. */
+* {
+    padding: 0;
+    margin: 0;
+    color: #333;  /* 텍스트 색상을 어두운 회색(#333)으로 설정 */
+}
+
+/* 모든 ul 요소의 기본 목록 스타일을 제거합니다. */
+ul {
+    list-style: none;  /* 리스트 아이템의 불릿 포인트를 제거하여 깔끔한 목록을 만듭니다. */
+}
+
+/* #container라는 ID를 가진 요소에 대한 패딩을 설정 */
+#container {
+    padding: 30px 20px;  /* 상단 30px, 좌우 20px의 패딩을 추가하여 컨텐츠에 여백을 줌 */
+}
+
+/* h1 요소의 스타일 설정 */
+h1 {
+    font-size: large;  /* h1 제목의 폰트 크기를 크게 설정 */
+    border-left: 10px solid #7BAEB5;  /* 왼쪽에 두께 10px의 청록색(#7BAEB5) 선을 추가 */
+    border-bottom: 1px solid #7BAEB5;  /* 아래쪽에 두께 1px의 청록색 선을 추가 */
+    padding: 10px;  /* h1 요소 내부에 10px의 여백을 추가하여 시각적으로 보기 좋게 함 */
+    width: auto;  /* h1 요소의 너비를 자동으로 설정하여 컨텐츠에 맞게 조정 */
+}
+
+/* #comment_write 영역에 대한 스타일 설정 */
+#comment_write {
+    padding: 20px 15px;  /* 상단 20px, 좌우 15px의 패딩을 추가하여 입력 영역을 넉넉하게 만듦 */
+    border-bottom: 1px solid #7BAEB5;  /* 아래쪽에 두께 1px의 청록색 선을 추가 */
+}
+
+/* #comment_write 내 label 요소에 대한 스타일 설정 */
+#comment_write label {
+    display: inline-block;  /* label 요소를 인라인 블록 요소로 설정하여 크기 지정 가능 */
+    width: 80px;  /* label의 너비를 80px로 설정하여 일관된 정렬을 만듦 */
+    font-size: 14px;  /* label의 폰트 크기를 14px로 설정 */
+    font-weight: bold;  /* label 텍스트를 굵게 표시하여 강조 */
+    margin-bottom: 10px;  /* 아래쪽에 10px의 마진 추가하여 입력 필드와의 간격을 유지 */
+}
+
+/* 입력 필드(input[type='text'])와 텍스트 영역(textarea)의 공통 스타일 설정 */
+#comment_write input[type='text'], #comment_write textarea {
+    border: 1px solid #ccc;  /* 회색(#ccc) 테두리를 설정하여 입력 필드에 구분선을 추가 */
+    vertical-align: middle;  /* 요소가 수직으로 중간에 정렬되도록 설정 */
+    padding: 3px 10px;  /* 상단 3px, 좌우 10px의 패딩을 추가하여 입력 필드 내부에 여백을 줌 */
+    font-size: 12px;  /* 텍스트 크기를 12px로 설정하여 가독성을 유지 */
+    line-height: 150%;  /* 줄 간격을 150%로 설정하여 텍스트의 가독성을 높임 */
+}
+
+/* 텍스트 입력 필드(textarea) 크기 설정 */
+#comment_write textarea {
+    width: 380px;  /* 너비를 380px로 설정하여 넉넉한 텍스트 입력 공간을 제공 */
+    height: 90px;  /* 높이를 90px로 설정하여 충분한 입력 공간 제공 */
+}
+
+/* .comment_item 클래스의 스타일 설정 */
+.comment_item {
+    font-size: 13px;  /* 댓글의 폰트 크기를 13px로 설정 */
+    color: #333;  /* 댓글 텍스트 색상을 어두운 회색(#333)으로 설정 */
+    padding: 15px;  /* 상하좌우에 15px의 패딩을 추가하여 댓글 간 여백을 만듦 */
+    border-bottom: 1px dotted #ccc;  /* 아래쪽에 점선 형태의 테두리를 추가하여 댓글 구분 */
+    line-height: 150%;  /* 줄 간격을 150%로 설정하여 가독성을 높임 */
+}
+
+/* .comment_item 내의 .writer 클래스에 대한 스타일 설정 */
+.comment_item .writer {
+    color: #555;  /* 작성자 텍스트의 색상을 중간 회색(#555)으로 설정 */
+    line-height: 200%;  /* 줄 간격을 200%로 설정하여 텍스트 간격을 넓게 만듦 */
+}
+
+/* .comment_item 내의 .writer 안에 있는 input 요소 스타일 설정 */
+.comment_item .writer input {
+    vertical-align: middle;  /* 버튼이 텍스트와 수직으로 중앙에 정렬되도록 설정 */
+}
+
+/* .comment_item 내의 .writer 안에 있는 .name 클래스에 대한 스타일 설정 */
+.comment_item .writer .name {
+    color: #222;  /* 이름 텍스트의 색상을 검은색에 가까운 어두운 회색(#222)으로 설정 */
+    font-weight: bold;  /* 이름 텍스트를 굵게 표시하여 강조 */
+    font-size: 14px;  /* 이름 텍스트의 폰트 크기를 14px로 설정 */
+}
+
+</style>
+</head>
+<body>
+	<div>
+		<h1>jQuery Comment</h1>
+		<div id="comment_write">
+			<form id="comment_form">
+				<div>
+					<label for="user_name">작성자</label>
+					<input type="text" name="user_name" id="user_name" />
+					<input type="submit" value="저장하기" />
+				</div>
+				<div>
+					<label for="comment">덧글 내용</label>
+					<textarea name="comment" id="comment" ></textarea>
+				</div>
+			</form>
+		</div>
+		
+		<!-- 동적 요소가 추가될 부분, 여기에 댓글 리스트가 생성될 것입니다 -->
+		<ul id="comment_list"></ul>
+	</div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#comment_form').submit(function(){
+		// 이름이 입력되지 않은 경우 알림
+		if(!$('#user_name').val()){
+			// 사용자 이름이 빈 경우 경고창을 띄우고 입력란에 포커스를 줍니다.
+			alert('이름을 입력하세요');
+			$('#user_name').focus();  
+			return false;  // false를 반환하여 폼의 기본 제출 동작을 막습니다. (페이지가 새로고침되지 않음)
+		} // 유효성 검사
+		
+		// 덧글 내용이 입력되지 않은 경우 알림
+		if(!$('#comment').val()){
+			// 댓글 내용이 빈 경우 경고창을 띄우고 입력란에 포커스를 줍니다.
+			alert('내용을 입력하세요');
+			$('#comment').focus();  // 포커스를 덧글 입력란으로 이동시켜 사용자가 입력할 수 있도록 돕습니다.
+			return false;  // false를 반환하여 폼의 기본 제출 동작을 막습니다.
+		} // 유효성 검사
+		
+		// 현재 날짜와 시간을 가져와 포맷팅
+		var date = new Date();  // 현재 날짜와 시간 정보를 저장하는 Date 객체를 생성합니다.
+		var yy = date.getFullYear();   // 현재 연도(yyyy)를 가져옵니다.
+		var mm = date.getMonth()+1;    // 월을 가져오고, 0부터 시작하므로 +1을 더해 실제 월을 계산합니다.
+		var dd = date.getDate();       // 현재 날짜(dd)를 가져옵니다.
+		var hh = date.getHours();      // 현재 시각(24시간제)을 가져옵니다.
+		var mi = date.getMinutes();    // 현재 분(minute)을 가져옵니다.
+		var ss = date.getSeconds();    // 현재 초(second)를 가져옵니다.
+		
+		// 숫자가 10보다 작으면 앞에 0을 붙여 두 자리로 맞춥니다.
+		// 예: 1월 -> 01월, 5분 -> 05분 (두 자리 숫자를 유지하여 시간 포맷을 일관되게 만듦)
+		if(mm < 10) mm = '0' + mm;
+		if(dd < 10) dd = '0' + dd;
+		if(hh < 10) hh = '0' + hh;
+		if(mi < 10) mi = '0' + mi;
+		if(ss < 10) ss = '0' + ss;
+		
+		// '2024 - 04 - 23 13 : 45 : 30' 형식으로 오늘 날짜와 시간을 문자열로 저장
+		var today = yy + ' - ' + mm + ' - ' + dd + ' _ ' + hh + ' : ' + mi + ' : ' + ss;  // 날짜와 시간을 적절한 포맷으로 저장
+		
+		// 새로운 덧글 요소를 생성하고 클래스와 내용을 추가함
+		// <li class="comment_item"></li>
+		var new_li = $('<li/>');  // 새로운 <li> 요소를 jQuery를 사용해 생성 (동적으로 생성됨)
+		new_li.addClass('comment_item');  // 생성된 <li>에 'comment_item' 클래스를 추가하여 스타일을 적용
+		
+		// 작성자 정보 요소를 생성
+		// <p class="writer"></p>
+		var writer_p = $('<p/>');  // 새로운 <p> 요소를 jQuery로 생성
+		writer_p.addClass('writer');  // 생성된 <p>에 'writer' 클래스를 추가하여 스타일을 적용
+		
+		// 작성자 이름을 포함하는 span 요소 생성
+		// <span class="name"> ~~ 님 </span>
+		var name_span = $('<span/>');  // 새로운 <span> 요소를 생성
+		name_span.addClass('name');  // 생성된 <span>에 'name' 클래스를 추가하여 스타일을 적용
+		// 입력된 작성자 이름과 '님' 텍스트를 추가 (name_span의 내부 HTML에 사용자가 입력한 이름을 삽입)
+		name_span.html($('#user_name').val() + ' 님 ');  
+		
+		// 작성 시간 정보를 포함하는 span 요소 생성
+		// <span> / 2023-04-23 12:23:15</span>
+		var date_span = $('<span />');  // 새로운 <span> 요소를 생성
+		// 작성된 시간 정보를 해당 <span> 요소에 추가 (today 변수를 이용해 날짜 및 시간을 추가)
+		date_span.html(' / ' + today + ' ' );
+		
+		// 삭제 버튼 요소 생성
+		// <input type="button" value="삭제하기" class="delete_btn">
+		var del_input = $('<input/>');  // 새로운 <input> 요소를 생성
+		// 버튼 타입과 값을 지정하는 속성을 추가
+		del_input.attr({
+			'type': 'button',  // 버튼 타입을 'button'으로 설정
+			'value': '삭제하기'  // 버튼의 텍스트를 '삭제하기'로 설정
+		});
+		del_input.addClass('delete_btn');  // 생성된 <input>에 'delete_btn' 클래스를 추가하여 스타일 적용
+		
+		// 덧글 내용을 포함하는 p 요소 생성
+		// <p></p>
+		var content_p = $('<p/>');  // 새로운 <p> 요소를 생성
+		// 댓글 내용 텍스트를 <p> 요소에 추가 (content_p에 사용자가 입력한 댓글 내용을 삽입)
+		content_p.html($('#comment').val());
+		
+		// 작성자 정보와 덧글 내용을 li에 추가
+		writer_p.append(name_span).append(date_span).append(del_input);  // 작성자 이름, 시간, 삭제 버튼을 <p>에 추가
+		new_li.append(writer_p).append(content_p);  // 작성자 정보와 댓글 내용을 <li> 요소에 추가
+		$('#comment_list').append(new_li);  // <li> 요소를 #comment_list(ul)에 추가하여 화면에 표시 (동적으로 생성된 댓글이 리스트에 추가됨)
+		
+		// 폼 입력 필드를 초기화
+		$('#user_name').val('');  // 입력 필드 초기화 (작성자 이름 입력란을 비움)
+		$('#comment').val('');  // 입력 필드 초기화 (덧글 내용 입력란을 비움)
+				
+		return false;  // 폼 제출을 막아 페이지 리로드를 방지합니다.
+	});
+	
+	// 동적 요소 삭제 처리
+	// $('.delete_btn').click(function(){ // submit 안에 class=".delete_btn" 이 있다.
+	//		alert('ㅋㅋㅋ'); 					// submit 밖에서는 이벤트가 처리되지 않는다.
+	// })									// 그래서 "ㅋㅋㅋ"는 출력되지 않는다.
+	
+	// 동적 처리
+	// $(조상).on('이벤트', 후손);
+	$(document).on('click','.delete_btn', function(){
+		// 삭제 확인 후 삭제
+		if(confirm('선택하신 항목을 삭제하시겠습니까?')) {
+			// 삭제 버튼을 클릭한 경우, 클릭된 버튼의 상위 .comment_item 요소를 찾아서 제거
+			$(this).parents('.comment_item').remove();  // 해당 덧글 삭제 (동적으로 생성된 댓글도 삭제 가능)
+		}
+	});
+});
+
+</script>
+</body>
+</html>
+
+<!-- 
+on() 함수
+
+비동적
+$("요소").on("이벤트", function() {
+    ... 이벤트 처리 ...
+});
+
+동적
+앞으로 동적으로 추가할 요소에 대한 이벤트를 미리 정의해 놓는 기능이다.
+새로 추가될 요소에 대한 이벤트이기 때문에 이 이벤트가 정의되는 시점에서는 대상이 
+존재하지 않기 때문에, 이 이벤트는 document 객체에 설정해야 한다.
+
+$(document).on( "이벤트", "셀렉터", function() {
+    ... 이벤트 처리 ...
+});
+ -->

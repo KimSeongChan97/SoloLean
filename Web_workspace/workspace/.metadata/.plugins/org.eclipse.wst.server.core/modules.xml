@@ -4,4 +4,5 @@
   <module moduleId="org.eclipse.jst.jee.server:HTML5" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:CSS" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:jQuery" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SoloTest" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>

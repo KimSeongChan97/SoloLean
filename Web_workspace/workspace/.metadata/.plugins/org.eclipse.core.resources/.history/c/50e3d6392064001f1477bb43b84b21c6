@@ -1,0 +1,147 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Document</title>
+<link rel="stylesheet" href="../css/common.css"> 
+<link rel="stylesheet" href="../css/reset.css">
+</head> 
+<body>
+<h1 class="title">동적 드롭다운</h1> 
+<div class="exec">
+<form>
+<!-- 각 단계별 dropdown을 표시할 span태그 --> 
+<span id="category1"></span> <!-- 1depth 카테고리가 로드될 위치. 드롭다운의 첫 번째 단계가 여기에 표시됩니다. -->
+<span id="category2"></span> <!-- 2depth 카테고리가 로드될 위치. 첫 번째 단계 선택에 따라 여기에 두 번째 드롭다운이 표시됩니다. -->
+<span id="category3"></span> <!-- 3depth 카테고리가 로드될 위치. 두 번째 단계 선택에 따라 세 번째 드롭다운이 여기에 표시됩니다. -->
+
+<!-- 1depth 카테고리 -->
+<select name="category1" id="category1-1">
+  <option>----- 선택하세요 -----</option> <!-- 기본 옵션. 사용자가 선택할 때까지 기본으로 표시됨. -->
+  <option value="의류" data-target="#category2-1">의류</option> <!-- 의류 선택 시 2depth인 의류 관련 카테고리 로드 -->
+  <option value="디지털/가전" data-target="#category2-2">디지털/가전</option> <!-- 디지털/가전 선택 시 관련 2depth 카테고리 로드 -->
+</select>
+
+<!-- 의류에 종속된 2depth 카테고리 -->
+<select name="category2" id="category2-1">
+  <option>----- 선택하세요 -----</option> <!-- 2depth 의류 관련 기본 옵션 -->
+  <option value="여성의류" data-target="#category2-1-1">여성의류</option> <!-- 여성의류 선택 시 3depth 로드 -->
+  <option value="남성의류/캐주얼의류" data-target="#category2-1-2">남성의류/캐주얼의류</option> <!-- 남성의류 선택 시 3depth 로드 -->
+</select>
+
+<!-- 디지털/가전 2depth 카테고리 -->
+<select name="category2" id="category2-2">
+  <option>----- 선택하세요 -----</option> <!-- 2depth 디지털/가전 관련 기본 옵션 -->
+  <option value="TV/냉장고/세탁기" data-target="#category2-2-1">TV/냉장고/세탁기</option> <!-- TV/냉장고 선택 시 관련 3depth 로드 -->
+  <option value="노트북/데스크탑" data-target="#category2-2-2">노트북/데스크탑</option> <!-- 노트북 선택 시 관련 3depth 로드 -->
+</select>
+
+<!-- 의류 > 여성의류에 종속된 3depth 카테고리 -->
+<select name="category3" id="category2-1-1">
+  <option>----- 선택하세요 -----</option> <!-- 3depth 여성의류 관련 기본 옵션 -->
+  <option value="티셔츠">티셔츠</option> <!-- 3depth 최종 선택 항목 -->
+  <option value="블라우스/셔츠/남방">블라우스/셔츠/남방</option>
+  <option value="가디건">가디건</option>
+  <option value="니트/스웨터">니트/스웨터</option>
+</select>
+
+<!-- 의류 > 남성의류/캐주얼의류에 종속된 3depth 카테고리 -->
+<select name="category3" id="category2-1-2">
+  <option>----- 선택하세요 -----</option> <!-- 3depth 남성의류 관련 기본 옵션 -->
+  <option value="캐주얼셔츠/남방">캐주얼셔츠/남방</option>
+  <option value="긴팔티/맨투맨신규코너">긴팔티/맨투맨신규코너</option>
+  <option value="청바지인기코너">청바지인기코너</option>
+  <option value="캐주얼 바지/팬츠">캐주얼 바지/팬츠</option>
+</select>
+
+<!-- 디지털/가전 > TV/냉장고/세탁기에 종속된 3depth 카테고리 -->
+<select name="category3" id="category2-2-1">
+  <option>----- 선택하세요 -----</option> <!-- 3depth TV/냉장고 관련 기본 옵션 -->
+  <option value="3D TV">3D TV</option> <!-- TV 관련 세부 항목 -->
+  <option value="김치냉장고">김치냉장고</option>
+  <option value="드럼세탁기">드럼세탁기</option>
+</select>
+
+<!-- 디지털/가전 > 노트북/데스크탑에 종속된 3depth 카테고리 -->
+<select name="category3" id="category2-2-2">
+  <option>----- 선택하세요 -----</option> <!-- 3depth 노트북/데스크탑 관련 기본 옵션 -->
+  <option value="노트북">노트북</option>
+  <option value="브랜드PC">브랜드PC</option>
+  <option value="조립PC">조립PC</option>
+</select>
+
+</form> 
+</div>
+<div class="console"></div> <!-- 사용자가 선택한 카테고리 경로를 표시하는 콘솔. 선택된 항목들이 이곳에 표시됩니다. -->
+<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script> 
+<script>
+$(function(){ 
+//1 depth 로드
+$('#category1').load('../text/category-data.html #category1-1',function(){ 
+  // 1depth 카테고리 데이터를 비동기적으로 서버에서 불러옴
+  // 비동기적으로 category-data.html에서 id가 #category1-1인 부분을 불러와서 현재 DOM의 #category1에 삽입
+  // 이 작업은 첫 번째 카테고리 (1depth)를 사용자가 처음 화면에 로드할 때 불러오기 위함임
+  $(this).show(); // 불러온 후 화면에 해당 요소를 표시. 사용자에게 드롭다운이 보여지도록 함.
+});
+
+// 2depth 로드
+$(document).on('change', '#category1 > select', function(){ 
+  // 1depth에서 선택을 변경할 때 발생하는 이벤트. 사용자가 1depth에서 의류나 디지털/가전을 선택하면 이 코드가 실행됨.
+  $('#category2, .console').empty(); // 2depth와 콘솔 내용을 초기화하여 이전 선택 내용을 삭제. 새로 선택된 1depth에 맞춰 2depth를 다시 로드해야 하므로 초기화가 필요함.
+  $('#category3').empty(); // 3depth를 초기화하여 이전 선택 내용을 삭제. 새로 선택된 2depth에 맞춰 3depth도 다시 로드되어야 하므로 초기화가 필요함.
+  var target = $(this).find('option:selected').attr('data-target'); 
+  // 사용자가 선택한 1depth 옵션의 data-target 속성 값을 가져옴 (예: #category2-1, #category2-2 등).
+  console.log('target = ' + target); // 개발자 콘솔에 target 값을 출력하여 디버깅에 도움을 줌.
+  $('#category2').load('../text/category-data.html ' + target, function(){ 
+    // 선택한 1depth에 따라 2depth 카테고리를 비동기적으로 서버에서 로드하여 해당 위치에 표시.
+    $(this).show(); // 불러온 2depth를 화면에 표시.
+  }); 
+});
+
+// 3depth 로드
+$(document).on('change', '#category2 > select', function(){
+  // 2depth에서 선택을 변경할 때 발생하는 이벤트. 사용자가 2depth에서 여성의류, TV/냉장고 등 세부 항목을 선택하면 이 코드가 실행됨.
+  $('#category3, .console').empty(); // 3depth와 콘솔 내용을 초기화하여 이전 선택 내용을 삭제. 새로 선택된 2depth에 맞춰 3depth를 다시 로드해야 하므로 초기화가 필요함.
+  var target = $(this).find('option:selected').attr('data-target'); 
+  // 사용자가 선택한 2depth 옵션의 data-target 속성 값을 가져옴 (예: #category2-1-1, #category2-2-1 등).
+  console.log('target = ' + target); // 개발자 콘솔에 target 값을 출력하여 디버깅에 도움을 줌.
+  $('#category3').load('../text/category-data.html ' + target, function(){ 
+    // 선택한 2depth에 따라 3depth 카테고리를 비동기적으로 서버에서 로드하여 해당 위치에 표시.
+    $(this).show(); // 불러온 3depth를 화면에 표시.
+  });
+});
+
+// 마지막 선택에 대한 처리
+$(document).on('change', '#category3 > select', function(){ 
+  // 3depth에서 선택을 변경할 때 발생하는 이벤트. 사용자가 최종 선택을 하면 이 코드가 실행됨.
+  if($(this).find('option:selected').index() > 0) { 
+    // 선택된 옵션의 인덱스가 0보다 클 때, 즉 '----- 선택하세요 -----' 옵션이 아닌 경우에만 실행. 잘못된 선택(기본값)일 경우 이 코드는 실행되지 않음.
+    var data1 = $('#category1 > select > option:selected').val(); 
+    // 선택된 1depth 카테고리의 값을 가져옴 (예: 의류, 디지털/가전).
+    var data2 = $('#category2 > select > option:selected').val(); 
+    // 선택된 2depth 카테고리의 값을 가져옴 (예: 여성의류, 노트북/데스크탑 등).
+    var data3 = $('#category3 > select > option:selected').val(); 
+    // 선택된 3depth 카테고리의 값을 가져옴 (예: 티셔츠, 3D TV 등).
+    $('.console').html(data1 + ' &gt; ' + data2 + ' &gt; ' + data3);
+    // 콘솔 영역에 선택된 경로를 출력함 ('의류 > 여성의류 > 티셔츠'와 같은 형식으로 출력).
+    // '>' 기호 대신 &gt;를 사용하여 HTML에서 제대로 표현되도록 함.
+  } 
+});
+}); 
+</script>
+</body> 
+</html>
+
+<!-- 
+* load()
+읽어오고자 하는 대상의 내용이 단순한 text나 html 태그를 표현하며 
+읽어온 내용을 특정 요소에 출력하는 것만을 목적으로 할 경우 load() 함수를 사용해 코드를 축약할 수 
+있다.
+$("CSS셀렉터").load(
+"읽어올 대상의 URL" 
+[, function() { ...읽기에 성공한 후 실행될 함수...}] 
+);
+예) "readme.html" 파일의 전체 내용 중에서 "#my"라는 id값을 갖는 요소만을 읽어올 경우 
+$("출력할 대상의 셀렉터").load("readme.html #my");
+-->

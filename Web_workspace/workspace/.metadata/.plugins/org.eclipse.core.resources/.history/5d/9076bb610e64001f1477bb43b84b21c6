@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>On함수에 대하여</title>
+</head>
+<body>
+	<div>
+		<h1>jQuery Comment</h1>
+		<div id="comment_write">
+			<form id="comment_form">
+				<div>
+					<label for="user_name">작성자</label>
+					<input type="text" name="user_name" id="user_name" />
+					<input type="submit" value="저장히기" />
+				</div>
+				<div>
+					<label for="comment">덧글 내용</label>
+					<textarea name="comment" id="comment"></textarea>
+				</div>
+			</form>
+		</div>
+		
+		<!-- 동적 요소 -->
+		<ul id="comment_list"></ul>
+	</div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){});
+</script>
+</body>
+</html>
+
+<!-- 
+on() 함수
+
+비동적
+$("요소").on("이벤트", function() {
+    ... 이벤트 처리 ...
+});
+
+동적
+앞으로 동적으로 추가할 요소에 대한 이벤트를 미리 정의해 놓는 기능이다.
+새로 추가될 요소에 대한 이벤트이기 때문에 이 이벤트가 정의되는 시점에서는 대상이 
+존재하지 않기 때문에, 이 이벤트는 document 객체에 설정해야 한다.
+
+$(document).on( "이벤트", "셀렉터", function() {
+    ... 이벤트 처리 ...
+});
+ -->

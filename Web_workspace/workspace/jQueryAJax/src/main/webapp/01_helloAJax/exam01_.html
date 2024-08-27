@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	<h1 class="title">$.ajax() 함수를 사용한 텍스트 읽기</h1>
+	<div class="exec">
+	
+		<input type="button" value="txt파일 가져오기" id="mybtn"/>
+	</div>
+	<div class="console" id="result"></div>
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#mybtn').click(function(){
+		// jQuery.ajax() 함수를 이용하여 서버에 비동기적으로 요청을 보낸다.
+		$.ajax({
+		    type: 'get', // get 또는 post 요청 방식을 설정 ('get'은 데이터를 URL에 포함하여 전송)
+		    url: 'http://localhost:8080/jQueryAJax/text/text01.txt',  // 서버 요청할 파일의 경로. 경로가 올바른지 확인해야 한다.
+		    dataType: 'text',  // 서버로부터 받는 데이터의 형식을 'text'로 설정 (다른 형식으로는 'xml', 'json' 등이 있다)
+		    success: function(data){ // 요청이 성공했을 때 실행되는 콜백 함수
+		        $('#result').html(data); // 받은 데이터를 HTML 요소 내에 삽입한다.
+		    },
+		    error: function(xhr, textStatus, errorThrown){ // 요청이 실패했을 때 실행되는 콜백 함수
+		        // 에러 메시지를 화면에 표시한다.
+		        $('div').html('<div>' + textStatus + '(HTTP-' + xhr.status + '/' + errorThrown + ')' + '</div>');
+		    }
+		});
+	});
+});
+</script>
+</body>
+</html>
+
+
+<!-- 
+
+AJax(Asynchronous JavaScript and XML)
+
+ -->
