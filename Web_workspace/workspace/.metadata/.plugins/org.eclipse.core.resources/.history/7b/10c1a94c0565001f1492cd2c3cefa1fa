@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* { 
+   padding: 0; 
+   margin: 0; 
+   color: #333;
+   /* 모든 요소의 기본 패딩과 마진을 제거하고, 텍스트 색상을 설정합니다. */
+}
+   
+body { 
+   padding: 20px 30px;
+   /* body 요소에 20px 위아래 패딩과 30px 좌우 패딩을 설정합니다. */
+}
+
+#login fieldset {
+   width: 270px; 
+   padding: 15px;
+   border: 1px solid #7BAEB5;
+   position: relative;
+   /* 로그인 폼의 fieldset 요소에 대한 스타일 설정: 너비, 패딩, 테두리, 위치 설정 */
+}
+      
+#login fieldset legend {
+   display: none;
+   /* fieldset의 legend 요소는 화면에 표시되지 않도록 설정합니다. */
+}
+
+#login label {
+   display: inline-block;
+   width: 80px;
+   font-size: 14px;
+   font-weight: bold;
+   padding-left: 10px;
+   margin-bottom: 10px;
+   /* 각 label 요소에 대한 스타일 설정: 레이블 너비, 글자 크기 및 두께, 패딩, 마진 설정 */
+}
+
+#login input[type='text'], #login input[type='password'] {
+   border: 1px solid #ccc;
+   padding: 3px 10px;
+   width: 150px;
+   vertical-align: middle;
+   font-size: 12px;
+   line-height: 150%;
+   /* 텍스트와 비밀번호 입력 필드에 대한 스타일 설정: 테두리, 패딩, 너비, 수직 정렬, 글자 크기 및 줄 간격 설정 */
+}
+
+#login input[type='submit'] { 
+   width: 270px;
+   height: 20px;
+   /* 로그인 버튼의 너비와 높이를 설정합니다. */
+}
+
+.active {
+   border: 1px solid #f00 !important;
+   background-color: skyblue;
+   /* 포커스된 입력 필드에 대해 빨간 테두리와 하늘색 배경을 설정합니다. */
+}
+
+#login {
+   position: relative;
+   /* 로그인 폼의 위치를 상대적으로 설정합니다. 이로 인해 내부 요소의 절대 위치가 기준이 됩니다. */
+}
+
+#login fieldset .loader {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.3);
+   display: none;
+   /* 로그인 진행 중 로딩 이미지를 표시하는 영역에 대한 스타일 설정: 절대 위치, 크기, 반투명 배경, 기본적으로 숨김 처리 */
+}
+
+#login .loader img {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   margin-left: -5px;
+   margin-top: -5px;
+   /* 로딩 이미지를 중앙에 배치하기 위한 스타일 설정: 위치를 절대값으로 설정하고, 중앙에 배치 */
+}
+
+#idDiv, #pwdDiv {
+	color: red;
+	font-size: 9pt;
+	font-weight: bold;
+   /* 아이디와 비밀번호 검증 오류 메시지에 대한 스타일 설정: 글자색, 크기 및 두께 */
+}
+</style>
+</head>
+<body>
+	<form id="login">
+		<fieldset>
+			<legend>로그인</legend>
+			<!-- fieldset의 legend는 시각적 요소가 아닌 의미적 요소로, 여기에 "로그인"이라는 제목이 있지만 표시되지 않도록 설정되어 있습니다. -->
+			<div>
+				<label for="user_id">아이디</label>
+				<!-- '아이디'라는 텍스트가 입력 필드 앞에 나타나도록 설정 -->
+				<input type="text" name="user_id" id="user_id" />
+				<!-- 사용자가 아이디를 입력할 수 있는 텍스트 필드. name 속성으로 'user_id'가 서버로 전송됨. id는 label과 연결 -->
+				<div id="idDiv"></div>
+				<!-- 아이디 검증 오류 메시지를 표시할 영역 -->
+			</div>
+			<div>
+				<label for="user_password">비밀번호</label>
+				<!-- '비밀번호'라는 텍스트가 입력 필드 앞에 나타나도록 설정 -->
+				<input type="password" name="user_password" id="user_password" />
+				<!-- 사용자가 비밀번호를 입력할 수 있는 텍스트 필드. name 속성으로 'user_password'가 서버로 전송됨. id는 label과 연결 -->
+				<div id="pwdDiv"></div>
+				<!-- 비밀번호 검증 오류 메시지를 표시할 영역 -->
+			</div>
+			<div>
+				<input type="submit" value="로그인"/>			
+				<!-- 사용자가 로그인 요청을 제출할 때 클릭하는 버튼. 버튼 클릭 시 폼이 서버로 제출됩니다. -->
+			</div>
+			<div class="loader">
+				<img src="../image/loader.gif"/>
+				<!-- 로그인 처리 중 표시되는 로딩 애니메이션 이미지. AJAX 요청 중에만 표시되도록 설정 -->
+			</div>
+		</fieldset>
+	</form>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- jQuery 라이브러리 로드 -->
+
+<script type="text/javascript">
+$(function(){
+	$('#user_id, #user_password').bind({
+		'focus': function(){
+			$(this).addClass('active');
+			/* 입력 필드가 포커스를 받을 때 'active' 클래스를 추가하여 스타일을 변경합니다. 이때 테두리 색상과 배경색이 변경됩니다. */
+		},
+		'blur': function(){
+			$(this).removeClass('active');
+			/* 입력 필드에서 포커스가 벗어날 때 'active' 클래스를 제거하여 원래 스타일로 되돌립니다. 이때 테두리 색상과 배경색이 초기 상태로 돌아갑니다. */
+		},
+	});
+	
+	$('#login').bind('submit', function(){
+		$('#idDiv').empty();
+		$('#pwdDiv').empty();
+		/* 로그인 폼이 제출되기 전에 이전에 출력된 오류 메시지를 모두 지웁니다. 오류 메시지 영역을 비워 새로운 메시지가 추가될 수 있도록 준비합니다. */
+		
+		var user_id = $('input[name="user_id"]').val();
+		/* 입력된 아이디를 변수에 저장합니다. */
+		if(!user_id) {
+			$('#idDiv').text('아이디 입력');
+			/* 아이디가 입력되지 않았을 경우, idDiv에 오류 메시지를 출력하고 포커스를 해당 필드로 이동시킵니다. */
+			$('input[name="user_id"]').focus();
+			return false;
+			/* 폼 제출을 중단하여 폼이 서버로 전송되지 않도록 합니다. */
+		}//if
+		
+		var user_password = $('input[name="user_password"]').val();
+		/* 입력된 비밀번호를 변수에 저장합니다. */
+		if(!user_password) {
+			$('#pwdDiv').text('비밀번호 입력');
+			/* 비밀번호가 입력되지 않았을 경우, pwdDiv에 오류 메시지를 출력하고 포커스를 해당 필드로 이동시킵니다. */
+			$('input[name="user_password"]').focus();
+			return false;
+			/* 폼 제출을 중단하여 폼이 서버로 전송되지 않도록 합니다. */
+		}//if
+		
+		$('#login .loader').show();
+		/* 모든 검증이 완료되면 로딩 이미지를 표시합니다. 로딩 이미지는 로그인 처리 중 사용자에게 대기 상태를 알리기 위해 사용됩니다. */
+		
+		$.post(
+				//'../login/login.jsp',
+				'../login/login_JSTL.jsp',
+			   //{ 'user_id': user_id, 'user_password': user_password },
+			   $(this).serialize(),
+			   /* 폼 데이터를 직렬화하여 서버에 전송합니다. serialize() 함수는 폼의 입력 데이터를 URL 인코딩 형식으로 변환합니다. */
+			   function(data){
+				   let message = $(data).find('message').text();
+				   /* 서버에서 반환된 XML 데이터에서 'message' 태그의 내용을 찾아 변수에 저장합니다. */
+				   alert(message);
+				   /* 저장된 메시지를 경고창으로 출력하여 사용자가 로그인 상태를 알 수 있도록 합니다. */
+			   }).fail(function(){
+				   alert('로그인 실패하였습니다. 다시 로그인 하세요'); //404
+				   /* 요청이 실패하면 경고창을 통해 로그인 실패 메시지를 출력합니다. 이때 404 같은 서버 오류에 대한 대응으로 사용됩니다. */
+			   }).always(function(){
+				   $('#login .loader').hide();
+				   /* 요청 완료 후 로딩 이미지를 숨깁니다. 성공 또는 실패 여부에 상관없이 AJAX 요청이 끝나면 로딩 이미지를 제거합니다. */
+			   });
+		
+		return false;
+		/* 폼 제출을 중단하여 페이지가 리로드되지 않도록 합니다. 폼이 서버로 전송된 후 페이지를 새로고침하지 않도록 합니다. */
+	});
+});
+</script>
+</body>
+</html>
+
+<!-- 
+1. 
+$.ajax({
+  url: 'URL',
+  type: 'POST',
+  data: 서버로 보내는 데이터,
+  datatype: 'text' / 'xml' / 'json' 서버로부터 받는 데이터 타입
+})
+.done(function(data, textStatus, xhr) { });
+.fail(function(xhr, textStatus, errorThrown) { });
+.always(function(data|xhr, textStatus, xhr|errorThrown) { });
+.then(function(data, textStatus, xhr|errorThrown) { });
+
+※ https://string.tistory.com/128 참조
+
+2. $(this).serialize()
+- 데이터를 보내기 위해 폼 요소 집합을 문자열로 인코딩한다.
+- 표준 URL-encoded 표기법으로 텍스트 문자열을 만든다.
+- 폼 요소 집합을 표현하는 jQuery 객체를 이용한다.
+  $('form').submit(
+   function() {
+      alert($(this).serialize());
+      return false;
+    }
+  );
+- 표준형태의 쿼리스트링을 만든다.
+  => a=1&b=2&c=3&d=4
+ -->

@@ -6,4 +6,5 @@
   <module moduleId="org.eclipse.jst.jee.server:jQuery" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:SoloTest" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:jQueryAJax" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SoloProject_Front" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>

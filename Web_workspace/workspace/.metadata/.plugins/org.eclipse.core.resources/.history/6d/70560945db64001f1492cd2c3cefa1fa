@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ID 중복 검사</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	<h1 class="title"> 아이디 중복 검사 </h1>
+	<div class="exec">
+		<form>
+			<input type="text" name="user_id" />
+			<input type="button" id="checkId" value="중복검사" />		
+		</form>	
+	</div>
+	
+	<div class="console"></div>
+	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#checkId').click(function(){
+		//유효성 검사
+		
+		
+		
+		
+		
+		
+	});
+});
+</script>
+</body>
+</html>
+
+<!-- 
+(1) $.ajax()
+   $.ajax({
+      url: "XML파일의 URL",
+      type: "get / post",
+      data: "파라미터 문자열 key=value&key=value", -- 서버로 보내는 데이터
+      		{ "변수": "값1", "변수": "값2", .. }
+      dataType: "xml",							-- 서버로부터 반환되는 데이터 타입
+      success: function(data) {					-- 200 (OK)
+         ... 통신이 성공한 경우 실행되는 함수 ...
+      },
+      error: function(err){}					-- 404, 405, 500, 400...
+   });
+
+(2) $.get() / $.post()
+   $.get("url", {파라미터 json}, function(data) {
+         ... XML 데이터의 처리 ...
+      }, ["xml"]);
+
+예) 
+var ajax = $.get("url", {파라미터 json}, function(data) {...XML 데이터의 처리...}, ["xml"]);
+
+(3) ajax.fail() / ajax.always()
+ajax.fail(function() {
+   // 404, 500 에러 등이 발생한 경우 실행될 내용
+});
+
+ajax.always(function() {
+   // 통신 성공, 실패 여부에 상관없이 무조건 마지막에 호출됨 (java 의 finally 와 비슷함)
+});
+ -->

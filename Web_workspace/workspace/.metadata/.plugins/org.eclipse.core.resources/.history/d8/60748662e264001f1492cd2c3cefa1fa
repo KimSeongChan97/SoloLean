@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/xml; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+// Java 구역
+String id = request.getParament("user_id");
+
+// DB 연동 구역
+// 예를 들어, 만약에 "hong" 이라면 DB에 이미 저장된 id로 한다면.
+
+
+%>    
+    

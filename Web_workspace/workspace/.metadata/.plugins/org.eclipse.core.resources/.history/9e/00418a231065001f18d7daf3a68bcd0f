@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/xml; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %> <%-- XML 태그 시작 전의 공백 제거 --%>
+
+<%
+
+String user_id = request.getParameter("user_id");
+String user_id = request.getParameter("user_id");
+String user_id = request.getParameter("user_id");
+String user_id = request.getParameter("user_id");
+
+boolean result = false;
+if(user_id.equals("hong")) result = true;
+
+
+%>
+
+<%-- XML 보내기 --%>
+<?xml version="1.0" encoding="UTF-8"?>
