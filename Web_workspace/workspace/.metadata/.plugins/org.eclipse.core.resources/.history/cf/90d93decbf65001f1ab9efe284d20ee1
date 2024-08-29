@@ -1,0 +1,18 @@
+function goBack() {
+    window.history.back();
+}
+
+function loadWeatherData() {
+    const url = 'https://apihub.kma.go.kr/api/typ01/url/kma_sfctm2.php?tm=202211300900&stn=0&help=1&authKey=U0AafwqeSO-AGn8KnsjvLA';
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('weather-data').innerText = data;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+        });
+}
+
+// 페이지 로드 시 기상 정보를 불러옵니다.
+window.onload = loadWeatherData;

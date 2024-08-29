@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=568c98168813e76854874945789763e9"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="images/menubar01.png" alt="메뉴바 이미지">
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="board.html">게시판</a></li>
+                <li><a href="register.html">회원가입</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 카카오 지도 표시 -->
+        <section id="map" style="width:100%;height:350px;"></section>
+    </main>
+
+    <footer>
+        <button onclick="goBack()"><img src="images/back.png" alt="뒤로가기"></button>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

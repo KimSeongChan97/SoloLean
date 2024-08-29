@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%
+    String title = request.getParameter("subject");
+    String content = request.getParameter("content");
+    String author = (String) session.getAttribute("user");
+
+    if (author == null) {
+        response.sendRedirect("login.html");
+    } else {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database_name", "username", "password");
+
+            String sql = "INSERT INTO posts (title, content, author) VALUES (?, ?, ?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, title);
+            pstmt.setString(2, content);
+            pstmt.setString(3, author);
+
+            int result = pstmt.executeUpdate();
+            if (result > 0) {
+                response.sendRedirect("board.html");
+            } else {
+                out.println("글 등록에 실패했습니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (pstmt != null) try { pstmt.close(); } catch (Exception e) {}
+            if (conn != null) try { conn.close(); } catch (Exception e) {}
+        }
+    }
+%>

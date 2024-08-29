@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 목록</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="images/menubar01.png" alt="메뉴바 이미지">
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="register.html">회원가입</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="board-list">
+            <h2>게시판 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>아이디</th>
+                        <th>제목</th>
+                        <th>작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 게시글 목록이 여기에 표시됩니다. -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <button onclick="goBack()"><img src="images/back.png" alt="뒤로가기"></button>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+function goBack() {
+    window.history.back();
+}
+
+function initializeMap() {
+    // 카카오 지도 API를 활용하여 지도를 초기화합니다.
+    const container = document.getElementById('map');
+    const options = {
+        center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울 중심 좌표
+        level: 3 // 지도의 확대 레벨
+    };
+    const map = new kakao.maps.Map(container,

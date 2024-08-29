@@ -1,0 +1,33 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.example.dto.MemberDTO" %>
+<%@ page import="com.example.dao.MemberDAO" %>
+<html>
+<head>
+    <title>회원가입 처리</title>
+</head>
+<body>
+<%
+    // 폼에서 전송된 데이터 가져오기
+    String username = request.getParameter("username");
+    String email = request.getParameter("email");
+    String password = request.getParameter("password");
+
+    // DTO 객체 생성 및 값 설정
+    MemberDTO member = new MemberDTO(username, email, password);
+
+    // DAO 객체 생성
+    MemberDAO dao = new MemberDAO();
+
+    // 데이터베이스에 회원 정보 저장
+    int result = dao.register(member);
+
+    if (result > 0) {
+        // 회원가입 성공 후 login.html로 리다이렉트
+        out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='login.html';</script>");
+    } else {
+        // 회원가입 실패
+        out.println("<script>alert('회원가입에 실패했습니다. 다시 시도해주세요.'); history.back();</script>");
+    }
+%>
+</body>
+</html>

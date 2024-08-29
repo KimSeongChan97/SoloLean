@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/home.png" alt="Home" style="height: 40px;">
+    </a>
+    <div class="mx-auto">
+      <img src="images/logo.png" alt="Logo" style="height: 40px;">
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="board.html">게시판</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">
+            <img src="images/gaip.png" alt="회원가입" style="height: 30px;">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
+            <img src="images/login01.png" alt="로그인" style="height: 30px;">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	
+    <!-- 게시판 제목 -->
+    <h1 class="title">게시판</h1>
+    
+    <!-- 게시판 설명 -->
+    <div class="exec">게시판 설명</div>
+    
+    <div class="exec">
+        <!-- 게시물 수  -->
+        총 게시물 수: <span>0</span>개
+    </div>
+    
+    <div class="example">
+        <table>
+            <thead>
+                <tr>
+                    <th class="no">번호</th>
+                    <th class="subject">제목</th>
+                    <th class="hit">조회수</th>
+                    <th class="date">작성일시</th>
+                    <th class="actions">액션</th> <!-- 추가된 액션 열 -->
+                </tr>
+            </thead>                
+            <tbody>
+                <!-- 게시글 템플릿 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 게시글 작성 폼 -->
+    <div id="post-form">
+        <input type="text" id="post-title" placeholder="제목"><br>
+        <textarea id="post-content" placeholder="내용"></textarea><br>
+        <button id="post-submit">등록</button>
+    </div>
+
+    <!-- jQuery 및 jQuery Template 플러그인 로드 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tmpl.min.js"></script>
+
+    <!-- 템플릿 정의 -->
+    <script type="text/x-jquery-tmpl" id="itemTemplate">
+        <tr>
+            <td class="no">${ no }</td>
+            <td class="left subject">${ subject }</td>
+            <td class="hit">${ hit }</td>
+            <td class="date">${ date }</td>
+            <td class="actions">
+                <button class="edit-btn">수정</button>
+                <button class="delete-btn">삭제</button>
+            </td>
+        </tr>
+    </script>
+
+    <!-- 스크립트 -->
+    <script type="text/javascript">
+        $(function() {
+            var user = '<%= session.getAttribute("user") %>';
+
+            // 게시글 목록 로드
+            $.ajax({
+                type: 'get',
+                url: 'json/bbs.json',
+                dataType: 'json',
+                success: function(data) {
+                    $('h1.title').html(data.title);
+                    $('div.exec:eq(0)').html(data.description);
+                    $('div.exec:eq(1) > span').html(data.total);
+
+                    var tmpl = $('#itemTemplate').tmpl(data.item, {
+                        canEdit: function() {
+                            return this.data.author === user;
+                        }
+                    });
+                    $('tbody').append(tmpl);
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
+
+            // 게시글 등록
+            $('#post-submit').click(function() {
+                var title = $('#post-title').val();
+                var content = $('#post-content').val();
+                
+                if (title && content) {
+                    // 여기에 JSON 업데이트 및 서버 전송 로직을 추가합니다.
+                } else {
+                    alert('제목과 내용을 입력하세요.');
+                }
+            });
+
+            // 수정 및 삭제 버튼 이벤트 핸들러 추가
+            $('body').on('click', '.edit-btn', function() {
+                var $row = $(this).closest('tr');
+                if (user === $row.find('.author').text()) {
+                    // 수정 로직
+                } else {
+                    alert('자신의 글만 수정할 수 있습니다.');
+                }
+            });
+
+            $('body').on('click', '.delete-btn', function() {
+                var $row = $(this).closest('tr');
+                if (user === $row.find('.author').text()) {
+                    if (confirm('정말 삭제하시겠습니까?')) {
+                        // 삭제 로직
+                    }
+                } else {
+                    alert('자신의 글만 삭제할 수 있습니다.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
