@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSON에 대하여...</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	
+	<h1 class="title">$.ajax() 함수를 사용한 JSON 데이터 읽기</h1> 
+	<div class="exec">
+		<input type="button" value="JSON 데이터 가져오기" id="mybtn"/> 
+	</div>
+	
+	<div class="console" id="result"></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#mybtn').click(function(){
+		$.ajax({
+			type: 'get',
+			url: '../json/json01.json',
+			
+		});
+	});
+});
+</script>
+</body>
+</html>
+
+
+<!-- 
+
+JSON 객체
+{
+	변수: 값,
+	변수: 값, ...
+} 
+
+JSON 배열
+{
+	[
+		{변수: 값, 변수: 값, ...},
+		{변수: 값, 변수: 값, ...},
+	]
+}
+
+ -->

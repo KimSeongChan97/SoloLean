@@ -173,8 +173,8 @@ h1 {
 					num과 datetime은 숨겨진(hidden) 필드로, 덧글의 고유 번호와 작성 시간을 저장합니다.
 					숨겨진 필드는 화면에 보이지 않지만, 폼 데이터로서 서버로 전송됩니다.
 				-->
-				<input type="hidden" name="num" id="num" value="" /> 
-				<input type="hidden" name="datetime" id="datetime" value="" />
+				<input type="hidden" name="num" id="num" value="" readonly/> 
+				<input type="hidden" name="datetime" id="datetime" value="" readonly/>
 				<div>
 					<label for="writer">작성자</label> 
 					<!-- 
@@ -448,6 +448,7 @@ $(function(){
 		if(confirm('정말로 삭제하시겠습니까?')){
 			// 삭제 확인 대화 상자를 표시하고, 확인할 경우 아래 코드가 실행됩니다.
 			
+			// let num = $(this).parents('li').data('data-num');
 			let num = $(this).parents('li').attr('data-num');	
 			// 삭제하려는 덧글의 고유 번호를 가져옵니다.
 			// .parents('li') 메서드는 현재 클릭된 요소의 상위 li 요소를 선택합니다.
@@ -455,6 +456,7 @@ $(function(){
 			// 삭제하려는 덧글 항목을 선택합니다.
 			// .parents('.comment_item')는 현재 클릭된 요소의 상위 .comment_item 요소를 선택합니다.
 			
+			//$.post('../comment/comment_delete_JSTL.jsp', { 'num': num }, function(data){
 			$.post('../comment/comment_delete.jsp', { 'num': num }, function(data){
 				// 서버에 삭제 요청을 보냅니다.
 				// num 값은 삭제할 덧글의 고유 번호를 서버에 전달하기 위한 데이터입니다.
