@@ -1,0 +1,35 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*" %>
+<%
+    String seq = request.getParameter("seq");
+    String memberId = (String) session.getAttribute("memberId");
+
+    if(memberId == null) {
+        response.sendRedirect("login.html");
+        return;
+    }
+
+    try {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
+
+        String sql = "DELETE FROM BOARD WHERE SEQ = ? AND MEMBER_ID = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, seq);
+        pstmt.setString(2, memberId);
+
+        int result = pstmt.executeUpdate();
+
+        if(result > 0) {
+            response.sendRedirect("board.html");
+        } else {
+            out.println("게시글 삭제 실패");
+        }
+
+        pstmt.close();
+        conn.close();
+    } catch(Exception e) {
+        e.printStackTrace();
+        out.println("오류 발생: " + e.getMessage());
+    }
+%>

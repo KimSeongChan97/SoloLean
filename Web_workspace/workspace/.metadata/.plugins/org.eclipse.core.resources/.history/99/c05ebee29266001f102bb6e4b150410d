@@ -1,0 +1,45 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*, java.io.*" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+
+    // 데이터베이스 연결 정보
+    String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    String dbUser = "hr"; // 사용자명
+    String dbPass = "hr"; // 비밀번호
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+
+    try {
+        // POST 요청으로 받은 파라미터 가져오기
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String memberId = "sampleMemberId"; // 실제로는 로그인 세션에서 가져와야 합니다.
+
+        // 데이터베이스 연결
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+        // 게시글을 BOARD 테이블에 삽입
+        String sql = "INSERT INTO BOARD (SEQ, MEMBER_ID, SUBJECT, CONTENT, LOGTIME) VALUES (BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, memberId);
+        pstmt.setString(2, title);
+        pstmt.setString(3, content);
+        int result = pstmt.executeUpdate();
+
+        // 글이 성공적으로 저장되면 게시판 페이지로 리디렉션
+        if(result > 0) {
+            response.sendRedirect("board.html");
+        } else {
+            out.println("Error: Failed to save the post.");
+        }
+    } catch (Exception e) {
+        out.println("Error: " + e.getMessage()); // 간단한 에러 메시지만 출력
+        e.printStackTrace(); // 여전히 콘솔에 출력될 수 있도록 함
+    } finally {
+        try { if (pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+    }
+%>

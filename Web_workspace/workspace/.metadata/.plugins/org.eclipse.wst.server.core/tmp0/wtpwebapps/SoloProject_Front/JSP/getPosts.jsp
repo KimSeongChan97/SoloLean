@@ -1,48 +1,47 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.*" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.io.*" %>
 <%
-    // 데이터베이스 연결 정보
-    String url = "jdbc:oracle:thin:@localhost:1521:xe";
-    String user = "HR";
-    String password = "hr";
+    String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    String dbUser = "hr";
+    String dbPass = "hr";
 
     Connection conn = null;
-    Statement stmt = null;
+    PreparedStatement pstmt = null;
     ResultSet rs = null;
 
     try {
-        // 데이터베이스 연결
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        conn = DriverManager.getConnection(url, user, password);
+        conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
 
-        // SQL 쿼리 작성
-        String sql = "SELECT POST_ID, TITLE, AUTHOR, TO_CHAR(CREATED_AT, 'YYYY-MM-DD') AS CREATED_AT, VIEWS FROM POSTS ORDER BY POST_ID DESC";
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(sql);
+        // 게시글 목록을 가져오는 SQL 쿼리에서 작성자의 이름과 조회수를 가져오도록 수정
+        String sql = "SELECT B.SEQ, B.SUBJECT, M.NAME AS WRITER, B.LOGTIME, B.VIEWS FROM BOARD B JOIN MEMBER M ON B.MEMBER_ID = M.MEMBER_ID ORDER BY B.SEQ DESC";
+        pstmt = conn.prepareStatement(sql);
+        rs = pstmt.executeQuery();
 
-        // 결과를 HTML로 출력
         while (rs.next()) {
-            int postId = rs.getInt("POST_ID");
-            String title = rs.getString("TITLE");
-            String author = rs.getString("AUTHOR");
-            String createdAt = rs.getString("CREATED_AT");
-            int views = rs.getInt("VIEWS");
+            int seq = rs.getInt("SEQ");
+            String subject = rs.getString("SUBJECT");
+            String writer = rs.getString("WRITER"); // 작성자 이름을 가져옴
+            String logtime = rs.getString("LOGTIME");
+            int views = rs.getInt("VIEWS");  // 조회수를 가져옴
 
             out.println("<tr>");
-            out.println("<th scope='row'>" + postId + "</th>");
-            out.println("<td>" + title + "</td>");
-            out.println("<td>" + author + "</td>");
-            out.println("<td>" + createdAt + "</td>");
-            out.println("<td>" + views + "</td>");
-            out.println("<td><a href='edit_post.jsp?postId=" + postId + "' class='btn btn-sm btn-warning'>수정</a> <a href='delete_post.jsp?postId=" + postId + "' class='btn btn-sm btn-danger'>삭제</a></td>");
+            out.println("<td>" + seq + "</td>");
+            out.println("<td>" + subject + "</td>");
+            out.println("<td>" + writer + "</td>"); // 작성자 이름 출력
+            out.println("<td>" + logtime + "</td>");
+            out.println("<td>" + views + "</td>"); // 조회수 출력
+            out.println("<td><a href='JSP/view_post.jsp?seq=" + seq + "'>View</a></td>");
             out.println("</tr>");
         }
     } catch (Exception e) {
-        e.printStackTrace();
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);  // 예외 정보를 StringWriter에 출력
+        out.println("<pre>" + sw.toString() + "</pre>");  // 예외 정보를 브라우저에 출력
     } finally {
-        // 리소스 해제
-        try { if (rs != null) rs.close(); } catch (SQLException e) { }
-        try { if (stmt != null) stmt.close(); } catch (SQLException e) { }
-        try { if (conn != null) conn.close(); } catch (SQLException e) { }
+        try { if (rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
     }
 %>

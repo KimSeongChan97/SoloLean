@@ -1,0 +1,104 @@
+let currentMarker = null; // 현재 표시된 마커를 저장하는 변수
+let infoPopup = document.getElementById('info-popup'); // 정보 팝업
+let infoContent = document.getElementById('info-content'); // 정보 내용
+
+// 구글 맵 초기화 함수
+function initMap() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 37.5665, lng: 126.9780 }, // 서울의 기본 좌표
+        zoom: 12
+    });
+
+    // 클릭 이벤트 추가
+    map.addListener('click', function(event) {
+        placeMarkerAndPanTo(event.latLng, map);
+    });
+
+    // 위치 검색 버튼 클릭 이벤트 추가
+    document.getElementById('search-button').addEventListener('click', function() {
+        const location = document.getElementById('location-input').value;
+        if (location) {
+            searchLocation(location, map);
+        }
+    });
+}
+
+// 마커를 배치하고 해당 위치의 정보를 가져오는 함수
+function placeMarkerAndPanTo(latLng, map) {
+    // 기존 마커가 있으면 제거
+    if (currentMarker) {
+        currentMarker.setMap(null);
+    }
+
+    // 새로운 마커 생성
+    currentMarker = new google.maps.Marker({
+        position: latLng,
+        map: map
+    });
+
+    map.panTo(latLng);
+
+    // 클릭한 위치의 날씨 정보를 가져와서 표시
+    fetchWeatherByCoordinates(latLng.lat(), latLng.lng());
+
+    // 정보 팝업 업데이트 및 표시
+    fetchLocationInfo(latLng, map);
+}
+
+// 좌표를 사용해 날씨 정보를 가져오는 함수
+function fetchWeatherByCoordinates(lat, lon) {
+    const apiKey = "5233d140772d45ceb3ec91756afa4e78"; // Weatherbit API 키
+    const url = `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=${apiKey}&lang=ko`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const weatherData = `
+                <strong>${data.data[0].city_name}</strong>의 현재 날씨: 
+                ${data.data[0].weather.description}, 온도: ${data.data[0].temp}°C
+            `;
+            document.getElementById("weather-data").innerHTML = weatherData;
+        })
+        .catch(error => {
+            console.error("Error fetching the weather data:", error);
+            document.getElementById("weather-data").innerHTML = error.message;
+        });
+}
+
+// 위치 정보를 가져오는 함수
+function fetchLocationInfo(latLng, map) {
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ location: latLng }, function(results, status) {
+        if (status === 'OK') {
+            const locationInfo = `
+                <strong>${results[0].formatted_address}</strong>
+            `;
+            infoContent.innerHTML = locationInfo;
+            infoPopup.classList.add('visible');
+        } else {
+            alert('위치 정보를 가져올 수 없습니다: ' + status);
+        }
+    });
+}
+
+// 사용자가 입력한 위치를 검색하는 함수
+function searchLocation(location, map) {
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: location }, function(results, status) {
+        if (status === 'OK') {
+            const latLng = results[0].geometry.location;
+            map.setCenter(latLng);
+            placeMarkerAndPanTo(latLng, map);
+        } else {
+            alert('위치를 찾을 수 없습니다: ' + status);
+        }
+    });
+}
+
+// 페이지 로드 시 모든 초기화 작업을 수행합니다.
+function initPage() {
+    checkLoginStatus();
+    initMap(); // 구글 맵 초기화
+}

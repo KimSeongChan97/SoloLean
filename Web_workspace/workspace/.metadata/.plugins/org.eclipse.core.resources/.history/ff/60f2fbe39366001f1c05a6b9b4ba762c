@@ -1,0 +1,46 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*, java.io.*" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+
+    String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    String dbUser = "yourUsername"; 
+    String dbPass = "yourPassword";
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        // 사용자 입력 값 가져오기
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        // 데이터베이스 연결
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+        // MEMBER 테이블에서 사용자 확인
+        String sql = "SELECT MEMBER_ID FROM MEMBER WHERE EMAIL = ? AND PASSWORD = ?";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, email);
+        pstmt.setString(2, password);
+        rs = pstmt.executeQuery();
+
+        if(rs.next()) {
+            // 로그인 성공
+            String memberId = rs.getString("MEMBER_ID");
+            session.setAttribute("memberId", memberId); // 세션에 MEMBER_ID 저장
+            response.sendRedirect("board.html"); // 게시판 페이지로 이동
+        } else {
+            out.println("Invalid email or password.");
+        }
+    } catch (Exception e) {
+        out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        try { if (rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
+    }
+%>
