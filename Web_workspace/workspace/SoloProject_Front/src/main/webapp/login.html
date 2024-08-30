@@ -10,7 +10,6 @@
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-
 <script>
     fetch('navbar.html')
         .then(response => response.text())
@@ -20,7 +19,7 @@
 </script>
 
 
-    <main>
+    <main class="background-image login-bg">
         <section class="container mt-5">
             <h2>로그인</h2>
             <form action="login_process.jsp" method="post">
@@ -38,7 +37,7 @@
             </form>
         </section>
     </main>
-
+	
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

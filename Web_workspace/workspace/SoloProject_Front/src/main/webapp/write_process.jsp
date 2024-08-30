@@ -1,50 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*, java.io.*, java.text.SimpleDateFormat, java.util.*" %>
 <%
-    String title = request.getParameter("title");
-    String content = request.getParameter("content");
-    String author = (String) session.getAttribute("user");
+    request.setCharacterEncoding("UTF-8");
 
-    if (author == null) {
-        response.sendRedirect("login.html");
-    } else {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
+    String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    String dbUser = "hr"; 
+    String dbPass = "hr";
 
-        try {
-            // Oracle JDBC 드라이버 로드
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            
-            // 데이터베이스 연결
-            String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
-            String dbUser = "hr";
-            String dbPass = "hr";
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+    Connection conn = null;
+    PreparedStatement pstmt = null;
 
-            // SQL 쿼리 실행
-            String sql = "INSERT INTO posts (title, content, author) VALUES (?, ?, ?)";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, title);
-            pstmt.setString(2, content);
-            pstmt.setString(3, author);
+    try {
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String memberId = (String)session.getAttribute("memberId"); // 세션에서 로그인한 사용자 ID 가져오기
 
-            int result = pstmt.executeUpdate();
-            if (result > 0) {
-                response.sendRedirect("board.html");
-            } else {
-                out.println("글 등록에 실패했습니다.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.println("오류가 발생했습니다: " + e.getMessage());
-        } finally {
-            try {
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        if(memberId == null) {
+            response.sendRedirect("login.html"); // 로그인되지 않은 경우 로그인 페이지로 이동
+            return;
         }
+
+        // 데이터베이스 연결
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+        // BOARD 테이블에 게시글 정보 삽입
+        String sql = "INSERT INTO BOARD (SEQ, MEMBER_ID, SUBJECT, CONTENT, LOGTIME) VALUES (BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, memberId);
+        pstmt.setString(2, title);
+        pstmt.setString(3, content);
+        int result = pstmt.executeUpdate();
+
+        if(result > 0) {
+            // 성공적으로 게시글이 저장된 경우
+
+            // 현재 날짜를 포맷팅하여 세션 스토리지에 새 글 저장
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            String date = sdf.format(new java.util.Date()); // java.util.Date를 명시적으로 사용
+
+            String newPost = "{ \"title\": \"" + title + "\", \"teacher\": \"" + memberId + "\", \"date\": \"" + date + "\" }";
+            out.println("<script>");
+            out.println("sessionStorage.setItem('newPost', '" + newPost + "');");
+            out.println("location.href='board.html';");
+            out.println("</script>");
+        } else {
+            out.println("Error: Failed to save the post.");
+        }
+    } catch (Exception e) {
+        out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        try { if (pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
+        try { if (conn != null) conn.close(); } catch (Exception e) { e.printStackTrace(); }
     }
 %>

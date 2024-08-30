@@ -44,22 +44,21 @@
     <!-- Navbar -->
     <div id="navbar-placeholder"></div>
 
-<script>
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        });
-</script>
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+    </script>
 
-
-    <main>
+    <main class="background-image register-bg">
         <section class="container mt-5">
             <h2>회원가입</h2>
             <form action="register_process.jsp" method="post">
                 <div class="mb-3">
-                    <label for="username" class="form-label">이름</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+                    <label for="name" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="name" name="name" required> <!-- 여기서 name을 'name'으로 수정 -->
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">이메일</label>
