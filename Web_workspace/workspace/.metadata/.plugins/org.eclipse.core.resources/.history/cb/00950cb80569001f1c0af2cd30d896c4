@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+}
+
+</style>
+</head>
+<body>
+	<h1 align="center">클라이언트 에서 Servlet을 이용하여 서버로 보내기</h1>
+	<hr/>
+	
+	<form action="http://localhost:8080/testServlet2/person">
+		<table border="1">
+			<tr>
+				<th width="70">이름</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th width="70">나이</th>
+				<td><input type="text" name="age" size="7"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="보내기">
+					<input type="reset" value="취소">
+				</td>
+			</tr>
+		</table>
+	</form>
+		
+</body>
+</html>

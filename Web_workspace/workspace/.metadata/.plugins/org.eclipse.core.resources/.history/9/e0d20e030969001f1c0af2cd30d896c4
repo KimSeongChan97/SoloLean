@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Servlet 연습해보기</title>
+</head>
+<body>
+	 <h1 align="center">Servlet을 이용한 폼 전송</h1>
+    <form action="/PersonServlet" method="get">
+    
+    </form>
+
+
+</body>
+</html>
