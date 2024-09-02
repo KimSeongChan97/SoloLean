@@ -23,36 +23,16 @@
                     <a class="nav-link" href="board.html">게시판</a>
                 </li>
                 
-                <%
-                    // 세션에서 'user'라는 이름으로 저장된 값을 가져옵니다.
-                    // 사용자가 로그인한 상태라면 user 변수에 값이 저장되어 있을 것입니다.
-                    String user = (String) session.getAttribute("user");
-                    if (user != null) { // 로그인한 사용자가 있는 경우
-                %>
-                    <!-- 'MyPage'로 이동하는 링크, 로그인된 사용자만 볼 수 있습니다. -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="mypage.html">MyPage</a>
-                    </li>
-                    
-                    <!-- 'Logout' 링크, 로그인된 사용자만 볼 수 있습니다. -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.jsp">Logout</a>
-                    </li>
-                <%
-                    } else { // 로그인한 사용자가 없는 경우
-                %>
-                    <!-- '회원가입' 페이지로 이동하는 링크, 로그인되지 않은 사용자에게만 표시됩니다. -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">회원가입</a>
-                    </li>
-                    
-                    <!-- 'Login' 페이지로 이동하는 링크, 로그인되지 않은 사용자에게만 표시됩니다. -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                <%
-                    }
-                %>
+                <!-- 'MyPage'로 이동하는 링크 -->
+                <!-- MyPage.html 파일의 경로를 올바르게 수정 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/SoloProject_Front/MyPage.html">MyPage</a>
+                </li>
+                
+                <!-- 'Logout' 링크 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.jsp">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

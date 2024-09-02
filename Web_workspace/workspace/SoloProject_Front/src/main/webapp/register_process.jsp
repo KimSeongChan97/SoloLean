@@ -14,7 +14,14 @@
 
     try {
         // UUID를 사용하여 MEMBER_ID 생성
+        // UUID(Universally Unique Identifier)는 고유한 식별자를 생성하기 위한 표준입니다.
+        // 이를 사용하여 데이터베이스 내에서 중복되지 않는 고유한 MEMBER_ID를 생성할 수 있습니다.
+        // 데이터베이스의 기본 키로 사용되는 식별자는 중복되지 않아야 하므로, UUID를 사용하여
+        // 회원의 고유 ID를 생성합니다. UUID는 128비트 숫자를 사용하여 전 세계적으로
+        // 중복되지 않는 값을 생성할 수 있기 때문에, 대규모 시스템에서도 안전하게 사용할 수 있습니다.
         String memberId = UUID.randomUUID().toString(); // MEMBER_ID를 UUID로 자동 생성
+
+        // 사용자로부터 입력받은 데이터를 변수에 저장합니다.
         String name = request.getParameter("name"); // 사용자로부터 이름을 받아옵니다.
         String email = request.getParameter("email"); // 사용자로부터 이메일을 받아옵니다.
         String password = request.getParameter("password"); // 사용자로부터 비밀번호를 받아옵니다.

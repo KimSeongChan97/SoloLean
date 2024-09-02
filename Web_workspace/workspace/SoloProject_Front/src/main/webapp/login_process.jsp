@@ -21,7 +21,7 @@
         conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
 
         // SQL 쿼리를 작성하여 이메일과 비밀번호가 일치하는 사용자를 조회합니다.
-        String sql = "SELECT MEMBER_ID, NAME FROM MEMBER WHERE EMAIL = ? AND PASSWORD = ?";
+        String sql = "SELECT MEMBER_ID, NAME, PASSWORD FROM MEMBER WHERE EMAIL = ? AND PASSWORD = ?";
         pstmt = conn.prepareStatement(sql); // SQL 쿼리를 실행할 PreparedStatement 객체를 생성합니다.
         pstmt.setString(1, email); // 첫 번째 ? 자리에 사용자가 입력한 이메일을 바인딩합니다.
         pstmt.setString(2, password); // 두 번째 ? 자리에 사용자가 입력한 비밀번호를 바인딩합니다.
@@ -29,20 +29,23 @@
 
         // 쿼리 결과가 존재하면(즉, 이메일과 비밀번호가 일치하는 사용자가 있으면)
         if (rs.next()) {
-            // 데이터베이스에서 가져온 회원 ID와 이름을 변수에 저장합니다.
+            // 데이터베이스에서 가져온 회원 ID, 이름, 비밀번호를 변수에 저장합니다.
             String memberId = rs.getString("MEMBER_ID"); // 회원 ID
             String userName = rs.getString("NAME"); // 사용자 이름
+            String userPassword = rs.getString("PASSWORD"); // 사용자 비밀번호
 
             // 세션에 사용자 정보를 저장하여 로그인 상태를 유지합니다.
             session.setAttribute("memberId", memberId); // 세션에 회원 ID 저장
             session.setAttribute("userName", userName); // 세션에 사용자 이름 저장
             session.setAttribute("userEmail", email); // 세션에 사용자 이메일 저장
+            session.setAttribute("userPassword", userPassword); // 세션에 사용자 비밀번호 저장
 
             // 자바스크립트를 사용하여 세션 정보를 sessionStorage에 저장합니다.
             out.println("<script>");
             out.println("sessionStorage.setItem('memberId', '" + memberId + "');");
             out.println("sessionStorage.setItem('userName', '" + userName + "');");
             out.println("sessionStorage.setItem('userEmail', '" + email + "');");
+            out.println("sessionStorage.setItem('userPassword', '" + userPassword + "');");
             // 로그인 성공 후 메인 페이지로 리다이렉트합니다.
             out.println("location.href='index.html';"); // 로그인 후 이동할 페이지
             out.println("</script>");
