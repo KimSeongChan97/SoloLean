@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록</title>
+<style type="text/css">
+table{
+	border-collapse: collapse;
+}
+td{
+	padding: 5px;
+}
+input[name = name]{
+	width:200px;
+}
+input[name = email]{
+	width:300px;
+}
+input[name = homepage]{
+	width:350px;
+}
+input[name = subject]{
+	width:400px;
+}
+#subjectDiv, #contentDiv{
+	color: red;
+	font-size: 8pt;
+}
+</style>
+</head>
+<body>
+	<form method="post" action="/guestbookServlet/GuestbookWriteServlet">
+		<table border="1">
+			<tr>
+				<td>작성자</td>
+				<td><input type="text" name="name" placeholder="작성자 입력"/></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="email" placeholder="이메일 입력"/></td>
+			</tr>
+			<tr>
+				<td>홈페이지</td>
+				<td><input type="text" name="homepage" value="http://" /></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td>
+					<input width="500" type="text" name="subject" placeholder="제목입력" />
+					<div id="subjectDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>
+					<textarea cols = 65 rows = 25 name = content ></textarea>
+					<div id = contentDiv></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan = 2 align = center>
+					<input type = submit value = 글쓰기 />
+					<input type = reset value = 다시작성 />
+					<input type = button value = 글목록 />
+				</td>
+			</tr>
+		</table>
+	</form>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('input[name = subject]').blur(function(){
+		$('#subjectDiv').empty();
+		let subject = $('input[name = subject]').val();
+		if(!subject){
+			$('#subjectDiv').html('제목을 입력하세요');
+			$('input[name = subject]').focus();
+			return false;
+		}
+	});
+	$('textarea[name = content]').blur(function(){
+		let content = $('textarea[name = content]').val();
+		$('#contentDiv').empty();
+		if(!content){
+			$('#contentDiv').html('내용을 입력하세요');
+			$('textarea[name = content]').focus();
+			return false;
+		}
+	});
+	$('input[type = submit]').click(function(){
+		let subject = $('input[name = subject]').val();
+		let content = $('textarea[name = content]').val();
+		if(!subject || !content){
+			return false;
+		}
+	});
+});
+
+</script>
+</body>
+</html>

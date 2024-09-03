@@ -1,0 +1,34 @@
+package guestbook.service;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/GuestbookWriteServlet")
+public class GuestbookWriteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	public GuestbookWriteServlet() {
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		// 데이터 받기
+		
+		
+		// DB (driver 로딩) 
+		
+		
+		// 응답
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+package guestbook.bean;
+
+public class GuestbookDAO {
+
+}
+
+// 1. driver loading
+// 2. Connection
+// 3. PreparedStatement

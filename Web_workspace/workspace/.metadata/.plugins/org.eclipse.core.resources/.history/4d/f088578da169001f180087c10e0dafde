@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록 만들어 보기</title>
+</head>
+<body>
+	<h1 align="center">Servlet을 이용하여 방명록을 만들어보기</h1>
+	<hr/>
+	
+	<div class="container">
+		<form name="guestbookform" action="GuestbookWriteServlet" method="post">
+			<div>
+				<label for="name">작성자</label>
+				<input type="text" id="name" name="name" placeholder="작성자 이름 입력"/>
+			</div>
+			<div>
+                <label for="email">이메일</label>
+                <input type="text" id="email" name="email" placeholder="이메일 입력">
+            </div>
+            <div>
+                <label for="homepage">홈페이지</label>
+                <input type="text" id="homepage" name="homepage" value="http://">
+            </div>
+            <div>
+                <label for="subject">제목</label>
+                <input type="text" id="subject" name="subject" placeholder="제목입력">
+            </div>
+            <div>
+                <label for="content">내용</label>
+                <textarea id="content" name="content" placeholder="내용입력"></textarea>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="글작성">
+                <input type="reset" value="다시작성">
+                <input type="button" value="글목록">
+            </div>
+		</form>	
+	</div>	
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	function validateForm() {
+        const subject = $("form[name='guestbookForm'] input[name='subject']").val();
+        const content = $("form[name='guestbookForm'] textarea[name='content']").val();
+
+        if (subject.trim() === "") {
+            alert("제목을 입력해 주세요.");
+            return false;
+        }
+
+        if (content.trim() === "") {
+            alert("내용을 입력해 주세요.");
+            return false;
+        }
+
+        return true;
+    }
+
+    // 폼의 submit 이벤트를 가로채어 validateForm 함수를 실행
+    $("form[name='guestbookForm']").on("submit", function(event) {
+        return validateForm();
+    });
+});
+
+</script>		
+</body>
+</html>
+
+<!-- 
+
+제목과 내용은 유효성 검사가 들어 가야한다.
+( sql 에서 not null 로 잡았기 때문에 입력값이 없으면 db로 가지 못하게 해야함)
+
+응답은 " 작성하신 글을 저장 완료하였습니다. " 로 끝낸다 ( 따로 DB에서 마지막 응답 없다. )
+
+ -->

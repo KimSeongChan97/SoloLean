@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록 만들어 보기</title>
+</head>
+<body>
+	<h1 align="center">Servlet을 이용하여 방명록을 만들어보기</h1>
+	<hr/>
+	
+	<div class="container">
+		
+	
+	
+	
+	</div>	
+		
+</body>
+</html>
+
+<!-- 
+
+제목과 내용은 유효성 검사가 들어 가야한다.
+( sql 에서 not null 로 잡았기 때문에 입력값이 없으면 db로 가지 못하게 해야함)
+
+응답은 " 작성하신 글을 저장 완료하였습니다. " 로 끝낸다 ( 따로 DB에서 마지막 응답 없다. )
+
+ -->
