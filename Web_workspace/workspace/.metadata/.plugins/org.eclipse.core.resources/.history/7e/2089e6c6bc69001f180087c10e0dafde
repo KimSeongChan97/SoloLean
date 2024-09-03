@@ -1,0 +1,100 @@
+package guestbook.service;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import guestbook.bean.GuestbookDTO;
+import guestbook.dao.GuestbookDAO;
+
+@WebServlet("/write")
+public class GuestbookWriteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		// 데이터
+		request.setCharacterEncoding("UTF-8"); // 한글처리(post 방식)
+		// 클라이언트가 보낸 데이터를 UTF-8 인코딩 방식으로 처리하여 한글이 깨지지 않도록 설정합니다.
+		// POST 방식으로 전송된 데이터는 기본적으로 ISO-8859-1 인코딩이 적용되기 때문에 이를 UTF-8로 변환해야 합니다.
+		
+		String name = request.getParameter("name");
+		// 클라이언트가 보낸 "name" 파라미터 값을 받아와 변수에 저장합니다.
+		String email = request.getParameter("email");
+		// 클라이언트가 보낸 "email" 파라미터 값을 받아와 변수에 저장합니다.
+		String homepage = request.getParameter("homepage");
+		// 클라이언트가 보낸 "homepage" 파라미터 값을 받아와 변수에 저장합니다.
+		String subject = request.getParameter("subject");
+		// 클라이언트가 보낸 "subject" 파라미터 값을 받아와 변수에 저장합니다.
+		String content = request.getParameter("content");
+		// 클라이언트가 보낸 "content" 파라미터 값을 받아와 변수에 저장합니다.
+		
+		GuestbookDTO guestbookDTO = new GuestbookDTO();
+		// GuestbookDTO 객체를 생성합니다. 이 객체는 데이터 전송을 위해 사용되는 자바빈(JavaBean)입니다.
+		guestbookDTO.setName(name);
+		// DTO 객체의 name 속성에 사용자가 입력한 이름을 설정합니다.
+		guestbookDTO.setEmail(email);
+		// DTO 객체의 email 속성에 사용자가 입력한 이메일을 설정합니다.
+		guestbookDTO.setHomepage(homepage);
+		// DTO 객체의 homepage 속성에 사용자가 입력한 홈페이지 주소를 설정합니다.
+		guestbookDTO.setSubject(subject);
+		// DTO 객체의 subject 속성에 사용자가 입력한 제목을 설정합니다.
+		guestbookDTO.setContent(content);
+		// DTO 객체의 content 속성에 사용자가 입력한 내용을 설정합니다.
+			
+		// DB
+		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance(); // 싱글톤
+		// GuestbookDAO 객체를 싱글톤 패턴으로 가져옵니다.
+		// 싱글톤 패턴은 GuestbookDAO 객체가 하나만 생성되도록 보장하여 데이터베이스 접근 시 자원을 효율적으로 관리할 수 있게 합니다.
+		guestbookDAO.guestbookWrite(guestbookDTO);
+		// 데이터베이스에 방명록 데이터를 저장하는 메서드를 호출합니다.
+		// guestbookWrite 메서드는 GuestbookDTO 객체를 인자로 받아 데이터베이스에 삽입합니다.
+		
+		// 응답
+		response.setContentType("text/html; charset=UTF-8");
+		// 클라이언트에게 HTML 형식의 응답을 보낼 것을 지정하며, 인코딩을 UTF-8로 설정하여 한글이 깨지지 않도록 합니다.
+		PrintWriter out = response.getWriter();
+		// PrintWriter 객체를 사용하여 클라이언트에게 응답을 작성합니다.
+		out.println("<html>");
+		// HTML 문서의 시작을 알립니다.
+		out.println("<body>");
+		// HTML 문서의 본문을 시작합니다.
+		out.println("<h3>작성하신 글을 저장하였습니다.</h3>");
+		// 사용자가 입력한 글이 저장되었음을 알리는 메시지를 출력합니다.
+		out.println("<input type='button' value='뒤로가기' onclick='history.go(-1)'>");
+		// '뒤로가기' 버튼을 생성하고, 클릭 시 이전 페이지로 이동하도록 설정합니다.
+		out.println("<input type='button' value='글목록' action='/guestbookServlet/list'>");
+		// '글목록' 버튼을 생성하여 사용자가 글 목록 페이지로 이동할 수 있도록 설정합니다.
+		out.println("</body>");
+		// HTML 문서의 본문을 종료합니다.
+		out.println("</html>");
+		// HTML 문서의 끝을 알립니다.
+		
+		/*
+		 * // 데이터 받기 request.setCharacterEncoding("UTF-8");
+		 * 
+		 * // 클라이언트로부터 폼 데이터를 받아 DTO에 설정 GuestbookDTO dto = new GuestbookDTO();
+		 * dto.setName(request.getParameter("name"));
+		 * dto.setEmail(request.getParameter("email"));
+		 * dto.setHomepage(request.getParameter("homepage"));
+		 * dto.setSubject(request.getParameter("subject"));
+		 * dto.setContent(request.getParameter("content"));
+		 * 
+		 * // DAO 객체를 생성하고 DB에 데이터 저장 GuestbookDAO dao = new GuestbookDAO();
+		 * dao.guestbookWrite(dto);
+		 * 
+		 * // 응답을 설정하여 작성 완료 메시지를 출력
+		 * response.setContentType("text/html; charser=UTF-8");
+		 * response.getWriter().println("작성하신 글을 저장 완료하였습니다.");
+		 */
+		// 주석으로 처리된 코드는 앞서 작성된 코드와 유사한 내용을 담고 있으며, 데이터 수신, DTO 설정, DB 저장, 응답 작성의 단계로 구성되어 있습니다.
+		// 이 주석은 코드의 대체 방법을 설명하는 것으로, 기존 코드의 흐름과 일치합니다.
+	}
+
+}

@@ -36,3 +36,13 @@ create sequence seq_guestbook
                                        -- 이 시퀀스는 guestbook 테이블의 primary key인 seq 필드에 고유한 값을 제공합니다.
 
 select * from guestbook; 
+
+-- 이 쿼리는 게스트북 테이블에서 순번(seq)을 기준으로 내림차순으로 정렬된 데이터 중,
+-- 첫 번째부터 세 번째까지의 데이터를 선택하는 데 사용됩니다
+select * from -- 최종적으로 모든 열의 데이터를 선택합니다.
+(select rownum rn, tt.* from -- 서브쿼리에서 rownum을 사용하여 각 행에 번호를 매깁니다.
+(select * from guestbook order by seq desc) -- guestbook 테이블의 모든 데이터를 seq 기준으로 내림차순 정렬하여 가져옵니다.
+tt ) -- 서브쿼리의 결과에 별칭 tt를 부여하여 이후 참조할 수 있도록 합니다.
+where rn>= 1 and rn <=3; -- 행 번호 rn이 1에서 3 사이인 행을 선택합니다.
+
+select count(*) from guestbook;

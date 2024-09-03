@@ -10,8 +10,8 @@
     if (email.equals("test@example.com") && password.equals("password")) {
         // 입력된 이메일과 비밀번호가 일치하는 경우, 세션에 사용자 정보를 저장합니다.
         session.setAttribute("user", email); // 세션에 이메일 정보를 user라는 이름으로 저장
-        // 로그인이 성공하면 index.html 페이지로 리다이렉트합니다.
-        response.sendRedirect("index.html");
+        // 로그인이 성공하면 마이페잊.html 페이지로 리다이렉트합니다.
+        response.sendRedirect("MyPage.html");
     } else {
         // 입력된 이메일이나 비밀번호가 일치하지 않는 경우, 로그인 실패 메시지를 출력합니다.
         out.println("로그인 실패"); // 브라우저에 "로그인 실패" 메시지 출력

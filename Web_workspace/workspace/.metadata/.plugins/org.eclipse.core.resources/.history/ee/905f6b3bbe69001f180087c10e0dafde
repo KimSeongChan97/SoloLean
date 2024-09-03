@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록</title>
+<style type="text/css">
+/* 테이블의 테두리를 병합하여 깔끔하게 보이도록 설정 */
+table {
+	border-collapse: collapse;
+	
+}
+/* 테이블 셀(td, th)의 내부 여백을 설정하여 요소들이 여유있게 배치되도록 함 */
+td, th {
+	padding: 5px;
+}
+/* 각 입력 필드의 너비를 설정하여 사용자에게 더 넓은 입력 공간을 제공 */
+input[name="name"] {
+	width: 200px;
+}
+input[name="email"] {
+	width: 300px;
+}
+input[name="homepage"] {
+	width: 350px;
+}
+input[name="subject"] {
+	width: 400px;
+}
+/* 제목과 내용에 대한 오류 메시지를 빨간색으로 표시하고, 작은 폰트 크기를 사용 */
+#subjectDiv, #contentDiv {
+	color: red;
+	font-size: 9pt;
+	font-weight: bold; /* 오류 메시지를 강조하기 위해 글자를 굵게 표시 */
+}
+
+</style>
+</head>
+<body>
+	<form id="guestbookWriteForm" method="post" action="/guestbookServlet/write">
+		<!-- 테이블을 사용하여 입력 폼을 구성 -->
+		<table border="1">
+			<tr>
+				<td>작성자</td>
+				<!-- 작성자 이름을 입력받는 필드 -->
+				<td><input type="text" name="name" placeholder="작성자 입력"/></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<!-- 사용자의 이메일 주소를 입력받는 필드 -->
+				<td><input type="text" name="email" placeholder="이메일 입력"/></td>
+			</tr>
+			<tr>
+				<td>홈페이지</td>
+				<!-- 사용자의 홈페이지 주소를 입력받는 필드. 기본값은 'http://' -->
+				<td><input type="text" name="homepage" value="http://" /></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td>
+					<!-- 방명록 제목을 입력받는 필드 -->
+					<input type="text" name="subject" id="subject" placeholder="제목입력" />
+					<!-- 제목 입력과 관련된 오류 메시지를 표시할 div -->
+					<div id="subjectDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>
+					<!-- 방명록 내용을 입력받는 필드 -->
+					<textarea cols="60" rows="15" id="content" name="content"></textarea>
+					<!-- 내용 입력과 관련된 오류 메시지를 표시할 div -->
+					<div id="contentDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<!-- 글을 제출하는 버튼. 클릭하면 폼 데이터가 서버로 전송됨 -->
+					<input type="button" id="writeBtn" value="글쓰기" />
+					<!-- 폼을 초기화하는 버튼. 모든 입력 필드의 값을 초기 상태로 되돌림 -->
+					<input type="reset" value="다시작성" />
+					<!-- 글 목록으로 이동하는 버튼. -->
+					<input type="button" value="글목록" />
+				</td>
+			</tr>
+		</table>
+		
+	</form>
+
+<!-- 최신 jQuery 라이브러리를 포함하여 이후 자바스크립트에서 jQuery를 사용 가능하게 함 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// '글쓰기' 버튼이 클릭되었을 때 실행되는 함수
+	$('#writeBtn').click(function(){
+		// 오류 메시지를 표시하는 div를 비움 (기존 메시지 삭제)
+		$('#subjectDiv').empty();
+		$('#contentDiv').empty();
+		
+		// 제목 입력 필드의 값이 비어있는지 확인
+		if($('#subject').val() == ''){
+			$('#subjectDiv').html('제목 입력하세요 !'); // 제목이 비어있다면 오류 메시지 표시
+			$('#subject').focus(); // 제목 입력 필드로 포커스를 이동하여 사용자에게 입력을 유도
+		} 
+		// 내용 입력 필드의 값이 비어있는지 확인
+		else if($('#content').val() == ''){
+			$('#contentDiv').html('내용 입력하세요 !'); // 내용이 비어있다면 오류 메시지 표시
+			$('#content').focus(); // 내용 입력 필드로 포커스를 이동하여 사용자에게 입력을 유도
+		} 
+		// 제목과 내용이 모두 입력되었을 경우, 폼을 서버로 제출
+		else
+			$('#guestbookWriteForm').submit(); // 폼 데이터를 서버로 전송
+	});
+	
+	/* 	
+	// 제목 입력 필드에서 포커스가 벗어났을 때 (blur 이벤트 발생 시) 실행되는 함수 
+	$('input[name="subject"]').blur(function(){
+		$('#subjectDiv').empty(); // 오류 메시지 div를 초기화 (기존 메시지 삭제)
+		let subject = $('input[name="subject"]').val(); // 제목 입력 필드의 값을 가져옴
+		if (!subject) { // 제목이 비어있는지 확인
+			$('#subjectDiv').html('제목을 입력하세요 !'); // 오류 메시지를 div에 표시
+			$('input[name="subject"]').focus(); // 제목 입력 필드에 다시 포커스를 줌
+			return false; // 추가 동작을 막기 위해 false 반환
+		}
+	}); // 제목 검증 끝
+
+	// 내용 입력 필드에서 포커스가 벗어났을 때 (blur 이벤트 발생 시) 실행되는 함수 
+	$('textarea[name="content"]').blur(function(){
+		let content = $('textarea[name="content"]').val(); // 내용 입력 필드의 값을 가져옴
+		$('#contentDiv').empty(); // 오류 메시지 div를 초기화
+		if (!content) { // 내용이 비어있는지 확인
+			$('#contentDiv').html('내용을 입력하세요 !'); // 오류 메시지를 div에 표시
+			$('textarea[name="content"]').focus(); // 내용 입력 필드에 다시 포커스를 줌
+			return false; // 추가 동작을 막기 위해 false 반환
+		}
+	}); // 내용 검증 끝
+
+	// 글쓰기 버튼이 클릭될 때 실행되는 함수 
+	$('input[type="submit"]').click(function(){
+		let subject = $('input[name="subject"]').val(); // 제목 입력 필드의 값을 가져옴
+		let content = $('textarea[name="content"]').val(); // 내용 입력 필드의 값을 가져옴
+		if (!subject || !content) { // 제목 또는 내용이 비어있는지 확인
+			return false; // 폼이 제출되지 않도록 함
+		}
+	}); // 글 저장 끝
+	
+	*/
+ 
+});
+
+</script>
+</body>
+</html>
+
+<!--
+ 주석 설명:
+테이블 및 입력 필드 스타일링 (table, td, th, input 등):
+
+테이블의 셀 간격을 없애고, 셀과 입력 필드에 여유로운 패딩과 너비를 설정하여 사용자의 입력 경험을 향상시켰습니다.
+오류 메시지 스타일링 (#subjectDiv, #contentDiv):
+
+오류 메시지를 빨간색으로, 작은 글자 크기와 굵은 폰트로 설정하여 강조하고 눈에 잘 띄게 했습니다.
+
+#writeBtn 클릭 이벤트 처리:
+글쓰기 버튼이 클릭될 때 실행되는 함수는 입력 필드(제목, 내용)가 비어있지 않은지 확인한 후, 폼을 서버로 제출합니다.
+제목이나 내용이 비어 있을 경우, 해당하는 입력 필드에 포커스를 주고, 적절한 오류 메시지를 표시합니다.
+$('#guestbookWriteForm').submit(); 구문은 유효성 검사를 통과했을 때 폼을 서버로 제출합니다.
+
+이벤트 핸들러로 사용되지 않는 주석 처리된 코드:
+주석 처리된 코드는 입력 필드에서 포커스가 벗어났을 때 즉시 유효성 검사를 수행하는 코드입니다. 
+이는 글쓰기 버튼을 클릭하기 전에도 사용자가 입력한 내용을 실시간으로 검사할 수 있는 기능을 제공합니다.
+이 코드들은 활성화된 click 이벤트 핸들러와 별도로, 보다 세분화된 사용자 경험을 제공할 수 있는 추가 옵션으로 포함되어 있습니다.
+ -->

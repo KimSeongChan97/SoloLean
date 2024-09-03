@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+th, td {
+	padding: 5px;
+}
+input[name = name] {
+	width: 200px;
+}
+input[name = email] {
+	width: 300px;
+}
+input[name = homepage] {
+	width: 350px;
+}
+input[name = subject] {
+	width: 450px;
+}
+#subjectDiv, #contentDiv {
+	color: red;
+	font-size: 8pt;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<form id="guestbookWriteForm" method="post" action="/guestbookServlet/write">
+	<table border="1">
+		<tr>
+			<th width="100">작성자</th>
+			<td>
+				<input type="text" name="name" placeholder="작성자 입력" />
+			</td>
+		</tr>
+		
+		<tr>
+			<th>이메일</th>
+			<td>
+				<input type="text" name="email" placeholder="이메일 입력" />
+			</td>
+		</tr>
+		
+		<tr>
+			<th>홈페이지</th>
+			<td>
+				<input type="text" name="homepage" value = "http://" placeholder="홈페이지 입력" />
+			</td>
+		</tr>
+		
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="subject" id="subject" placeholder="제목 입력" />
+				<div id="subjectDiv"></div>
+			</td>
+		</tr>
+		
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea cols="65" rows="15" name="content" id="content"></textarea>
+				<div id="contentDiv"></div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<input type="button" id="writeBtn" value="글쓰기" />
+				<input type="reset" value="다시작성" />
+				<input type="button" value="글목록" 
+				onclick=location.href="/guestbookServlet/list?pg=1" />       
+			</td>
+		</tr>
+	</table>
+</form>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#writeBtn').click(function(){
+		$('#subjectDiv').empty();
+		$('#contentDiv').empty();
+		
+		if($('#subject').val() == ''){
+			$('#subjectDiv').html('제목 입력');
+			$('#subject').focus();
+		}else if($('#content').val() == ''){
+			$('#contentDiv').html('내용 입력');
+			$('#content').focus();
+		}else
+			$('#guestbookWriteForm').submit();
+	});
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

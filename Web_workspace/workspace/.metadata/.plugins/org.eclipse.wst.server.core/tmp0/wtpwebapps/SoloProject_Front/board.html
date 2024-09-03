@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- jQuery CDN 추가 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -18,6 +16,19 @@
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const userEmail = sessionStorage.getItem("userEmail");
+            if (userEmail) {
+                const myPageButton = document.getElementById("myPageLink");
+                myPageButton.style.display = "inline-block";
+
+                const loginButton = document.getElementById("loginLink");
+                if (loginButton) {
+                    loginButton.style.display = "none";
+                }
+            }
+        });
     </script>
 
     <main>
@@ -35,10 +46,8 @@
                     </tr>
                 </thead>
                 <tbody id="postList">
-                    <!-- 글 목록이 여기에 표시됩니다 -->
                 </tbody>
             </table>
-
             <div class="text-end">
                 <a href="board_write.html" class="btn btn-primary">글쓰기</a>
             </div>
@@ -48,10 +57,9 @@
     <script>
         $(document).ready(function() {
             loadPosts();
-
             function loadPosts() {
                 $.ajax({
-                    url: "JSP/getPosts.jsp", // 데이터베이스에서 데이터를 가져올 JSP 파일 경로
+                    url: "JSP/getPosts.jsp",
                     method: "GET",
                     success: function(data) {
                         $('#postList').html(data);
@@ -63,8 +71,6 @@
             }
         });
     </script>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

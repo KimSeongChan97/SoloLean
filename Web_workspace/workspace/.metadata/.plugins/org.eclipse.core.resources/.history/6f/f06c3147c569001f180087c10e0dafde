@@ -1,0 +1,94 @@
+package guestbook.service;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import guestbook.bean.GuestbookDTO;
+import guestbook.dao.GuestbookDAO;
+
+@WebServlet("/list")
+public class GuestbookListServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1. 데이터가 없음
+		
+		// 2. DB 에 가서 data를 꺼내 와야함
+		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance();
+		List<GuestbookDTO> list = guestbookDAO
+		
+		// 3. 응답
+		
+		
+		
+		/*		
+		response.setContentType("text/html; charset=UTF-8");		
+		PrintWriter out = response.getWriter();		
+		GuestbookDAO guestbookDAO = new GuestbookDAO();
+		
+		try {
+			List<GuestbookDTO> guestbooklist = guestbookDAO.guestbookList();			
+            // HTML 문서 시작
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>방명록 리스트</title>");
+            out.println("<style>");
+            out.println("table {border-collapse: collapse; width: 90%;}");
+            out.println("th, td {border: 1px solid black; padding: 8px; text-align: center; text-color: blue;}");
+            out.println("th {background-color: #f2f2f2;}");
+            out.println("</style>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>방명록 리스트</h1>");
+            
+            // 테이블 시작
+            out.println("<table>");
+            out.println("<tr><th>작성자</th><th>이메일</th><th>홈페이지</th><th>제목</th><th>내용</th><th>작성일</th></tr>");
+            
+            // 방명록 리스트 출력
+            for (GuestbookDTO guestbook : guestbooklist) {
+                out.println("<tr>");
+                out.println("<td>" + guestbook.getName() + "</td>");
+                out.println("<td>" + guestbook.getEmail() + "</td>");
+                out.println("<td>" + guestbook.getHomepage() + "</td>");
+                out.println("<td>" + guestbook.getSubject() + "</td>");
+                out.println("<td>" + guestbook.getContent() + "</td>");
+                out.println("<td>" + guestbook.getLogtime() + "</td>");
+                out.println("</tr>");
+            }
+            
+            // 테이블 종료
+            out.println("</table>");
+
+            // 페이지 하단에 뒤로가기 버튼 추가
+            out.println("<br/><input type='button' value='뒤로가기' onclick='history.go(-1)'>");
+            
+            // HTML 문서 종료
+            out.println("</body>");
+            out.println("</html>");
+			
+		} catch (Exception e) {
+			 e.printStackTrace();
+	         out.println("<html><body><h1>오류 발생</h1></body></html>");
+		} finally {
+			out.close();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		doGet(request, response);
+	}
+
+	*/
+	
+	}	
+}

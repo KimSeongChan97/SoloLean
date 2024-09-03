@@ -1,0 +1,75 @@
+package guestbook.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import guestbook.bean.GuestbookDTO;
+
+public class GuestbookDAO {
+    private String driver = "oracle.jdbc.driver.OracleDriver";
+    private String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 데이터베이스 URL
+    private String username = "C##JAVA";  // DB 사용자명
+    private String password = "1234";  // DB 비밀번호
+    
+    private Connection conn;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
+    
+    private static GuestbookDAO guestbookDAO = new GuestbookDAO();
+    
+    // 싱글톤 패턴으로 GuestbookDAO 인스턴스 생성 및 반환
+    public static GuestbookDAO getInstance() {
+        return guestbookDAO;
+    }
+
+    private GuestbookDAO() {
+        try {
+            // 1. 드라이버 로딩
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // 데이터베이스 연결 메서드
+    private Connection getConnection() throws SQLException {
+        conn =  DriverManager.getConnection(url, username, password);
+    }
+
+	public void guestbookWrite(GuestbookDTO guestbookDTO) {
+		getConnection();
+		
+		String sql = """
+				insert into guestbook values(seq_guestbook.nextval, ?,?,?,?,?, sysdate)
+				""";
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 생성
+			
+			// ? 에 데이터 대입
+			pstmt.setString(1, guestbookDTO.getName());
+			pstmt.setString(2, guestbookDTO.getEmail());
+			pstmt.setString(3, guestbookDTO.getHomepage());
+			pstmt.setString(4, guestbookDTO.getSubject());
+			pstmt.setString(5, guestbookDTO.getContent());
+			
+			
+			pstmt.executeUpdate(); // 실행 - 개수 리턴
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+    
+}
