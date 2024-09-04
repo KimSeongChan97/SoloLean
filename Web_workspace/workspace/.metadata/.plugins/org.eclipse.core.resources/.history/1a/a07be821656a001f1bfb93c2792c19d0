@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+ <%!
+ 	// Java 구역(전역변수 영역으로 서버가 실행될 때 한번 실행된다.)
+ 	// Servlet 의 init 구역
+ 	String name = "홍길동";
+ 	int age = 25;
+ 	
+ %> 
+ 
+ <%
+ 	// Java 구역(지역변수 영역으로 클라이언트 요청시 마다 실행한다.)
+ 	// Servlet 의 service() 구역
+ 	age++;
+ 	
+ 
+ %>
+ 
+ 
+   
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<h1 align="center">JSP의 지역,전역변수와 함께 Servlet 과 JSP 연습</h1>
+	
+<!-- Hello JSP!! <br/> -->
+
+<%-- 안녕하세요 JSP !! <br/> --%>
+
+<hr/>
+나의 이름은 <%=name %> 입니다. <br/>
+<!-- 해당을 사용 -->
+
+<% out.println("나의 이름은 " + name + " 입니다."); %> <br/>
+<!-- 메모리 차지로 out 비추천 -->
+<hr/>
+나의 나이는 <%=age %> 살 입니다. <br/>
+
+<% out.println("나의 나이는 " + age + " 살 입니다."); %> <br/>
+<!-- 메모리 차지로 out 비추천 -->
+
+</body>
+</html>
+
+
+<!-- 
+
+HTML 주석과 JSP 주석의 차이
+
+
+JSP의 내장객체
+1. request : javax.servlet.http.HttpServletReqeuest 
+2. response : javax.servlet.http.HttpServletResponse
+3. out : javax.servlet.jsp.JspWriter
+4. session : javax.servlet.http.HttpSession
+5. application : javax.servlet.ServletContent
+6. pageContent : javax.servlet.jsp.PageContext
+7. page : javax.servlet.jsp.HttpJspPage
+8. config : javax.servlet.ServletConfig
+9. exception : java.lang.Throwable
+
+java 파일은 컴파일 과 *.class 를 거쳐야 한다.
+jsp 를 만들게 되면 eclipse 내부적으로 소스가 바뀔때 만 컴파일한다. 
+(hello.jsp -> hello_jsp.java(서블릿) -> hello_jsp.class)
+해당 경로
+D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\testJSP\org\apache\jsp\exam
+
+이는 많은 메모리를 차지하므로 jsp 보다 다른 걸 선호하게 된다.
+
+Java파일은
+컴파일 -> 톰캣 을 껏다 켜야한다 -> 맨 위부터 실행.
+
+ -->

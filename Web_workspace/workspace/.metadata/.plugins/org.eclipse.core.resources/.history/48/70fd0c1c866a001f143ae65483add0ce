@@ -1,0 +1,219 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+<style type="text/css">
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    margin: 0 10px 0 0;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"] {
+    width: 120px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #ddd;
+}
+
+td:first-child {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+td:last-child {
+    text-align: left;
+}
+
+form {
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.email-field, .id-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.email-field input[type="text"], .id-field input[type="text"] {
+    flex-grow: 2;
+    margin-right: 10px;
+}
+
+.email-field select {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.id-field input[type="button"] {
+    width: auto;
+    padding: 6px 10px;
+}
+
+.phone-field {
+    display: flex;
+    gap: 5px;
+}
+
+td[colspan="2"] {
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+	<h3 align="center">회원가입</h3>
+	<hr/>
+	
+    <form method="post" action="#">
+        <table>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="name" placeholder="이름 입력">
+                <div id="nameDiv"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>아이디</td>
+                <td class="id-field">
+                    <input type="text" name="id" size="30" placeholder="아이디 입력">
+                    <input type="button" value="중복체크"/>
+                    <div id="idDiv"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pwd" size="40" placeholder="비밀번호 입력">
+                <div id="pwDiv"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>재확인</td>
+                <td><input type="password" name="repwd" size="40" placeholder="비밀번호 재입력">
+                <div id="pwDiv"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <input type="radio" name="gender" value="M" checked="checked" />남자
+                    <input type="radio" name="gender" value="F" />여자
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td class="email-field">
+                    <input type="email" name="email1" placeholder="이메일 입력">
+                    @ 
+                    <input type="text" name="email2" placeholder="직접입력">
+                    <input type="email" name="email3" id="email3" list="email3_list" oninput="checklist" />
+                    <datalist id="email_list">
+                    	<option value="직접입력"></option>
+                        <option value="naver.com"/>
+                        <option value="hanmail.com"/>
+                        <option value="gmail.com"/>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>휴대전화</td>
+                <td class="phone-field">
+                    <select name="tel1">
+                    	<optgroup label="hp">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="019">019</option>
+                        </optgroup>
+                    </select>
+                    -
+                    <input type="text" name="tel2" size="5" maxlength="4" placeholder="앞자리">
+                    -
+                    <input type="text" name="tel3" size="5" maxlength="4" placeholder="뒷자리">
+                </td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td>
+                    <input type="text" name="zipcode" id="zipcode" size="6" readonly placeholder="우편번호">
+                    <button value="우편번호 검색" onclick="checkPost()">우편번호 검색</button>
+                    <br>
+                    <input type="text" name="addr1" id="addr1" size="60" readonly placeholder="주소">
+                    <br>
+                    <input type="text" name="addr2" id="addr2" size="60" placeholder="상세주소">
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="회원가입"/>
+                    <input type="reset" value="다시입력"/>
+                    <input type="button" value="뒤로가기" onclick="window.location.href='../index.jsp';">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function checkPost() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+				
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById("addr1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("addr2").focus();
+            }
+        }).open();
+    }
+</script>
+     
+</body>
+</html>

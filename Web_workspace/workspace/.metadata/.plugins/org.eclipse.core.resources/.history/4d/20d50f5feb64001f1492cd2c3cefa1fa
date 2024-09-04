@@ -1,3 +1,0 @@
-<%@ page language="java" contentType="text/xml; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %> <%-- XML 태그 시작 전의 공백 제거 --%>

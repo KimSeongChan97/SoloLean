@@ -1,0 +1,128 @@
+// 중복체크 여부를 확인하는 변수
+// 아이디 중복 체크가 완료되었는지 여부를 저장하는 변수입니다.
+// 'false'는 아직 중복 체크가 안된 상태이고, 'true'는 중복 체크가 완료된 상태를 나타냅니다.
+let idChecked = false;
+
+// ID 중복 체크 함수
+// 사용자가 입력한 아이디가 중복되었는지 확인하는 함수입니다.
+// 이 함수는 중복 체크 버튼을 클릭했을 때 호출됩니다.
+function checkId() {
+    // 사용자가 입력한 아이디 값을 가져옵니다.
+    let id = document.getElementById('id').value;
+
+    // 아이디 입력이 비어있다면, 사용자에게 아이디를 입력하라는 메시지를 보여줍니다.
+    if (id === '') {
+        document.getElementById('idDiv').innerHTML = "먼저 아이디를 입력하세요 !!";
+    } else {
+        // 입력한 아이디를 기반으로 중복 확인 팝업 창을 엽니다.
+        window.open("./checkId.jsp?id=" + id, "myWindow", "width=450 height=150 top=100 left=800");
+        // 중복 체크가 완료되었음을 표시하기 위해 'idChecked' 변수를 'true'로 변경합니다.
+        idChecked = true;
+    }
+}
+
+// 아이디 변경 시 중복 체크 상태를 초기화하는 코드
+// 사용자가 아이디 입력란에 새로운 값을 입력할 때마다 중복 체크 상태를 초기화합니다.
+document.getElementById('id').addEventListener('input', function () {
+    idChecked = false; // 아이디가 변경되면 다시 중복 체크를 해야 하므로 'false'로 설정합니다.
+});
+
+// 비밀번호 유효성 검사 함수
+// 이 함수는 사용자가 입력한 비밀번호가 규칙을 잘 따르고 있는지 확인합니다.
+function validatePassword() {
+    // 비밀번호와 비밀번호 재입력 값을 가져옵니다.
+    var pwd = document.getElementById("pwd").value;
+    var repwd = document.getElementById("repwd").value;
+
+    // 비밀번호 길이 검사
+    // 비밀번호가 3자 이상인지 확인합니다. 3자 미만이면 오류 메시지를 표시하고 함수를 종료합니다.
+    if (pwd.length < 3) {
+        document.getElementById("pwDiv").innerHTML = "비밀번호는 최소 3자 이상이어야 합니다.";
+        return false;
+    }
+
+    // 비밀번호 일치 여부 검사
+    // 입력한 비밀번호와 재입력한 비밀번호가 동일하지 않다면 오류 메시지를 표시하고 함수를 종료합니다.
+    if (pwd !== repwd) {
+        document.getElementById("pwDiv").innerHTML = "비밀번호가 일치하지 않습니다.";
+        return false;
+    }
+
+    // 비밀번호 복잡도 검사
+    // 비밀번호에 숫자와 특수문자가 포함되었는지 확인합니다. 포함되지 않았으면 오류 메시지를 표시합니다.
+    var pwdPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
+    if (!pwdPattern.test(pwd)) {
+        document.getElementById("pwDiv").innerHTML = "비밀번호는 숫자와 특수문자를 포함해야 합니다.";
+        return false;
+    }
+
+    // 비밀번호가 모든 조건을 충족하면 오류 메시지를 지우고 'true'를 반환하여 유효성 검사를 통과시킵니다.
+    document.getElementById("pwDiv").innerHTML = "";
+    return true;
+}
+
+// 폼 전체의 유효성 검사 함수
+// 회원가입 버튼을 눌렀을 때 폼이 제출되기 전에 모든 입력값이 올바른지 확인하는 함수입니다.
+function validateForm() {
+    // 이름 유효성 검사 (별도로 정의한 함수)
+    // 이름 입력란이 비어있거나 올바르지 않으면 폼 제출을 막습니다.
+    if (!validateName()) {
+        return false;
+    }
+
+    // 아이디 중복 체크 여부 확인
+    // 중복 체크가 완료되지 않았다면 폼 제출을 막고, 경고 메시지를 표시합니다.
+    if (!idChecked) {
+        alert("아이디 중복체크를 완료해주세요.");
+        return false; // 중복 체크가 안 되었을 때 폼 제출을 방지합니다.
+    }
+
+    // 비밀번호 유효성 검사
+    // 비밀번호가 유효하지 않다면 폼 제출을 막습니다.
+    if (!validatePassword()) {
+        return false; // 비밀번호가 유효하지 않으면 폼 제출을 방지합니다.
+    }
+
+    // 이메일 유효성 검사
+    // 사용자가 입력한 이메일 주소가 형식에 맞는지 확인합니다.
+    var email1 = document.getElementById("email1").value;
+    var email2 = document.getElementById("email2").value;
+
+	// email1 필드에 '@'가 포함되어 있는지 확인하지 않음, 이메일 주소는 email1과 email2를 결합해서 확인
+	    var fullEmail = email1 + "@" + email2;
+
+	    // 이메일 주소 형식 검사
+	    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+	    // 이메일 형식에 맞지 않으면 경고 메시지를 출력하고 false 반환
+	    if (!emailPattern.test(fullEmail)) {
+	        alert("유효한 이메일 주소를 입력하세요.");
+	        return false;
+	    }
+
+    // 모든 유효성 검사를 통과했을 때만 폼을 제출합니다.
+    return true;
+}
+
+// 우편번호 검색을 위한 Daum API 함수
+// 사용자가 우편번호 검색 버튼을 클릭했을 때 호출됩니다.
+function checkPost() {
+    new daum.Postcode({
+        oncomplete: function (data) {
+            // 사용자가 선택한 주소를 저장할 변수
+            var addr = '';
+
+            // 사용자가 도로명 주소를 선택했을 때와 지번 주소를 선택했을 때를 구분하여 주소를 저장합니다.
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress; // 도로명 주소
+            } else {
+                addr = data.jibunAddress; // 지번 주소
+            }
+
+            // 선택한 우편번호와 주소를 각 필드에 넣습니다.
+            document.getElementById('zipcode').value = data.zonecode; // 우편번호
+            document.getElementById("addr1").value = addr; // 주소
+            document.getElementById("addr2").focus(); // 상세주소 입력란으로 포커스를 이동합니다.
+        }
+    }).open(); // 우편번호 검색 팝업을 엽니다.
+}

@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="member.dao.MemberDAO" %>
+    
+<%
+    // 클라이언트가 입력한 id 값을 가져옴
+    String id = request.getParameter("id");
+	System.out.println("Received ID: " + id);
+
+    // MemberDAO 객체 생성 및 DB 연결 (싱글톤 패턴을 사용한 경우)
+    MemberDAO memberDAO = MemberDAO.getInstance(); // 싱글톤 객체 가져오기
+
+    // id 중복 여부 확인 (true: 중복됨, false: 사용 가능)
+    boolean exist = memberDAO.idExistId(id); // idExist 메서드는 해당 id가 DB에 있는지 확인
+%>
+     
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ID 중복체크</title>
+
+</head>
+<body>
+
+<%
+    // 존재 여부에 따른 메시지 출력
+    if (exist) {
+%>
+    <p><%=id %> _ 이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요.</p>
+    <br><br>
+    <form action="checkId.jsp">
+    아이디 입력 <input type="text" name="id" />
+    <input type="submit" value="중복체크" />
+    </form>
+<% } else { %>
+    <%=id %> _ 사용 가능한 아이디입니다. 계속 진행해주세요.
+    <br><br>
+    <input type="button" value="사용하기" />
+<% } %>
+
+
+</body>
+</html>

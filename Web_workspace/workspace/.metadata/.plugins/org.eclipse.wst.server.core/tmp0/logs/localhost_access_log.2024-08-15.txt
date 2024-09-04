@@ -1,6 +1,0 @@
-127.0.0.1 - - [15/Aug/2024:16:05:42 +0900] "GET / HTTP/1.1" 404 807
-0:0:0:0:0:0:0:1 - - [15/Aug/2024:16:05:42 +0900] "GET /CSS/10_webPage_Solve_GPT/index_Solve.html HTTP/1.1" 200 7244
-0:0:0:0:0:0:0:1 - - [15/Aug/2024:16:05:43 +0900] "GET /CSS/image/treethum.png HTTP/1.1" 200 50079
-0:0:0:0:0:0:0:1 - - [15/Aug/2024:16:05:43 +0900] "GET /CSS/10_webPage_Solve_GPT/main_Solve.css HTTP/1.1" 200 5630
-0:0:0:0:0:0:0:1 - - [15/Aug/2024:16:05:43 +0900] "GET /CSS/10_webPage_Solve_GPT/reset_Solve.css HTTP/1.1" 200 4126
-0:0:0:0:0:0:0:1 - - [15/Aug/2024:16:05:43 +0900] "GET /favicon.ico HTTP/1.1" 404 818

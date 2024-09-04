@@ -1,9 +1,0 @@
-<%@ page language="java" contentType="text/xml; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%
-// Java 구역
-String id = request.getParament("user_id");
-
-%>    
-    

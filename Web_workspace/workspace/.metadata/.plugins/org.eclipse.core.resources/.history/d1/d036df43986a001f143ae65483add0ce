@@ -1,0 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<!-- navbar.jsp -->
+<nav>
+    <ul>
+        <li><a href="index.jsp">Home</a></li> <!-- Home 클릭 시 index.jsp로 이동 -->
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>

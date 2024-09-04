@@ -1,0 +1,39 @@
+(projectMVC 는 나중에_)
+
+회원가입 로그인 게시판 만들기 프로젝트
+
+미니 프로젝트
+
+http://localhost:8080/projectJSP/index.jsp
+
+projectJSP
+	member.dao(package)
+		MemberDAO.java		
+
+
+	index.jsp (메인화면)
+	SQL(folder)
+		member.sql
+	js(folder)
+		member.js
+		
+	member(folder)
+		memberWriteForm.jsp
+		checkid.jsp
+
+		
+	board(folder)
+
+
+-================
+1. 회원가입 버튼을 클릭 했을 때
+=> 중복체크 버튼을 클릭하지 않으면 alert("중복체크 필요!")
+
+2. 중복체크 버튼을 클릭하였는데, 아이디를 변경하게 되면 
+다시 alert("중복체크 필요!") 을 나타내게 해야함.
+( alert 가 실행되면 아직 DB에 값이 들어갈 수 없음 )
+
+3. 회원가입 절차 ==> memberWrite.jsp (생성해야함)
+=> 유효성 검사 필요(이름, 아이디, 비밀번호, 비밀번호 재확인)
+	-> 텍스트공간 아래에 div 로 오류 메시지를 나타냄(중복체크 및 입력확인)
+
