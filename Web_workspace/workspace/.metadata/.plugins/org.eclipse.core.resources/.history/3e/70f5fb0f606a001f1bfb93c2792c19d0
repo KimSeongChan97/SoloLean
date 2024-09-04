@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 문서의 제목을 설정하는 태그입니다. 이 제목은 브라우저의 탭에 표시됩니다. 
+     "Insert title here"는 일반적인 기본 값이며, 실제 프로젝트에서는 적절한 제목으로 변경해야 합니다. -->
+     
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	/* 테이블의 테두리를 하나로 합칩니다. 
+	   이 속성을 사용하지 않으면 테이블의 각 셀마다 개별적으로 테두리가 표시될 수 있습니다. */
+	background-color: #f2f2f2;   
+}
+th, td {
+	padding: 5px;
+	/* 테이블 셀의 내용과 테두리 사이에 5픽셀의 여백을 추가합니다. 
+	   이를 통해 내용이 테두리에 붙지 않고, 가독성이 높아집니다. */
+}
+input[name = name] {
+	width: 200px;
+	/* 이름 입력란의 너비를 200픽셀로 설정합니다.
+	   이를 통해 사용자 인터페이스가 일관되게 보이도록 합니다. */
+}
+input[name = email] {
+	width: 300px;
+	/* 이메일 입력란의 너비를 300픽셀로 설정합니다.
+	   이메일 주소는 일반적으로 길기 때문에, 이름 입력란보다 넓게 설정되었습니다. */
+}
+input[name = homepage] {
+	width: 350px;
+	/* 홈페이지 입력란의 너비를 350픽셀로 설정합니다.
+	   URL은 길 수 있으므로, 다른 필드보다 넓게 설정되었습니다. */
+}
+input[name = subject] {
+	width: 450px;
+	/* 제목 입력란의 너비를 450픽셀로 설정합니다.
+	   제목은 중요하므로 넓게 설정하여 사용자가 충분한 내용을 입력할 수 있도록 합니다. */
+}
+#subjectDiv, #contentDiv {
+	color: red;
+	font-size: 8pt;
+	font-weight: bold;
+	/* 제목과 내용 입력란 아래에 표시되는 경고 메시지의 스타일을 설정합니다.
+	   경고 메시지는 빨간색, 작은 글씨, 굵은 글씨로 표시되어 사용자의 주의를 끌도록 설계되었습니다. */
+}
+
+</style>
+</head>
+<body>
+<form id="guestbookWriteForm" method="post" action="/guestbookServlet/write">
+	<!-- 방명록 글쓰기 폼입니다. 이 폼은 POST 방식으로 데이터를 전송합니다.
+	     action 속성은 폼 데이터를 처리할 서버 측의 서블릿 경로를 지정합니다.
+	     이 경우 "/guestbookServlet/write" 경로로 데이터를 전송합니다. -->
+	<table border="1">
+		<!-- 테이블은 데이터를 행과 열로 정리하여 표시할 때 사용됩니다.
+		     여기서는 사용자로부터 방명록 정보를 입력받기 위한 폼 요소들이 배치됩니다. -->
+		<tr>
+			<th width="100">작성자</th>
+			<!-- 테이블의 제목 행을 설정합니다. 여기서는 '작성자'라는 레이블이 표시됩니다.
+			     th 태그는 표 제목을 의미하며, 제목은 일반 텍스트보다 더 두껍고 가운데 정렬되는 경향이 있습니다. -->
+			<td>
+				<input type="text" name="name" placeholder="작성자 입력" />
+				<!-- 사용자가 작성자의 이름을 입력하는 텍스트 필드입니다.
+				     placeholder 속성은 필드가 비어 있을 때 '작성자 입력'이라는 안내 텍스트를 표시합니다. -->
+			</td>
+		</tr>
+		
+		<tr>
+			<th>이메일</th>
+			<td>
+				<input type="text" name="email" placeholder="이메일 입력" />
+				<!-- 사용자가 이메일을 입력하는 텍스트 필드입니다.
+				     placeholder 속성은 필드가 비어 있을 때 '이메일 입력'이라는 안내 텍스트를 표시합니다. -->
+			</td>
+		</tr>
+		
+		<tr>
+			<th>홈페이지</th>
+			<td>
+				<input type="text" name="homepage" value = "http://" placeholder="홈페이지 입력" />
+				<!-- 사용자가 홈페이지 URL을 입력하는 텍스트 필드입니다.
+				     value 속성은 필드에 기본값으로 'http://'를 표시하여 사용자가 URL을 쉽게 입력할 수 있도록 돕습니다. -->
+			</td>
+		</tr>
+		
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="subject" id="subject" placeholder="제목 입력" />
+				<div id="subjectDiv"></div>
+				<!-- 사용자가 제목을 입력하는 텍스트 필드입니다.
+				     placeholder 속성은 '제목 입력'이라는 안내 텍스트를 표시하며, 
+				     아래 div 요소는 제목 입력 검증 실패 시 경고 메시지를 표시할 영역입니다. -->
+			</td>
+		</tr>
+		
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea cols="65" rows="15" name="content" id="content"></textarea>
+				<div id="contentDiv"></div>
+				<!-- 사용자가 글의 내용을 입력하는 텍스트 영역입니다.
+				     cols와 rows 속성은 텍스트 영역의 크기를 설정하며, 
+				     아래 div 요소는 내용 입력 검증 실패 시 경고 메시지를 표시할 영역입니다. -->
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<input type="button" id="writeBtn" value="글쓰기" />
+				<!-- 사용자가 폼을 제출할 때 사용하는 버튼입니다.
+				     이 버튼을 클릭하면 글쓰기 검증 절차를 거쳐 폼이 제출됩니다. -->
+				<input type="reset" value="다시작성" />
+				<!-- 사용자가 입력한 내용을 초기화하는 버튼입니다.
+				     이 버튼을 클릭하면 폼에 입력된 모든 데이터가 초기화됩니다. -->
+				<input type="button" value="글목록" 
+				onclick="location.href='/guestbookServlet/list?pg=1'"/> 
+				<!-- 사용자가 방명록 목록 페이지로 이동할 수 있도록 하는 버튼입니다.
+				     버튼 클릭 시, "/guestbookServlet/list?pg=1" 경로로 이동합니다. -->
+			</td>
+		</tr>
+	</table>
+</form>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- jQuery 라이브러리를 포함합니다. 이 라이브러리는 DOM 조작, 이벤트 처리 등을 쉽게 해줍니다.
+     여기서는 폼 검증과 같은 클라이언트 측 작업을 처리하는 데 사용됩니다. -->
+
+<script type="text/javascript">
+$(function(){
+	// 문서가 완전히 로드되면 이 함수가 실행됩니다.
+	// $는 jQuery를 의미하며, $(function(){})은 DOM이 준비되었을 때 실행되는 코드를 정의합니다.
+
+	$('#writeBtn').click(function(){
+		// '글쓰기' 버튼을 클릭할 때 실행되는 함수입니다.
+		$('#subjectDiv').empty();
+		$('#contentDiv').empty();
+		// 제목과 내용 검증 메시지를 표시하는 영역을 초기화합니다.
+		// empty() 메서드는 해당 요소의 내용을 모두 제거합니다.
+
+		if($('#subject').val() == ''){
+			$('#subjectDiv').html('제목 입력');
+			$('#subject').focus();
+			// 제목 입력란이 비어 있는 경우 경고 메시지를 표시하고, 제목 입력란에 포커스를 맞춥니다.
+			// html() 메서드는 요소의 내용을 설정하며, focus() 메서드는 해당 입력란에 포커스를 줍니다.
+		}else if($('#content').val() == ''){
+			$('#contentDiv').html('내용 입력');
+			$('#content').focus();
+			// 내용 입력란이 비어 있는 경우 경고 메시지를 표시하고, 내용 입력란에 포커스를 맞춥니다.
+		}else
+			$('#guestbookWriteForm').submit();
+			// 모든 입력란이 채워져 있으면 폼을 서버에 제출합니다.
+			// submit() 메서드는 폼을 전송하는 역할을 합니다.
+	});
+});
+</script>
+</body>
+</html>

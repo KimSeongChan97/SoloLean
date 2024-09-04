@@ -207,7 +207,7 @@ public class GuestbookDAO {
     }
 
     public int getTotal() {
-        int total = 0;
+        int totalA = 0;
         // 방명록 항목의 총 개수를 저장할 변수를 초기화합니다.
 
         try {
@@ -218,7 +218,7 @@ public class GuestbookDAO {
             // SQL 쿼리를 실행하여 guestbook 테이블의 총 레코드 수를 가져옵니다.
 
             if (rs.next()) {
-                total = rs.getInt(1);
+                totalA = rs.getInt(1);
                 // 쿼리 결과에서 첫 번째 값을 가져와 total 변수에 저장합니다.
                 // 이 값은 방명록에 작성된 총 글 수를 나타냅니다.
             }
@@ -239,7 +239,7 @@ public class GuestbookDAO {
                 // 이 예외는 시스템 성능에 영향을 줄 수 있으므로 적절히 처리해야 합니다.
             }
         }
-        return total;
+        return totalA;
         // 방명록의 총 글 수를 반환합니다.
         // 이 값은 클라이언트에게 전달되어 페이지 수 계산 등에 사용될 수 있습니다.
     }

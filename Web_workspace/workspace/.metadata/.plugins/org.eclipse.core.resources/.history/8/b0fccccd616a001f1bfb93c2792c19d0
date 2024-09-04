@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<h1 align="center">JSP의 지역,전역변수와 함께 Servlet을 연습해보자</h1>
+Hello JSP!! <br/>
+
+안녕하세요 JSP !! <br/>
+
+</body>
+</html>
