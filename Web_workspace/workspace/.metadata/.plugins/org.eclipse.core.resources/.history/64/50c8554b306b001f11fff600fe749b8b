@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="projectJSP" 
+			path="/projectJSP" 
+			reloadable="true" 
+			source="org.eclipse.jst.jee.server:projectJSP">
+			
+	<Resource name=""
+			  type=""
+			  driverClassName="oracle.jdbc.driver.OracleDriver"
+			  url="jdbc:oracle:thin:@localhost:1521:xe"
+			  username="C##JAVA"
+			  password="1234"
+			  maxActive=""
+			  maxIdle=""
+			  removeAbandoned="true" />		
+</Context>

@@ -31,7 +31,7 @@
     // id 중복 여부에 따라 다른 메시지를 출력합니다.
     if (exist) { // id가 이미 존재하는 경우
 %>
-    <p><%=id %> _ 이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요.</p>
+    <p><%=id %> 은(는) 이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요.</p>
     <!-- 중복된 아이디라는 메시지를 사용자에게 보여줍니다. -->
     <br><br>
     <form action="checkId.jsp"> <!-- 사용자가 다시 ID를 입력할 수 있도록 폼을 제공 -->
@@ -41,7 +41,7 @@
 <% 
     } else { // id가 사용 가능한 경우
 %>
-    <%=id %> _ 사용 가능한 아이디입니다. 계속 진행해주세요.
+    <%=id %> 은(는) 사용 가능한 아이디입니다. 계속 진행해주세요.
     <!-- 사용 가능한 아이디라는 메시지를 사용자에게 보여줍니다. -->
     <br><br>
     <input type="button" value="사용하기" onclick="checkIdClose('<%=id %>')"/> 
@@ -56,7 +56,7 @@ function checkIdClose(id){
 	// 부모 창의 id 입력 필드에 선택된 id 값을 설정함
 	// opener는 팝업 창을 열었던 부모 창을 의미하며, 부모 창의 특정 필드에 접근할 수 있습니다.
 	opener.document.getElementById("id").value = id;
-
+	opener.document.getElementById("check").value = id;
     // 팝업 창을 닫습니다.
 	window.close();
     

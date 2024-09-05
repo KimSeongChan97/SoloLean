@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 페이지</title>
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<h2 align="center">로그인</h2>
+<hr/>
+
+<form name="loginForm" method="post" action="/projectJSP/member/memberLogin.jsp">
+    <table align="center">
+        <!-- 아이디 입력 필드 -->
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="id" placeholder="아이디 입력" /></td>
+        </tr>
+        <!-- 비밀번호 입력 필드 -->
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="pwd" placeholder="비밀번호 입력" /></td>
+        </tr>
+        <!-- 오류 메시지를 표시할 div -->
+        <tr>
+            <td colspan="2" align="center">
+                <div id="loginErrorDiv" style="color:red;"></div>
+            </td>
+        </tr>
+        <!-- 로그인 버튼 -->
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="로그인" />
+                <input type="button" value="회원가입" onclick="window.location.href='/projectJSP/member/memberWriteForm.jsp';" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

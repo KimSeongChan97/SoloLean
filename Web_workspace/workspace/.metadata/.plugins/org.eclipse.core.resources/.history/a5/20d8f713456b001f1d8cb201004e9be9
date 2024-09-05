@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>홈페이지만들기2</title>
+<style type="text/css">
+
+#link {
+	text-align: center;
+	border: 1px solid black;
+	width: 600px;
+	margin: 20px auto; /* 중앙 정렬 및 위아래 여백 */
+	padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 테두리에 그림자 */
+}
+
+</style>
+</head>
+<body>
+
+	<!-- 여기서 nav.jsp를 동적으로 불러올 부분 -->
+    <div id="navbar"></div>
+    
+	<div id="link">
+	<h3><a href="./mainpage.html">메인 홈페이지</a></h3>
+	<h3><a href="./member/memberWriteForm.jsp">회원가입</a></h3>
+	<h3><a href="./member/memberLoginForm.jsp">로그인</a></h3>
+	<h3><a href="">로그아웃</a></h3>
+	<h3><a href="">회원정보 수정</a></h3>
+	<h3><a href="">글쓰기</a></h3>
+	<h3><a href="">글목록</a></h3>
+	메뉴 목록
+	</div>
+	
+	
+	<br/>
+	
+	메인 내용
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- jQuery로 JSP 파일을 불러오는 코드 -->
+    <script>
+        // jQuery의 load() 메서드를 사용하여 JSP 파일을 불러옴
+        $('#navbar').load('jsp/nav.jsp');
+    </script>
+</body>
+</html>

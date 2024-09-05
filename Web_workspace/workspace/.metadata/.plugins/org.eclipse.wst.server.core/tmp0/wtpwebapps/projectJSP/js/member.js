@@ -3,7 +3,7 @@
 // 'false'는 아직 중복 체크가 안된 상태이고, 'true'는 중복 체크가 완료된 상태를 나타냅니다.
 // 'idChecked' 변수는 중복체크 버튼을 눌렀는지 확인하는 역할을 합니다.
 // 이 변수를 통해 폼 제출 시 중복 체크가 되었는지 검사하여 아이디가 유효한지 확인할 수 있습니다.
-let idChecked = false;
+let idChecked = false; // 아이디 중복체크가 수행되었는지 확인하는 플래그 변수입니다. 기본값은 'false'로 설정됩니다.
 
 // ID 중복 체크 함수
 // 사용자가 입력한 아이디가 중복되었는지 확인하는 함수입니다.
@@ -17,105 +17,104 @@ function checkId() {
     // 아이디 입력이 비어있다면, 사용자에게 아이디를 입력하라는 메시지를 보여줍니다.
     // 'if' 조건문을 사용해 아이디 입력란이 비어있는지 확인합니다.
     // 비어 있으면 사용자에게 경고 메시지를 띄우고, 비어 있지 않다면 서버에 중복 체크를 요청하는 새로운 창을 엽니다.
-    if (id === '') {
+    if (id === "") {
+        // 아이디 입력이 비어있을 경우 오류 메시지를 'idDiv' div에 출력합니다.
         document.getElementById('idDiv').innerHTML = "먼저 아이디를 입력하세요 !!";
     } else {
         // 입력한 아이디를 기반으로 중복 확인 팝업 창을 엽니다.
-        // 여기서 'window.open' 함수는 새로운 브라우저 창을 엽니다.
-        // 이 창은 'checkId.jsp'로 요청을 보내어 서버 측에서 아이디 중복 여부를 확인하는 역할을 합니다.
+        // window.open()은 새로운 브라우저 창을 열어서 서버 측에서 아이디 중복 여부를 확인합니다.
         // 'id' 값을 쿼리스트링으로 전달하여 중복 여부를 확인합니다.
         window.open("./checkId.jsp?id=" + id, "myWindow", "width=450 height=150 top=100 left=800");
+
         // 중복 체크가 완료되었음을 표시하기 위해 'idChecked' 변수를 'true'로 변경합니다.
-        // 사용자가 중복 체크 버튼을 클릭했으므로, 중복 확인이 완료되었다고 표시하기 위해 'idChecked' 값을 'true'로 설정합니다.
-        idChecked = true;
+        idChecked = true; // 중복 체크가 완료된 상태로 설정합니다.
     }
 }
+
+// 이메일 선택 시, 직접 입력 기능 제공
+// 사용자가 이메일 도메인을 직접 입력하거나, 기존 도메인을 선택할 수 있도록 하는 함수입니다.
+// 사용자가 이메일 도메인을 선택하면 'email3' 필드의 값을 'email2' 필드에 넣어줍니다.
+function change() {
+    // email3 필드의 값을 email2 필드로 복사해줍니다.
+    document.getElementById("email2").value = document.getElementById("email3").value;
+}
+
+// 회원가입 폼 제출 시 호출되는 함수입니다.
+// 이 함수는 폼 제출 전에 사용자가 입력한 값들이 유효한지 확인하고, 유효하지 않은 경우 오류 메시지를 표시합니다.
+// event.preventDefault()를 사용하여 폼 제출을 막고, 모든 유효성 검사를 통과한 경우에만 폼을 제출합니다.
+function memberWrite(event) {
+    // 폼 제출을 방지하기 위해 기본 이벤트를 막습니다.
+    // 폼이 유효성 검사를 통과하지 않았을 때, 기본 동작인 페이지 리로딩을 방지합니다.
+    event.preventDefault();
+
+    // 오류 메시지 초기화: 입력 필드 아래의 div 내용을 비워줍니다.
+    // 이전에 표시된 오류 메시지가 있을 경우 이를 초기화하여 새로운 오류 메시지가 중복되지 않도록 합니다.
+    document.getElementById("nameDiv").innerHTML = ""; 
+    document.getElementById("idDiv").innerHTML = ""; 
+    document.getElementById("pwdDiv").innerHTML = ""; 
+    document.getElementById("repwdDiv").innerHTML = "";
+
+    // 유효성 검사 실패 여부를 추적할 변수
+    // 폼이 유효하지 않은 경우 'false'로 설정되어 폼 제출을 막습니다.
+    let isValid = true;
+
+    // 이름이 비어 있을 경우
+    // 사용자가 이름을 입력하지 않았을 때 오류 메시지를 표시합니다.
+    if (document.memberForm.name.value.trim() === "") {
+        // 이름 입력이 비어있을 경우 'nameDiv'에 오류 메시지를 출력합니다.
+        document.getElementById("nameDiv").innerHTML = "이름을 입력하세요";
+        isValid = false; // 유효성 검사 실패를 나타내는 플래그 설정
+    }
+
+    // 아이디가 비어 있을 경우
+    // 사용자가 아이디를 입력하지 않았을 때 오류 메시지를 표시합니다.
+    if (document.getElementById("id").value.trim() === "") {
+        document.getElementById("idDiv").innerHTML = "아이디를 입력하세요";
+        isValid = false;
+    }
+
+    // 비밀번호가 비어 있을 경우
+    // 비밀번호 필드가 비어있는지 확인하고, 오류 메시지를 출력합니다.
+    if (document.getElementById("pwd").value.trim() === "") {
+        document.getElementById("pwdDiv").innerHTML = "비밀번호를 입력하세요";
+        isValid = false;
+    }
+
+    // 비밀번호와 재입력된 비밀번호가 일치하지 않을 경우
+    // 사용자가 입력한 두 비밀번호가 일치하는지 확인하고, 일치하지 않으면 오류 메시지를 출력합니다.
+    if (document.getElementById("pwd").value !== document.getElementById("repwd").value) {
+        document.getElementById("repwdDiv").innerHTML = "비밀번호가 일치하지 않습니다.";
+        isValid = false;
+    }
+
+    // 아이디 중복 체크가 완료되지 않았을 경우
+    // 중복 체크가 완료되지 않았을 때 오류 메시지를 출력합니다.
+    if (document.getElementById("id").value !== document.getElementById("check").value) {
+        document.getElementById("idDiv").innerHTML = "아이디 중복 체크를 하세요";
+        isValid = false;
+    }
+
+    // 유효성 검사를 모두 통과했을 때만 폼을 제출합니다.
+    // 'isValid'가 true인 경우에만 폼을 실제로 제출하게 됩니다.
+    if (isValid) {
+        document.memberForm.submit(); // 유효성 검사가 통과되었을 때 폼을 제출합니다.
+    }
+}
+
+// 폼의 onsubmit 이벤트 핸들러에 수정된 memberWrite 함수를 연결합니다.
+// 이 부분에서는 HTML의 onsubmit 속성을 사용하지 않고, 자바스크립트로 이벤트를 처리합니다.
+// event.preventDefault()를 사용하여 폼 제출을 막고, 유효성 검사를 먼저 수행한 후 통과한 경우에만 폼을 제출합니다.
+document.memberForm.addEventListener('submit', memberWrite);
 
 // 아이디 변경 시 중복 체크 상태를 초기화하는 코드
 // 사용자가 아이디 입력란에 새로운 값을 입력할 때마다 중복 체크 상태를 초기화합니다.
-// 사용자가 아이디 입력을 수정하는 순간, 이전에 중복 체크한 값이 무효화되므로 'idChecked'를 다시 'false'로 설정해줍니다.
-// 이렇게 해야 사용자가 아이디를 변경한 후 다시 중복 체크를 할 수 있습니다.
+// 중복 체크를 한 후 아이디를 변경할 경우 다시 중복 체크를 해야 하므로, 이때 idChecked를 'false'로 설정하여 중복 체크가 되지 않은 상태로 만듭니다.
 document.getElementById('id').addEventListener('input', function () {
-    // 아이디가 변경되면 다시 중복 체크를 해야 하므로 'false'로 설정합니다.
-    // 이 코드는 사용자가 입력할 때마다 호출되며, 중복 체크가 완료되지 않은 상태를 표시하기 위해 'idChecked'를 'false'로 설정합니다.
-    idChecked = false;
+    idChecked = false; // 아이디가 변경되면 다시 중복 체크를 해야 하므로 'false'로 설정합니다.
 });
 
-// 비밀번호 유효성 검사 함수
-// 이 함수는 사용자가 입력한 비밀번호가 규칙을 잘 따르고 있는지 확인합니다.
-// 비밀번호가 적절한 길이인지, 두 개의 비밀번호 입력이 동일한지, 숫자와 특수문자를 포함하는지 등을 검사합니다.
-// 이 함수는 사용자가 비밀번호를 입력할 때 유효성을 검사하여 적절한 비밀번호를 입력하게 도와줍니다.
-function validatePassword() {
-    // 비밀번호와 비밀번호 재입력 값을 가져옵니다.
-    // 'pwd'와 'repwd' 두 값을 가져와서 비교합니다.
-    // 'pwd'는 사용자가 입력한 비밀번호이고, 'repwd'는 확인을 위해 다시 입력한 비밀번호입니다.
-    var pwd = document.getElementById("pwd").value;
-    var repwd = document.getElementById("repwd").value;
-
-    // 비밀번호 길이 검사
-    // 비밀번호가 3자 이상인지 확인합니다. 3자 미만이면 오류 메시지를 표시하고 함수를 종료합니다.
-    // 최소 비밀번호 길이를 설정하여 너무 짧은 비밀번호를 방지합니다.
-    if (pwd.length < 3) {
-        document.getElementById("pwDiv").innerHTML = "비밀번호는 최소 3자 이상이어야 합니다.";
-        return false;
-    }
-
-    // 비밀번호 일치 여부 검사
-    // 입력한 비밀번호와 재입력한 비밀번호가 동일하지 않다면 오류 메시지를 표시하고 함수를 종료합니다.
-    // 두 개의 입력 필드가 서로 다른 비밀번호를 입력하면 폼이 제출되지 않도록 합니다.
-    if (pwd !== repwd) {
-        document.getElementById("pwDiv").innerHTML = "비밀번호가 일치하지 않습니다.";
-        return false;
-    }
-
-    // 비밀번호 복잡도 검사
-    // 비밀번호에 숫자와 특수문자가 포함되었는지 확인합니다. 포함되지 않았으면 오류 메시지를 표시합니다.
-    // 복잡도를 강화하기 위해 특수문자와 숫자가 포함되어야 합니다.
-    // 이 정규 표현식은 최소한 하나의 숫자와 하나의 특수문자가 포함되어 있는지를 검사합니다.
-    var pwdPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
-    if (!pwdPattern.test(pwd)) {
-        document.getElementById("pwDiv").innerHTML = "비밀번호는 숫자와 특수문자를 포함해야 합니다.";
-        return false;
-    }
-
-    // 비밀번호가 모든 조건을 충족하면 오류 메시지를 지우고 'true'를 반환하여 유효성 검사를 통과시킵니다.
-    // 모든 검사를 통과한 경우, 오류 메시지를 초기화하고 'true'를 반환하여 비밀번호가 유효함을 표시합니다.
-    document.getElementById("pwDiv").innerHTML = "";
-    return true;
-}
-
-// 폼 전체의 유효성 검사 함수
-// 회원가입 버튼을 눌렀을 때 폼이 제출되기 전에 모든 입력값이 올바른지 확인하는 함수입니다.
-// 이 함수는 폼의 여러 입력 필드를 한꺼번에 유효성 검사를 진행하여, 모든 조건을 충족해야 폼이 제출됩니다.
-function validateForm() {
-    // 이름 유효성 검사 (별도로 정의한 함수)
-    // 이름 입력란이 비어있거나 올바르지 않으면 폼 제출을 막습니다.
-    if (!validateName()) {
-        return false;
-    }
-
-    // 아이디 중복 체크 여부 확인
-    // 중복 체크가 완료되지 않았다면 폼 제출을 막고, 경고 메시지를 표시합니다.
-    // 사용자가 중복 체크를 하지 않았을 경우 폼 제출을 막고 경고 메시지를 출력합니다.
-    if (!idChecked) {
-        alert("아이디 중복체크를 완료해주세요.");
-        return false; // 중복 체크가 안 되었을 때 폼 제출을 방지합니다.
-    }
-
-    // 비밀번호 유효성 검사
-    // 비밀번호가 유효하지 않다면 폼 제출을 막습니다.
-    // 비밀번호가 유효하지 않다면 폼 제출이 진행되지 않습니다.
-    if (!validatePassword()) {
-        return false; // 비밀번호가 유효하지 않으면 폼 제출을 방지합니다.
-    }
-
-    // 모든 유효성 검사를 통과했을 때만 폼을 제출합니다.
-    // 모든 입력 값이 유효하면 폼이 제출됩니다.
-    return true;
-}
-
 // 우편번호 검색을 위한 Daum API 함수
-// 사용자가 우편번호 검색 버튼을 클릭했을 때 호출됩니다.
+// 사용자가 '우편번호 검색' 버튼을 클릭했을 때 호출됩니다.
 // Daum API를 사용하여 주소를 검색하고, 사용자가 선택한 주소를 입력 필드에 자동으로 채워줍니다.
 function checkPost() {
     new daum.Postcode({
@@ -124,18 +123,16 @@ function checkPost() {
             var addr = '';
 
             // 사용자가 도로명 주소를 선택했을 때와 지번 주소를 선택했을 때를 구분하여 주소를 저장합니다.
-            // 도로명 주소와 지번 주소 중 사용자가 선택한 값을 저장합니다.
             if (data.userSelectedType === 'R') {
-                addr = data.roadAddress; // 도로명 주소
+                addr = data.roadAddress; // 도로명 주소를 선택한 경우 도로명 주소를 저장
             } else {
-                addr = data.jibunAddress; // 지번 주소
+                addr = data.jibunAddress; // 지번 주소를 선택한 경우 지번 주소를 저장
             }
 
             // 선택한 우편번호와 주소를 각 필드에 넣습니다.
-            // 'zipcode'와 'addr1' 필드에 자동으로 값을 채워주고, 상세 주소를 입력할 수 있도록 포커스를 이동시킵니다.
-            document.getElementById('zipcode').value = data.zonecode; // 우편번호
-            document.getElementById("addr1").value = addr; // 주소
-            document.getElementById("addr2").focus(); // 상세주소 입력란으로 포커스를 이동합니다.
+            document.getElementById('zipcode').value = data.zonecode; // 우편번호 필드에 자동으로 값 채우기
+            document.getElementById("addr1").value = addr; // 주소 필드에 선택된 주소 값 넣기
+            document.getElementById("addr2").focus(); // 상세 주소 필드에 포커스를 자동으로 이동
         }
     }).open(); // 우편번호 검색 팝업을 엽니다.
 }

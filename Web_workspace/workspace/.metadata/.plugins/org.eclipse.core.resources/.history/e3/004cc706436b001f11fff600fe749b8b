@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="member.bean.MemberDTO" %>
+<%@ page import="member.dao.MemberDAO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 결과</title>
+</head>
+<body>
+
+<%
+    String id = request.getParameter("id");
+    String pwd = request.getParameter("pwd");
+
+    MemberDAO memberDAO = MemberDAO.getInstance();
+    MemberDTO memberDTO = memberDAO.login(id, pwd);
+
+    if (memberDTO != null) {
+        // 로그인 성공 시
+        session.setAttribute("loginUser", memberDTO);
+%>
+        <script>
+            // alert 창에 사용자 이름을 표시하고, 확인 버튼을 누르면 메인 페이지로 이동합니다.
+            alert("<%= memberDTO.getName() %>님, 환영합니다!");
+            window.location.href = "/projectJSP/webapp/index.jsp"; // 메인 페이지로 이동
+        </script>
+<%
+    } else {
+        // 로그인 실패 시
+%>
+        <h2 align="center" style="color:red;">아이디 또는 비밀번호가 틀렸습니다.</h2>
+        <a href="/projectJSP/member/memberLoginForm.jsp">다시 로그인</a>
+<%
+    }
+%>
+
+</body>
+</html>

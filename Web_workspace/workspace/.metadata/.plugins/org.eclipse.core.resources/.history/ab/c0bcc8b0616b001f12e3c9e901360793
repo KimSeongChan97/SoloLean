@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	//String name = request.getParameter("name");
+	//String id = request.getParameter("id");
+
+	String name = null;
+	String id = null;
+	
+	// 쿠키
+	Cookie[] ar = request.getCookies(); // 특정 쿠키만을 가져오지 못하고 모든 쿠키들을 다 가져온다.
+		if(ar == null){
+			for(int i=0; i<ar.length; i++){
+				
+			} // for
+		} // if 쿠키가 없어질 때 : null 이 아닐동안 나타나게 할려고 함
+	
+	
+%>  
+
+<%=name %>  <%=id %>  

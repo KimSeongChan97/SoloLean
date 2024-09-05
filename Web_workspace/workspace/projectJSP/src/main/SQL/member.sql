@@ -30,12 +30,8 @@ select * from member;
 -- SELECT * FROM all_tables WHERE table_name = 'MEMBER';
 
 -- -------------------------
-insert into member(name, id, pwd) values('홍길동', 'hong', '111');
-
-
+--insert into member(name, id, pwd) values('홍길동', 'hong', '111');
 commit;
-
-
 -- ------------------------------------
 -- PURGE RECYCLEBIN;
 -- drop table 테이블명 purge; 아예 지운다.

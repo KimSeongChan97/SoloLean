@@ -1,0 +1,15 @@
+package member.bean;
+
+public class MemberDTO {
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+	private String name;
+}

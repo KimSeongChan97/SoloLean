@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <!-- jQuery 링크 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- 여기서 nav.jsp를 동적으로 불러올 부분 -->
+    <div id="navbar"></div>
+
+    <div style="margin-top: 70px;">
+        <h1>Welcome to the Main Page</h1>
+        <p>여기서 원하는 내용을 작성하세요.</p>
+    </div>
+
+    <!-- jQuery로 JSP 파일을 불러오는 코드 -->
+    <script>
+        // jQuery의 load() 메서드를 사용하여 JSP 파일을 불러옴
+        $('#navbar').load('jsp/nav.jsp');
+    </script>
+</body>
+</html>

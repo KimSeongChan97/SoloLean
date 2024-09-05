@@ -4,38 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>홈페이지만들기2</title>
-<style type="text/css">
-
-#link {
-	text-align: center;
-	border: 1px solid #ccc;
-	width: 500px;
-	margin: 20px auto; /* 중앙 정렬 및 위아래 여백 */
-	padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 테두리에 그림자 */
-}
-
-</style>
+<title>전체 메뉴 페이지</title>
+<!-- CSS 파일 링크 수정 -->
+<link rel="stylesheet" type="text/css" href="/projectJSP/css/indexcss.css" />
 </head>
 <body>
-	<h2 align="center">메뉴 페이지 제목</h2>
-	<hr/>
-	
-	<div id="link">
-	<h3><a href="./mainpage.html">메인 홈페이지</a></h3>
-	<h3><a href="./member/memberWriteForm.jsp">회원가입</a></h3>
-	<h3><a href="">로그인</a></h3>
-	<h3><a href="">로그아웃</a></h3>
-	<h3><a href="">글쓰기</a></h3>
-	<h3><a href="">글목록</a></h3>
-	메뉴 목록
-	</div>
-	
-	
-	<br/>
-	
-	메인 내용
-	
+
+    <!-- 여기서 nav.jsp를 동적으로 불러올 부분 -->
+    <div id="navbar"></div>
+    
+    
+    
+    <div id="link">
+        <h3><a href="/projectJSP/mainpage.html">메인 홈페이지</a></h3>
+        <h3><a href="/projectJSP/member/memberWriteForm.jsp">회원가입</a></h3>
+        <h3><a href="/projectJSP/member/memberLoginForm.jsp">로그인</a></h3>
+        <h3><a href="/projectJSP/member/memberLogout.jsp">로그아웃</a></h3>
+        <h3><a href="">글쓰기</a></h3>
+        <h3><a href="">글목록</a></h3>
+        <h3><a href="">회원정보 수정</a></h3>
+    </div>
+    
+    <br/>
+    
+    <h2 align="center"> 다른 메뉴들은 구현예정</h2>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery로 JSP 파일을 불러오는 코드 -->
+    <script>
+        // jQuery의 load() 메서드를 사용하여 JSP 파일을 불러옴
+        $('#navbar').load('/projectJSP/jsp/nav.jsp');
+    </script>
 </body>
 </html>

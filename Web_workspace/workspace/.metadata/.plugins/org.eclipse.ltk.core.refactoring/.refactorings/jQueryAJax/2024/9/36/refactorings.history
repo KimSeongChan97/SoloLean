@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;loader.gif&apos; to &apos;image&apos;&#x0D;&#x0A;- Original project: &apos;jQueryAJax&apos;&#x0D;&#x0A;- Destination element: &apos;image&apos;&#x0D;&#x0A;- Original element: &apos;loader.gif&apos;" description="Copy file" element1="src/main/webapp/image/loader.gif" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1725517722972" target="/projectJSP/src/main/webapp/image" units="0" version="1.0"/>
+</session>
