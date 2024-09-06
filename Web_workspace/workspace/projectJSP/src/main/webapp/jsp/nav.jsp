@@ -35,7 +35,10 @@
                  이 div 안에는 실제로 보여질 네비게이션 메뉴 항목들이 포함됩니다. -->
             <div class="navbar-nav navigation">
                 <ul>
-                    <li class="list active">
+                	 <!-- 세션에 memId가 있는지 확인하여 로그인 상태를 체크 -->
+        			<% if (session.getAttribute("memId") == null) { %>
+        			<!-- 로그인하지 않은 경우 보여줄 메뉴 리스트 -->
+                    <li class="list active">                        
                         <!-- 각 네비게이션 항목 -->
                         <!-- 네비게이션 항목은 "nav-link" 클래스를 통해 부트스트랩 스타일을 적용받으며, 각 항목에 링크가 걸려 있습니다. 
                              첫 번째 항목은 "전체 메뉴"로, "ion-icon"을 통해 아이콘을 추가하고 "index.jsp"로 이동하게 설정되어 있습니다. -->
@@ -43,83 +46,116 @@
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon> <!-- 홈 아이콘 추가 -->
                             </span>
-                            <span class="text">전체 메뉴</span> <!-- 텍스트 표시: 전체 메뉴 -->
+                            <span class="text">Main Menu</span> <!-- 텍스트 표시: 전체 메뉴 -->
                             <span class="circle"></span> <!-- 추가적인 스타일 요소로 원형을 나타냅니다. -->
                         </a>
                     </li>
                     <li class="list">
+                        <!-- 회원가입 메뉴 항목 -->
+                        <!-- 사용자가 회원가입을 할 수 있는 링크를 표시합니다. -->
+                        <a class="nav-link" href="/projectJSP/member/memberWriteForm.jsp">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon> <!-- 사람 아이콘 추가 -->
+                            </span>
+                            <span class="text">Register</span> <!-- 텍스트 표시: 회원가입 -->
+                            <span class="circle"></span> <!-- 원형 스타일 추가 -->
+                        </a>
+                    </li>
+                    <li class="list">
                         <!-- 로그인 메뉴 항목 -->
+                        <!-- 로그인 페이지로 이동하는 링크를 제공합니다. -->
                         <a class="nav-link" href="/projectJSP/member/memberLoginForm.jsp">
                             <span class="icon">
                                 <ion-icon name="person-outline"></ion-icon> <!-- 사람 아이콘 추가 -->
                             </span>
                             <span class="text">Login</span> <!-- 텍스트 표시: Login -->
-                            <span class="circle"></span>
+                            <span class="circle"></span> <!-- 원형 스타일 추가 -->
                         </a>
                     </li>
+                    <!-- 로그인 상태일 때 보이는 메뉴들 -->
+                    <% } else { %>
+                    <!-- 로그인한 상태일 때만 보이는 메뉴 항목들입니다. -->
                     <li class="list">
-				    <!-- 로그아웃 메뉴 항목 -->
+                        <!-- 전체 메뉴로 이동하는 링크 -->
+                        <a class="nav-link" href="/projectJSP/index.jsp">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon> <!-- 홈 아이콘 추가 -->
+                            </span>
+                            <span class="text">Main Menu</span> <!-- 텍스트 표시: 전체 메뉴 -->
+                            <span class="circle"></span> <!-- 추가적인 스타일 요소로 원형을 나타냅니다. -->
+                        </a>
+                    </li>          
+                    <li class="list">
+          		    <!-- 로그아웃 메뉴 항목 -->
+				    <!-- 로그아웃을 처리하는 페이지로 이동하는 링크입니다. -->
 				    <a class="nav-link" href="/projectJSP/member/memberLogout.jsp">
 				        <span class="icon">
 				            <ion-icon name="log-out-outline"></ion-icon> <!-- 로그아웃 아이콘 추가 -->
 				        </span>
 				        <span class="text">Logout</span> <!-- 텍스트 표시: 로그아웃 -->
-				        <span class="circle"></span>
+				        <span class="circle"></span> <!-- 추가적인 원형 스타일 요소 -->
 				    </a>
-				</li>
-				<li class="list">
+					</li>
+					<li class="list">
+				    <!-- 회원정보 수정 메뉴 항목 -->
+				    <!-- 사용자가 자신의 회원 정보를 수정할 수 있는 페이지로 이동하는 링크입니다. -->
+				    <a class="nav-link" href="/projectJSP/member/memberUpdateForm.jsp">
+				        <span class="icon">
+				            <ion-icon name="create-outline"></ion-icon> <!-- 회원정보 수정 아이콘 추가 -->
+				        </span>
+				        <span class="text">Edit Profile</span> <!-- 텍스트 표시: 회원정보 수정 -->
+				        <span class="circle"></span> <!-- 원형 스타일 요소 추가 -->
+				    </a>
+					</li>
+					<li class="list">
 				    <!-- 글쓰기 메뉴 항목 -->
+				    <!-- 사용자가 게시글을 작성할 수 있는 링크입니다. -->
 				    <a class="nav-link" href="#">
 				        <span class="icon">
 				            <ion-icon name="pencil-outline"></ion-icon> <!-- 글쓰기 아이콘 추가 -->
 				        </span>
-				        <span class="text">글쓰기</span> <!-- 텍스트 표시: 글쓰기 -->
-				        <span class="circle"></span>
+				        <span class="text">Post</span> <!-- 텍스트 표시: 글쓰기 -->
+				        <span class="circle"></span> <!-- 원형 스타일 요소 추가 -->
 				    </a>
-				</li>
-				<li class="list">
+					</li>
+					<li class="list">
 				    <!-- 글목록 메뉴 항목 -->
+				    <!-- 작성된 게시글 목록을 확인할 수 있는 페이지로 이동하는 링크입니다. -->
 				    <a class="nav-link" href="#">
 				        <span class="icon">
 				            <ion-icon name="document-text-outline"></ion-icon> <!-- 글목록 아이콘 추가 -->
 				        </span>
-				        <span class="text">글목록</span> <!-- 텍스트 표시: 글목록 -->
-				        <span class="circle"></span>
+				        <span class="text">Note</span> <!-- 텍스트 표시: 글목록 -->
+				        <span class="circle"></span> <!-- 원형 스타일 요소 추가 -->
 				    </a>
-				</li>
-				<li class="list">
-				    <!-- 회원정보 수정 메뉴 항목 -->
-				    <a class="nav-link" href="#">
-				        <span class="icon">
-				            <ion-icon name="create-outline"></ion-icon> <!-- 회원정보 수정 아이콘 추가 -->
-				        </span>
-				        <span class="text">회원정보 수정</span> <!-- 텍스트 표시: 회원정보 수정 -->
-				        <span class="circle"></span>
-				    </a>
-				</li>
+					</li>
                     <li class="list">
-                        <!-- 노트 메뉴 항목 -->
+                        <!-- 채팅 메뉴 항목 -->
+                        <!-- 현재 미구현된 기능이며, 채팅 페이지로 이동하는 링크가 추가될 수 있습니다. -->
                         <a class="nav-link" href="#">
                             <span class="icon">
                                 <ion-icon name="chatbubble-outline"></ion-icon> <!-- 대화 아이콘 추가 -->
                             </span>
-                            <span class="text">Chat</span> <!-- 텍스트 표시: Note -->
-                            <span class="circle"></span>
+                            <span class="text">Chat(미구현)</span> <!-- 텍스트 표시: 채팅 (미구현) -->
+                            <span class="circle"></span> <!-- 원형 스타일 요소 추가 -->
                         </a>
                     </li>
                     <li class="list">
                         <!-- 기타 페이지 메뉴 항목 -->
+                        <!-- 설정과 관련된 페이지로 이동하는 링크입니다. -->
                         <a class="nav-link" href="#">
                             <span class="icon">
                                 <ion-icon name="settings-outline"></ion-icon> <!-- 설정 아이콘 추가 -->
                             </span>
-                            <span class="text">Setting</span> <!-- 텍스트 표시: 기타 페이지 -->
-                            <span class="circle"></span>
+                            <span class="text">Setting(미구현)</span> <!-- 텍스트 표시: 설정 (미구현) -->
+                            <span class="circle"></span> <!-- 원형 스타일 요소 추가 -->
                         </a>
                     </li>
                     <!-- 현재 메뉴를 선택했을 때 보여주는 인디케이터 (위치를 표시하는 애니메이션 요소) -->
                     <!-- "indicator"는 현재 활성화된 메뉴를 시각적으로 강조하기 위해 사용됩니다. 애니메이션이나 색상 변경 등을 나타낼 때 사용될 수 있습니다. -->
                     <div class="indicator"></div>
+                    
+                    <% } %>
                 </ul>
             </div>
         </div>

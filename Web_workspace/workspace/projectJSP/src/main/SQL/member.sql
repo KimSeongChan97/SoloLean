@@ -29,8 +29,11 @@ create table member(
 select * from member;
 -- SELECT * FROM all_tables WHERE table_name = 'MEMBER';
 
+select * from member where id='dd';
+-- update member set email1='dd', email2='gmail.com', tel1='011' where id= 'dd';
 -- -------------------------
---insert into member(name, id, pwd) values('홍길동', 'hong', '111');
+-- insert into member(name, id, pwd) values('홍길동', 'hong', '111');
+
 commit;
 -- ------------------------------------
 -- PURGE RECYCLEBIN;

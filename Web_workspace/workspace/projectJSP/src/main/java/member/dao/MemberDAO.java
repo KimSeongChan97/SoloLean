@@ -211,8 +211,141 @@ public class MemberDAO {
         
         return name; // 로그인 성공 시 이름 반환, 실패 시 null 반환
     }
+    
+	    // 회원 정보를 가져오는 메서드
+	    public MemberDTO getMember(String id) {
+	    	
+	    	MemberDTO memberDTO = null;
+	    	
+	    	String sql = "select * from member where id=?";
+	    	
+	    	try {
+	    		// Connection Pool에서 연결을 가져옵니다.
+				con = ds.getConnection();
+				
+				// SQL 쿼리를 준비합니다.
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, id);
+
+				// 쿼리를 실행하여 결과를 ResultSet으로 받습니다.
+	            rs = pstmt.executeQuery();
+	            
+	            if (rs.next()) {
+	            	memberDTO = new MemberDTO(); // null 값인 DTO를 새로 생성
+	            	
+	            	memberDTO.setName(rs.getString("name"));
+	            	memberDTO.setId(rs.getString("id"));
+	            	memberDTO.setPwd(rs.getString("pwd"));
+	            	memberDTO.setGender(rs.getString("gender"));
+	            	memberDTO.setEmail1(rs.getString("email1"));
+	            	memberDTO.setEmail2(rs.getString("email2"));
+	            	memberDTO.setTel1(rs.getString("tel1"));
+	            	memberDTO.setTel2(rs.getString("tel2"));
+	            	memberDTO.setTel3(rs.getString("tel3"));
+	            	memberDTO.setZipcode(rs.getString("zipcode"));
+	            	memberDTO.setAddr1(rs.getString("addr1"));
+	            	memberDTO.setAddr2(rs.getString("addr2"));
+       	
+	            } // rs 의 값이 없으면 null
+			} catch (SQLException e) {
+				
+				e.printStackTrace(); 
+			} finally {
+	            // 자원 해제
+	            // ResultSet, PreparedStatement, Connection 객체는 사용 후 반드시 닫아야 자원 누수를 방지할 수 있습니다.
+	            // ResultSet도 자원을 차지하므로 반드시 닫아야 합니다. 이를 닫지 않으면 시스템 리소스를 낭비하게 됩니다.
+	            try {
+	                if (rs != null) rs.close();  // ResultSet 해제
+	                if (pstmt != null) pstmt.close(); // PreparedStatement 해제
+	                if (con != null) con.close();  // Connection 해제
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    		
+	    	return memberDTO;
+    }
+	    
+	 // 회원 정보를 수정하는 메서드 (logtime 포함)
+	    public MemberDTO updateMember(MemberDTO memberDTO) {
+	        String sql = "UPDATE member SET PWD = ?, NAME = ?, GENDER = ?,"
+	        		+ " EMAIL1 = ?, EMAIL2 = ?, TEL1 = ?, TEL2 = ?, TEL3 = ?,"
+	        		+ " ZIPCODE = ?, ADDR1 = ?, ADDR2 = ?, LOGTIME = sysdate WHERE ID = ?";
+
+	        try {
+	            // Connection Pool에서 연결을 가져옵니다.
+	            con = ds.getConnection();
+	            
+	            // SQL 쿼리를 준비합니다.
+	            pstmt = con.prepareStatement(sql);
+
+	            // PreparedStatement에 각 필드를 바인딩합니다.
+	            pstmt.setString(1, memberDTO.getPwd());
+	            pstmt.setString(2, memberDTO.getName());
+	            pstmt.setString(3, memberDTO.getGender());
+	            pstmt.setString(4, memberDTO.getEmail1());
+	            pstmt.setString(5, memberDTO.getEmail2());
+	            pstmt.setString(6, memberDTO.getTel1());
+	            pstmt.setString(7, memberDTO.getTel2());
+	            pstmt.setString(8, memberDTO.getTel3());
+	            pstmt.setString(9, memberDTO.getZipcode());
+	            pstmt.setString(10, memberDTO.getAddr1());
+	            pstmt.setString(11, memberDTO.getAddr2());
+	            pstmt.setString(12, memberDTO.getId());  // ID는 수정하지 않고 WHERE 조건으로만 사용
+
+	            // 업데이트 실행
+	            int result = pstmt.executeUpdate();
+
+	            // 업데이트 성공 시 로그타임을 최신 정보로 설정 후 memberDTO 반환
+	            if (result > 0) {
+	                memberDTO.setLogtime(new java.sql.Timestamp(System.currentTimeMillis()));  // 현재 시간을 logtime에 설정
+	                return memberDTO;  // 업데이트 성공 시 memberDTO 반환
+	            } else {
+	                return null;  // 업데이트 실패 시 null 반환
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // 예외 발생 시 로그 출력
+	            return null;  // 예외 발생 시에도 null 반환
+	        } finally {
+	            // 자원 해제
+	            try {
+	                if (pstmt != null) pstmt.close();  // PreparedStatement 해제
+	                if (con != null) con.close();      // Connection 해제
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 
 }
+
+
+/*
+ * // SQL 업데이트 구문: 아이디는 수정하지 않고 나머지 정보만 업데이트합니다. String sql =
+ * "UPDATE member SET PWD = ?, NAME = ?, EMAIL1 = ?, EMAIL2 = ?, TEL1 = ?, TEL2 = ?, TEL3 = ?, ZIPCODE = ?, ADDR1 = ?, ADDR2 = ? WHERE ID = ?"
+ * ;
+ * 
+ * // Connection과 PreparedStatement 객체 생성 try {
+ * 
+ * con = ds.getConnection(); pstmt = con.prepareStatement(sql);
+ * 
+ * 
+ * // PreparedStatement에 각 필드를 바인딩합니다. pstmt.setString(1, member.getPwd());
+ * pstmt.setString(2, member.getName()); pstmt.setString(3, member.getEmail1());
+ * pstmt.setString(4, member.getEmail2()); pstmt.setString(5, member.getTel1());
+ * pstmt.setString(6, member.getTel2()); pstmt.setString(7, member.getTel3());
+ * pstmt.setString(8, member.getZipcode()); pstmt.setString(9,
+ * member.getAddr1()); pstmt.setString(10, member.getAddr2());
+ * pstmt.setString(11, member.getId()); // ID는 수정하지 않고 WHERE 조건으로만 사용
+ * 
+ * // 업데이트 실행 및 결과 반환 return pstmt.executeUpdate(); // 영향받은 행의 수를 반환 } catch
+ * (SQLException e) { e.printStackTrace(); // 예외 발생 시 처리 throw new
+ * SQLException("회원 정보 수정 중 오류가 발생했습니다."); }
+ */
+
+
 
 /*
  * 

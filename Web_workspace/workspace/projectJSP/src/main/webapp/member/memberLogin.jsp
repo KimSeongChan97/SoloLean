@@ -35,22 +35,31 @@
             
  } else { 
     // 로그인 성공 시 처리
-    // 기존에는 URL 파라미터로 데이터를 전송했으나, 중요한 데이터를 URL에 노출시키지 않기 위해 쿠키를 사용합니다.
     
+    /*
+    // 기존에는 URL 파라미터로 데이터를 전송했으나, 중요한 데이터를 URL에 노출시키지 않기 위해 쿠키를 사용합니다.   
     // 쿠키 생성 및 저장 (name)
     // Cookie 객체를 사용하여 쿠키를 생성합니다. 쿠키는 key-value 형식으로 저장되며, 여기서 key는 "memName", value는 로그인한 사용자의 이름입니다.
     Cookie cookie = new Cookie("memName", name);  // "memName"이라는 이름의 쿠키 생성 (value: 사용자의 이름)
     cookie.setMaxAge(3*10*60);  // 쿠키의 유효 기간을 3초로 설정. 해당 시간이 지나면 쿠키는 삭제됩니다. (30분, 1800초 유지로 변경)
+    
     response.addCookie(cookie);  // 쿠키를 클라이언트의 웹 브라우저에 저장합니다.
     
     // 쿠키 생성 및 저장 (id)
     // 마찬가지로 아이디(id)도 쿠키로 생성하여 저장합니다. 여기서 key는 "memId", value는 사용자의 아이디입니다.
     Cookie cookie2 = new Cookie("memId", id);  // "memId"라는 이름의 쿠키 생성 (value: 사용자의 아이디)
     cookie2.setMaxAge(3*10*60);  // 쿠키의 유효 기간을 3초로 설정. 해당 시간이 지나면 쿠키는 삭제됩니다. (30분, 1800초 유지로 변경)
+    
     response.addCookie(cookie2);  // 쿠키를 클라이언트의 웹 브라우저에 저장합니다.
+    // --------------------------------------------------------------------
+    */
     
     // 세션 처리
     // 세션을 사용하여 사용자의 상태를 서버에서 유지할 수 있습니다. 세션은 브라우저를 종료해도 일정 시간 유지됩니다.
+    // HttpSession session = request.getSession(); // 세션 생성은 이미 내장 객체이므로 안해도 됨 
+    session.setAttribute("memName", name);
+    session.setAttribute("memId", id);
+    
     
     // 로그인 성공 후 페이지 이동
     // 쿠키에 데이터를 저장한 후, 로그인 성공 페이지인 loginOk.jsp로 리다이렉트합니다.
