@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 
 <% 
-    // 쿠키에서 로그인된 사용자의 이름(name)과 아이디(id)를 가져오기 위한 코드입니다.
+    
+	// 쿠키에서 로그인된 사용자의 이름(name)과 아이디(id)를 가져오기 위한 코드입니다.
     // 처음에 name과 id 변수를 null로 초기화합니다. 쿠키에서 값을 가져오기 전에 기본값을 설정하는 과정입니다.
     String name = null; // 쿠키에서 사용자 이름을 가져올 변수
     String id = null;   // 쿠키에서 사용자 아이디를 가져올 변수
-
+	
+    /*
     // 클라이언트(사용자의 브라우저)로부터 모든 쿠키를 가져옵니다.
     // request.getCookies()는 클라이언트가 보낸 모든 쿠키를 Cookie[] 배열로 반환합니다.
     Cookie[] ar = request.getCookies(); 
@@ -27,24 +29,20 @@
             System.out.println();  // 빈 줄 추가로 가독성 향상
 
             // 쿠키의 이름이 "memName"이라면 해당 쿠키 값을 name 변수에 저장합니다.
-            if (cookieName.equals("memName")) {
-                name = ar[i].getValue();  // name 변수에 쿠키에서 가져온 값을 저장
-            }
-
+            if (cookieName.equals("memName")) name = ar[i].getValue();  // name 변수에 쿠키에서 가져온 값을 저장
+            
             // 쿠키의 이름이 "memId"라면 해당 쿠키 값을 id 변수에 저장합니다.
-            if (cookieName.equals("memId")) {
-                id = ar[i].getValue();  // id 변수에 쿠키에서 가져온 값을 저장
-            }
+            if (cookieName.equals("memId")) id = ar[i].getValue();  // id 변수에 쿠키에서 가져온 값을 저장
+            
         } // for 루프 종료
     } // if 조건문 종료
+    */
+    
+    // 세션
+    name = (String)session.getAttribute("memName"); // 자식(String) = (자식)부모 로 캐스팅 해야함
+    id = (String)session.getAttribute("memId");
+    
 %>
 
-<%--
-
-HTML/JSP 영역 
-name과 id 값을 JSP 페이지에 출력합니다. 
-만약 쿠키가 존재하지 않거나 쿠키 값이 null이면 빈 값이 출력됩니다.
-
- --%>
 <%= name %>
 

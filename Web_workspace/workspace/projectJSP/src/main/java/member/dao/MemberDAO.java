@@ -18,18 +18,23 @@ public class MemberDAO {
     // 싱글톤 패턴을 사용하여 애플리케이션 내에서 MemberDAO의 인스턴스를 하나만 유지하고 사용하기 위함입니다.
     // 싱글톤 패턴은 메모리 사용을 최적화하고, 여러 객체가 동시에 같은 자원에 접근할 때의 문제를 방지합니다.
     // static으로 선언된 memberDAO는 클래스가 메모리에 로드될 때 딱 한 번만 생성됩니다. 다른 클래스에서 이 인스턴스를 공유하여 사용할 수 있습니다.
+    // 추가 주석: 싱글톤 패턴은 애플리케이션에서 전역적으로 한 번만 객체가 생성되도록 보장하는 디자인 패턴입니다. 
+    // 이를 통해 자원의 낭비를 방지하고 일관성을 유지합니다. 이를 통해 여러 객체가 MemberDAO를 동시에 사용해도 문제가 발생하지 않도록 보장합니다.
     private static MemberDAO memberDAO = new MemberDAO();
 
     // 2. DataSource 객체 선언
     // DataSource는 Connection Pool을 통해 DB 연결을 효율적으로 관리합니다.
     // Connection Pool을 사용하면 매번 새로 DB 연결을 생성하지 않고, 기존 연결을 재사용하여 성능을 향상시킬 수 있습니다.
     // DataSource는 커넥션 풀을 관리하는 객체로, DB와의 연결을 보다 효율적으로 관리합니다. Connection Pool을 통해 성능을 최적화할 수 있습니다.
+    // 추가 주석: Connection Pool은 미리 만들어진 DB 연결들을 관리하는 메커니즘입니다. 이렇게 하면 DB 연결 생성과 종료의 빈도를 줄여 성능을 최적화할 수 있습니다.
     private DataSource ds;
 
     // 3. Connection 및 PreparedStatement 객체를 클래스 멤버 변수로 선언
     // 이 객체들은 메서드 내에서 재사용되며, 각각의 SQL 쿼리와 DB 연결을 관리합니다.
     // Connection은 DB와 연결된 세션을 의미하며, PreparedStatement는 SQL 쿼리를 미리 컴파일하여 실행 성능을 향상시킵니다.
     // PreparedStatement는 SQL Injection을 방지하고, 반복적으로 실행되는 SQL 쿼리의 성능을 향상시킬 수 있습니다.
+    // 추가 주석: Connection은 DB와 통신하는 통로 역할을 하며, PreparedStatement는 SQL 쿼리를 미리 준비하고, 그 안에 값을 바인딩하여 실행합니다. 
+    // PreparedStatement는 SQL 쿼리문을 사전에 컴파일하기 때문에 여러 번 동일한 쿼리를 실행할 때 성능이 향상됩니다.
     private Connection con;           // DB와의 연결을 담당하는 Connection 객체
     private PreparedStatement pstmt;  // SQL 쿼리 실행을 준비하는 PreparedStatement 객체
     private ResultSet rs;             // SQL 쿼리 실행 후 결과를 처리하는 ResultSet 객체, DB로부터 결과 데이터를 가져오는 역할을 합니다.
@@ -39,6 +44,8 @@ public class MemberDAO {
     // getInstance() 메서드를 통해 MemberDAO 객체를 전역에서 하나만 사용할 수 있습니다.
     // 이 메서드는 외부에서 MemberDAO 객체를 여러 번 생성하지 않고, 이미 생성된 유일한 객체를 반환합니다.
     // getInstance 메서드를 통해 언제 어디서든 같은 객체를 반환하여 MemberDAO의 인스턴스는 하나만 존재하게 됩니다.
+    // 추가 주석: getInstance()는 클래스 내에 선언된 인스턴스를 반환하며, 객체가 두 번 이상 생성되지 않도록 보장합니다. 
+    // 이 방식을 통해 애플리케이션 전반에서 같은 MemberDAO 인스턴스를 공유하여 사용할 수 있게 됩니다.
     public static MemberDAO getInstance() {
         return memberDAO;
     }
@@ -47,6 +54,8 @@ public class MemberDAO {
     // JNDI(Java Naming and Directory Interface)를 통해 Connection Pool에 접근하여 DataSource를 설정합니다.
     // JNDI는 네이밍 및 디렉토리 서비스를 통해 애플리케이션이 환경 설정을 쉽게 가져오도록 도와줍니다.
     // JNDI를 이용하여 서버 환경에 설정된 DataSource 자원을 가져와 데이터베이스 연결을 관리하게 됩니다.
+    // 추가 주석: InitialContext는 JNDI 서비스로부터 자원을 검색할 수 있도록 해주는 클래스입니다. 
+    // 이 예제에서는 "java:comp/env/jdbc/oracle"이라는 이름으로 등록된 DataSource를 가져오고 있습니다.
     public MemberDAO() {
         try {
             Context ctx = new InitialContext(); // JNDI 초기화
@@ -63,6 +72,7 @@ public class MemberDAO {
     // 회원가입 시 중복된 ID를 방지하기 위해 사용되며, 반환값으로 ID가 존재하면 true, 없으면 false를 반환합니다.
     // 이 메서드는 회원가입 시 중요한 기능으로, 기존에 사용 중인 아이디를 새로 등록하지 않도록 합니다.
     // 아이디 중복 체크는 매우 중요한 기능입니다. 동일한 아이디로 두 명 이상이 가입할 수 없도록 방지하기 위한 로직입니다.
+    // 추가 주석: 이 메서드는 DB의 `member` 테이블에서 주어진 아이디가 존재하는지 확인하기 위해 사용됩니다. 이를 통해 동일한 아이디로의 중복 가입을 방지합니다.
     public boolean idExistId(String id) {
         boolean exist = false; // 중복 여부를 저장할 변수, 기본값은 false (중복되지 않음)
 
@@ -115,6 +125,7 @@ public class MemberDAO {
     // 회원가입 시 사용자가 입력한 데이터를 DB에 저장합니다.
     // MemberDTO 객체에 담긴 데이터를 이용해 DB에 새 회원을 삽입합니다.
     // 사용자가 입력한 회원 정보를 DB에 저장하는 중요한 메서드로, 회원가입 절차의 핵심입니다.
+    // 추가 주석: 사용자가 입력한 모든 회원 정보를 `member` 테이블에 INSERT 쿼리를 사용해 저장합니다.
     public void memberWrite(MemberDTO memberDTO) {
         // INSERT 쿼리로 'member' 테이블에 사용자의 정보를 삽입합니다.
         // SQL 구문에서는 ?로 자리를 표시한 뒤, 각각의 ? 자리에 사용자 정보를 바인딩하여 쿼리를 실행합니다.
@@ -168,6 +179,7 @@ public class MemberDAO {
     //로그인
     // 로그인 시 입력한 아이디와 비밀번호가 DB에 존재하는지 확인하는 메서드입니다.
     // 로그인 성공 시 회원의 이름을 반환하고, 실패 시 null을 반환합니다.
+    // 추가 주석: 이 메서드는 사용자가 입력한 아이디와 비밀번호가 DB에 일치하는지 확인하여 일치하면 해당 회원의 이름을 반환합니다.
     public String memberLogin(String id, String pwd) {
         String name = null; // 로그인 성공 시 반환할 회원의 이름, 기본값은 null
         
@@ -267,22 +279,34 @@ public class MemberDAO {
 	    	return memberDTO;
     }
 	    
-	 // 회원 정보를 수정하는 메서드 (logtime 포함)
-	    public MemberDTO updateMember(MemberDTO memberDTO) {
-	        String sql = "UPDATE member SET PWD = ?, NAME = ?, GENDER = ?,"
-	        		+ " EMAIL1 = ?, EMAIL2 = ?, TEL1 = ?, TEL2 = ?, TEL3 = ?,"
-	        		+ " ZIPCODE = ?, ADDR1 = ?, ADDR2 = ?, LOGTIME = sysdate WHERE ID = ?";
+	 // 회원 정보를 수정하는 메서드 
+	    public void updateMember(MemberDTO memberDTO) {
+	        String sql = """
+	        		UPDATE member SET NAME = ?, 
+		        					  PWD = ?, 
+		        					  GENDER = ?,
+		        		  			  EMAIL1 = ?, 
+		        		  			  EMAIL2 = ?, 
+		        		  			  TEL1 = ?, 
+		        		  			  TEL2 = ?, 
+		        		  			  TEL3 = ?,
+		        		  			  ZIPCODE = ?, 
+		        		  			  ADDR1 = ?, 
+		        		  			  ADDR2 = ?, 
+		        		  			  LOGTIME = sysdate WHERE ID = ?
+		        		 		""";
 
 	        try {
-	            // Connection Pool에서 연결을 가져옵니다.
+	            
+	        	// Connection Pool에서 연결을 가져옵니다.
 	            con = ds.getConnection();
 	            
 	            // SQL 쿼리를 준비합니다.
 	            pstmt = con.prepareStatement(sql);
-
+	            
 	            // PreparedStatement에 각 필드를 바인딩합니다.
-	            pstmt.setString(1, memberDTO.getPwd());
-	            pstmt.setString(2, memberDTO.getName());
+	            pstmt.setString(1, memberDTO.getName());
+	            pstmt.setString(2, memberDTO.getPwd());
 	            pstmt.setString(3, memberDTO.getGender());
 	            pstmt.setString(4, memberDTO.getEmail1());
 	            pstmt.setString(5, memberDTO.getEmail2());
@@ -293,24 +317,16 @@ public class MemberDAO {
 	            pstmt.setString(10, memberDTO.getAddr1());
 	            pstmt.setString(11, memberDTO.getAddr2());
 	            pstmt.setString(12, memberDTO.getId());  // ID는 수정하지 않고 WHERE 조건으로만 사용
-
-	            // 업데이트 실행
-	            int result = pstmt.executeUpdate();
-
-	            // 업데이트 성공 시 로그타임을 최신 정보로 설정 후 memberDTO 반환
-	            if (result > 0) {
-	                memberDTO.setLogtime(new java.sql.Timestamp(System.currentTimeMillis()));  // 현재 시간을 logtime에 설정
-	                return memberDTO;  // 업데이트 성공 시 memberDTO 반환
-	            } else {
-	                return null;  // 업데이트 실패 시 null 반환
-	            }
-
+	            
+	            pstmt.executeUpdate(); // 실행
+	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();  // 예외 발생 시 로그 출력
-	            return null;  // 예외 발생 시에도 null 반환
+	            
 	        } finally {
 	            // 자원 해제
 	            try {
+	            	
 	                if (pstmt != null) pstmt.close();  // PreparedStatement 해제
 	                if (con != null) con.close();      // Connection 해제
 	            } catch (SQLException e) {
@@ -320,30 +336,6 @@ public class MemberDAO {
 	    }
 
 }
-
-
-/*
- * // SQL 업데이트 구문: 아이디는 수정하지 않고 나머지 정보만 업데이트합니다. String sql =
- * "UPDATE member SET PWD = ?, NAME = ?, EMAIL1 = ?, EMAIL2 = ?, TEL1 = ?, TEL2 = ?, TEL3 = ?, ZIPCODE = ?, ADDR1 = ?, ADDR2 = ? WHERE ID = ?"
- * ;
- * 
- * // Connection과 PreparedStatement 객체 생성 try {
- * 
- * con = ds.getConnection(); pstmt = con.prepareStatement(sql);
- * 
- * 
- * // PreparedStatement에 각 필드를 바인딩합니다. pstmt.setString(1, member.getPwd());
- * pstmt.setString(2, member.getName()); pstmt.setString(3, member.getEmail1());
- * pstmt.setString(4, member.getEmail2()); pstmt.setString(5, member.getTel1());
- * pstmt.setString(6, member.getTel2()); pstmt.setString(7, member.getTel3());
- * pstmt.setString(8, member.getZipcode()); pstmt.setString(9,
- * member.getAddr1()); pstmt.setString(10, member.getAddr2());
- * pstmt.setString(11, member.getId()); // ID는 수정하지 않고 WHERE 조건으로만 사용
- * 
- * // 업데이트 실행 및 결과 반환 return pstmt.executeUpdate(); // 영향받은 행의 수를 반환 } catch
- * (SQLException e) { e.printStackTrace(); // 예외 발생 시 처리 throw new
- * SQLException("회원 정보 수정 중 오류가 발생했습니다."); }
- */
 
 
 

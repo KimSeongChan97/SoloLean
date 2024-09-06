@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<%@page import="member.dao.MemberDAO"%>
+<%@page import="member.bean.MemberDTO"%>
+
+<%
+    // 로그인한 사용자 ID를 세션에서 가져옵니다.
+    String id = (String)session.getAttribute("memId"); 
+    
+    // DB에서 사용자 정보를 가져옵니다.
+    MemberDAO memberDAO = MemberDAO.getInstance();
+    MemberDTO memberDTO = memberDAO.getMember(id);
+%>
+
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

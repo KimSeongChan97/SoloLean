@@ -1,0 +1,69 @@
+package board.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import board.bean.BoardDTO;
+import util.DBConnection;
+
+public class BoardDAO {
+
+    // 싱글톤 패턴 적용
+    private static BoardDAO instance = new BoardDAO();
+    public static BoardDAO getInstance() {
+        return instance;
+    }
+
+    // 시퀀스 값 얻어오기
+    public int getNextSeq() {
+        int seq = 0;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT seq_board.NEXTVAL FROM dual";
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                seq = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnection.close(conn, pstmt, rs);
+        }
+
+        return seq;
+    }
+
+    // 게시글 삽입 메서드
+    public void insertBoard(BoardDTO boardDTO) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        String sql = "INSERT INTO board (seq, id, name, email, subject, content, ref, lev, step, pseq, reply, hit, logtime) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, SYSDATE)";
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, boardDTO.getSeq());
+            pstmt.setString(2, boardDTO.getId());
+            pstmt.setString(3, boardDTO.getName());
+            pstmt.setString(4, boardDTO.getEmail());
+            pstmt.setString(5, boardDTO.getSubject());
+            pstmt.setString(6, boardDTO.getContent());
+            pstmt.setInt(7, boardDTO.getRef());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnection.close(conn, pstmt);
+        }
+    }
+}

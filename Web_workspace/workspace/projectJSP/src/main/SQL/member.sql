@@ -1,6 +1,6 @@
 -- 회원가입과 로그인(Oracle)
 create table member(
-    name varchar2(30) not null,  -- 회원의 이름을 저장하는 필드, 최대 30자까지 입력 가능하며 null 값을 허용하지 않음 (이름은 반드시 입력해야 함)
+    name varchar2(50) not null,  -- 회원의 이름을 저장하는 필드, 최대 50자까지 입력 가능하며 null 값을 허용하지 않음 (이름은 반드시 입력해야 함)
     id varchar2(30) primary key, -- 기본키, unique, not null, 무결성 제약 조건
                                 -- 'id'는 각 회원을 고유하게 식별하는 필드로, 중복될 수 없음 (unique 제약 조건) 
                                 -- 또한, 기본키(primary key)로 지정되어 있어 테이블 내에서 중복을 허용하지 않으며 null 값이 들어갈 수 없음

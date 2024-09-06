@@ -22,7 +22,6 @@
 	 onclick="location.href='../index.jsp'" > L o g i n </h2>
 <hr/>
 
-
 <!-- 로그인 폼 -->
 <!-- 로그인 폼을 생성하여 사용자가 아이디와 비밀번호를 입력하고 로그인을 시도할 수 있게 합니다. -->
 <div>
@@ -78,10 +77,10 @@ $(function() {
         // 아이디 입력 필드를 검사
         if ($('#id').val() == '') {
             $('#loginIdDiv').html('아이디를 입력하세요');
-            
-        } else if ($('#pwd').val() == '') {
+            return false;
+        } if ($('#pwd').val() == '') {
             $('#loginpwdDiv').html('비밀번호를 입력하세요');
-            
+            return false;
         } else {
             // 모든 입력이 완료되면 AJAX로 서버에 로그인 요청을 보냅니다.
             $.ajax({
@@ -95,7 +94,7 @@ $(function() {
                 success: function(data) {
                     if (data.trim() == 'fail') {
                         alert("아이디 또는 비밀번호가 틀렸습니다.");
-                        return false;  // 로그인 실패 시 폼 제출 방지
+                        
                     } else {
                         alert(data.trim() + " 님 로그인 되었습니다.");
                         

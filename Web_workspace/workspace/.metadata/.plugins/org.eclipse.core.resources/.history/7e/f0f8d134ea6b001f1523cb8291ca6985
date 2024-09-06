@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>전체 메뉴 페이지</title>
+<!-- CSS 파일 링크 수정 -->
+<link rel="stylesheet" type="text/css" href="/projectJSP/css/indexcss.css" />
+</head>
+<body>
+
+    <!-- 여기서 nav.jsp를 동적으로 불러올 부분 -->
+    <div id="navbar"></div>
+    
+    
+    
+    <div id="link">
+        <h3><a href="/projectJSP/mainpage.html">메인 홈페이지</a></h3>
+        <h3><a href="/projectJSP/member/memberWriteForm.jsp">회원가입</a></h3>
+        <h3><a href="/projectJSP/member/memberLoginForm.jsp">로그인</a></h3>
+        <h3><a href="/projectJSP/member/memberLogout.jsp">로그아웃</a></h3>
+        <h3><a href="">글쓰기</a></h3>
+        <h3><a href="">글목록</a></h3>
+        <h3><a href="">회원정보 수정</a></h3>
+    </div>
+    
+    <br/>
+    
+    					쿠키(로그인) 남은 시간 = <span id="cookieTime" align="center"> 30:00 </span>
+    <h2 align="center"> 다른 메뉴들은 구현예정</h2>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery로 JSP 파일을 불러오는 코드 -->
+    <script>
+        // jQuery의 load() 메서드를 사용하여 JSP 파일을 불러옴
+        $('#navbar').load('/projectJSP/jsp/nav.jsp');
+
+     // 쿠키에서 남은 시간을 구하는 함수
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");  // 모든 쿠키를 배열로 변환
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");  // 각 쿠키의 이름과 값을 분리
+                if (name == cookiePair[0].trim()) {  // 해당 이름의 쿠키가 있으면 값을 반환
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;  // 해당 쿠키가 없을 경우 null 반환
+        }
+
+        // 쿠키 남은 시간(초)을 받아서 mm:ss 형식으로 변환
+        function formatTime(seconds) {
+            let minutes = Math.floor(seconds / 60);  // 분 계산
+            let remainingSeconds = seconds % 60;  // 초 계산
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;  // mm:ss 형식으로 반환
+        }
+
+        // 남은 쿠키 시간을 표시하는 함수
+        function updateCookieTime() {
+            let cookieExpireTime = 1800;  // 쿠키 만료 시간: 1800초 (30분)
+            let currentTime = new Date().getTime();  // 현재 시간 (밀리초 단위)
+            let loginTime = getCookie("loginTime");  // 쿠키에서 로그인 시간을 가져옴
+
+            if (loginTime) {
+                loginTime = parseInt(loginTime);  // loginTime 쿠키 값을 정수로 변환
+                let timeElapsed = Math.floor((currentTime - loginTime) / 1000);  // 경과 시간 (초 단위)
+                let remainingTime = cookieExpireTime - timeElapsed;  // 남은 시간 계산
+                
+                if (remainingTime > 0) {
+                    document.getElementById("cookieTime").innerText = formatTime(remainingTime);
+                } else {
+                    document.getElementById("cookieTime").innerText = "만료";
+                }
+            } else {
+                document.getElementById("cookieTime").innerText = "쿠키 없음";
+            }
+        }
+
+        // 1초마다 남은 시간 업데이트
+        setInterval(updateCookieTime, 1000);
+    </script>
+</body>
+</html>

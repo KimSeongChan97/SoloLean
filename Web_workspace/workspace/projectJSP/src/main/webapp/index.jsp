@@ -22,8 +22,8 @@
     <%}else{ %>    
         <h3><a href="/projectJSP/member/memberLogout.jsp">LogOut</a></h3>
         <h3><a href="/projectJSP/member/memberUpdateForm.jsp">Edit Profile</a></h3>
-        <h3><a href="">Post</a></h3>
-        <h3><a href="">Note</a></h3>
+        <h3><a href="/projectJSP/board/boardWriteForm.jsp">Post</a></h3>
+        <h3><a href="/projectJSP/board/boardList.jsp">Note</a></h3>
         <h3><a href="">Chat(미구현)</a></h3>
         <h3><a href="">Setting(미구현)</a></h3>
     <%} %>     

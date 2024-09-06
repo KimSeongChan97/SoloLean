@@ -110,7 +110,7 @@
 					<li class="list">
 				    <!-- 글쓰기 메뉴 항목 -->
 				    <!-- 사용자가 게시글을 작성할 수 있는 링크입니다. -->
-				    <a class="nav-link" href="#">
+				    <a class="nav-link" href="/projectJSP/board/boardWriteForm.jsp">
 				        <span class="icon">
 				            <ion-icon name="pencil-outline"></ion-icon> <!-- 글쓰기 아이콘 추가 -->
 				        </span>
@@ -121,7 +121,7 @@
 					<li class="list">
 				    <!-- 글목록 메뉴 항목 -->
 				    <!-- 작성된 게시글 목록을 확인할 수 있는 페이지로 이동하는 링크입니다. -->
-				    <a class="nav-link" href="#">
+				    <a class="nav-link" href="/projectJSP/board/boardList.jsp">
 				        <span class="icon">
 				            <ion-icon name="document-text-outline"></ion-icon> <!-- 글목록 아이콘 추가 -->
 				        </span>

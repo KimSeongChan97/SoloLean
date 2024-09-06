@@ -5,12 +5,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* box-sizing: border-box를 설정하면, 요소의 너비와 높이에 padding과 border를 포함하여 계산합니다. */
-    font-family: 'Poppins', sans-serif; /* 폰트를 'Poppins'로 설정. Google Fonts에서 가져온 폰트를 사용 */
+    font-family: 'Comic Sans MS', sans-serif !important; /* 폰트를 'Comic Sans MS'로 설정. */
 }
 
 /* 배경 설정 */
 body {
-    background-color: #f8f9fa; /* 배경색을 밝은 회색(#f8f9fa)으로 설정 */
+    background-color: #5A7D9A !important; /* 배경색을 연한 남색으로 설정 */
 }
 
 /* 메뉴 스타일 */
@@ -18,7 +18,7 @@ body {
     width: 300px; /* 너비 300px 설정 */
     background-color: #fff; /* 배경색을 흰색으로 설정 */
     border-radius: 10px; /* 모서리를 둥글게 처리 */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 상자에 그림자 추가하여 입체감 부여 */
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.9); /* 상자에 그림자 추가하여 입체감 부여 */
     padding: 30px; /* 내부 여백 30px 설정 */
     margin: 50px auto; /* 화면의 중앙에 위치하도록 상단 50px 여백을 주고 좌우 중앙 정렬 */
     text-align: center; /* 텍스트를 가운데 정렬 */
@@ -36,7 +36,8 @@ body {
 }
 
 #link h3 a:hover {
-    color: #007bff; /* 링크에 마우스를 올렸을 때 색상을 파란색으로 변경 */
+    color: #d4a6ff; /* 링크에 마우스를 올렸을 때 색상 */
+    cursor: pointer; /* 마우스를 올렸을 때 손가락 모양으로 변경 */
 }
 
 /* 네비게이션 토글 버튼 스타일 */
@@ -102,5 +103,5 @@ body {
 
 /* 메뉴가 열렸을 때 위치 설정 */
 .navbar-open .navbar-menu {
-    left: 0; /* 메뉴가 화면 왼쪽에서 보이도록 설정 */
+    right: 0; /* 메뉴가 화면 왼쪽에서 보이도록 설정 */
 }

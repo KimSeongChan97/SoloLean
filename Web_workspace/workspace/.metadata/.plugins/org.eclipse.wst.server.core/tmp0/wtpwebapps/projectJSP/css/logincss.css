@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+	background-color: #5A7D9A !important;
+	
+}
+
 /* 로그인 페이지 테이블 스타일 */
 table {
     width: 400px; /* 테이블 너비를 400px로 설정 */
@@ -7,6 +12,7 @@ table {
     margin: 50px auto; /* 상단에 50px 여백을 두고 중앙 정렬 */
     padding: 20px; /* 내부 여백을 20px 설정 */
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.9); /* 테이블에 그림자를 추가하여 입체감 부여 */
+	background-color: #F5F5DC !important;
 }
 
 /* 테이블 셀 스타일 */
