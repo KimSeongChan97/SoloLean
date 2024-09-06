@@ -29,10 +29,6 @@
     <!-- 네비게이션 바를 외부 JSP 파일에서 포함시킵니다. -->
     <jsp:include page="/jsp/nav.jsp" />
     <hr/>
-    <!-- 메인 메뉴로 돌아가는 버튼입니다. 이미지를 클릭하면 메인 페이지로 이동합니다. -->
-    <img src="../image/back.png" onclick="location.href='../index.jsp'"
-    		width="100" height="100" alt="메인메뉴" />
-    		
     <!-- 회원정보 수정 폼입니다. -->
     <form name="updateForm" >
         <table>

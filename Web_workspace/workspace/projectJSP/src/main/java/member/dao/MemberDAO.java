@@ -212,6 +212,9 @@ public class MemberDAO {
                 // 세션에 값을 저장하는 부분은 로그인 성공 시 처리하는 JSP에서 구현해야 함
                 // 예시: session.setAttribute("memEmail1", email1);
                 // 예시: session.setAttribute("memEmail2", email2);
+            } else {
+                // 로그인 실패 시
+                loginInfo[0] = null;  // 이름이 null인 경우, 로그인 실패로 간주
             }
             
         } catch (SQLException e) {

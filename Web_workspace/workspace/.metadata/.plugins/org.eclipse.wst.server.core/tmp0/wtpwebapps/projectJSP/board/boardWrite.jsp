@@ -8,14 +8,20 @@
     // UTF-8 인코딩 설정
 	request.setCharacterEncoding("UTF-8");
 
-    // 세션에서 사용자 정보 가져오기
-    String id = (String) session.getAttribute("memId");
-    String name = (String) session.getAttribute("memName");
-    String email = (String) session.getAttribute("memEmail");
-
-    // 글쓰기 폼에서 입력된 값 가져오기
-    String subject = request.getParameter("subject");
-    String content = request.getParameter("content");
+	//세션에서 사용자 정보 가져오기
+	String id = (String) session.getAttribute("memId");
+	String name = (String) session.getAttribute("memName");
+	
+	// 세션에서 email1과 email2 값을 가져와 결합
+	String email1 = (String) session.getAttribute("memEmail1");
+	String email2 = (String) session.getAttribute("memEmail2");
+	
+	// email1과 email2가 존재하는지 확인 후 결합
+	String email = (email1 != null && email2 != null) ? email1 + "@" + email2 : "null@null";
+	
+	// 글쓰기 폼에서 입력된 값 가져오기
+	String subject = request.getParameter("subject");
+	String content = request.getParameter("content");
 
     // 유효성 검사 (서버 측)
     if (subject == null || subject.trim().equals("") || content == null || content.trim().equals("")) {
@@ -23,15 +29,15 @@
         return;
     }
 
-    // DAO를 통해 데이터베이스에 저장
+ 	// DAO를 통해 데이터베이스에 저장
     BoardDTO boardDTO = new BoardDTO();
     boardDTO.setId(id); // 세션에서 가져온 id
     boardDTO.setName(name); // 세션에서 가져온 이름
-    boardDTO.setEmail(email); // 세션에서 가져온 이메일
-    boardDTO.setSubject(subject);
-    boardDTO.setContent(content);
+    boardDTO.setEmail(email); // 결합된 이메일 값 저장
+    boardDTO.setSubject(subject); // 제목
+    boardDTO.setContent(content); // 내용
 
-    // 시퀀스와 ref 값 처리
+    // 시퀀스와 ref 값 처리 및 DAO 호출
     BoardDAO boardDAO = BoardDAO.getInstance();
     int seq = boardDAO.getNextSeq(); // 시퀀스를 통해 seq 값 얻어오기
     boardDTO.setSeq(seq);

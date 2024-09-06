@@ -39,9 +39,32 @@ CREATE SEQUENCE seq_board NOCACHE NOCYCLE;
 -- 'NOCACHE' 옵션은 시퀀스 값을 미리 캐시하지 않음을 의미하여, 시퀀스 번호가 요청될 때마다 즉시 값을 생성합니다.
 -- 'NOCYCLE' 옵션은 시퀀스가 최대값에 도달하더라도 다시 1부터 시작하지 않고, 더 이상 값이 증가하지 않게 설정합니다.
 
-
 select * from board;
-
 --DELETE FROM board WHERE seq = 1;
+
+
+-- [board 테이블의 seq 컬럼에 기본 키 추가]
+--ALTER TABLE board
+--ADD CONSTRAINT pk_board_seq PRIMARY KEY (seq);
+
+-- -----------------------------
+
+-- [댓글 테이블]
+CREATE TABLE comments (
+    comment_id NUMBER NOT NULL,        -- 댓글 ID (시퀀스 사용)
+    boardSeq NUMBER NOT NULL,          -- 게시글 번호 (board 테이블의 seq와 연결)
+    name VARCHAR2(40) NOT NULL,        -- 댓글 작성자 이름
+    content VARCHAR2(1000) NOT NULL,   -- 댓글 내용 (최대 1000자)
+    logtime DATE DEFAULT SYSDATE,      -- 댓글 작성 시간
+    CONSTRAINT pk_comment_id PRIMARY KEY (comment_id), -- 댓글 ID를 기본키로 설정
+    CONSTRAINT fk_board_seq FOREIGN KEY (boardSeq) REFERENCES board(seq) ON DELETE CASCADE
+    -- board 테이블의 seq를 참조하는 외래키, 게시글 삭제 시 댓글도 삭제됨
+);
+
+-- [댓글 ID 시퀀스]
+CREATE SEQUENCE seq_comments NOCACHE NOCYCLE;
+-- 시퀀스는 자동으로 댓글 ID를 생성하는 데 사용됩니다.
+
+select * from comments;
 
 commit;

@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/* body 스타일: 네온사인 느낌의 배경 추가 */
+body {
+    background-color: #0a0a23 !important; /* 어두운 배경 */
+    font-family: 'Comic Sans MS', sans-serif !important;
+    color: #d4a6ff;
+    background-image: url('/path/to/neon-background.png'); /* 네온사인 배경 이미지 */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* 게시글 보기 레이아웃 */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    width: 85%; /* 전체 가로 폭을 85%로 확장 */
+    margin: 0 auto; /* 화면 중앙에 배치 */
+}
+
+/* 섹션이 내용에 따라 가로로 확장되도록 설정 */
+.left-section, .right-section {
+    background-color: #1f1f3b;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7);
+    color: #d4a6ff;
+    flex: 1;
+    margin-right: 20px;
+    min-width: 300px; /* 최소 너비 설정 */
+}
+
+/* 왼쪽 섹션이 글 내용에 따라 유동적으로 확장 */
+.left-section {
+    flex-grow: 2; /* 글 내용에 따라 왼쪽 섹션 확장 */
+}
+
+/* 오른쪽 섹션의 최대 너비 제한 */
+.right-section {
+    flex-grow: 1;
+    max-width: 30%;
+}
+
+/* 정보 표시 div 스타일 */
+#subject, #content, #name, #logtime, #hit {
+    padding: 15px;
+    border: 1px solid #8de4ff; /* 네온 블루 테두리 */
+    border-radius: 5px;
+    background-color: #14142f;
+    margin-bottom: 15px;
+    color: #fff;
+    word-wrap: break-word; /* 긴 글일 경우 줄바꿈 처리 */
+}
+
+/* 레이블 스타일 */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #ffdb3d; /* 네온 옐로우 레이블 */
+}
+
+/* 목록으로 돌아가는 버튼 스타일 */
+input[type="button"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff46c7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* 버튼 hover 효과 */
+input[type="button"]:hover {
+    background-color: #ffdb3d;
+}
+
+/* h2 제목 스타일 */
+h2 {
+    cursor: pointer;
+    text-align: center;
+    color: #ffdb3d;
+    font-size: 36px; /* 제목 크기를 유지 */
+    margin-bottom: 30px;
+}
+
+/* 댓글 작성 버튼 위치 및 스타일 조정 */
+button.btn-primary {
+    margin-top: 10px;
+    background-color: #ff46c7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.btn-primary:hover {
+    background-color: #ffdb3d;
+}
+
+
+.comment-section {
+    height: 200px; /* 댓글 영역 높이 */
+    overflow-y: auto; /* 스크롤 가능하게 */
+    padding: 10px;
+    border: 1px solid #8de4ff;
+    background-color: #1f1f3b;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-list li {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* 모달 스타일 */
+.modal-content {
+    background-color: #1f1f3b;
+    color: #d4a6ff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(255, 69, 217, 0.7);
+}
+

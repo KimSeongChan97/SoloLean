@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body {
+    background-color: #1a1a2e !important;
+    font-family: 'Comic Sans MS', sans-serif !important;
+    color: #e0e0e0;
+}
+
+/* 메뉴 스타일 */
+#link {
+    width: 300px;
+    background-color: #2e2e47;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    margin: 50px auto;
+    text-align: center;
+    color: #e0e0e0;
+}
+
+#link h3 a {
+    color: #b0b0ff;
+}
+
+#link h3 a:hover {
+    color: #ff8e72;
+}
+
+/* 네비게이션 토글 버튼 스타일 */
+.navbar-toggle .bar {
+    background-color: #b0b0ff;
+}

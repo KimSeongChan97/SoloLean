@@ -26,16 +26,16 @@
             </tr>
 
             <!-- 아이디 입력 필드 -->
-            <tr>
-                <td>아이디</td>
-                <td class="id-field">
-                    <input type="text" name="id" size="30" id="id" placeholder="아이디 입력">
-                    <input type="button" onclick="checkId()" value="중복체크"/> <!-- 아이디 중복체크 버튼 -->
-                    <input type="text" id="check" value="" />
-                    <div id="idDiv"></div> <!-- 아이디 중복 검사 결과를 표시할 div -->
-                </td>
-            </tr>
-
+	            <tr>
+				    <td>아이디</td>
+				    <td class="id-field">
+				        <input type="text" name="id" size="30" id="id" placeholder="아이디 입력">
+				        <input type="text" id="check" value="" />
+				        <div id="idDiv"></div> <!-- 아이디 중복 검사 결과를 표시할 div -->
+				        <input type="button" onclick="checkId()" value="중복체크" class="check-btn"/> <!-- 아이디 중복체크 버튼 -->
+			    	</td>
+				</tr>
+				
             <!-- 비밀번호 입력 필드 -->
             <tr>
                 <td>비밀번호</td>
@@ -113,12 +113,15 @@
 
             <!-- 하단 버튼 필드 -->
             <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="회원가입" /> 
-                    <input type="reset" value="다시입력"/> 
-                    <input type="button" value="뒤로가기" onclick="window.location.href='../index.jsp';"> 
-                </td>
-            </tr>
+			    <td colspan="2">
+			        <div class="button-container">
+			            <input type="submit" value="회원가입">
+			            <input type="reset" value="다시입력">
+			            <input type="button" value="뒤로가기" onclick="window.location.href='../index.jsp';">
+			        </div>
+			    </td>
+			</tr>
+
         </table>
     </form>
     

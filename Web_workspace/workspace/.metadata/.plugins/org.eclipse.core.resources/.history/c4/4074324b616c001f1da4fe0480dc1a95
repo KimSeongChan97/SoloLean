@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.naming.InitialContext" %>
+<%@ page import="javax.sql.DataSource" %>
+
+<%
+    request.setCharacterEncoding("UTF-8");
+
+    String commentContent = request.getParameter("commentContent");
+    int boardSeq = Integer.parseInt(request.getParameter("boardSeq"));
+    String sessionName = (String) session.getAttribute("name");  // 로그인된 사용자의 이름
+
+    // Connection pool을 통한 데이터베이스 연결
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+
+    try {
+        // InitialContext를 통해 context.xml에서 설정한 DataSource 가져오기
+        InitialContext ic = new InitialContext();
+        DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/oracle");
+
+        // Connection Pool에서 Connection 얻기
+        conn = ds.getConnection();
+
+        // 댓글을 데이터베이스에 저장하는 SQL 문
+        String sql = "INSERT INTO comments (boardSeq, name, content) VALUES (?, ?, ?)";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, boardSeq);
+        pstmt.setString(2, sessionName);  // 세션에서 가져온 이름을 사용
+        pstmt.setString(3, commentContent);
+        pstmt.executeUpdate();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        if (pstmt != null) pstmt.close();
+        if (conn != null) conn.close();  // Connection 반환
+    }
+
+    response.sendRedirect("boardView.jsp?seq=" + boardSeq);
+%>

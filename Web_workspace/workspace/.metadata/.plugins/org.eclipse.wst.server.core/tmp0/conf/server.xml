@@ -162,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\projectJSP" path="/projectJSP" reloadable="true" source="org.eclipse.jst.jee.server:projectJSP">
+      <Context docBase="D:\git\SoloLean\SoloLean_notebook\Web_workspace\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\git\SoloLean\SoloLean_notebook\Web_workspace\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\projectJSP" path="/projectJSP" reloadable="true" source="org.eclipse.jst.jee.server:projectJSP">
 			
 	<Resource driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="3" name="jdbc/oracle" password="1234" removeAbandoned="true" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="c##java"/>		
 </Context></Host>

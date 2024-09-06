@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* 테이블 스타일 */
+table {
+    width: 600px;
+    border-collapse: collapse;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    background-color: #1f1f3b !important;
+    color: #d4a6ff;
+}
+
+/* 테이블 셀 스타일 */
+td {
+    padding: 15px;
+    vertical-align: middle;
+    font-weight: bold;
+    color: #d4a6ff;
+}
+
+/* 첫 번째 열(레이블) 스타일 */
+td:first-child {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    color: #ff46c7;
+}
+
+/* 마지막 열(입력 필드) 스타일 */
+td:last-child {
+    text-align: left;
+}
+
+/* 두 열을 합친 셀(버튼들) 중앙 정렬 */
+td[colspan="2"] {
+    text-align: center;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], input[type="password"], select {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #8de4ff;
+    border-radius: 4px;
+    background-color: #14142f;
+    color: #fff;
+}
+
+/* 버튼 스타일 */
+input[type="button"], input[type="submit"], input[type="reset"] {
+    width: 120px;
+    padding: 15px;
+    border: 1px solid #ff46c7;
+    border-radius: 4px;
+    background-color: #ff46c7;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #ffdb3d;
+}

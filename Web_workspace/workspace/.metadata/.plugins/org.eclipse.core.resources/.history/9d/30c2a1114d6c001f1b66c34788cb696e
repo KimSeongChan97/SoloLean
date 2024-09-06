@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+body {
+	background-color: #5A7D9A !important;
+	
+}
+
+/* 로그인 페이지 테이블 스타일 */
+table {
+    width: 400px; /* 테이블 너비를 400px로 설정 */
+    border-collapse: collapse; /* 테두리를 합쳐서 하나의 선으로 만듦 */
+    margin: 50px auto; /* 상단에 50px 여백을 두고 중앙 정렬 */
+    padding: 20px; /* 내부 여백을 20px 설정 */
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.9); /* 테이블에 그림자를 추가하여 입체감 부여 */
+	background-color: #F5F5DC !important;
+}
+
+/* 테이블 셀 스타일 */
+td {
+    padding: 10px; /* 셀 내부에 10px의 여백을 추가 */
+    vertical-align: middle; /* 셀 안의 내용이 수직으로 가운데 정렬되도록 설정 */
+    font-weight: bold; /* 셀 내의 텍스트를 굵게 설정 */
+}
+
+td:first-child {
+    width: 100px; /* 첫 번째 셀의 너비를 100px로 설정 */
+    text-align: right; /* 첫 번째 셀의 텍스트를 오른쪽 정렬 */
+    padding-right: 10px; /* 오른쪽에 10px의 여백 추가 */
+}
+
+td:last-child {
+    text-align: left; /* 마지막 셀의 텍스트를 왼쪽 정렬 */
+}
+
+td[colspan="2"] {
+    text-align: center; /* 두 셀을 합친 셀을 중앙 정렬 */
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 75%; /* 입력 필드의 너비를 75%로 설정 */
+    padding: 5px; /* 입력 필드 내부에 5px 여백을 추가 */
+    box-sizing: border-box; /* 전체 너비에 padding과 border를 포함하여 계산 */
+    border: 1px solid #ccc; /* 테두리를 회색 실선으로 설정 */
+    border-radius: 4px; /* 테두리 모서리를 둥글게 처리 */
+}
+
+/* 버튼 스타일 */
+input[type="submit"], input[type="button"] {
+    width: 120px; /* 버튼 너비를 120px로 설정 */
+    padding: 10px; /* 버튼 내부에 10px의 여백을 추가 */
+    margin-top: 10px; /* 상단에 10px의 여백 추가 */
+    border: 1px solid #ccc; /* 테두리를 회색 실선으로 설정 */
+    border-radius: 4px; /* 테두리 모서리를 둥글게 처리 */
+    background-color: #f9f9f9; /* 버튼 배경색을 밝은 회색으로 설정 */
+    cursor: pointer; /* 마우스 포인터를 손가락 모양으로 변경 */
+}
+
+/* 버튼에 마우스를 올렸을 때 스타일 */
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #ddd; /* 배경색을 어두운 회색으로 변경 */
+}
