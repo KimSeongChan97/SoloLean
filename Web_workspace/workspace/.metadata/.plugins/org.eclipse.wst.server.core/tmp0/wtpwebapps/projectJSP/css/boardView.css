@@ -2,99 +2,102 @@
 
 /* 네온사인 배경 */
 body {
-    background-color: #0a0a23 !important;
-    font-family: 'Comic Sans MS', sans-serif !important;
-    color: #d4a6ff;
-    background-image: url('/path/to/neon-background.png');
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+    background-color: #0a0a23 !important; /* 어두운 파랑 배경을 설정하여 네온 테마를 만듦 */
+    font-family: 'Comic Sans MS', sans-serif !important; /* 전체 폰트를 Comic Sans로 지정 */
+    color: #d4a6ff; /* 텍스트 색상을 연보라색으로 지정 */
+    background-image: url('/path/to/neon-background.png'); /* 네온 배경 이미지 적용 */
+    background-size: cover; /* 배경 이미지를 화면에 꽉 차게 표시 */
+    margin: 0; /* body에서 기본 margin을 없앰 */
+    padding: 0; /* body에서 기본 padding을 없앰 */
 }
 
 /* 전체 컨테이너 */
 .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-    width: 85%;
-    margin: 0 auto;
+    display: flex; /* 플렉스 박스를 사용해 자식 요소들을 가로로 나열 */
+    justify-content: space-between; /* 자식 요소들 사이에 공간을 나누어 배치 */
+    padding: 30px; /* 컨테이너 내부에 30px의 여백 */
+    width: 85%; /* 컨테이너 너비를 전체의 85%로 설정 */
+    margin: 0 auto; /* 컨테이너를 중앙에 배치 */
 }
 
 /* 왼쪽 섹션 */
 .left-section {
-    background-color: #1f1f3b;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7);
-    color: #d4a6ff;
-    flex: 1;
-    margin-right: 20px;
-    min-width: 300px;
-    flex-grow: 2;
+    background-color: #1f1f3b; /* 배경색을 짙은 보라색으로 설정 */
+    padding: 30px; /* 섹션 내부에 30px의 여백 */
+    border-radius: 10px; /* 모서리를 둥글게 처리 */
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7); /* 네온 느낌의 그림자를 추가 */
+    color: #d4a6ff; /* 텍스트 색상을 연보라색으로 설정 */
+    flex: 1; /* 플렉스 설정으로 가변적인 크기를 갖게 함 */
+    margin-right: 20px; /* 오른쪽에 20px의 여백을 줌 */
+    min-width: 300px; /* 최소 너비를 300px로 설정 */
+    flex-grow: 2; /* 플렉스 아이템이 더 많은 공간을 차지하게 설정 */
 }
 
 /* 오른쪽 섹션 */
 .right-section {
-    background-color: #1f1f3b;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7);
-    color: #d4a6ff;
-    flex: 1;
-    margin-left: 20px; /* 왼쪽 여백 추가 */
-    min-width: 300px;
-    display: flex;
+    background-color: #1f1f3b; /* 오른쪽 섹션 배경색을 짙은 보라색으로 설정 */
+    padding: 30px; /* 내부에 30px의 여백을 줌 */
+    border-radius: 10px; /* 모서리를 둥글게 만듦 */
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7); /* 네온 느낌의 그림자를 추가 */
+    color: #d4a6ff; /* 텍스트 색상을 연보라색으로 설정 */
+    flex: 1; /* 플렉스 설정으로 가변적인 크기를 갖게 함 */
+    margin-left: 20px; /* 왼쪽에 20px의 여백 */
+    min-width: 300px; /* 최소 너비를 300px로 설정 */
+    display: flex; /* 자식 요소를 플렉스 박스로 설정 */
     flex-direction: column; /* 자식 요소를 세로로 나열 */
-    justify-content: space-between; /* 요소 간의 간격 조정 */
+    justify-content: space-between; /* 자식 요소들 사이에 공간을 균등하게 배치 */
 }
 
 /* 댓글 영역 */
 .comment-section {
-    height: 200px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #8de4ff;
-    background-color: #1f1f3b;
+    height: 200px; /* 댓글 영역의 높이를 200px로 고정 */
+    overflow-y: auto; /* 세로 스크롤을 추가 */
+    padding: 10px; /* 댓글 영역 안쪽에 10px의 여백 */
+    border: 1px solid #8de4ff; /* 테두리를 밝은 파란색으로 설정 */
+    background-color: #1f1f3b; /* 댓글 영역의 배경색을 짙은 보라색으로 설정 */
 }
 
+/* 댓글 목록 스타일 */
 .comment-list {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* 목록의 기본 점 스타일 제거 */
+    padding: 0; /* 목록의 기본 padding 제거 */
 }
 
+/* 댓글 아이템 스타일 */
 .comment-list li {
-    margin-bottom: 10px;
-    color: #fff;
+    margin-bottom: 10px; /* 각 댓글 간에 10px의 간격을 추가 */
+    color: #fff; /* 댓글 텍스트 색상을 흰색으로 설정 */
 }
 
-/* 댓글 작성 버튼 */
+/* 댓글 작성 버튼 스타일 */
 button.btn-primary {
-    margin-top: 10px;
-    background-color: #ff46c7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 10px; /* 위쪽에 10px의 여백 추가 */
+    background-color: #ff46c7; /* 버튼 배경색을 밝은 핑크색으로 설정 */
+    color: white; /* 버튼 텍스트 색상을 흰색으로 설정 */
+    padding: 10px 20px; /* 버튼 안쪽 여백을 수평 20px, 수직 10px로 설정 */
+    border: none; /* 버튼의 기본 테두리를 제거 */
+    border-radius: 5px; /* 모서리를 둥글게 만듦 */
+    cursor: pointer; /* 버튼을 클릭 가능한 상태로 설정 */
 }
 
+/* 댓글 작성 버튼에 마우스를 올렸을 때 */
 button.btn-primary:hover {
-    background-color: #ffdb3d;
+    background-color: #ffdb3d; /* 배경색을 노란색으로 변경 */
 }
 
 /* 목록으로 버튼 */
 input[type="button"] {
-    margin-top: 40px !important; /* 버튼을 아래로 내리는 역할 */
-    width: 100% !important;
-    padding: 15px !important;
-    background-color: #ff46c7 !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    font-size: 16px !important;
+    margin-top: 40px !important; /* 버튼을 아래쪽으로 내리기 위해 여백을 40px로 설정 */
+    width: 100% !important; /* 버튼 너비를 100%로 설정 */
+    padding: 15px !important; /* 버튼 안쪽 여백을 15px로 설정 */
+    background-color: #ff46c7 !important; /* 배경색을 밝은 핑크색으로 설정 */
+    color: white !important; /* 텍스트 색상을 흰색으로 설정 */
+    border: none !important; /* 테두리 제거 */
+    border-radius: 5px !important; /* 모서리를 둥글게 처리 */
+    cursor: pointer !important; /* 클릭 가능하게 설정 */
+    font-size: 16px !important; /* 폰트 크기를 16px로 설정 */
 }
 
 input[type="button"]:hover {
-    background-color: #ffdb3d !important;
+    background-color: #ffdb3d !important; /* 마우스를 올리면 배경색을 노란색으로 변경 */
 }
