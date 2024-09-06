@@ -14,13 +14,18 @@
 
     <jsp:include page="/jsp/nav.jsp" />
 
-    <h2 align="center" style="font-family: 'Comic Sans MS';" style="cursor: pointer;" 
-    	onclick="location.href='../index.jsp'" > 게시글 보기 </h2>
+    <h2 align="center" style="font-family: 'Comic Sans MS';"  
+    	onclick="location.href='../index.jsp'" > N o t e _ V i e w </h2>
 
-    <%
+     <%
         // 게시글 정보를 가져오는 로직
         int seq = Integer.parseInt(request.getParameter("seq"));
         BoardDAO boardDAO = BoardDAO.getInstance();
+        
+        // 조회수 증가
+        boardDAO.increaseHit(seq); 
+        
+        // 게시글 조회
         BoardDTO board = boardDAO.getBoard(seq);
     %>
 
@@ -33,7 +38,10 @@
 
         <label for="name">작성자:</label>
         <div id="name"><%= board.getName() %></div><br>
-
+		
+		<label for="email">작성자 email : </label>
+        <div id="email"><%= board.getEmail() %></div><br>
+		
         <label for="logtime">작성일:</label>
         <div id="logtime"><%= board.getLogtime() %></div><br>
 

@@ -16,7 +16,7 @@
 	<jsp:include page="/jsp/nav.jsp" /> 
 	
 	
-    <h2 align="center" style="font-family: 'Comic Sans MS';" style="cursor: pointer;" 
+    <h2 align="center" style="font-family: 'Comic Sans MS';"  
 	 onclick="location.href='../index.jsp'" > N o t e </h2>
 	 
     <table border="1">

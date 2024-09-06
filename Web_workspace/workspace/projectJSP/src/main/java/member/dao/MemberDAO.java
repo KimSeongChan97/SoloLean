@@ -180,30 +180,38 @@ public class MemberDAO {
     // 로그인 시 입력한 아이디와 비밀번호가 DB에 존재하는지 확인하는 메서드입니다.
     // 로그인 성공 시 회원의 이름을 반환하고, 실패 시 null을 반환합니다.
     // 추가 주석: 이 메서드는 사용자가 입력한 아이디와 비밀번호가 DB에 일치하는지 확인하여 일치하면 해당 회원의 이름을 반환합니다.
-    public String memberLogin(String id, String pwd) {
+    public String[] memberLogin(String id, String pwd) {
+    	String[] loginInfo = new String[3]; // [0] = name, [1] = email1, [2] = email2
+    	
+    	/*
         String name = null; // 로그인 성공 시 반환할 회원의 이름, 기본값은 null
-        
-        String sql = "select * from member where id=? and pwd=?"; // 아이디와 비밀번호가 일치하는 회원 정보를 조회하는 SQL 쿼리문
-        
+        String email1 = null; // 로그인 성공 시 반환할 회원의 이메일 앞부분
+        String email2 = null; // 로그인 성공 시 반환할 회원의 이메일 뒷부분
+		*/
+		
+        String sql = "SELECT * FROM member WHERE id=? AND pwd=?"; // 아이디와 비밀번호가 일치하는 회원 정보를 조회하는 SQL 쿼리문
+
         try {
-            // Connection Pool에서 연결을 가져옵니다.
-            // Connection Pool을 통해 빠르게 DB 연결을 가져옵니다. 이때 풀에 사용 가능한 커넥션이 없으면 새로운 커넥션을 생성해줍니다.
-            con = ds.getConnection();
-            
-            // SQL 쿼리를 준비합니다.
-            // 사용자가 입력한 아이디와 비밀번호를 SQL 쿼리에 바인딩하여 DB에서 해당 사용자의 정보를 조회합니다.
-            pstmt = con.prepareStatement(sql);
-            
-            // 사용자가 입력한 id와 pwd를 쿼리에 바인딩합니다.
-            pstmt.setString(1, id);
-            pstmt.setString(2, pwd);
-            
-            // 쿼리를 실행하여 결과를 ResultSet으로 받습니다.
-            rs = pstmt.executeQuery();
-            
-            // 쿼리 결과가 존재할 경우, 즉 로그인에 성공했을 경우 회원의 이름을 가져옵니다.
-            if(rs.next()) {
+            con = ds.getConnection(); // Connection Pool에서 연결을 가져옵니다.
+            pstmt = con.prepareStatement(sql); // SQL 쿼리를 준비합니다.
+
+            pstmt.setString(1, id); // 사용자가 입력한 id를 쿼리에 바인딩
+            pstmt.setString(2, pwd); // 사용자가 입력한 pwd를 쿼리에 바인딩
+
+            rs = pstmt.executeQuery(); // 쿼리를 실행하여 결과를 ResultSet으로 받습니다.
+
+            if (rs.next()) { // 쿼리 결과가 존재할 경우, 즉 로그인에 성공했을 경우
+            	loginInfo[0] = rs.getString("name");
+                loginInfo[1] = rs.getString("email1");
+                loginInfo[2] = rs.getString("email2");
+            	/*
                 name = rs.getString("name"); // 로그인 성공 시 회원 이름을 반환
+                email1 = rs.getString("email1"); // 이메일 앞부분 설정
+                email2 = rs.getString("email2"); // 이메일 뒷부분 설정
+                */
+                // 세션에 값을 저장하는 부분은 로그인 성공 시 처리하는 JSP에서 구현해야 함
+                // 예시: session.setAttribute("memEmail1", email1);
+                // 예시: session.setAttribute("memEmail2", email2);
             }
             
         } catch (SQLException e) {
@@ -221,7 +229,10 @@ public class MemberDAO {
             }
         }
         
+        return loginInfo;
+        /*
         return name; // 로그인 성공 시 이름 반환, 실패 시 null 반환
+        */
     }
     
 	    // 회원 정보를 가져오는 메서드

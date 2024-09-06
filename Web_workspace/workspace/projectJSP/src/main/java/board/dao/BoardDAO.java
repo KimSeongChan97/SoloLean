@@ -26,11 +26,12 @@ public class BoardDAO {
         }
     }
 
+    // Singleton 패턴을 통해 객체를 한 번만 생성하여 사용
     public static BoardDAO getInstance() {
         return instance;
     }
 
-    // 시퀀스 값 얻어오기
+    // 시퀀스 값 얻어오기 - 게시글 번호를 자동으로 증가시킴
     public int getNextSeq() {
         int seq = 0;
         Connection conn = null;
@@ -44,7 +45,7 @@ public class BoardDAO {
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                seq = rs.getInt(1);
+                seq = rs.getInt(1); // 시퀀스 값을 얻어온다
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,26 +56,26 @@ public class BoardDAO {
         return seq;
     }
 
-    // 게시글 저장
+    // 게시글 저장 메서드 - 새로운 게시글을 데이터베이스에 저장
     public void insertBoard(BoardDTO boardDTO) {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
         String sql = "INSERT INTO board (seq, id, name, email, subject, content, ref, lev, step, pseq, reply, hit, logtime) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, SYSDATE)";
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, SYSDATE)"; // 조회수(hit)는 기본값 0으로 설정됨
 
         try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, boardDTO.getSeq());
-            pstmt.setString(2, boardDTO.getId());
-            pstmt.setString(3, boardDTO.getName());
-            pstmt.setString(4, boardDTO.getEmail());
-            pstmt.setString(5, boardDTO.getSubject());
-            pstmt.setString(6, boardDTO.getContent());
-            pstmt.setInt(7, boardDTO.getRef());
+            pstmt.setInt(1, boardDTO.getSeq()); // 시퀀스 값 설정
+            pstmt.setString(2, boardDTO.getId()); // 작성자 ID
+            pstmt.setString(3, boardDTO.getName()); // 작성자 이름
+            pstmt.setString(4, boardDTO.getEmail()); // 작성자 이메일
+            pstmt.setString(5, boardDTO.getSubject()); // 제목
+            pstmt.setString(6, boardDTO.getContent()); // 내용
+            pstmt.setInt(7, boardDTO.getRef()); // 그룹번호 설정
 
-            pstmt.executeUpdate();
+            pstmt.executeUpdate(); // SQL 실행
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -82,14 +83,14 @@ public class BoardDAO {
         }
     }
 
-    // 게시글 목록 가져오기
+    // 게시글 목록을 가져오는 메서드 - 모든 게시글을 가져와 목록으로 반환
     public List<BoardDTO> getBoardList() {
         List<BoardDTO> boardList = new ArrayList<BoardDTO>();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM board ORDER BY seq DESC";
+        String sql = "SELECT * FROM board ORDER BY seq DESC"; // 게시글을 최신순으로 정렬
 
         try {
             conn = ds.getConnection();
@@ -109,10 +110,10 @@ public class BoardDAO {
                 boardDTO.setStep(rs.getInt("step"));
                 boardDTO.setPseq(rs.getInt("pseq"));
                 boardDTO.setReply(rs.getInt("reply"));
-                boardDTO.setHit(rs.getInt("hit"));
+                boardDTO.setHit(rs.getInt("hit")); // 조회수 포함
                 boardDTO.setLogtime(rs.getString("logtime"));
 
-                boardList.add(boardDTO);
+                boardList.add(boardDTO); // 목록에 추가
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,8 +123,8 @@ public class BoardDAO {
 
         return boardList;
     }
-    
- // 특정 게시글을 가져오는 메서드
+
+    // 특정 게시글을 가져오는 메서드 - 게시글 번호(seq)로 게시글을 조회
     public BoardDTO getBoard(int seq) {
         BoardDTO boardDTO = null;
         Connection conn = null;
@@ -151,7 +152,7 @@ public class BoardDAO {
                 boardDTO.setStep(rs.getInt("step"));
                 boardDTO.setPseq(rs.getInt("pseq"));
                 boardDTO.setReply(rs.getInt("reply"));
-                boardDTO.setHit(rs.getInt("hit"));
+                boardDTO.setHit(rs.getInt("hit")); // 조회수 포함
                 boardDTO.setLogtime(rs.getString("logtime"));
             }
         } catch (SQLException e) {
@@ -163,8 +164,25 @@ public class BoardDAO {
         return boardDTO;
     }
 
-    
-    
+    // 조회수를 증가시키는 메서드 - 특정 게시글의 조회수를 1 증가시킴
+    public void increaseHit(int seq) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        String sql = "UPDATE board SET hit = hit + 1 WHERE seq = ?"; // 조회수를 1 증가시키는 SQL
+
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, seq); // 해당 게시글 번호를 입력
+            pstmt.executeUpdate(); // SQL 실행
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(conn, pstmt);
+        }
+    }
+
     // 리소스 반환 메서드
     private void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
         try {

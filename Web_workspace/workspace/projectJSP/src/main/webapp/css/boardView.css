@@ -49,3 +49,9 @@ input[type="button"] {
 input[type="button"]:hover {
     background-color: #45a049;
 }
+
+/* h2 제목 스타일 */
+h2 {
+    cursor: pointer;
+    text-align: center;
+}
