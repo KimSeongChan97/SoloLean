@@ -47,9 +47,13 @@ CREATE SEQUENCE seq_board NOCACHE NOCYCLE;
 select * from board;
 -- board 테이블의 모든 데이터를 조회합니다.
 -- 데이터베이스에 저장된 게시글 데이터를 확인할 수 있는 기본적인 쿼리입니다.
+select count(*) from board;
+
 
 select * from board_JSP;
--- board_JSP 테이블에서 모든 데이터를 조회합니다. 
+-- board_JSP 테이블에서 모든 데이터를 조회합니다.
+select count(*) from board_JSP;
+
 
 --DELETE FROM board WHERE seq = 1;
 -- 특정 게시글(seq = 1)을 삭제합니다. DELETE 문은 매우 강력하므로, 특정 게시글을 잘못 삭제하는 일이 없도록 주의해야 합니다.

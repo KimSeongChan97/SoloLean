@@ -124,7 +124,7 @@
 					<li class="list">
 				    <!-- 글목록 메뉴 항목 -->
 				    <!-- 작성된 게시글 목록을 확인할 수 있는 페이지로 이동하는 링크입니다. -->
-				    <a class="nav-link" href="/projectJSP/board/boardList.jsp">
+				    <a class="nav-link" href="/projectJSP/board/boardList.jsp?pg=1">
 				        <span class="icon">
 				            <ion-icon name="document-text-outline"></ion-icon> <!-- 글목록 아이콘 추가 -->
 				        </span>

@@ -15,14 +15,19 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class BoardDAO_lean {
-    
+
     // 데이터베이스 연결을 위한 DataSource 객체 선언
+    // DataSource는 DB 연결 풀(Connection Pool)을 관리하여 성능을 최적화하는 객체입니다.
+    // Connection Pool은 미리 설정된 DB 연결 객체들을 풀(pool)에 저장해두고, 필요할 때마다 빠르게 가져다 사용합니다.
     private DataSource ds;
     // DB와의 연결을 담당하는 Connection 객체
+    // Connection은 DB에 실제로 연결되는 객체로, SQL 쿼리를 실행하기 위해 반드시 필요합니다.
     private Connection con;           
     // SQL 쿼리 실행을 준비하는 PreparedStatement 객체
+    // PreparedStatement는 SQL 쿼리를 미리 컴파일해두고, 실행 시 파라미터만 바인딩하여 성능을 높입니다.
     private PreparedStatement pstmt;  
     // SQL 쿼리 실행 후 결과를 처리하는 ResultSet 객체, DB로부터 결과 데이터를 가져오는 역할을 합니다.
+    // ResultSet은 SELECT 쿼리의 결과 집합을 담고 있으며, 쿼리 실행 후 데이터를 읽을 때 사용됩니다.
     private ResultSet rs;             
     
     // Singleton 패턴을 통해 객체를 한 번만 생성하여 사용
@@ -65,11 +70,14 @@ public class BoardDAO_lean {
                 """;
         try {
             // Connection Pool에서 DB 연결을 가져옵니다.
+            // ds 객체는 Connection Pool에서 미리 생성된 DB 연결 객체를 가져옵니다.
+            // 성능 상 이점이 있으며, 매번 새로운 연결을 생성할 필요가 없습니다.
             con = ds.getConnection();
             
             // SQL 쿼리를 PreparedStatement에 설정합니다.
             pstmt = con.prepareStatement(sql);
             // PreparedStatement 객체의 ?에 값 설정. map에서 key로 값을 가져옵니다.
+            // map.get("id")와 같은 방식으로 키 값으로 데이터를 꺼내와 PreparedStatement에 바인딩합니다.
             pstmt.setString(1, map.get("id"));       // 작성자 ID
             pstmt.setString(2, map.get("name"));     // 작성자 이름
             pstmt.setString(3, map.get("email"));    // 작성자 이메일
@@ -78,16 +86,19 @@ public class BoardDAO_lean {
             
             // SQL 실행
             pstmt.executeUpdate();  // 쿼리를 실행하여 데이터베이스에 삽입합니다.
+            // INSERT, UPDATE, DELETE 쿼리의 경우 executeUpdate() 메서드를 사용하여 DB에 적용된 행의 수를 반환합니다.
             
         } catch (SQLException e) {
             // SQL 실행 중 예외 발생 시 예외 메시지 출력
             e.printStackTrace();
         } finally {
             // 자원 해제 (DB 연결, PreparedStatement, ResultSet 객체는 사용 후 반드시 해제해야 합니다.)
+            // try-catch 문 안에서 null 체크 후 각각의 객체를 해제합니다.
             try {
                 if (rs != null) rs.close();  // ResultSet 해제
                 if (pstmt != null) pstmt.close(); // PreparedStatement 해제
                 if (con != null) con.close();  // Connection 해제
+                // DB 연결 객체는 사용 후 반드시 닫아줘야 Connection Pool에 반환됩니다.
             } catch (SQLException e) {
                 // 자원 해제 중 발생한 예외 출력
                 e.printStackTrace();
@@ -132,6 +143,7 @@ public class BoardDAO_lean {
             rs = pstmt.executeQuery();
             
             // ResultSet에서 데이터를 가져와 BoardDTO에 저장 후 리스트에 추가
+            // rs.next()는 다음 행으로 이동하며, 결과가 있으면 true를 반환합니다.
             while(rs.next()) {
                 BoardDTO boardDTO = new BoardDTO();  // 새로운 BoardDTO 객체 생성
                 
@@ -171,6 +183,43 @@ public class BoardDAO_lean {
         return list;  // 게시글 목록을 담은 리스트를 반환
     }
 
-
-    
+    // 총 게시글 수를 반환하는 메서드
+    // 전체 게시글 수를 COUNT(*)로 계산하여 반환합니다.
+    public int getTotalA() {
+    	
+    	int totalA = 0;  // 총 게시글 수를 담을 변수 선언
+    	
+    	// 게시글의 총 개수를 세는 SQL 쿼리
+    	String sql = "select count(*) from board_JSP";
+    	
+    	try {
+            // DB 연결 객체를 가져옵니다.
+			con = ds.getConnection();
+			
+			// SQL 쿼리를 준비하고 실행
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			// ResultSet에서 첫 번째 컬럼 값(총 게시글 수)을 가져와 저장
+			if (rs.next()) {
+	            totalA = rs.getInt(1); // 총 게시글 수를 가져와 변수에 저장
+	        }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+            // 자원 해제
+            try {
+                if (rs != null) rs.close();  // ResultSet 해제
+                if (pstmt != null) pstmt.close(); // PreparedStatement 해제
+                if (con != null) con.close();  // Connection 해제
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+    	
+		}
+    	
+    	return totalA;  // 총 게시글 수를 반환
+    }
 }

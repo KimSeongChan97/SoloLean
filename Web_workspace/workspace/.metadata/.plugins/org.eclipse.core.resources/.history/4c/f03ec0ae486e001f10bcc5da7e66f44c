@@ -1,0 +1,23 @@
+$(function(){
+	$('#boardWriteBtn').click(function(){
+		$('#subjectDiv').empty;
+		$('#contentDiv').empty;
+		
+		if($('#subject').val() == '')
+			$('#subjectDiv').html('제목 입력')
+		else if($('#content').val() == '')
+			$('#contentDiv').html('내용 입력')
+		else 
+			$.ajax({
+				tpye: 'post',
+				url: 'boardWrite_lean.jsp',
+				data: {},
+				success: function(){},
+				error: function(e) {
+				                    console.log(e);  // 에러 발생 시 콘솔에 출력
+				             }
+							 
+			});
+		
+	});
+});

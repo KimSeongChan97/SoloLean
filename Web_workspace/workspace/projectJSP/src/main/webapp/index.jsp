@@ -22,13 +22,13 @@
         <h3><a href="/projectJSP/member/memberLogout.jsp">L o g O u t</a></h3>
         <h3><a href="/projectJSP/member/memberUpdateForm.jsp">Edit Profile</a></h3>
         <h3><a href="/projectJSP/board/boardWriteForm.jsp">P o s t</a></h3>
-        <h3><a href="/projectJSP/board/boardList.jsp">N o t e</a></h3>
+        <h3><a href="/projectJSP/board/boardList.jsp?pg=1">N o t e</a></h3>
         <h3><a href="/projectJSP/board/boardWriteForm_Lean.jsp">Post_수업</a></h3>
         
                        
     <%} %>     
     
-    	<h3><a href="/projectJSP/board/boardList_lean.jsp">목록_수업</a></h3>
+    	<h3><a href="/projectJSP/board/boardList_lean.jsp?pg=1">목록_수업</a></h3>
     </div>
     
     <br/>

@@ -1,0 +1,83 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="board.dao.BoardDAO_lean"%>
+<%@page import="board.bean.BoardDTO"%>
+<%@page import="java.util.List"%>
+    
+    <%
+    // 'pg' 파라미터는 현재 페이지 번호를 의미합니다.
+    // 클라이언트에서 요청한 'pg' 값을 가져옵니다.
+    // 만약 'pg' 파라미터가 null이거나 비어 있을 경우, 기본값을 1로 설정하여 첫 페이지를 의미하도록 합니다.
+    // 즉, 페이지 번호를 클라이언트가 요청하지 않으면 자동으로 1페이지를 보여줍니다.
+    // '?' 연산자는 삼항 연산자로, 조건에 따라 값이 달라집니다.
+    String pgParam = request.getParameter("pg"); 
+    int pg = (pgParam != null && !pgParam.trim().isEmpty()) ? Integer.parseInt(pgParam) : 1; // 'pg'가 null이 아니고 비어있지 않으면 pg 값을 숫자로 변환, 아니면 1
+
+    // 한 페이지당 표시할 게시글 수를 5개로 설정합니다.
+    // 따라서 'pg'에 따라 계산된 startNum과 endNum으로 해당 페이지에 표시될 게시글을 가져옵니다.
+    int endNum = pg * 5; // 현재 페이지에서 끝 번호를 계산합니다. 5개씩 보여주므로 예를 들어, 1페이지는 1~5번 글을 가져옵니다.
+    int startNum = endNum - 4; // 시작 번호는 끝 번호에서 4를 뺀 값이 됩니다. 즉, 1페이지는 1번부터 시작하게 됩니다.
+
+    // 데이터베이스에서 게시글을 가져오기 위해 BoardDAO_lean 객체를 생성합니다.
+    // Singleton 패턴을 사용하여 하나의 인스턴스만 사용하도록 보장합니다.
+    BoardDAO_lean boardDAO_lean = BoardDAO_lean.getInstance(); 
+    // boardList 메서드를 호출하여 startNum과 endNum에 해당하는 게시글 목록을 가져옵니다.
+    // 이 메서드는 해당 페이지에 보여줄 게시글을 DB에서 가져오는 역할을 합니다.
+    List<BoardDTO> list = boardDAO_lean.boardList(startNum, endNum);
+    
+    
+    // 페이징 처리
+    int totalA = boardDAO_lean.getTotalA();
+    
+    %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판 목록</title>
+<style type="text/css">
+table {
+    border-collapse: collapse; /* 테이블의 셀 간 경계선을 하나로 합칩니다 */
+}
+th,td{
+    padding:7px; /* 셀 안의 내용을 일정한 간격으로 배치하여 가독성을 높입니다 */
+}
+</style>
+</head>
+<body>
+
+	<!-- 게시글 목록을 테이블로 표시합니다. -->
+	<!-- 테이블을 사용하여 데이터를 행과 열로 나누어 보여줍니다. -->
+	<table border="1" frame="hsides" >
+		<tr>
+			<th width="100"> 글번호 </th> <!-- 각 열의 제목을 설정합니다. 글 번호, 제목, 작성자 등 게시글 정보를 표시할 것입니다. -->
+			<th width="400"> 제목 </th>
+			<th width="150"> 작성자 </th>
+			<th width="150"> 작성일 </th>
+			<th width="100"> 조회수 </th>
+		</tr>
+		
+		<!-- list가 null이 아니면, 즉 게시글 목록이 있을 때 테이블에 게시글을 출력합니다. -->
+		<% if(list != null){ %>
+			<!-- list에 담긴 각 게시글의 정보를 출력합니다. for-each 루프를 사용하여 list에 있는 BoardDTO 객체를 하나씩 가져옵니다. -->
+			<% for(BoardDTO boardDTO : list) { %>
+				<tr>
+					<td align="center"><%=boardDTO.getSeq() %></td> <!-- 게시글의 고유 번호(seq)를 출력합니다. 이 값은 게시글을 구분하는 키입니다. -->
+					<td><%=boardDTO.getSubject() %></td> <!-- 게시글의 제목(subject)을 출력합니다. 제목은 사용자가 클릭하여 상세 페이지로 이동할 때 사용됩니다. -->
+					<td align="center"><%=boardDTO.getId() %></td> <!-- 게시글을 작성한 사용자의 ID(id)를 출력합니다. -->
+					<td align="center"><%=boardDTO.getLogtime() %></td> <!-- 게시글이 작성된 시간을 출력합니다. -->
+					<td align="center"><%=boardDTO.getHit() %></td> <!-- 게시글의 조회수(hit)를 출력합니다. 조회수는 게시글이 얼마나 많이 읽혔는지 나타냅니다. -->
+				</tr>
+				<% } // for %> <!-- for 루프 종료 -->
+		<% } // if %> <!-- 게시글 목록이 없으면 아무것도 출력되지 않음 -->
+	</table>
+	
+	<!-- 사용자가 클릭하면 index.jsp 페이지로 이동하는 버튼 -->
+	<!-- div 태그에 'onclick' 이벤트를 설정하여 사용자가 클릭하면 index.jsp로 이동하도록 설정합니다. -->
+	<div onclick="location.href='../index.jsp'" align="center" style="cursor: pointer;">
+		index로 
+	</div>
+
+</body>
+</html>

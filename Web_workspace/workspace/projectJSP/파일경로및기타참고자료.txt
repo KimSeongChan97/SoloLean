@@ -42,3 +42,6 @@ projectJSP
 
 -================
 mybatis.org 
+-================
+paging  관련
+board.bean.BoardPaging.java

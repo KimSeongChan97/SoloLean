@@ -12,6 +12,9 @@
      이 링크는 브라우저가 Google의 폰트 서버에서 "Poppins" 폰트를 가져와서 페이지에 적용할 수 있도록 합니다. -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<!-- head 태그 안에 CSS 파일 연결 -->
+<link rel="stylesheet" type="text/css" href="/projectJSP/css/navbar.css">
+
 <!-- 네비게이션 바 HTML 구조 -->
 <!-- 부트스트랩의 네비게이션 바 구성요소를 사용하여 메뉴바를 구성합니다.
      "navbar bg-body-tertiary" 클래스는 Bootstrap의 네비게이션 바 스타일 중 하나로, 기본적인 레이아웃과 스타일을 제공합니다. -->
@@ -19,7 +22,7 @@
     <div class="container-fluid">
         <!-- home.png 이미지를 클릭하면 index.jsp로 이동 -->
         <!-- "navbar-brand" 클래스는 네비게이션 바의 브랜드 요소로 사용됩니다. 여기서는 "home.png" 이미지를 네비게이션 바 왼쪽에 배치하고, 이 이미지를 클릭하면 "mainpage.html"로 이동하게 합니다. -->
-        <a class="navbar-brand" href="/projectJSP/mainpage.html">
+        <a class="navbar-brand" href="/projectJSP/index.jsp">
     		<img src="/projectJSP/image/home.png" alt="Home" width="30" height="30"/>
 		</a>
 
@@ -121,7 +124,7 @@
 					<li class="list">
 				    <!-- 글목록 메뉴 항목 -->
 				    <!-- 작성된 게시글 목록을 확인할 수 있는 페이지로 이동하는 링크입니다. -->
-				    <a class="nav-link" href="/projectJSP/board/boardList.jsp">
+				    <a class="nav-link" href="/projectJSP/board/boardList.jsp?pg=1">
 				        <span class="icon">
 				            <ion-icon name="document-text-outline"></ion-icon> <!-- 글목록 아이콘 추가 -->
 				        </span>

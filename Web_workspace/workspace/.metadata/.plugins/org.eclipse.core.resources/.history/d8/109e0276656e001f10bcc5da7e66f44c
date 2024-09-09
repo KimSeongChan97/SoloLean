@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="board.dao.BoardDAO_lean"%>
+<%@page import="board.bean.BoardDTO"%>
+<%@page import="java.util.List"%>
+    
+    <%
+   
+	    // 'pg' 
+	    //int pg = Integer.parseInt(request.getParameter("pg"));
+ 		// 'pg' 파라미터가 null이거나 비어 있을 때 기본값 1로 설정
+   		 String pgParam = request.getParameter("pg");
+    	int pg = (pgParam != null && !pgParam.trim().isEmpty()) ? Integer.parseInt(pgParam) : 1;
+    
+	    // 1페이지당 5개씩
+	    int endNum = pg * 5;
+	    int startNum = endNum - 4;
+    	
+    	BoardDAO_lean boardDAO_lean = BoardDAO_lean.getInstance();
+    	List<BoardDTO> list = boardDAO_lean.boardList(startNum, endNum);
+    	
+    	
+    	
+    %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+    border-collapse: collapse; 
+}
+th,td{
+    padding:7px;
+}
+
+</style>
+</head>
+<body>
+
+	<table border="1" frame="hsides" >
+		<tr>
+			<th width="100"> 글번호 </th>
+			<th width="400"> 제목 </th>
+			<th width="150"> 작성자 </th>
+			<th width="150"> 작성일 </th>
+			<th width="100"> 조회수 </th>
+			
+		</tr>
+		
+		<% if(list != null){ %>
+			<% for(BoardDTO boardDTO : list) { %>
+				<tr>
+					<td align="center"><%=boardDTO.getSeq() %></td>
+					<td><%=boardDTO.getSubject() %></td>
+					<td align="center"><%=boardDTO.getId() %></td>
+					<td align="center"><%=boardDTO.getLogtime() %></td>
+					<td align="center"><%=boardDTO.getHit() %></td>
+				</tr>
+			
+				<% }// for %>
+				<% } // if %>
+	</table>
+	
+	<div onclick="location.href='../index.jsp'" value="인덱스로"></div>
+
+</body>
+</html>

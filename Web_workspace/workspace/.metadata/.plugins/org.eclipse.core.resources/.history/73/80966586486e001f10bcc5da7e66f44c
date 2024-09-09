@@ -1,0 +1,10 @@
+$(function(){
+	$('#boardWriteBtn').click(function(){
+		$('#subjectDiv').empty;
+		$('#contentDiv').empty;
+		
+		if($('#subject').val() == '')
+			$('#subjectDiv').html('제목 입력')
+			
+	});
+});

@@ -2,10 +2,10 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialog.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="5"/>
-		<item key="DIALOG_Y_ORIGIN" value="76"/>
-		<item key="DIALOG_WIDTH" value="912"/>
-		<item key="DIALOG_HEIGHT" value="943"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_Y_ORIGIN" value="93"/>
+		<item key="DIALOG_WIDTH" value="1283"/>
+		<item key="DIALOG_HEIGHT" value="870"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="ImportExportAction">
 		<section name="ImportExportWizard.dialogBounds">
@@ -19,9 +19,9 @@
 	<section name="PropertyDialog.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="153"/>
 		<item key="DIALOG_Y_ORIGIN" value="137"/>
-		<item key="DIALOG_WIDTH" value="1159"/>
-		<item key="DIALOG_HEIGHT" value="656"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="953"/>
+		<item key="DIALOG_HEIGHT" value="747"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="NewWizardAction">
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>

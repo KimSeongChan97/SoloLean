@@ -55,20 +55,25 @@ h2 {
 
 /* pagination-nav 클래스 스타일 정의 (기존 navbar와 충돌 방지) */
 .pagination-nav {
-    margin-bottom: 40px;
+    margin: 0 auto;  /* 페이지네이션을 가운데 정렬 */
+    width: fit-content;  /* 페이지네이션 너비를 버튼 내용에 맞게 설정 */
 }
 
 .pagination-nav .pagination {
     background-color: #1f1f3b;  /* 테이블 배경과 동일한 색상 */
-    border-radius: 10px;  /* 버튼 테두리 둥글게 */
+    border-radius: 20px;  /* 페이지네이션 바 전체를 둥글게 */
     box-shadow: 0 0 10px rgba(255, 69, 217, 0.5);  /* 네온 핑크색 그림자 */
+    padding: 5px;  /* 페이지네이션 바 내부 여백 */
+    display: flex;  /* 버튼을 한 줄로 배치 */
+    justify-content: center;  /* 버튼을 가운데 정렬 */
 }
 
 .pagination-nav .pagination .page-link {
     color: #8de4ff;  /* 링크 기본 색상 */
     border: 1px solid #ff46c7;  /* 네온 핑크색 테두리 */
-    padding: 10px 15px;
-    margin: 0 5px;
+    padding: 10px 15px;  /* 버튼의 내부 여백 */
+    margin: 0 5px;  /* 버튼 사이 간격 */
+    border-radius: 8px;  /* 각 버튼의 테두리 둥글게 */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -81,4 +86,5 @@ h2 {
     background-color: #ff46c7;  /* 활성화된 페이지 버튼 배경 */
     color: #fff;
     border-color: #ff46c7;
+    border-radius: 8px;  /* 활성화된 버튼에도 테두리 둥글게 */
 }
