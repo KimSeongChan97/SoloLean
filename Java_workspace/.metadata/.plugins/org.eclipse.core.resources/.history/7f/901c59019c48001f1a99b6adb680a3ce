@@ -1,0 +1,17 @@
+package thread;
+
+class Singleton {
+	private int num=3;
+	
+	
+}
+
+//---------------------------------
+public class SingletonMain {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

@@ -1,0 +1,35 @@
+package thread;
+
+class ATM implements Runnable {
+	private long depositMoney = 100000; // 금액
+	private long balance; // 찾고자 하는 금액
+	@Override
+	public void run() {
+		System.out.println("안녕하세요 " + Thread.currentThread().getName() + " 고객님 ");
+		
+		
+	}
+	
+	
+}
+
+//------------------------------
+public class ATMMain {
+
+	public static void main(String[] args) {
+		// thread 생성
+		
+		ATM atm = new ATM();
+		Thread mom = new Thread(atm, "어머님"); // this 라고 쓰면 안됨, static 영역에서는 this 값이 없음.
+		Thread son = new Thread(atm, "아드님"); // mom 과 son 둘다 동기화로 같이 사용 가능한 thread 생성. , 이름 생성도 같이 진행.
+		
+		mom.start(); // thread 시작 -> thread 실행 ( run() 으로 감 )
+		son.start(); // thread 시작 -> thread 실행 ( run() 으로 감 )
+		
+			
+		
+		
+
+	}
+
+}

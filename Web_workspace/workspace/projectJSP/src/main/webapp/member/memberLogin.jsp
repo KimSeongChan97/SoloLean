@@ -28,6 +28,8 @@
     //String name = memberDAO.memberLogin(id, pwd);
     
     // 로그인 로직 (배열로 반환된 값을 각각 처리)
+    //MemberDTO memberDTO = memberDAO.memberLogin(id, pwd);
+    
     String[] loginInfo = memberDAO.memberLogin(id, pwd);  // [0] = name, [1] = email1, [2] = email2
     String name = loginInfo[0];
     String email1 = loginInfo[1];
@@ -77,7 +79,13 @@
     session.setAttribute("memId", id);  // 로그인한 사용자의 아이디를 세션에 저장
     session.setAttribute("memEmail1", email1);  // DAO에서 가져온 값 사용
     session.setAttribute("memEmail2", email2);  // DAO에서 가져온 값 사용
-
+	
+    // session.setAttribute("memName", memberDTO.getName());
+ 	// session.setAttribute("memName", id);
+ 	// session.setAttribute("memEmail", memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
+    // session.setAttribute("memberDTO", memberDTO);
+    
+    
     // 로그인 성공 후 페이지 이동
     // 로그인 성공 시, 로그인 성공 페이지인 loginOk.jsp로 리다이렉트합니다.
     response.sendRedirect("loginOk.jsp");

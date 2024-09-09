@@ -1,0 +1,17 @@
+package thread;
+
+
+public class ATMMain {
+
+	private long depositMoney = 100000; // 금액
+	private long balance; // 찾고자 하는 금액
+	
+	public static void main(String[] args) {
+	
+		
+		
+		
+
+	}
+
+}

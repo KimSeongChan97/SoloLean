@@ -13,20 +13,22 @@
     <!-- 여기서 nav.jsp를 동적으로 불러올 부분 -->
     <div id="navbar"></div>
     
-    
     <div id="link">
     <% if(session.getAttribute("memId") == null) { %>
-        <h3><a href="/projectJSP/mainpage.html">MainHomepage</a></h3>
-        <h3><a href="/projectJSP/member/memberWriteForm.jsp">Register</a></h3>
-        <h3><a href="/projectJSP/member/memberLoginForm.jsp">Login</a></h3>
+        
+        <h3><a href="/projectJSP/member/memberWriteForm.jsp">J o i n</a></h3>
+        <h3><a href="/projectJSP/member/memberLoginForm.jsp">L o g i n</a></h3>
     <%}else{ %>    
-        <h3><a href="/projectJSP/member/memberLogout.jsp">LogOut</a></h3>
+        <h3><a href="/projectJSP/member/memberLogout.jsp">L o g O u t</a></h3>
         <h3><a href="/projectJSP/member/memberUpdateForm.jsp">Edit Profile</a></h3>
-        <h3><a href="/projectJSP/board/boardWriteForm.jsp">Post</a></h3>
-        <h3><a href="/projectJSP/board/boardList.jsp">Note</a></h3>
-        <h3><a href="">Chat(미구현)</a></h3>
-        <h3><a href="">Setting(미구현)</a></h3>
+        <h3><a href="/projectJSP/board/boardWriteForm.jsp">P o s t</a></h3>
+        <h3><a href="/projectJSP/board/boardList.jsp">N o t e</a></h3>
+        <h3><a href="/projectJSP/board/boardWriteForm_Lean.jsp">Post_수업</a></h3>
+        
+                       
     <%} %>     
+    
+    	<h3><a href="/projectJSP/board/boardList_lean.jsp">목록_수업</a></h3>
     </div>
     
     <br/>

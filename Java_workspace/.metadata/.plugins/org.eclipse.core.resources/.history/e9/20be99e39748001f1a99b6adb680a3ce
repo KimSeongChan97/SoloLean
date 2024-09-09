@@ -1,0 +1,16 @@
+package thread;
+
+class Synchronized extends Thread { // Thread 상속을 받음.
+	
+}
+
+
+//----------------------------------------
+public class SynchronizedMain {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

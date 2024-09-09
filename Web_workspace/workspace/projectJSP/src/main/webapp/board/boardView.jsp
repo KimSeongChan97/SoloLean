@@ -108,9 +108,13 @@
             <label for="email">작성자 email:</label>
             <div id="email"><%= board.getEmail() %></div><br> <!-- BoardDTO 객체에서 이메일(email)을 가져와 출력합니다. -->
 
-            <!-- 작성일을 출력합니다. -->
+            <!-- 작성일을 포맷팅하여 출력합니다. -->
+            <%
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy년 MM월 dd일 HH:mm:ss");
+                String formattedLogtime = sdf.format(board.getLogtime()); // Date를 String으로 변환
+            %>
             <label for="logtime">작성일:</label>
-            <div id="logtime"><%= board.getLogtime() %></div><br> <!-- BoardDTO 객체에서 작성 시간을 가져와 출력합니다. -->
+            <div id="logtime"><%= formattedLogtime %></div><br> <!-- 변환된 날짜 문자열을 출력 -->
 
             <!-- 게시글 조회수를 출력합니다. -->
             <label for="hit">조회수:</label>

@@ -41,28 +41,4 @@ projectJSP
 		boardWrite.jsp
 
 -================
-1.테이블 작성 => board.sql
-2. board/ boardWriteForm.jsp
-	    boardWrite.jsp
-3. board.bean.BoardDTO.java
-   board.dao.BoardDAO.java 
-4. 세션 생성		
-memName
-memId
-memEamil 는 member.sql의 emal1, email2 의 합한 값
-( email1 @ email2 ) <- 이렇게 되어야 한다.
-
-5. insert 할 때
-seq = > 시퀀스 얻어오기
-id, name, email => 세션을 통해서 얻어온다
-subject
-content
-ref => seq 과 똑같은 값이 들어간다.
-
-* 글쓰기 Form 은 
-
-제목 [ 제목 넣는 칸 ]
-내용 [ 내용 넣는 칸_textarea ]
-글쓰기(버튼) 다시작성(reset)
-
--> 유효성 검사 필수 
+mybatis.org 
