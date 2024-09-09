@@ -1,0 +1,14 @@
+package user.main;
+
+public class UserMain {
+	
+	public void menu() {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

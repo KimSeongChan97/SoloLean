@@ -1,0 +1,22 @@
+package user.main;
+
+public class UserMain {
+	
+	public void menu() {
+		int num;
+		
+		while(true) {
+			
+			
+			
+			System.out.println();
+			System.out.println();
+		} // while
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

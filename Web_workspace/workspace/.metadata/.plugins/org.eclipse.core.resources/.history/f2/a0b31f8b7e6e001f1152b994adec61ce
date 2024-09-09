@@ -1,0 +1,5 @@
+package user.service;
+
+public abstract class UserSelectService implements UserService {
+
+}
