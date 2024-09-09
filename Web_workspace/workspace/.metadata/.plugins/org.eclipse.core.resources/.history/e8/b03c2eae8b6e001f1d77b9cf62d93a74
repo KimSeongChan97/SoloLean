@@ -1,0 +1,8 @@
+package mapper;
+
+public class Snippet {
+	public static void main(String[] args) {
+		/myBatisTest/src/mapper/UserMapper.xml
+	}
+}
+
