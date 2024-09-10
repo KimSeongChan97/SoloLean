@@ -54,7 +54,8 @@ public class UserUpdateService implements UserService {
             return; // 메소드를 종료하여 더 이상 진행되지 않도록 함
             // 메소드를 종료하고 더 이상 아래 코드를 실행하지 않도록 return을 사용함.
         }
-            	  
+         
+        System.out.println();
     	// 수정할 사용자 정보를 입력받음 (이름과 비밀번호)
     	System.out.print("수정할 이름 입력 : ");
     	String name = scan.next(); // 수정할 이름 입력받기

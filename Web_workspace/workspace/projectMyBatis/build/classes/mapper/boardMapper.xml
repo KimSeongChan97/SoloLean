@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+
+    <!-- 게시글 시퀀스 생성 -->
+    <select id="getNextSeq" resultType="int">
+        SELECT board_seq.nextval FROM dual
+    </select>
+
+    <!-- 전체 게시글 수 가져오기 -->
+    <select id="getTotalPosts" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+
+    <!-- 특정 페이지의 게시글 목록 가져오기 -->
+    <select id="getBoardListByPage" parameterType="map" resultType="board.bean.BoardDTO">
+        SELECT * FROM (
+            SELECT rownum AS rnum, seq, subject, id, content, logtime, hit
+            FROM (
+                SELECT * FROM board ORDER BY seq DESC
+            )
+        ) WHERE rnum BETWEEN #{startNum} AND #{endNum}
+    </select>
+
+    <!-- 특정 게시글 가져오기 -->
+    <select id="getBoard" parameterType="int" resultType="board.bean.BoardDTO">
+        SELECT * FROM board WHERE seq = #{seq}
+    </select>
+
+    <!-- 조회수 증가 쿼리 추가 -->
+    <update id="increaseHit" parameterType="int">
+        UPDATE board
+        SET hit = hit + 1
+        WHERE seq = #{seq}
+    </update>
+	
+	<!-- 게시글 작성 -->
+    <insert id="insertBoard" parameterType="board.bean.BoardDTO">
+    INSERT INTO board (seq, subject, id, name, email, content, ref, logtime, hit)
+    VALUES (#{seq}, #{subject}, #{id}, #{name}, #{email}, #{content}, #{ref}, SYSDATE, 0)
+	</insert>
+
+
+
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="board.bean.BoardDTO">
+        UPDATE board SET subject=#{subject}, content=#{content}, logtime=SYSDATE WHERE seq=#{seq}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM board WHERE seq = #{seq}
+    </delete>
+
+</mapper>

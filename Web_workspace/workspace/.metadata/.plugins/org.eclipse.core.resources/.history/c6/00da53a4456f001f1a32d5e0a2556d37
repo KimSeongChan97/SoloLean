@@ -1,0 +1,103 @@
+package board.dao;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import board.bean.BoardDTO;
+
+public class BoardDAO {
+    // 1. 싱글톤 인스턴스 생성 (MyBatis와 연동된 인스턴스를 사용)
+    private static BoardDAO instance = new BoardDAO();
+    private SqlSessionFactory sqlSessionFactory;
+
+    // 2. 생성자: MyBatis 설정 파일인 'mybatis-config.xml'을 읽어 SqlSessionFactory를 초기화
+    public BoardDAO() {
+        try {
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 3. 싱글톤 인스턴스를 반환하는 메소드
+    public static BoardDAO getInstance() {
+        return instance;
+    }
+
+    // 4. 게시물 총 개수 가져오기
+    public int getTotalPosts() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        int totalPosts = 0;
+        try {
+            totalPosts = sqlSession.selectOne("boardSQL.getTotalPosts");
+        } finally {
+            sqlSession.close();
+        }
+        return totalPosts;
+    }
+
+    // 5. 게시물 목록 가져오기 (페이징 처리)
+    public List<BoardDTO> getBoardList(Map<String, Integer> map) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<BoardDTO> list = null;
+        try {
+            list = sqlSession.selectList("boardSQL.getBoardList", map);
+        } finally {
+            sqlSession.close();
+        }
+        return list;
+    }
+
+    // 6. 특정 게시물 가져오기
+    public BoardDTO getBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BoardDTO boardDTO = null;
+        try {
+            boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq);
+        } finally {
+            sqlSession.close();
+        }
+        return boardDTO;
+    }
+
+    // 7. 게시물 작성하기
+    public void writeBoard(BoardDTO boardDTO) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.insert("boardSQL.writeBoard", boardDTO);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    // 8. 게시물 수정하기
+    public void updateBoard(BoardDTO boardDTO) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.update("boardSQL.updateBoard", boardDTO);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    // 9. 게시물 삭제하기
+    public void deleteBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.delete("boardSQL.deleteBoard", seq);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+}

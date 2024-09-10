@@ -1,0 +1,56 @@
+package member.dao;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import member.bean.MemberDTO;
+
+public class MemberDAO {
+	
+	// 싱글톤
+	private static MemberDAO memberDAO = new MemberDAO();
+	
+	// mybatis
+	private SqlSessionFactory sqlSessionFactory;
+	
+	// 생성자
+	
+	public MemberDAO() {
+		
+		Reader reader;
+		try {
+			
+			reader = Resources.getResourceAsReader("mybatis-config.xml");
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
+	}
+	
+	// 싱글톤 반환
+	public static MemberDAO getInstance() {
+		return memberDAO;
+	}
+	
+	// 회원정보 삽입(insertMember 쿼리)
+	public int insertMember(MemberDTO memberDTO) {
+		// SqlSession 적용
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// result
+		int result = sqlSession.insert("memberSQL.insertMember", memberDTO);
+		
+		sqlSession.commit();
+		sqlSession.close();
+				
+		return result;
+	}
+	
+}
+

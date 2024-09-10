@@ -1,0 +1,99 @@
+package board.dao;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import board.bean.BoardDTO;
+
+public class BoardDAO {
+    // 1. 싱글톤 인스턴스 생성
+    // DAO 객체는 애플리케이션 내에서 하나만 생성되고 이를 공유하여 사용합니다.
+    private static BoardDAO boardDAO = new BoardDAO();
+
+    // MyBatis에서 SQL 세션을 생성하고 관리하는 SqlSessionFactory 객체
+    private SqlSessionFactory sqlSessionFactory;
+
+    // 2. 생성자
+    // MyBatis 설정 파일인 'mybatis-config.xml'을 읽어 SqlSessionFactory를 초기화합니다.
+    public BoardDAO() {
+        try {
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+        } catch (IOException e) {
+            e.printStackTrace(); // 예외 처리
+        }
+    }
+
+    // 3. 싱글톤 인스턴스를 반환하는 메소드
+    public static BoardDAO getInstance() {
+        return boardDAO;
+    }
+
+    // 4. 게시물 목록 조회
+    // 게시판의 모든 게시물을 가져오는 메서드입니다.
+    public List<BoardDTO> getBoardList() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<BoardDTO> list = null;
+        try {
+            list = sqlSession.selectList("boardSQL.getBoardList"); // MyBatis의 selectList 메서드 사용
+        } finally {
+            sqlSession.close();
+        }
+        return list;
+    }
+
+    // 5. 게시물 작성
+    // 사용자가 작성한 게시물을 DB에 저장하는 메서드입니다.
+    public void insertBoard(BoardDTO boardDTO) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.insert("boardSQL.insertBoard", boardDTO); // MyBatis의 insert 메서드 사용
+            sqlSession.commit(); // 트랜잭션 커밋
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    // 6. 게시물 조회
+    // 게시물의 상세 내용을 가져오는 메서드입니다.
+    public BoardDTO getBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BoardDTO boardDTO = null;
+        try {
+            boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq); // MyBatis의 selectOne 메서드 사용
+        } finally {
+            sqlSession.close();
+        }
+        return boardDTO;
+    }
+
+    // 7. 게시물 수정
+    // 게시물의 내용을 수정하는 메서드입니다.
+    public void updateBoard(BoardDTO boardDTO) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.update("boardSQL.updateBoard", boardDTO); // MyBatis의 update 메서드 사용
+            sqlSession.commit(); // 트랜잭션 커밋
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    // 8. 게시물 삭제
+    // 특정 게시물을 삭제하는 메서드입니다.
+    public void deleteBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.delete("boardSQL.deleteBoard", seq); // MyBatis의 delete 메서드 사용
+            sqlSession.commit(); // 트랜잭션 커밋
+        } finally {
+            sqlSession.close();
+        }
+    }
+}

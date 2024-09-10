@@ -1,0 +1,111 @@
+package board.dao;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import board.bean.BoardDTO;
+
+public class BoardDAO_lean {
+
+    // MyBatis에서 SQL 세션을 생성하고 관리하는 SqlSessionFactory 객체
+    private SqlSessionFactory sqlSessionFactory;
+
+    // 싱글톤 패턴으로 BoardDAO 인스턴스를 생성합니다.
+    private static BoardDAO_lean instance = new BoardDAO_lean();
+
+    // BoardDAO_lean 인스턴스를 반환하는 메소드
+    public static BoardDAO_lean getInstance() {
+        return instance;
+    }
+
+    // 생성자에서 MyBatis 설정 파일인 'mybatis-config.xml'을 읽어 SqlSessionFactory를 초기화합니다.
+    private BoardDAO_lean() {
+        try {
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 1. 게시글 작성 메소드
+    public void insertBoard(Map<String, String> map) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.insert("boardSQL.insertBoard", map); // 파라미터로 전달된 맵(Map)을 MyBatis로 전달
+            sqlSession.commit(); // DB에 반영
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+    }
+
+    // 2. 특정 페이지에 해당하는 게시글 목록 조회 메소드 (페이징 처리 포함)
+    public List<BoardDTO> boardList(int startNum, int endNum) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<BoardDTO> boardList = null;
+        try {
+            // startNum과 endNum을 맵에 담아 파라미터로 전달
+            Map<String, Integer> map = new HashMap<>();
+            map.put("startNum", startNum);
+            map.put("endNum", endNum);
+            boardList = sqlSession.selectList("boardSQL.getBoardList", map); // 해당 페이지 게시글 목록 조회
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+        return boardList;
+    }
+
+    // 3. 특정 게시글 조회 메소드
+    public BoardDTO getBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BoardDTO boardDTO = null;
+        try {
+            boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq); // 특정 게시글 조회
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+        return boardDTO;
+    }
+
+    // 4. 게시글 수정 메소드
+    public void updateBoard(BoardDTO boardDTO) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.update("boardSQL.updateBoard", boardDTO); // 게시글 수정
+            sqlSession.commit(); // DB에 반영
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+    }
+
+    // 5. 게시글 삭제 메소드
+    public void deleteBoard(int seq) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            sqlSession.delete("boardSQL.deleteBoard", seq); // 게시글 삭제
+            sqlSession.commit(); // DB에 반영
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+    }
+
+    // 6. 전체 게시글 수 조회 메소드
+    public int getTotalA() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        int totalA = 0;
+        try {
+            totalA = sqlSession.selectOne("boardSQL.getTotalA"); // 전체 게시글 수 조회
+        } finally {
+            sqlSession.close(); // 세션 종료
+        }
+        return totalA;
+    }
+}

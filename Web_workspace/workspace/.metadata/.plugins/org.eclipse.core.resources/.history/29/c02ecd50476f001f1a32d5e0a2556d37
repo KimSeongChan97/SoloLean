@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+    <!-- 시퀀스 가져오기 -->
+    <select id="getNextSeq" resultType="int">
+        SELECT board_seq.nextval FROM dual
+    </select>
+
+    <!-- 전체 게시글 수 가져오기 -->
+    <select id="getTotalPosts" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+
+	<!-- 게시글 리스트 가져오기 -->
+	<select id="getBoardList" parameterType="map" resultType="board.bean.BoardDTO">
+	    SELECT * FROM (
+	        SELECT rownum rnum, board.* 
+	        FROM (SELECT * FROM board ORDER BY seq DESC) board
+	    ) WHERE rnum BETWEEN #{startNum} AND #{endNum}
+	</select>
+
+    <!-- 특정 게시글 가져오기 -->
+    <select id="getBoard" parameterType="int" resultType="board.bean.BoardDTO">
+        SELECT * FROM board WHERE seq = #{seq}
+    </select>
+
+    <!-- 게시글 작성 -->
+    <insert id="writeBoard" parameterType="board.bean.BoardDTO">
+        INSERT INTO board (seq, subject, content, writer, logtime)
+        VALUES (board_seq.nextval, #{subject}, #{content}, #{writer}, sysdate)
+    </insert>
+
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="board.bean.BoardDTO">
+        UPDATE board
+        SET subject = #{subject}, content = #{content}, writer = #{writer}
+        WHERE seq = #{seq}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM board WHERE seq = #{seq}
+    </delete>
+</mapper>

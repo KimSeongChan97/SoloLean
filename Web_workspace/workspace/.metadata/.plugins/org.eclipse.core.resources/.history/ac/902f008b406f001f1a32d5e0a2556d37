@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <!-- Properties 설정 (db.properties와 연결 가능) -->
+    <!-- db.properties 파일을 통해 데이터베이스 연결 설정을 따로 관리할 수 있습니다. 
+         각 프로퍼티 값은 properties 태그의 resource 속성으로 지정된 파일에서 불러옵니다.
+         이렇게 하면 설정값을 외부 파일로 분리해, 코드 수정 없이 설정 파일만 바꾸어 다른 환경에서도 쉽게 적용할 수 있습니다. -->
+    <properties resource="db.properties"/>
+
+    <!-- Type Alias 설정 -->
+    <!-- MyBatis에서는 자주 사용되는 클래스의 이름을 짧게 alias로 설정할 수 있습니다. 
+         여기서는 MemberDTO 클래스의 별칭을 'member'로 지정하여, 
+         SQL 맵퍼 파일에서 MemberDTO 대신 'member'를 사용해 간결하게 표현할 수 있습니다. 
+         Type Alias는 코드 가독성을 높이고 SQL 맵퍼에서 반복되는 클래스 이름을 줄이는 데 유용합니다. -->
+    <typeAliases>
+        <typeAlias type="member.bean.MemberDTO" alias="member"/>
+    </typeAliases>
+
+    <!-- 환경 설정 -->
+    <!-- environments 태그는 MyBatis가 실행될 환경을 정의하는 부분입니다. 
+         여러 환경을 설정할 수 있으며, default 속성을 통해 기본으로 사용할 환경을 지정합니다.
+         이 예제에서는 'development'라는 id를 가진 환경이 기본으로 설정되어 있으며, 
+         JDBC 트랜잭션을 사용하고 POOLED 데이터소스를 사용하도록 구성되었습니다. -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 트랜잭션 매니저 설정 -->
+            <!-- JDBC 트랜잭션 매니저를 사용합니다. MyBatis가 직접 JDBC 트랜잭션을 관리하며, 
+                 이는 기본적인 트랜잭션 방식으로 간단한 어플리케이션에서 자주 사용됩니다. -->
+            <transactionManager type="JDBC"/>
+            
+            <!-- 데이터 소스 설정 -->
+            <!-- POOLED 데이터소스를 사용하여 DB 연결 풀을 관리합니다.
+                 데이터베이스 연결 풀은 미리 생성된 DB 연결 객체를 재사용해 성능을 향상시키는 메커니즘입니다. 
+                 데이터베이스 연결에 필요한 설정(드라이버, URL, 사용자 이름, 비밀번호)은 외부 properties 파일에서 가져옵니다. -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- Mapper 설정 -->
+    <!-- MyBatis에서 사용하는 SQL 맵퍼 파일을 등록하는 부분입니다. 
+         mapper 파일은 SQL 쿼리와 매핑된 Java 메서드를 정의하며, XML 파일로 관리됩니다. 
+         이 설정을 통해 MyBatis가 SQL을 실행하고 결과를 Java 객체로 변환할 수 있습니다.
+         이 예제에서는 'memberMapper.xml'과 'memberMapper_lean.xml' 두 개의 매퍼 파일을 지정해,
+         두 매퍼 파일에 정의된 SQL 구문을 사용할 수 있게 됩니다. -->
+    <mappers>
+        <mapper resource="mapper/memberMapper.xml"/>
+        <mapper resource="mapper/memberMapper_lean.xml"/>
+    </mappers>
+
+</configuration>

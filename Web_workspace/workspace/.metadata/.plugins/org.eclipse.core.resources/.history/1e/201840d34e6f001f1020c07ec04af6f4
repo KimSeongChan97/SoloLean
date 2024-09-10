@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commentSQL">
+
+    <!-- 댓글 추가 -->
+    <insert id="addComment" parameterType="board.bean.CommentDTO">
+        INSERT INTO comment (seq, boardSeq, writer, content, logtime)
+        VALUES (comment_seq.nextval, #{boardSeq}, #{writer}, #{content}, SYSDATE)
+    </insert>
+
+    <!-- 특정 게시글의 댓글 목록 가져오기 -->
+    <select id="getCommentsByBoardSeq" parameterType="int" resultType="board.bean.CommentDTO">
+    	SELECT * FROM comments WHERE boardSeq = #{boardSeq} ORDER BY comment_id DESC
+	</select>
+
+
+
+    <!-- 댓글 수정 -->
+    <update id="updateComment" parameterType="board.bean.CommentDTO">
+        UPDATE comment SET content=#{content}, logtime=SYSDATE WHERE seq=#{seq}
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comment WHERE seq = #{seq}
+    </delete>
+
+</mapper>
