@@ -1,0 +1,37 @@
+package user.service;
+
+import java.util.List; // List 인터페이스를 사용하기 위해 import
+
+import user.bean.UserDTO; // 사용자 정보를 담는 UserDTO 클래스를 사용하기 위해 import
+import user.dao.UserDAO; // 데이터베이스와의 상호작용을 위한 UserDAO 클래스를 사용하기 위해 import
+
+public class UserSelectService implements UserService {
+
+    @Override
+    public void execute() {
+    	System.out.println(); // 공백 출력. 화면 출력 시의 가독성을 위해 사용
+
+    	//DB
+    	UserDAO userDAO = UserDAO.getInstance(); 
+    	// 싱글톤 패턴을 통해 UserDAO 인스턴스를 가져옴
+    	// UserDAO는 데이터베이스와 상호작용하는 객체로, getAllList() 메소드를 통해 사용자 리스트를 가져옴
+    	
+    	List<UserDTO> list = userDAO.getAllList(); 
+    	// getAllList() 메소드는 데이터베이스에서 모든 사용자 정보를 조회하여 List<UserDTO>로 반환
+    	// List는 여러 개의 UserDTO 객체를 담는 자료구조로, 모든 사용자 정보를 담고 있음
+    	
+    	//응답
+    	for (UserDTO userDTO : list) {
+    	    // 향상된 for문을 사용하여 list에 담긴 모든 UserDTO 객체를 하나씩 꺼내옴
+    	    // 각 userDTO는 한 명의 사용자 정보를 담고 있음
+    		
+    		System.out.println(userDTO.getName() + "\t"
+    							+ userDTO.getId() + "\t"
+    							+ userDTO.getPwd());
+    		// 각 사용자의 이름, 아이디, 비밀번호를 탭으로 구분하여 출력
+    		// getName(), getId(), getPwd() 메소드를 통해 UserDTO 객체에서 해당 필드 값을 가져옴
+    		// 이렇게 하면 DB에 저장된 모든 사용자의 정보를 한 줄씩 출력할 수 있음
+    	}
+        
+    }
+}

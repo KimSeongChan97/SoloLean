@@ -1,0 +1,20 @@
+package user.service;
+
+import user.dao.UserDAO;
+
+public class UserUpdateService implements UserService {
+
+    @Override
+    public void execute() {
+    	System.out.println();
+    	
+    	Scanner scan = new Scanner(System.in);
+    	
+    	//DB
+    	UserDAO userDAO = UserDAO.getInstance(); 
+    	
+    	
+    	
+        
+    }
+}

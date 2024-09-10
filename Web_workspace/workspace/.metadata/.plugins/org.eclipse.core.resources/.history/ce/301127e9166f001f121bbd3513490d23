@@ -1,0 +1,19 @@
+package user.service;
+
+import user.dao.UserDAO;
+
+public class UserSelectService implements UserService {
+
+    @Override
+    public void execute() {
+    	System.out.println();
+    	
+    	//DB
+    	UserDAO userDAO = UserDAO.getInstance();
+    	userDAO.getAllList();
+    	
+    	
+    	
+        
+    }
+}

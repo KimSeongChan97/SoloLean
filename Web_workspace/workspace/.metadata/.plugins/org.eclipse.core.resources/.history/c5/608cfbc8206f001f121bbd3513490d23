@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSQL">
+    <!-- MyBatis 매퍼 파일입니다. 이 파일은 SQL 쿼리를 정의하고 Java 코드와 매핑하는 역할을 합니다.
+         namespace="userSQL": 이 매퍼 파일이 사용하는 네임스페이스를 'userSQL'로 지정합니다.
+         네임스페이스는 여러 매퍼 파일에서 같은 SQL ID를 사용하지 않도록 구분하는 역할을 합니다. -->
+	
+	<!-- 만약에 테이블의 컬럼과 객체의 필드명이 다른 경우 -->
+	<resultMap type="user.bean.UserDTO" id="userResult">
+		<result column="NAME" property="name" />
+		<result column="ID" property="id" />
+		<result column="PWD" property="pwd" />
+	</resultMap>
+	
+	
+    <!-- 이름으로 구분 -->
+    <!-- insert 태그: 데이터베이스에 새로운 데이터를 삽입하는 SQL 쿼리를 정의합니다. -->
+    <insert id="write" parameterType="user">
+        <!-- id="write": 이 insert 쿼리의 고유 식별자입니다. MyBatis는 이 식별자를 통해 Java 코드에서 이 SQL을 호출할 수 있습니다.
+             parameterType="user.bean.UserDTO": 이 쿼리에 전달될 파라미터 타입을 지정합니다. 'user.bean.UserDTO'는 Java 클래스이며, 이 클래스의 인스턴스가 파라미터로 전달됩니다.
+             이 클래스에는 'name', 'id', 'pwd' 같은 필드가 있을 것이며, 이 필드들이 SQL 쿼리에 맵핑됩니다. -->
+
+        <!-- insert into usertable values(?, ?, ?) -->
+        <!-- 주석에서 설명하는 바와 같이, 실제로는 '?' 자리에 파라미터 값이 들어가게 됩니다.
+             MyBatis는 '#{필드명}'을 통해 Java 객체의 필드 값을 SQL 쿼리에 바인딩합니다. -->
+
+        insert into usertable values(#{name}, #{id}, #{pwd})
+        <!-- SQL 쿼리: 'usertable'이라는 테이블에 데이터를 삽입하는 쿼리입니다.
+             #{name}, #{id}, #{pwd}는 MyBatis의 바인딩 표현식입니다. 
+             - #{name}: UserDTO 객체의 'name' 필드 값을 가져와 이 자리에 삽입합니다.
+             - #{id}: UserDTO 객체의 'id' 필드 값을 가져옵니다.
+             - #{pwd}: UserDTO 객체의 'pwd' 필드 값을 가져옵니다.
+             이를 통해 Java 코드에서 전달된 객체의 필드 값을 쿼리에 반영할 수 있습니다.
+             SQL 주입 공격을 방지하기 위해 MyBatis는 자동으로 이 값을 적절히 처리해 줍니다. -->
+    </insert>
+    
+    <!-- select 태그: DB에서 데이터를 조회하는 SQL 쿼리를 정의합니다. -->
+    <!-- <select id="getAllList" resultType="user"> -->
+    <select id="getAllList" resultMap="userResult">
+        <!-- id="getAllList": 이 select 쿼리의 고유 식별자입니다. MyBatis는 이 식별자를 통해 Java 코드에서 이 SQL을 호출할 수 있습니다.
+             resultType="user.bean.UserDTO": 이 쿼리의 결과로 반환되는 각 행의 데이터를 UserDTO 객체에 매핑합니다.
+             resultType은 SQL 쿼리 결과가 매핑될 Java 클래스 타입을 지정합니다. -->
+        select * from usertable
+        <!-- SQL 쿼리: 'usertable'에서 모든 데이터를 선택하여 조회하는 쿼리입니다.
+             '*'는 테이블의 모든 열을 의미하며, 결과는 각 행이 UserDTO 객체로 매핑됩니다.
+             이 쿼리는 usertable에 저장된 모든 사용자 정보를 반환하게 됩니다. -->
+    </select>
+    
+    <select id="getUser" parameterType="String" resultMap="userResult">
+    	select * from usertable where id = #{id}
+    </select>
+    
+    <update id="updateUser" parameterType="user">
+    	update usertable
+    	set name = #{name}, pwd = #{pwd}
+    	where = #{id}
+    </update>
+
+    
+</mapper>
