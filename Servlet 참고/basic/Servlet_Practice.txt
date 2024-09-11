@@ -91,3 +91,5 @@ public class HelloServlet extends HttpServlet {
 // 이 파일은 Tomcat 설치 디렉토리의 `lib` 폴더에 있으며, 이를 CLASSPATH 환경 변수에 추가해야 합니다.
 // 환경 변수 설정 예시:
 // CLASSPATH=C:\Tomcat 9.0\lib\servlet-api.jar
+
+// http://localhost:8080/Context명(Project명)/파일

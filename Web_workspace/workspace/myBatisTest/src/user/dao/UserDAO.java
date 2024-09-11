@@ -202,40 +202,28 @@ public class UserDAO {
 	}
 	
 	// 검색 메소드 추가
-	public List<UserDTO> search(String column, String value) {
+	public List<UserDTO> search(Map<String, String> map) {
 	    SqlSession sqlSession = sqlSessionFactory.openSession(); // SQL 세션 생성
 	    // SQL 세션을 생성하여 검색 작업을 수행할 준비를 함.
 	    // SqlSession은 데이터베이스와의 연결을 관리하며, SQL 쿼리 실행, 트랜잭션 관리 등을 담당합니다.
 	    // openSession() 메소드는 새로운 세션을 열어줍니다. 이 세션을 통해 SQL 명령을 실행할 수 있습니다.
 
-	    Map<String, String> paramMap = new HashMap<>();
-	    paramMap.put("column", column);  // 검색할 컬럼 (name 또는 id)
-	    paramMap.put("value", value);    // 검색할 값
-	    // 컬럼명과 검색할 값을 paramMap에 담아 MyBatis로 전달합니다.
-	    // paramMap은 MyBatis 쿼리에 전달되는 파라미터를 키-값 형태로 저장하는 Map입니다.
-	    // 'column' 키에는 검색할 컬럼명('name' 또는 'id')이 들어가고,
-	    // 'value' 키에는 검색할 값(예: '홍' 또는 'n')이 들어갑니다.
-	    // 이를 통해 특정 조건에 따라 데이터를 검색할 수 있게 됩니다.
-
-	    List<UserDTO> userList = sqlSession.selectList("userSQL.search", paramMap);
-	    // 매퍼 파일의 search 쿼리를 호출하여 검색 조건에 맞는 사용자 목록을 조회합니다.
-	    // selectList() 메소드는 여러 개의 결과를 리스트로 반환하며, 매퍼에서 검색 조건에 맞는 사용자 목록을 가져옵니다.
-	    // 첫 번째 파라미터인 "userSQL.search"는 매퍼 파일에서 정의된 SQL 쿼리 ID입니다.
-	    // 두 번째 파라미터인 paramMap은 쿼리에 전달할 파라미터로, 컬럼명과 검색할 값이 담긴 Map 객체입니다.
-	    // 이 메소드는 검색된 결과(여러 사용자의 정보)를 List<UserDTO>로 반환합니다.
-	    // MyBatis는 SQL 쿼리 결과를 자동으로 UserDTO 객체에 매핑하고, 리스트로 반환합니다.
+	    List<UserDTO> list = sqlSession.selectList("userSQL.search", map);
+	    // 매퍼 파일에 정의된 "userSQL.search" SQL 쿼리를 실행하여 검색 조건에 맞는 사용자 목록을 조회
+	    // selectList() 메소드는 여러 개의 결과를 리스트로 반환하며, 결과를 List<UserDTO>로 반환
 
 	    sqlSession.close(); // 세션을 닫아 자원을 해제함.
 	    // 세션을 사용한 후 반드시 close()를 호출하여 세션을 닫고 자원을 해제해야 합니다.
 	    // 세션을 닫지 않으면 데이터베이스 연결이 계속 유지되어 자원 낭비가 발생할 수 있습니다.
 	    // 자원 관리는 시스템 성능에 중요한 역할을 하므로, 모든 세션 작업이 끝난 후 세션을 적절히 닫는 것이 중요합니다.
 
-	    return userList;
+	    return list;
 	    // 검색 결과인 사용자 리스트를 반환합니다.
 	    // 반환된 List<UserDTO>는 호출한 메소드에서 검색 결과를 사용할 수 있도록 전달됩니다.
 	    // 여기서 반환된 리스트에는 검색된 모든 사용자 정보가 UserDTO 객체 형태로 저장되어 있습니다.
 	    // 검색 결과가 없으면 빈 리스트가 반환되며, 검색된 데이터가 있을 경우 그 데이터를 포함한 리스트가 반환됩니다.
 	}
+
 
 	
 } // UserDAO 클래스 종료

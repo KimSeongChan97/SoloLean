@@ -62,8 +62,7 @@ public class UserMain {
             
         } // while 문 끝, 사용자가 '6'을 입력하면 무한 루프가 종료되고 메뉴가 더 이상 반복되지 않음
         
-        scan.close(); // 사용이 끝난 Scanner 객체는 반드시 닫아주어야 함 (자원 해제)
+        
     }
-
 
 }

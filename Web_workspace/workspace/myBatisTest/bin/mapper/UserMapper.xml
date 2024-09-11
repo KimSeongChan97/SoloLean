@@ -144,22 +144,55 @@
     <!-- search 쿼리: 동적으로 이름 또는 아이디로 검색 -->
     <select id="search" parameterType="map" resultMap="userResult">
         <!-- id="search": 이 쿼리의 고유 식별자입니다. Java 코드에서 이 SQL을 호출할 때 사용됩니다.
-             parameterType="map": 이 쿼리에서 전달될 파라미터 타입을 Map으로 지정합니다. Map은 'column'과 'value'라는 키-값 쌍을 통해 검색할 조건을 동적으로 전달합니다.
-             예를 들어, 'column'에는 'name' 또는 'id'가 들어가고, 'value'에는 사용자가 입력한 검색어가 들어갑니다.
+             parameterType="map": 이 쿼리에서 전달될 파라미터 타입을 Map으로 지정합니다. Map은 'columnName'과 'value'라는 키-값 쌍을 통해 검색할 조건을 동적으로 전달합니다.
+             여기서 'columnName'에는 'name' 또는 'id'가 들어가고, 'value'에는 사용자가 입력한 검색어가 들어갑니다.
+             
+             예를 들어, columnName에 'name'이 들어가면 이름으로 검색하고, 'id'가 들어가면 아이디로 검색하는 방식입니다.
              
              resultMap="userResult": 쿼리 결과는 'userResult'라는 resultMap에 따라 UserDTO 객체로 매핑됩니다.
-             resultMap을 사용하여 결과를 Java 객체로 매핑하는 방식은 동일합니다. 여기서는 사용자 정보를 UserDTO 객체로 변환합니다. -->
+             resultMap을 사용하여 결과를 Java 객체로 매핑하는 방식은, SQL 결과를 UserDTO 객체의 필드에 맞게 자동으로 매핑해줍니다.
+             여기서 userResult는 resultMap 정의에서 만들어진 매핑 규칙을 의미하며, 결과를 UserDTO 객체로 변환해주는 역할을 합니다. -->
+             
+             <!--
+ 			select * from usertable where
+ 			<if test="columnName == 'name'">
+ 				name like '% || #{value} || %'
+ 			</if>
+ 			<if test="value == 'id'">
+ 				id like '% || #{value} || %'
+ 			</if>
+ 			 -->
+ 			 <!-- 주석된 부분은 사용자가 입력한 'columnName' 값에 따라 조건을 나누어 처리하는 방식입니다.
+ 			      <if> 태그를 사용하여 특정 조건에 맞는 SQL 쿼리를 동적으로 구성할 수 있습니다. 
+ 			      첫 번째 <if>는 'columnName'이 'name'일 때 이름으로 검색하고, 두 번째 <if>는 'id'일 때 아이디로 검색하는 구조입니다. 
+ 			      하지만 이 코드는 <if> 문을 중복 사용하여 조건을 처리하므로, 이를 대체할 수 있는 <choose> 태그가 더 적합할 수 있습니다. -->
+				 
+ 			<!-- 	 	
+ 			select * from usertable where
+ 			<choose>
+ 				<when test="columnName == 'name'">
+ 					name like '% || #{value} || %'
+ 				</when>
+ 				<when test="columnName == 'id'">
+ 					id like '% || #{value} || %'
+ 				</when>
+ 			</choose>	 
+ 			 -->
+ 			 <!-- <choose> 태그는 여러 조건 중 하나만 선택할 수 있는 구조로, 
+ 			      <when>은 조건이 true일 때 해당 SQL을 실행하고, <otherwise>는 모든 조건이 false일 때 실행됩니다.
+ 			      여기서 사용된 <choose>는 'columnName'이 'name'인 경우와 'id'인 경우에 따라 SQL 쿼리를 다르게 실행하는 방식입니다.
+ 			      'columnName'이 'name'이면 이름을, 'id'면 아이디로 검색하는 구조로, 여러 조건이 있을 때 깔끔하게 처리할 수 있습니다. -->
 
-        SELECT * FROM usertable
-        WHERE ${column} LIKE '%' || #{value} || '%'
-        <!-- SQL 쿼리: 'usertable'에서 특정 조건에 맞는 사용자 정보를 조회하는 동적 쿼리입니다.
-             ${column}: 동적으로 선택된 컬럼을 의미하며, 'name' 또는 'id'가 될 수 있습니다.
-             LIKE '%' || #{value} || '%': 사용자가 입력한 값(value)이 포함된 레코드를 검색하는 구문입니다. '%'는 와일드카드로, 특정 값이 포함된 데이터를 검색할 수 있습니다.
-             
-             이 쿼리는 'column' 값이 'name' 또는 'id'가 될 수 있으며, 사용자가 입력한 검색어가 포함된 데이터를 조회합니다.
-             예를 들어, '홍'이 포함된 이름이나 'n'이 포함된 아이디를 검색할 수 있습니다.
-             
-             동적 쿼리를 사용하면 하나의 SQL 쿼리로 여러 조건을 처리할 수 있습니다. 'column' 값에 따라 이름 또는 아이디로 검색할 수 있습니다. -->
+			select * from usertable where ${columnName} like '%' || #{value} || '%'
+			<!-- 최종적으로 선택된 쿼리는 ${columnName}을 직접 SQL에 삽입하여 검색하는 방식입니다.
+			     ${columnName}은 사용자가 동적으로 전달한 값으로, 여기서는 'name' 또는 'id' 값이 들어갑니다. 
+			     이를 통해 해당 컬럼을 기준으로 사용자가 입력한 'value' 값을 SQL에서 검색합니다. 
+			     '%' || #{value} || '%'는 SQL에서 부분 일치를 위한 패턴으로, 사용자가 입력한 값을 포함하는 모든 결과를 찾습니다.
+			     여기서 '%'는 SQL 와일드카드로, 앞뒤에 어떤 문자든 포함될 수 있음을 의미합니다.
+			     || 연산자는 문자열을 연결하는 역할을 합니다. SQL에서는 두 문자열을 이어 붙이는 데 사용되며, 이 경우 검색어 앞뒤로 '%'를 붙여 부분 검색을 수행합니다.
+			     동적 SQL 구문을 통해 조건을 쉽게 변경할 수 있으므로, 동일한 로직을 여러 조건에 맞춰 재사용할 수 있습니다. -->
+			
+				  
     </select>
-    
+        
 </mapper>
