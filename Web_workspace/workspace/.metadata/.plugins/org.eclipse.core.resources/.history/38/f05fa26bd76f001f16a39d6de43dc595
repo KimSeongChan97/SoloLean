@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="projectMyBatis_Solv">
+        <property name="context-root" value="projectMyBatis_Solv"/>
+    </wb-module>
+</project-modules>

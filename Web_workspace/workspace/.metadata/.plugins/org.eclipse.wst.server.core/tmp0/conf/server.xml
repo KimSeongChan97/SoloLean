@@ -165,7 +165,7 @@
       <Context docBase="D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\projectMyBatis" path="/projectJSP" reloadable="true" source="org.eclipse.jst.jee.server:projectMyBatis">
 			
 	<Resource driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="3" name="jdbc/oracle" password="1234" removeAbandoned="true" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="c##java"/>		
-</Context></Host>
+</Context><Context docBase="D:\Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\projectMyBatis_Solv" path="/projectMyBatis" reloadable="true" source="org.eclipse.jst.jee.server:projectMyBatis_Solv"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -3,12 +3,21 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
+	
 	<!-- 아이디 중복 체크 -->
+	<!-- 'isExistId'는 특정 아이디가 데이터베이스에 이미 존재하는지 확인하는 SQL 쿼리다. 
+	     'parameterType="String"'은 쿼리에 전달되는 파라미터가 문자열(id)이라는 것을 의미한다.
+	     'resultType="member.bean.MemberDTO"'는 쿼리 결과를 MemberDTO 객체로 반환할 것을 명시한다.
+	     이 쿼리는 'member' 테이블에서 id 컬럼이 입력받은 값과 일치하는 행을 조회한다. -->
 	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
 		select * from member where id=#{id}
+		<!-- #{id}는 MyBatis에서 사용자가 전달한 id 값이 이 위치에 바인딩되는 것을 의미 -->
 	</select>
 	
 	<!-- 회원가입 -->
+	<!-- 'write'는 회원가입 시 사용되는 SQL 쿼리로, 'member' 테이블에 새로운 회원 정보를 삽입한다.
+	     'parameterType="member"'는 전달된 파라미터가 'member'라는 객체로 여러 필드를 갖고 있음을 의미한다.
+	     MyBatis는 이 객체를 통해 데이터베이스의 컬럼과 객체의 필드를 매핑하여 삽입 작업을 수행한다. -->
 	<insert id="write" parameterType="member">
 		INSERT INTO member(name
 						 , id
@@ -36,19 +45,33 @@
         				 , #{addr1}
         				 , #{addr2}
         				 , SYSDATE)
+        				 <!-- SYSDATE는 현재 날짜와 시간을 자동으로 입력하는 Oracle의 함수 -->
 	</insert>
 	
 	<!-- 로그인 -->
+	<!-- 'login'은 로그인 시 아이디와 비밀번호가 일치하는 회원을 찾는 쿼리다.
+	     'parameterType="java.util.Map"'은 여러 파라미터(id와 pwd)를 전달할 때 Map으로 묶어서 전달한다는 의미다.
+	     'resultType="member"'는 조회된 결과가 'member' 객체로 반환됨을 의미한다.
+	     이 쿼리는 'id'와 'pwd'가 모두 일치하는 회원의 정보를 조회한다. -->
 	<select id="login" parameterType="java.util.Map" resultType="member">
 		select * from member where id=#{id} and pwd=#{pwd}
+		<!-- #{id}와 #{pwd}는 Map에서 전달된 값이 각각 바인딩된다. -->
 	</select>
 	
 	<!-- id에 해당하는 정보 가져오기 -->
+	<!-- 'getMember'는 특정 아이디에 해당하는 회원 정보를 조회하는 쿼리다.
+	     'parameterType="String"'은 이 쿼리가 하나의 문자열 파라미터(id)를 받는다는 것을 의미한다.
+	     'resultType="member"'는 반환된 결과가 'member' 객체로 반환됨을 의미한다. -->
 	<select id="getMember" parameterType="String" resultType="member">
 		select * from member where id=#{id}
+		<!-- id 값으로 검색된 회원 정보를 반환한다. -->
 	</select>
 	
 	<!-- 회원정보수정 -->
+	<!-- 'update'는 회원 정보 수정 시 사용되는 SQL 쿼리다.
+	     'parameterType="member"'는 여러 필드를 가진 'member' 객체가 전달됨을 의미하며,
+	     이 객체는 회원 정보를 수정하는 데 필요한 데이터를 포함하고 있다.
+	     수정된 회원 정보는 'member' 테이블에서 특정 'id'에 해당하는 행에 업데이트된다. -->
 	<update id="update" parameterType="member">
 		update member set name = #{name}
 			            , pwd = #{pwd}
@@ -61,10 +84,12 @@
 			            , zipcode = #{zipcode}
 			            , addr1 = #{addr1}
 			            , addr2 = #{addr2}
-			            , logtime = sysdate where id = #{id}
+			            , logtime = sysdate 
+			            <!-- logtime은 업데이트가 발생한 현재 시간을 기록 -->
+			            where id = #{id}
+			            <!-- 특정 'id'에 해당하는 행을 찾아서 업데이트한다. -->
 	</update>
 </mapper>
-
 
 
 
