@@ -47,6 +47,8 @@
         // 'currentPage'와 'postsPerPage'를 매개변수로 하여, 해당 페이지에 맞는 게시글만 불러옵니다.
         BoardDAO boardDAO = BoardDAO.getInstance();
         List<BoardDTO> boardList = boardDAO.getBoardListByPage(currentPage, postsPerPage);
+        
+        
     %>
 
     <!-- 게시글 목록을 보여주는 테이블입니다. 테이블은 100% 너비로 설정되며, 각 게시글의 정보가 행(row) 단위로 표시됩니다. -->

@@ -42,6 +42,20 @@ public class BoardDAO {
         }
         return totalPosts;
     }
+    
+ // 게시글 목록을 가져오는 메서드 - 모든 게시글을 가져와 목록으로 반환
+    public List<BoardDTO> getBoardList() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<BoardDTO> boardList = null;
+        try {
+            // MyBatis 매핑 파일의 boardSQL.getBoardList 쿼리를 실행합니다.
+            boardList = sqlSession.selectList("boardSQL.getBoardList");
+        } finally {
+            sqlSession.close();  // 세션을 닫습니다.
+        }
+        return boardList;  // 게시글 목록을 반환합니다.
+    }
+
 
     // 페이징 처리된 게시글 목록 가져오기
     public List<BoardDTO> getBoardListByPage(int startNum, int endNum) {

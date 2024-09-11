@@ -27,7 +27,7 @@
                                
     <%} %>     
     
-    	<h3><a href="/projectJSP/board/boardList.jsp?pg=1">외부에서 보는 목록</a></h3>
+    	<h3><a href="/projectJSP/board/boardList.jsp?pg=1">외부목록</a></h3>
     </div>
     
     <br/>
