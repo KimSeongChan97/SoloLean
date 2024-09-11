@@ -1,0 +1,114 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSTL TEST</title>
+<style type="text/css">
+
+body {
+	background-color: #0d0d0d;
+	color: #00ffcc;
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+	
+	<h3>*** 변수 설정 ***</h3>
+	
+	<!-- 자료형이 아님. -->
+	<!-- String name 의 역할 -->
+	<%-- 
+		- JSTL의 <c:set> 태그는 자바 코드에서 변수를 선언하고 값을 할당하는 역할을 대신합니다.
+		- "var" 속성으로 변수명을 정의하고, "value" 속성으로 그 변수에 할당할 값을 설정합니다.
+		- 여기서 'name'이라는 변수를 선언하고, 그 값으로 "홍길동"을 할당합니다.
+		- 이 변수는 JSP 페이지 내에서 EL(Expression Language)을 통해 사용할 수 있습니다.
+	--%>
+	<c:set var="name" value="홍길동" />
+	<c:set var="age">25</c:set>
+	<%-- 
+		- 'age'라는 변수를 선언하고 25라는 값을 할당합니다.
+		- 이 경우 value 속성을 사용하지 않고 태그 본문에 직접 값을 지정했습니다.
+	--%>
+	
+	나의 이름은 ${name } 입니다. <br/>
+	<%-- 
+		- EL(Expression Language)을 사용해 'name' 변수의 값을 출력합니다.
+		- ${name}은 위에서 설정한 "홍길동"이라는 값을 가져와 출력합니다.
+		- EL은 자바 코드 없이도 간단하게 변수를 출력할 수 있는 JSP 표현식입니다.
+	--%>
+	
+	내 나이는 <c:out value="${age}"/>살 입니다. <br/>
+	<%-- 
+		- <c:out> 태그는 변수를 출력하는 데 사용됩니다. 
+		- EL로 출력하는 것과 기능적으로는 동일하지만, <c:out>은 태그로 변수를 출력하는 방식입니다.
+		- "${age}"는 위에서 설정한 25라는 값을 출력합니다.
+	--%>
+	
+	나의 키는 ${height }cm 입니다. <br/>
+	<!-- 변수를 잡은 적이 없다면 그냥 없이 나온다. -->
+	<%-- 
+		- 'height'라는 변수는 설정된 적이 없으므로, 빈 값으로 출력됩니다.
+		- JSTL과 EL을 사용할 때, 정의되지 않은 변수는 오류 없이 그냥 빈 값으로 출력됩니다.
+	--%>
+	
+	<h3>*** forEach ***</h3>
+	<!-- for문 대신 forEach를 사용한다. -->
+	<%-- 
+		- JSTL의 <c:forEach> 태그는 자바의 for문과 같은 기능을 합니다.
+		- "begin"은 반복을 시작할 값, "end"는 끝나는 값, "step"은 증가값을 의미합니다.
+		- 이 코드는 i가 1부터 시작해 10까지 1씩 증가하는 반복문을 실행합니다. 
+		- for(int i=1; i<=10; i++)와 같은 역할을 합니다.
+		- var 속성으로 현재 반복되는 값을 저장할 변수를 정의합니다.
+	--%>
+	<c:forEach var="i" begin="1" end="10" step="1"> <%-- for(int i=1; i<=10 i++) 과 같다. --%>
+		${i } &emsp;
+		<%-- 
+			- ${i}는 현재 반복 중인 i 값을 출력합니다.
+			- 반복이 1에서 10까지 진행되므로 1부터 10까지의 숫자가 차례대로 출력됩니다.
+			- &emsp;는 HTML 엔티티로, 텍스트 사이에 공백을 삽입하는 역할을 합니다.
+		--%>
+			<%-- 
+				- 'sum'이라는 변수를 선언하고, 그 값을 0으로 초기화합니다.
+				- 이 변수는 반복문 안에서 1부터 10까지의 값을 누적하는 데 사용됩니다.
+			--%>
+		<c:set var="sum" value="${sum + i }" /> <%-- 현재 합계에 i값을 더해서 sum 변수에 저장 --%>
+	</c:forEach>
+	<!-- 출력 -->
+	<br/>
+	1 ~ 10 까지의 합 = ${sum }
+	<%-- 
+		- 반복이 끝난 후, 최종적으로 계산된 sum의 값을 출력합니다.
+		- 이 값은 1부터 10까지의 합인 55가 됩니다.
+		- i는 현재 반복 중인 값입니다.
+		- ${sum + i}는 이전까지의 합계인 sum에 현재 값 i를 더한 결과입니다.
+		- 이 값을 다시 sum에 저장하여 누적합을 계산합니다.
+		- 첫 번째 반복에서는 sum = 0 + 1, 두 번째 반복에서는 sum = 1 + 2, ... 마지막에는 sum = 45 + 10 = 55가 됩니다.
+		
+	--%>
+	<br><br>
+	
+	10 ~ 1 까지 나열하기 
+	<c:forEach var="i" begin="1" end="10" step="1">
+		
+		${11-i } &emsp;
+	</c:forEach>	
+	<%-- (step 은 0보다 무조건 커야하고 같으면 안된다.) --%>
+	<br><br>
+	
+	<h3>*** forToken ***</h3>
+	StringTokeninzer or String의 split() -> 분리
+	<br>
+	<c:forTokens var="car" items="소나타,아우디,페라리,벤츠,링컨" delims=",">
+		${car } <br>
+	</c:forTokens>
+	
+	
+	
+	
+</body>
+</html>

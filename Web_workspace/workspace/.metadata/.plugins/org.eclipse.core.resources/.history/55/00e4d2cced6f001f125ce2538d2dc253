@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL 테스트 페이지1</title>
+</head>
+<body>
+	
+	<table border="1" width="50%"  >
+		<tr>
+			<th width="50%">표현식</th>
+			<th>값</th>
+		</tr>
+		
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+		</tr>
+		
+	</table>
+</body>
+</html>
+
+
+<%-- 
+
+EL / JSTL -> <% %> <%= %> 사용하면 안된다.
+		  -> 자바와 웹 분리	
+
+--%>

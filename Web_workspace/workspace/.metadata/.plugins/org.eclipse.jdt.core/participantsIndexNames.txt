@@ -7,6 +7,8 @@ D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\194299450
 \projectJSP_Solv\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2437787863.index
 \projectJSP\src\main\java
+D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\437848262.index
+\EL_JSTL\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3321051697.index
 \projectMyBatis_Solv\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1529140982.index
@@ -37,6 +39,8 @@ D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\153317112
 \jQueryAJax\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3471502279.index
 \projectJSP\src\main\java
+D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3209071356.index
+\EL_JSTL\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\640361671.index
 \projectJSP\src\main\java
 D:\Web\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1573763570.index

@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL 테스트 페이지1</title>
+</head>
+<body>
+	
+	<table border="1">
+		<tr>
+			<th>
+				
+			</th>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+<%-- 
+
+EL / JSTL -> <% %> <%= %> 사용하면 안된다.
+		  -> 자바와 웹 분리	
+
+--%>

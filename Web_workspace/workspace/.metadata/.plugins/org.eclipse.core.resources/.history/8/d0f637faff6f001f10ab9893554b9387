@@ -1,0 +1,14 @@
+package com.el;
+
+public class Compute {
+	// 메서드 이름은 sum 이고, 2개의 파라메터(문자열)를 받아서 합을 리턴하는 메서드 이다.
+	
+	public static int sum(String x, String y) {
+		
+		
+		
+		return Integer.parseInt(x) + Integer.parseInt(y);
+			
+	}
+	
+}
