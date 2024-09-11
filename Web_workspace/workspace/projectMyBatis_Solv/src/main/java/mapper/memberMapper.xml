@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberSQL">
+	<!-- 아이디 중복 체크 -->
+	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
+		select * from member where id=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="write" parameterType="member">
+		INSERT INTO member(name
+						 , id
+						 , pwd
+						 , gender
+						 , email1
+						 , email2
+						 , tel1
+						 , tel2
+						 , tel3
+						 , zipcode
+						 , addr1
+						 , addr2
+						 , logtime)
+        			VALUES(#{name}
+        				 , #{id}
+        				 , #{pwd}
+        				 , #{gender}
+        				 , #{email1}
+        				 , #{email2}
+        				 , #{tel1}
+        				 , #{tel2}
+        				 , #{tel3}
+        				 , #{zipcode}
+        				 , #{addr1}
+        				 , #{addr2}
+        				 , SYSDATE)
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="java.util.Map" resultType="member">
+		select * from member where id=#{id} and pwd=#{pwd}
+	</select>
+	
+	<!-- id에 해당하는 정보 가져오기 -->
+	<select id="getMember" parameterType="String" resultType="member">
+		select * from member where id=#{id}
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="update" parameterType="member">
+		update member set name = #{name}
+			            , pwd = #{pwd}
+			            , gender = #{gender}
+			            , email1 = #{email1}
+			            , email2 = #{email2}
+			            , tel1 = #{tel1}
+			            , tel2 = #{tel2}
+			            , tel3 = #{tel3}
+			            , zipcode = #{zipcode}
+			            , addr1 = #{addr1}
+			            , addr2 = #{addr2}
+			            , logtime = sysdate where id = #{id}
+	</update>
+</mapper>
+
+
+
+
+
+
+
