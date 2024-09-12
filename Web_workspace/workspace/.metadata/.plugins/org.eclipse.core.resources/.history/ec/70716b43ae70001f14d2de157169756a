@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
+<%
+	//자바 역활
+	List<String> list = new ArrayList<String>();
+	list.add("호랑이");
+	list.add("사자");
+	list.add("기린");
+	list.add("코끼리");
+	list.add("타조");
+	list.add("코알라");
+	list.add("여우");	
+	
+	//submit, button를 통해서는 객체를 넘길 수 없다.
+	
+%>    

@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<style type="text/css">
+
+body {
+	background-color: #0d0d0d;
+	color: #00ffcc;
+	
+}
+
+</style>
+</head>
+<body>
+
+	<h3>*** include directive ***</h3> 
+	
+	<%@ include %>
+	
+	<jsp:include page="today.jsp" />
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<style type="text/css">
+
+body {
+	background-color: #0d0d0d;
+	color: #00ffcc;
+}
+
+
+
+</style>
+</head>
+<body>
+
+	<h3>*** include directive ***</h3> 
+	
+	<%@ include file="today.jsp" %>
+	<!-- include directive를 사용하여 'today.jsp' 파일을 현재 JSP 페이지에 포함시킵니다.
+     이 방식은 컴파일 시에 포함되기 때문에, JSP 파일이 요청될 때 해당 파일의 내용을 미리 합쳐서 하나의 JSP로 처리합니다.
+     정적 페이지(자주 변경되지 않는 페이지)에 적합한 방식입니다. 
+     include directive는 페이지가 로드될 때마다 별도의 요청 없이 해당 파일의 내용을 불러옵니다. -->
+
+	<jsp:include page="today.jsp" />
+	<!-- 이 방식은 <jsp:include> 액션 태그를 사용하여 'today.jsp' 파일을 동적으로 포함합니다.
+     페이지가 요청될 때마다 'today.jsp' 파일을 별도로 요청하고, 그 결과를 현재 페이지에 포함시킵니다.
+     동적 페이지(변경이 자주 일어나는 페이지)에 적합한 방식입니다. 
+     또한, 이 방식은 요청 시점에 파일을 포함시키므로, 더 자주 업데이트되는 파일을 로드할 때 유용합니다. -->
+
+</body>
+</html>

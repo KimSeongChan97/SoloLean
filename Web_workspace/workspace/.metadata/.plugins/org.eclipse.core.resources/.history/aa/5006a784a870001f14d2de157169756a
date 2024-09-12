@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+</head>
+<body>
+
+	<h3>*** include directive ***</h3> 
+	
+	<%@ include file="today.jsp" %>
+	<%-- 
+	 	include directive를 사용하여 'today.jsp' 파일을 현재 JSP 페이지에 포함시킵니다.
+		컴파일 시점에 포함되어 최종 JSP 파일이 하나로 처리됩니다. 이 방식은 주로 정적인 콘텐츠(변화가 자주 없고 고정적인 콘텐츠)에 적합합니다.
+		즉, 페이지가 로드될 때마다 별도의 요청을 하지 않고, 페이지가 컴파일될 때 미리 포함되므로 성능상 이점이 있을 수 있습니다.
+		현재 페이지의 HTML에 'today.jsp' 파일의 내용을 포함시킨다고 볼 수 있습니다.
+		여기서는 날짜와 관련된 정보를 'today.jsp'에서 처리할 수 있습니다.
+      --%>
+	<br/>
+	
+	<h2>*** include JSP tag ***</h2>
+	
+	<jsp:include page="image.jsp"/>
+	<%-- 
+	 	<jsp:include> 액션 태그를 사용하여 'image.jsp' 파일을 동적으로 포함시킵니다.
+		이 방식은 요청 시점에 포함된 파일을 별도로 처리하고, 그 결과를 현재 JSP에 포함시킵니다.
+		이렇게 동적으로 파일을 포함하는 방식은 자주 변경되는 콘텐츠에 적합하며, 요청마다 새로운 데이터를 받아서 처리할 때 유용합니다.
+		여기서는 'image.jsp'가 동적으로 불러와져 이미지와 관련된 내용을 표시할 수 있습니다.
+      --%>
+     
+     <%
+     	String name = "홍길동";
+     %>
+     
+     <h3>main.jsp name = <%=name %></h3>
+     
+     
+     <% response.setHeader("Refresh", "3;url=https://www.naver.com"); %>
+     <%-- 3; 은 3초를 의미 --%>
+		
+	
+	
+</body>
+</html>

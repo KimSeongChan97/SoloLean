@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<font color="red" >
+		<b>
+			start.jsp - sendProc.jsp - sendResult.jsp 페이지 이동합니다 <br>
+			sendRedirect 로 이동하므로 데이터는 공유하지 않습니다. <br>
+			주소는 sendResult.jsp가 보인다. <br>
+		</b>
+	</font>
+	<br>
+	<%--
+		이 부분은 HTML에서 글자 색상을 빨간색으로 설정하고, 굵게 표시하는 태그들입니다.
+		여기서는 sendRedirect를 통해 `start.jsp`에서 `sendProc.jsp`를 거쳐 `sendResult.jsp`로 이동하는 흐름을 설명하고 있습니다.
+		- sendRedirect: 클라이언트 측에서 새로운 요청을 보내어 페이지를 이동하는 방식입니다. 이전 요청과는 무관한 새로운 요청이 발생하며, 데이터는 공유되지 않습니다.
+		- 주소 표시줄에는 최종 목적지인 `sendResult.jsp`의 주소가 보입니다.
+	 --%>
+	 
+	<font color="blue" >
+		<b>
+			start.jsp - forwardProc.jsp - forwardResult.jsp 페이지 이동합니다 <br>
+			forward 로 이동하므로 데이터는 공유됩니다. <br>
+			주소는 forwardProc.jsp으로 보이지만 결과는 forwardResult.jsp 가 나온다. <br>
+		</b>
+	</font>
+	<br>
+	<%--
+		이 부분은 HTML에서 글자 색상을 파란색으로 설정하고, 굵게 표시하는 태그입니다.
+		여기서는 forward를 통해 `start.jsp`에서 `forwardProc.jsp`를 거쳐 `forwardResult.jsp`로 이동하는 흐름을 설명하고 있습니다.
+		- forward: 서버 측에서 클라이언트 요청을 다른 JSP나 서블릿으로 전달하는 방식입니다. 이전 요청과 데이터를 유지하며, 같은 요청 안에서 처리가 이루어집니다.
+		- 주소 표시줄에는 `forwardProc.jsp`의 주소가 보이지만, 실제 화면은 `forwardResult.jsp`에서 처리된 결과를 보여줍니다. 
+		이는 클라이언트가 `forwardResult.jsp`로 이동한 것이 아닌, 서버 내부에서 해당 페이지로 처리가 위임된 것입니다.
+	
+	 --%>
+	
+	<input type="button" value="sendRedirect" onclick="location.href='sendProc.jsp'">
+	<%--
+		이 버튼은 HTML `<input>` 요소로, 클릭 시 `sendProc.jsp`로 이동합니다.
+		`location.href`는 자바스크립트를 통해 페이지를 이동시키는 기능을 제공합니다.
+		클릭하면 페이지가 `sendProc.jsp`로 리디렉트되며, 최종적으로 sendRedirect 방식으로 페이지가 이동됩니다.
+	 --%>
+	<input type="button" value="forward" onclick="location.href='forwardProc.jsp'">
+	<%--
+		이 버튼 역시 HTML `<input>` 요소로, 클릭 시 `forwardProc.jsp`로 이동합니다.
+		`location.href`는 자바스크립트로 페이지 이동을 제어하는 속성입니다.
+		클릭 시 페이지는 forwardProc.jsp로 이동하게 되며, forward 방식으로 페이지가 전환됩니다.
+	 --%>
+
+	 
+</body>
+</html>

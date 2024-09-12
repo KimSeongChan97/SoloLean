@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+    request.setAttribute("apple", "사과");
+    // request scope에 "apple"이라는 속성 이름으로 "사과" 값을 저장합니다.
+    // 이 데이터는 동일한 요청 내에서 다른 JSP 페이지로 전달될 수 있습니다.
+%>    
+
+<%-- <jsp:forward page="forwardResult.jsp"/> --%>
+<!-- 
+    forward를 사용하여 "forwardResult.jsp" 페이지로 요청을 전달합니다.
+    forward는 서버 내부에서 처리되는 방식으로, 클라이언트는 이를 알지 못합니다.
+    request scope에 설정된 데이터가 forward된 페이지에서도 유지됩니다.
+ -->

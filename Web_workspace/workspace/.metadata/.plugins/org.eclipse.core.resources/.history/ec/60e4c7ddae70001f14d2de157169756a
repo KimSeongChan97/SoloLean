@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sendRedirectEnd</title>
+</head>
+<body>
+
+<%
+	// 자바로 받는다면
+	request.getAttribute("list");
+%>
+
+<!-- request 로 정보를 담아오므로 -->
+결과는 = ${requestScope.list }
+
+
+</body>
+</html>
