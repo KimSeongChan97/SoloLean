@@ -34,5 +34,42 @@ JSTL ( JSP Standard Tag Library )
 
 Spring
 --
+body {
+	background-color: #0d0d0d;
+	color: #00ffcc;
+	text-align: center;
+	margin-top: 60px;
+}
+--
+아이디 입력 값 없을 때 아이디를 입력하세요 를 div 로 표시
+아이디 중복체크는 focusout 이벤트로 처리(유효성 검사)
+-> focusout 이벤트를 걸고 만약 값이 없다면 "먼저 아이디를 입력" 을 표시
+(alert 창이 아닌 idDiv 에 표시)
+사용가능 / 사용 불가능 ( 사용가능은 blue color , 사용 불가능은 red color )
+http://localhost:8080/memberMVC/member/chekId.do
 
+$.ajax({
+	~~ ,
+	url: '/memberMVC/member/checkId.do'
+	~~ ,
+	~~ ,
+	success: function(data) {},
+	error..
+})
 
+com.control.ControlServlet 
+->
+command.properties
+/member/chekId.do=member.service.CheckIdService
+->
+com.control.ControlServlet
+->
+CheckIdService.java
+1. 데이터 (aJax)
+2. DB 연동
+3. return "/member/checkId.jsp";
+->
+com.control.ControlServlet
+forward->
+checkId.jsp
+"exist" or "non_exist" 를 return

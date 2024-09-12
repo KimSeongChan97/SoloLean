@@ -1,0 +1,9 @@
+package member.control;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface CommandProcess {
+	// 서블릿이 호출하는 추상메소드(HttpServletRequest request, HttpServletResponse response);
+	requestPro(HttpServletRequest request, HttpServletResponse response);
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>memberMVC</display-name>
+  
+	<servlet>
+    <!--  이 섹션은 특정 서블릿을 정의하는 부분입니다.
+         서블릿은 서버에서 실행되는 자바 클래스이며, 웹 요청을 처리합니다. -->
+  	<servlet-name>ControlServlet</servlet-name>
+    <!-- 서블릿의 이름을 지정하는 태그입니다.
+         ControlServlet이라는 이름으로 서블릿을 설정합니다. -->
+  	<servlet-class>com.control.ControlServlet</servlet-class>
+    <!-- 서블릿이 실제로 동작하는 클래스의 경로를 지정합니다.
+         com.control 패키지 안의 ControlServlet 클래스를 사용하도록 설정합니다. -->
+     <init-param>
+     	<param-name></param-name>
+     	<param-value>D:\Web\workspace\memberMVC\src\main\webapp\WEB-INF\command.properties</param-value>
+     </init-param>    
+  </servlet>
+  
+  <servlet-mapping>
+    <!-- 이 섹션은 서블릿과 URL 패턴을 매핑합니다.
+         즉, 사용자가 특정 URL을 요청할 때 어느 서블릿이 그 요청을 처리할지 결정하는 부분입니다. -->
+  	<servlet-name>ControlServlet</servlet-name>
+    <!-- ControlServlet이라는 서블릿이 어떤 URL 요청을 처리할지를 설정합니다. -->
+  	<url-pattern>*.do</url-pattern>
+    <!-- URL 패턴을 *.do로 설정하여, .do로 끝나는 모든 요청이 ControlServlet에서 처리되도록 매핑합니다.
+         예를 들어, "/login.do", "/register.do"와 같은 요청들이 해당 서블릿으로 처리됩니다. 
+         com.control.ControlServlet 으로 넘어감 -->
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+</web-app>
