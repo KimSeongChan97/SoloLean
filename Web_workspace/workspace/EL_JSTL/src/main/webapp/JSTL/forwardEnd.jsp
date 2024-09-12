@@ -108,7 +108,9 @@ body {
 
 <c:forEach var="personDTO" items="${list2 }">
 	${personDTO.getName() } &emsp;&emsp; ${personDTO.getAge() }<br>
-	
+</c:forEach>
+<br>
+<c:forEach var="personDTO" items="${list2 }">
 	<%-- JSTL 에서는 메서드의 이름을 변수명처럼 사용한다. -> personDTO.getName() 에서 get과 () 를 제거한다는 의미. --%>
 	${personDTO.name } &emsp;&emsp; ${personDTO.age }<br>
 </c:forEach>
