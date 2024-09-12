@@ -19,7 +19,7 @@ body {
 	background-color: #0d0d0d;
 	color: #00ffcc;
 	text-align: center;
-	margin-top: 60px;
+	margin-top: 110px;
 }
 
 </style>

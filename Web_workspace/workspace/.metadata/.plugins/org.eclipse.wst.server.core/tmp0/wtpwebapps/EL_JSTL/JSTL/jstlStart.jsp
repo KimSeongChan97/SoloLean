@@ -8,9 +8,9 @@
 <style type="text/css">
 
 body {
-	background-color: #f2f2f2;
+	background-color: #0d0d0d;
 	text-align: center;
-	margin-top: 110px;
+	margin-top: 60px;
 }
 
 </style>

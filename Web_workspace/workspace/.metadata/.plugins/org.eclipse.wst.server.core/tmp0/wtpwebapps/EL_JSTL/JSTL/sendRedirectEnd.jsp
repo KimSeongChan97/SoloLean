@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>sendRedirectEnd</title>
+<style type="text/css">
+
+body {
+	background-color: #0d0d0d;
+	color: #00ffcc;
+	text-align: center;
+	margin-top: 60px;
+}
+
+</style>
 </head>
 <body>
 
