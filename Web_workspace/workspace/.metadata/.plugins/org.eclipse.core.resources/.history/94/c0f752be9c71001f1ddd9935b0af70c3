@@ -1,0 +1,22 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.control.CommandProcess;
+
+public class UpdateFormService implements CommandProcess {
+
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
+		String id = (String)session.getAttribute("memId");
+
+		//DB
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		MemberDTO memberDTO = memberDAO.getMember(id);
+		
+		return "/member/updateForm.jsp";
+	}
+
+}

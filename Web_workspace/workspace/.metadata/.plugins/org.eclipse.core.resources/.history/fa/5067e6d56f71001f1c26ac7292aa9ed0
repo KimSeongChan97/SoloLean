@@ -1,0 +1,29 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.control.CommandProcess;
+
+public class CheckIdService implements CommandProcess {
+
+    @Override
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String id = request.getParameter("id");
+
+        // 아이디 중복 확인 로직 (DB 연동으로 변경 가능)
+        boolean isExist = checkIdInDatabase(id);
+
+        if (isExist) {
+            return "exist";
+        } else {
+            return "non_exist";
+        }
+    }
+
+    private boolean checkIdInDatabase(String id) {
+        // 실제 DB 연동으로 중복 여부를 확인해야 합니다. 현재는 고정된 값으로 처리
+        // 예: DB에서 해당 아이디가 있는지 확인하는 로직
+        return false; // 예시로 아이디가 중복되지 않은 경우로 처리
+    }
+}

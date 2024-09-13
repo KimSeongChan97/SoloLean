@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 페이지</title>
+<style type="text/css">
+body {
+    background-color: #0d0d0d;
+    color: #00ffcc;
+}
+
+table {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+div {
+    color: red;
+    font-size: 8pt;
+    font-weight: bold;
+}
+form, h1 {
+	justify-content: center;
+}
+
+</style>
+</head>
+<body>
+<h1>
+    <img src="../image/4.jpg" width="100" height="100" alt="홈" 
+         onclick="location.href='../index.jsp'" style="cursor: pointer;"> 로그인
+</h1>
+<form id="loginForm" action="loginForm.do" method="post">
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td>
+                <input type="text" name="id" id="id" size="30" placeholder="아이디 입력">
+                <div id="idDiv"></div>
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type="password" name="pwd" id="pwd" size="40" placeholder="비밀번호 입력">
+                <div id="pwdDiv"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="로그인" />
+                <input type="button" value="회원가입" onclick="location.href='writeForm.jsp'" />      
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 아이디 입력 후 포커스가 벗어났을 때 중복 체크
+        $("#id").focusout(function() {
+            let id = $("#id").val();
+            
+            if (id === "") {
+                // 미입력 시 경고 메시지
+                $("#idDiv").html("아이디를 먼저 입력하세요").css("color", "red");
+            } else {
+                // Ajax를 통한 중복 체크
+                $.ajax({
+                    url: '/memberMVC/member/checkId.do',
+                    type: 'POST',
+                    data: {id: id},
+                    success: function(data) {
+                        // 서버에서 'exist', 'non_exist' 값을 받아 처리
+                        if (data === "exist") {
+                            $("#idDiv").html("사용 불가능 아이디입니다.").css("color", "red");
+                        } else if (data === "non_exist") {
+                            $("#idDiv").html("사용 가능한 아이디 입니다.").css("color", "blue");
+                        }
+                    },
+                    error: function() {
+                        // 서버 오류 발생 시 메시지 처리
+                        $("#idDiv").html("서버 오류, 다시 시도하세요").css("color", "cyan");
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

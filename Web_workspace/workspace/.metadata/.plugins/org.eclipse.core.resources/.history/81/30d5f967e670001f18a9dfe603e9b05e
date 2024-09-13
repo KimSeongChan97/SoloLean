@@ -1,0 +1,32 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.control.CommandProcess;
+
+public class CheckIdService implements CommandProcess {
+
+    @Override
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // 아이디 중복 확인 로직 처리
+        String userId = request.getParameter("id");
+
+        // 여기서 아이디 중복 여부를 확인하는 로직을 작성
+        // 예를 들어, 데이터베이스에서 아이디를 조회하고 존재 여부를 판단
+        boolean isExist = checkIdInDatabase(userId);
+
+        // 결과를 JSP 페이지로 반환
+        if (isExist) {
+            return "/member/checkId.jsp?result=exist";
+        } else {
+            return "/member/checkId.jsp?result=non_exist";
+        }
+    }
+
+    private boolean checkIdInDatabase(String userId) {
+        // DB 연동 로직을 구현하여 아이디 중복 여부를 확인하는 코드 작성
+        // 예시로 고정된 값을 사용, 실제 DB 연동은 MyBatis 등을 사용하여 구현
+        return false;  // 예시로 아이디가 중복되지 않았음을 반환
+    }
+}

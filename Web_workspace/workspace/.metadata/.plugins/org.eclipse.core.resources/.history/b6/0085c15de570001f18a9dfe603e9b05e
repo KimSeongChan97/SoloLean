@@ -1,0 +1,19 @@
+package member.service;
+
+public class CheckIdService {
+    public String checkId(String id) {
+        // DB 연동 로직을 통해 아이디가 존재하는지 여부를 확인
+        boolean isExist = checkIdInDatabase(id); // 데이터베이스에서 아이디 존재 여부 확인
+        
+        if (isExist) {
+            return "exist";
+        } else {
+            return "non_exist";
+        }
+    }
+
+    private boolean checkIdInDatabase(String id) {
+        
+        return false; // 아이디 중복 여부를 실제로 확인하여 반환
+    }
+}

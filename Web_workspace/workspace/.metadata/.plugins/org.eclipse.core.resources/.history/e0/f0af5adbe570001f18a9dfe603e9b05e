@@ -1,0 +1,14 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.control.CommandProcess;
+
+public class LoginFormService implements CommandProcess {
+    @Override
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+        // 로그인 폼으로 포워딩
+        return "/member/loginForm.jsp";
+    }
+}

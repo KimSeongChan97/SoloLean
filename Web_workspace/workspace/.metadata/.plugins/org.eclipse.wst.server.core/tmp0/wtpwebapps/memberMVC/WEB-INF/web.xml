@@ -3,7 +3,8 @@
   <display-name>memberMVC</display-name>
   
 
-<!-- 	<servlet>
+<!-- 	
+	<servlet>
     이 섹션은 특정 서블릿을 정의하는 부분입니다.
          서블릿은 서버에서 실행되는 자바 클래스이며, 웹 요청을 처리합니다.
   	<servlet-name>ControlServlet</servlet-name>
@@ -37,7 +38,8 @@
     URL 패턴을 *.do로 설정하여, .do로 끝나는 모든 요청이 ControlServlet에서 처리되도록 매핑합니다.
          예를 들어, "/login.do", "/register.do"와 같은 요청들이 해당 서블릿으로 처리됩니다. 
          com.control.ControlServlet 으로 넘어감
-  </servlet-mapping> -->
+  </servlet-mapping> 
+  -->
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -1,0 +1,34 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.bean.MemberDTO;
+import member.control.CommandProcess;
+import member.dao.MemberDAO;
+
+public class LoginService implements CommandProcess {
+
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
+		// Data 받기
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		
+		// DB 연결
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		MemberDTO memberDTO = memberDAO.login(id, pwd);
+		
+		// ok , fail 구분
+		if(memberDTO == null) {
+			//페이지 이동
+			return "/member/loginFail.jsp";
+		} else {
+			// 세션 등록
+			
+			
+			return "/member/loginOk.jsp";
+		}
+	}
+}

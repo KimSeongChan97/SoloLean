@@ -1,0 +1,22 @@
+package member.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.control.CommandProcess;
+
+public class LoginService implements CommandProcess {
+
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
+		// Data 받기
+		
+		
+		// DB 연결
+		
+		
+		return null;
+	}
+
+}
