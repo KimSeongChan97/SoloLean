@@ -11,7 +11,7 @@
          parameterType="string"은 이 쿼리의 입력값이 문자열이라는 의미입니다.
          resultType="int"는 반환되는 결과값이 정수(int)라는 의미입니다. 
          따라서 id 중복 확인을 할 때 사용되는 값의 타입은 string이고, 결과는 정수형으로 반환됩니다. -->
-    <select id="idExistId" parameterType="string" resultType="int">
+    <select id="isExistId" parameterType="string" resultType="int">
         SELECT COUNT(*) FROM member WHERE id = #{id}
     </select>
 

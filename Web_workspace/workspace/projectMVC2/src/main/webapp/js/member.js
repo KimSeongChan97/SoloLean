@@ -120,7 +120,7 @@ $('#id').focusout(function(){
                     // 서버에서 받은 데이터가 'exist'라면, 즉 아이디가 이미 존재할 경우
                     $('#idDiv').html('사용 불가능한 아이디').css('color', 'red');  
                     // idDiv에 '사용 불가능한 아이디' 메시지를 출력하고, 글자색을 빨간색으로 설정
-                } else {  
+                } else if(data.trim() == 'non_exist') {  
                     // 아이디가 존재하지 않을 경우
                     $('#idDiv').html('사용 가능한 아이디').css('color', 'blue');  
                     // idDiv에 '사용 가능한 아이디' 메시지를 출력하고, 글자색을 파란색으로 설정

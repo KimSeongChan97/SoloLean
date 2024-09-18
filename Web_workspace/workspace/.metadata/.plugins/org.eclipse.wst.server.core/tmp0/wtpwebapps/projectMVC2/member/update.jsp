@@ -43,12 +43,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/indexcss.css" />
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/projectMVC/css/updatecss.css">
-
-<jsp:include page="/jsp/nav.jsp" />
-
 
 </body>
 </html>

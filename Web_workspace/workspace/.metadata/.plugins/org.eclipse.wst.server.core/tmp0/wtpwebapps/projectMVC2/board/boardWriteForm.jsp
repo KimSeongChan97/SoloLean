@@ -5,11 +5,10 @@
 <head>
 <meta charset="UTF-8"> <!-- HTML5 문서의 문자 인코딩을 UTF-8로 설정 -->
 <title>글쓰기 폼</title> <!-- 페이지 제목 설정 -->
-<link rel="stylesheet" type="text/css" href="/projectMVC/css/boardWrite.css">
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/indexcss.css" />
  <!-- 외부 CSS 파일을 링크하여 스타일 적용 -->
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/projectMVC/css/boardWrite.css">
 
 <jsp:include page="/jsp/nav.jsp" />
 

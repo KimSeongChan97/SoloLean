@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 목록</title>
-    <link rel="stylesheet" type="text/css" href="/projectMVC/css/boardList.css">
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/boardList.css" />
  <!-- 게시글 목록 스타일을 적용하기 위한 CSS 파일 링크 -->
 </head>
 <body>

@@ -11,7 +11,7 @@ import member.dao.MemberDAO;
 public class LoginService implements CommandProcess {
 
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		// Data 받기
 		// 클라이언트로부터 전달된 로그인 폼의 데이터를 받아옴 (id와 pwd 값)

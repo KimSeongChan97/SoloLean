@@ -12,12 +12,11 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 보기</title>
-    <link rel="stylesheet" type="text/css" href="/projectMVC/css/boardView.css">
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/boardView.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/projectMVC/css/boardView.css">
 
 <jsp:include page="/jsp/nav.jsp" />
 

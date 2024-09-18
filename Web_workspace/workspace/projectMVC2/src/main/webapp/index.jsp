@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Index 페이지</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/indexcss.css">
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/indexcss.css" />
 </head>
 <body>
 <jsp:include page="/jsp/nav.jsp" />

@@ -5,32 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입Form</title>
-<style type="text/css">
-
-body {
-	background-color: #0d0d0d;
-	color: #00ffcc;
-}
-
-table {
-	border-collapse: collapse;
-}
-th, td {
-	padding: 5px;
-}
-div {
-	color: red;
-	font-size: 8pt;
-	font-weight: bold;
-}
-h1 {
-	text-align: center;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="/projectMVC2/css/memberWritecss.css" />
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="/projectMVC2/css/memberWritecss.css">
 <jsp:include page="/jsp/nav.jsp" />
 
 <h1>
