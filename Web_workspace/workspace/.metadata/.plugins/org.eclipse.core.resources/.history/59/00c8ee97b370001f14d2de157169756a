@@ -1,8 +1,0 @@
-package com.jstl;
-
-@Getter
-@Setter
-public class PersonDTO {
-	private String name;
-	private int age;
-}

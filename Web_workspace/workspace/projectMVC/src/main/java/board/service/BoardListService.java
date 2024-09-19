@@ -28,7 +28,7 @@ public class BoardListService implements CommandProcess {
 	    BoardDAO boardDAO = BoardDAO.getInstance(); 
 	    // boardList 메서드를 호출하여 startNum과 endNum에 해당하는 게시글 목록을 가져옵니다.
 	    // 이 메서드는 해당 페이지에 보여줄 게시글을 DB에서 가져오는 역할을 합니다.
-	    //  List<BoardDTO> list = boardDAO.boardList(startNum, endNum);
+	    List<BoardDTO> list = boardDAO.boardList(startNum, endNum);
 	    
 	    // 페이징 처리
 	    // 전체 게시글 수(totalA)를 가져오기 위해 BoardDAO 클래스의 getTotalA() 메서드를 호출합니다.
@@ -55,7 +55,7 @@ public class BoardListService implements CommandProcess {
 		request.setAttribute("list", boardDAO.boardList(startNum, endNum));
 		request.setAttribute("boardPaging", boardPaging);
 
-		return "/projectMVC/board/boardList.jsp";
+		return "/board/boardList.jsp";
 	}
 
 }

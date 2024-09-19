@@ -1,5 +1,0 @@
-#요청명=클래스명.클래스파일
-#프로젝트명/요청명(이름구분자)/파일
-#key=value
-/member/writeForm.do=member.service.WriteFormService
-/member/checkId.do=member.service.CheckIdService

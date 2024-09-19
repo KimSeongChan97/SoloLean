@@ -1,7 +1,0 @@
-package member.service;
-
-import member.control.CommandProcess;
-
-public class WriteFormService implements CommandProcess {
-	
-}

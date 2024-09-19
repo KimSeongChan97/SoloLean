@@ -1,3 +1,0 @@
-#요청명=클래스명
-#프로젝트명/요청명(이름구분자)/파일
-/member/writeForm.do=member.service.WriteFormServlet

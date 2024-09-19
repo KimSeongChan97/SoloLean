@@ -1,5 +1,0 @@
-package member.control;
-
-public interface CommandProcess {
-
-}

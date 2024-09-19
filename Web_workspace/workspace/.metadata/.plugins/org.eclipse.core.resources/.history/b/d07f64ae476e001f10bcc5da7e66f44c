@@ -1,9 +1,0 @@
-$(function(){
-	$('#boardWriteBtn').click(function(){
-		$('#subjectDiv').empty;
-		$('#contentDiv').empty;
-		
-		if($('#subject').val() == '')
-			
-	});
-});
