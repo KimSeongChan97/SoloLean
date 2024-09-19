@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수업 때 하는 글쓰기</title>
+
+<style type="text/css">
+table {
+    border-collapse: collapse; /* 테이블 이중선 제거 */
+}
+th,td{
+    padding:5px;
+}
+
+#boardWriteForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
+	text-align: left;	
+}
+
+#boardWriteForm div{
+    color:red;
+    font-size:8pt;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div id="header">
+	<!-- 페이지의 상단 헤더 영역입니다. -->
+	<h1>
+		<img alt="사과" src="${ pageContext.request.contextPath }/image/apple.png" width="50" height="50">
+		MVC를 활용한 미니프로젝트
+	</h1>
+	<%-- <jsp:include page="../main/menu.jsp" /> --%>
+</div>
+		
+<div id="container">	
+	<jsp:include page="../main/boardMenu.jsp"></jsp:include>	
+	<div id="section">
+<form id="boardWriteForm" > 
+		
+<table border="1">
+    <tr>
+        <th width="100">제목</th>
+        <td>
+            <input type="text" id="subject" name="subject" size="70" placeholder="제목 입력">
+            <div id="subjectDiv"></div>
+        </td>
+    </tr>
+    <tr>
+        <th>내용</th>
+        <td>
+            <textarea id="content" name="content" rows="10" cols="70" placeholder="내용 입력"></textarea>
+            <div id="contentDiv"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="button" value="글쓰기" id="boardWriteBtn">
+            <input type="reset" value="다시작성">
+        </td>
+    </tr>
+</table>
+</form>
+	</div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/projectJSP/js/boardWrite_lean.js">
+$(function(){
+	
+});
+
+</script>
+
+</body>
+</html>

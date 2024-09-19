@@ -4,38 +4,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.control.CommandProcess;
+
 import member.bean.MemberDTO;
-import member.control.CommandProcess;
 import member.dao.MemberDAO;
 
 public class UpdateFormService implements CommandProcess {
 
     @Override
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        
-        // 세션에 저장되어 있는 값 받기
-        // 클라이언트가 로그인한 상태를 유지하기 위해 서버는 세션을 사용합니다.
-        // HttpSession 객체는 사용자가 서버에 접속하여 세션이 유지되는 동안 필요한 데이터를 저장할 수 있습니다.
-        // 여기서는 세션에 저장된 "memId"라는 이름의 데이터를 가져옵니다. 이 ID는 로그인한 사용자의 ID일 가능성이 큽니다.
+        // 데이터
         HttpSession session = request.getSession();
-        String id = (String)session.getAttribute("memId"); // 세션에서 사용자 ID(memId)를 가져옴
+        // 사용자의 세션을 가져옵니다. 세션은 사용자가 로그인할 때 생성되었으며, 여기서 로그인된 사용자 정보에 접근할 수 있습니다.
+        
+        String id = (String) session.getAttribute("memId");
+        // 세션에서 "memId" 속성을 가져와서 현재 로그인된 사용자의 ID를 얻습니다.
+        // 로그인이 되어 있는 상태라면, 세션에 사용자의 ID가 저장되어 있을 것입니다.
 
-        // DB 작업
-        // 데이터베이스에 접근하여 사용자의 정보를 조회하는 부분입니다.
-        // MemberDAO는 DAO 패턴을 사용하여 데이터베이스와 상호작용하는 객체입니다. 여기서는 싱글턴 패턴을 사용하여 MemberDAO 인스턴스를 가져옵니다.
+        // DB
         MemberDAO memberDAO = MemberDAO.getInstance();
-        // memberDAO의 getMember 메서드를 호출하여 해당 ID의 사용자의 정보를 데이터베이스에서 가져옵니다.
-        MemberDTO memberDTO = memberDAO.getMember(id); // ID에 해당하는 회원 정보를 DB에서 가져와 MemberDTO 객체에 저장
-        
-        // 가져온 회원 정보를 request 객체에 저장
-        // 이 부분은 가져온 데이터를 JSP 페이지로 전달하기 위해 request 객체에 저장하는 단계입니다.
-        // request 객체에 "memberDTO"라는 이름으로 회원 정보를 담습니다. 이 정보는 이후 JSP 페이지에서 사용자 정보를 출력하거나 수정하는 데 사용될 수 있습니다.
-        request.setAttribute("memberDTO", memberDTO); // 조회한 회원 정보를 request에 설정
-        
-        // forwarding
-        // 데이터 처리가 끝난 후 결과를 보여줄 페이지로 이동합니다. 
-        // 여기서는 사용자가 정보를 수정할 수 있는 updateForm.jsp 페이지로 포워딩합니다.
-        return "/member/updateForm.jsp"; // updateForm.jsp 페이지로 포워딩하여 사용자 정보 수정 화면을 띄움
+        // 싱글톤 패턴을 통해 MemberDAO 인스턴스를 가져옵니다. 데이터베이스와 상호작용하는 객체로, 이 객체를 통해 DB 작업을 수행합니다.
+
+        MemberDTO memberDTO = memberDAO.getMember(id);
+        // 현재 로그인된 사용자의 ID를 이용해, 데이터베이스에서 해당 사용자의 정보를 가져옵니다.
+        // `getMember` 메서드는 ID를 기준으로 회원 정보를 조회하여 `MemberDTO` 객체로 반환합니다.
+
+        request.setAttribute("memberDTO", memberDTO);
+        // 가져온 회원 정보를 request 객체에 속성으로 저장합니다. 이 속성은 이후 JSP 페이지에서 사용자 정보를 표시할 때 사용됩니다.
+        // "memberDTO"라는 이름으로 회원 정보 객체를 JSP에서 사용할 수 있게 됩니다.
+
+        return "/member/updateForm.jsp";
+        // 회원 정보를 수정하는 폼 페이지인 "updateForm.jsp"로 이동합니다. 이 페이지에서 사용자는 자신의 정보를 수정할 수 있습니다.
+        // 이 JSP는 request에 저장된 `memberDTO` 객체를 이용해 사용자 정보를 화면에 표시할 것입니다.
     }
 
 }
