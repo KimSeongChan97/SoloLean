@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+body {
+    background-color: #0f0f0f; /* 어두운 배경 */
+    color: #00FF9C; /* 네온 그린 텍스트 */
+    font-family: 'Roboto', sans-serif; /* 모던한 서체 사용 */
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #1a1a1a; /* 테이블 배경: 어두운 톤 */
+    color: #FFFFFF; /* 텍스트 색상: 흰색 */
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; /* 네온 느낌의 테두리 */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #303030;
+}
+
+th {
+    background-color: #0d0d0d; /* 헤더 배경: 더 어두운 톤 */
+    color: #00FFFF; /* 네온 블루 */
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    font-size: 14px;
+}
+
+tr:hover {
+    background-color: #00FFFF;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 기존 페이지네이션 스타일 제거 */

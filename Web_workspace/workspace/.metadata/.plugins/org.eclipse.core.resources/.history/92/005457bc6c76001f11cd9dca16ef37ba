@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body {
+    background-color: #0f0f0f; /* 어두운 배경 */
+    color: #00FF9C; /* 네온 그린 텍스트 */
+    font-family: 'Roboto', sans-serif; /* 모던한 서체 사용 */
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #1a1a1a; /* 테이블 배경: 어두운 톤 */
+    color: #FFFFFF; /* 텍스트 색상: 흰색 */
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; /* 네온 느낌의 테두리 */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #303030;
+}
+
+th {
+    background-color: #0d0d0d; /* 헤더 배경: 더 어두운 톤 */
+    color: #00FFFF; /* 네온 블루 */
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    font-size: 14px;
+}
+
+tr:hover {
+    background-color: #00FFFF;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 페이지네이션 컨테이너 */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 페이지네이션 버튼 스타일 */
+.pagination-container a, .pagination-container span {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #00FFFF;
+    color: #00FFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
+    transition: all 0.3s ease;
+    cursor: pointer; /* 클릭 가능하도록 설정 */
+}
+
+/* 활성화된 페이지 버튼 */
+.pagination-container .active {
+    background-color: #00FFFF;
+    color: #000000; /* 활성화된 페이지는 검은색 글씨 */
+}
+
+/* 버튼에 마우스 오버 시 */
+.pagination-container a:hover {
+    background-color: #00FF9C; /* 마우스 오버 시 네온 그린 */
+    color: #000000; /* 글씨는 검은색 */
+    box-shadow: 0 0 10px #00FF9C, 0 0 20px #00FF9C;
+}
+
+.pagination-container span {
+    cursor: default; /* span 요소는 클릭할 수 없도록 설정 */
+}

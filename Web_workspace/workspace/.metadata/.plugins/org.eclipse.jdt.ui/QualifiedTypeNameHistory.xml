@@ -24,4 +24,5 @@
     <fullyQualifiedTypeName name="java.net.URLPermission"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.javassist.URLClassPath"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebInitParam"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>
