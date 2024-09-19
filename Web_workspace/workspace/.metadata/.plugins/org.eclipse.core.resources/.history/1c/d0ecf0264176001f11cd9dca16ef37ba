@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+
+<style>
+    a {
+        text-decoration: none; /* 밑줄 제거 */
+        color: #f2f2f2; 
+        transition: color 1.5s ease, text-shadow 1.5s ease; /* 색상이 서서히 변하도록 트랜지션 설정 */
+    }
+    
+    a:hover {
+        color: cyan; /* 마우스를 올렸을 때 색상 */
+        text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan;
+    }
+    
+        /* 공통 네온 버튼 스타일 */
+    .neon-btn {
+        background-color: #f2f2f2; /* 기본 배경색 */
+        color: black; /* 기본 텍스트 색상 */
+        padding: 10px 20px; /* 여백 설정 */
+        border: none; /* 테두리 제거 */
+        cursor: pointer; /* 마우스 커서를 손 모양으로 */
+        transition: box-shadow 1.5s ease; /* 박스 그림자에 트랜지션 효과 */
+        border-radius: 25px;
+    }
+
+    /* 버튼에 대한 hover 시 네온 효과 적용 */
+    .neon-btn:hover {
+        box-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan; /* 네온 효과 */
+    }
+    
+    #logoutBtn {
+        background-color: #f2f2f2; /* 기본 배경색 */
+        color: black; /* 기본 텍스트 색상 */
+        padding: 10px 20px; /* 여백 설정 */
+        border: none; /* 테두리 제거 */
+        cursor: pointer; /* 마우스 커서를 손 모양으로 */
+        transition: box-shadow 1.5s ease; /* 박스 그림자에 트랜지션 효과 */
+    }
+
+    /* Logout 버튼에 대한 hover 시 박스 네온 효과 적용 */
+    #logoutBtn:hover {
+        box-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan; /* 네온 효과 */
+    }
+</style>
+
+<!-- 세션이 없을 때 -->
+<c:if test="${memId == null }">
+	<input type="button" class="neon-btn" value="Login" 
+		   onclick="location.href='${ pageContext.request.contextPath }/member/loginForm.do'" /> <br><br/>
+	<input type="button" class="neon-btn" value="회원가입" 
+		   onclick="location.href='${ pageContext.request.contextPath }/member/writeForm.do'"  /> <br><br/>
+</c:if>
+
+<!-- 세션이 있을 때 -->
+<c:if test="${memId != null }">
+	<h3>
+		<a href="${ pageContext.request.contextPath }/member/updateForm.do">${memId } 님.</a>
+	</h3>
+		
+	<input type="button" value="Logout" id="logoutBtn"/> <br><br/>
+	<%-- 	
+	<input type="button" value="회원정보수정" 
+		onclick="location.href='${ pageContext.request.contextPath }/member/updateForm.do'" /> <br><br/>
+		 --%>
+</c:if>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+	//로그아웃 
+	$('#logoutBtn').click(function(){
+		 $.ajax({
+			type: 'post',
+			url: '/projectMVC/member/logout.do',
+			success: function(){
+				location.href="/projectMVC/index.do";
+			},
+			error: function(e){
+				console.log(e);
+			}
+		}); 
+	});
+		
+	
+</script>

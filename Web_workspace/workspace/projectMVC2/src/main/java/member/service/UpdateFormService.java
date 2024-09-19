@@ -1,5 +1,8 @@
 package member.service;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +14,7 @@ import member.dao.MemberDAO;
 public class UpdateFormService implements CommandProcess {
 
     @Override
-    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         // 세션에 저장되어 있는 값 받기
         // 클라이언트가 로그인한 상태를 유지하기 위해 서버는 세션을 사용합니다.

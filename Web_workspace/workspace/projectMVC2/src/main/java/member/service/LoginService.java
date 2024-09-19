@@ -1,5 +1,8 @@
 package member.service;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +14,7 @@ import member.dao.MemberDAO;
 public class LoginService implements CommandProcess {
 
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Data 받기
 		// 클라이언트로부터 전달된 로그인 폼의 데이터를 받아옴 (id와 pwd 값)

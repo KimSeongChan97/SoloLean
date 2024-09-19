@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+
+<!-- 세션이 없을 때 -->
+<c:if test="${memId == null }">
+	<input type="button" value="Login" 
+		   onclick="location.href='${ pageContext.request.contextPath }/member/loginForm.do'" /> <br><br/>
+	<input type="button" value="회원가입" 
+		   onclick="location.href='${ pageContext.request.contextPath }/member/writeForm.do'"  /> <br><br/>
+</c:if>
+
+<!-- 세션이 있을 때 -->
+<c:if test="${memId != null }">
+	<h3><a href="">${memId } 님.</a></h3>
+	
+	
+	
+	<input type="button" value="Logout" id="logoutBtn"/> <br><br/>
+	<input type="button" value="회원정보수정" 
+		onclick="location.href='${ pageContext.request.contextPath }/member/updateForm.do'" /> <br><br/>
+</c:if>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+	//로그아웃 
+	$('#logoutBtn').click(function(){
+		 $.ajax({
+			type: 'post',
+			url: '/projectMVC/member/logout.do',
+			success: function(){
+				location.href="/projectMVC/index.do";
+			},
+			error: function(e){
+				console.log(e);
+			}
+		}); 
+	});
+		
+	
+</script>

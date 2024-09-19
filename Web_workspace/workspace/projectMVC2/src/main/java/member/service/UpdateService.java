@@ -1,5 +1,8 @@
 package member.service;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +13,7 @@ import member.dao.MemberDAO;
 public class UpdateService implements CommandProcess {
 
     @Override
-    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         // 폼에서 입력된 회원 정보 가져오기
         // 클라이언트에서 전달된 회원 정보가 담긴 폼 데이터들을 가져오는 부분입니다.

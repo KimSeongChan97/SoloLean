@@ -1,5 +1,8 @@
 package member.service;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +13,7 @@ import member.dao.MemberDAO;
 public class WriteService implements CommandProcess {
 
     @Override
-    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 데이터 수집
         // 클라이언트에서 전송된 데이터를 받아오는 부분입니다.
         // HTML form에서 입력된 값들을 request 객체에서 가져옵니다.
