@@ -1,0 +1,3 @@
+$('.subjectA').click(function(){
+	alert($('#memId').val());
+});

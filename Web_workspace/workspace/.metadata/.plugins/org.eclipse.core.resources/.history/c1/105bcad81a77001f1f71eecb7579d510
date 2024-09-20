@@ -1,0 +1,3 @@
+$('.subjectA').click(function(){
+	alert('${ sessionScope.memId}' 님);
+});

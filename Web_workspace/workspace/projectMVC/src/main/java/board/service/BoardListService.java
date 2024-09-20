@@ -71,10 +71,12 @@ public class BoardListService implements CommandProcess {
 	    // (추가 설명) makePagingHTML 메서드는 페이징 처리된 HTML 코드를 생성합니다. 이 코드에는 '이전', '다음' 버튼과 페이지 번호가 포함됩니다.
 	    boardPaging.makePagingHTML();
 		
+	    request.setAttribute("pg", pg);
+	    request.setAttribute("list", list);
 		// list를 do 페이지로 전달합니다.
 		// (추가 설명) request 객체를 사용하여 JSP 페이지로 데이터(게시글 목록)를 전달합니다. 
 		// 이렇게 전달된 데이터는 JSP에서 출력되어 사용자가 볼 수 있습니다.
-		request.setAttribute("list", boardDAO.boardList(startNum, endNum));
+		//request.setAttribute("list", boardDAO.boardList(startNum, endNum));
 		// (추가 설명) boardPaging 객체를 JSP에 전달합니다. JSP에서는 이 객체를 통해 페이징 관련 정보를 화면에 표시합니다.
 		request.setAttribute("boardPaging", boardPaging);
 		

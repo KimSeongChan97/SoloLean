@@ -54,4 +54,29 @@
          )where rn >= #{startNum} and rn <= #{endNum}
       ]]>
    </select>
+   
+   <!-- 한개의 글을 view -->
+	<select id="getBoard" parameterType="int" resultType="board">
+		 select * from board where seq=#{seq}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="hitUpdate" parameterType="int">
+	    UPDATE board SET hit = hit + 1 WHERE seq = #{seq}
+	</update>
+
+	<!-- 게시글 수정 -->
+		<update id="updateBoard" parameterType="Map">
+		    UPDATE board
+		    SET subject = #{subject }, content = #{content }
+		    WHERE seq = #{seq }
+		</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+	    DELETE FROM board WHERE seq = #{seq}
+	</delete>
+	
+	
+	   
 </mapper>

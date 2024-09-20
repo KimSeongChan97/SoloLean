@@ -1,0 +1,26 @@
+package board.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.control.CommandProcess;
+
+import board.dao.BoardDAO;
+
+public class BoardUpdateService implements CommandProcess {
+
+    @Override
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        // 파라미터에서 게시글 정보 받아오기
+        int seq = Integer.parseInt(request.getParameter("seq"));
+        String subject = request.getParameter("subject");
+        String content = request.getParameter("content");
+
+        // DB에서 게시글 수정
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        boardDAO.updateBoard(seq, subject, content);
+
+        // 수정 후 해당 게시글 보기 페이지로 리다이렉트
+        return "/board/boardView.do?seq=" + seq;
+    }
+}

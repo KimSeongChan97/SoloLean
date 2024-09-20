@@ -8,120 +8,88 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
-<!-- 커스텀 CSS 파일을 적용 -->
-<!-- (추가 설명) 여기서 pageContext.request.contextPath는 현재 웹 애플리케이션의 루트 경로를 의미합니다.
-         따라서 /css/boardlist.css?v=1.0 파일을 가져와서 스타일을 적용하게 됩니다.
-         "?v=1.0"은 버전 관리를 통해 캐시 문제를 방지하기 위한 방법입니다. -->
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/css/boardlist.css?v=1.0">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/boardlist.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/index.css">	
 </head>
 <body>
-
-	<div id="wrap">
-		<div id="header">
-			<!-- 페이지의 상단 헤더 영역입니다. -->
-			<h1>
-				<img alt="사과" src="${ pageContext.request.contextPath }/image/apple.png" 
-				width="50" height="50" style="cursor: pointer;" >
-				<!-- 헤더 안에 사과 이미지를 삽입합니다. 이미지의 크기는 50x50으로 고정됩니다. -->
-				MVC를 활용한 미니프로젝트
-				<!-- 페이지 제목입니다. 헤더 안에 텍스트로 표시됩니다. -->
-			</h1>
-			<jsp:include page="../main/menu.jsp" />
-			<!-- menu.jsp 파일을 현재 페이지에 포함시킵니다. 이는 공통 메뉴를 사용할 때 유용하며, JSP 페이지에서 다른 JSP 파일을 동적으로 포함시킬 수 있는 방법입니다. -->
-		</div>	
-		<div id="container">
-			<div id="nav">
-				<!-- 네비게이션 영역입니다. 페이지의 좌측에 배치되며, 메뉴 등을 포함합니다. -->
-				<jsp:include page="../main/nav.jsp" />
-				<!-- nav.jsp 파일을 현재 페이지에 포함시킵니다. 이 영역에는 네비게이션 메뉴가 표시됩니다. -->
-			</div>
-			<div id="section">
-				<!-- 게시판 목록 테이블 -->
-				<!-- (추가 설명) 이 테이블은 게시판의 게시글 목록을 보여줍니다. 테이블은 bootstrap 클래스를 이용하여
-         어두운 테마의 테이블로 꾸며져 있습니다. -->
-				<table class="table table-dark table-hover">
-					<thead>
-						<!-- (추가 설명) thead 태그 안에서는 테이블의 머리글을 정의합니다. 여기서 각 열의 제목을 설정합니다. -->
-						<tr>
-							<th scope="col">글번호</th>
-							<!-- (추가 설명) 게시글의 번호를 표시하는 열 -->
-							<th scope="col">제목</th>
-							<!-- (추가 설명) 게시글의 제목을 표시하는 열 -->
-							<th scope="col">작성자</th>
-							<!-- (추가 설명) 게시글을 작성한 작성자의 ID를 표시하는 열 -->
-							<th scope="col">작성일</th>
-							<!-- (추가 설명) 게시글이 작성된 날짜를 표시하는 열 -->
-							<th scope="col">조회수</th>
-							<!-- (추가 설명) 게시글이 몇 번 조회되었는지 조회수를 표시하는 열 -->
-						</tr>
-					</thead>
-					<tbody>
-
-						<!-- (추가 설명) JSP의 JSTL 문법을 사용하여 조건부 렌더링을 수행합니다.
-        	 'list'라는 객체가 requestScope에 존재할 경우에만 테이블의 데이터가 렌더링됩니다. -->
-						<c:if test="${requestScope.list != null }">
-							<!-- (추가 설명) 'list' 객체가 null이 아닌 경우 forEach 루프를 사용하여 목록을 순회합니다.
-        		 여기서 'list'는 boardDTO 객체의 목록이며, 이 목록에 포함된 각 게시글의 정보를 출력합니다. -->
-							<c:forEach var="boardDTO" items="${list }">
-
-								<tr>
-									<!-- (추가 설명) 각 게시글의 글번호를 출력하는 부분입니다.
-                	 boardDTO의 seq 값이 테이블의 해당 셀에 출력됩니다. -->
-									<td align="center">${boardDTO.seq }</td>
-									<!-- (추가 설명) 각 게시글의 제목을 출력하는 부분입니다.
-                	 제목은 boardDTO 객체의 subject 속성에서 가져옵니다. -->
-									<td><a href="#" class="subjectA">${boardDTO.subject }</a></td>
-									
-									
-									<!-- (추가 설명) 게시글 작성자의 ID를 출력하는 부분입니다.
-                	 boardDTO 객체의 id 속성을 사용하여 작성자를 표시합니다. -->
-									<td align="center">${boardDTO.id }</td>
-									<td align="center">
-										<!-- (추가 설명) 작성일을 포맷팅하여 출력하는 부분입니다. 
-                	     JSTL의 fmt:formatDate 태그를 사용하여 날짜 형식을 "yyyy.MM.dd"로 변환하여 출력합니다.
-                	     logtime은 작성된 시간을 의미하는 속성입니다. --> <fmt:formatDate
-											pattern="yyyy.MM.dd" value="${boardDTO.logtime }" />
-									</td>
-									<!-- (추가 설명) 게시글의 조회수를 출력하는 부분입니다.
-                	 조회수는 boardDTO 객체의 hit 속성에서 가져옵니다. -->
-									<td align="center">${boardDTO.hit }</td>
-								</tr>
-							</c:forEach>
-						</c:if>
-					</tbody>
-				</table>
-				<!-- table table-dark table-hover -->
-			</div>
-			<!-- id="section" -->
-		</div>
-		<!-- id="container" -->
-	</div>
-	<!-- id="wrap" -->
-
-	<!-- 메인 페이지로 이동하는 링크 -->
-	<div onclick="location.href='/projectMVC/index.do'" align="center"
-		style="cursor: pointer;">index</div>
-	<br />
-	<!-- 페이지네이션 표시 부분 -->
-	<!-- (추가 설명) boardPaging 객체에 있는 pagingHTML 속성을 사용하여 페이지 번호를 표시하는 부분입니다.
-         여기서 페이지네이션 처리를 통해 여러 페이지로 나누어진 게시글 목록을 탐색할 수 있습니다. -->
-	<div id="list" align="center">${boardPaging.pagingHTML }</div>
-	<!-- id="list" -->
-
-	<!-- JavaScript를 이용해 페이지를 넘기는 함수 -->
-	<script type="text/javascript">
-    // 선택한 페이지로 이동하는 함수
-    // (추가 설명) 사용자가 특정 페이지 번호를 클릭하면 해당 페이지 번호로 이동하게 해주는 함수입니다.
-    // 'pg'라는 변수로 페이지 번호를 받아와 URL에 붙여서 서버로 요청을 보냅니다.
-    // 이 함수는 페이지 번호를 클릭할 때마다 동작하며, 그 번호에 해당하는 게시글 목록을 다시 불러옵니다.
-    function boardPaging(pg) {
-        location.href = "/projectMVC/board/boardList.do?pg=" + pg;
-        // (추가 설명) location.href는 브라우저에서 특정 URL로 이동시키는 역할을 합니다.
-        // 여기서는 'pg'에 해당하는 페이지 번호를 쿼리스트링으로 전달하여 해당 페이지 게시글을 로드합니다.
-    };
+<div id="wrap">
+    <div id="header">
+        <h1>
+            <img alt="사과" src="${ pageContext.request.contextPath }/image/apple.png" 
+                 width="50" height="50"
+                 onclick="location.href='${ pageContext.request.contextPath }/index.do'"
+                 style="cursor: pointer;">
+           
+            MVC를 활용한 미니프로젝트
+            
+        </h1>
+        <hr style="border-color: #483D8B; border-width: 3px;" />
+        <!-- 스타일이 적용된 수평선을 추가합니다. border-color는 선의 색상을 지정하며, border-width는 선의 굵기를 지정합니다. -->
+    </div>
+    
+    <div id="container">
+        <jsp:include page="../main/boardMenu.jsp" />
+        <!-- 다른 JSP 파일인 boardMenu.jsp 파일을 현재 위치에 포함시킵니다. 이 코드는 주로 메뉴바 같은 공통 요소를 삽입할 때 사용됩니다. -->
+        
+        <div id="section" class="boardListDiv">
+        	
+        	<input type="hidden" id="memId" value="${memId }" />
+        	<input type="hidden" id="pg" value="${pg }" />	
+        	
+            <table border="1" frame="hsides" rules="rows">
+                <!-- 테이블을 생성합니다. border="1"은 테두리를 설정하며, frame="hsides"는 테이블 상하단의 테두리를 표시하고, rules="rows"는 가로줄만 표시하는 속성입니다. -->
+                <tr>
+                    <th width="100">글번호</th>
+                    <th width="400">제목</th>
+                    <th width="150">작성자</th>
+                    <th width="150">작성일</th>
+                    <th width="100">조회수</th>
+                    <!-- 테이블 헤더를 설정합니다. 글번호, 제목, 작성자, 작성일, 조회수라는 칼럼을 생성합니다. -->
+                </tr>
+                
+                <c:if test="${requestScope.list != null }">
+                    <!-- requestScope에 있는 list 객체가 null이 아닌지 확인하는 조건문입니다. null이 아니면 게시글 목록이 존재한다는 뜻입니다. -->
+                    <c:forEach var="boardDTO" items="${list }">
+                        <!-- list 객체에 있는 각각의 항목을 순환하면서 boardDTO 변수에 담습니다. 이 변수는 게시글의 데이터 전송 객체(Data Transfer Object)로, 게시글 정보를 포함하고 있습니다. -->
+                        <tr>
+                            <td align="center">${boardDTO.seq }</td>
+                            <!-- 글번호를 표시합니다. ${boardDTO.seq}는 게시글의 고유 번호를 의미하며, 중앙 정렬을 적용합니다. -->
+                            
+                            <td><a href="#" class="subjectA">${boardDTO.subject }</a></td>
+                            <!-- 게시글 제목을 링크 형태로 표시합니다. ${boardDTO.subject}는 제목을 의미하며, class="subjectA"로 스타일을 지정할 수 있습니다. -->
+                            
+                            
+                            <td align="center">${boardDTO.id }</td>
+                            <!-- 작성자의 아이디를 표시합니다. ${boardDTO.id}는 작성자의 ID를 의미하며, 중앙 정렬됩니다. -->
+                            <td align="center">
+                                <fmt:formatDate pattern="yyyy.MM.dd" value="${boardDTO.logtime }"/>
+                                <!-- 작성일을 표시합니다. 작성일은 ${boardDTO.logtime} 속성에서 가져오며, fmt:formatDate 태그를 사용해 'yyyy.MM.dd' 형식으로 날짜를 출력합니다. -->
+                            </td>
+                            <td align="center">${boardDTO.hit }</td>
+                            <!-- 조회수를 표시합니다. ${boardDTO.hit}는 해당 게시글이 조회된 횟수를 의미하며, 중앙 정렬됩니다. -->
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <!-- 게시글 목록이 있을 경우에만 테이블이 생성되도록 if문으로 감싸져 있습니다. -->
+            </table>
+            
+            <div style="text-align: center; width: 700px; margin-top: 15px;">
+                ${boardPaging.pagingHTML }
+                <!-- 페이지 네비게이션을 출력합니다. ${boardPaging.pagingHTML}은 페이징 처리된 HTML 코드를 출력하는데 사용됩니다. -->
+            </div>
+        </div> <!-- id="section" -->
+    </div> <!-- id="container" -->
+</div>    <!-- id="wrap" -->
+<script type="text/javascript">
+function boardPaging(pg){
+	location.href = "/projectMVC/board/boardList.do?pg=" + pg;
+}
+<%-- JavaScript 함수 boardPaging는 페이지 번호(pg)를 인자로 받아, 특정 페이지로 이동하는 역할을 합니다. 
+     "/projectMVC/board/boardList.do?pg=" 뒤에 선택한 페이지 번호를 추가하여 해당 페이지로 리다이렉트합니다. --%>  
 </script>
+
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../js/boardList.js"></script>
 
 </body>
 </html>
