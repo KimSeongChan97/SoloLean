@@ -50,7 +50,7 @@ select * from board;
 select count(*) from board;
 select * from board order by seq desc;
 
---DELETE FROM board WHERE seq = 1;
+--DELETE FROM board WHERE seq = 25;
 -- 특정 게시글(seq = 1)을 삭제합니다. DELETE 문은 매우 강력하므로, 특정 게시글을 잘못 삭제하는 일이 없도록 주의해야 합니다.
 
 select * from

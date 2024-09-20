@@ -36,7 +36,7 @@
 				<h3>
 					저희 홈페이지를 방문해주셔서 감사합니다. <br><br/>
 					Have a nice day !! <br><br/>
-					<img alt="home" src="/projectMVC/image/home.png">
+					<img alt="home" src="${ pageContext.request.contextPath }/image/home.png">
 				</h3>
 			</div>
 			<!-- 메인 콘텐츠가 표시될 섹션입니다. 좌측의 네비게이션 옆에 배치됩니다. 현재는 빈 상태로 설정되어 있습니다. -->

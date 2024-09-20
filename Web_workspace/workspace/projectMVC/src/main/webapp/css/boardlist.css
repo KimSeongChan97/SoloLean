@@ -39,7 +39,7 @@ table.table.table-dark th {
 
 /* 테이블 데이터 셀 스타일 */
 table.table.table-dark td {
-    font-size: 16px !important;
+    font-size: 15px !important;
 }
 
 /* 테이블 행 Hover 효과 */
@@ -60,14 +60,15 @@ table.table.table-dark tr:hover {
 }
 
 /* 페이지네이션 버튼 기본 스타일 */
-.paging, #currentPaging, #paging {
+.paging, #currentPaging, #paging, #pageBlock {
     border: 2px solid #00FFFF !important; /* 네온 블루 테두리 */
-    font-size: 16pt !important; /* 폰트 크기 */
-    padding: 10px 20px !important; /* 버튼 크기 통일 */
+    font-size: 14pt !important; /* 폰트 크기 */
+    padding: 9px 15px !important; /* 버튼 크기 통일 */
     margin: 0 10px !important; /* 버튼 사이 간격 */
     display: inline-block !important; /* 버튼을 한 줄에 배치 */
     cursor: pointer !important; /* 커서 모양 변경 (클릭 가능) */
     text-align: center !important;
+    justify-content: center !important;
     box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF !important; /* 네온 테두리 */
     background-color: #111111 !important; /* 배경 어두운 색 */
     color: #FFFFFF !important; /* 텍스트 흰색 */
@@ -87,7 +88,7 @@ table.table.table-dark tr:hover {
     color: #FF00FF !important; /* 네온 핑크 텍스트 */
     background-color: #222222 !important; /* 어두운 배경 */
     box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF !important; /* 핑크 네온 효과 */
-    padding: 10px 30px !important; /* 버튼 크기 */
+    padding: 9px 15px !important; /* 버튼 크기 */
     margin: 0 10px !important; /* 간격 */
 }
 

@@ -48,13 +48,13 @@
 
     <!-- 메인 페이지로 이동하는 링크 -->
     <div onclick="location.href='/projectMVC/index.do'" align="center" style="cursor: pointer;">
-        index로 
+        index
     </div>
     
     <hr/>
 
     <!-- 페이지네이션 표시 부분 -->
-    <div style="text-align: center; width: 800px; margin-top: 15px;">
+    <div id="list" align="center">
         <%= ((BoardPaging) request.getAttribute("boardPaging")).getPagingHTML() %>
     </div>
 
