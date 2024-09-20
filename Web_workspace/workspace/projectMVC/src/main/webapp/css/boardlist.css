@@ -92,18 +92,11 @@ table.table.table-dark tr:hover {
     margin: 0 10px !important; /* 간격 */
 }
 
-/* index로 이동하는 링크 스타일 */
-#indexLink {
-    display: block !important;
-    text-align: center !important;
-    font-size: 18px !important;
-    color: #00FF9C !important; /* 네온 그린 */
-    text-decoration: none !important;
-    margin-top: 50px !important; /* 상단 여백 */
-    box-shadow: 0 0 10px #00FF9C, 0 0 20px #00FF9C !important;
+span:hover{
+	text-decoration: none;
 }
 
-#indexLink:hover {
-    color: #FFFFFF !important; /* Hover 시 색상 변경 */
-    transition: color 0.3s ease-in-out !important;
-}
+.subjectA:link { color: white; text-decoration: none; }
+.subjectA:visited { color: white; text-decoration: none; }
+.subjectA:hover { color: darkgreen; text-decoration: underline; }
+.subjectA:active { color: white; text-decoration: none; }

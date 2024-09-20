@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* 전체 body 스타일 */
+body {
+    background-color: #0f0f0f !important; /* 어두운 배경 */
+    color: #00FF9C !important; /* 네온 그린 텍스트 */
+    font-family: 'Roboto', sans-serif !important; /* 모던한 서체 사용 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 테이블 스타일 */
+table.table.table-dark {
+    border-collapse: collapse !important; /* 테이블 경계를 하나로 합침 */
+    width: 80% !important;
+    margin: 20px auto !important;
+    background-color: #1a1a1a !important; /* 어두운 배경색 */
+    color: #FFFFFF !important; /* 텍스트 흰색 */
+    box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF !important; /* 네온 블루 테두리 */
+}
+
+/* 테이블 헤더와 데이터 셀 스타일 */
+table.table.table-dark th, 
+table.table.table-dark td {
+    padding: 15px !important; /* 셀 안의 내용 간격 */
+    text-align: center !important; /* 가운데 정렬 */
+    border-bottom: 1px solid #303030 !important; /* 셀 하단 경계 */
+}
+
+/* 테이블 헤더 스타일 */
+table.table.table-dark th {
+    background-color: #0d0d0d !important; /* 더 어두운 헤더 배경색 */
+    color: #00FFFF !important; /* 네온 블루 텍스트 */
+    font-size: 16px !important;
+    text-transform: uppercase !important; /* 대문자로 변환 */
+    letter-spacing: 1px !important; /* 글자 간격 추가 */
+    box-shadow: 0 0 10px #00FFFF !important; /* 네온 테두리 */
+}
+
+/* 테이블 데이터 셀 스타일 */
+table.table.table-dark td {
+    font-size: 16px !important;
+}
+
+/* 테이블 행 Hover 효과 */
+table.table.table-dark tr:hover {
+    background-color: #00FFFF !important; /* 네온 블루 배경 */
+    color: #000000 !important; /* 텍스트 색상 변경 */
+    transition: background-color 0.3s, color 0.3s !important; /* 부드러운 전환 */
+}
+
+/* 페이지네이션 스타일 */
+#paging-container {
+    display: flex !important;
+    justify-content: center !important; /* 수평 가운데 정렬 */
+    align-items: center !important; /* 수직 가운데 정렬 */
+    margin-top: 10px !important; /* index로와의 간격 */
+    margin-bottom: 50px !important; /* 더 많은 여백 */
+    flex-wrap: wrap !important; /* 버튼이 많을 때 줄 바꿈 가능 */
+}
+
+/* 페이지네이션 버튼 기본 스타일 */
+.paging, #currentPaging, #paging {
+    border: 2px solid #00FFFF !important; /* 네온 블루 테두리 */
+    font-size: 14pt !important; /* 폰트 크기 */
+    padding: 9px 16px !important; /* 버튼 크기 통일 */
+    margin: 0 10px !important; /* 버튼 사이 간격 */
+    display: inline-block !important; /* 버튼을 한 줄에 배치 */
+    cursor: pointer !important; /* 커서 모양 변경 (클릭 가능) */
+    text-align: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF !important; /* 네온 테두리 */
+    background-color: #111111 !important; /* 배경 어두운 색 */
+    color: #FFFFFF !important; /* 텍스트 흰색 */
+    transition: all 0.3s ease-in-out !important; /* 부드러운 전환 효과 */
+}
+
+/* 페이지네이션 Hover 효과 */
+.paging:hover, #paging:hover {
+    background-color: #00FFFF !important; /* Hover 시 배경색 변경 */
+    color: #000000 !important; /* 텍스트 색상 변경 */
+    transition: background-color 0.3s, color 0.3s !important;
+}
+
+/* 현재 페이지 버튼 스타일 */
+#currentPaging {
+    border: 2px solid #FF00FF !important; /* 현재 페이지 네온 핑크 테두리 */
+    color: #FF00FF !important; /* 네온 핑크 텍스트 */
+    background-color: #222222 !important; /* 어두운 배경 */
+    box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF !important; /* 핑크 네온 효과 */
+    padding: 10px 30px !important; /* 버튼 크기 */
+    margin: 0 10px !important; /* 간격 */
+}
+
+/* index로 이동하는 링크 스타일 */
+#indexLink {
+    display: block !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    color: #00FF9C !important; /* 네온 그린 */
+    text-decoration: none !important;
+    margin-top: 50px !important; /* 상단 여백 */
+    box-shadow: 0 0 10px #00FF9C, 0 0 20px #00FF9C !important;
+}
+
+#indexLink:hover {
+    color: #FFFFFF !important; /* Hover 시 색상 변경 */
+    transition: color 0.3s ease-in-out !important;
+}
