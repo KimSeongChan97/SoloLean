@@ -36,13 +36,13 @@
 	<section name="NewPackageCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="375"/>
 		<item key="DIALOG_Y_ORIGIN" value="226"/>
-		<item key="DIALOG_WIDTH" value="525"/>
-		<item key="DIALOG_HEIGHT" value="500"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="622"/>
+		<item key="DIALOG_HEIGHT" value="480"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="NewClassCreationWizard.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1227"/>
-		<item key="DIALOG_Y_ORIGIN" value="164"/>
+		<item key="DIALOG_X_ORIGIN" value="455"/>
+		<item key="DIALOG_Y_ORIGIN" value="163"/>
 		<item key="DIALOG_WIDTH" value="696"/>
 		<item key="DIALOG_HEIGHT" value="783"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
@@ -81,9 +81,9 @@
 	<section name="NewInterfaceCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="418"/>
 		<item key="DIALOG_Y_ORIGIN" value="152"/>
-		<item key="DIALOG_WIDTH" value="580"/>
-		<item key="DIALOG_HEIGHT" value="543"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="706"/>
+		<item key="DIALOG_HEIGHT" value="661"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="NewRecordCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="437"/>
