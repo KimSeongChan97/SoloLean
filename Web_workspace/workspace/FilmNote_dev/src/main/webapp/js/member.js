@@ -53,10 +53,21 @@ $(document).ready(function() {
 
     // focusout 이벤트 추가
     $('#loginId, #loginPwd').focusout(function() {
-        if ($(this).val() == '') {
-            $(this).next('div').html('입력하세요').css('color', 'red');
+        if ($('#loginId').val() == '' && $('#loginPwd').val() == '') {
+            $('#loginIdDiv, #loginPwdDiv').html('');
+            $('#loginForm').append('<div id="loginErrorDiv" style="color:red;">아이디와 비밀번호를 입력하세요</div>');
         } else {
-            $(this).next('div').html('');
+            $('#loginErrorDiv').remove();
+            if ($('#loginId').val() == '') {
+                $('#loginIdDiv').html('아이디를 입력하세요').css('color', 'red');
+            } else {
+                $('#loginIdDiv').html('');
+            }
+            if ($('#loginPwd').val() == '') {
+                $('#loginPwdDiv').html('비밀번호를 입력하세요').css('color', 'red');
+            } else {
+                $('#loginPwdDiv').html('');
+            }
         }
     });
 

@@ -23,3 +23,4 @@ tel3 varchar(4)
 
 --
 select * from admin_tb;
+select * from user_tb;

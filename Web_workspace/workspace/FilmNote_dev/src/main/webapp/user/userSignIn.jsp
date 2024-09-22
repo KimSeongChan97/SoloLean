@@ -33,6 +33,9 @@
                         <button type="button" onclick="location.href='userSignUp.jsp'">회원가입</button>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2"><div id="loginErrorDiv"></div></td> <!-- 로그인 에러 메시지 div 추가 -->
+                </tr>
             </table>
         </form>
     </div>
