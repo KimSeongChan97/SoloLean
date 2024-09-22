@@ -49,6 +49,7 @@
                     <input type="text" id="birth2" placeholder="MM" name="birth2" maxlength="2" required>
                     <input type="text" id="birth3" placeholder="DD" name="birth3" maxlength="2" required>
                 </div>
+                <div id="birthDiv"></div>
             </div>
             <div class="form-group">
                 <label for="email">이메일</label>
@@ -61,6 +62,7 @@
                         <option value="naver.com">naver.com</option>
                     </select>
                 </div>
+                <div id="emailDiv"></div>
             </div>
             <div class="form-group">
                 <label for="phone">휴대전화</label>
@@ -71,6 +73,7 @@
                     <input type="text" id="tel2" name="tel2" maxlength="4" required>
                     <input type="text" id="tel3" name="tel3" maxlength="4" required>
                 </div>
+                <div id="telDiv"></div>
             </div>
             <div class="form-group">
                 <button type="submit" id="signUpBtn">회원가입</button>
