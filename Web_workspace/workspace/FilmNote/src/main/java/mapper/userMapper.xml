@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/userMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSQL">
+
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="user.bean.UserDTO">
+		INSERT INTO user_tb (id, pwd, name, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3)
+        VALUES (#{id}, #{pwd}, #{name}, #{gender}, #{birth1}, #{birth2}, #{birth3}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3})
+	</insert>
+	
+	<!-- 로드인 -->
+	<select id="loginUser" parameterType="map" resultType="user.bean.UserDTO">
+		SELECT * FROM user_tb 
+        WHERE id = #{id} AND pwd = #{pwd}
+	</select>
+
+
+</mapper>
