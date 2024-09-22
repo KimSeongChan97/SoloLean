@@ -4,6 +4,8 @@
 - MyBatis 학습
 - EL / JSTL 학습
 - MVC 학습 진행중
+- MySQL 학습 진행예정
+- ...
 
 
 https://blog.naver.com/sck2270
