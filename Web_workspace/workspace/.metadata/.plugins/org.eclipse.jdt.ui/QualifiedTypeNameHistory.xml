@@ -26,4 +26,5 @@
     <fullyQualifiedTypeName name="board.dao.BoardDAO"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
 </qualifiedTypeNameHistroy>
