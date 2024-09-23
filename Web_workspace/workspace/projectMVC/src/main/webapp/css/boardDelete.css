@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* body 설정 */
+body {
+    background-color: #0d0d0d; /* 어두운 배경 */
+    color: #00ffcc; /* 네온 블루 텍스트 */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 중앙에 배치된 삭제 폼 스타일 */
+#boardDeleteForm {
+    width: 60%;
+    margin: 50px auto;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00ffcc; /* 네온 그림자 */
+}
+
+/* 텍스트 스타일 */
+#boardDeleteForm div {
+    color: #ff00ff; /* 네온 핑크 */
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 버튼 스타일 */
+input[type="button"] {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, box-shadow 1.5s;
+    border-radius: 25px;
+}
+
+input[type="button"]:hover {
+    background-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+}
+
+/* 버튼 배치 */
+.table-buttons {
+    text-align: center;
+    padding-top: 20px;
+}

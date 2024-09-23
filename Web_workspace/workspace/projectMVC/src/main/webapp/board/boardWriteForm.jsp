@@ -6,6 +6,15 @@
 <title>글쓰기 페이지</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/index.css">
 <style type="text/css">
+
+table {
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 5px;
+}
+
 #boardWriteForm {
 	display: flex;
 	flex-direction: column;

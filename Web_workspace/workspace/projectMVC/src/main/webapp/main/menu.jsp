@@ -70,9 +70,12 @@
     <!-- 세션에 memId 값이 있을 때(사용자가 로그인 상태일 때) 링크를 표시 -->
     <c:if test="${sessionScope.memId != null }">
         <li><a href="${ pageContext.request.contextPath }/board/boardWriteForm.do">글쓰기</a></li>
-        
+	        <c:if test="${sessionScope.memId == 'admin' }">
+	        <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardWriteForm.do">이미지 등록</a></li>
+	        </c:if>
     </c:if>   
     <li><a href="${ pageContext.request.contextPath }/board/boardList.do?pg=1">목록</a></li>
+    <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardList.do">이미지 목록</a></li>
     
 </ul>
 

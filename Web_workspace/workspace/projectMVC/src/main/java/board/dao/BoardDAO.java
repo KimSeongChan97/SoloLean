@@ -103,7 +103,7 @@ public class BoardDAO {
       SqlSession sqlSession = sqlSessionFactory.openSession(); // 데이터베이스와 연결하여 세션을 시작
       // **추가 설명**: 특정 게시글을 가져오기 위해 `SqlSession`을 열어 데이터베이스와 연결을 엽니다.
       try {
-      sqlSession.update("hitUpdate", seq);
+			/* sqlSession.update("hitUpdate", seq); */
       BoardDTO boardDTO = sqlSession.selectOne("getBoard", seq); // 'getBoard' SQL 문을 실행하고 결과를 BoardDTO로 반환
       // **추가 설명**: `selectOne()`은 SQL 실행 결과가 하나일 때 사용되며, 이 경우 `seq` 값에 해당하는 게시글 하나를 가져옵니다. 
       // "getBoard"는 MyBatis XML 매퍼 파일에 정의된 SQL 구문이며, `seq` 파라미터로 전달받은 게시글 번호에 해당하는 데이터를 조회합니다.
@@ -117,23 +117,49 @@ public class BoardDAO {
   } 
    
 	// 게시글 수정
-	public void updateBoard(Map<String, String> map) {
+	public void boardUpdate(Map<String, Object> map) {
+	    // SqlSession 객체를 열어 MyBatis를 사용하여 DB와의 작업을 시작
+	    // SqlSessionFactory를 통해 세션을 열고, 이를 사용해 데이터베이스 작업을 처리할 수 있음
 	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    
 	    try {
-	        sqlSession.update("boardSQL.updateBoard", map); // update 쿼리를 실행
-	        sqlSession.commit(); // 커밋하여 변경사항 반영
+	        // MyBatis의 update 메서드를 사용하여 'boardUpdate'라는 SQL 구문을 실행
+	        // map 객체에는 게시글의 번호(seq), 제목(subject), 내용(content)이 포함되어 있으며,
+	        // 이 데이터는 쿼리에 전달되어 해당 게시글의 데이터를 업데이트함
+	        sqlSession.update("boardUpdate", map); // 'boardUpdate'라는 SQL 구문을 실행하고, map 데이터를 전달
+	        
+	        // 트랜잭션을 커밋하여 데이터베이스에 변경 사항을 반영
+	        // MyBatis에서 트랜잭션은 기본적으로 자동 커밋이 아니기 때문에, 수동으로 커밋해줘야 함
+	        sqlSession.commit(); // DB에 수정된 내용을 확정하고 반영함
 	    } finally {
-	        sqlSession.close(); // 세션 닫기
+	        // 작업이 끝나면 SqlSession 객체를 닫아 리소스를 해제
+	        // 데이터베이스 연결은 자원을 많이 사용하기 때문에 사용이 끝난 후 반드시 닫아야 함
+	        sqlSession.close(); // 세션을 닫아 연결을 종료함
 	    }
 	}
-
-   // 게시글 삭제
-   public void deleteBoard(int seq) {
+	
+	// 게시글 삭제
+	public void boardDelete(int seq) {
+	    // 게시글 삭제 작업을 위해 새로운 SqlSession 객체를 염
 	    SqlSession sqlSession = sqlSessionFactory.openSession();
-	    sqlSession.delete("boardSQL.deleteBoard", seq);
-	    sqlSession.commit();
-	    sqlSession.close();
+	    
+	    // MyBatis의 delete 메서드를 사용하여 'boardDelete'라는 SQL 구문을 실행
+	    // seq는 삭제할 게시글의 고유 번호로, 해당 번호의 게시글을 삭제함
+	    sqlSession.delete("boardSQL.boardDelete", seq); // 'boardDelete' 쿼리를 실행하여 seq에 해당하는 게시글 삭제
+	    
+	    // 삭제된 내용이 데이터베이스에 반영되도록 트랜잭션을 커밋
+	    sqlSession.commit(); // 삭제 작업을 데이터베이스에 확정
+	    
+	    // SqlSession 객체를 닫아 리소스를 해제
+	    sqlSession.close(); // 세션을 닫고 리소스를 해제
 	}
-   
+
+	public void hitUpdate(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("boardSQL.hitUpdate", seq);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
    
 }

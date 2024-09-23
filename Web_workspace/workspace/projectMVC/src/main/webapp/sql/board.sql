@@ -49,7 +49,7 @@ select * from board;
 -- 데이터베이스에 저장된 게시글 데이터를 확인할 수 있는 기본적인 쿼리입니다.
 select count(*) from board;
 select * from board order by seq desc;
---select * from board where seq=7;
+select * from board where seq=15;
 
 --DELETE FROM board WHERE seq = 20;
 -- 특정 게시글(seq = 1)을 삭제합니다. DELETE 문은 매우 강력하므로, 특정 게시글을 잘못 삭제하는 일이 없도록 주의해야 합니다.

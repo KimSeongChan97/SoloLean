@@ -27,7 +27,11 @@ public class BoardViewService implements CommandProcess {
         BoardDAO boardDAO = BoardDAO.getInstance(); 
         // **추가 설명**: DAO(Data Access Object) 패턴으로, 데이터베이스와의 상호작용을 담당합니다. 
         // `BoardDAO.getInstance()`는 싱글톤 패턴을 통해 이미 생성된 BoardDAO 인스턴스를 반환합니다. 이를 통해 데이터베이스 연결을 관리하고, 게시글 데이터를 조회하게 됩니다.
-
+        
+        // 조회수 증가
+        boardDAO.hitUpdate(seq);
+        
+        
         BoardDTO boardDTO = boardDAO.getBoard(seq); 
         // **추가 설명**: `getBoard(seq)` 메서드는 `seq` 번호에 해당하는 게시글의 정보를 데이터베이스에서 가져옵니다. 
         // 이 메서드는 MyBatis를 통해 SQL 쿼리를 실행하여 게시글 정보를 가져오며, 결과는 `BoardDTO` 객체로 반환됩니다. 
