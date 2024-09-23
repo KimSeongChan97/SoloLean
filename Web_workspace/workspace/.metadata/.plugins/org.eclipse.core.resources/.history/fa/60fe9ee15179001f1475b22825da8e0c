@@ -1,0 +1,33 @@
+package board.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.control.CommandProcess;
+
+import board.dao.BoardDAO;
+
+public class BoardUpdateService implements CommandProcess {
+
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+			    
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("seq", seq);
+	    map.put("subject", subject);
+	    map.put("content", content);
+	    
+	    BoardDAO boardDAO = BoardDAO.getInstance(); // DAO 객체 생성 (Singleton 패턴)
+	    boardDAO.boardUpdate(map); // DB에 게시글 작성 데이터를 전송
+	    
+		return "none";
+	}
+
+}

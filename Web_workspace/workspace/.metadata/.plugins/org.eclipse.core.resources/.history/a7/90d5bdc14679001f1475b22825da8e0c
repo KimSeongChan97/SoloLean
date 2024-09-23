@@ -1,0 +1,4 @@
+$(function(){
+	if($('#memId').val() == $('#id').text());
+	
+});

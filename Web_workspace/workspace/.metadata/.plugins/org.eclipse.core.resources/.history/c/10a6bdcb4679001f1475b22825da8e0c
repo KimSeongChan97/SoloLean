@@ -1,0 +1,8 @@
+$(function(){
+	if($('#memId').val() == $('#id').text()){
+		$('#boardViewSpan').show();
+	} else {
+		$('#boardViewSpan').hide();
+	}
+	
+});

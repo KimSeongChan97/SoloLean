@@ -1,0 +1,163 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 수정</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/boardUpdate.css">
+<style type="text/css">
+#boardUpdateForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
+	text-align: left;
+	background-color: #1a1a1a; /* 어두운 배경을 사용하여 눈에 덜 피로한 스타일 적용 */
+	padding: 20px;
+	border-radius: 10px; /* 테두리에 둥근 모서리 적용 */
+	box-shadow: 0 0 10px #00ffcc; /* 네온 스타일의 그림자 효과 적용 */
+}
+
+#boardUpdateForm div {
+    color: #ff00ff; /* 네온 스타일 색상으로 강조 */
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    background-color: #333333; /* 어두운 색상으로 입력 필드 배경 설정 */
+    color: #00ffcc; /* 네온 스타일 텍스트 색상 */
+    border: 1px solid #00ffcc; /* 네온 스타일 테두리 */
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box; /* 요소 크기를 내용물 크기까지 포함하도록 설정 */
+}
+
+input[type="button"], input[type="reset"] {
+    background-color: #00ffcc; /* 네온 스타일 배경 */
+    color: #0d0d0d; /* 어두운 텍스트 색상 */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s; /* 배경색 변화에 부드러운 애니메이션 적용 */
+    border-radius: 25px;    
+}
+
+input[type="button"]:hover, input[type="reset"]:hover {
+    background-color: #00ffcc;
+    box-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan; /* 네온 효과 강조 */
+    transition: box-shadow 1.5s ease; /* 그림자가 천천히 변하는 효과 */
+    border-radius: 25px;
+}
+
+.table-buttons {
+    text-align: center;
+    padding-top: 20px; /* 버튼들을 테이블 하단에 위치시키기 위한 여백 */
+}
+</style>
+
+</head>
+<body>
+<div id="wrap">
+<div id="header">
+	<!-- 상단 헤더 부분: 프로젝트 이름과 네비게이션 역할을 하는 이미지 삽입 -->
+	<h1>
+		<img alt="사과" src="${ pageContext.request.contextPath }/image/apple.png" 
+			width="50" height="50" 
+			onclick="location.href='${ pageContext.request.contextPath }/index.do'" 
+			style="cursor: pointer;"> <!-- 클릭 시 홈으로 이동 -->
+		MVC를 활용한 미니프로젝트 <!-- 프로젝트 제목 -->
+	</h1>
+	<hr style="border-color: #483D8B; border-width: 5px;" /> <!-- 스타일이 지정된 구분선 -->
+</div>
+		
+	<div id="container">	
+	<!-- 게시판 메뉴를 포함하는 jsp 파일을 불러옴 -->
+	<jsp:include page="../main/boardMenu.jsp" />	
+	
+		<div id="section">
+<!-- 게시글 수정 폼: 사용자가 수정할 게시글 내용을 입력할 수 있는 폼 -->
+<form id="boardUpdateForm" > 
+		
+		<!-- 게시글 번호와 페이지 번호는 숨김 필드로 설정하여 서버에 전송 -->
+		<input type="hidden" id="seq" value="${boardDTO.seq }" />
+		<input type="hidden" id="pg" value="${boardDTO.pg }" />
+		
+<table border="1">
+    <!-- 제목 입력 필드 -->
+    <tr>
+        <th width="100">제목</th>
+        <td>
+            <!-- 게시글의 제목을 수정할 수 있는 입력 필드 -->
+            <input type="text" id="subject" name="subject" size="70" value="${boardDTO.subject }" placeholder="제목 수정">
+            <div id="subjectDiv"></div> <!-- 제목에 대한 오류 메시지를 표시할 공간 -->
+        </td>
+    </tr>
+    <!-- 내용 입력 필드 -->
+    <tr>
+        <th>내용</th>
+        <td>
+            <!-- 게시글의 내용을 수정할 수 있는 입력 필드 -->
+            <textarea id="content" name="content" rows="10" cols="70" value="${boardDTO.content }" placeholder="내용 수정"></textarea>
+            <div id="contentDiv"></div> <!-- 내용에 대한 오류 메시지를 표시할 공간 -->
+        </td>
+    </tr>
+    <!-- 글 수정 및 재작성 버튼 -->
+    <tr>
+        <td colspan="2" class="table-buttons">
+            <input type="button" value="글수정" id="boardUpdateBtn"> <!-- 글 수정 버튼 -->
+            <input type="reset" value="다시작성"> <!-- 입력 초기화 버튼 -->
+        </td>
+    </tr>
+</table>
+</form>
+		</div>
+	</div>
+</div>
+
+<!-- JQuery 라이브러리 사용을 위한 스크립트 -->
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript">
+$('#boardUpdateBtn').click(function(){
+		// 기존의 경고 메시지들을 지우고 새로 입력 받을 준비를 함
+		$('#subjectDiv').empty();
+		$('#contentDiv').empty();
+		
+		// 제목 필드가 비어있을 때 경고 메시지 출력
+		if ($('#subject').val() == '') 
+			$('#subjectDiv').html('제목을 입력해주세요');
+		// 내용 필드가 비어있을 때 경고 메시지 출력
+		else if ($('#content').val() == '') 
+			$('#contentDiv').html('내용을 입력해주세요');
+		else {
+			// 제목과 내용이 모두 입력되었을 때, AJAX 요청을 통해 수정된 게시글 정보를 서버로 전송
+			$.ajax({
+				type: 'post', // 서버로 데이터를 전송할 HTTP 방식 (POST 방식 사용)
+				url: '/projectMVC/board/boardUpdate.do', // 요청할 서버의 URL
+				data: {
+					'seq': $('#seq').val(), // 게시글 번호
+					'subject': $('#subject').val(), // 수정된 제목
+					'content': $('#content').val()  // 수정된 내용
+				},
+				success: function() {
+					// 서버로부터 응답이 성공적으로 돌아왔을 때 실행
+					alert("글수정이 완료되었습니다."); // 수정 완료 메시지 출력
+					location.href = "/projectMVC/board/boardList.do?pg=" + $('#pg').val(); // 수정 후 게시글 목록으로 이동
+				},
+				error: function(e) {
+					// 오류가 발생했을 때 콘솔에 오류 정보 출력
+					console.log(e);
+				}
+			});
+		}
+	});
+});
+
+</script>
+</body>
+</html>

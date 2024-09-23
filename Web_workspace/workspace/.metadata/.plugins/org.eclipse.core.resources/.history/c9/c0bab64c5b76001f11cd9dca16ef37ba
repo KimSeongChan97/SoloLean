@@ -1,0 +1,26 @@
+#요청명=클래스명.클래스파일
+#프로젝트명/요청명(이름구분자)/파일
+#key=value
+#메인 메뉴화면
+/index.do=main.IndexService
+
+#회원가입
+/member/writeForm.do=member.service.WriteFormService
+/member/checkId.do=member.service.CheckIdService
+/member/write.do=member.service.WriteService
+
+#로그인, 로그아웃
+/member/loginForm.do=member.service.LoginFormService
+/member/login.do=member.service.LoginService
+/member/logout.do=member.service.LogoutService
+
+#희원정보 수정
+/member/updateForm.do=member.service.UpdateFormService
+/member/update.do=member.service.UpdateService
+
+#글쓰기
+/board/boardWriteForm.do=board.service.BoardWriteFormService
+/board/boardWrite.do=board.service.BoardWriteService
+
+#글목록
+/board/boardList.dp=board.service.BoardListService

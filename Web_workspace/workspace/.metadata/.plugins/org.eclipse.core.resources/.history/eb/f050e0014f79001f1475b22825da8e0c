@@ -1,0 +1,31 @@
+package board.service;
+
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import board.bean.BoardDTO;
+import board.dao.BoardDAO;
+import com.control.CommandProcess;
+
+public class BoardUpdateFormService implements CommandProcess {
+
+    @Override
+    public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        // 1. 파라미터에서 게시글 정보 받아오기
+        int seq = Integer.parseInt(request.getParameter("seq"));
+        int pg = Integer.parseInt(request.getParameter("pg"));
+        System.out.println(seq + " 번 글, " + pg + " 번 페이지");
+        
+        // 2. DB 연결
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        
+        BoardDTO boardDTO = boardDAO.getBoard(seq);
+        
+        request.setAttribute("pg", pg);
+        request.setAttribute("boardDTO", boardDTO);
+                
+        // 3. return "/board/boardUpdateForm.jsp"
+        return "/board/boardUpdateForm.jsp";
+    }
+}
