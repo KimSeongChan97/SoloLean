@@ -8,6 +8,7 @@
 <link rel="stylesheet"
     href="${ pageContext.request.contextPath }/css/index.css">
     <!-- 스타일 시트를 불러와서 페이지의 기본 레이아웃을 설정하는 css 파일 -->
+    <!-- pageContext.request.contextPath는 현재 웹 애플리케이션의 컨텍스트 경로를 동적으로 가져옵니다. -->
 <link rel="stylesheet"
     href="${ pageContext.request.contextPath }/css/imageboardWriteForm.css">
     <!-- 추가적인 스타일 시트를 불러와서 이 폼에 대한 커스텀 스타일 적용 -->
@@ -109,7 +110,7 @@
 
                         <tr>
                             <td colspan="2" class="table-buttons">
-                            	<input type="submit" value="이미지 등록">
+                                <input type="submit" value="이미지 등록" id="imageboardWriteBtn">
                                 <!-- <input type="button" value="이미지 등록" id="imageboardWriteBtn"> -->
                                 <!-- 이미지 등록을 위한 버튼 -->
                                 

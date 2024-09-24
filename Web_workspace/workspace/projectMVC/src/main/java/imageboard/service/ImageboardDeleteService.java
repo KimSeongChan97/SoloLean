@@ -16,6 +16,10 @@ public class ImageboardDeleteService implements CommandProcess {
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         // 선택된 seq 값들을 받아서 리스트로 변환
         String[] selectedSeq = request.getParameterValues("selectedSeq");
+        
+        // 디버깅 코드: selectedSeq 값 출력
+        System.out.println("selectedSeq: " + Arrays.toString(selectedSeq));
+        
         if (selectedSeq != null) {
             List<Integer> seqList = Arrays.asList(selectedSeq).stream()
                                          .map(Integer::parseInt)
@@ -26,7 +30,8 @@ public class ImageboardDeleteService implements CommandProcess {
             imageboardDAO.deleteSelected(seqList);
         }
         
-        // 삭제 후 1페이지로 리다이렉트
-        return "redirect:/projectMVC/imageboard/imageboardList.do?pg=1";
+        // 삭제 후 1페이지로 이동
+        request.setAttribute("pg", 1);
+        return "forward:/projectMVC/imageboard/imageboardList.do";
     }
 }

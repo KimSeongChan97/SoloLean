@@ -40,8 +40,8 @@
         	<input type="hidden" id="memId" value="${memId }" />
         	<input type="hidden" id="pg" value="${pg }" />
         	<!-- **추가 설명**: memId(회원 ID)와 pg(페이지 번호)를 히든 필드에 저장하여 나중에 처리할 때 활용됩니다. -->
-			
-			<form id="deleteForm" method="post" action="/projectMVC/imageboard/deleteSelected.do">	
+
+            <form id="deleteForm" method="post" action="/projectMVC/imageboard/imageboardDelete.do">
             <table border="1" frame="hsides" rules="rows">
                 <tr>
                     <th width="150">

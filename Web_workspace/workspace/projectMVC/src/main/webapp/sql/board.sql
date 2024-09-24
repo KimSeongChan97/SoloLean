@@ -115,22 +115,22 @@ CREATE TABLE board(
     content VARCHAR(4000) NOT NULL,
     -- 'content'는 게시글의 본문 내용을 저장하는 컬럼입니다. 최대 4000자의 문자열을 저장할 수 있으며, 반드시 값이 입력되어야 합니다. (NOT NULL 제약 조건)
 
-    ref int NOT NULL,
+    ref integer,
     -- 'ref'는 게시글의 그룹 번호를 저장하는 컬럼입니다. 동일한 그룹에 속하는 게시글(답글 등)은 같은 'ref' 값을 가집니다.
 
-    lev int DEFAULT 0 NOT NULL,
+    lev integer DEFAULT 0 NOT NULL,
     -- 'lev'는 글의 레벨(단계)을 나타내는 컬럼입니다. 기본값은 0이며, 0 이상의 값으로 레벨을 구분할 수 있습니다. (NOT NULL 제약 조건)
 
-    step int DEFAULT 0 NOT NULL,
+    step integer DEFAULT 0 NOT NULL,
     -- 'step'은 글의 순서를 나타내는 컬럼입니다. 같은 그룹(ref)에 속한 글들 사이에서 순서를 결정합니다. 기본값은 0이며, NULL 값을 허용하지 않습니다.
 
-    pseq int DEFAULT 0 NOT NULL,
+    pseq integer DEFAULT 0 NOT NULL,
     -- 'pseq'는 답글의 경우 원글의 번호를 나타냅니다. 답글이 아닌 원글일 경우 기본값인 0을 가집니다. (NOT NULL 제약 조건)
 
-    reply int DEFAULT 0 NOT NULL,
+    reply integer DEFAULT 0 NOT NULL,
     -- 'reply'는 해당 게시글에 달린 답글의 수를 저장하는 컬럼입니다. 기본값은 0이며, NULL 값을 허용하지 않습니다.
 
-    hit int DEFAULT 0,
+    hit integer DEFAULT 0,
     -- 'hit'는 게시글의 조회수를 저장하는 컬럼입니다. 게시글이 조회될 때마다 증가하며, 기본값은 0입니다.
 
     logtime DATETIME DEFAULT now()

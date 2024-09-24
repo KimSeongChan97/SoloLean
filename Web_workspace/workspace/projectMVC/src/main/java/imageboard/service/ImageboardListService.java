@@ -25,16 +25,21 @@ public class ImageboardListService implements CommandProcess {
 		if(request.getParameter("pg") != null) pg = Integer.parseInt(request.getParameter("pg"));
 		// **추가 설명**: request.getParameter() 메서드를 통해 사용자가 전달한 "pg" 파라미터 값을 가져옵니다. 
 		// 이 파라미터는 사용자가 보고 싶은 페이지 번호를 의미하며, null이면 기본적으로 첫 페이지인 1로 설정됩니다.
-
+		
+		// Oracle
         // 1페이지당 3개씩
-        int endNum = pg * 3;
+        //int endNum = pg * 3;
         // **추가 설명**: 현재 페이지 번호(pg)에 따라 마지막 항목 번호(endNum)를 계산합니다. 
         // 예를 들어, 1페이지라면 3개의 항목을 가져오므로 3이 됩니다. 2페이지라면 6이 됩니다.
-        int startNum = endNum - 2;
+        //int startNum = endNum - 2;
         // **추가 설명**: 시작 항목 번호(startNum)를 계산합니다. 각 페이지는 3개의 항목을 포함하므로, 
         // 첫 번째 페이지의 시작 번호는 1, 두 번째 페이지는 4, 세 번째 페이지는 7이 됩니다. 
         // 따라서 마지막 항목 번호에서 2를 뺀 값이 시작 번호가 됩니다.
         
+		// MySQL
+		int endNum = 3;
+		int startNum = pg * endNum - endNum;
+		
         //DB
         Map<String, Integer> map = new HashMap<>();
         map.put("startNum",  startNum);

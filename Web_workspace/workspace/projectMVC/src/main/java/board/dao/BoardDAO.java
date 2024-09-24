@@ -46,11 +46,16 @@ public class BoardDAO {
       SqlSession sqlSession = sqlSessionFactory.openSession(); // 데이터베이스와의 연결을 열기 위해 SqlSession 객체를 생성
       // **추가 설명**: SqlSession은 MyBatis에서 SQL을 실행하고 트랜잭션을 관리하는 핵심 객체입니다. 
       // SQL 실행, 트랜잭션 관리 등을 위한 데이터베이스 연결을 담당하며, 세션이 열리면 SQL 작업을 수행할 수 있습니다.
-
-      sqlSession.insert("boardSQL.boardWrite", map); // 게시글을 삽입하는 SQL 문을 실행. 매개변수로 게시글 데이터를 담은 map을 전달
+      
+      // Oracle
+      // sqlSession.insert("boardSQL.boardWrite", map); // 게시글을 삽입하는 SQL 문을 실행. 매개변수로 게시글 데이터를 담은 map을 전달
       // **추가 설명**: MyBatis는 XML에 정의된 "boardSQL.boardWrite"라는 ID를 가진 SQL 쿼리를 실행합니다. 
       // `map`은 게시글의 제목, 내용 등의 데이터를 포함하고 있으며, 이를 SQL에 전달하여 게시글을 삽입합니다.
-
+      
+      // MySQL
+      sqlSession.insert("boardSQL.boardWrite", map);
+      sqlSession.update("boardSQL.refUpdate");
+      
       sqlSession.commit(); // 삽입된 데이터를 커밋하여 데이터베이스에 반영
       // **추가 설명**: MyBatis는 자동 커밋 기능을 제공하지 않으므로, 명시적으로 `commit()` 메서드를 호출하여 데이터베이스에 변경사항을 반영해야 합니다. 
       // 트랜잭션이 완료되었음을 명시적으로 알려주는 역할을 하며, 이를 호출하지 않으면 변경사항이 반영되지 않고 롤백될 수 있습니다.

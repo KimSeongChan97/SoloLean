@@ -43,7 +43,8 @@
                          , #{zipcode}
                          , #{addr1}
                          , #{addr2}
-                         , SYSDATE) <!-- SYSDATE는 Oracle에서 현재 날짜와 시간을 가져옵니다. -->
+                        <!-- , SYSDATE)  SYSDATE는 Oracle에서 현재 날짜와 시간을 가져옵니다. -->
+                        , now()) <!-- MySQL  -->
     </insert>
     
     <!-- 로그인 -->
@@ -79,7 +80,8 @@
                         , zipcode = #{zipcode}
                         , addr1 = #{addr1}
                         , addr2 = #{addr2}
-                        , logtime = SYSDATE <!-- SYSDATE를 사용해 회원정보를 수정한 시간 기록 -->
+                        <!-- , logtime = SYSDATE SYSDATE를 사용해 회원정보를 수정한 시간 기록 -->
+                        , logtime = now() <!-- MySQL  -->
         where id = #{id} <!-- 회원 ID를 기준으로 데이터를 수정 -->
     </update>
 </mapper>
