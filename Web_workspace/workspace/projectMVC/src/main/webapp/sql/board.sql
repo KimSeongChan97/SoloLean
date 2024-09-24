@@ -90,3 +90,22 @@ select * from comments;
 
 commit;
 -- 트랜잭션을 커밋하여 변경 사항을 데이터베이스에 반영합니다.
+
+-- -----------------------------------------------------------------
+
+-- MySQL
+CREATE TABLE board(
+    seq integer primary key auto_increment,
+    id VARCHAR(20) NOT NULL,
+    name VARCHAR(40) NOT NULL,
+    email VARCHAR(40),
+    subject VARCHAR(255) NOT NULL,
+    content VARCHAR(4000) NOT NULL,
+    ref int NOT NULL,
+    lev int DEFAULT 0 NOT NULL,
+    step int DEFAULT 0 NOT NULL,
+    pseq int DEFAULT 0 NOT NULL,
+    reply int DEFAULT 0 NOT NULL,
+    hit int DEFAULT 0,
+    logtime DATETIME DEFAULT now()  
+);
