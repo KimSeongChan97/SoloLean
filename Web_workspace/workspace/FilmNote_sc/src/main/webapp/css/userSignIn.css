@@ -49,14 +49,27 @@ body {
     border-radius: 4px;
 }
 
+.signin-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px; /* 상단 여백 증가 */
+}
+
 button {
-    width: calc(50% - 10px); /* 패딩을 고려한 너비 */
+    width: calc(40% - 10px); /* 버튼 너비 조정 */
     padding: 12px;
     background-color: #ffffff;
     border: 1px solid #000000;
     color: #000000;
     cursor: pointer;
-    margin: 5px;
+    margin: 0 10px; /* 좌우 여백 증가 */
 }
 
 button:hover {
