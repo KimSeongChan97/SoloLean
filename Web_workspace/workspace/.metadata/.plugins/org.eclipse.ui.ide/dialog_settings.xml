@@ -30,6 +30,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\git\dev\dev-sc\FilmNote"/>
 			<item value="D:\git\FilmNote"/>
 			<item value="D:\Web\workspace\projectJSP_solve"/>
 			<item value="D:\Web\workspace\SoloProject_Front_modified"/>
@@ -38,9 +39,9 @@
 		<section name="SmartImportWizard.dialogBounds">
 			<item key="DIALOG_X_ORIGIN" value="278"/>
 			<item key="DIALOG_Y_ORIGIN" value="95"/>
-			<item key="DIALOG_WIDTH" value="888"/>
-			<item key="DIALOG_HEIGHT" value="629"/>
-			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+			<item key="DIALOG_WIDTH" value="938"/>
+			<item key="DIALOG_HEIGHT" value="726"/>
+			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 		</section>
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
@@ -69,6 +70,7 @@
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
 			<item value="D:\git\SoloLean\SoloLean\Web_workspace\workspace"/>
+			<item value="D:\git\dev\dev-sc\FilmNote"/>
 			<item value="D:\git\SoloLean\SoloLean\Web_workspace\workspace\EL_JSTL"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
@@ -76,7 +78,7 @@
 		</list>
 		<section name="ExternalProjectImportWizard.dialogBounds">
 			<item key="DIALOG_X_ORIGIN" value="379"/>
-			<item key="DIALOG_Y_ORIGIN" value="157"/>
+			<item key="DIALOG_Y_ORIGIN" value="159"/>
 			<item key="DIALOG_WIDTH" value="613"/>
 			<item key="DIALOG_HEIGHT" value="861"/>
 			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -72,6 +72,7 @@
         <li><a href="${ pageContext.request.contextPath }/board/boardWriteForm.do">글쓰기</a></li>
 	        <c:if test="${sessionScope.memId == 'admin' }">
 	        <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardWriteForm.do">이미지 등록</a></li>
+	        <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardWriteAjaxForm.do">이미지 등록(Ajax)</a></li>
 	        </c:if>
     </c:if>   
     <li><a href="${ pageContext.request.contextPath }/board/boardList.do?pg=1">목록</a></li>

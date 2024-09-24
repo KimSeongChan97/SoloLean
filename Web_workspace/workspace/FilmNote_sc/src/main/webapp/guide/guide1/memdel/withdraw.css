@@ -1,0 +1,112 @@
+/* withdraw.css */
+@charset "UTF-8";
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.member-menu > a:last-child > p {
+    color: #F1AF23;
+    font-weight: bold;
+}
+
+.withdraw-form-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 100px auto;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.withdraw-form-container h1 {
+    font-size: 24px;
+    color: #005898;
+    margin-bottom: 20px;
+}
+
+.withdraw-form-container > p {
+	margin-bottom: 30px;
+}
+
+#withdraw-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.withdraw-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#withdraw-form .withdraw-label {
+    flex: 1;
+    margin: 10px 10px 0 0;
+    align-self: flex-start; 
+	letter-spacing: 3px;
+}
+
+#withdraw-form .withdraw-input {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; 
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+}
+
+#withdraw-form input[type="checkbox"] {
+    margin-right: 10px;
+	transform: scale(1.7);
+	cursor: pointer;
+	display: inline;
+}
+
+#withdraw-form label[for="confirm"] {
+    font-weight: normal;
+    align-items: center;
+}
+
+div.withdraw-input {
+	padding: 20px !important;  
+}
+
+div.withdraw-input label {
+	margin-bottom:10px;
+}
+
+div.withdraw-input label:last-child {
+	margin-bottom: 0px;
+}
+
+.withdrawBtn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    background: white;
+    border: 1px solid #FF6B6B;
+    color: #FF6B6B;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.withdrawBtn:hover {
+    background: #FF6B6B;
+    color: white;
+}
+
+.message-container {
+	margin: 10px 0;
+}

@@ -2,9 +2,13 @@ package imageboard.bean;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ImageboardDTO {
 	private int seq;
 	private String imageId;

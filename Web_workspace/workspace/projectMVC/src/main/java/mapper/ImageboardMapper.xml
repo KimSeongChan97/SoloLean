@@ -17,7 +17,19 @@
     								, sysdate)
   </insert>
   
+  <select id="imageboardList" parameterType="java.util.Map" resultType="imageboard">
+       <![CDATA[
+         SELECT * FROM
+         (SELECT ROWNUM rn, tt.* FROM
+           (SELECT * FROM imageboard ORDER BY seq DESC) tt
+         ) WHERE rn >= #{startNum} AND rn <= #{endNum}
+       ]]>
+     </select>
 
-  
-
+  <!-- 총 글수 -->
+	<select id="getTotalA" resultType="int">
+		select count(*) from imageboard
+	</select>
+	
+	
 </mapper>
