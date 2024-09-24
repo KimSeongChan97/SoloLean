@@ -87,4 +87,15 @@ public class ImageboardDAO {
 		return totalA;
 		// **추가 설명**: 쿼리 결과로 얻은 총 데이터의 개수를 반환합니다.
 	}
+	
+	public void deleteSelected(List<Integer> seqList) {
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    sqlSession.delete("imageboardSQL.deleteSelected", seqList);
+	    sqlSession.commit();
+	    sqlSession.close();
+	}
+
+	
+	
+	
 }

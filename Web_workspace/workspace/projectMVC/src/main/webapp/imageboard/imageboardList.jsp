@@ -40,7 +40,8 @@
         	<input type="hidden" id="memId" value="${memId }" />
         	<input type="hidden" id="pg" value="${pg }" />
         	<!-- **추가 설명**: memId(회원 ID)와 pg(페이지 번호)를 히든 필드에 저장하여 나중에 처리할 때 활용됩니다. -->
-
+			
+			<form id="deleteForm" method="post" action="/projectMVC/imageboard/deleteSelected.do">	
             <table border="1" frame="hsides" rules="rows">
                 <tr>
                     <th width="150">
@@ -62,7 +63,7 @@
                              JSP에서 리스트를 순회하며 각 행을 생성합니다. -->
                         <tr>
                             <td align="center">
-                            	<input type="checkbox" class="itemCheckbox" value="${imageboardDTO.seq }">${imageboardDTO.seq }
+                            	<input type="checkbox" class="itemCheckbox" name="selectedSeq" value="${imageboardDTO.seq }">${imageboardDTO.seq }
                             	<!-- **추가 설명**: 각 항목의 체크박스와 함께 시퀀스 번호를 출력하여 선택 기능을 추가합니다. -->
                             </td>
                             
@@ -105,9 +106,11 @@
 	                <!-- **추가 설명**: 페이징을 중앙에 배치하고, 상단에 여백을 추가합니다. JSP에서 페이징 처리된 HTML을 삽입합니다. -->
 	            </div>
             </div>
+            </form> <!-- id="deleteForm" -->
         </div> <!-- id="section" -->
     </div> <!-- id="container" -->
 </div> <!-- id="wrap" -->
+
 
 <script type="text/javascript">
 function imageboardPaging(pg){

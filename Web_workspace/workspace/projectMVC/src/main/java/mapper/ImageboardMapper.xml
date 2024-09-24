@@ -31,5 +31,13 @@
 		select count(*) from imageboard
 	</select>
 	
+	<!-- 선택한 이미지 삭제  -->
+	<delete id="deleteSelected" parameterType="list">
+		delete from imageboard where seq in
+		<foreach item="seq" index="index" collection="list" open="(" separator="," close=")">
+        #{seq}
+   	 	</foreach>
+	</delete>
+	
 	
 </mapper>
