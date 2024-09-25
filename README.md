@@ -5,7 +5,8 @@
 - EL / JSTL 학습
 - MVC 학습
 - MySQL 학습 진행중
-- ...
+- NaverCloudPlatform 진행중
+- 
 
 
 https://blog.naver.com/sck2270
