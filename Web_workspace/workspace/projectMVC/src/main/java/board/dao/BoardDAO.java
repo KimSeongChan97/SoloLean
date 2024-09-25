@@ -54,7 +54,7 @@ public class BoardDAO {
       
       // MySQL
       sqlSession.insert("boardSQL.boardWrite", map);
-      sqlSession.update("boardSQL.refUpdate");
+      sqlSession.update("boardSQL.refUpdate"); // 그룹번호
       
       sqlSession.commit(); // 삽입된 데이터를 커밋하여 데이터베이스에 반영
       // **추가 설명**: MyBatis는 자동 커밋 기능을 제공하지 않으므로, 명시적으로 `commit()` 메서드를 호출하여 데이터베이스에 변경사항을 반영해야 합니다. 

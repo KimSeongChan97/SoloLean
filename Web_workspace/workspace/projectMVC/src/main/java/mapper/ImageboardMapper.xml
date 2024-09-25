@@ -18,9 +18,21 @@
     								, sysdate) -->
     
     <!-- MySQL -->
-    INSERT INTO imageboard (imageId, imageName, imagePrice, imageQty, imageContent, image1, logtime)
-    VALUES (#{imageId}, #{imageName}, #{imagePrice}, #{imageQty}, #{imageContent}, #{image1}, NOW())
-    <!-- logtime: MySQL에서는 날짜를 NOW() 함수로 처리 -->
+    INSERT INTO imageboard (imageId
+    						, imageName
+    						, imagePrice
+    						, imageQty
+    						, imageContent
+    						, image1
+    						, logtime)
+				    		VALUES (#{imageId}
+						    		, #{imageName}
+						    		, #{imagePrice}
+						    		, #{imageQty}
+						    		, #{imageContent}
+						    		, #{image1}
+						    		, (current_date))
+    <!-- logtime: MySQL에서는 날짜를 (current_date) 함수로 처리 -->
   </insert>
   
   <!-- 이미지 목록 조회 -->

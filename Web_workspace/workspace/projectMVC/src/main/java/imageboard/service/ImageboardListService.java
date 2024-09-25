@@ -37,8 +37,9 @@ public class ImageboardListService implements CommandProcess {
         // 따라서 마지막 항목 번호에서 2를 뺀 값이 시작 번호가 됩니다.
         
 		// MySQL
-		int endNum = 3;
-		int startNum = pg * endNum - endNum;
+		int endNum = 3; // 개수
+		int startNum = pg * endNum - endNum; // 시작 위치 - 0, 3, 6 ..
+		// 1*3-3=0, 2*3-3=3 ...
 		
         //DB
         Map<String, Integer> map = new HashMap<>();
