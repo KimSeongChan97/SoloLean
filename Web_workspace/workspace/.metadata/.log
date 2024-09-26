@@ -10098,3 +10098,37 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.core 4 0 2024-09-26 12:18:36.370
+!MESSAGE An exception occurred during push on URI https://github.com/KimSeongChan97/SoloLean.git: https://github.com/KimSeongChan97/SoloLean.git: not authorized
+!STACK 0
+org.eclipse.jgit.errors.TransportException: https://github.com/KimSeongChan97/SoloLean.git: not authorized
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:694)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:636)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:540)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:140)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1555)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:269)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.egit.ui 4 0 2024-09-26 12:18:36.377
+!MESSAGE Can't connect to any repository: https://github.com/KimSeongChan97/SoloLean.git (https://github.com/KimSeongChan97/SoloLean.git: not authorized)
+
+!ENTRY org.eclipse.egit.core 4 0 2024-09-26 12:22:15.295
+!MESSAGE An exception occurred during push on URI https://github.com/KimSeongChan97/SoloLean.git: https://github.com/KimSeongChan97/SoloLean.git: not authorized
+!STACK 0
+org.eclipse.jgit.errors.TransportException: https://github.com/KimSeongChan97/SoloLean.git: not authorized
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:694)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:636)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:540)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:140)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1555)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:269)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.egit.ui 4 0 2024-09-26 12:22:15.296
+!MESSAGE Can't connect to any repository: https://github.com/KimSeongChan97/SoloLean.git (https://github.com/KimSeongChan97/SoloLean.git: not authorized)
