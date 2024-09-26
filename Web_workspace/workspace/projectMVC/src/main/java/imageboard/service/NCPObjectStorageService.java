@@ -19,8 +19,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class NCPObjectStorageService  {
-	private String accessKey = "ncp_iam_BPASKR1rkHdM4GZvZUXw";
-	private String secretKey = "ncp_iam_BPKSKRCJwDshvcUw4ZcyZ35rLxtxCmmYEY";
+	private String accessKey = "MY_KEY"; // 개인 키 이므로 추후 프로퍼티 를 통해 보안성강화가 필요 // ncp_iam_BPASKR1rkHdM4GZvZUXw
+	private String secretKey = "MY_KEY"; // 개인 키 이므로 추후 프로퍼티 를 통해 보안성강화가 필요 // ncp_iam_BPKSKRCJwDshvcUw4ZcyZ35rLxtxCmmYEY
 	private String regionName = "kr-standard";
 	private String endPoint = "https://kr.object.ncloudstorage.com";
 	
