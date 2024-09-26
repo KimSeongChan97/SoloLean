@@ -127,30 +127,23 @@
     <!-- jQuery 라이브러리 로드 -->
     <script type="text/javascript">
     $('#camera').click(function(){
-        // 카메라 아이콘을 클릭하면 파일 선택 창이 열리도록 함
-        $('#image1').trigger('click');
+    	$('#image1').trigger('click');//강제 이벤트 발생
     });
-    
-    // 사용자가 파일을 선택하면 선택된 파일의 이미지를 보여줌
+
+    //선택한 이미지 확인하기
     $('#image1').change(function(){
-        readURL(this);
+    	readURL(this);
     });
-    
+
     function readURL(input){
-        var reader = new FileReader();
-        // FileReader 객체를 사용하여 파일을 비동기적으로 읽어옴
-        
-        reader.onload = function(e){
-            $('#showImg').attr('src', e.target.result); 
-            // 파일이 로드되면 미리보기 이미지의 src 속성을 변경하여 보여줌
-        }
-        reader.readAsDataURL(input.files[0]); 
-        // 선택한 파일을 데이터 URL 형식으로 읽어옴 (이미지 미리보기에 적합)
+    	var reader = new FileReader();
+    	
+    	reader.onload = function(e){
+    		$('#showImg').attr('src', e.target.result); //e.target - 이벤트가 발생하는 요소를 반환해준다.
+    	}
+    	
+    	reader.readAsDataURL(input.files[0]);
     }
-    
-    $('#imageboardWriteBtn').click(function(){
-    		
-    });
     
     </script>
 

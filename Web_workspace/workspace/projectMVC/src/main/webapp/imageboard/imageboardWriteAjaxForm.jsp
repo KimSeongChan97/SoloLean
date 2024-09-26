@@ -139,65 +139,42 @@
     <!-- jQuery는 JavaScript 작업을 간소화하는 라이브러리입니다. -->
     <script type="text/javascript">
     $('#camera').click(function(){
-        // 카메라 아이콘을 클릭하면 파일 선택 창이 열리도록 함
-        $('#image1').trigger('click');
-        // trigger() 메소드는 특정 이벤트를 강제로 발생시킵니다.
+    	$('#image1').trigger('click');//강제 이벤트 발생
     });
-    
-    // 사용자가 파일을 선택하면 선택된 파일의 이미지를 보여줌
+
+    //선택한 이미지 확인하기
     $('#image1').change(function(){
-        readURL(this);
-        // this는 현재 이벤트가 발생한 요소를 가리킵니다.
+    	readURL(this);
     });
-    
+
     function readURL(input){
-        var reader = new FileReader();
-        // FileReader 객체를 사용하여 파일을 비동기적으로 읽어옴
-        
-        reader.onload = function(e){
-            $('#showImg').attr('src', e.target.result); 
-            // 파일이 로드되면 미리보기 이미지의 src 속성을 변경하여 보여줌
-        }
-        reader.readAsDataURL(input.files[0]); 
-        // 선택한 파일을 데이터 URL 형식으로 읽어옴 (이미지 미리보기에 적합)
+    	var reader = new FileReader();
+    	
+    	reader.onload = function(e){
+    		$('#showImg').attr('src', e.target.result); //e.target - 이벤트가 발생하는 요소를 반환해준다.
+    	}
+    	
+    	reader.readAsDataURL(input.files[0]);
     }
-    
+
     $('#imageboardWriteBtn').click(function(){
-    		
-    });
-    
-    // 이미지 버튼(Ajax)
-    $('#imageboardWriteBtn').click(function(){
-        let formData = new FormData($('#imageboardWriteForm')[0]);
-        $.ajax({
-            type: 'post',
-    url: '/projectMVC/imageboard/imageboardWriteAjax.do',
-    enctype: 'multipart/form-data',
-    processData: false,
-    // processData: false 설정의 이유
-    // - 기본값은 true이며, 이 경우 데이터를 문자열로 변환하여 전송합니다.
-    // - false로 설정하면 데이터를 문자열로 변환하지 않고 그대로 전송합니다.
-    // - 파일 업로드 시 필수적인 설정입니다. 파일 데이터는 문자열로 변환되면 안 되기 때문입니다.
-    // - FormData 객체를 사용할 때도 반드시 false로 설정해야 합니다.
-    // - 이렇게 함으로써 파일이나 Blob 데이터가 올바르게 서버로 전송될 수 있습니다.
-    
-    contentType: false,
-    // contentType: false 설정의 이유
-    // - 기본값은 'application/x-www-form-urlencoded; charset=UTF-8'입니다.
-    // - false로 설정하면 jQuery가 contentType을 설정하지 않습니다.
-    // - 이는 브라우저가 multipart/form-data를 자동으로 설정할 수 있게 합니다.
-    // - 파일 업로드 시 필수적인 설정입니다. multipart/form-data는 파일 전송에 적합한 인코딩 방식입니다.
-    // - FormData 객체를 사용할 때도 반드시 false로 설정해야 합니다.
-    // - 이렇게 함으로써 파일 데이터가 올바른 형식으로 서버에 전송될 수 있습니다.
-    
-    data: formData,
-    success: function(data){
-        alert('이미지 등록 완료');
-    },
-    error: function(e){
-        console.log(e);
-    }    
-        }); // ajax 호출
+    	let formData = new FormData($('#imageboardWriteForm')[0]);
+    	
+    	$.ajax({
+    		type: 'post',
+    		enctype: 'multipart/form-data',
+    		processData: false,
+    		contentType: false,
+    		url: '/projectMVC/imageboard/imageboardWriteAjax.do',
+    		data: formData,
+    		success: function(){
+    			alert('이미지 등록 완료');
+    			location.href = "/projectMVC/imageboard/imageboardList.do?pg=1";
+    		},
+    		error: function(e){
+    			console.log(e);
+    		}
+    	}); //$.ajax
     });
 
     </script>

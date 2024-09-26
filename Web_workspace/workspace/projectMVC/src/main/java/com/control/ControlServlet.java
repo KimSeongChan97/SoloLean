@@ -29,8 +29,13 @@ public class ControlServlet extends HttpServlet {
     
     @Override
     public void init(ServletConfig config) throws ServletException {
-        // init 메서드는 서블릿이 처음 로딩될 때 한 번만 호출되며, 설정 파일을 읽고 준비 작업을 수행함.
         
+    	 // AWS 경고 메시지 비활성화 설정 추가
+        System.setProperty("aws.java.v1.disableDeprecationAnnouncement", "true");
+
+        // init 메서드는 서블릿이 처음 로딩될 때 한 번만 호출되며, 설정 파일을 읽고 준비 작업을 수행함.
+    	
+    	
         String propertyConfig = config.getInitParameter("propertyConfig"); 
         // 서블릿 초기화 파라미터에서 "propertyConfig" 값을 가져옴. 여기서는 "command.properties"라는 파일 이름이 설정됨.
         System.out.println("propertyConfig = " + propertyConfig);

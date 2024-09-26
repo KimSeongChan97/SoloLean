@@ -64,12 +64,7 @@
 	
   <!-- 선택한 이미지 삭제 -->
   <delete id="deleteSelected" parameterType="list">
-    <!-- Oracle -->
-    <!-- DELETE FROM imageboard WHERE seq IN
-    <foreach item="seq" index="index" collection="list" open="(" separator="," close=")">
-      #{seq}
-    </foreach> -->
-    
+	    
     <!-- MySQL -->
     DELETE FROM imageboard WHERE seq IN
     <foreach item="seq" index="index" collection="list" open="(" separator="," close=")">

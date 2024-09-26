@@ -70,7 +70,7 @@
                             <td style="text-align: center; vertical-align: middle;">
                             	<a href="#" style="display: flex; justify-content: center; align-items: center;">
                                 <!-- src="가상폴더의 위치" -->
-                                <img src="http://localhost:8080/projectMVC/storage/${imageboardDTO.image1 }" 
+                                <img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-65/storage/${imageboardDTO.image1 }" 
                                 alt="${imageboardDTO.imageName }"
                                 width="70" height="70"
                                 style="cursor: pointer;" /> 
