@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="GitSelectRepositoryPage.lastRepository" value="D:\Project\FilmNote\.git"/>
+	<list key="CommitDialog.authorValues">
+		<item value="KimSeongChan97 &lt;sck2270@gmail.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="KimSeongChan97 &lt;sck2270@gmail.com&gt;"/>
+	</list>
 	<section name="GitCommitSearchPage">
 		<item key="HISTORY_SIZE" value="0"/>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
-		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="true"/>
 		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="sortItemState" value="false"/>

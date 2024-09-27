@@ -76,7 +76,7 @@
 	        </c:if>
     </c:if>   
     <li><a href="${ pageContext.request.contextPath }/board/boardList.do?pg=1">목록</a></li>
-    <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardList.do">이미지 목록</a></li>
+    <li><a href="${ pageContext.request.contextPath }/imageboard/imageboardList.do?pg=1">이미지 목록</a></li>
     
 </ul>
 

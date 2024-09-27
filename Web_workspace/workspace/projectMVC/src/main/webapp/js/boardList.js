@@ -1,4 +1,3 @@
-
 // 글 제목을 클릭하였을 시
 $('.subjectA').click(function(){
 	if($('#memId').val() == '') 

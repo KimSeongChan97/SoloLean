@@ -156,28 +156,25 @@ public class ControlServlet extends HttpServlet {
         System.out.println();
         
         if(request.getMethod().equals("POST")) request.setCharacterEncoding("UTF-8");
-        // POST 방식으로 들어온 요청은 한글 처리를 위해 UTF-8로 인코딩함.
-        // UTF-8 설정을 통해 한글이나 다양한 언어의 문자를 정확하게 인코딩할 수 있음.
         
-        //http://localhost:8080/memberMVC/member/writeForm.do
-        // 요청한 URL에서 "/member/writeForm.do" 뜯어오기
         String category = request.getServletPath();
-        // 사용자가 요청한 URL에서 경로 부분을 가져옴. 예를 들어 "/member/writeForm.do"가 추출됨.
-        // getServletPath()는 서블릿의 매핑 경로를 반환함.
         System.out.println("category = " + category);
         
-        // Map을 이용하여 Key에 해당하는 값을 꺼내온다. member.service.WriteFormService
-        CommandProcess com = (CommandProcess) map.get(category); // 자식 = (자식)부모
-        // map에서 해당 URL에 맞는 CommandProcess 객체를 꺼냄. 이는 Command 인터페이스를 구현한 객체여야 함.
-        // 부모 클래스나 인터페이스에서 자식 클래스를 참조할 수 있기 때문에 이렇게 캐스팅할 수 있음.
+        CommandProcess com = (CommandProcess) map.get(category);
         
         String view = null;
         try {
             view = com.requestPro(request, response);
-            // requestPro 메서드를 호출하여 비즈니스 로직을 처리하고, 그 결과로 이동할 뷰 페이지 경로를 반환함.
-            // 각 Command 클래스는 이 메서드를 통해 로직을 처리하고 뷰 페이지 경로를 반환함.
         } catch (Throwable e) {
             e.printStackTrace();
+            // 로그에 예외 정보 출력
+            System.out.println("Error in execute: " + e.getMessage());
+        }
+        
+        // view가 null이거나 empty인 경우 index.do로 리다이렉트
+        if (view == null || view.isEmpty()) {
+            view = "/index.do";
+            System.out.println("view is null, redirecting to /index.do");
         }
         
         if(view.equals("none")) return;

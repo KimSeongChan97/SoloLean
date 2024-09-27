@@ -51,7 +51,7 @@
             <a href="${pageContext.request.contextPath}/imageboard/imageboardWriteAjaxForm.do">이미지 등록 (Ajax)</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/imageboard/imageboardList.do">이미지 목록</a>
+            <a href="${pageContext.request.contextPath}/imageboard/imageboardList.do?pg=1">이미지 목록</a>
         </li>
     </ul>
 </div>

@@ -1,37 +1,37 @@
 package imageboard.service;
 
-import java.util.Arrays;
-import java.util.List;
+import com.control.CommandProcess;
+import imageboard.bean.ImageboardDTO;
+import imageboard.dao.ImageboardDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.control.CommandProcess;
-
-import imageboard.dao.ImageboardDAO;
+import java.util.Arrays;
+import java.util.List;
 
 public class ImageboardDeleteService implements CommandProcess {
-
     @Override
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // 선택된 seq 값들을 받아서 리스트로 변환
-        String[] selectedSeq = request.getParameterValues("selectedSeq");
+        String[] seqs = request.getParameterValues("selectedSeq");
         
-        // 디버깅 코드: selectedSeq 값 출력
-        System.out.println("selectedSeq: " + Arrays.toString(selectedSeq));
-        
-        if (selectedSeq != null) {
-            List<Integer> seqList = Arrays.asList(selectedSeq).stream()
-                                         .map(Integer::parseInt)
-                                         .toList();
+        if (seqs != null) {
+            List<Integer> seqList = Arrays.stream(seqs).map(Integer::parseInt).toList();
             
-            // DB에서 선택된 항목 삭제
             ImageboardDAO imageboardDAO = ImageboardDAO.getInstance();
-            imageboardDAO.deleteSelected(seqList);
+            NCPObjectStorageService ncpService = new NCPObjectStorageService();
+
+            for (Integer seq : seqList) {
+                ImageboardDTO imageboardDTO = imageboardDAO.getImageboardBySeq(seq);
+                if (imageboardDTO != null && imageboardDTO.getImage1() != null) {
+                    String fileName = imageboardDTO.getImage1().substring(imageboardDTO.getImage1().lastIndexOf("/") + 1);
+                    ncpService.deleteFile(fileName);
+                }
+            }
+            imageboardDAO.deleteImages(seqList);
         }
-        
-        // 삭제 후 1페이지로 이동
-        request.setAttribute("pg", 1);
-        return "forward:/projectMVC/imageboard/imageboardList.do";
+
+        response.setContentType("application/json");
+        response.getWriter().write("{\"success\": true}");
+        return "none";
     }
 }
