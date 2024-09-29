@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/adminMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="adminSQL">
+  
+  <select id="loginAdmin" parameterType="map" resultType="admin">
+    SELECT aid, apwd, name
+    FROM admin_tb
+    WHERE aid = #{aid} AND apwd = #{apwd}
+	</select>
+    
+  </mapper>

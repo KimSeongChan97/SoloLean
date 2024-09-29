@@ -1,0 +1,64 @@
+/* FilmNote/src/main/webapp/css/movieBoard.css */
+@charset "UTF-8";
+@import url("init.css");
+
+div.menu-div:hover {
+	background: #DEC5D2;
+}
+
+form#movie-view-form {
+	margin: 40px 40px 20px 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+}
+
+table {
+	margin: 20px 0;
+	width: 1020px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+    padding: 10px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.info-cell {
+	text-align: left;
+}
+
+
+div.button-container {
+	margin: 20px 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+}
+
+.crudBtn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 5px 20px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #5A5A5A;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.crudBtn:hover {
+    background: #DEC5D2;
+    color: #5A5A5A;
+    cursor: pointer;
+}

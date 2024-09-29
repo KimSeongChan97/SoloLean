@@ -1,0 +1,152 @@
+/* FilmNote/src/main/webapp/css/adminSignIn.css */
+@charset "UTF-8";
+@import url("init.css");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans CJK KR', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#login-jsp {
+    text-align: center;
+    margin-top: 50px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+    width: 400px;
+    margin: 50px auto;
+}
+
+h2 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: #333;
+}
+
+a {
+    margin: 10px 0;
+    text-align: center;
+    display: inline-block;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    width: 100%;
+}
+
+th, td {
+    border: none;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.label {
+    width: 30%;
+    padding-top: 5px;
+    padding-right: 5px;
+    text-align: right;
+    color: #555;
+}
+
+.input {
+    text-align: left;
+    width: 70%;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+#adminLoginBtn {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    background: linear-gradient(135deg, #4a90e2, #9013fe);
+    border: none;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#adminLoginBtn:hover {
+    background: linear-gradient(135deg, #9013fe, #4a90e2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#adminBtn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background: #333;
+    color: white;
+}
+
+#adminBtn:hover {
+    background: #555;
+}
+
+/* 관리자 로그인 에러 메시지 */
+#adminLoginErrorDiv {
+	margin-top: 20px;
+    padding: 5px 0;
+    color: #e74c3c; /* 기존 빨간색 경고 메시지 */
+    font-size: 12pt;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    margin-left: 0;
+    font-weight: bold;
+
+    /* 네온사인 효과: 진한 청록색과 자주색으로 그라데이션 그림자 적용 */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 128, 0.8),   /* 진한 청록색 그림자 */
+        0 0 10px rgba(255, 0, 128, 0.6),  /* 자주색 그림자 */
+        0 0 15px rgba(255, 255, 255, 0.8); /* 흰색 그림자 */
+
+    
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
+}
+
+/* 'show' 클래스가 적용되면 메시지를 보이게 함 */
+.show {
+    display: block;
+    opacity: 1;
+}
+
+

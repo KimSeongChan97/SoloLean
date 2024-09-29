@@ -1,0 +1,151 @@
+/* FilmNote/src/main/webapp/css/movieList.css */
+@charset "UTF-8";
+@import url("init.css");  /* FilmNote/src/main/webapp/css/init.css */
+
+body, a, button, select, input, div, select {
+	font-family: 'Gowun Batang', sans-serif;	
+}
+
+/** 글삭제 & 검색 */
+div.card {
+	margin: 40px 40px 0 40px;
+}
+
+.card #card-title {
+	font-size: 15px;
+	margin-bottom: 8px;
+}
+
+.card #card-content {
+	height: 50px;
+	border-top: 1px solid #5A5A5A;
+	border-bottom : 1px solid #5A5A5A;
+    /* border-radius: 5px; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	
+}
+
+#card-content #search-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+#search-div .search-opt, #search-div .input-box {
+    height: 30px;
+    border: 1px solid #5A5A5A;
+    border-radius: 3px;
+    font-size: 16px;    
+    padding: 0 5px;
+}
+
+#card-content .search-opt {
+    letter-spacing: 3px;
+    width: 150px;
+}
+
+#search-div .input-box {
+    width: 500px;
+}
+
+.cardBtn {
+	padding: 0;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+}
+
+#deleteBtn {
+    background: #77B3D9;
+	color: white;
+	border: 1px solid #77B3D9;	
+	margin-right: 10px;
+}
+
+#searchBtn {
+    background: #457ABF;
+	color: white;
+	border: 1px solid #457ABF;	
+}
+
+#deleteBtn:hover, #searchBtn:hover {
+    transition: background-color 0.3s ease; 
+	background-color: #3d3d3d;
+	color: #FFFFFF;
+	border: 1px solid #3d3d3d;	
+	cursor: pointer;
+}
+
+
+
+/** 테이블 */
+table {
+	margin: 20px 40px 0 40px;
+	width: 1020px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+th, td {
+   border-bottom: 1px solid black;
+   padding: 10px;
+   vertical-align: middle;
+}
+
+th {
+   border-bottom: 3px solid black;
+}
+
+.check-size, .board-list-check {
+	transform: scale(1.4);
+	cursor: pointer;
+	margin-right: 5px;
+}
+
+.subject-a:hover {
+	text-decoration: underline;
+}
+
+
+/** 페이지 블럭 */
+.page-block {
+   margin: 20px auto;
+   font-size: 13pt;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+
+#currentPaging {
+   background-color: #e5e7ea;
+   border-radius: 5px;
+   padding: 5px 8px;
+   font-weight: bold;
+}
+
+#paging {
+   border-radius: 5px;
+   padding: 5px 8px;
+}
+
+span:hover {
+   text-decoration: underline;
+   cursor: pointer;
+}
+
+
+
+

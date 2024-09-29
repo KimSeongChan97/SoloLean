@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/movieMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movieSQL">
+	<!-- 영화 등록 -->
+    <insert id="writeMovie" parameterType="movie.bean.MovieDTO">
+        INSERT INTO movie_tb (title, director, genre, release_date, rating, score, synopsis, poster)
+        VALUES (#{title}, #{director}, #{genre}, #{release_date}, #{rating}, #{score}, #{synopsis}, #{poster})
+    </insert>
+	
+    <!-- 영화 목록 -->
+    <select id="movieList" parameterType="java.util.Map" resultType="movie">
+    	SELECT * FROM movie_tb ORDER BY mcode DESC LIMIT #{startNum}, #{endNum}
+    </select>
+    
+    <!-- 영화 개수 -->
+    <select id="getTotalA" resultType="int">
+        SELECT COUNT(*) FROM movie_tb
+    </select>
+
+	<!-- 영화 조회 (글 1개) -->
+	<select id="getMovie" parameterType="int" resultType="movie">
+    	SELECT * FROM movie_tb WHERE mcode = #{mcode}
+	</select>
+	
+	<!-- 영화 평점 -->
+	<update id="updateMovieScore" parameterType="java.util.Map">
+		update movie_tb mt, (
+						select mt.mcode mcode, sum(rt.score)/count(rt.score) avg_score 
+						from review_tb rt 
+						left join movie_tb mt on rt.movie_code = mt.mcode 
+						where rt.movie_code = #{mcode}
+					) t 
+		set mt.score = t.avg_score 
+		where mt.mcode = t.mcode;
+	</update>
+	
+	
+	<!-- 영화 수정 -->
+	<update id="updateMovie" parameterType="movie.bean.MovieDTO">
+	    UPDATE movie_tb
+	    SET title = #{title}, director = #{director}, genre = #{genre},
+	        release_date = #{release_date}, rating = #{rating},
+	        score = #{score}, synopsis = #{synopsis}, poster = #{poster}
+	    WHERE mcode = #{mcode}
+	</update>
+	
+	<!-- 영화 삭제 -->
+	<delete id="deleteMovies" parameterType="list">
+	    DELETE FROM movie_tb WHERE mcode IN
+	    <foreach item="mcode" collection="mcodes" open="(" separator="," close=")">
+	        #{mcode}
+	    </foreach>
+	</delete>
+
+	<!-- 영화 검색 -->
+	<select id="getSelectTotal" parameterType="java.util.Map" resultType="int">
+	    SELECT COUNT(*) FROM movie_tb WHERE ${type} LIKE CONCAT('%', #{value}, '%')
+	</select>
+
+	<select id="selectMovie"  parameterType="java.util.Map" resultType="movie">
+		SELECT * from movie_tb 
+		WHERE ${type} LIKE CONCAT('%', #{value}, '%') 
+		ORDER BY mcode DESC LIMIT #{startNum}, #{endNum}
+	</select>	
+
+	<!-- index.jsp 영화 검색 -->
+	<select id="indexSelectMovie"  parameterType="java.util.Map" resultType="movie">
+		SELECT * from movie_tb 
+		WHERE ${type} LIKE CONCAT('%', #{value}, '%') 
+		ORDER BY mcode DESC
+	</select>
+	
+	
+</mapper>
