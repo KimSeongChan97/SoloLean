@@ -29,3 +29,11 @@
 9월 29, 2024 15:45:10.69 [16032:3116:0929/154510.694:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 9월 29, 2024 15:45:52.80 [16032:3116:0929/154552.804:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 9월 29, 2024 15:47:52.93 [16032:3116:0929/154752.934:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+
+9월 29, 2024 20:09:53.94 NEW SESSION
+9월 29, 2024 20:09:53.96 [12680:13064:0929/200953.943:ERROR:content_settings_pref.cc(381)] Invalid pattern strings: https://[*.]stripe.com:443,
+9월 29, 2024 20:09:53.96 [12680:13064:0929/200953.943:ERROR:content_settings_pref.cc(381)] Invalid pattern strings: https://pay.google.com:443,
+9월 29, 2024 20:09:56.74 [12680:12636:0929/200956.746:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+9월 29, 2024 20:09:57.23 Created TensorFlow Lite XNNPACK delegate for CPU.
+9월 29, 2024 20:10:21.84 [12680:12636:0929/201021.843:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+9월 29, 2024 20:11:16.55 [12680:12636:0929/201116.554:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT

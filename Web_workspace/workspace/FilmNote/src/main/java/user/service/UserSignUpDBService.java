@@ -43,6 +43,7 @@ public class UserSignUpDBService implements CommandProcess {
         userDTO.setTel2(tel2);
         userDTO.setTel3(tel3);
         
+        // UserDAO를 통해 DB에 사용자 정보 저장
         UserDAO userDAO = UserDAO.getInstance();
         userDAO.insertUser(userDTO);
         

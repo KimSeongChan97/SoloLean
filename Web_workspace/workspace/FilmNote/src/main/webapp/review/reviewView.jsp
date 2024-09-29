@@ -1,4 +1,3 @@
-<%-- FilmNote/src/main/webapp/review/reviewView.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,54 +9,64 @@
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/reviewView.css">
 <title>리뷰 조회</title>
+<%-- 리뷰 조회 페이지의 제목과 CSS 파일을 설정합니다. --%>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
+<%-- 공통 헤더를 포함하여 페이지 상단에 네비게이션 등을 표시합니다. --%>
 
 <div id="movieInfo">
-	
+	<%-- 영화 정보가 표시되는 영역입니다. --%>
 	<table>
 	<tr>
 		<td colspan="3" id="movietitle" data-moviecode="${movieDTO.mcode}"><span>${movieDTO.title}</span></td>
 	</tr>
+	<%-- 영화 제목을 표시하는 부분입니다. --%>
 		<tr>
 		    <td width="30%" align="center" rowspan="9" class="poster-cell">
 		        <img width="90%" src="${movieDTO.poster }" alt="영화 포스터">
+		        <%-- 영화 포스터 이미지가 표시됩니다. --%>
 		    </td>
 		</tr>
 		<tr>
 			<th width="20%">영화 감독</th>
 		    <td class="info-cell">${movieDTO.director }</td>
+		    <%-- 영화 감독 이름을 표시하는 셀입니다. --%>
 		</tr>
 		<tr>
 			<th>영화 장르</th>
 		    <td class="info-cell">${movieDTO.genre }</td>
+		    <%-- 영화 장르 정보를 표시하는 셀입니다. --%>
 		</tr>
 		<tr>
 			<th>영화 개봉일</th>
 		    <td class="info-cell">${movieDTO.release_date }</td>
+		    <%-- 영화의 개봉일을 표시합니다. --%>
 		</tr>
 		<tr>
 			<th>영화 관람가</th>
 		    <td class="info-cell">${movieDTO.rating }세</td>
+		    <%-- 영화의 관람 등급을 표시합니다. --%>
 		</tr>
 		<tr>
 			<th>영화 평점</th>
 		    <td class="info-cell" id="movieAvgScore"><fmt:formatNumber pattern="0.00점" value="${movieDTO.score}"/></td>
+		    <%-- 영화의 평균 평점을 소수점 두 자리까지 표시합니다. --%>
 		</tr>
 		<tr>
 			<th>영화 줄거리</th>
 		    <td class="info-cell">${movieDTO.synopsis }</td>
+		    <%-- 영화의 줄거리를 표시합니다. --%>
 		</tr>
 	</table>
 </div>
 
-<%-- 
-<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div> --%>
+<%-- 리뷰 목록이 표시될 영역입니다. --%>
 <div id="reviewDiv">
 	<!-- 리뷰 -->
 	<div id="reviewList">
 		<c:if test="${reviewDTOList.size() != 0}">
+			<%-- 리뷰 목록이 존재할 때만 리스트를 출력합니다. --%>
 			<c:forEach var="reviewDTO" items="${reviewDTOList}">
 				<div class="review">
 					<div class="icon-button">👲</div>
@@ -65,16 +74,21 @@
 				    <div class="comment-details">
 				        <div class="comment-header">
 				        	<span class="review-code" hidden>${reviewDTO.getRcode()}</span>
+				        	<%-- 리뷰의 고유 코드를 숨김 처리하여 표시합니다. --%>
 				        	<span class="list-user-id">
 				            	<c:if test="${reviewDTO.getUser_id() == null}">알수없음</c:if>
 				            	<c:if test="${reviewDTO.getUser_id() != null}">${reviewDTO.getUser_id()}</c:if>
+				            	<%-- 사용자가 없는 경우 "알수없음", 있는 경우 아이디를 표시합니다. --%>
 				            </span>
 				            <span class="comment-date">${reviewDTO.getLogtime()}</span>
+				            <%-- 리뷰 작성 날짜를 표시합니다. --%>
 				        </div>
 				        
 				        <div class="list-content">
 					        <div class="review-score">${reviewDTO.getScore()}.0점</div>
+					        <%-- 리뷰 점수를 소수점 없이 표시합니다. --%>
 					        <div class="review-content">${reviewDTO.getContent()}</div>
+					        <%-- 리뷰 내용을 표시합니다. --%>
 				        </div>
 				        
 				        <div class="update-review">
@@ -94,7 +108,9 @@
 					    		</div>
 					    	</div>
 					        <textarea class="update-reviewText">${reviewDTO.getContent()}</textarea>
+					        <%-- 사용자가 리뷰를 수정할 수 있는 텍스트 영역과 점수 설정 영역입니다. --%>
 					        <input type="button" class="btn update-reviewBtn" value="수정">
+					        <%-- 리뷰 수정을 위한 버튼입니다. --%>
 				        </div>
 				        <div class="comment-actions">
 				            <!-- <span class="reply">답글쓰기</span>
@@ -110,6 +126,7 @@
 					        </div>
 					    </div>
 				    </c:if>
+				    <%-- 사용자가 작성한 리뷰인 경우 수정 및 삭제 옵션을 제공합니다. --%>
 				</div>
 			</c:forEach>
 		</c:if>
@@ -117,6 +134,7 @@
 		<c:if test="${reviewDTOList.size() == 0}">
 			<div id="noReview">
 				리뷰가 존재하지 않습니다.
+				<%-- 리뷰가 없을 경우 해당 메시지를 표시합니다. --%>
 			</div>
 		</c:if>
 	</div>
@@ -124,9 +142,10 @@
 	
 	<div id="post-comment" data-uid="${sessionScope.userDTO.uid}">
 	    <div class="post-header">${sessionScope.userDTO.uname}</div>
+	    <%-- 로그인한 사용자의 이름을 표시하고, 리뷰 작성 폼을 준비합니다. --%>
 	    <form id="reviewForm">
 	    	<textarea id="new-review" name="new-review" placeholder="리뷰을 남겨보세요."></textarea>
-	    	
+	    	<%-- 새 리뷰를 입력받는 텍스트 영역입니다. --%>
 	    	
 	    	<div id="new-score">
 	    		<div id="score-num"><span id="scoreText">0</span>점</div>
@@ -142,19 +161,22 @@
 		    		<span class="score" data-score="9">☆</span>
 		    		<span class="score" data-score="10">☆</span>
 	    		</div>
+	    		<%-- 새 리뷰에 대해 점수를 설정할 수 있는 별표 시스템입니다. --%>
 	    	</div>
-	    	
 	    	
 	    	<div class="post-footer">
 		    	<div id="emoji">
 			         <input type="button" class="icon-button" value="📷">
 			         <input type="button" class="icon-button" value="😊">
+			         <%-- 이모지 또는 이미지를 추가할 수 있는 버튼입니다. --%>
 		        </div>
 		        <input type="button" class="btn" id="submit-review" value="등록">
+		        <%-- 리뷰 제출 버튼입니다. --%>
 	    	</div>
 	    </form>
 	</div>
 	<div id="page-block">${reviewPagingHTML}</div>
+	<%-- 페이징 처리된 리뷰 목록의 HTML입니다. --%>
 </div>
 
 <div id="footer">
@@ -172,5 +194,6 @@
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/reviewView.js"></script>
+<%-- jQuery 라이브러리와 리뷰 조회 페이지에 필요한 자바스크립트 파일을 포함합니다. --%>
 </body>
 </html>
