@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 30 Sep 2024 00:33:58 GMT</lastBuildDate><item><title><![CDATA[AI Meets Spring Petclinic: Implementing an AI Assistant with Spring AI (Part II)]]></title><link>https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part</link><guid isPermaLink="true">https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part</guid><dc:creator><![CDATA[Oded Shopen]]></dc:creator><pubDate>Fri, 27 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;recap-of-part-i&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#recap-of-part-i&quot; aria-label=&quot;recap of part i permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Recap of Part I&lt;/h2&gt;
+&lt;p&gt;In the &lt;a href=&quot;https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i&quot;&gt;first part&lt;/a&gt; of this blog series, we explored the basics of integrating Spring AI with large language models. We walked through building a custom ChatClient, leveraging Function Calling for dynamic interactions, and refining our prompts to suit the Spring Petclinic use case. By the end, we had a functional AI assistant capable of understanding and processing requests related to our veterinary clinic domain.&lt;/p&gt;
+&lt;p&gt;Now, in Part II, we¡¯ll go a step further by exploring Retrieval-Augmented Generation (RAG), a technique that enables us to handle large datasets that wouldn¡¯t fit within the constraints of a typical Function Calling approach. Let¡¯s see how RAG can seamlessly integrate AI with domain-specific knowledge.&lt;/p&gt;
+&lt;h2 id=&quot;retrieval-augmented-generation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#retrieval-augmented-generation&quot; aria-label=&quot;retrieval augmented generation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Retrieval-Augmented Generation&lt;/h2&gt;
+&lt;p&gt;While listing veterinarians could have been a straightforward implementation, I chose this as an opportunity to showcase the power of Retrieval-Augmented Generation (RAG).&lt;/p&gt;
+&lt;p&gt;RAG integrates large language models with real-time data retrieval to produce more accurate and contextually relevant text. Although this concept aligns with our previous work, RAG typically emphasizes data retrieval from a vector store.&lt;/p&gt;
+&lt;p&gt;A vector store contains data in the form of &lt;em&gt;embeddings&lt;/em&gt;?numerical representations that capture the meaning of the information, such as the data about our veterinarians. These embeddings are stored as high-dimensional vectors, facilitating efficient &lt;em&gt;similarity searches&lt;/em&gt; based on &lt;em&gt;semantics&lt;/em&gt; rather than traditional text-based searches.&lt;/p&gt;
+&lt;p&gt;For instance, consider the following veterinarians and their specialties:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Dr. Alice Brown - &lt;strong&gt;Cardiology&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dr. Bob Smith - &lt;strong&gt;Dentistry&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dr. Carol White - &lt;strong&gt;Dermatology&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In a conventional search, a query for &quot;Teeth Cleaning&quot; would yield no exact matches. However, with semantic search powered by embeddings, the system recognizes that &quot;Teeth Cleaning&quot; relates to &quot;Dentistry.&quot; Consequently, Dr. Bob Smith would be returned as the best match, even though his specialty was never explicitly mentioned in the query. This illustrates how embeddings capture the underlying &lt;em&gt;meaning&lt;/em&gt; rather than merely relying on exact keywords. While the implementation of this process is beyond the scope of this article, you can learn more by checking out this &lt;a href=&quot;https://youtu.be/eMlx5fFNoYc?si=Lyjb1doyeAt3_EKG&quot;&gt;YouTube video&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Fun fact - this example was &lt;a href=&quot;https://chatgpt.com/share/66eef934-696c-8008-9961-93da0740c8f2&quot;&gt;generated by ChatGPT itself.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In essence, similarity searches operate by identifying the nearest numerical values of the search query to those of the source data. The closest match is returned. The process of transforming text into these numerical embeddings is also handled by the LLM.&lt;/p&gt;
+&lt;h3 id=&quot;generating-test-data&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#generating-test-data&quot; aria-label=&quot;generating test data permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Generating Test Data&lt;/h3&gt;
+&lt;p&gt;Utilizing a vector store is most effective when handling a substantial amount of data. Given that six veterinarians can easily be processed in a single call to the LLM, I aimed to increase the number to 256. While even 256 may still be relatively small, it serves well for illustrating our process.&lt;/p&gt;
+&lt;p&gt;Veterinarians in this setup can have zero, one, or two specialties, mirroring the original examples from Spring Petclinic. To avoid the tedious task of creating all this mock data manually, I enlisted ChatGPT&apos;s assistance. It generated a union query that produces 250 veterinarians and assigns specialties to 80% of them:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;-- Create a list of first names and last names
+WITH first_names AS (
+    SELECT &apos;James&apos; AS name UNION ALL
+    SELECT &apos;Mary&apos; UNION ALL
+    SELECT &apos;John&apos; UNION ALL
+    ...
+),
+last_names AS (
+    SELECT &apos;Smith&apos; AS name UNION ALL
+    SELECT &apos;Johnson&apos; UNION ALL
+    SELECT &apos;Williams&apos; UNION ALL
+    ...
+),
+random_names AS (
+    SELECT
+        first_names.name AS first_name,
+        last_names.name AS last_name
+    FROM
+        first_names
+    CROSS JOIN
+        last_names
+    ORDER BY
+        RAND()
+    LIMIT 250
+)
+INSERT INTO vets (first_name, last_name)
+SELECT first_name, last_name FROM random_names;
+
+-- Add specialties for 80% of the vets
+WITH vet_ids AS (
+    SELECT id
+    FROM vets
+    ORDER BY RAND()
+    LIMIT 200  -- 80% of 250
+),
+specialties AS (
+    SELECT id
+    FROM specialties
+),
+random_specialties AS (
+    SELECT 
+        vet_ids.id AS vet_id,
+        specialties.id AS specialty_id
+    FROM 
+        vet_ids
+    CROSS JOIN 
+        specialties
+    ORDER BY 
+        RAND()
+    LIMIT 300  -- 2 specialties per vet on average
+)
+INSERT INTO vet_specialties (vet_id, specialty_id)
+SELECT 
+    vet_id,
+    specialty_id
+FROM (
+    SELECT 
+        vet_id,
+        specialty_id,
+        ROW_NUMBER() OVER (PARTITION BY vet_id ORDER BY RAND()) AS rn
+    FROM 
+        random_specialties
+) tmp
+WHERE 
+    rn &amp;#x3C;= 2;  -- Assign at most 2 specialties per vet
+
+-- The remaining 20% of vets will have no specialties, so no need for additional insertion commands
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To ensure that my data remains static and consistent across runs, I exported the relevant tables from the H2 database as hardcoded insert statements. These statements were then added to the &lt;code&gt;data.sql&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;INSERT INTO vets VALUES (default, &apos;James&apos;, &apos;Carter&apos;);
+INSERT INTO vets VALUES (default, &apos;Helen&apos;, &apos;Leary&apos;);
+INSERT INTO vets VALUES (default, &apos;Linda&apos;, &apos;Douglas&apos;);
+INSERT INTO vets VALUES (default, &apos;Rafael&apos;, &apos;Ortega&apos;);
+INSERT INTO vets VALUES (default, &apos;Henry&apos;, &apos;Stevens&apos;);
+INSERT INTO vets VALUES (default, &apos;Sharon&apos;, &apos;Jenkins&apos;);
+INSERT INTO vets VALUES (default, &apos;Matthew&apos;, &apos;Alexander&apos;);
+INSERT INTO vets VALUES (default, &apos;Alice&apos;, &apos;Anderson&apos;);
+INSERT INTO vets VALUES (default, &apos;James&apos;, &apos;Rogers&apos;);
+INSERT INTO vets VALUES (default, &apos;Lauren&apos;, &apos;Butler&apos;);
+INSERT INTO vets VALUES (default, &apos;Cheryl&apos;, &apos;Rodriguez&apos;);
+...
+...
+-- Total of 256 vets
+
+-- First, let&apos;s make sure we have 5 specialties
+INSERT INTO specialties (name) VALUES (&apos;radiology&apos;);
+INSERT INTO specialties (name) VALUES (&apos;surgery&apos;);
+INSERT INTO specialties (name) VALUES (&apos;dentistry&apos;);
+INSERT INTO specialties (name) VALUES (&apos;cardiology&apos;);
+INSERT INTO specialties (name) VALUES (&apos;anesthesia&apos;);
+
+INSERT INTO vet_specialties VALUES (&apos;220&apos;, &apos;2&apos;);
+INSERT INTO vet_specialties VALUES (&apos;131&apos;, &apos;1&apos;);
+INSERT INTO vet_specialties VALUES (&apos;58&apos;, &apos;3&apos;);
+INSERT INTO vet_specialties VALUES (&apos;43&apos;, &apos;4&apos;);
+INSERT INTO vet_specialties VALUES (&apos;110&apos;, &apos;3&apos;);
+INSERT INTO vet_specialties VALUES (&apos;63&apos;, &apos;5&apos;);
+INSERT INTO vet_specialties VALUES (&apos;206&apos;, &apos;4&apos;);
+INSERT INTO vet_specialties VALUES (&apos;29&apos;, &apos;3&apos;);
+INSERT INTO vet_specialties VALUES (&apos;189&apos;, &apos;3&apos;);
+...
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;embedding-the-test-data&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#embedding-the-test-data&quot; aria-label=&quot;embedding the test data permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Embedding the Test Data&lt;/h3&gt;
+&lt;p&gt;We have several options available for the vector store itself. Postgres with the pgVector extension is probably the most popular choice. Greenplum?a massively parallel Postgres database?also supports pgVector. The Spring AI &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/vectordbs.html&quot;&gt;reference documentation&lt;/a&gt; lists the currently supported vector stores.&lt;/p&gt;
+&lt;p&gt;For our simple use case, I opted to use the Spring AI-provided &lt;code&gt;SimpleVectorStore&lt;/code&gt;. This class implements a vector store using a straightforward Java &lt;code&gt;ConcurrentHashMap&lt;/code&gt;, which is more than sufficient for our small dataset of 256 vets. The configuration for this vector store, along with the chat memory implementation, is defined in the &lt;code&gt;AIBeanConfiguration&lt;/code&gt; class annotated with &lt;code&gt;@Configuration&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@Configuration
+@Profile(&quot;openai&quot;)
+public class AIBeanConfiguration {
+
+	@Bean
+	public ChatMemory chatMemory() {
+		return new InMemoryChatMemory();
+	}
+
+	@Bean
+	VectorStore vectorStore(EmbeddingModel embeddingModel) {
+		return new SimpleVectorStore(embeddingModel);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The vector store needs to embed the veterinarian data as soon as the application starts. To achieve this, I added a &lt;code&gt;VectorStoreController&lt;/code&gt; bean, which includes an &lt;code&gt;@EventListener&lt;/code&gt; that listens for the &lt;code&gt;ApplicationStartedEvent&lt;/code&gt;. This method is automatically invoked by Spring as soon as the application is up and running, ensuring that the veterinarian data is embedded into the vector store at the appropriate time:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@EventListener
+	public void loadVetDataToVectorStoreOnStartup(ApplicationStartedEvent event) throws IOException {
+		// Fetches all Vet entites and creates a document per vet
+		Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
+		Page&amp;#x3C;Vet&gt; vetsPage = vetRepository.findAll(pageable);
+
+		Resource vetsAsJson = convertListToJsonResource(vetsPage.getContent());
+		DocumentReader reader = new JsonReader(vetsAsJson);
+
+		List&amp;#x3C;Document&gt; documents = reader.get();
+		// add the documents to the vector store
+		this.vectorStore.add(documents);
+
+		if (vectorStore instanceof SimpleVectorStore) {
+			var file = File.createTempFile(&quot;vectorstore&quot;, &quot;.json&quot;);
+			((SimpleVectorStore) this.vectorStore).save(file);
+			logger.info(&quot;vector store contents written to {}&quot;, file.getAbsolutePath());
+		}
+
+		logger.info(&quot;vector store loaded with {} documents&quot;, documents.size());
+	}
+
+	public Resource convertListToJsonResource(List&amp;#x3C;Vet&gt; vets) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			// Convert List&amp;#x3C;Vet&gt; to JSON string
+			String json = objectMapper.writeValueAsString(vets);
+
+			// Convert JSON string to byte array
+			byte[] jsonBytes = json.getBytes();
+
+			// Create a ByteArrayResource from the byte array
+			return new ByteArrayResource(jsonBytes);
+		}
+		catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There¡¯s a lot to unpack here, so let¡¯s walk through the code:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Similar to &lt;code&gt;listOwners&lt;/code&gt;, we begin by retrieving all vets from the database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring AI embeds entities of type &lt;code&gt;Document&lt;/code&gt; into the vector store. A &lt;code&gt;Document&lt;/code&gt; represents the embedded numerical data alongside its original, human-readable text data. This dual representation allows our code to map correlations between the embedded vectors and the natural text.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To create these &lt;code&gt;Document&lt;/code&gt; entities, we need to convert our &lt;code&gt;Vet&lt;/code&gt; entities into a textual format. Spring AI provides two built-in readers for this purpose: &lt;code&gt;JsonReader&lt;/code&gt; and &lt;code&gt;TextReader&lt;/code&gt;. Since our &lt;code&gt;Vet&lt;/code&gt; entities are structured data, it makes sense to represent them as JSON. To achieve this, we use the helper method &lt;code&gt;convertListToJsonResource&lt;/code&gt;, which leverages the Jackson parser to convert the list of vets into an in-memory JSON resource.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Next, we call the &lt;code&gt;add(documents)&lt;/code&gt; method on the vector store. This method is responsible for embedding the data by iterating over the list of documents (our vets in JSON format) and embedding each one while associating the original metadata with it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Though not strictly required, we also generate a &lt;code&gt;vectorstore.json&lt;/code&gt; file, which represents the state of our &lt;code&gt;SimpleVectorStore&lt;/code&gt; database. This file allows us to observe how Spring AI interprets the stored data behind the scenes. Let¡¯s take a look at the generated file to understand what Spring AI sees.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;dd919c71-06bb-4777-b974-120dfee8b9f9&quot; : {
+    &quot;embedding&quot; : [ 0.013877872, 0.03598228, 0.008212427, 0.00917901, -0.036433823, 0.03253927, -0.018089917, -0.0030867155, -0.0017038669, -0.048145704, 0.008974405, 0.017624263, 0.017539598, -4.7888185E-4, 0.013842596, -0.0028221398, 0.033414137, -0.02847539, -0.0066955267, -0.021885695, -0.0072387885, 0.01673529, -0.007386951, 0.014661016, -0.015380662, 0.016184973, 0.00787377, -0.019881975, -0.0028785826, -0.023875304, 0.024778388, -0.02357898, -0.023748307, -0.043094076, -0.029322032, ... ],
+    &quot;content&quot; : &quot;{id=31, firstName=Samantha, lastName=Walker, new=false, specialties=[{id=2, name=surgery, new=false}]}&quot;,
+    &quot;id&quot; : &quot;dd919c71-06bb-4777-b974-120dfee8b9f9&quot;,
+    &quot;metadata&quot; : { },
+    &quot;media&quot; : [ ]
+  },
+  &quot;4f9aabed-c15c-43f6-9dbc-46ed9a18e176&quot; : {
+    &quot;embedding&quot; : [ 0.01051745, 0.032714732, 0.007800559, -0.0020621764, -0.03240663, 0.025530376, 0.0037602335, -0.0023702774, -0.004978633, -0.037364256, 0.0012831709, 0.032742742, 0.005430281, 0.00847278, -0.004285406, 0.01146276, 0.03036196, -0.029941821, 0.013220336, -0.03207052, -7.518716E-4, 0.016665466, -0.0052062077, 0.010678503, 0.0026591222, 0.0091940155, ... ],
+    &quot;content&quot; : &quot;{id=195, firstName=Shirley, lastName=Martinez, new=false, specialties=[{id=1, name=radiology, new=false}, {id=2, name=surgery, new=false}]}&quot;,
+    &quot;id&quot; : &quot;4f9aabed-c15c-43f6-9dbc-46ed9a18e176&quot;,
+    &quot;metadata&quot; : { },
+    &quot;media&quot; : [ ]
+  },
+  &quot;55b13970-cd55-476b-b7c9-62337855ae0a&quot; : {
+    &quot;embedding&quot; : [ -0.0031563698, 0.03546827, 0.018778138, -0.01324492, -0.020253662, 0.027756566, 0.007182742, -0.008637386, -0.0075725033, -0.025543278, 5.850768E-4, 0.02568248, 0.0140383635, -0.017330453, 0.003935892, ... ],
+    &quot;content&quot; : &quot;{id=19, firstName=Jacqueline, lastName=Ross, new=false, specialties=[{id=4, name=cardiology, new=false}]}&quot;,
+    &quot;id&quot; : &quot;55b13970-cd55-476b-b7c9-62337855ae0a&quot;,
+    &quot;metadata&quot; : { },
+    &quot;media&quot; : [ ]
+  },
+...
+...
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pretty cool! We have a &lt;code&gt;Vet&lt;/code&gt; in JSON format alongside a set of numbers that, while they might not make much sense to us, are highly meaningful to the LLM. These numbers represent the embedded vector data, which the model uses to understand the relationships and semantics of the &lt;code&gt;Vet&lt;/code&gt; entity in a way far beyond simple text matching.&lt;/p&gt;
+&lt;h3 id=&quot;optimizing-for-cost-and-fast-startup&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#optimizing-for-cost-and-fast-startup&quot; aria-label=&quot;optimizing for cost and fast startup permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Optimizing for Cost and Fast Startup&lt;/h3&gt;
+&lt;p&gt;If we were to run this embedding method on every application restart, it would lead to two significant drawbacks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Long Startup Times&lt;/strong&gt;: Each &lt;code&gt;Vet&lt;/code&gt; JSON document would need to be re-embedded by making calls to the LLM again, delaying application readiness.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Increased Costs&lt;/strong&gt;: Embedding 256 documents would send 256 requests to the LLM every time the app starts, leading to unnecessary usage of LLM credits.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Embeddings are better suited for ETL (Extract, Transform, Load) or streaming processes, which run independently of the main web application. These processes can handle embedding in the background without impacting user experience or causing unnecessary cost.&lt;/p&gt;
+&lt;p&gt;To keep things simple in the Spring Petclinic, I decided to load the pre-embedded vector store on startup. This approach provides instant loading and avoids any additional LLM costs. Here¡¯s the addition to the method to achieve that:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@EventListener
+	public void loadVetDataToVectorStoreOnStartup(ApplicationStartedEvent event) throws IOException {
+		Resource resource = new ClassPathResource(&quot;vectorstore.json&quot;);
+
+		// Check if file exists
+		if (resource.exists()) {
+			// In order to save on AI credits, use a pre-embedded database that was saved
+			// to disk based on the current data in the h2 data.sql file
+			File file = resource.getFile();
+			((SimpleVectorStore) this.vectorStore).load(file);
+			logger.info(&quot;vector store loaded from existing vectorstore.json file in the classpath&quot;);
+			return;
+		}
+        // Rest of the method as before
+        ...
+        ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;vectorstore.json&lt;/code&gt; file is located under &lt;code&gt;src/main/resources&lt;/code&gt;, ensuring that the application will always load the pre-embedded vector store on startup, rather than re-embedding the data from scratch. If we ever need to regenerate the vector store, we can simply delete the existing &lt;code&gt;vectorstore.json&lt;/code&gt; file and restart the application. Once the updated vector store is generated, we can place the new &lt;code&gt;vectorstore.json&lt;/code&gt; file back into &lt;code&gt;src/main/resources&lt;/code&gt;. This approach gives us flexibility while avoiding unnecessary re-embedding processes during regular restarts.&lt;/p&gt;
+&lt;h3 id=&quot;implementing-similarity-search&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-similarity-search&quot; aria-label=&quot;implementing similarity search permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Implementing Similarity Search&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;With our vector store ready, implementing the &lt;code&gt;listVets&lt;/code&gt; function becomes straightforward. The function is defined as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	@Description(&quot;List the veterinarians that the pet clinic has&quot;)
+	public Function&amp;#x3C;VetRequest, VetResponse&gt; listVets(AIDataProvider petclinicAiProvider) {
+		return request -&gt; {
+			try {
+				return petclinicAiProvider.getVets(request);
+			}
+			catch (JsonProcessingException e) {
+				e.printStackTrace();
+				return null;
+			}
+		};
+	}
+    record VetResponse(List&amp;#x3C;String&gt; vet) {
+    };
+
+    record VetRequest(Vet vet) {
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the implementation in &lt;code&gt;AIDataProvider&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public VetResponse getVets(VetRequest request) throws JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String vetAsJson = objectMapper.writeValueAsString(request.vet());
+
+		SearchRequest sr = SearchRequest.from(SearchRequest.defaults()).withQuery(vetAsJson).withTopK(20);
+		if (request.vet() == null) {
+			// Provide a limit of 50 results when zero parameters are sent
+			sr = sr.withTopK(50);
+		}
+
+		List&amp;#x3C;Document&gt; topMatches = this.vectorStore.similaritySearch(sr);
+		List&amp;#x3C;String&gt; results = topMatches.stream().map(document -&gt; document.getContent()).toList();
+		return new VetResponse(results);
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let&apos;s review what we&apos;ve done here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;We start with a &lt;code&gt;Vet&lt;/code&gt; entity in the request. Since the records in our vector store are represented as JSON, the first step is to convert the &lt;code&gt;Vet&lt;/code&gt; entity into JSON as well.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Next, we create a &lt;code&gt;SearchRequest&lt;/code&gt;, which is the parameter passed to the &lt;code&gt;similaritySearch&lt;/code&gt; method of the vector store. The &lt;code&gt;SearchRequest&lt;/code&gt; allows us to fine-tune the search based on our specific needs. In this case, we mostly use the defaults, except for the &lt;code&gt;topK&lt;/code&gt; parameter, which determines how many results to return. By default, this is set to 4, but in our case, we increase it to 20. This lets us handle broader queries like ¡°How many vets specialize in cardiology?¡±&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If no filters are provided in the request (i.e., the &lt;code&gt;Vet&lt;/code&gt; entity is empty), we increase the &lt;code&gt;topK&lt;/code&gt; value to 50. This enables us to return up to 50 vets for queries like ¡°list the vets in the clinic.¡± Of course, this won&apos;t be the entire list, as we want to avoid overwhelming the LLM with too much data. However, we should be fine because we carefully fine-tuned the system text to manage these cases:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;When dealing with vets, if the user is unsure about the returned results, 
+explain that there may be additional data that was not returned.
+Only if the user is asking about the total number of all vets, 
+answer that there are a lot and ask for some additional criteria. 
+For owners, pets or visits - answer the correct data.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The final step is to call the &lt;code&gt;similaritySearch&lt;/code&gt; method. We then map the &lt;code&gt;getContent()&lt;/code&gt; of each returned result, as this contains the actual Vet JSONs rather than the embedded data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;From here, it&apos;s business as usual. The LLM completes the function call, retrieves the results, and determines how best to display the data in the chat.&lt;/p&gt;
+&lt;p&gt;Let¡¯s see it in action:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5wG4tLVKpvQDisv1lDhdNt/f02071aa957b0e95820e1bbaa5dcce5e/5e16fa8b-4073-4d4f-ab1a-ca1324a83616.png&quot; alt=&quot;5e16fa8b-4073-4d4f-ab1a-ca1324a83616&quot;&gt;&lt;/p&gt;
+&lt;p&gt;It looks like our system text is functioning as expected, preventing any overload. Now, let¡¯s try providing some specific criteria:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5DN525RS77mhOU8Y1hgVUi/d961abf6573e1aead917625879c3847e/76dcf069-0393-4749-b730-1f59a5cba3bd.png&quot; alt=&quot;76dcf069-0393-4749-b730-1f59a5cba3bd&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The data returned from the LLM is exactly what we expect. Let¡¯s try a broader question:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/aWWHPPEQfKugQR49zbdgD/91c4e0589e2e05fd924c62b2beef9f16/8ec546df-dcb4-4e1d-9f34-891dd39ff9e5.png&quot; alt=&quot;8ec546df-dcb4-4e1d-9f34-891dd39ff9e5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The LLM successfully identified at least 20 vets specializing in cardiology, adhering to our defined upper limit of topK (20). However, if there¡¯s any uncertainty about the results, the LLM notes that there may be additional vets available, as specified in our system text.&lt;/p&gt;
+&lt;h2 id=&quot;implementing-the-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-the-ui&quot; aria-label=&quot;implementing the ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Implementing the UI&lt;/h2&gt;
+&lt;p&gt;Implementing the chatbot UI involves working with Thymeleaf, JavaScript, CSS, and the SCSS preprocessor.&lt;/p&gt;
+&lt;p&gt;After reviewing the code, I decided to place the chatbot in a location accessible from any tab, making &lt;code&gt;layout.html&lt;/code&gt; the ideal choice.&lt;/p&gt;
+&lt;p&gt;During discussions about the PR with Dr. Dave Syer, I realized that I shouldn&apos;t modify &lt;code&gt;petclinic.css&lt;/code&gt; directly, as Spring Petclinic utilizes an SCSS preprocessor to generate the CSS file.&lt;/p&gt;
+&lt;p&gt;I&apos;ll admit?I¡¯m primarily a backend Spring developer with a career focused on Spring, cloud architecture, Kubernetes, and Cloud Foundry. While I have some experience with Angular, I¡¯m not an expert in frontend development. I could probably come up with something, but it likely wouldn¡¯t look polished.&lt;/p&gt;
+&lt;p&gt;Fortunately, I had a great partner for pair programming?ChatGPT. If you&apos;re interested in how I developed the UI code, you can check out this &lt;a href=&quot;https://chatgpt.com/share/8c7accc2-8939-4fd6-8090-6abbb9d4e4cc&quot;&gt;ChatGPT session&lt;/a&gt;. It¡¯s remarkable how much you can learn from collaborating with large language models on coding exercises. Just remember to thoroughly review the suggestions instead of blindly copy-pasting them.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;After experimenting with Spring AI for a few months, I¡¯ve come to deeply appreciate the thought and effort behind this project. Spring AI is truly unique because it allows developers to explore the world of AI without needing to train hundreds of team members in a new language like Python. More importantly, this experience highlights an even greater advantage: your AI code can coexist in the same codebase as your existing business logic. You can easily enhance a legacy codebase with AI capabilities using just a few additional classes. The ability to avoid rebuilding all your data from scratch in a new AI-specific application significantly boosts productivity. Even simple features like automatic code completion for your existing JPA entities in the IDE make a tremendous difference.&lt;/p&gt;
+&lt;p&gt;Spring AI has the potential to significantly enhance Spring-based applications by simplifying the integration of AI capabilities. It empowers developers to leverage machine learning models and AI-powered services without needing deep expertise in data science. By abstracting complex AI operations and embedding them directly into familiar Spring frameworks, developers can focus on rapidly building intelligent, data-driven features. This seamless fusion of AI and Spring fosters an environment where innovation is not hindered by technical barriers, creating new opportunities for developing smarter, more adaptive applications.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 2.7 Support Period Extended]]></title><link>https://spring.io/blog/2024/09/27/spring-boot-2-7-support-period-extended</link><guid isPermaLink="true">https://spring.io/blog/2024/09/27/spring-boot-2-7-support-period-extended</guid><dc:creator><![CDATA[Michael Minella]]></dc:creator><pubDate>Fri, 27 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Upgrading takes time. We understand that. Spring Boot 3 came out in November of 2022 bringing with it a new, modernized baseline of Java 17 and the migration from Java EE to Jakarta EE. It included over 55 managed dependency updates. Native compilation via GraalVM was a first-class option across the portfolio and observability out of the box was a core capability of all Spring projects. However, it wasn&apos;t until Spring Boot 3.2 where we began to see that the community&apos;s adoption of Spring Boot 3 surpassing that of Spring Boot 2&apos;s adoption. Spring Boot 3 has quickly overtaken Spring Boot 2 but we still hear from our community about projects to upgrade from Spring Boot 2 to Spring Boot 3.&lt;/p&gt;
+&lt;p&gt;While we continue to see the pace of innovation across the ecosystem speed up and believe keeping up with that pace of innovation is important, we know that being able to upgrade at your own pace is also a requirement in most enterprises. This is why we have made the decision to extend commercial support for Spring Boot 2.7 and all versions of the portfolio that align with that Spring Boot version until the end of 2026. You can find the updated support dates on each project page. This extra 16 months of support (resulting in a total of more than 8 years of support for the Spring Boot 2.x line) is to provide everyone the ability to prioritize any upgrade needs in alignment with their other priorities.&lt;/p&gt;
+&lt;p&gt;If staying up to date is a challenge for your enterprise, I&apos;d encourage you to look at this talk by Chris Sterling from our most recent SpringOne. In it, he talks about how OpenRewrite and Tanzu Application Advisor can help automate this problem, taking it from a once every five-year major project, to just a task to do every so often.&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/P6FHPtoN6-Q?si=PVzWVPcBOvbniHeO&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;Upgrading takes time. We get that. And we are here to make sure that you have what you need to be able to keep your Spring applications up to date and healthy for years to come.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AI Meets Spring Petclinic: Implementing an AI Assistant with Spring AI (Part I)]]></title><link>https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i</link><guid isPermaLink="true">https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i</guid><dc:creator><![CDATA[Oded Shopen]]></dc:creator><pubDate>Thu, 26 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;introduction&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#introduction&quot; aria-label=&quot;introduction permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this two-parts blog post, I will discuss the modifications I made to &lt;a href=&quot;https://github.com/spring-projects/spring-petclinic/tree/spring-ai&quot;&gt;Spring Petclinic&lt;/a&gt; to incorporate an AI assistant that allows users to interact with the application using natural language.&lt;/p&gt;
+&lt;h2 id=&quot;introduction-to-spring-petclinic&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#introduction-to-spring-petclinic&quot; aria-label=&quot;introduction to spring petclinic permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Introduction to Spring Petclinic&lt;/h2&gt;
+&lt;p&gt;Spring Petclinic serves as the primary reference application within the Spring ecosystem. According to GitHub, the repository was created on January 9, 2013. Since then, it has become the model application for writing simple, developer-friendly code using Spring Boot. As of this writing, it has garnered over 7,600 stars and 23,000 forks.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/34bDu5E5zZo0aUiP8VoDNR/db85061cbe08a5a974c9fa5364c7a17d/e386a28e-e860-4cf7-a94c-aa7dad13abe3.png&quot; alt=&quot;e386a28e-e860-4cf7-a94c-aa7dad13abe3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The application simulates a management system for a veterinarian¡¯s pet clinic. Within the application, users can perform several activities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;List pet owners&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add a new owner&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add a pet to an owner&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Document a visit for a specific pet&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;List the veterinarians in the clinic&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simulate a server-side error&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While the application is simple and straightforward, it effectively showcases the ease of use associated with developing Spring Boot applications.&lt;/p&gt;
+&lt;p&gt;Additionally, the Spring team has continuously updated the app to support the latest versions of the Spring Framework and Spring Boot.&lt;/p&gt;
+&lt;h2 id=&quot;technologies-used&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#technologies-used&quot; aria-label=&quot;technologies used permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Technologies Used&lt;/h2&gt;
+&lt;p&gt;Spring Petclinic is developed using Spring Boot, specifically version 3.3 as of this publication.&lt;/p&gt;
+&lt;h3 id=&quot;frontend-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#frontend-ui&quot; aria-label=&quot;frontend ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Frontend UI&lt;/h3&gt;
+&lt;p&gt;The frontend UI is built using &lt;a href=&quot;https://www.thymeleaf.org/&quot;&gt;Thymeleaf&lt;/a&gt;. Thymeleaf&apos;s templating engine facilitates seamless backend API calls within the HTML code, making it easy to understand. Below is the code that retrieves the list of pet owners:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;table id=&quot;vets&quot; class=&quot;table table-striped&quot;&gt;
+  &amp;#x3C;thead&gt;
+  &amp;#x3C;tr&gt;
+    &amp;#x3C;th&gt;Name&amp;#x3C;/th&gt;
+    &amp;#x3C;th&gt;Specialties&amp;#x3C;/th&gt;
+  &amp;#x3C;/tr&gt;
+  &amp;#x3C;/thead&gt;
+  &amp;#x3C;tbody&gt;
+  &amp;#x3C;tr th:each=&quot;vet : ${listVets}&quot;&gt;
+    &amp;#x3C;td th:text=&quot;${vet.firstName + &apos; &apos; + vet.lastName}&quot;&gt;&amp;#x3C;/td&gt;
+    &amp;#x3C;td&gt;&amp;#x3C;span th:each=&quot;specialty : ${vet.specialties}&quot;
+              th:text=&quot;${specialty.name + &apos; &apos;}&quot;/&gt; &amp;#x3C;span
+      th:if=&quot;${vet.nrOfSpecialties == 0}&quot;&gt;none&amp;#x3C;/span&gt;&amp;#x3C;/td&gt;
+  &amp;#x3C;/tr&gt;
+  &amp;#x3C;/tbody&gt;
+&amp;#x3C;/table&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The key line here is &lt;code&gt;${listVets}&lt;/code&gt;, which references a model in the Spring backend that contains the data to be populated. Below is the relevant code block from the Spring &lt;code&gt;@Controller&lt;/code&gt; that populates this model:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	private String addPaginationModel(int page, Page&amp;#x3C;Vet&gt; paginated, Model model) {
+		List&amp;#x3C;Vet&gt; listVets = paginated.getContent();
+		model.addAttribute(&quot;currentPage&quot;, page);
+		model.addAttribute(&quot;totalPages&quot;, paginated.getTotalPages());
+		model.addAttribute(&quot;totalItems&quot;, paginated.getTotalElements());
+		model.addAttribute(&quot;listVets&quot;, listVets);
+		return &quot;vets/vetList&quot;;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;spring-data-jpa&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-data-jpa&quot; aria-label=&quot;spring data jpa permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Data JPA&lt;/h3&gt;
+&lt;p&gt;Petclinic interacts with the database using the Java Persistence API (JPA). It supports H2, PostgreSQL, or MySQL, depending on the selected profile. Database communication is facilitated through &lt;code&gt;@Repository&lt;/code&gt; interfaces, such as &lt;code&gt;OwnerRepository&lt;/code&gt;. Here¡¯s an example of one of the JPA queries within the interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	/**
+	 * Returns all the owners from data store
+	 **/
+	@Query(&quot;SELECT owner FROM Owner owner&quot;)
+	@Transactional(readOnly = true)
+	Page&amp;#x3C;Owner&gt; findAll(Pageable pageable);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JPA significantly simplifies your code by automatically implementing default queries for your methods based on naming conventions. It also allows you to specify a JPQL query using the &lt;code&gt;@Query&lt;/code&gt; annotation when needed.&lt;/p&gt;
+&lt;h2 id=&quot;hello-spring-ai&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#hello-spring-ai&quot; aria-label=&quot;hello spring ai permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Hello, Spring AI&lt;/h2&gt;
+&lt;p&gt;Spring AI is one of the most exciting new projects in the Spring ecosystem in recent memory. It enables interaction with popular large language models (LLMs) using familiar Spring paradigms and techniques. Much like Spring Data provides an abstraction that allows you to write your code once, delegating implementation to the provided &lt;code&gt;spring-boot-starter&lt;/code&gt; dependency and property configuration, Spring AI offers a similar approach for LLMs. You write your code once to an interface, and a &lt;code&gt;@Bean&lt;/code&gt; is injected at runtime for your specific implementation.&lt;/p&gt;
+&lt;p&gt;Spring AI supports all the major large language models, including OpenAI, Azure¡¯s OpenAI implementation, Google Gemini, Amazon Bedrock, and &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/chatmodel.html&quot;&gt;many more&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;considerations-for-implementing-ai-in-spring-petclinic&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#considerations-for-implementing-ai-in-spring-petclinic&quot; aria-label=&quot;considerations for implementing ai in spring petclinic permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Considerations for implementing AI in Spring Petclinic&lt;/h2&gt;
+&lt;p&gt;Spring Petclinic is over 10 years old and was not originally designed with AI in mind. It serves as a classic candidate for testing the integration of AI into a ¡°legacy¡± codebase. In approaching the challenge of adding an AI assistant to Spring Petclinic, I had to consider several important factors.&lt;/p&gt;
+&lt;h3 id=&quot;selecting-a-model-api&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#selecting-a-model-api&quot; aria-label=&quot;selecting a model api permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Selecting a Model API&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The first consideration was determining the type of API I wanted to implement. Spring AI offers a variety of capabilities, including support for chat, image recognition and generation, audio transcription, text-to-speech, and more. For Spring Petclinic, a familiar ¡°chatbot¡± interface made the most sense. This would allow clinic employees to communicate with the system in natural language, streamlining their interactions instead of navigating through UI tabs and forms. I would also need embedding capabilities, which will be used for Retrieval-Augmented Generation (RAG) later in the article.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5iLLbpeB0pQTQvlNaYu6oo/65d0cffebe2d68f19a32b9c1f9051b77/70d36ac5-3e2a-4dae-9ab7-94cecaf4f493.png&quot; alt=&quot;70d36ac5-3e2a-4dae-9ab7-94cecaf4f493&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Possible interactions with the AI assistant may include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;How can you assist me?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Please list the owners that come to our clinic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Which vets specialize in radiology?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Is there a pet owner named Betty?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Which of the owners have dogs?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add a dog for Betty; its name is Moopsie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These examples illustrate the range of queries the AI can handle. The strength of LLMs lies in their ability to comprehend natural language and provide meaningful responses.&lt;/p&gt;
+&lt;h3 id=&quot;selecting-a-large-language-model-provider&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#selecting-a-large-language-model-provider&quot; aria-label=&quot;selecting a large language model provider permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Selecting a Large Language Model provider&lt;/h3&gt;
+&lt;p&gt;The tech world is currently experiencing a gold rush with large language models (LLMs), with new models emerging every few days, each offering enhanced capabilities, larger context windows, and advanced features such as improved reasoning.&lt;/p&gt;
+&lt;p&gt;Some of the popular LLMs include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OpenAI and its Azure-based service, Azure OpenAI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Gemini&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Amazon Bedrock, a managed AWS service that can run various LLMs, including Anthropic and Titan&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Llama 3.1, along with many other open-source LLMs available through &lt;a href=&quot;https://huggingface.co/&quot;&gt;Hugging Face&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For our Petclinic application, I required a model that excels in chat capabilities, can be tailored to my application¡¯s specific needs, and supports function calling (more on that later!).&lt;/p&gt;
+&lt;p&gt;One of the great advantages of Spring AI is the ease of conducting A/B testing with various LLMs. You simply change a dependency and update a few properties. I tested several models, including Llama 3.1, which I ran locally. Ultimately, I concluded that OpenAI remains the leader in this space, as it provides the most natural and fluent interactions while avoiding common pitfalls encountered by other LLMs.&lt;/p&gt;
+&lt;p&gt;Here¡¯s a basic example: when greeting the model powered by OpenAI, the response is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6baEIc9KHMqYvN8nlw1cOy/c93d211b503e854ba392e783452d76cb/096c6e75-74b6-44e1-924f-1935027aa7ef.png&quot; alt=&quot;096c6e75-74b6-44e1-924f-1935027aa7ef&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Perfect. Just what I wanted. Simple, concise, professional and user friendly.&lt;/p&gt;
+&lt;p&gt;Here¡¯s the result using Llama3.1:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6J5rS6MPbFXgtC1UKhPNC1/0cd703595845615568852df03765ef5a/215a8acd-337e-4c63-b875-803f13daf146.png&quot; alt=&quot;215a8acd-337e-4c63-b875-803f13daf146&quot;&gt;&lt;/p&gt;
+&lt;p&gt;You get the point. It¡¯s just not there yet.&lt;/p&gt;
+&lt;p&gt;Setting the desired LLM provider is straightforward - simply set its dependency in the &lt;code&gt;pom.xml&lt;/code&gt; (or &lt;code&gt;build.gradle&lt;/code&gt;) and provide the necessary configuration properties in &lt;code&gt;application.yaml&lt;/code&gt; or &lt;code&gt;application.properties&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;	&amp;#x3C;dependency&gt;
+		&amp;#x3C;groupId&gt;org.springframework.ai&amp;#x3C;/groupId&gt;
+		&amp;#x3C;artifactId&gt;spring-ai-azure-openai-spring-boot-starter&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, I opted for Azure¡¯s implementation of OpenAI, but I could easily switch to Sam Altman¡¯s OpenAI by changing the dependency:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;	&amp;#x3C;dependency&gt;
+		&amp;#x3C;groupId&gt;org.springframework.ai&amp;#x3C;/groupId&gt;
+		&amp;#x3C;artifactId&gt;spring-ai-openai-spring-boot-starter&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since I¡¯m using a publicly hosted LLM provider, I need to provide the URL and API key to access the LLM. This can be configured in &lt;code&gt;application.yaml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;spring:
+  ai:
+    #These parameters apply when using the spring-ai-azure-openai-spring-boot-starter dependency:
+    azure:
+      openai:
+        api-key: &quot;the-api-key&quot;
+        endpoint: &quot;https://the-url/&quot;
+        chat:
+          options:
+             deployment-name: &quot;gpt-4o&quot;
+    #These parameters apply when using the spring-ai-openai-spring-boot-starter dependency:
+    openai:
+      api-key: &quot;&quot;
+      endpoint: &quot;&quot;
+      chat:
+        options:
+           deployment-name: &quot;gpt-4o&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;lets-get-coding&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#lets-get-coding&quot; aria-label=&quot;lets get coding permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Let&apos;s get coding!&lt;/h2&gt;
+&lt;p&gt;Our goal is to create a WhatsApp/iMessage-style chat client that integrates with the existing UI of Spring Petclinic. The frontend UI will make calls to a backend API endpoint that accepts a string as input and returns a string as output. The conversation will be open to any questions the user may have, and if we can&apos;t assist with a particular request, we&apos;ll provide an appropriate response.&lt;/p&gt;
+&lt;h3 id=&quot;creating-the-chatclient&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#creating-the-chatclient&quot; aria-label=&quot;creating the chatclient permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Creating the ChatClient&lt;/h3&gt;
+&lt;p&gt;Here¡¯s the implementation for the chat endpoint in the class &lt;code&gt;PetclinicChatClient&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;  @PostMapping(&quot;/chatclient&quot;)
+  public String exchange(@RequestBody String query) {
+	  //All chatbot messages go through this endpoint and are passed to the LLM
+	  return
+	  this.chatClient
+	  .prompt()
+      .user(
+          u -&gt;
+              u.text(query)
+              )
+      .call()
+      .content();
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The API accepts a string query and passes it to the Spring AI &lt;code&gt;ChatClient&lt;/code&gt; bean as user text. The &lt;code&gt;ChatClient&lt;/code&gt; is a Spring Bean provided by Spring AI that manages sending the user text to the LLM and returning the results in the &lt;code&gt;content()&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All the Spring AI code operates under a specific &lt;code&gt;@Profile&lt;/code&gt; called &lt;code&gt;openai&lt;/code&gt;. An additional class, &lt;code&gt;PetclinicDisabledChatClient&lt;/code&gt;, runs when using the default profile or any other profile. This disabled profile simply returns a message indicating that chat is not available.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Our implementation primarily delegates responsibility to the &lt;code&gt;ChatClient&lt;/code&gt;. But how do we create the &lt;code&gt;ChatClient&lt;/code&gt; bean itself? There are several configurable options that can influence the user experience. Let¡¯s explore them one by one and examine their impact on the final application:&lt;/p&gt;
+&lt;h4 id=&quot;a-simple-chatclient&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-simple-chatclient&quot; aria-label=&quot;a simple chatclient permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A Simple ChatClient:&lt;/h4&gt;
+&lt;p&gt;Here¡¯s a barebones, unaltered &lt;code&gt;ChatClient&lt;/code&gt; bean definition:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public PetclinicChatClient(ChatClient.Builder builder) {
+		this.chatClient = builder.build();
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, we simply request an instance of the &lt;code&gt;ChatClient&lt;/code&gt; from the builder, based on the currently available Spring AI starter in the dependencies. While this setup works, our chat client lacks any knowledge of the Petclinic domain or its services:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6NT4aTyh9Lx4VLUwXA4ghT/e507a0772af6bc655c379e0b88b431fe/0e879adf-ce3a-460a-a5d2-fcbfcf0af91e.png&quot; alt=&quot;0e879adf-ce3a-460a-a5d2-fcbfcf0af91e&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/1WVJ3mnPgkFmBNXYRBGUTt/b6ba086d7a943b804ecb6dcabb12c661/54d23cf7-34bb-400c-9260-fb2d684df98d.png&quot; alt=&quot;54d23cf7-34bb-400c-9260-fb2d684df98d&quot;&gt;&lt;/p&gt;
+&lt;p&gt;It¡¯s certainly polite, but it lacks any understanding of our business domain. Additionally, it seems to suffer from a severe case of amnesia?it can&apos;t even remember my name from the previous message!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As I reviewed this article, I realized I¡¯m not &lt;a href=&quot;https://youtu.be/XUz4LKZx83g?si=EPsh8EJQ0MFnviQa&amp;#x26;t=3828&quot;&gt;following the advice&lt;/a&gt; of my good friend and colleague Josh Long. I should probably be more polite to our new AI overlords!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You might be accustomed to ChatGPT&apos;s excellent memory, which makes it feel conversational. In reality, however, LLM APIs are entirely stateless and do not retain any of the past messages you send. This is why the API forgot my name so quickly.&lt;/p&gt;
+&lt;p&gt;You may be wondering how ChatGPT maintains conversational context. The answer is simple: ChatGPT sends past messages as content along with each new message. Every time you send a new message, it includes the previous conversations for the model to reference. While this might seem wasteful, it¡¯s just how the system operates. This is also why larger token windows are becoming increasingly important?users expect to revisit conversations from days ago and pick up right where they left off.&lt;/p&gt;
+&lt;h4 id=&quot;a-chatclient-with-better-memory&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-chatclient-with-better-memory&quot; aria-label=&quot;a chatclient with better memory permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A ChatClient with better memory&lt;/h4&gt;
+&lt;p&gt;Let¡¯s implement a similar ¡°chat memory¡± functionality in our application. Fortunately, Spring AI provides an out-of-the-box Advisor to help with this. You can think of advisors as hooks that run before invoking the LLM. It¡¯s helpful to consider them as resembling Aspect-Oriented Programming advice, even if they aren¡¯t implemented that way.&lt;/p&gt;
+&lt;p&gt;Here¡¯s our updated code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt; 	public PetclinicChatClient(ChatClient.Builder builder, ChatMemory chatMemory) {
+		// @formatter:off
+		this.chatClient = builder
+				.defaultAdvisors(
+						// Chat memory helps us keep context when using the chatbot for up to 10 previous messages.
+						new MessageChatMemoryAdvisor(chatMemory, DEFAULT_CHAT_MEMORY_CONVERSATION_ID, 10), // CHAT MEMORY
+						new SimpleLoggerAdvisor()
+						)
+				.build();
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this updated code, we added the &lt;code&gt;MessageChatMemoryAdvisor&lt;/code&gt;, which automatically chains the last 10 messages into any new outgoing message, helping the LLM understand the context.&lt;/p&gt;
+&lt;p&gt;We also included an out-of-the-box &lt;code&gt;SimpleLoggerAdvisor&lt;/code&gt;, which logs the requests and responses to and from the LLM.&lt;/p&gt;
+&lt;p&gt;The result:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/2jdoKYkAHfJyQDj6WIyDu4/fd60ebbdc2638f8e0d98335fc80a4ff7/b551498e-bf8e-4d3a-8d77-9ff66d929dfc.png&quot; alt=&quot;b551498e-bf8e-4d3a-8d77-9ff66d929dfc&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Our new chatbot has significantly better memory!&lt;/p&gt;
+&lt;p&gt;However, it¡¯s still not entirely clear on what we¡¯re really doing here:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/32O2GsKVKPzez6TDuYmAbg/4b73dd27279e51ece5aa39f14729e9a3/ade2c93a-5ef1-4e3f-ab1b-b3589ce332a5.png&quot; alt=&quot;ade2c93a-5ef1-4e3f-ab1b-b3589ce332a5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;This response is decent for a generic world-knowledge LLM. However, our clinic is very domain-specific, with particular use cases. Additionally, our chatbot should focus solely on assisting us with our clinic. For example, it should not attempt to answer a question like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5hRkqgyrtRlIJBU0yqXFSn/0bf391ca0527e2dce9c751832cb46d48/6537a0ba-20a8-47f5-a021-15c4c91f4840.png&quot; alt=&quot;6537a0ba-20a8-47f5-a021-15c4c91f4840&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If we allowed our chatbot to answer any question, users might start using it as a free alternative to services like ChatGPT to access more advanced models like GPT-4. It¡¯s clear that we need to teach our LLM to ¡°impersonate¡± a specific service provider. Our LLM should focus solely on assisting with Spring Petclinic; it should know about vets, owners, pets, and visits?nothing more.&lt;/p&gt;
+&lt;h4 id=&quot;a-chatclient-bound-to-a-specific-domain&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-chatclient-bound-to-a-specific-domain&quot; aria-label=&quot;a chatclient bound to a specific domain permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;A ChatClient Bound to a Specific Domain&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Spring AI offers a solution for this as well. Most LLMs differentiate between user text (the chat messages we send) and system text, which is general text that instructs the LLM to function in a specific manner. Let¡¯s add the system text to our chat client:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public PetclinicChatClient(ChatClient.Builder builder, ChatMemory chatMemory) {
+		// @formatter:off
+		this.chatClient = builder
+				.defaultSystem(&quot;&quot;&quot;
+You are a friendly AI assistant designed to help with the management of a veterinarian pet clinic called Spring Petclinic.
+Your job is to answer questions about the existing veterinarians and to perform actions on the user&apos;s behalf, mainly around
+veterinarians, pet owners, their pets and their owner&apos;s visits.
+You are required to answer an a professional manner. If you don&apos;t know the answer, politely tell the user
+you don&apos;t know the answer, then ask the user a followup qusetion to try and clarify the question they are asking.
+If you do know the answer, provide the answer but do not provide any additional helpful followup questions.
+When dealing with vets, if the user is unsure about the returned results, explain that there may be additional data that was not returned.
+Only if the user is asking about the total number of all vets, answer that there are a lot and ask for some additional criteria. For owners, pets or visits - answer the correct data.
+			      		&quot;&quot;&quot;)
+				.defaultAdvisors(
+						// Chat memory helps us keep context when using the chatbot for up to 10 previous messages.
+						new MessageChatMemoryAdvisor(chatMemory, DEFAULT_CHAT_MEMORY_CONVERSATION_ID, 10), // CHAT MEMORY
+						new LoggingAdvisor()
+						)
+				.build();
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&apos;s quite a verbose default system prompt! But trust me, it¡¯s necessary. In fact, it¡¯s probably not enough, and as the system is used more frequently, I¡¯ll likely need to add more context. The process of prompt engineering involves designing and optimizing input prompts to elicit specific, accurate responses for a given use case.&lt;/p&gt;
+&lt;p&gt;LLMs are quite chatty; they enjoy responding in natural language. This tendency can make it challenging to get machine-to-machine responses in formats like JSON. To address this, Spring AI offers a feature set dedicated to structured output, known as the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html&quot;&gt;Structured Output Converter&lt;/a&gt;. The Spring team had to identify optimal prompt engineering techniques to ensure that LLMs respond without unnecessary ¡°chattiness.¡± Here¡¯s an example from Spring AI¡¯s &lt;code&gt;MapOutputConverter&lt;/code&gt; bean:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Override
+	public String getFormat() {
+		String raw = &quot;&quot;&quot;
+				Your response should be in JSON format.
+				The data structure for the JSON should match this Java class: %s
+				Do not include any explanations, only provide a RFC8259 compliant JSON response following this format without deviation.
+				Remove the ```json markdown surrounding the output including the trailing &quot;```&quot;.
+				&quot;&quot;&quot;;
+		return String.format(raw, HashMap.class.getName());
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Whenever a response from an LLM needs to be in JSON format, Spring AI appends this entire string to the request, urging the LLM to comply.&lt;/p&gt;
+&lt;p&gt;Recently, there have been positive advancements in this area, particularly with OpenAI¡¯s Structured Outputs initiative. As is often the case with such advancements, &lt;a href=&quot;https://spring.io/blog/2024/08/09/spring-ai-embraces-openais-structured-outputs-enhancing-json-response&quot;&gt;Spring AI has embraced it wholeheartedly&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now, back to our chatbot?let¡¯s see how it performs!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/57GGzxmgChwRqMxYWkSmlW/e45155d19b5e145609c2883792732d9e/22543742-6c1a-426e-aa23-3a16181e3e7e.png&quot; alt=&quot;22543742-6c1a-426e-aa23-3a16181e3e7e&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/64XLYftHg1h52y47bJzLKn/fd541cc83141f3de55dff63595e72569/bcea015e-8707-4ddc-adeb-a534e0d28725.png&quot; alt=&quot;bcea015e-8707-4ddc-adeb-a534e0d28725&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/46zJwbkrAalsyiNq81d82S/5cb602c78483e372e3f4d795376e3cbb/4f92d3bf-f1d9-44d1-8d7b-c8c7f3a39775.png&quot; alt=&quot;4f92d3bf-f1d9-44d1-8d7b-c8c7f3a39775&quot;&gt;&lt;/p&gt;
+&lt;p&gt;That¡¯s a significant improvement! We now have a chatbot that¡¯s tuned to our domain, focused on our specific use cases, remembers the last 10 messages, doesn¡¯t provide any irrelevant world knowledge, and avoids hallucinating data it doesn¡¯t possess. Additionally, our logs print the calls we¡¯re making to the LLM, making debugging much easier.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;2024-09-21T21:55:08.888+03:00 DEBUG 85824 --- [nio-8080-exec-5] o.s.a.c.c.advisor.SimpleLoggerAdvisor    : request: AdvisedRequest[chatModel=org.springframework.ai.azure.openai.AzureOpenAiChatModel@5cdd90c4, userText=&quot;Hi! My name is Oded.&quot;, systemText=You are a friendly AI assistant designed to help with the management of a veterinarian pet clinic called Spring Petclinic.
+Your job is to answer questions about the existing veterinarians and to perform actions on the user&apos;s behalf, mainly around
+veterinarians, pet owners, their pets and their owner&apos;s visits.
+You are required to answer an a professional manner. If you don&apos;t know the answer, politely tell the user
+you don&apos;t know the answer, then ask the user a followup qusetion to try and clarify the question they are asking.
+If you do know the answer, provide the answer but do not provide any additional helpful followup questions.
+When dealing with vets, if the user is unsure about the returned results, explain that there may be additional data that was not returned.
+Only if the user is asking about the total number of all vets, answer that there are a lot and ask for some additional criteria. For owners, pets or visits - answer the correct data.
+, chatOptions=org.springframework.ai.azure.openai.AzureOpenAiChatOptions@c4c74d4, media=[], functionNames=[], functionCallbacks=[], messages=[], userParams={}, systemParams={}, advisors=[org.springframework.ai.chat.client.advisor.observation.ObservableRequestResponseAdvisor@1e561f7, org.springframework.ai.chat.client.advisor.observation.ObservableRequestResponseAdvisor@79348b22], advisorParams={}]
+2024-09-21T21:55:10.594+03:00 DEBUG 85824 --- [nio-8080-exec-5] o.s.a.c.c.advisor.SimpleLoggerAdvisor    : response: {&quot;result&quot;:{&quot;metadata&quot;:{&quot;contentFilterMetadata&quot;:{&quot;sexual&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;violence&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;hate&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;selfHarm&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;profanity&quot;:null,&quot;customBlocklists&quot;:null,&quot;error&quot;:null,&quot;protectedMaterialText&quot;:null,&quot;protectedMaterialCode&quot;:null},&quot;finishReason&quot;:&quot;stop&quot;},&quot;output&quot;:{&quot;messageType&quot;:&quot;ASSISTANT&quot;,&quot;metadata&quot;:{&quot;finishReason&quot;:&quot;stop&quot;,&quot;choiceIndex&quot;:0,&quot;id&quot;:&quot;chatcmpl-A9zY6UlOdkTCrFVga9hbzT0LRRDO4&quot;,&quot;messageType&quot;:&quot;ASSISTANT&quot;},&quot;toolCalls&quot;:[],&quot;content&quot;:&quot;Hello, Oded! How can I assist you today at Spring Petclinic?&quot;}},&quot;metadata&quot;:{&quot;id&quot;:&quot;chatcmpl-A9zY6UlOdkTCrFVga9hbzT0LRRDO4&quot;,&quot;model&quot;:&quot;gpt-4o-2024-05-13&quot;,&quot;rateLimit&quot;:{&quot;requestsLimit&quot;:0,&quot;requestsRemaining&quot;:0,&quot;requestsReset&quot;:0.0,&quot;tokensRemaining&quot;:0,&quot;tokensLimit&quot;:0,&quot;tokensReset&quot;:0.0},&quot;usage&quot;:{&quot;promptTokens&quot;:633,&quot;generationTokens&quot;:17,&quot;totalTokens&quot;:650},&quot;promptMetadata&quot;:[{&quot;contentFilterMetadata&quot;:{&quot;sexual&quot;:null,&quot;violence&quot;:null,&quot;hate&quot;:null,&quot;selfHarm&quot;:null,&quot;profanity&quot;:null,&quot;customBlocklists&quot;:null,&quot;error&quot;:null,&quot;jailbreak&quot;:null,&quot;indirectAttack&quot;:null},&quot;promptIndex&quot;:0}],&quot;empty&quot;:false},&quot;results&quot;:[{&quot;metadata&quot;:{&quot;contentFilterMetadata&quot;:{&quot;sexual&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;violence&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;hate&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;selfHarm&quot;:{&quot;severity&quot;:&quot;safe&quot;,&quot;filtered&quot;:false},&quot;profanity&quot;:null,&quot;customBlocklists&quot;:null,&quot;error&quot;:null,&quot;protectedMaterialText&quot;:null,&quot;protectedMaterialCode&quot;:null},&quot;finishReason&quot;:&quot;stop&quot;},&quot;output&quot;:{&quot;messageType&quot;:&quot;ASSISTANT&quot;,&quot;metadata&quot;:{&quot;finishReason&quot;:&quot;stop&quot;,&quot;choiceIndex&quot;:0,&quot;id&quot;:&quot;chatcmpl-A9zY6UlOdkTCrFVga9hbzT0LRRDO4&quot;,&quot;messageType&quot;:&quot;ASSISTANT&quot;},&quot;toolCalls&quot;:[],&quot;content&quot;:&quot;Hello, Oded! How can I assist you today at Spring Petclinic?&quot;}}]}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;identifying-core-functionality&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#identifying-core-functionality&quot; aria-label=&quot;identifying core functionality permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Identifying Core Functionality&lt;/h2&gt;
+&lt;p&gt;Our chatbot behaves as expected, but it currently lacks knowledge about the data in our application. Let¡¯s focus on the core features that Spring Petclinic supports and map them to the functions we might want to enable with Spring AI:&lt;/p&gt;
+&lt;h4 id=&quot;list-owners&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#list-owners&quot; aria-label=&quot;list owners permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;List Owners&lt;/h4&gt;
+&lt;p&gt;In the Owners tab, we can search for an owner by last name or simply list all owners. We can obtain detailed information about each owner, including their first and last names, as well as the pets they own and their types:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6Mq1aChjXHhXFsqCSgziEy/bf962cd17359f0a923855cfffd8fa46b/ed1a033e-6389-47a5-8c9b-d1889bd6e9de.png&quot; alt=&quot;ed1a033e-6389-47a5-8c9b-d1889bd6e9de&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;adding-an-owner&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#adding-an-owner&quot; aria-label=&quot;adding an owner permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Adding an Owner&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The application allows you to add a new owner by providing the required parameters dictated by the system. An owner must have a first name, a last name, an address, and a 10-digit phone number.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/2Oyt4LjRGR2W179v9ppr0e/ab12def2f19dfb333c313876b07c22c4/6c6f580d-7cbf-4055-8a2d-e4f43e5f6c1f.png&quot; alt=&quot;6c6f580d-7cbf-4055-8a2d-e4f43e5f6c1f&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;adding-a-pet-to-an-existing-owner&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#adding-a-pet-to-an-existing-owner&quot; aria-label=&quot;adding a pet to an existing owner permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Adding a Pet to an Existing Owner&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;An owner can have multiple pets. The pet types are limited to the following: cat, dog, lizard, snake, bird, or hamster.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6sW3wjPV7mGBDTkjjUOPDx/9af65b01ddfdb118ec3b0928c7ba910d/6f6e20ca-28b8-4093-8e4a-31c6f7ffd032.png&quot; alt=&quot;6f6e20ca-28b8-4093-8e4a-31c6f7ffd032&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;veterinarians&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#veterinarians&quot; aria-label=&quot;veterinarians permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Veterinarians&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The Veterinarians tab displays the available veterinarians in a paginated view, along with their specialties. There is currently no search capability in this tab. While the &lt;code&gt;main&lt;/code&gt; branch of Spring Petclinic features a handful of vets, I generated hundreds of mock vets in the &lt;code&gt;spring-ai&lt;/code&gt; branch to simulate an application that handles a substantial amount of data. Later, we will explore how we can use Retrieval-Augmented Generation (RAG) to manage large datasets such as this.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5ZKO8t6sS5Jh8feXkXLe0I/7351e45344d7b1b12363515d190e1354/d055326a-93a4-4c17-a14f-b7a66ed7beea.png&quot; alt=&quot;d055326a-93a4-4c17-a14f-b7a66ed7beea&quot;&gt;&lt;/p&gt;
+&lt;p&gt;These are the main operations we can perform in the system. We¡¯ve mapped our application to its basic functions, and we¡¯d like OpenAI to infer requests in natural language corresponding to these operations.&lt;/p&gt;
+&lt;h2 id=&quot;function-calling-with-spring-ai&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#function-calling-with-spring-ai&quot; aria-label=&quot;function calling with spring ai permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Function Calling with Spring AI&lt;/h2&gt;
+&lt;p&gt;In the previous section, we described four different functions. Now, let¡¯s map them to functions we can use with Spring AI by specifying specific &lt;code&gt;java.util.function.Function&lt;/code&gt; beans.&lt;/p&gt;
+&lt;h4 id=&quot;list-owners-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#list-owners-1&quot; aria-label=&quot;list owners 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;List Owners&lt;/h4&gt;
+&lt;p&gt;The following &lt;code&gt;java.util.function.Function&lt;/code&gt; is responsible for returning the list of owners in Spring Petclinic:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@Configuration
+@Profile(&quot;openai&quot;)
+class AIFunctionConfiguration {
+
+	// The @Description annotation helps the model understand when to call the function
+	@Bean
+	@Description(&quot;List the owners that the pet clinic has&quot;)
+	public Function&amp;#x3C;OwnerRequest, OwnersResponse&gt; listOwners(AIDataProvider petclinicAiProvider) {
+		return request -&gt; {
+			return petclinicAiProvider.getAllOwners();
+		};
+	}
+}
+record OwnerRequest(Owner owner) {
+};
+
+record OwnersResponse(List&amp;#x3C;Owner&gt; owners) {
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We¡¯re creating a &lt;code&gt;@Configuration&lt;/code&gt; class in the &lt;code&gt;openai&lt;/code&gt; profile, where we register a standard Spring &lt;code&gt;@Bean&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The bean must return a &lt;code&gt;java.util.function.Function&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We use Spring&apos;s &lt;code&gt;@Description&lt;/code&gt; annotation to explain what this function does. Notably, Spring AI will pass this description to the LLM to help it determine when to call this specific function.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The function accepts an &lt;code&gt;OwnerRequest&lt;/code&gt; record, which holds the existing Spring Petclinic Owner entity class. This demonstrates how Spring AI can leverage components you&apos;ve already developed in your application without requiring a complete rewrite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OpenAI will decide when to invoke the function with a JSON object representing the &lt;code&gt;OwnerRequest&lt;/code&gt; record. Spring AI will automatically convert this JSON into an &lt;code&gt;OwnerRequest&lt;/code&gt; object and execute the function. Once a response is returned, Spring AI will convert the resulting &lt;code&gt;OwnerResponse&lt;/code&gt; record?which holds a &lt;code&gt;List&amp;#x3C;Owner&gt;&lt;/code&gt;?back to JSON format for OpenAI to process. When OpenAI receives the response, it will craft a reply for the user in natural language.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The function calls an &lt;code&gt;AIDataProvider&lt;/code&gt; &lt;code&gt;@Service&lt;/code&gt; bean that implements the actual logic. In our simple use case, the function merely queries the data using JPA:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;  public OwnersResponse getAllOwners() {
+	  Pageable pageable = PageRequest.of(0, 100);
+	  Page&amp;#x3C;Owner&gt; ownerPage = ownerRepository.findAll(pageable);
+	  return new OwnersResponse(ownerPage.getContent());
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The existing legacy code of Spring Petclinic returns paginated data to keep the response size manageable and facilitate processing for the paginated view in the UI. In our case, we expect the total number of owners to be relatively small, and OpenAI should be able to handle such traffic in a single request. Therefore, we return the first 100 owners in a single JPA request.&lt;/p&gt;
+&lt;p&gt;You may be thinking that this approach isn&apos;t optimal, and in a real-world application, you would be correct. If there were a large amount of data, this method would be inefficient?it&apos;s likely we¡¯d have more than 100 owners in the system. For such scenarios, we would need to implement a different pattern, as we will explore in the &lt;code&gt;listVets&lt;/code&gt; function. However, for our demo use case, we can assume our system contains fewer than 100 owners.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let¡¯s use a real example along with the &lt;code&gt;SimpleLoggerAdvisor&lt;/code&gt; to observe what happens behind the scenes:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/2REpULW7ZzVQ9io3z3j5T6/cda9ec8eacdcaacf98a91a2e561bff64/f5ee0306-5463-4dc6-96de-908b7af37d9e.png&quot; alt=&quot;f5ee0306-5463-4dc6-96de-908b7af37d9e&quot;&gt;&lt;/p&gt;
+&lt;p&gt;What happened here? Let¡¯s review the output from the &lt;code&gt;SimpleLoggerAdvisor&lt;/code&gt; log to investigate:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;request: 
+AdvisedRequest[chatModel=org.springframework.ai.azure.openai.AzureOpenAiChatModel@18e69455, 
+userText=
+&quot;List the owners that are called Betty.&quot;, 
+systemText=You are a friendly AI assistant designed to help with the management of a veterinarian pet clinic called Spring Petclinic.
+Your job...
+chatOptions=org.springframework.ai.azure.openai.AzureOpenAiChatOptions@3d6f2674, 
+media=[], 
+functionNames=[], 
+functionCallbacks=[], 
+messages=[UserMessage{content=&apos;&quot;Hi there!&quot;&apos;, 
+properties={messageType=USER}, 
+messageType=USER}, 
+AssistantMessage [messageType=ASSISTANT, toolCalls=[], 
+textContent=Hello! How can I assist you today at Spring Petclinic?, 
+metadata={choiceIndex=0, finishReason=stop, id=chatcmpl-A99D20Ql0HbrpxYc0LIkWZZLVIAKv, 
+messageType=ASSISTANT}]], 
+userParams={}, systemParams={}, advisors=[org.springframework.ai.chat.client.advisor.observation.ObservableRequestResponseAdvisor@1d04fb8f, 
+org.springframework.ai.chat.client.advisor.observation.ObservableRequestResponseAdvisor@2fab47ce], advisorParams={}]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The request contains interesting data about what is sent to the LLM, including the user text, historical messages, an ID representing the current chat session, the list of advisors to trigger, and the system text.&lt;/p&gt;
+&lt;p&gt;You might be wondering where the functions are in the logged request above. The functions are not explicitly logged; they are encapsulated within the contents of &lt;code&gt;AzureOpenAiChatOptions&lt;/code&gt;. Examining the object in debug mode reveals the list of functions available to the model:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/1tZeuIu2GbsUA75quGYW1M/a7298537fefed8ec1ea55c24e7e83446/f2ebab0c-aef1-49ba-ad64-c5cd79d8583e.png&quot; alt=&quot;f2ebab0c-aef1-49ba-ad64-c5cd79d8583e&quot;&gt;&lt;/p&gt;
+&lt;p&gt;OpenAI will process the request, determine that it requires data from the list of owners, and return a JSON reply to Spring AI requesting additional information from the &lt;code&gt;listOwners&lt;/code&gt; function. Spring AI will then invoke that function using the provided &lt;code&gt;OwnersRequest&lt;/code&gt; object from OpenAI and send the response back to OpenAI, maintaining the conversation ID to assist with session continuity over the stateless connection. OpenAI will generate the final response based on the additional data provided. Let¡¯s review that response as it is logged:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;response: {
+  &quot;result&quot;: {
+    &quot;metadata&quot;: {
+      &quot;finishReason&quot;: &quot;stop&quot;,
+      &quot;contentFilterMetadata&quot;: {
+        &quot;sexual&quot;: {
+          &quot;severity&quot;: &quot;safe&quot;,
+          &quot;filtered&quot;: false
+        },
+        &quot;violence&quot;: {
+          &quot;severity&quot;: &quot;safe&quot;,
+          &quot;filtered&quot;: false
+        },
+        &quot;hate&quot;: {
+          &quot;severity&quot;: &quot;safe&quot;,
+          &quot;filtered&quot;: false
+        },
+        &quot;selfHarm&quot;: {
+          &quot;severity&quot;: &quot;safe&quot;,
+          &quot;filtered&quot;: false
+        },
+        &quot;profanity&quot;: null,
+        &quot;customBlocklists&quot;: null,
+        &quot;error&quot;: null,
+        &quot;protectedMaterialText&quot;: null,
+        &quot;protectedMaterialCode&quot;: null
+      }
+    },
+    &quot;output&quot;: {
+      &quot;messageType&quot;: &quot;ASSISTANT&quot;,
+      &quot;metadata&quot;: {
+        &quot;choiceIndex&quot;: 0,
+        &quot;finishReason&quot;: &quot;stop&quot;,
+        &quot;id&quot;: &quot;chatcmpl-A9oKTs6162OTut1rkSKPH1hE2R08Y&quot;,
+        &quot;messageType&quot;: &quot;ASSISTANT&quot;
+      },
+      &quot;toolCalls&quot;: [],
+      &quot;content&quot;: &quot;The owner named Betty in our records is:\n\n- **Betty Davis**\n  - **Address:** 638 Cardinal Ave., Sun Prairie\n  - **Telephone:** 608-555-1749\n  - **Pet:** Basil (Hamster), born on 2012-08-06\n\nIf you need any more details or further assistance, please let me know!&quot;
+    }
+  },
+  ...
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We see the response itself in the &lt;code&gt;content&lt;/code&gt; section. Most of the returned JSON consists of metadata?such as content filters, the model being used, the chat ID session in the response, the number of tokens consumed, how the response completed, and more.&lt;/p&gt;
+&lt;p&gt;This illustrates how the system operates end-to-end: it starts in your browser, reaches the Spring backend, and involves a B2B ping-pong interaction between Spring AI and the LLM until a response is sent back to the JavaScript that made the initial call.&lt;/p&gt;
+&lt;p&gt;Now, let¡¯s review the remaining three functions.&lt;/p&gt;
+&lt;h4 id=&quot;add-pet-to-owner&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#add-pet-to-owner&quot; aria-label=&quot;add pet to owner permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Add Pet to Owner&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;addPetToOwner&lt;/code&gt; method is particularly interesting because it demonstrates the power of the model¡¯s function calling.&lt;/p&gt;
+&lt;p&gt;When a user wants to add a pet to an owner, it¡¯s unrealistic to expect them to input the pet type ID. Instead, they are likely to say the pet is a &quot;dog&quot; rather than simply providing a numeric ID like &quot;2¡±.&lt;/p&gt;
+&lt;p&gt;To assist the LLM in determining the correct pet type, I utilized the @Description annotation to provide hints about our requirements. Since our pet clinic only deals with six types of pets, this approach is manageable and effective:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	@Description(&quot;Add a pet with the specified petTypeId, &quot; + &quot;to an owner identified by the ownerId. &quot;
+			+ &quot;The allowed Pet types IDs are only: &quot; + &quot;1 - cat&quot; + &quot;2 - dog&quot; + &quot;3 - lizard&quot; + &quot;4 - snake&quot; + &quot;5 - bird&quot;
+			+ &quot;6 - hamster&quot;)
+	public Function&amp;#x3C;AddPetRequest, AddedPetResponse&gt; addPetToOwner(AIDataProvider petclinicAiProvider) {
+		return request -&gt; {
+			return petclinicAiProvider.addPetToOwner(request);
+		};
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;AddPetRequest&lt;/code&gt; record includes the pet type in free text, reflecting how a user would typically provide it, along with the complete Pet entity and the referenced &lt;code&gt;ownerId&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;record AddPetRequest(Pet pet, String petType, Integer ownerId) {
+};
+record AddedPetResponse(Owner owner) {
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here¡¯s the business implementation: we retrieve the owner by their ID and then add the new pet to their existing list of pets.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public AddedPetResponse addPetToOwner(AddPetRequest request) {
+		Owner owner = ownerRepository.findById(request.ownerId());
+		owner.addPet(request.pet());
+		this.ownerRepository.save(owner);
+		return new AddedPetResponse(owner);
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While debugging the flow for this article, I noticed an interesting behavior: in some cases, the &lt;code&gt;Pet&lt;/code&gt; entity in the request was already prepopulated with the correct pet type ID and name.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5j3czFH5ZUqdx31rvTFbgS/56ece3e7ba85086eeaf5494641c743cb/787f442b-2b02-4499-9516-223d09c77128.png&quot; alt=&quot;787f442b-2b02-4499-9516-223d09c77128&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I also noticed that I wasn&apos;t really using the &lt;code&gt;petType&lt;/code&gt; String in my business implementation. Is it possible that Spring AI simply &quot;figured out&quot; the correct mapping of the &lt;code&gt;PetType&lt;/code&gt; name to the correct ID on its own?&lt;/p&gt;
+&lt;p&gt;To test this, I removed the &lt;code&gt;petType&lt;/code&gt; from my request object and simplified the &lt;code&gt;@Description&lt;/code&gt; as well:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	@Description(&quot;Add a pet with the specified petTypeId, to an owner identified by the ownerId.&quot;)
+	public Function&amp;#x3C;AddPetRequest, AddedPetResponse&gt; addPetToOwner(AIDataProvider petclinicAiProvider) {
+		return request -&gt; {
+			return petclinicAiProvider.addPetToOwner(request);
+		};
+	}
+    record AddPetRequest(Pet pet, Integer ownerId) {
+    };
+    record AddedPetResponse(Owner owner) {
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I found that in most prompts, the LLM remarkably figured out how to perform the mapping on its own. I eventually did keep the original description in the PR, because I noticed some edge cases where the LLM struggled and failed to understand the correlation.&lt;/p&gt;
+&lt;p&gt;Still, even for 80% of the use cases, this was very impressive. These are the sort of things that make Spring AI and LLMs almost feel like magic. The interaction between Spring AI and OpenAI managed to understand that the &lt;code&gt;PetType&lt;/code&gt; in the &lt;code&gt;@Entity&lt;/code&gt; of &lt;code&gt;Pet&lt;/code&gt; needed the mapping of the String &quot;lizard&quot; to its corresponding ID value in the database. This kind of seamless integration showcases the potential of combining traditional programming with AI capabilities.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// These are the original insert queries in data.sql
+INSERT INTO types VALUES (default, &apos;cat&apos;); //1
+INSERT INTO types VALUES (default, &apos;dog&apos;); //2
+INSERT INTO types VALUES (default, &apos;lizard&apos;); //3
+INSERT INTO types VALUES (default, &apos;snake&apos;); //4
+INSERT INTO types VALUES (default, &apos;bird&apos;); //5
+INSERT INTO types VALUES (default, &apos;hamster&apos;); //6
+
+@Entity
+@Table(name = &quot;pets&quot;)
+public class Pet extends NamedEntity {
+
+	private static final long serialVersionUID = 622048308893169889L;
+
+	@Column(name = &quot;birth_date&quot;)
+	@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
+	private LocalDate birthDate;
+
+	@ManyToOne
+	@JoinColumn(name = &quot;type_id&quot;)
+	private PetType type;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = &quot;pet_id&quot;)
+	@OrderBy(&quot;visit_date ASC&quot;)
+	private Set&amp;#x3C;Visit&gt; visits = new LinkedHashSet&amp;#x3C;&gt;();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It even works if you make some typos in the request. In the example below, the LLM identified that I misspelled &quot;hamster&quot; as &quot;hamstr,&quot; corrected the request, and successfully matched it with the correct Pet ID:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/4Ef6YUjgxc7juY8lJwNLeu/494926f348620bda15d1776508c8b18d/612140cf-0bfd-441e-b481-984a1814a840.png&quot; alt=&quot;612140cf-0bfd-441e-b481-984a1814a840&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If you dig deeper, you&apos;ll find things become even more impressive. The &lt;code&gt;AddPetRequest&lt;/code&gt; only passes the &lt;code&gt;ownerId&lt;/code&gt; as a parameter; I provided the owner&apos;s first name instead of their ID, and the LLM managed to determine the correct mapping on its own. This indicates that the LLM chose to call the &lt;code&gt;listOwners&lt;/code&gt; function before invoking the &lt;code&gt;addPetToOwner&lt;/code&gt; function. By adding some breakpoints, we can confirm this behavior. Initially, we hit the breakpoint for retrieving the owners:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/2T9f3zxIB2HfawESB7mOEa/1a4d77bbd46e418857e91f50e7102e4d/73e60339-4472-4fb9-bb7d-d23fb4680faf.png&quot; alt=&quot;73e60339-4472-4fb9-bb7d-d23fb4680faf&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Only after the owner data is returned and processed do we invoke the &lt;code&gt;addPetToOwner&lt;/code&gt; function:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/QMWgdThS7XaFuzSEcfSFt/99909a2d94ec8a77073c03863d0550a5/4c3ae801-b1f8-4477-924f-3e4d10c137df.png&quot; alt=&quot;4c3ae801-b1f8-4477-924f-3e4d10c137df&quot;&gt;&lt;/p&gt;
+&lt;p&gt;My conclusion is this: with Spring AI, start simple. Provide the essential data you know is required and use short, concise bean descriptions. It¡¯s likely that Spring AI and the LLM will &quot;figure out&quot; the rest. Only when issues arise should you begin adding more hints to the system.&lt;/p&gt;
+&lt;h4 id=&quot;add-owner&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#add-owner&quot; aria-label=&quot;add owner permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Add Owner&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;addOwner&lt;/code&gt; function is relatively straightforward. It accepts an owner and adds him/her to the system. However, in this example, we can see how to perform validation and ask follow-up questions using our chat assistant:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	@Description(&quot;Add a new pet owner to the pet clinic. &quot;
+			+ &quot;The Owner must include first and last name, &quot;
+			+ &quot;an address and a 10-digit phone number&quot;)
+	public Function&amp;#x3C;OwnerRequest, OwnerResponse&gt; addOwnerToPetclinic(AIDataProvider petclinicAiDataProvider) {
+		return request -&gt; {
+			return petclinicAiDataProvider.addOwnerToPetclinic(request);
+		};
+	}
+
+    record OwnerRequest(Owner owner) {
+    };
+    record OwnerResponse(Owner owner) {
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The business implementation is straightforward:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public OwnerResponse addOwnerToPetclinic(OwnerRequest ownerRequest) {
+		ownerRepository.save(ownerRequest.owner());
+		return new OwnerResponse(ownerRequest.owner());
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, we guide the model to ensure that the &lt;code&gt;Owner&lt;/code&gt; within the &lt;code&gt;OwnerRequest&lt;/code&gt; meets certain validation criteria before it can be added. Specifically, the owner must include a first name, a last name, an address, and a 10-digit phone number. If any of this information is missing, the model will prompt us to provide the necessary details before proceeding with the addition of the owner:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6drxQoXnfKIInmY33Ii1e4/cdb79ae67bd2c8737b80a8d486abb851/7d3d4244-dd6d-47b0-a620-833e7ad1601d.png&quot; alt=&quot;7d3d4244-dd6d-47b0-a620-833e7ad1601d&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The model didn&apos;t create the new owner before requesting the necessary additional data, such as the address, city, and phone number. However, I don&apos;t recall providing the required last name. Will it still work?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/VJhkT3XIM8x3yE2iBbmBF/39622aeee6bf86c289f7c1ffe2b17c1a/429dca17-1dbd-4444-8282-b629a6320423.png&quot; alt=&quot;429dca17-1dbd-4444-8282-b629a6320423&quot;&gt;&lt;/p&gt;
+&lt;p&gt;We&apos;ve identified an edge case in the model: it doesn&apos;t seem to enforce the requirement for a last name, even though the &lt;code&gt;@Description&lt;/code&gt; specifies that it is mandatory. How can we address this? Prompt engineering to the rescue!&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	@Description(&quot;Add a new pet owner to the pet clinic. &quot;
+			+ &quot;The Owner must include a first name and a last name as two separate words, &quot;
+			+ &quot;plus an address and a 10-digit phone number&quot;)
+	public Function&amp;#x3C;OwnerRequest, OwnerResponse&gt; addOwnerToPetclinic(AIDataProvider petclinicAiDataProvider) {
+		return request -&gt; {
+			return petclinicAiDataProvider.addOwnerToPetclinic(request);
+		};
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By adding the hint &quot;as two separate words&quot; to our description, the model gained clarity on our expectations, allowing it to correctly enforce the requirement for the last name.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5a5zmogZMbgJ6SUFdLEu8m/2943770ccd07de4731bc3c285ca47f1b/a3f4d7c3-5b7c-46eb-9b0a-f828f338b40c.png&quot; alt=&quot;a3f4d7c3-5b7c-46eb-9b0a-f828f338b40c&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5X8xOhdfMzJaYWkc7rLnWr/ccb3f343f23b01e2bea54a25c76cfe60/26e59430-d5ab-4cf0-86a7-f49fc51016ee.png&quot; alt=&quot;26e59430-d5ab-4cf0-86a7-f49fc51016ee&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/7qHfBwhw66YjMf4VeMDclF/34e92a1ca7d7001181c28f42068d6c0c/ff606400-d784-47cb-a34a-0319849ec0fe.png&quot; alt=&quot;ff606400-d784-47cb-a34a-0319849ec0fe&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;next-steps&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#next-steps&quot; aria-label=&quot;next steps permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Next Steps&lt;/h3&gt;
+&lt;p&gt;In the first part of this article, we explored how to harness Spring AI to work with large language models. We built a custom ChatClient, utilized Function Calling, and refined prompt engineering for our specific needs.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part&quot;&gt;Part II&lt;/a&gt;, we¡¯ll dive into the power of Retrieval-Augmented Generation (RAG) to integrate the model with large, domain-specific datasets that are too extensive to fit within the Function Calling approach.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: Oracle Java Developer Advocate Billy Korando on Java 23, Structured Concurrency, and more]]></title><link>https://spring.io/blog/2024/09/26/a-bootiful-podcast-oracle-java-developer-advocate-billy-korando-on-java-23</link><guid isPermaLink="true">https://spring.io/blog/2024/09/26/a-bootiful-podcast-oracle-java-developer-advocate-billy-korando-on-java-23</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 26 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment I talk to Java Developer advocate at Oracle, Billy Korando, about the amazing new features in Java 23 and beyond!&lt;/p&gt;
+&lt;iframe title=&quot;Java developer advocate Billy Korando&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=p6gi4-16e67ee-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - September 24th, 2024]]></title><link>https://spring.io/blog/2024/09/24/this-week-in-spring-september-24th-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/09/24/this-week-in-spring-september-24th-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I&apos;m in delightful Dallas, TX, at the amazing JConf.dev show. Then I&apos;m off to Germany, and then back home to do some laundry before heading out to Denver, CO, for the amazing Dev2Next show, before then heading out to Belgium for Devoxx Belgium. It&apos;s going to be a fun few weeks. How&apos;re you doin&apos;?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.hashicorp.com/blog/reload-ssl-certificates-from-hashicorp-vault-for-spring-boot&quot;&gt;Reload SSL certificates from HashiCorp Vault for Spring Boot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Huge thanks to S?bastien Deleuze for finding this amazing demonstration from Dr. Fabio Niephaus, which &lt;a href=&quot;https://t.co/MujPNPV4TP&quot;&gt;invokes a Rust image processing library that&apos;s compiled to WebAssembly from a Spring Boot application running in the JVM using GraalWasm&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Love to see this: applications are being upgraded &lt;a href=&quot;https://t.co/r966zQDhGp&quot;&gt;to Java 23 left and right!&lt;/a&gt;. Have you upgraded yet?&lt;/li&gt;
+&lt;li&gt;Speaking of Java 23: &lt;a href=&quot;https://www.graalvm.org/release-notes/JDK_23/&quot;&gt;it&apos;s out!&lt;/a&gt; Get the bits now! My favorite installation? &lt;code&gt;sdk install java 23-graalce&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Did you see the new support in Spring Tools 4 (supporting Visual Studio Code and Eclipse) that offers an &lt;a href=&quot;https://x.com/springtools4/status/1836312110122324244?s=12&quot;&gt;inlay hint for query parameters, showing you the name of the method parameter right where you reference it in the query&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;I love this article looking at Spring AI on &lt;a href=&quot;https://thenewstack.io/spring-ai-transforms-java-for-genai-app-delivery&quot;&gt;The New Stack&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Also, another cool feature in Spring Tools 4: the new release brings you a nice little code lens on top of Spring Expression Language expressions, query statements, &lt;a href=&quot;https://x.com/springtools4/status/1835680743525122488?s=12&amp;#x26;t=n-UflcIbnx1lage-TBk0Cg&quot;&gt;and AOP pointcut expressions that tell Copilot to explain them for you&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=E8CtE7qTb-Q&quot;&gt;I love this documentary looking back at the history of Kotlin&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/23/spring-shell-3-2-8-3-3-3-and-3-4-0-m2-are-now-available&quot;&gt;Spring Shell 3.2.8, 3.3.3, and 3.4.0-M2 are now available&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/20/spring-modulith-1-3-m3-1-2-4-and-1-1-9-released&quot;&gt;Spring Modulith 1.3 M3, 1.2.4, and 1.1.9 released&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/19/spring-boot-3-4-0-m3-available-now&quot;&gt;Spring Boot 3.4.0-M3 available now&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/19/spring-cloud-dataflow-2-11-5-released&quot;&gt;Spring Cloud Dataflow 2.11.5 released&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/19/spring-boot-3-3-4-available-now&quot;&gt;Spring Boot 3.3.4 available now&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/19/spring-boot-3-2-10-available-now&quot;&gt;Spring Boot 3.2.10 available now&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;In last week&apos;s installment of A Bootiful Podcast, &lt;a href=&quot;https://spring.io/blog/2024/09/19/a-bootiful-podcast-flowable-cofounder-and-my-friend-joram-barrez-on-workflow&quot;&gt;I talk to Flowable co-founder and my friend Joram Barrez about workflow, case management, AI, Spring, and more&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/18/spring-integration-6-4-0-m3-available&quot;&gt;Spring Integration 6.4.0-M3 available&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/18/spring-amqp-3-2-m3-available&quot;&gt;Spring AMQP 3.2-M3 available&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/18/spring-batch-5-2-0-m1-is-out&quot;&gt;Spring Batch 5.2.0-M1 is out&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/18/spring-for-apache-kafka-3-3-0-m3-3-2-4-and-3-1-9-available-now&quot;&gt;Spring for Apache Kafka 3.3.0-M3, 3.2.4, and 3.1.9 are out&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/09/17/spring-authorization-server-1-4-0-m2-available-now&quot;&gt;Spring Authorization Server 1.4.0-M2 is available now&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Shell 3.2.8, 3.3.3 and 3.4.0-M2 are now available]]></title><link>https://spring.io/blog/2024/09/23/spring-shell-3-2-8-3-3-3-and-3-4-0-m2-are-now-available</link><guid isPermaLink="true">https://spring.io/blog/2024/09/23/spring-shell-3-2-8-3-3-3-and-3-4-0-m2-are-now-available</guid><dc:creator><![CDATA[Corneil du Plessis]]></dc:creator><pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Shell &lt;code&gt;3.2.8&lt;/code&gt;, &lt;code&gt;3.3.3&lt;/code&gt; and &lt;code&gt;3.4.0-M2&lt;/code&gt; has been released and are now available from Maven Central and &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;Milestone Repo&lt;/a&gt; respectively.&lt;/p&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.2.8&quot;&gt;release notes 3.2.8&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.3.3&quot;&gt;release notes 3.3.3&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.4.0-M2&quot;&gt;release notes 3.4.0-M2&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-shell/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-shell/reference/index.html&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Modulith 1.3 M3, 1.2.4, and 1.1.9 released]]></title><link>https://spring.io/blog/2024/09/20/spring-modulith-1-3-m3-1-2-4-and-1-1-9-released</link><guid isPermaLink="true">https://spring.io/blog/2024/09/20/spring-modulith-1-3-m3-1-2-4-and-1-1-9-released</guid><dc:creator><![CDATA[Oliver Drotbohm]]></dc:creator><pubDate>Fri, 20 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am happy to announce the availability of Spring Modulith 1.3 M3, 1.2.4, and 1.1.9. While the latter two ship the usual bugfixes and service release bugfix upgrades, I am particularly delighted about the milestone releases as it contains two major community contributions. Here are the most significant new features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for change-aware test execution (contributed by &lt;a href=&quot;https://github.com/lukasdo&quot;&gt;@lukasdo&lt;/a&gt; and &lt;a href=&quot;https://github.com/davidbilge&quot;&gt;@davidbilge&lt;/a&gt;) which &lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/testing.html#change-aware-test-execution&quot;&gt;optimizes test runs&lt;/a&gt; along the changes made to the application by skipping tests not affected by those.&lt;/li&gt;
+&lt;li&gt;A new &lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/events.html#publication-registry.completion&quot;&gt;deleting event publication completion mode&lt;/a&gt; to ? as the name suggests ? immediately delete completed event publications.&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/fundamentals.html#contributing-application-modules&quot;&gt;contributing application modules from other packages&lt;/a&gt; and external JARs.&lt;/li&gt;
+&lt;li&gt;Support for Microsoft SQL Server in JDBC-based event publication registry (contributed by &lt;a href=&quot;https://github.com/oyjoh&quot;&gt;@oyjoh&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/804&quot;&gt;GH-804&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Deprecate &lt;code&gt;spring.modulith.republish-outstanding-events-on-restart&lt;/code&gt; in favor of the variant residing in &lt;code&gt;spring.modulith.test.¡¦&lt;/code&gt; (&lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/823&quot;&gt;GH-823&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is still a bit of time for feedback until we wrap up the iteration with the first release candidate at the end of October.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.4.0-M3 available now]]></title><link>https://spring.io/blog/2024/09/19/spring-boot-3-4-0-m3-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/09/19/spring-boot-3-4-0-m3-available-now</guid><dc:creator><![CDATA[Phil Webb]]></dc:creator><pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.4.0-M3&lt;/code&gt; has been released and is now available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.4.0-M3&quot;&gt;111 enhancements, documentation improvements, dependency upgrades, and bug fixes&lt;/a&gt;. Notable new features include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring for Apache Pulsar updates&lt;/li&gt;
+&lt;li&gt;Observability improvements&lt;/li&gt;
+&lt;li&gt;Improvements when using &lt;code&gt;@AutoConfigureTestDatabase&lt;/code&gt; with containers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.4.0-M3-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/3.4/&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Cloud Dataflow 2.11.5 Released]]></title><link>https://spring.io/blog/2024/09/19/spring-cloud-dataflow-2-11-5-released</link><guid isPermaLink="true">https://spring.io/blog/2024/09/19/spring-cloud-dataflow-2-11-5-released</guid><dc:creator><![CDATA[Chris Bono]]></dc:creator><pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I¡¯m happy to announce that Spring Cloud Dataflow &lt;code&gt;2.11.5&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release contains several bug fixes and nuemrous dependency upgrades. Spring Boot version and addresses a couple of CVEs. See the &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.11.5&quot;&gt;release notes&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;h2 id=&quot;stay-in-touch&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#stay-in-touch&quot; aria-label=&quot;stay in touch permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Stay in touch...&lt;/h2&gt;
+&lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-cloud-dataflow&quot;&gt;Stackoverflow&lt;/a&gt; or &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-dataflow/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.3.4 available now]]></title><link>https://spring.io/blog/2024/09/19/spring-boot-3-3-4-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/09/19/spring-boot-3-3-4-available-now</guid><dc:creator><![CDATA[St?phane Nicoll]]></dc:creator><pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.3.4&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.3.4&quot;&gt;51 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/3.3/&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>

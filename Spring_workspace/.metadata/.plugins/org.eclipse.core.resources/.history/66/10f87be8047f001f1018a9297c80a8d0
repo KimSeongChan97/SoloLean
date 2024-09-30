@@ -1,0 +1,7 @@
+package sample02;
+
+import sample01.MessageBean;
+
+public interface Calc extends MessageBean {
+
+}

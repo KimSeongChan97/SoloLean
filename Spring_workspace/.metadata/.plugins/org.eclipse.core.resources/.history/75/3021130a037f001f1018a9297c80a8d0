@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBean" class="sample01.MessageBeanKo" scope="prototype">
+	    <!-- 
+	    1. <bean> 태그는 스프링에서 관리할 객체(빈)를 정의하는 태그입니다.
+	       이 태그는 스프링 컨테이너가 객체를 생성하고 관리하도록 합니다.
+	    
+	    2. id="messageBean"
+	       - id 속성은 이 빈을 참조할 때 사용할 고유 식별자입니다. 
+	       - 스프링 애플리케이션에서 이 id를 사용하여 해당 빈을 가져올 수 있습니다.
+	       - 예를 들어, Java 코드에서 context.getBean("messageBean")을 호출하여 이 빈을 가져옵니다.
+	    
+	    3. class="sample01.MessageBeanKo"
+	       - class 속성은 이 빈이 생성될 때 사용할 클래스의 전체 경로를 지정합니다.
+	       - 여기서 'sample01.MessageBeanKo'는 'sample01' 패키지 안에 있는 MessageBeanKo 클래스를 의미합니다.
+	       - 스프링은 이 클래스를 기반으로 인스턴스를 생성하고, 이를 관리하게 됩니다.
+	    
+	    4. 이 빈 정의는 MessageBeanKo라는 클래스를 스프링이 대신 생성하고 관리하도록 설정한 것입니다.
+	       나중에 Java 코드에서 new MessageBeanKo()를 직접 호출하지 않고도, 스프링이 생성한 인스턴스를 사용할 수 있습니다.
+	    -->
+	</bean>
+
+</beans>
