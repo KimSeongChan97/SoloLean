@@ -4,9 +4,10 @@
 - MyBatis 학습
 - EL / JSTL 학습
 - MVC 학습
-- MySQL 학습 진행중
-- NaverCloudPlatform 진행중
-- 
+- MySQL 학습 
+- NaverCloudPlatform 학습
+- Spring 학습 진행중
+- Spring Boot 학습 진행중
 
 
 https://blog.naver.com/sck2270
