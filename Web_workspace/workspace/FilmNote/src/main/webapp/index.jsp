@@ -242,8 +242,10 @@ td {
 			                <td>
 			                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
 	                           <div class="hover-info">
-	                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
 	                              <%-- 영화 포스터 이미지가 표시됩니다. 포스터는 영화에 대한 시각적 정보를 제공하며, hover 시 더 많은 정보를 표시합니다. --%>
+
+	                              <img width="230px" height="330px" src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
+	                              
 	                              <!-- 오버시 나오는 정보 -->
 	                              <div class="over">
 	                                 <span class="title">${movieDTOList[i].getTitle() }</span><br>

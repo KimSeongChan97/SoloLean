@@ -70,25 +70,25 @@ button.user:hover {
 	</div>
 	
 	
-	<div id="member">
-		<c:choose> <!-- 로그인 상태에 따라 다른 버튼 표시 -->
+	<div id="member"><!-- 로그인 상태에 따라 다른 버튼 표시 -->
+		<c:choose> 
 			<c:when test="${not empty sessionScope.userDTO}">
-				<!-- 사용자 로그인 상태 -->
+				<%-- 사용자 로그인 상태  --%>
 				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userEdit.do';">
-					${sessionScope.userDTO.uname} 님 <!-- 유저 이름 표시 -->
+					${sessionScope.userDTO.uname} 님 <%-- 유저 이름 표시 --%>
 				</button>
 				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userLogOut.do';">Log Out</button>
 			</c:when>
 			<c:when test="${not empty sessionScope.adminDTO}">
-				<!-- 관리자 로그인 상태 -->
-				<!-- 관리자 버튼 클릭 시 movieList.jsp로 이동 -->
+				<%-- 관리자 로그인 상태 --%>
+				<%-- 관리자 버튼 클릭 시 movieList.jsp로 이동 --%>
 				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/movieList.do';">
 					${sessionScope.adminDTO.name} 님 <!-- 관리자 이름 표시 -->
 				</button>
 				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/adminLogOut.do';">Log Out</button>
 			</c:when>
 			<c:otherwise>
-				<!-- 로그아웃 상태 -->
+				<%--  로그아웃 상태 --%>
 				<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.do';">로그인</button>
 				<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.do';">회원가입</button>
 			</c:otherwise>
