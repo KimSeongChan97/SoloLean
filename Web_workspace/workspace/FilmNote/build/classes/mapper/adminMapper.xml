@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/adminMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="adminSQL">
+  
+  	<select id="loginAdmin" parameterType="map" resultType="admin">
+    <!-- 관리자의 로그인 정보를 가져오는 SQL문 -->
+    <!-- aid(아이디)와 apwd(비밀번호)를 조건으로 admin_tb 테이블에서 일치하는 관리자 정보를 조회 -->
+    SELECT aid, apwd, name 
+    FROM admin_tb 
+    WHERE aid = #{aid} AND apwd = #{apwd}
+    <!-- #{aid}, #{apwd}는 MyBatis에서 제공하는 파라미터 매핑으로, 전달받은 값이 SQL 쿼리에 동적으로 삽입됨 -->
+	</select>
+
+    
+  </mapper>

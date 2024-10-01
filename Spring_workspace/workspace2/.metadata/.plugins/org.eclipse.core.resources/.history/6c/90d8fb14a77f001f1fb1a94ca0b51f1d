@@ -1,0 +1,27 @@
+package spring.conf;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import sample01.MessageBeanImpl;
+
+@Configuration
+public class SpringConfiguration {
+	// 일반 자바 파일이 아닌 스프링 설정 파일이며, applicationContext.xml 의 역할을 한다.
+	
+	// Bean 은 함수로 설정
+	/*
+	 * @Bean public ? 메서드(){ return new MessageBeanImpl("사과"); }
+	 */
+	@Bean
+	public MessageBeanImpl 메서드(){
+		return new MessageBeanImpl("사과");
+	}
+	
+}
+
+/*
+@Bean 
+- 메서드 에서 리턴 되는 값을 스프링의 bean 으로 생성한다.
+
+*/

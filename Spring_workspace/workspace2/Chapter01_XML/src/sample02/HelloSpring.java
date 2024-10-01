@@ -16,7 +16,7 @@ public class HelloSpring {
         // context.getBean("calcAdd")는 'calcAdd' ID로 등록된 빈을 스프링 컨테이너에서 검색하여 반환합니다.
         // 반환된 객체는 Object 타입이므로, Calc 타입으로 캐스팅해야 합니다.
         Calc calc = (Calc) context.getBean("calcAdd");
-
+        
         // Calc 인터페이스의 calculate 메서드를 호출하여 덧셈 연산을 수행합니다.
         // CalcAdd 클래스에서는 25 + 36의 결과가 출력됩니다.
         calc.calculate(25, 36);

@@ -1,0 +1,12 @@
+package sample02;
+
+public class CalcAdd implements Calc {
+	
+
+	@Override
+	public int calculate(int x, int y) {
+		return x + y;
+
+	}
+
+}

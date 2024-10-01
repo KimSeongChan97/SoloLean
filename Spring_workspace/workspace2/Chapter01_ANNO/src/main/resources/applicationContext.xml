@@ -58,6 +58,7 @@
        -> <bean> 태그를 사용하지 않아도 클래스에 애노테이션만 추가하면 스프링이 빈을 자동으로 생성하고 관리하게 됩니다.
 -->
 
-<context:component-scan base-package="sample02"></context:component-scan>
+<context:component-scan base-package="sample02" />
+<context:component-scan base-package="sample03" />
 
 </beans>

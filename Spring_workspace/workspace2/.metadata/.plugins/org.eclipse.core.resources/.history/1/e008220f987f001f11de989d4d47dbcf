@@ -1,0 +1,22 @@
+package sample02;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");
+		
+		System.out.println();
+		Calc calc = (Calc) context.getBean("calcAdd");
+		calc.calculate(25, 36);
+		System.out.println();
+		
+		Calc calc2 = (Calc) context.getBean("calcMul");
+		calc2.calculate(25, 36);
+		System.out.println();
+
+	}
+
+}

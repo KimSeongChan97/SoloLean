@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="Chapter02_ANNO"/>
+<aop-project name="Chapter02_XML"/>
 <aop-project name="Chapter01_XML"/>
 </aop-reference-model>

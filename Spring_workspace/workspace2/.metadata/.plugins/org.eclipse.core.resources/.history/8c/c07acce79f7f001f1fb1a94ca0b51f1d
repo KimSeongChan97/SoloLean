@@ -1,0 +1,48 @@
+package sample01;
+
+public class MessageBeanImpl implements MessageBean {
+
+	private String fruit;
+	private int cost;
+	private int qty;
+	
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public MessageBeanImpl(String fruit) {
+		this.fruit = fruit;
+	}
+
+	@Override
+	public void sayHello() {
+		
+
+	}
+
+	@Override
+	public void sayHello(String fruit, int cost) {
+		
+
+	}
+
+	@Override
+	public void sayHello(String fruit, int cost, int qty) {
+		
+
+	}
+
+}

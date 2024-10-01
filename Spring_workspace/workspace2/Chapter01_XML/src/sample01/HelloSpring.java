@@ -1,6 +1,7 @@
 package sample01;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class HelloSpring {
@@ -27,7 +28,8 @@ public class HelloSpring {
 		// 스프링 설정파일을 이용
 		// -> 스프링에서는 이러한 객체 생성을 `ApplicationContext`라는 컨테이너가 대신 관리해 줍니다.
 		// `ApplicationContext`는 스프링의 핵심 컨테이너 중 하나로, 설정 파일을 읽어서 빈(Bean)을 생성하고 관리합니다.
-		ApplicationContext context = new FileSystemXmlApplicationContext("src/applicationContext.xml");
+		// ApplicationContext context = new FileSystemXmlApplicationContext("src/applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("src/applicationContext.xml");
 		// -> `FileSystemXmlApplicationContext`는 파일 시스템에서 XML 설정 파일을 읽어와서 스프링 컨텍스트를 초기화합니다.
 		// `"src/applicationContext.xml"`은 XML 파일의 경로를 나타냅니다. 이 XML 파일에는 생성할 객체(빈)의 설정 정보가 담겨 있습니다.
 		// 이 컨테이너는 설정된 대로 객체를 자동으로 생성하고, 의존성 주입(Dependency Injection)을 수행합니다.

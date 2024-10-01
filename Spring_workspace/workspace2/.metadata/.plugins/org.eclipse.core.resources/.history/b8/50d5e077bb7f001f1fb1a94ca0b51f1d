@@ -1,0 +1,72 @@
+package spring.conf;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import sample01.MessageBeanImpl;
+import sample02.CalcAdd;
+import sample02.CalcMul;
+
+@Configuration
+// @Configuration은 이 클래스가 Spring 설정 파일(자바 기반 설정)임을 나타냅니다.
+// 이 클래스는 XML 설정 파일(applicationContext.xml)과 동일한 역할을 하며,
+// 이 클래스에서 Bean을 정의할 수 있습니다.
+public class SpringConfiguration {
+    // 일반 자바 파일이 아닌 스프링 설정 파일이며, applicationContext.xml 의 역할을 한다.
+    // 이 클래스는 자바 기반의 Spring 설정을 정의하는 곳입니다.
+    // 여기서 Bean을 생성하는 방법을 자바 코드로 작성할 수 있으며, XML 방식 대신 사용됩니다.
+
+    // Bean 은 함수로 설정, MessageBeanImpl.java 에서의 Component 역할을 한다.
+    // @Bean 어노테이션을 사용하여 메서드를 Bean으로 등록할 수 있습니다.
+    // 여기서 정의된 메서드는 XML에서 <bean> 태그로 Bean을 정의한 것과 동일한 역할을 합니다.
+    // 즉, Spring 컨테이너에서 관리할 Bean을 등록하는 과정입니다.
+    /*
+     * @Bean public ? 메서드(){
+     * return new MessageBeanImpl("사과"); 
+     * }
+     * 
+     */
+    
+    @Bean
+    // @Bean은 이 메서드에서 리턴되는 객체를 Spring 컨테이너가 Bean으로 관리할 수 있게 합니다.
+    // 이때 메서드의 이름이 Bean의 id가 됩니다. 즉, "messageBeanImpl"이라는 id를 가진 Bean이 생성됩니다.
+    public MessageBeanImpl messageBeanImpl() {
+        // 이 메서드는 MessageBeanImpl 객체를 생성하고, 생성자에 "사과"라는 값을 전달하여 초기화합니다.
+        // "사과"는 MessageBeanImpl 클래스의 생성자 인자로 전달됩니다.
+        return new MessageBeanImpl("사과");
+        // 이 코드는 MessageBeanImpl 클래스를 Bean으로 등록하고, 해당 객체가 "사과"라는 값을 가지도록 설정합니다.
+    }
+    
+    @Bean(name="MessageBeanImpl")
+    // @Bean 어노테이션에 name 속성을 추가하여, Bean의 id를 직접 설정할 수 있습니다.
+    // 이 경우 메서드 이름과 상관없이 "MessageBeanImpl"이라는 id로 Bean이 생성됩니다.
+    public MessageBeanImpl getmessageBeanImpl() {
+        // MessageBeanImpl 객체를 생성하고, 생성자에 "사과" 값을 전달합니다.
+        return new MessageBeanImpl("사과");
+        // 이 메서드 역시 "사과"를 주입받은 MessageBeanImpl 객체를 반환합니다.
+    }
+    
+    MessageBeanImpl messageBeanImpl = new MessageBeanImpl("사과");
+    // 이 코드는 일반 필드로서 MessageBeanImpl 객체를 생성합니다. 
+    // Spring의 Bean으로 관리되는 것이 아니라, 일반 자바 객체로 "사과" 값을 가진 인스턴스를 생성한 것입니다.
+    // 이는 스프링 컨테이너의 관리와는 별개로 이 클래스 내에서 사용될 수 있는 객체입니다.
+    
+    
+    @Bean(name = "calcAdd")
+    public CalcAdd calcAdd() {
+    	return new CalcAdd(25, 36);
+    }
+    
+    @Bean(name = "calcMul")
+    public CalcAdd calcMul() {
+    	return new CalcMul(25, 36);
+    }
+
+}
+
+/*
+@Bean 
+- 메서드 에서 리턴 되는 값을 스프링의 bean 으로 생성한다.
+- 메서드 명은 반드시 bean 의 id 명으로 해야 한다.
+- 즉, 이 메서드 이름이 Bean의 id로 사용되며, 스프링에서 이 이름으로 Bean을 관리하게 됩니다.
+*/

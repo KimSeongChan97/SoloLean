@@ -2,11 +2,13 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Chapter02_XML"/>
 			<item value="Chapter01_XML"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Chapter02_XML"/>
 			<item value="Chapter01_XML"/>
 		</list>
 		<list key="version">
@@ -19,6 +21,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Spring\workspace\Chapter01_ANNO\src\main\resources\applicationContext.xml"/>
 			<item value="D:\Spring\workspace\Chapter01_XML"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -66,6 +69,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Chapter02_ANNO"/>
 			<item value="Chapter01_ANNO"/>
 		</list>
 		<list key="projectNameTemplate">

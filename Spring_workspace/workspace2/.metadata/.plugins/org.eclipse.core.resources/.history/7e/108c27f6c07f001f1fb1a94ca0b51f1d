@@ -1,0 +1,21 @@
+package sample04;
+
+import java.util.List;
+
+public class SungJukOutput implements SungJuk {
+
+	
+	private List<SungJukDTO2> list; // applicationContext에서 주입될 리스트
+	
+	// Setter Injection
+    public void setList(List<SungJukDTO2> list) {
+        this.list = list;
+    }
+	
+	@Override
+	public void execute() {
+		
+
+	}
+
+}
