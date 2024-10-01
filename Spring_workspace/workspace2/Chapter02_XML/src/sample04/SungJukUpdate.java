@@ -33,13 +33,13 @@ public class SungJukUpdate implements SungJuk {
                 // 추가 설명: dto.getName() 메서드를 통해 리스트에 저장된 각 SungJukDTO2 객체의 이름을 가져와 
                 // 입력받은 이름과 비교합니다. equals() 메서드는 문자열 비교 시 사용됩니다.
 
-                System.out.println("수정할 국어 점수 입력: ");
+                System.out.println("수정할 국어 입력: ");
                 dto.setKor(scanner.nextInt()); // 새로운 국어 점수를 입력받아 설정
 
-                System.out.println("수정할 영어 점수 입력: ");
+                System.out.println("수정할 영어 입력: ");
                 dto.setEng(scanner.nextInt()); // 새로운 영어 점수를 입력받아 설정
 
-                System.out.println("수정할 수학 점수 입력: ");
+                System.out.println("수정할 수학 입력: ");
                 dto.setMath(scanner.nextInt()); // 새로운 수학 점수를 입력받아 설정
 
                 // 총점 및 평균 재계산

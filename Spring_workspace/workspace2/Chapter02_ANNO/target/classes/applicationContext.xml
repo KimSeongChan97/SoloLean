@@ -38,5 +38,9 @@
 <context:component-scan base-package="sample02" />
 <context:component-scan base-package="sample03" />
 <context:component-scan base-package="sample04" />
+<!-- 빈 설정이 아니다
+	빈 설정을 위해서 어노테이션을 사용하였다.
+	해당 패키지들에서 어노테이션으로 빈을 설정한다 라고 선언하는 것이다.
+ -->
 	
 </beans>

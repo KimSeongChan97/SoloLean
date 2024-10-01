@@ -13,4 +13,13 @@ public class SungJukDTO {
      private int tot;
      private double avg;
      
+     @Override
+     public String toString() {
+    	 return name + "\t"
+    			+ kor + "\t"
+    			+ eng + "\t"
+    			+ math + "\t"
+    			+ tot + "\t"
+    			+ String.format("%2f", avg);
+     };
 }
