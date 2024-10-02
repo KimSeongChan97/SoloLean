@@ -7,7 +7,10 @@
 - MySQL 학습 
 - NaverCloudPlatform 학습
 - Spring 학습 진행중
-- Spring Boot 학습 진행중
+- Spring Boot 학습 진행예정
+- JPA 학습 진행예정
+- Spring + JDBC + .. 그외 연결하여 이용 예정(MyBatis 등)
+- React(Node.js) 학습 진행예정
 
 
 https://blog.naver.com/sck2270
