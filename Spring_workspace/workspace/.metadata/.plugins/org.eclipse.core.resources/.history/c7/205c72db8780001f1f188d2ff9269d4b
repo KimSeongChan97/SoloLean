@@ -1,0 +1,6 @@
+package sample05;
+
+public class MessageBeanImpl implements MessageBean {
+	
+	
+}
