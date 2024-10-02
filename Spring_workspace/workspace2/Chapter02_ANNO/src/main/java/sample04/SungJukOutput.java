@@ -3,6 +3,7 @@ package sample04;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class SungJukOutput implements SungJuk {
 	// 이 리스트는 여러 학생의 성적 데이터를 담고 있으며, Spring의 의존성 주입을 통해 주입될 수 있습니다.
 	// Spring은 이 리스트에 성적 데이터를 주입합니다. 이를 통해 성적 데이터를 출력할 수 있습니다.
 	@Autowired
+	@Qualifier("arrayList")
 	private List<SungJukDTO2> list;
 	// 학생들의 성적 데이터를 담고 있는 리스트입니다. Spring이 관리하는 이 리스트는
 	// 다른 클래스에서 성적 데이터를 입력하거나 수정한 후에 여기에 저장된 데이터를 이용해 출력할 수 있습니다.

@@ -115,7 +115,7 @@ public class SpringConfiguration {
     
     // sample04
     @Bean
-    public List<SungJukDTO2> list() {
+    public List<SungJukDTO2> arrayList() {
         // @Bean: 이 어노테이션은 Spring 프레임워크에서 사용되며, 이 메서드가 반환하는 객체를 Spring 컨테이너에서 관리하는 Bean으로 등록합니다.
         // 즉, 이 메서드를 통해 반환된 객체는 Spring에서 주입할 수 있는 Bean이 됩니다. 여기서는 List<SungJukDTO2> 타입의 Bean을 등록하고 있습니다.
     	

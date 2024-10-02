@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component // @Component 어노테이션을 통해 Spring이 이 클래스를 Bean으로 등록하여 관리하게 됩니다.
@@ -16,6 +17,7 @@ public class SungJukDelete implements SungJuk {
     // list 필드에 자동으로 Bean이 주입되도록 합니다. 여기서는 SungJukDTO2 객체들의 리스트가 주입됩니다.
 	
 	@Autowired
+	@Qualifier("arrayList")
     private List<SungJukDTO2> list; 
     // 이 필드는 SungJukDTO2 객체들이 저장된 List로, 성적 정보가 담겨 있습니다.
     // Spring에서 이 리스트를 관리하며, 리스트의 내용은 성적 입력 등의 과정에서 추가되었을 것입니다.

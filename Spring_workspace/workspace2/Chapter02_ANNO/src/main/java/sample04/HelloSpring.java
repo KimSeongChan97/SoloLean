@@ -1,6 +1,7 @@
 package sample04;
 
 import java.util.Scanner;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;

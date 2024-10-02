@@ -1,5 +1,6 @@
 package sample04;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 // @Getter와 @Setter는 Lombok 라이브러리에서 제공하는 어노테이션으로, 
@@ -10,7 +11,13 @@ import org.springframework.stereotype.Component;
 // 하지만, 현재 코드에서는 Lombok을 사용하지 않고, 수동으로 getter와 setter 메서드를 작성하고 있습니다.
 // Lombok을 사용하는 경우에도 동일한 로직이 적용될 것입니다.
 
+//prototype 스코프는 요청할 때마다 새로운 인스턴스를 생성하는 스코프입니다.
+//즉, 클라이언트가 매번 요청할 때마다 새로운 객체가 생성되며, 스프링 컨테이너는 해당 객체의 상태를 더 이상 관리하지 않습니다.
+//이 스코프는 빈을 여러 번 사용할 필요가 있거나, 각 요청마다 상태가 달라져야 하는 경우에 유용
+
+
 @Component // Spring에서 관리되는 Bean으로 등록됩니다. 이를 통해 Spring이 이 객체를 생성하고 필요할 때 주입할 수 있습니다.
+@Scope("prototype") // Spring Framework에서 빈(Bean)의 스코프를 정의할 때 사용(스프링 빈의 라이프사이클을 제어하는 데 사용)
 public class SungJukDTO2 {
     // 학생의 이름을 저장하는 필드입니다.
     // name은 학생의 이름을 나타내는 문자열 필드입니다. 이름은 각 학생을 구별하는 주요 정보입니다.

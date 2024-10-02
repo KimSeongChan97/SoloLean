@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,6 +15,7 @@ public class SungJukUpdate implements SungJuk {
     // @Autowired는 Spring이 이 필드에 의존성을 자동으로 주입해 주는 어노테이션입니다.
     // 이 리스트에는 여러 학생의 성적 데이터가 저장되어 있으며, 이를 사용해 특정 학생의 데이터를 수정할 수 있습니다.
 	@Autowired
+	@Qualifier("arrayList")
     private List<SungJukDTO2> list;
     // 학생들의 성적 데이터를 저장하는 리스트입니다.
     // Spring에서 관리하는 이 리스트는 다른 클래스에서 입력된 성적 데이터를 포함하고 있으며, 
