@@ -1,0 +1,101 @@
+package sample04;
+
+import java.util.Scanner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+@Component // @Component 어노테이션을 통해 Spring 컨테이너가 이 클래스를 관리하게 설정
+public class HelloSpring {
+    // List<SungJukDTO2> list = new ArrayList<SungJukDTO2>();
+    // 이 코드는 성적 데이터를 저장할 ArrayList 객체를 생성하는 방식이지만, Spring을 사용함으로써
+    // 의존성 주입(Dependency Injection)을 통해 리스트를 관리하게 되므로 필요가 없습니다.
+    // Spring에서는 직접 객체를 생성하지 않고, Spring이 관리하는 Bean을 주입받아 사용합니다.
+    
+    public void menu(ApplicationContext context) {
+        Scanner scan = new Scanner(System.in); // 사용자로부터 입력을 받기 위한 Scanner 객체 생성
+        // 스캐너 객체를 통해 콘솔에서 입력받은 값을 처리할 수 있습니다.
+        SungJuk sungJuk = null; // SungJuk 인터페이스를 통해 다양한 성적 처리 객체를 참조할 수 있게 함
+        // 여기서 sungJuk은 SungJuk 인터페이스 타입으로 선언되어 있으며, 이후에 필요한 성적 처리 기능
+        // (입력, 출력, 수정, 삭제 등)을 수행하는 Bean을 참조할 것입니다. Spring을 통해 의존성 주입을 받아
+        // 해당 Bean이 필요할 때 context.getBean()을 통해 주입됩니다.
+
+        int num; // 사용자가 메뉴에서 선택한 번호를 저장하는 변수
+        // 이 변수는 사용자가 입력한 메뉴 번호(1~5)를 저장합니다. 번호에 따라 성적 입력, 출력, 수정, 삭제 등의
+        // 작업이 수행됩니다.
+
+        // 무한 반복문을 통해 프로그램이 메뉴를 계속해서 보여주고, 종료 명령이 입력되기 전까지 동작합니다.
+        while (true) {
+            System.out.println(); // 줄 간격을 위한 빈 줄 출력
+            System.out.println("**************");
+            System.out.println("	1. 성적 입력"); // 성적 입력을 위한 메뉴 항목
+            System.out.println("	2. 성적 출력"); // 성적 출력을 위한 메뉴 항목
+            System.out.println("	3. 성적 수정"); // 성적 수정을 위한 메뉴 항목
+            System.out.println("	4. 성적 삭제"); // 성적 삭제를 위한 메뉴 항목
+            System.out.println("	5. 종료"); // 프로그램 종료를 위한 메뉴 항목
+            System.out.println("**************");
+            System.out.print("번호 입력: ");
+            num = scan.nextInt(); // 사용자가 입력한 메뉴 번호를 저장
+            // 사용자가 콘솔에서 입력한 값을 num 변수에 저장합니다. 이 값에 따라 아래에서 작업이 달라집니다.
+
+            // 종료 조건: 사용자가 5번을 입력하면 프로그램이 종료됨
+            if (num == 5) break;
+            // 5번이 입력되면 프로그램이 종료됩니다. break 문은 while 루프를 빠져나오는 역할을 합니다.
+
+            // 메뉴 선택에 따라 적절한 Bean 객체를 가져와 실행
+            if (num == 1) { 
+                // 성적 입력: sungJukInput Bean을 가져와 실행
+                sungJuk = (SungJuk) context.getBean("sungJukInput"); 
+                // 사용자가 1번(성적 입력)을 선택하면 Spring 컨테이너에서 "sungJukInput"이라는 이름의 Bean을
+                // 가져옵니다. 이 Bean은 성적 입력을 처리하는 역할을 합니다.
+            } else if (num == 2) { 
+                // 성적 출력: sungJukOutput Bean을 가져와 실행
+                sungJuk = (SungJuk) context.getBean("sungJukOutput");
+                // 사용자가 2번(성적 출력)을 선택하면 "sungJukOutput"이라는 Bean을 가져와 성적 출력을 처리합니다.
+            } else if (num == 3) { 
+                // 성적 수정: sungJukUpdate Bean을 가져와 실행
+                sungJuk = (SungJuk) context.getBean("sungJukUpdate");
+                // 사용자가 3번(성적 수정)을 선택하면 "sungJukUpdate" Bean을 가져와 성적을 수정하는 작업을
+                // 실행합니다.
+            } else if (num == 4) { 
+                // 성적 삭제: sungJukDelete Bean을 가져와 실행
+                sungJuk = (SungJuk) context.getBean("sungJukDelete");
+                // 사용자가 4번(성적 삭제)을 선택하면 "sungJukDelete" Bean을 가져와 성적 삭제 작업을 수행합니다.
+            }
+
+            // 선택한 작업을 수행
+            sungJuk.execute(); 
+            // 위에서 선택된 작업(성적 입력, 출력, 수정, 삭제 등)을 실행하기 위해 sungJuk 객체의 execute() 메서드를
+            // 호출합니다. 각 작업은 해당 작업을 처리하는 구체적인 구현 클래스를 통해 실행됩니다.
+        } // while
+        // while 반복문이 종료되는 시점은 사용자가 5번을 입력하여 break문을 만나 프로그램을 종료할 때입니다.
+    } // menu()
+    
+    public static void main(String[] args) {
+        // Spring 설정 파일(applicationContext.xml)을 로드하여 ApplicationContext 생성
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        // Spring의 설정 파일인 applicationContext.xml을 로드하여 ApplicationContext 객체를 생성합니다.
+        // ApplicationContext는 Spring에서 Bean을 관리하고 제공하는 컨테이너 역할을 합니다.
+        
+        // Spring 컨테이너에서 helloSpring Bean을 가져옴
+        HelloSpring helloSpring = (HelloSpring) context.getBean("helloSpring");
+        // ApplicationContext를 통해 "helloSpring"이라는 이름의 Bean을 가져옵니다. 이 Bean은 HelloSpring
+        // 클래스의 객체로, Spring이 관리하는 객체입니다.
+        
+        // menu() 호출
+        helloSpring.menu(context);
+        // 프로그램이 메뉴를 통해 성적 입력, 출력, 수정, 삭제 기능을 수행
+        // helloSpring 객체의 menu() 메서드를 호출하여 사용자에게 메뉴를 보여주고 입력을 받아 해당 작업을
+        // 실행하는 역할을 합니다.
+
+        System.out.println("프로그램을 종료합니다.");
+        // 프로그램 종료 메시지 출력
+        // 사용자가 5번을 입력해 프로그램을 종료할 때 출력되는 메시지입니다.
+    }
+}
+
+/*
+Autowired 란?
+
+
+*/

@@ -2,6 +2,8 @@ package sample03;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -10,6 +12,7 @@ import lombok.AllArgsConstructor;
 // 따라서 개발자가 일일이 생성자를 작성하지 않아도 되며, Spring에서 의존성 주입을 간편하게 사용할 수 있습니다.
 public class SungJukImpl implements SungJuk {
     
+	@Autowired
     private SungJukDTO sungJukDTO = null;
     // 추가 설명: SungJukDTO 객체를 의존성으로 주입받아 성적 데이터를 관리하는 역할을 합니다.
     // 이 필드는 실제 성적 데이터를 저장하고, 점수 계산 및 수정 시 사용됩니다.

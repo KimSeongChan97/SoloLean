@@ -1,0 +1,45 @@
+package sample04;
+
+import java.util.List;
+
+public class SungJukOutput implements SungJuk {
+
+    private List<SungJukDTO2> list; // applicationContext에서 주입될 리스트
+    // 추가 설명: 이 리스트는 Spring의 의존성 주입(DI, Dependency Injection)을 통해 외부에서 주입됩니다.
+    // applicationContext.xml 파일에서 정의된 List<SungJukDTO2> 타입의 Bean이 이 클래스의 list 필드에 주입됩니다.
+    // 이 리스트는 SungJukDTO2 객체들을 담고 있으며, 입력된 성적 데이터를 저장하고 관리합니다.
+
+    // Setter Injection
+    // 추가 설명: 이 메서드는 Spring 컨테이너가 관리하는 Bean에서 리스트 객체를 주입받기 위한 Setter 메서드입니다.
+    // Spring은 Setter Injection 방식을 통해 필요한 의존성을 주입할 수 있습니다.
+    public void setList(List<SungJukDTO2> list) {
+        this.list = list;
+    }
+
+    @Override
+    public void execute() {
+        // 추가 설명: 이 메서드는 리스트에 저장된 SungJukDTO2 객체들의 데이터를 출력하는 역할을 합니다.
+        // 각 학생의 이름, 국어, 영어, 수학 점수와 총점, 평균을 표 형식으로 출력합니다.
+
+        // 표 헤더 출력
+        System.out.println("이름\t국어\t영어\t수학\t총점\t평균");
+        // 추가 설명: \t는 탭(tab) 문자를 의미하며, 각 필드의 값을 일정 간격으로 맞추기 위한 역할을 합니다.
+        // 이렇게 하면 출력되는 값들이 깔끔하게 정렬됩니다.
+
+        // 리스트에 저장된 SungJukDTO2 객체들에 대해 반복문을 통해 각각의 데이터를 출력
+        for (SungJukDTO2 dto : list) {
+            // 각 학생의 이름, 국어, 영어, 수학 점수, 총점, 평균을 출력
+            System.out.println(dto.getName() 
+                                + "\t" + dto.getKor() 
+                                + "\t" + dto.getEng() 
+                                + "\t" + dto.getMath() 
+                                + "\t" + dto.getTot() 
+                                + "\t" + dto.getAvg());
+            // 추가 설명: 각 SungJukDTO2 객체의 get 메서드를 사용하여 이름, 국어, 영어, 수학 점수를 가져오고, 
+            // 총점과 평균도 출력합니다. 각 필드는 객체의 내부 필드에 저장되어 있으며, 이를 불러와 콘솔에 출력합니다.
+            // 이때 SungJukDTO2 객체는 성적 데이터를 저장하고 있는 객체입니다.
+        }
+        // 추가 설명: for-each 반복문은 list에 저장된 모든 SungJukDTO2 객체에 대해 한 번씩 반복하면서 데이터를 출력합니다.
+        // 리스트에 있는 데이터 개수만큼 반복됩니다.
+    }
+}

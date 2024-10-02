@@ -73,14 +73,28 @@ public class SpringConfiguration {
     // sample03의 SungJukDTO 클래스의 Bean 정의
     @Bean
     public SungJukDTO sungJukDTO() {
-        SungJukDTO sungJukDTO = new SungJukDTO();
+        // SungJukDTO sungJukDTO = new SungJukDTO();
         // 추가 설명: SungJukDTO 객체를 생성하고, 생성된 객체에 데이터를 설정합니다.
-        sungJukDTO.setName("홍길동");
-        sungJukDTO.setKor(97);
-        sungJukDTO.setEng(100);
-        sungJukDTO.setMath(95);
+        // 이 코드는 SungJukDTO라는 데이터를 담는 객체를 생성하는 코드입니다.
+        // SungJukDTO 객체는 이름, 국어, 영어, 수학 점수를 담을 수 있는 클래스입니다.
+        // 주로 데이터를 한 곳에서 다른 곳으로 전달할 때 사용되며, 여기서는 빈(Bean)으로 설정됩니다.
+        // 빈(Bean)은 Spring이 관리하는 객체로, 의존성 주입(Dependency Injection)에서 사용됩니다.
+        
+        // sungJukDTO.setName("홍길동");
+        // sungJukDTO.setKor(97);
+        // sungJukDTO.setEng(100);
+        // sungJukDTO.setMath(95);
         // 추가 설명: 이름, 국어, 영어, 수학 점수를 설정한 후, 생성된 SungJukDTO 객체를 반환합니다.
-        return sungJukDTO;
+        // 이 코드는 SungJukDTO 객체에 데이터를 설정하는 코드입니다.
+        // setName("홍길동")을 통해 이름을 설정하고, setKor(97)로 국어 점수,
+        // setEng(100)으로 영어 점수, setMath(95)로 수학 점수를 설정하는 방식입니다.
+        // 이 부분은 현재 주석 처리되어 있어 실행되지 않지만,
+        // 필요 시 해당 데이터를 직접 설정하여 SungJukDTO 객체를 생성할 수 있습니다.
+        
+        return new SungJukDTO();
+        // 새로운 SungJukDTO 객체를 생성하고 반환합니다.
+        // 여기서 반환된 객체는 Spring 컨테이너에 의해 관리되며,
+        // 다른 클래스에서 의존성 주입을 통해 해당 객체를 사용할 수 있게 됩니다.
     }
 
     // sample03의 SungJukImpl 클래스의 Bean 정의
@@ -88,16 +102,30 @@ public class SpringConfiguration {
     public SungJukImpl sungJukImpl() {
         // SungJukDTO 를 주입받아 생성
         // 추가 설명: SungJukDTO 객체를 의존성으로 주입받아 SungJukImpl 객체를 생성합니다.
+        // 이 코드는 Spring에서 의존성 주입을 통해 SungJukImpl 객체를 생성하는 코드입니다.
+        // SungJukImpl 클래스는 SungJukDTO 데이터를 기반으로 로직을 수행하는 클래스입니다.
+        // sungJukDTO() 메서드를 통해 SungJukDTO 객체를 주입받아 SungJukImpl 생성자에 전달합니다.
+        // 이로 인해 SungJukImpl 클래스는 SungJukDTO 객체를 사용하여 작업을 수행할 수 있습니다.
+
         return new SungJukImpl(sungJukDTO());
+        // SungJukDTO 객체를 생성자의 매개변수로 전달하여 SungJukImpl 객체를 생성하고 반환합니다.
+        // 이 반환된 SungJukImpl 객체 역시 Spring 컨테이너에 의해 관리되며,
+        // 의존성이 필요한 곳에 자동으로 주입될 수 있습니다.
+    }
+    
+    // sample04
+    @Bean
+    public List<SungJukDTO2> list() {
+        // @Bean: 이 어노테이션은 Spring 프레임워크에서 사용되며, 이 메서드가 반환하는 객체를 Spring 컨테이너에서 관리하는 Bean으로 등록합니다.
+        // 즉, 이 메서드를 통해 반환된 객체는 Spring에서 주입할 수 있는 Bean이 됩니다. 여기서는 List<SungJukDTO2> 타입의 Bean을 등록하고 있습니다.
+    	
+        return new ArrayList<SungJukDTO2>();
+        // ArrayList<SungJukDTO2> 객체를 생성하여 반환합니다.
+        // 이 리스트는 SungJukDTO2 객체들을 저장하기 위한 리스트로 사용됩니다.
+        // 즉, 성적 데이터를 저장하는 여러 SungJukDTO2 객체들이 이 리스트에 추가되며, 이후 출력, 수정, 삭제 등의 작업에 사용됩니다.
+        // Spring에서 이 리스트를 관리하며, 여러 클래스에서 의존성 주입을 통해 공유됩니다.
     }
 
-    // sample04의 SungJukDTO2 리스트 Bean 정의
-    @Bean
-    public List<SungJukDTO2> sungJukDTO2List() {
-        return new ArrayList<>();
-        // 추가 설명: SungJukDTO2 객체를 저장할 빈 리스트 객체를 생성하여 반환합니다.
-        // 이 리스트는 성적 데이터를 저장하는 용도로 사용되며, Spring 컨테이너에서 관리됩니다.
-    }
 
 }
 

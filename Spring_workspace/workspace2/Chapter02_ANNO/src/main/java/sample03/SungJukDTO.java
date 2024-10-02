@@ -1,9 +1,10 @@
 package sample03;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component("sungJukDTO")
+// @Component("sungJukDTO")
 // @Component 어노테이션은 이 클래스가 Spring 컨테이너에서 관리되는 Bean이라는 것을 나타냅니다.
 // 추가 설명: 이 클래스는 Spring의 Bean으로 등록되어 Spring이 자동으로 관리합니다. 
 // 애플리케이션 내에서 다른 클래스가 이 Bean을 의존성 주입받아 사용할 수 있습니다.
@@ -29,20 +30,24 @@ public class SungJukDTO {
     // Setter 메서드에 @Value 어노테이션을 사용하여 값을 주입
     // 추가 설명: @Value 어노테이션을 사용하면 기본값을 설정할 수 있습니다.
     // 이 값들은 Spring이 객체를 생성할 때 주입됩니다.
-
+     
+    @Autowired 
 	public void setName(@Value("홍길동") String name) {
 		this.name = name;
 		// 추가 설명: 기본적으로 "홍길동"이라는 이름이 주입됩니다.
 		// 만약 외부에서 다른 값을 주입하지 않는다면, 기본값으로 홍길동이 사용됩니다.
 	}
+    @Autowired 
 	public void setKor(@Value("97") int kor) {
 		this.kor = kor;
 		// 추가 설명: 국어 점수의 기본값은 97로 설정됩니다.
 	}
+    @Autowired 
 	public void setEng(@Value("100") int eng) {
 		this.eng = eng;
 		// 추가 설명: 영어 점수의 기본값은 100으로 설정됩니다.
 	}
+    @Autowired 
 	public void setMath(@Value("95") int math) {
 		this.math = math;
 		// 추가 설명: 수학 점수의 기본값은 95로 설정됩니다.
