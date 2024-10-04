@@ -39,8 +39,6 @@
     </bean> 
 -->
 
-<context:component-scan base-package="sample01" />
-
 <!-- 
     1. <context:component-scan> 태그는 스프링의 컴포넌트 스캔 기능을 활성화하는 설정입니다.
        - 스프링은 이 태그를 통해 특정 패키지에서 빈으로 등록할 클래스를 찾아내고 자동으로 빈을 생성하여 컨테이너에 등록합니다.
@@ -58,7 +56,7 @@
        -> <bean> 태그를 사용하지 않아도 클래스에 애노테이션만 추가하면 스프링이 빈을 자동으로 생성하고 관리하게 됩니다.
 -->
 
-<context:component-scan base-package="sample02" />
+<context:component-scan base-package="sample01" />
+ <context:component-scan base-package="sample02" />
 <context:component-scan base-package="sample03" />
-
 </beans>

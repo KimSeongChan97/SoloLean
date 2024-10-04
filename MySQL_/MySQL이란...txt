@@ -1,0 +1,71 @@
+MySQL
+
+Server 와 Workbench 설치 해야함(custom)
+
+설치 후 Type and Networking 설정
+
+port 3306 고정
+관리자가 root 임
+MySQL Root Password : 1234
+
+Workbench 이름을
+MySQL80 으로 가고. 설치 완료
+
+
+user name : root
+password : 1234
+완료
+============================
+
+Oracle :
+관리자 계정 : system
+Port : 1521
+
+varchar, varchar2 가능
+
+MySQL :
+관리자 계정 : root
+sId(데이터베이스) : xe
+DataBase -> Connet to DataBase
+
+localhost IP : 127.0.0.1
+Port : 3306
+
+Store In Vault 으로 계정 암호 입력하여 접속
+
+utf8 설정(스키마 만들기)
+utf8_bin
+
+CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+
+라는 구문이다
+
+데이터베이스 사용할려면
+1. 해당 스키마 더블클릭
+2. use mydb;
+
+varchar 만 가능
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

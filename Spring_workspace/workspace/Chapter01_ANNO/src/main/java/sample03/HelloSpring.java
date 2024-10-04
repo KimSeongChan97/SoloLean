@@ -1,8 +1,11 @@
 package sample03;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+@Component("helloSpringSample03")
 public class HelloSpring {
 
     public static void main(String[] args) {

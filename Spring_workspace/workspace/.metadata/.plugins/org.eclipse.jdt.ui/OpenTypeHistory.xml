@@ -6,4 +6,8 @@
     <typeInfo handle="=Chapter02_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;sample02{Calc.java[Calc" modifiers="513" timestamp="1727762255503"/>
     <typeInfo handle="=Chapter02_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;sample03{SungJuk.java[SungJuk" modifiers="513" timestamp="1727763678522"/>
     <typeInfo handle="=Chapter02_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;sample04{SungJuk.java[SungJuk" modifiers="513" timestamp="1727835998076"/>
+    <typeInfo handle="=Chapter03_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;sample01{MessageBean.java[MessageBean" modifiers="513" timestamp="1728012307741"/>
+    <typeInfo handle="=Chapter04_XML/C:\/Program Files\/Java\/jdk-17\/lib\/jrt-fs.jar`java.base=/module=/true=/=/maven.pomderived=/true=/&lt;java.nio.file.attribute(UserDefinedFileAttributeView.class[UserDefinedFileAttributeView" modifiers="1537" timestamp="1719995665112"/>
+    <typeInfo handle="=Chapter04_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{UserService.java[UserService" modifiers="513" timestamp="1728025703207"/>
+    <typeInfo handle="=Chapter04_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;user.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1728027928862"/>
 </typeInfoHistroy>

@@ -38,9 +38,11 @@ public class MessageBeanImpl implements MessageBean {
         // Outputter 객체의 output 메서드를 호출하여 name과 phone 정보를 출력합니다.
         // "나의 이름은 [name]이고, 전화번호는 [phone]이다." 형식의 메시지를 출력하게 됩니다.
         // 출력 방식은 주입된 Outputter 구현체에 따라 달라질 수 있습니다.
-        outputter.output("나의 이름은 " + name + "이고, 전화번호는 " + phone + "이다.");
+        outputter.output("나의 이름은 " + name + "이고, 전화번호는 " + phone + "이다. \n");
         // Outputter의 역할: 이 객체는 실제 출력 작업을 수행합니다.
         // 예를 들어, 파일에 출력하거나 콘솔에 출력하는 다양한 방식으로 구현할 수 있으며, 그 구현체는 외부에서 주입됩니다.
+        outputter.output(name + "에게는 " + phone + "이라는 번호가 있꼬...");
+       
     }
 
 }

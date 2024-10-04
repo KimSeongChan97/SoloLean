@@ -1,0 +1,13 @@
+package user.main;
+
+import org.springframework.context.ApplicationContext;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContex("applicationContext.xml");
+		context.getBean("helloSpring");
+
+	}
+
+}

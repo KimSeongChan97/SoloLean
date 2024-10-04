@@ -103,9 +103,11 @@
 		<item value="org.springsource.sts:3.9.18.202109140905-RELEASE"/>
 	</list>
 	<section name="CleanDialogSettings">
-		<item key="TOGGLE_SELECTED" value="true"/>
+		<item key="TOGGLE_SELECTED" value="false"/>
 		<item key="DIALOG_WIDTH" value="579"/>
 		<item key="DIALOG_HEIGHT" value="428"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|-127|3|2|1|50|맑은 고딕"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
 	</section>
 </section>

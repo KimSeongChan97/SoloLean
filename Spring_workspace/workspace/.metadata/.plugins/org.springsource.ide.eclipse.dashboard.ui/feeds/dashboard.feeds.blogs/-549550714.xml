@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 02 Oct 2024 00:32:49 GMT</lastBuildDate><item><title><![CDATA[This Week in Spring - October 1st, 2024]]></title><link>https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! it&apos;s the first of October! We&apos;re officially in the fourth quarter of 2024! Time&apos;s moving too quickly. Way too quickly. But as always, there&apos;s awesome stuff afoot, so let&apos;s dive right in!&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 04 Oct 2024 00:32:25 GMT</lastBuildDate><item><title><![CDATA[Supercharging Your AI Applications with Spring AI Advisors]]></title><link>https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors</link><guid isPermaLink="true">https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors</guid><dc:creator><![CDATA[Christian Tzolov]]></dc:creator><pubDate>Wed, 02 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In the rapidly evolving world of artificial intelligence, developers are constantly seeking ways to enhance their AI applications.
+&lt;a href=&quot;https://docs.spring.io/spring-ai/reference/index.html&quot;&gt;Spring AI&lt;/a&gt;, a Java framework for building AI-powered applications, has introduced a powerful feature: the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/advisors.html&quot;&gt;Spring AI Advisors&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The advisors can supercharge your AI applications, making them more modular, portable and easier to maintain.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If reading the post isn&apos;t convenient, you can listen to this &lt;strong&gt;experimental&lt;/strong&gt; podcast, &lt;strong&gt;AI-generated&lt;/strong&gt; from blog&apos;s content:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;iframe title=&quot;Supercharging Your AI Applications with Spring AI Advisors&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=97h9v-16edd64-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=8bbb4e&amp;font-color=ffffff&amp;logo_link=episode_page&amp;btn-skin=666666&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
+&lt;h2 id=&quot;what-are-spring-ai-advisors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-are-spring-ai-advisors&quot; aria-label=&quot;what are spring ai advisors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What are Spring AI Advisors?&lt;/h2&gt;
+&lt;p&gt;At their core, Spring AI Advisors are components that intercept and potentially modify the flow of chat-completion requests and responses in your AI applications. The key player in this system is the &lt;strong&gt;AroundAdvisor&lt;/strong&gt;, which allows developers to dynamically transform or utilize information within these interactions.&lt;/p&gt;
+&lt;p&gt;The main benefits of using Advisors include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Encapsulation of Recurring Tasks&lt;/strong&gt;: Package common GenAI patterns into reusable units.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transformation&lt;/strong&gt;: Augment data sent to Language Models (LLMs) and format responses sent back to clients.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Portability&lt;/strong&gt;: Create reusable transformation components that work across various models and use cases.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;how-advisors-work&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-advisors-work&quot; aria-label=&quot;how advisors work permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How Advisors Work&lt;/h2&gt;
+&lt;p&gt;The Advisor system operates as a chain, with each Advisor in the sequence having the opportunity to process both the incoming request and the outgoing response. Here&apos;s a simplified flow:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/37AlBDteUgim6Re0QuiU1Y/5b2705044672cdaf1ec5c87af9db92ac/spring-ai-advisors-flow.svg&quot; alt=&quot;spring-ai-advisors-flow&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;An &lt;code&gt;AdvisedRequest&lt;/code&gt; is created from the user&apos;s prompt, along with an empty &lt;code&gt;advisor-context&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Each Advisor in the chain processes the request, potentially modifying it and then forwards the execution to the next advisor in the chain. Alternatively, it can choose to block the request by not making the call to invoke the next entity.&lt;/li&gt;
+&lt;li&gt;The final Advisor sends the request to the Chat Model.&lt;/li&gt;
+&lt;li&gt;The Chat Model&apos;s response is passed back through the advisor chain as an &lt;code&gt;AdvisedResponse&lt;/code&gt; a combination of the original &lt;code&gt;ChatResponse&lt;/code&gt; and the advise context from the input path of the chain.&lt;/li&gt;
+&lt;li&gt;Each Advisor can process or modify the response.&lt;/li&gt;
+&lt;li&gt;The augmented &lt;code&gt;ChatResponse&lt;/code&gt; from the final &lt;code&gt;AdvisedResponse&lt;/code&gt; is returned to the client.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;using-advisors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-advisors&quot; aria-label=&quot;using advisors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using Advisors&lt;/h2&gt;
+&lt;p&gt;Spring AI comes with several pre-built Advisors to handle common scenarios and Gen AI patterns:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/MessageChatMemoryAdvisor.java&quot;&gt;MessageChatMemoryAdvisor&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/PromptChatMemoryAdvisor.java&quot;&gt;PromptChatMemoryAdvisor&lt;/a&gt;, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/VectorStoreChatMemoryAdvisor.java&quot;&gt;VectorStoreChatMemoryAdvisor&lt;/a&gt;: These manage conversation history in various ways.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/QuestionAnswerAdvisor.java&quot;&gt;QuestionAnswerAdvisor&lt;/a&gt;: Implements the RAG (Retrieval-Augmented Generation) pattern for improved question-answering capabilities.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/SafeGuardAdvisor.java&quot;&gt;SafeGuardAdvisor&lt;/a&gt;: Very basic, sensitive words based advisor, that helps prevent the model from generating harmful or inappropriate content. It demonstrates how to block a request by not making the call to invoke the next adviser in the chain. In this case, it&apos;s advisor&apos;s responsible for filling out the response or throw and error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/chatclient.html#_advisor_configuration_in_chatclient&quot;&gt;ChatClient API&lt;/a&gt; you can register the advisors needed for your pipeline:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;var chatClient = ChatClient.builder(chatModel)
+    .defaultAdvisors(
+        new MessageChatMemoryAdvisor(chatMemory), // chat-memory advisor
+        new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()) // RAG advisor
+    )
+    .build();
+
+String response = chatClient.prompt()
+    // Set chat memory parameters at runtime
+    .advisors(advisor -&gt; advisor.param(&quot;chat_memory_conversation_id&quot;, &quot;678&quot;)
+            .param(&quot;chat_memory_response_size&quot;, 100))
+    .user(userText)
+    .call()
+	.content();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;implementing-your-own-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-your-own-advisor&quot; aria-label=&quot;implementing your own advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Implementing Your Own Advisor&lt;/h2&gt;
+&lt;p&gt;The Advisor API consists of &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/CallAroundAdvisor.java&quot;&gt;CallAroundAdvisor&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/CallAroundAdvisorChain.java&quot;&gt;CallAroundAdvisorChain&lt;/a&gt; for non-streaming, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/StreamAroundAdvisor.java&quot;&gt;StreamAroundAdvisor&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/StreamAroundAdvisorChain.java&quot;&gt;StreamAroundAdvisorChain&lt;/a&gt; for streaming scenarios.
+It also includes &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedRequest.java&quot;&gt;AdvisedRequest&lt;/a&gt; to represent the unsealed Prompt request data, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedResponse.java&quot;&gt;AdvisedResponse&lt;/a&gt; for the chat completion data.
+The &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedRequest.java&quot;&gt;AdvisedRequest&lt;/a&gt; and the &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedResponse.java&quot;&gt;AdvisedResponse&lt;/a&gt; have an &lt;code&gt;advise-context&lt;/code&gt; field, used to share state across the advisor chain.&lt;/p&gt;
+&lt;h4 id=&quot;simple-logging-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#simple-logging-advisor&quot; aria-label=&quot;simple logging advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Simple Logging Advisor&lt;/h4&gt;
+&lt;p&gt;Creating a custom Advisor is straightforward. Let&apos;s implement a simple logging Advisor to demonstrate the process:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class SimpleLoggerAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
+    private static final Logger logger = LoggerFactory.getLogger(SimpleLoggerAdvisor.class);
+
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
+    }
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+
+    @Override
+    public AdvisedResponse aroundCall(AdvisedRequest advisedRequest, CallAroundAdvisorChain chain) {
+        logger.debug(&quot;BEFORE: {}&quot;, advisedRequest);
+        AdvisedResponse advisedResponse = chain.nextAroundCall(advisedRequest);
+        logger.debug(&quot;AFTER: {}&quot;, advisedResponse);
+        return advisedResponse;
+    }
+
+    @Override
+    public Flux&amp;#x3C;AdvisedResponse&gt; aroundStream(AdvisedRequest advisedRequest, StreamAroundAdvisorChain chain) {
+        logger.debug(&quot;BEFORE: {}&quot;, advisedRequest);
+        Flux&amp;#x3C;AdvisedResponse&gt; advisedResponses = chain.nextAroundStream(advisedRequest);
+        return new MessageAggregator().aggregateAdvisedResponse(advisedResponses,
+                advisedResponse -&gt; logger.debug(&quot;AFTER: {}&quot;, advisedResponse));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This Advisor logs the request before it&apos;s processed and the response after it&apos;s received, providing valuable insights into the AI interaction process.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;aggregateAdvisedResponse(...)&lt;/code&gt; utility combines &lt;code&gt;AdviseResponse&lt;/code&gt; chunks into a single &lt;code&gt;AdvisedResponse&lt;/code&gt;, returning the original stream and accepting a &lt;code&gt;Consumer&lt;/code&gt; callback for the completed result.
+It preserves original content and context.&lt;/p&gt;
+&lt;h4 id=&quot;re-reading-re2-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#re-reading-re2-advisor&quot; aria-label=&quot;re reading re2 advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Re-Reading (Re2) Advisor&lt;/h4&gt;
+&lt;p&gt;Let&apos;s implement a more advanced Advisor based on the Re-Reading (Re2) technique, inspired by this &lt;a href=&quot;https://arxiv.org/pdf/2309.06275&quot;&gt;paper&lt;/a&gt;, which can improve the reasoning capabilities of large language models:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class ReReadingAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
+    private static final String DEFAULT_USER_TEXT_ADVISE = &quot;&quot;&quot;
+        {re2_input_query}
+        Read the question again: {re2_input_query}
+        &quot;&quot;&quot;;
+
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
+    }
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+
+    private AdvisedRequest before(AdvisedRequest advisedRequest) {
+
+        String inputQuery = advisedRequest.userText(); //original user query
+
+        Map&amp;#x3C;String, Object&gt; params = new HashMap&amp;#x3C;&gt;(advisedRequest.userParams());        
+        params.put(&quot;re2_input_query&quot;, inputQuery);
+
+        return AdvisedRequest.from(advisedRequest)
+                .withUserText(DEFAULT_USER_TEXT_ADVISE)
+                .withUserParams(params)
+                .build();
+    }
+
+    @Override
+    public AdvisedResponse aroundCall(AdvisedRequest advisedRequest, CallAroundAdvisorChain chain) {
+        return chain.nextAroundCall(before(advisedRequest));
+    }
+
+    @Override
+    public Flux&amp;#x3C;AdvisedResponse&gt; aroundStream(AdvisedRequest advisedRequest, StreamAroundAdvisorChain chain) {
+        return chain.nextAroundStream(before(advisedRequest));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This Advisor modifies the input query to include a &quot;re-reading&quot; step, potentially improving the AI model&apos;s understanding and reasoning about the question.&lt;/p&gt;
+&lt;h2 id=&quot;advanced-topics&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#advanced-topics&quot; aria-label=&quot;advanced topics permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Advanced Topics&lt;/h2&gt;
+&lt;p&gt;Spring AI&apos;s advanced topics encompass important aspects of advisor management, including &lt;em&gt;order control&lt;/em&gt;, &lt;em&gt;state sharing&lt;/em&gt;, and &lt;em&gt;streaming capabilities&lt;/em&gt;. Advisor execution order is determined by the getOrder() method. State sharing between advisors is enabled through a shared advise-context object, facilitating complex multi-advisor scenarios. The system supports both streaming and non-streaming advisors, allowing for processing of complete requests and responses or handling continuous data streams using reactive programming concepts.&lt;/p&gt;
+&lt;h3 id=&quot;controlling-advisor-order&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controlling-advisor-order&quot; aria-label=&quot;controlling advisor order permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controlling Advisor Order&lt;/h3&gt;
+&lt;p&gt;The order of Advisors in the chain is crucial and is determined by the &lt;code&gt;getOrder()&lt;/code&gt; method. Advisors with lower order values are executed first.
+Because the advisor chain is a stack, the first advisor in the chain is the last to process the request and the first to process the response.
+If you want to ensure that an advisor is executed last, set its order close to the &lt;code&gt;Ordered.LOWEST_PRECEDENCE&lt;/code&gt; value and vice versa to execute first set the order close to the &lt;code&gt;Ordered.HIGHEST_PRECEDENCE&lt;/code&gt; value.
+If you have multiple advisors with the same order value, the order of execution is not guaranteed.&lt;/p&gt;
+&lt;h3 id=&quot;using-advisorcontext-for-state-sharing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-advisorcontext-for-state-sharing&quot; aria-label=&quot;using advisorcontext for state sharing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using AdvisorContext for State Sharing&lt;/h3&gt;
+&lt;p&gt;Both the &lt;code&gt;AdvisedRequest&lt;/code&gt; and the &lt;code&gt;AdvisedResponse&lt;/code&gt; share an  advise-context object.
+You can use the &lt;code&gt;advise-context&lt;/code&gt; to share state between the advisors in the chain, and build more complex processing scenarios that involve multiple advisors.&lt;/p&gt;
+&lt;h3 id=&quot;streaming-vs-non-streaming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#streaming-vs-non-streaming&quot; aria-label=&quot;streaming vs non streaming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Streaming vs. Non-Streaming&lt;/h3&gt;
+&lt;p&gt;Spring AI supports both streaming and non-streaming Advisors.
+Non-streaming Advisors work with complete requests and responses, while streaming Advisors handle continuous streams using reactive programming concepts (e.g., Flux for responses).&lt;/p&gt;
+&lt;p&gt;For streaming advisors, it&apos;s crucial to note that a single &lt;code&gt;AdvisedResponse&lt;/code&gt; instance represents only a chunk (i.e., part) of the entire &lt;code&gt;Flux&amp;#x3C;AdvisedResponse&gt;&lt;/code&gt; response. In contrast, for non-streaming advisors, the &lt;code&gt;AdvisedResponse&lt;/code&gt; encompasses the complete response.&lt;/p&gt;
+&lt;h2 id=&quot;best-practices&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#best-practices&quot; aria-label=&quot;best practices permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Best Practices&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Keep Advisors focused on specific tasks for better modularity.&lt;/li&gt;
+&lt;li&gt;Use the &lt;code&gt;advise-context&lt;/code&gt; to share state between Advisors when necessary.&lt;/li&gt;
+&lt;li&gt;Implement both streaming and non-streaming versions of your Advisor for maximum flexibility.&lt;/li&gt;
+&lt;li&gt;Carefully consider the order of Advisors in your chain to ensure proper data flow.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Spring AI Advisors provide a powerful and flexible way to enhance your AI applications. By leveraging this API, you can create more sophisticated, reusable, and maintainable AI components. Whether you&apos;re implementing custom logic, managing conversation history, or improving model reasoning, Advisors offer a clean and efficient solution.&lt;/p&gt;
+&lt;p&gt;We encourage you to experiment with Spring AI Advisors in your projects and share your custom implementations with the community. The possibilities are endless, and your innovations could help shape the future of AI application development!&lt;/p&gt;
+&lt;p&gt;Happy coding, and may your AI applications be ever more intelligent and responsive!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 1st, 2024]]></title><link>https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! it&apos;s the first of October! We&apos;re officially in the fourth quarter of 2024! Time&apos;s moving too quickly. Way too quickly. But as always, there&apos;s awesome stuff afoot, so let&apos;s dive right in!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Spring Framework lead Juergen Hoeller looks at the road ahead, to &lt;a href=&quot;https://spring.io/blog/2024/10/01/from-spring-framework-6-2-to-7-0&quot;&gt;Spring Framework 6.2 and Spring Framework 7.0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;In this first installment, Oded Shopin looks at integrating &lt;a href=&quot;https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i&quot;&gt;Spring AI into the famous Spring Petclinic application&lt;/a&gt;&lt;/li&gt;
@@ -933,15 +1088,4 @@ public class Pet extends NamedEntity {
 &lt;li&gt;Support for Microsoft SQL Server in JDBC-based event publication registry (contributed by &lt;a href=&quot;https://github.com/oyjoh&quot;&gt;@oyjoh&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/804&quot;&gt;GH-804&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Deprecate &lt;code&gt;spring.modulith.republish-outstanding-events-on-restart&lt;/code&gt; in favor of the variant residing in &lt;code&gt;spring.modulith.test.¡¦&lt;/code&gt; (&lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/823&quot;&gt;GH-823&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There is still a bit of time for feedback until we wrap up the iteration with the first release candidate at the end of October.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.4.0-M3 available now]]></title><link>https://spring.io/blog/2024/09/19/spring-boot-3-4-0-m3-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/09/19/spring-boot-3-4-0-m3-available-now</guid><dc:creator><![CDATA[Phil Webb]]></dc:creator><pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.4.0-M3&lt;/code&gt; has been released and is now available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.4.0-M3&quot;&gt;111 enhancements, documentation improvements, dependency upgrades, and bug fixes&lt;/a&gt;. Notable new features include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring for Apache Pulsar updates&lt;/li&gt;
-&lt;li&gt;Observability improvements&lt;/li&gt;
-&lt;li&gt;Improvements when using &lt;code&gt;@AutoConfigureTestDatabase&lt;/code&gt; with containers&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.4.0-M3-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
-&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/3.4/&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;There is still a bit of time for feedback until we wrap up the iteration with the first release candidate at the end of October.&lt;/p&gt;</content:encoded></item></channel></rss>

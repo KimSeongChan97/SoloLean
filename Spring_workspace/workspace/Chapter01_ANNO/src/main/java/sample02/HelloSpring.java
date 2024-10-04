@@ -2,13 +2,16 @@ package sample02;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+
+@Component("helloSpringSample02")
 public class HelloSpring {
 
     public static void main(String[] args) {
         // 스프링 컨테이너를 초기화하고 설정 파일(applicationContext.xml)을 로드합니다.
         ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");
-        // FileSystemXmlApplicationContext는 지정된 XML 파일 경로에서 스프링 컨테이너를 생성하고, 빈(bean)을 로드합니다.
+    	// FileSystemXmlApplicationContext는 지정된 XML 파일 경로에서 스프링 컨테이너를 생성하고, 빈(bean)을 로드합니다.
         // 여기서 "src/main/resources/applicationContext.xml"은 스프링 설정 파일의 경로로, 빈(bean)들이 정의된 파일입니다.
         // 스프링 컨테이너는 이 설정 파일을 기반으로 객체들을 생성하고 관리합니다.
         // 이를 통해 의존성 주입(Dependency Injection)과 같은 스프링의 기능을 사용할 수 있습니다.

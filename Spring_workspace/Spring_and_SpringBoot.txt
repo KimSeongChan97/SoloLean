@@ -320,6 +320,161 @@ Advice를 Weaving하는 3가지 방식
 2. @Compent - class 위
    @Bean - method 위
 
+------------------------------
+@Before
+execution(접근제어자 반환형 패키지명.클래스명.메서드명(파라미터))
+-----------------------------------------------
+OOP ( Object Oriented Programming ) 객체지향프로그래밍
+=> 중복성 제거 / 결합도를 낮춤(상속 - 다형성) 
+
+AOP ( Aspect Oriented Programming ) 관점지향프로그래밍
+=> 중복성 더욱더 제거(OOP의 코드를 보완)
+: 중복성을 배제하면서 OOP를 보완한다.
+
+
+스프링
+-> 자바 기반
+-> AOP : 함수 단위로 처리
+
+중복되는 코드 : 공통 코드
+중요 코드 : 핵심 코드
+
+a() {
+A -> X
+
+B -> X
+}
+
+공통() { A, B }  를 함수 내에 삽입한다 : AOP
+
+-----------------------------------------------
+Aspect = Advice + Pointcut
+
+	삽입시점 + 삽입 대상자
+-> 주요 핵심 코드 제외하고 공통되는 코드를 분리하여 따로관리하는 게 AOP 이다
+
+
+===========================================
+스프링과 JDBC
+스프링은 JDBC를 비롯하여 ORM프레임워크(myBatis, hibernate, JPA(Java Persistence API))를 지원한다
+
+스프링의 목표는 인터페이스에 의한 개발인데 DAO는 데이터베이스에서 데이터를 읽거나 쓰는 수단을 제공하기 위해 존재하며, 반드시 인터페이스를 통해 외부에 제공돼야 한다.
+ 서비스 객체는 인터페이스를 통해서 DAO에 접근한다 
+서비스 객체를 특정 데이터 액세스 구현체에 결합시키지 않음으로써 테스트를 용이하게 한다
+DAO인터페이스는 DAO구현과 서비스 객체 사이에서 느슨한 결합이 유지될 수 있게 한다
+서비스 객체 → DAO 인터페이스
+UserInsertService UserDAO 
+ ↑
+ DAO 구현 객체
+ UserDAOImpl
+스프링은 데이터베이스 연동을 위한 템플릿 클래스를 제공함으로써
+Connection, Statement(PreparedStatement), ResultSet등을 생성하고 처리한 다음 close(반환)하는 
+JDBC의 중복된 코드를 줄일 수 있다
+
+JDBC는 무조건 SQLException의 예외만 발생하므로 정확히 Connection에서 발생했는지 아니면 
+Statement에서 발생했는지 따져봐야한다.
+ JdbcTemplate클래스는 SQLException이 발생하면 스프링이 제공하는 예외 클래스중 알맞는 것으로 변환해서 발생한다.
+ 스프링은 JDBC보다 다양한 예외 계층을 제공하고 어떤 퍼시스턴스 솔루션과도 연관성을 갖지 않는다 
+스프링을 사용하면 퍼시스턴스 기술과 관계없이 일관성있게 예외를 발생시킬 수 있다
+
+스프링의 DataAccessException는 비검사형 예외(try~catch블럭을 사용하지 않아도 컴파일이 되는 예외)
+로서 반드시 잡아서 처리할 필요가 없다
+
+스프링이 제공하는 DataSource를 설정하는 3가지 방법
+
+1. 커넥션풀을 이용한 DataSource 설정
+스프링이 직접적으로 커넥션풀을 제공하진 않지만 DBCP(Jakarta Commons Database Connection 
+Pool) API와 같은 커넥션 풀 라이브러리를 이용
+DBCP에는 풀링 기능을 제공하는 다양한 데이터 소스가 포함되 있지만 BasicDataSource가 가장 많이 사용된다
+
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+ <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+ <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+ <property name="username" value="" />
+ <property name="password" value="" />
+ <property name="initialSize" value="5" />
+→ 해당 풀이 시작될 때 생성할 커넥션 수, 0은 무제한
+ <property name="maxActive" value="10" />
+→ 해당 풀에서 동시에 제공할 수 있는 최대 커넥션 수, 0은 무제한
+</bean>
+
+
+2. JNDI을 이용한 DataSource 설정
+WebLogic이나 JBoss와 같은 JEE 어플리케이션 서버를 사용할 경우
+톰캣이나 Resin등의 웹 컨테이너를 사용할 경우
+<jee:jndi-lookup id="dataSource" jndi-name="oracle" resource-ref="true" />
+<jee:jndi-lookup>태그를 이용 - 스프링2.0부터 지원
+jndi-name 프로퍼티는 JDNI에 있는 리소스의 이름을 지정한다
+jndi-name프로퍼티만 지정된 경우에는 데이터소스는 지정된 jndi-name을 그대로 이용해서 검색한다
+
+자바 애플리케이션 서버에서 가동되는 경우에는 resource-ref=true이면 jndi-name값의 앞에 
+"java:comp/env"가 붙은 이름을 사용한다. <jee:jndi-lookup>태그를 사용하지 않고 JndiObjectFactoryBean클래스를 이용할 수 있다
+
+
+3. DriverManager을 이용한 DataSource 설정
+: 스프링에 설정할 수 있는 가장 단순한 데이터 소스는 JDBC드라이버를 통해 정의된 것이다
+- DriverManagerDataSource 
+애플리케이션이 커넥션을 요청할 때마다 새로운 커넥션을 반환한다
+DBCP의 BasicDataSource와는 달리 커넥션은 풀링되지 않는다
+멀티스레드에서도 동작은 하지만 커넥션이 필요할 때마다 새로 커넥션을 생성하므로 심각한 성능 저하를 유발한다. 
+
+
+- SingleConnectionDataSource 
+커넥션을 요청하면 항상 동일한 커넥션을 반환한다
+커넥션 풀링 기능은 없지만 오직 하나의 커넥션만을 풀링하는 데이터소스
+사용할 수 있는 커넥션이 오직 하나뿐이라서 멀티스레드 애플리케이션에서는 제대로 동작하지 않을 것이다
+: 스프링의 JDBC 프레임워크는 자원관리와 예외 처리를 대신 해주므로 JDBC코드가 훨씬 간결해진다
+스프링은 단순 반복적인 데이터 액세스 코드를 템플릿 클래스 뒤로 추상화해 숨긴다
+
+1. JdbcTemplate
+스프링의 가장 기본적인 JDBC 템플릿
+색인된 파라미터(indexed parameter)기반의 쿼리를 통해 데이터베이스를 쉽게 액세스하는 기능을 제공
+2. NamedParameterJdbcTemplate
+SQL과 값들을 색인된 파라미터 대신 명명된 파라미터(named parameter)로 바인딩하여 쿼리를 수행할 
+수 있게 해준다 
+* 스프링이 제공하는 기반클래스
+JdbcTemplate - JdbcDaoSupport
+ - JdbcDaoSupport 상속 받으면 JdbcTemplate 빈으로 생성할 필요가 없다
+ - JdbcDaoSupport 에서는 getJdbcTemplate() 메소드를 제공하므로 JdbcTemplate을 
+ 편리하게 사용할 수 있다. NamedParameterJdbcTemplate - NamedParameterJdbcDaoSupport
+
+---------=-=-=-=-=----------------------=-=-=-=----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

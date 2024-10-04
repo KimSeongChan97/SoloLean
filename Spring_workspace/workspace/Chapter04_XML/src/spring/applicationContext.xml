@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Connection Pool & DataSource -->
+    <!--  
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" /> 
+        <property name="url" value="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul" />
+        <property name="username" value="root" />
+        <property name="password" value="1234" />
+    </bean>
+    -->
+    <!-- 위의 주석 처리된 부분은 데이터베이스 연결을 위한 설정으로, Apache DBCP2의 BasicDataSource를 사용하여 직접 드라이버 클래스와 URL, 사용자 정보를 설정합니다. -->
+    
+    <!-- 
+    <bean id="dataSource" 
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="com.mysql.cj.jdbc.Driver"
+          p:url="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul"
+          p:username="root"
+          p:password="1234" />
+     -->
+     <!-- 이 부분은 속성 설정을 p 네임스페이스를 사용하여 간략하게 표현한 방식입니다. DBCP2의 DataSource 설정을 더욱 간단하게 정의합니다. -->
+
+     <!-- 데이터베이스 연결 정보를 외부 프로퍼티 파일에서 가져오는 방식입니다. -->
+     <!-- context:property-placeholder는 외부에 설정 파일을 분리하여 속성값을 가져오는 데 사용됩니다. -->
+     <context:property-placeholder location="classpath:spring/db.properties"/>
+     
+     <!-- DataSource 빈 정의 -->
+     <!-- 데이터베이스 연결 설정을 외부 프로퍼티 파일(db.properties)에서 가져와 설정합니다. -->
+     <bean id="dataSource" 
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="${jdbc.driver}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}">
+    </bean>
+
+    <!-- HelloSpring 빈을 등록합니다. -->
+    <!-- HelloSpring 클래스는 애플리케이션의 주요 클래스로, 이 빈은 스프링이 관리합니다. -->
+    <bean id="helloSpring" class="user.main.HelloSpring" />
+
+    <!-- UserInsertService 빈 정의 -->
+    <!-- userDTO와 userDAO를 의존성으로 주입합니다. -->
+    <bean id="userInsertService" class="user.service.UserInsertService">
+        <!-- userDTO 빈을 주입 -->
+        <property name="userDTO" ref="userDTO" />
+        <!-- userDAO 빈을 주입 -->
+        <property name="userDAO" ref="userDAOImpl" />
+    </bean>
+
+    <!-- UserSelectService 빈 정의 -->
+    <!-- userDAO 빈을 주입합니다. -->
+    <bean id="userSelectService" class="user.service.UserSelectService">
+        <property name="userDAO" ref="userDAOImpl" />
+    </bean>
+
+    <!-- UserUpdateService 빈 정의 -->
+    <bean id="userUpdateService" class="user.service.UserUpdateService"></bean>
+
+    <!-- UserDeleteService 빈 정의 -->
+    <bean id="userDeleteService" class="user.service.UserDeleteService"></bean>
+
+    <!-- UserDTO 빈 정의 -->
+    <!-- 사용자 정보를 담는 데이터 전송 객체 (DTO)입니다. -->
+    <bean id="userDTO" class="user.bean.UserDTO" />
+
+    <!-- UserDAOImpl 빈 정의 -->
+    <!-- UserDAO 인터페이스를 구현한 DAO 클래스입니다. -->
+    <!-- JdbcTemplate을 주입하여 데이터베이스 연동 작업을 처리할 수 있습니다. -->
+    <bean id="userDAOImpl" class="user.dao.impl.UserDAOImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <!-- JdbcTemplate 빈 정의 -->
+    <!-- Spring의 JdbcTemplate을 사용하여 SQL 실행을 간편하게 처리할 수 있는 템플릿 클래스입니다. -->
+    <!-- 생성자를 통해 dataSource를 주입받습니다. -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+        <constructor-arg ref="dataSource" />
+    </bean>
+	
+	
+</beans>
