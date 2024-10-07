@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+h3 {
+text-align: center;
+text-decoration: overline;
+margin: 150px;
+text-shadow: aqua;
+background-color: maroon;
+border: 1px solid
+}
+</style>
+</head>
+<body>
+
+	<h3>${result}</h3>
+
+</body>
+</html>

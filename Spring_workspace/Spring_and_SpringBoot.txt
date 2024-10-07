@@ -440,6 +440,74 @@ JdbcTemplate - JdbcDaoSupport
 
 ---------=-=-=-=-=----------------------=-=-=-=----
 
+스프링 MVC
+스프링 MVC도 컨트롤러를 사용하여 클라이언트의 요청을 처리한다. 스프링에서 DispatcherServlet 이 MVC에서 C(Control) 부분을 처리한다. 개발자가 처리할 부분은 클라이언트의 요청을 처리할 컨트롤러와 응답화면을 전송할 JSP나 Velocity 템플
+릿 등 뷰 코드이다
+DispatcherServlet, HandlerMapping, ViewResolver등은 스프링이 기본적으로 제공하는 구현 클래스를 
+사용한다. 스프링 MVC의 구성 요소
+1. DispatcherServlet 
+클라이언트의 요청을 전달 받는다
+컨트롤러에게 클라이언트의 요청을 전달하고 Controller가 리턴한 결과값을 View에 전달하여 응답을 생성
+하도록 한다. 2. HandlerMapping
+클라이언트의 요청 URL을 어떤 Controller가 처리할지를 결정한다. 3. Controller
+클라이언트의 요청을 처리한 뒤 결과를 DispatcherServlet에 알려준다
+4. ModelAndView
+컨트롤러가 처리한 결과 정보 및 뷰 선택에 필요한 정보를 담는다. 5. ViewResolver
+컨트롤러의 처리 결과를 생성할 뷰를 결정한다. 6. View
+컨트롤러의 처리 결과 화면을 생성한다.
+JSP나 Velocity 템플릿 파일등을 뷰로 사용한다.
+---------------------------++-+-+-+--+----------
+
+
+스프링 설정 파일(WAC)_WebApplicationContext
+1. web 과 관련이 있다.
+- /WEB-INF/서블릿이름-servlet.xml (default)
+/WEB-INF/dispatcherServlet-servlet.xml
+가 된다.
+
+
+2. web 과 독립적이다.
+(DB 연동)
+- /WEB-INF/applicationContext.xml (default)
+
+Chapter06
+	src/main/java
+		com.controller
+			HelloController.java
+
+http://localhost:8080/Chapter06/hello.do
+	요청
+DispatcherServlet.java
+	요청(HandlerMapping)
+HelloController.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
