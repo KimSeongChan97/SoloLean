@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd">
+
+<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+<!-- 트랜잭션 관리를 활성화하기 위한 설정입니다. 주석 처리되어 있지만, 트랜잭션을 관리할 때 사용되며, Spring에서 @Transactional을 통해 트랜잭션을 관리하게 해줍니다. 이를 활성화하려면 주석을 해제해야 합니다. -->
+
+<context:component-scan base-package="spring.conf" />
+<!-- Spring의 component-scan 설정입니다. base-package="spring.conf"는 Spring이 이 패키지 안에서 @Configuration, @Service, @Repository, @Controller 등과 같은 어노테이션이 붙은 클래스를 자동으로 스캔하고 관리하게 합니다. 즉, SpringConfiguration 클래스와 같은 설정 파일을 자동으로 등록해줍니다. -->
+
+<context:component-scan base-package="user.main" />
+<!-- user.main 패키지를 스캔하여, 그 안에 존재하는 클래스들 중 @Component, @Service, @Repository, @Controller 등이 붙어 있는 클래스를 자동으로 빈으로 등록해줍니다. 예를 들어, user.main.HelloSpring 클래스가 있을 경우, 자동으로 Spring이 관리하게 됩니다. -->
+
+<context:component-scan base-package="user.bean" />
+<!-- user.bean 패키지를 스캔하여 이 패키지 안의 @Component, @Service, @Repository, @Controller 등 어노테이션이 붙은 클래스를 Spring 컨테이너에 등록합니다. 일반적으로 @Component가 붙은 Bean 클래스를 찾을 때 사용됩니다. 이로써 Bean 객체들이 자동으로 생성되고 관리됩니다. -->
+
+<context:component-scan base-package="user.dao" />
+<!-- user.dao 패키지를 스캔하여, DAO 클래스들을 자동으로 스프링 컨테이너에 등록합니다. 여기서 DAO는 데이터베이스와의 상호작용을 처리하는 클래스들이며, 주로 @Repository 어노테이션이 붙어 있을 가능성이 높습니다. 이 설정을 통해 데이터베이스 관련 클래스들이 자동으로 관리됩니다. -->
+
+<context:component-scan base-package="user.service" />
+<!-- user.service 패키지를 스캔하여, 서비스 계층에 해당하는 클래스들을 스프링 컨테이너에 자동으로 등록합니다. 이 패키지에서는 @Service 어노테이션이 붙은 클래스들이 주로 존재하며, 비즈니스 로직을 처리하는 클래스들입니다. 이 설정을 통해 서비스 로직 클래스가 자동으로 관리됩니다. -->
+
+
+
+</beans>

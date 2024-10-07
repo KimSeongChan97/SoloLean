@@ -34,59 +34,116 @@
      <!-- 데이터베이스 연결 정보를 외부 프로퍼티 파일에서 가져오는 방식입니다. -->
      <!-- context:property-placeholder는 외부에 설정 파일을 분리하여 속성값을 가져오는 데 사용됩니다. -->
      <context:property-placeholder location="classpath:spring/db.properties"/>
-     
-     <!-- DataSource 빈 정의 -->
-     <!-- 데이터베이스 연결 설정을 외부 프로퍼티 파일(db.properties)에서 가져와 설정합니다. -->
-     <bean id="dataSource" 
-          class="org.apache.commons.dbcp2.BasicDataSource"
-          p:driverClassName="${jdbc.driver}"
-          p:url="${jdbc.url}"
-          p:username="${jdbc.username}"
-          p:password="${jdbc.password}">
-    </bean>
+<!-- 
+<context:property-placeholder> 태그는 외부 프로퍼티 파일을 사용하여 설정 정보를 관리할 수 있게 해줍니다.
+- "location" 속성은 db.properties 파일이 classpath의 spring 디렉토리 안에 있다는 것을 지정합니다.
+- 이를 통해 데이터베이스 연결 정보나 기타 설정을 외부 파일로 분리하여 코드의 유지보수성을 높일 수 있습니다.
+- ${jdbc.driver}, ${jdbc.url}, ${jdbc.username}, ${jdbc.password} 같은 변수를 db.properties 파일에서 가져와 사용할 수 있습니다.
+-->
 
-    <!-- HelloSpring 빈을 등록합니다. -->
-    <!-- HelloSpring 클래스는 애플리케이션의 주요 클래스로, 이 빈은 스프링이 관리합니다. -->
-    <bean id="helloSpring" class="user.main.HelloSpring" />
+<!-- DataSource 빈 정의 -->
+<!-- 
+데이터베이스 연결 설정을 외부 프로퍼티 파일(db.properties)에서 가져와 설정합니다.
+- Apache Commons DBCP2를 이용한 데이터베이스 커넥션 풀을 설정합니다.
+- 커넥션 풀을 사용하면 DB 연결을 미리 만들어 두고 필요할 때 재사용할 수 있어 성능을 높일 수 있습니다.
+- 프로퍼티 파일에서 가져온 driverClassName, url, username, password 값을 설정합니다.
+- 이 DataSource는 이후에 JdbcTemplate 또는 DAO에서 DB에 접근할 때 사용됩니다.
+-->
+<bean id="dataSource" 
+      class="org.apache.commons.dbcp2.BasicDataSource"
+      p:driverClassName="${jdbc.driver}"
+      p:url="${jdbc.url}"
+      p:username="${jdbc.username}"
+      p:password="${jdbc.password}">
+</bean>
 
-    <!-- UserInsertService 빈 정의 -->
-    <!-- userDTO와 userDAO를 의존성으로 주입합니다. -->
-    <bean id="userInsertService" class="user.service.UserInsertService">
-        <!-- userDTO 빈을 주입 -->
-        <property name="userDTO" ref="userDTO" />
-        <!-- userDAO 빈을 주입 -->
-        <property name="userDAO" ref="userDAOImpl" />
-    </bean>
+<!-- HelloSpring 빈을 등록 -->
+<!-- 
+HelloSpring 클래스는 사용자와 상호작용하는 주요 로직을 담당하는 클래스입니다.
+스프링은 이 클래스를 빈으로 관리하며, 이 빈은 ApplicationContext에서 호출되어 사용됩니다.
+-->
+<bean id="helloSpring" class="user.main.HelloSpring" />
 
-    <!-- UserSelectService 빈 정의 -->
-    <!-- userDAO 빈을 주입합니다. -->
-    <bean id="userSelectService" class="user.service.UserSelectService">
-        <property name="userDAO" ref="userDAOImpl" />
-    </bean>
+<!-- UserInsertService 빈 정의 -->
+<!-- 
+UserInsertService는 사용자 등록(회원 정보 입력)을 담당하는 서비스 클래스입니다.
+userDTO와 userDAO를 의존성으로 주입합니다. 이 두 객체는 실제 데이터 처리에 사용됩니다.
+-->
+<bean id="userInsertService" class="user.service.UserInsertService">
+    <!-- userDTO 빈을 주입 -->
+    <!-- 
+    userDTO는 사용자 정보를 담고 있는 Data Transfer Object입니다.
+    사용자 등록 시 입력된 사용자 정보가 이 객체에 저장됩니다.
+    -->
+    <property name="userDTO" ref="userDTO" />
+    
+    <!-- userDAO 빈을 주입 -->
+    <!-- 
+    userDAO는 데이터베이스와 상호작용하는 객체로, UserDAO 인터페이스의 구현체입니다.
+    UserInsertService에서 데이터를 DB에 삽입할 때 사용됩니다.
+    -->
+    <property name="userDAO" ref="userDAOImpl" />
+</bean>
 
-    <!-- UserUpdateService 빈 정의 -->
-    <bean id="userUpdateService" class="user.service.UserUpdateService"></bean>
+<!-- UserSelectService 빈 정의 -->
+<!-- 
+UserSelectService는 사용자 정보를 조회하는 서비스 클래스입니다.
+userDAO를 통해 DB에서 사용자 정보를 가져옵니다.
+-->
+<bean id="userSelectService" class="user.service.UserSelectService">
+    <property name="userDAO" ref="userDAOImpl" />
+</bean>
 
-    <!-- UserDeleteService 빈 정의 -->
-    <bean id="userDeleteService" class="user.service.UserDeleteService"></bean>
+<!-- UserUpdateService 빈 정의 -->
+<!-- 
+UserUpdateService는 사용자 정보를 수정하는 서비스 클래스입니다.
+userDAO를 주입받아 DB에서 사용자 정보를 수정하는 작업을 처리합니다.
+-->
+<bean id="userUpdateService" class="user.service.UserUpdateService">
+    <property name="userDAO" ref="userDAOImpl" />
+</bean>
 
-    <!-- UserDTO 빈 정의 -->
-    <!-- 사용자 정보를 담는 데이터 전송 객체 (DTO)입니다. -->
-    <bean id="userDTO" class="user.bean.UserDTO" />
+<!-- UserDeleteService 빈 정의 -->
+<!-- 
+UserDeleteService는 사용자 정보를 삭제하는 서비스 클래스입니다.
+userDAO를 주입받아 DB에서 사용자 정보를 삭제하는 작업을 처리합니다.
+-->
+<bean id="userDeleteService" class="user.service.UserDeleteService">
+    <property name="userDAO" ref="userDAOImpl" />
+</bean>
 
-    <!-- UserDAOImpl 빈 정의 -->
-    <!-- UserDAO 인터페이스를 구현한 DAO 클래스입니다. -->
-    <!-- JdbcTemplate을 주입하여 데이터베이스 연동 작업을 처리할 수 있습니다. -->
-    <bean id="userDAOImpl" class="user.dao.impl.UserDAOImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
+<!-- UserDTO 빈 정의 -->
+<!-- 
+UserDTO는 사용자 정보를 담는 객체입니다.
+DTO(Data Transfer Object)는 데이터를 전달하기 위한 객체로, 사용자 정보(아이디, 이름, 비밀번호 등)를 담고 있습니다.
+이 빈은 서비스 클래스에서 사용자 데이터를 주고받을 때 사용됩니다.
+-->
+<bean id="userDTO" class="user.bean.UserDTO" />
 
-    <!-- JdbcTemplate 빈 정의 -->
-    <!-- Spring의 JdbcTemplate을 사용하여 SQL 실행을 간편하게 처리할 수 있는 템플릿 클래스입니다. -->
-    <!-- 생성자를 통해 dataSource를 주입받습니다. -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
-        <constructor-arg ref="dataSource" />
-    </bean>
+<!-- UserDAOImpl 빈 정의 -->
+<!-- 
+UserDAO 인터페이스의 구현체인 UserDAOImpl 클래스를 빈으로 등록합니다.
+데이터베이스와 상호작용할 때, Spring의 JdbcTemplate 또는 DataSource를 사용합니다.
+현재는 DataSource를 직접 주입받아 DB와의 연결을 처리하고 있습니다.
+-->
+<bean id="userDAOImpl" class="user.dao.impl.UserDAOImpl">
+    <!-- 
+    JdbcTemplate 대신 DataSource를 직접 사용하여 SQL 쿼리를 실행할 때 DB 연결을 처리합니다.
+    DataSource는 데이터베이스 연결을 관리하는 기본 객체입니다.
+    -->
+    <property name="dataSource" ref="dataSource" />
+</bean>
+
+<!-- JdbcTemplate을 사용한 SQL 실행을 처리하는 템플릿 클래스는 주석 처리되었습니다. 
+JdbcTemplate은 스프링에서 SQL 실행을 간편하게 처리할 수 있도록 도와주는 클래스입니다. 
+JdbcTemplate을 사용하면, 반복되는 코드(예: DB 연결, Statement 생성, 자원 해제 등)를 줄일 수 있습니다. 
+여기서는 DataSource를 직접 주입받아 사용하고 있습니다.
+-->
+<!-- 
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+    <constructor-arg ref="dataSource" />
+</bean> 
+-->
 	
 	
 </beans>

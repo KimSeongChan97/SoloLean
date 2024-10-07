@@ -1,0 +1,16 @@
+package spring.conf;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SpringConfiguration {
+	
+	public BasicDataSource dataSource(){
+		BasicDataSource basicDataSource = new BasicDataSource();
+		
+		
+		
+		return basicDataSource;
+	}
+	
+}
