@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="SpringProject"/>
 <aop-project name="Chapter03_ANNO"/>
 <aop-project name="Chapter02_ANNO"/>
 <aop-project name="Chapter02_XML"/>
@@ -8,4 +9,5 @@
 <aop-project name="Chapter04_XML"/>
 <aop-project name="Chapter06"/>
 <aop-project name="Chapter04_ANNO"/>
+<aop-project name="Chapter06_1"/>
 </aop-reference-model>

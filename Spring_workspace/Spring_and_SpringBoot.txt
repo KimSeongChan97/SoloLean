@@ -481,6 +481,32 @@ DispatcherServlet.java
 	요청(HandlerMapping)
 HelloController.java
 
+==============================================
+SpringProject
+(Spring Framework + MyBatis(MySQL) + JSP)
+	서버		백	  프론트
+
+http://localhost:8080/SpringProject/
+	
+SpringProject
+oject
+src/main/java
+	com.controller.SpringProject
+		MainController.java
+URL 변경
+http://localhost:8080/SpringProject/
+->
+http://localhost:8080/spring/
+ 
+src/main/webapp
+	WEB-INF
+		css
+			user.css
+
+	
+
+
+
 
 
 

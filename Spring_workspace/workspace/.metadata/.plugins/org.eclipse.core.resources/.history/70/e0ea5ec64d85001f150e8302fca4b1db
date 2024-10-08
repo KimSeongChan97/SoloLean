@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+/* 전체 페이지 어두운 배경 */
+body {
+    background-color: #0d0d0d; /* 깊은 어둠의 배경 */
+    color: #f2f2f2; /* 기본 텍스트는 밝은 색상 */
+    font-family: 'Orbitron', sans-serif; /* 미래적인 폰트 적용 */
+}
+
+/* Form 전체 래퍼 */
+#Formwrap {
+    width: 350px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 2px solid #0affff; /* 네온 테두리 */
+    border-radius: 10px;
+    background-color: rgba(13, 13, 13, 0.85); /* 어두운 투명 배경 */
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; /* 형광 네온 그림자 */
+}
+
+/* 공통적인 margin 설정 */
+div {
+    margin-bottom: 20px;
+}
+
+/* 텍스트 및 입력 필드 라벨 스타일 */
+div label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ff00ff; /* 사이버펑크 스타일의 핑크 */
+}
+
+/* 입력 필드 및 버튼 스타일 */
+input[type="text"], input[type="password"], input[type="submit"], input[type="reset"] {
+    width: 100%; /* 전체 너비 사용 */
+    padding: 10px;
+    border: 1px solid #0affff; /* 형광 테두리 */
+    border-radius: 5px;
+    background-color: #1a1a1a; /* 어두운 배경 */
+    color: #f2f2f2;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    box-shadow: 0 0 10px #0affff, 0 0 20px #00ffff; /* 네온 효과 */
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+input[type="text"]:hover, input[type="password"]:hover {
+    box-shadow: 0 0 15px #0affff, 0 0 30px #00ffff;
+    background-color: #2a2a2a; /* 약간 더 밝아지는 효과 */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #ff00ff; /* 핑크 포커스 테두리 */
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; /* 포커스 시 네온 효과 */
+    outline: none;
+}
+
+/* 버튼 스타일 */
+input[type="submit"], input[type="reset"] {
+    background-color: #0affff; /* 형광색 배경 */
+    color: #000;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #ff00ff; /* 핑크로 변화 */
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff; /* 네온 효과 강조 */
+}
+
+/* 개별 항목 스타일 (이름, 아이디, 비밀번호) */
+#idwrap, #namewrap, #pwdwrap {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #f2f2f2;
+    text-transform: uppercase;
+}
+
+/* 각 필드에 적절한 간격 추가 */
+#btnwrap, #resetwrap {
+    margin-top: 20px;
+}
+
+#namewrap div, #idwrap div, #pwdwrap div {
+    color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* 입력 필드 높이 조절 */
+input[type="text"], input[type="password"] {
+    height: 40px;
+}
+
+/* 전반적인 버튼 스타일 */
+button {
+    background: #0affff; /* 네온 블루 */
+    border: none;
+    color: black;
+    font-family: 'Orbitron', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0affff, 0 0 20px #00ffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff00ff; /* 네온 핑크로 변경 */
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+    color: #fff;
+}

@@ -1,0 +1,15 @@
+$(function(){
+	// 아이디 중복 체크
+	$('#id').focusout(function(){
+		$('#idDiv').empty();
+		
+		if($('#id').val() == '') 
+			$('#idDiv').html('먼저 아이디 입력');
+		else
+			$.ajax();
+
+
+
+		});
+	
+});
