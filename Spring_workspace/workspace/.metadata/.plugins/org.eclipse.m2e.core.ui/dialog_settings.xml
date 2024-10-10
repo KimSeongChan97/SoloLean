@@ -86,11 +86,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="SpringProject"/>
 			<item value="Chapter05_ANNO"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SpringProject"/>
 			<item value="Chapter05_ANNO"/>
 		</list>
 		<list key="projectNameTemplate">

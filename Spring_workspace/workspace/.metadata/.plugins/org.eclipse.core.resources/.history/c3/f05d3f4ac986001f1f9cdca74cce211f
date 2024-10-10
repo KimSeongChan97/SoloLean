@@ -1,0 +1,62 @@
+$(function(){
+   // 아이디 중복 체크
+   $('#id').focusout(function(){
+      $('#idDiv').empty(); // 기존 메시지 삭제
+      
+      if($('#id').val() == '') {
+         $('#idDiv').html('먼저 아이디를 입력하세요');
+         $('#idDiv').removeClass('success').addClass('error show'); // 오류 스타일 적용
+      }
+      else {
+         $.ajax({
+            type: 'post',
+            url: '/spring/user/getExistId', // 서버에서 아이디 중복 확인
+            data: 'id=' + $('#id').val(),
+            dataType: 'text',
+            success: function(data){
+               if(data == 'exist') {
+                  $('#idDiv').html('존재하는 아이디 입니다.');
+                  $('#idDiv').removeClass('success').addClass('error show'); // 중복된 아이디일 때 오류 스타일
+               } else {
+                  $('#idDiv').html('사용 가능한 아이디 입니다.');
+                  $('#idDiv').removeClass('error').addClass('success show'); // 중복되지 않은 경우 성공 스타일
+               }
+            },
+            error: function(e){
+               console.log(e);    
+            }
+         });   
+      }
+   });
+
+
+  // 등록
+  $('#writeBtn').click(function(){
+      $('#nameDiv').empty();
+      $('#idDiv').empty();
+      $('#pwdDiv').empty();
+
+      if($('#name').val() == '')
+         $('#nameDiv').html('이름을 입력하세요');
+      else if($('#id').val() == '')
+         $('#idDiv').html('아이디를 입력하세요');
+      else if($('#pwd').val() == '')
+         $('#pwdDiv').html('비밀번호를 입력하세요');
+      else
+      $.ajax({
+         type: 'post',
+         url: '/spring/user/write', 
+         data: $('#userWriteForm').serialize(),
+         success: function(){
+            alert('회원가입 완료');
+            //location.href = '/spring/user/list';
+         },
+         error: function(e){
+            console.log(e);    
+         }
+      });
+
+  });
+  
+  
+});

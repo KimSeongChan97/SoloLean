@@ -489,10 +489,25 @@ SpringProject
 http://localhost:8080/SpringProject/
 	
 SpringProject
-oject
+Project:
 src/main/java
 	com.controller.SpringProject
 		MainController.java
+src/main/java
+	user.controller
+		UserController
+	user.service
+		UserService.java (Interface)
+	user.service.impl
+		UserServiceImpl.java	
+	user.dao
+
+	user.bean
+		UserDTO.java
+		UserPaging.java	
+
+	
+
 URL 변경
 http://localhost:8080/SpringProject/
 ->
@@ -502,6 +517,9 @@ src/main/webapp
 	WEB-INF
 		css
 			user.css
+
+
+getExistId
 
 	
 

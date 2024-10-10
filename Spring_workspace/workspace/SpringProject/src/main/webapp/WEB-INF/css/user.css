@@ -1,214 +1,53 @@
-@charset "UTF-8";
+@charset "UTF-8"; /* UTF-8 문자 인코딩 설정 */
 
-/* 전체적인 초기화 및 박스 모델 설정 */
+/* 전체적인 초기화 및 기본 설정 */
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Orbitron';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
 }
 
-/* 배경 및 폰트 설정 */
-html, body {
-    font-family: 'Orbitron';
-    width: 100%;
-    height: 100%;
-    background-color: #080808; /* 훨씬 더 어두운 배경 */
-    color: #f2f2f2; /* 기본 텍스트는 밝은 색 */
+/* 본문 스타일 */
+body {
+    font-family: 'Arial', sans-serif; /* 기본 폰트 */
+    background-color: #f5f7fa; /* 밝은 회색 배경 */
+    padding: 20px;
 }
 
-/* 전체 레이아웃 */
+/* 회원가입 폼의 기본 컨테이너 */
 #write-jsp {
-	display: flex;
-	justify-content: space-around;
-    width: 100%;
-    height: 100vh;
-    color: #0affff; /* 네온 블루 텍스트 */
+    display: flex; /* 플렉스 박스를 사용하여 좌우로 나누어진 레이아웃 */
+    background-color: #fff; /* 흰색 배경 */
+    border-radius: 10px; /* 모서리를 둥글게 처리 */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    overflow: hidden; /* 내용이 넘치지 않도록 처리 */
 }
 
-/* 왼쪽 사이드바 */
+/* 좌측 프로필 영역 */
 #left {
-	width: 25%;
-	height: 100vh;
-	border: 2px solid #0affff; /* 네온 블루 테두리 */
-	box-shadow: 0 0 20px rgba(0, 170, 255, 0.7); /* 네온 블루 그림자 */
-	background-color: rgba(13, 13, 13, 0.95); /* 어두운 투명 배경 */
+    background-color: #007bff; /* 파란색 배경 */
+    padding: 40px; /* 내부 여백 */
+    color: white; /* 흰색 텍스트 */
+    width: 300px; /* 좌측 너비 설정 */
+    text-align: center; /* 중앙 정렬 */
 }
 
-/* 오른쪽 메인 컨텐츠 */
-#right {
-	width: 60%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+/* 프로필 이미지 스타일 */
+#profile img {
+    border-radius: 50%; /* 이미지를 원형으로 처리 */
+    margin-bottom: 20px; /* 이미지 하단 여백 */
 }
 
-/** <div id="left"> */
-#header {
-	margin: 30px 20px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-}
-
-#header a {
-    display: flex;       
-    align-items: center; 
-    text-decoration: none;
-    color: #ff00ff; /* 네온 핑크 */
-    font-size: 22px;
-    font-weight: bold;
-    gap: 10px;
-}
-
-/* 프로필 섹션 */
-#profile {
-	margin: 100px auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-}
-
-#profile #profile-name {
-	font-weight: bold;
-	font-size: 26px;
-	color: #0affff; /* 네온 블루 */
-}
-
-#profile  #profile-email {
-	color: #666;
-	font-style: italic;
-}
-
-/* 링크 섹션 */
-#links {
-	border-top: 1px solid #ddd;
-    margin: 20px;
-    font-size: 14px;
-    color: #ff00ff; /* 네온 핑크 */
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 30px 0;
-}
-
+/* 회원가입 폼 링크 스타일 */
 #links a {
-    color: #ff00ff;
-    text-decoration: none;
-    margin: 0 5px;
-    transition: color 0.3s ease;
+    color: white; /* 흰색 텍스트 */
+    text-decoration: none; /* 밑줄 제거 */
+    display: block; /* 블록 요소로 변환 */
+    margin-top: 10px; /* 위쪽 여백 */
 }
 
-#links a:hover {
-    color: #0affff; /* 네온 블루로 변경 */
-    text-decoration: underline;
-}
-
-/** <div id="right"> */
-#container {
-    width: 80%;
-    border: 2px solid #0affff; /* 네온 블루 테두리 */
-    border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 170, 255, 0.8); /* 네온 블루 그림자 */
-    background-color: rgba(13, 13, 13, 0.9); /* 어두운 투명 배경 */
-    padding: 20px;
-}
-
-#container #edit-header {
-	border-radius: 30px 30px 0 0;
-	background: #ff00ff; /* 네온 핑크 배경 */
-	color: white;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 28px;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-/* 폼과 테이블 스타일 */
-form {
-	margin: 0 20px;
-}
-
-table {
-	width: 100%;
-    margin: 40px auto;
-    border-collapse: collapse;
-    text-align: center;
-    color: #f2f2f2;
-}
-
-th, td {
-    border-bottom: 1px solid #ddd;
-    padding: 20px;
-    height: 80px; /* 세로 길이를 더 크게 */
-    vertical-align: middle;
-    background-color: #1a1a1a; /* 어두운 배경 */
-}
-
-td[colspan="2"] {
-    border-bottom: none; /* 하단 테두리 제거 */
-    height: 100px;
-}
-
-.label {
-    width: 30%;
-}
-
-.input {
-    width: 70%;
-    text-align: left;
-}
-
-/* 입력 필드 */
-input[type="text"], input[type="password"] {
-    width: 300px;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #0affff; /* 네온 블루 테두리 */
-    background-color: #1a1a1a;
-    color: #f2f2f2;
-    text-align: center;
-    box-shadow: 0 0 20px #0affff, 0 0 30px #00ffff; /* 네온 블루 효과 */
-}
-
-input[type="text"]:hover, input[type="password"]:hover {
-    box-shadow: 0 0 25px #ff00ff, 0 0 40px #ff00ff; /* 네온 핑크 효과로 변경 */
-    background-color: #2a2a2a; /* 조금 더 밝아짐 */
-}
-
-/* 버튼 스타일 */
-button {
-    width: 180px;
-    height: 50px;
-    padding: 10px;
-    background: #0affff; /* 네온 블루 */
-    border: 2px solid #0affff;
-    color: #000;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 25px #0affff, 0 0 40px #00ffff;
-}
-
-button:hover {
-    background-color: #ff00ff; /* 네온 핑크로 변경 */
-    box-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff;
-    color: #fff;
-}
-
-#nameDiv, #idDiv, #pwdDiv{
-   display: none;
-   padding: 5px 0 0 3px;
-   color: red;
-   font-size: 10pt;
+/* 우측 입력 폼 영역 */
+#right {
+    padding: 40px; /* 내부 여백 */
+    width: 500px; /* 우측 너비 설정 */
 }
