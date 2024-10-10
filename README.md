@@ -15,10 +15,12 @@
 - React(Node.js) 학습 진행예정
 
 Project
-1.
-2.
-3.
-4.
+1. https://github.com/KimSeongChan97/TeamProject.git
+2. https://github.com/KimSeongChan97/SoloPageMakingProject01.git
+3. https://github.com/KimSeongChan97/SoloProject01.git
+4. https://github.com/bitcamp-aiaas-9/FilmNote.git
+   [ 정리 ] : [FilmNote Folder](https://github.com/KimSeongChan97/SoloLean/tree/main/SoloLean/Web_workspace/workspace/FilmNote)
+5. Spring Framework 를 활용한 TeamProject 예정   
 
 
 
