@@ -21,6 +21,12 @@ semi project
 2. Sprginf Boot + MyBatis(MySQL) + HTML(ThymeLeaf)
 3. Sprginf Boot + MyBatis(MySQL) + JSP(jQuery)
 
+    택 1 
+Spring Framework 를 활용한 프로젝트
+DB : MyBatis ( MySQL ) 연동
+NCP ->> JSP (반응형 부트스트랩/머테리얼) 
+=> 모바일에서도 확인 가능하게 !!
+
 ==============================================
 Final project
 
@@ -35,7 +41,8 @@ Project
 3. https://github.com/KimSeongChan97/SoloProject01.git
 4. https://github.com/bitcamp-aiaas-9/FilmNote.git
    [ 정리 ] : [FilmNote Folder](https://github.com/KimSeongChan97/SoloLean/tree/main/SoloLean/Web_workspace/workspace/FilmNote)
-5. Spring Framework 를 활용한 TeamProject 예정   
+5. Spring Framework 를 활용한 TeamProject 예정
+6. Spring Boot + JPA + React 
 
 
 
