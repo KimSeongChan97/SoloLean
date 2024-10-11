@@ -66,4 +66,6 @@
         DELETE FROM usertable WHERE id = #{id}
         <!-- 해당 사용자 id를 기준으로 usertable에서 해당 사용자 레코드를 삭제합니다. -->
     </delete>
+    
+    
 </mapper>

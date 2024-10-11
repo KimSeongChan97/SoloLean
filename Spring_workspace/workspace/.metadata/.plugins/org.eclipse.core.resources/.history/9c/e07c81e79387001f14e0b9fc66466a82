@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일 업로드 페이지</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/uploadForm.css">
+</head>
+<body>
+<a href="/spring/"><i class="fa-solid fa-house"></i> HOME</a>
+<br/>
+
+<form method="post" enctype="multipart/form-data" action="/spring/user/upload">
+	<table border="1">
+		<tr>
+			<th>상품명</th>
+			<td>
+				<i class="fa-solid fa-pen-to-square"></i><input type="text" name="imageName" size="35" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea name="imageContent" rows="10" cols="50"></textarea>
+				<i class="fa-brands fa-google"></i>
+			</td>
+			
+		</tr>
+		
+		<tr>
+			<td colspan="2"><i class="fa-solid fa-image"></i>
+				<input type="file" name="img">
+			</td>
+		</tr>
+		<!-- 다중 업로드할 때는 name 속성의 이름이 같아야 한다. -->
+		<tr>
+			<td colspan="2">
+				<input type="file" name="img">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="이미지 업로드" />  <i class="fa-solid fa-arrow-up"></i>
+				<input type="reset" value="취소" />  <i class="fa-solid fa-xmark"></i>
+			</td>
+		</tr>			
+	</table>
+</form>
+
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</body>
+</html>

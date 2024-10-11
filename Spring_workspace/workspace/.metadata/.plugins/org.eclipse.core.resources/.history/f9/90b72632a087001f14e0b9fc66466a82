@@ -1,0 +1,5 @@
+$(function(){
+	$('#uploadAJaxBtn').click(function(){
+		
+	});
+});

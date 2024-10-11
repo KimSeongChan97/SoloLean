@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import user.bean.UserDTO;
 import user.bean.UserPaging;
+import user.bean.UserUploadDTO;
 import user.dao.UserDAO;
 import user.service.UserService;
 
@@ -138,5 +139,6 @@ public class UserServiceImpl implements UserService {
     	userDAO.delete(id);
     	// DAO를 통해 해당 ID의 사용자를 DB에서 삭제합니다.
     }
+    
     
 }

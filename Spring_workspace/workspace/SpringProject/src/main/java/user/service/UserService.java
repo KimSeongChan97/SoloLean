@@ -3,6 +3,7 @@ package user.service;
 import java.util.Map;
 
 import user.bean.UserDTO;
+import user.bean.UserUploadDTO;
 
 public interface UserService {
     
@@ -20,7 +21,7 @@ public interface UserService {
     
     public UserDTO getExistPwd(String id); // 회원정보삭제 전에 비밀번호확인
 
-	public void delete(String id);
+	public void delete(String id); // 회원정보 삭제
+
 	
-    
 }
