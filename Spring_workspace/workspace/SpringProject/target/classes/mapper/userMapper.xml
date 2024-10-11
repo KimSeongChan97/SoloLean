@@ -53,7 +53,12 @@
         UPDATE usertable SET name = #{name}, pwd = #{pwd} WHERE id = #{id}
         <!-- 사용자 id에 해당하는 레코드를 찾아 사용자의 이름과 비밀번호를 수정합니다. -->
     </update>
-
+	
+	<!-- 삭제VER2 -->
+	<select id="getExistPwd" parameterType="String" resultType="user">
+		select * from usertable where id = #{id}
+	</select>
+	
     <!-- 사용자 정보 삭제 -->
     <!-- 특정 id에 해당하는 사용자의 정보를 삭제하는 DELETE 쿼리 -->
     <!-- #{id}는 삭제할 사용자의 id를 의미합니다. -->

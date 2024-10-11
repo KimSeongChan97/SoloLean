@@ -34,6 +34,7 @@
 		</dependency>
 		
 		<!-- ****************** -->
+		
       <!-- JDBC -->
       <dependency>
           <groupId>org.springframework</groupId>
@@ -74,20 +75,39 @@
           <artifactId>mybatis-spring</artifactId>
           <version>2.1.2</version>
       </dependency>
-      
-      <!-- lombok -->
+      <!-- JSTL -->
+      <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency> 
+      <!-- JSON -->  
+	<dependency>
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+	    <classifier>jdk15</classifier>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>2.17.2</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.17.2</version>
+	</dependency>
+     <!-- lombok -->
       <dependency>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok</artifactId>
           <version>1.18.30</version>
           <scope>provided</scope>
       </dependency>
-      <!-- JSTL -->
-      <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>         
+        
       <!-- ****************** -->
       
 		<!-- AspectJ -->

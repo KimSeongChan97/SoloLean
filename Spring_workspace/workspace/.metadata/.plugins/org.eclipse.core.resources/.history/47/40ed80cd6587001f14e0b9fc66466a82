@@ -1,0 +1,93 @@
+@charset "UTF-8"; /* UTF-8 문자 인코딩을 사용합니다. */
+
+/* 전체적인 기본 설정 초기화 */
+* {
+    margin: 0; /* 모든 요소의 기본 여백을 제거 */
+    padding: 0; /* 모든 요소의 기본 패딩을 제거 */
+    box-sizing: border-box; /* 요소의 크기를 계산할 때 패딩과 보더를 포함시킴 */
+}
+
+/* 본문 스타일 */
+body {
+    font-family: 'Arial', sans-serif; /* Arial 폰트 사용 */
+    background-color: #f5f7fa; /* 부드러운 회색 배경 */
+    display: flex; /* 플렉스 박스를 사용하여 내부 요소들을 배치 */
+    justify-content: center; /* 화면 중앙에 배치 */
+    align-items: center; /* 수직 중앙에 배치 */
+    height: 100vh; /* 전체 화면의 높이를 채우도록 설정 */
+    /* 본문에서 로그인 창이 중앙에 위치하도록 설정 */
+}
+
+/* 로그인 컨테이너 스타일 */
+#login-container {
+    background-color: #fff; /* 흰색 배경 */
+    border-radius: 10px; /* 모서리를 둥글게 설정 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    padding: 40px; /* 내부 여백 */
+    width: 400px; /* 로그인 창 너비 */
+    text-align: center; /* 텍스트를 중앙 정렬 */
+}
+
+/* 제목 스타일 */
+h2 {
+    font-size: 24px; /* 글자 크기를 24px로 설정 */
+    margin-bottom: 20px; /* 하단 여백 */
+    color: #333; /* 어두운 색상 */
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 100%; /* 입력 필드의 너비를 100%로 설정 */
+    padding: 15px; /* 내부 여백 */
+    margin: 10px 0; /* 상하 여백 */
+    border: 1px solid #ccc; /* 회색 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #fff; /* 흰색 배경 */
+    font-size: 16px; /* 글자 크기 */
+    color: #333; /* 어두운 텍스트 */
+}
+
+/* 입력 필드 포커스 스타일 */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+    outline: none; /* 기본 아웃라인 제거 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 파란색 그림자 */
+}
+
+/* 로그인 버튼 스타일 */
+button {
+    width: 100%; /* 버튼 너비 */
+    padding: 15px; /* 내부 여백 */
+    background-color: #007bff; /* 파란색 배경 */
+    border: none; /* 테두리 제거 */
+    color: white; /* 흰색 텍스트 */
+    font-size: 16px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵게 */
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer; /* 커서를 포인터로 변경 */
+    transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+}
+
+/* 로그인 버튼 마우스 오버 스타일 */
+button:hover {
+    background-color: #0056b3; /* 마우스 오버 시 배경색 변경 */
+}
+
+/* 하단 링크 스타일 */
+#login-links {
+    margin-top: 20px; /* 상단 여백 */
+    font-size: 14px; /* 글자 크기 */
+    color: #555; /* 회색 텍스트 */
+}
+
+/* 하단 링크의 스타일 */
+#login-links a {
+    color: #007bff; /* 파란색 텍스트 */
+    text-decoration: none; /* 밑줄 제거 */
+    margin: 0 5px; /* 좌우 간격 */
+}
+
+/* 하단 링크 마우스 오버 스타일 */
+#login-links a:hover {
+    text-decoration: underline; /* 마우스 오버 시 밑줄 추가 */
+}

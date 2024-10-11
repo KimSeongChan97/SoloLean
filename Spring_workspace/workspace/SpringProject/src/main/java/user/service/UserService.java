@@ -18,5 +18,9 @@ public interface UserService {
 
     public UserDTO login(String id, String pwd); // 로그인 처리
     
-    public void delete(String id); // 사용자 삭제
+    public UserDTO getExistPwd(String id); // 회원정보삭제 전에 비밀번호확인
+
+	public void delete(String id);
+	
+    
 }

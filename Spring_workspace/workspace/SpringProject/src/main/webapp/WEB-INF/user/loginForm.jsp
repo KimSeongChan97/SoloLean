@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <!-- 로그인 폼을 위한 CSS 파일을 불러옵니다. ${pageContext.request.contextPath}는 애플리케이션의 기본 경로를 동적으로 불러옵니다. -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/loginForm.css">
 </head>
@@ -33,5 +34,6 @@
             <a href="">비밀번호 찾기(미구현)</a>
         </div>
     </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

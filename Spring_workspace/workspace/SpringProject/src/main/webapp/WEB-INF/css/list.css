@@ -1,51 +1,129 @@
-@charset "UTF-8"; /* UTF-8 문자 인코딩 설정 */
+@charset "UTF-8";
+/* 부트스트랩 기본 설정 포함 */
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css');
 
-/* 전체적인 초기화 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
-/* 본문 스타일 */
-body {
-    font-family: 'Arial', sans-serif; /* Arial 폰트 사용 */
-    background-color: #f5f7fa; /* 부드러운 회색 배경 */
-    margin: 0;
-    padding: 20px;
+/* 헤더 스타일 */
+#header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#header a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+#header a:hover {
+    color: #0056b3;
 }
 
 /* 테이블 스타일 */
 table {
-    width: 80%; /* 테이블 너비 80% */
-    border-collapse: collapse; /* 테두리 겹침 제거 */
-    margin: 20px auto; /* 중앙 정렬 및 상하 여백 */
-    background-color: #fff; /* 테이블 배경 흰색 */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 테이블 그림자 */
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-collapse: collapse; /* 테이블 테두리 간격 제거 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* 테이블 헤더 및 셀 스타일 */
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
 th, td {
-    padding: 12px; /* 셀 내부 여백 */
-    text-align: center; /* 중앙 정렬 */
-    border: 1px solid #ddd; /* 회색 테두리 */
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #dee2e6;
 }
 
 th {
-    background-color: #4CAF50; /* 헤더 배경색 녹색 */
-    color: white; /* 헤더 텍스트 색상 흰색 */
-    font-weight: bold; /* 텍스트 굵게 */
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* 짝수 행 배경색 */
+    background-color: #f8f9fa;
 }
 
 tr:hover {
-    background-color: #f1f1f1; /* 마우스 오버 시 배경색 */
+    background-color: #e2e6ea;
 }
 
-td {
-    font-size: 16px;
-    color: #333; /* 기본 텍스트 색상 */
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* 페이징 처리 스타일 */
+#pagingDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#paging {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#paging:hover {
+    background-color: #e9ecef;
+}
+
+#currentPaging {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#noContent {
+    color: #6c757d;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    display: inline-block;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #header a {
+        font-size: 20px;
+    }
+
+    #paging, #currentPaging, #noContent {
+        font-size: 14px;
+        padding: 0.4rem 0.6rem;
+    }
 }

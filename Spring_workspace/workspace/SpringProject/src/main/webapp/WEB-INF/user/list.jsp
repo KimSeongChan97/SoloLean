@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>리스트</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 <!-- list.css 파일을 외부에서 가져와 페이지의 스타일을 지정합니다 -->
 <link rel="stylesheet" 
     href="${pageContext.request.contextPath}/css/list.css">
@@ -70,5 +71,6 @@
         location.href='/spring/user/list?pg=' + pg;
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

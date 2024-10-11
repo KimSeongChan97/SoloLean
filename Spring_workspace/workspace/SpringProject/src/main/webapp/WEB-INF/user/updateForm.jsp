@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 <!-- updateForm.css 파일을 불러와 회원정보 수정 폼의 스타일을 적용합니다 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/updateForm.css">
 <!-- Font Awesome 아이콘 라이브러리를 사용하여 페이지에 아이콘을 추가합니다 -->
@@ -74,7 +75,11 @@
                                 <!-- '정보수정' 버튼입니다. 클릭 시 자바스크립트의 update.js 파일에서 처리됩니다. -->
                                 <button type="button" id="updateBtn">정보수정</button>
                                 <!-- '회원탈퇴' 버튼입니다. 클릭 시 회원 탈퇴 기능이 수행되도록 설정되어 있습니다. -->
-                                <button type="button" id="deleteBtn">회원탈퇴</button>
+                                <button type="button"
+								    onclick="location.href='/spring/user/deleteForm?id=${userDTO.id}&pg=${pg}'">
+								    회원탈퇴
+								</button>
+
                                 <!-- '초기화' 버튼입니다. 클릭 시 입력된 내용을 초기화합니다. -->
                                 <button type="reset">초기화</button>
                             </td>
@@ -84,10 +89,11 @@
             </div>
         </div>
     </div>
-
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery 라이브러리를 불러옵니다. 주로 Ajax 요청과 DOM 조작을 위해 사용됩니다. -->
     <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- 사용자 정보 수정을 처리하기 위한 자바스크립트 파일을 불러옵니다. 'update.js'는 정보 수정과 탈퇴와 같은 기능을 처리합니다. -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/update.js"></script>
+    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/delete.js"></script> --%>
 </body>
 </html>

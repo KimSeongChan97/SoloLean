@@ -21,6 +21,9 @@ public interface UserDAO {
     public UserDTO getUser(String id); // ID로 사용자 정보 조회
     
     public void update(Map<String, String> map); // 사용자 정보 수정
+
+	public UserDTO getExistPwd(String id);
     
-    public void delete(String id); // 사용자 삭제
+	public void delete(String id);
+    
 }

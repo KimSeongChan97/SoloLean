@@ -1,0 +1,104 @@
+package user.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import user.bean.UserDTO;
+import user.service.UserService;
+
+@Controller
+@RequestMapping(value="user") // "/user"로 시작하는 모든 요청을 이 컨트롤러에서 처리하도록 매핑합니다.
+public class UserController {
+    
+    @Autowired // 의존성 주입을 통해 UserService를 자동으로 주입받습니다.
+    private UserService userService; // 서비스 계층과 연결되는 객체
+    
+    @RequestMapping(value="/writeForm", method = RequestMethod.GET)
+    public String writeForm() {
+        return "/user/writeForm"; // 회원가입 폼을 반환. JSP 파일 경로로 연결됨
+    }
+    
+    @RequestMapping(value="/getExistId", method = RequestMethod.POST)
+    @ResponseBody // JSON 또는 단순 문자열을 반환할 때 사용
+    public String getExistId(String id) {
+        // 서비스로 아이디 중복 체크 요청
+        return userService.getExistId(id);
+    }
+
+    @RequestMapping(value="/write", method = RequestMethod.POST)
+    @ResponseBody
+    public void write(@ModelAttribute UserDTO userDTO) {
+        // 회원 정보를 받아 서비스로 전달하여 DB에 저장
+        userService.write(userDTO);
+    }
+
+    @RequestMapping(value="/list", method = RequestMethod.GET)
+    public String list(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+        // 리스트 페이지 요청 시, pg 값이 없으면 기본으로 1페이지를 불러옴
+        Map<String, Object> map2 = userService.list(pg); // 서비스에서 데이터 조회
+        map2.put("pg", pg); // 현재 페이지 정보 추가
+        model.addAttribute("map2", map2); // 모델에 map2를 추가하여 뷰에 데이터 전달
+        return "/user/list"; // user/list.jsp 파일로 이동
+    }
+
+    @RequestMapping(value="/updateForm", method = RequestMethod.GET)
+    public String updateForm(@RequestParam("id") String id, @RequestParam("pg") int pg, Model model) {
+        // 수정할 사용자 정보를 가져와 뷰로 전달
+        UserDTO userDTO = userService.getUser(id);
+        model.addAttribute("userDTO", userDTO); // 수정할 유저 정보 전달
+        model.addAttribute("pg", pg); // 현재 페이지 정보 전달
+        return "/user/updateForm"; // user/updateForm.jsp 파일로 이동
+    }
+
+    @RequestMapping(value="/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute UserDTO userDTO) {
+        // 서비스로 수정된 회원 정보 전달
+        userService.update(userDTO);
+        return "/user/list"; // 업데이트 후 리스트 페이지로 이동
+    }
+    
+    @RequestMapping(value="/loginForm", method = RequestMethod.GET)
+    public String loginForm() {
+        return "/user/loginForm"; // 로그인 폼으로 이동
+    }
+    
+    @RequestMapping(value="/login", method = RequestMethod.POST)
+    public String login(String id, String pwd, HttpSession session) {
+        // 로그인 요청을 처리. 세션에 로그인 정보 저장
+        UserDTO userDTO = userService.login(id, pwd); // 로그인 검증
+        
+        if (userDTO != null) {
+            session.setAttribute("loginUser", userDTO); // 로그인 성공 시 세션에 유저 정보 저장
+            return "redirect:/"; // 메인 페이지로 리다이렉트
+        } else {
+            return "redirect:/user/loginForm?error=true"; // 로그인 실패 시 로그인 폼으로 다시 이동
+        }
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        // 로그아웃 처리. 세션 무효화
+        session.invalidate(); // 세션을 무효화하여 로그아웃 처리
+        return "redirect:/"; // 메인 페이지로 리다이렉트
+    }
+    
+    @RequestMapping(value="/deleteForm", method = RequestMethod.GET)
+    public String deleteForm(@RequestParam String id) {
+    	ModelAndView mav = new ModelAndView();
+    	mav.addObject("id", id);
+    	mav.setViewName("/user/deleteForm");
+    	
+    	return "/user/deleteForm";// 회원정보 삭제 폼으로 이동
+    }
+}
