@@ -14,6 +14,21 @@
 - 리눅스 겉핥기
 - React(Node.js) 학습 진행예정
 
+==============================================
+semi project
+
+1. Spring Framework + MyBatis(MySQL) + JSP(jQuery)
+2. Sprginf Boot + MyBatis(MySQL) + HTML(ThymeLeaf)
+3. Sprginf Boot + MyBatis(MySQL) + JSP(jQuery)
+
+==============================================
+Final project
+
+1. Sprginf Boot + JPA + React
+
+
+==============================================
+
 Project
 1. https://github.com/KimSeongChan97/TeamProject.git
 2. https://github.com/KimSeongChan97/SoloPageMakingProject01.git
