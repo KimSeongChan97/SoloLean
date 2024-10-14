@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user.dao.UserUploadDAO">
+	
+	<!-- (List<UserUploadDTO> imageUploadList) -->
+<!-- SQL 문을 실행할 때, 넘어 오는 파라메터 타입이 List 일 경우
+	 forEach 태그의 collection 속성에 사용할 수 있는 이름은 list 또는 collection 이 가능하다.  -->
+<!-- MyBatis에서는 다수의 레코드를 한꺼번에 삽입할 때 forEach 태그를 사용하여 List 또는 Collection 타입의 데이터를 반복 처리할 수 있습니다.
+     여기서 collection="list"는 메서드에서 전달되는 매개변수 중 List 타입 데이터를 의미하며, 이를 반복해서 처리합니다.
+     item="dto"는 각 반복되는 항목을 UserUploadDTO 객체로 받아들이는 변수입니다. -->
+
+<insert id="upload">
+	<!-- insert into userUpload(seq, imageName, imageContent, ~~, ~~) values(~~) -->
+	<!-- 기본적으로 userUpload 테이블에 데이터를 삽입하는 SQL 문입니다.
+		 데이터베이스 테이블의 필드명과 매핑되는 UserUploadDTO의 필드명을 사용하여 삽입할 값을 지정합니다.
+		 seq 필드는 생략되어 있는데, 이는 아마도 자동 증가(AUTO_INCREMENT) 필드일 가능성이 큽니다. -->
+	insert into userUpload(imageName, imageContent, imageFileName, imageOriginalFileName)
+	<!-- 각 파일에 대한 이미지 이름, 내용, 파일명, 원본 파일명을 테이블에 삽입합니다. -->
+
+	values
+	<foreach collection="list" item="dto" separator=",">
+		<!-- forEach 태그는 컬렉션 타입인 'list'를 반복 처리합니다.
+			 각 반복에서 'dto'라는 이름의 UserUploadDTO 객체가 사용됩니다.
+			 separator=","는 각 삽입되는 값들 사이에 쉼표(,)를 넣어 여러 개의 레코드를 한번에 삽입할 수 있도록 합니다. -->
+		(#{dto.imageName}, #{dto.imageContent}, #{dto.imageFileName}, #{dto.imageOriginalFileName})
+		<!-- #{dto.imageName}과 같은 형식은 MyBatis에서 사용하는 표현법으로, DTO 객체에서 각 필드를 참조합니다.
+			 dto 객체는 forEach 반복문에서 각 항목으로 전달된 UserUploadDTO를 의미합니다.
+			 #{dto.imageName}은 매퍼 XML 파일에서 SQL에 파라미터 값을 바인딩할 때 사용되는 표현식으로, 해당 필드에 들어갈 값을 MyBatis가 자동으로 대체합니다.
+			 여기서는 각 파일의 정보를 테이블에 삽입하기 위해 DTO의 필드값(imageName, imageContent, imageFileName, imageOriginalFileName)을 바인딩하고 있습니다. -->
+	</foreach>
+</insert>
+
+<select id="uploadList" resultType="userUploadDTO">
+	
+</select>
+	
+</mapper>

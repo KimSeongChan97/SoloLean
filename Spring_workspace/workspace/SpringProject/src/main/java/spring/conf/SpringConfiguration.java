@@ -5,7 +5,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -33,6 +35,11 @@ public class SpringConfiguration {
     private @Value("${jdbc.url}") String url;  // jdbc.url 속성을 db.properties 파일에서 가져옴
     private @Value("${jdbc.username}") String username;  // jdbc.username 속성을 db.properties 파일에서 가져옴
     private @Value("${jdbc.password}") String password;  // jdbc.password 속성을 db.properties 파일에서 가져옴
+    
+    @Autowired
+    private ApplicationContext context; 
+    // ApplicationContext는 Spring 프레임워크에서 모든 빈을 관리하고 제공하는 핵심 인터페이스입니다.
+    // context는 Spring 설정 파일 또는 어노테이션을 통해 정의된 빈(bean) 객체를 관리하고 필요한 곳에 주입해주는 역할을 합니다.
 
     // DB와 연결하기 위한 DataSource를 설정합니다. 
     // BasicDataSource는 DBCP2(Connection Pooling)를 사용하여 DB 연결을 관리합니다. 커넥션 풀은 여러 DB 연결을 미리 만들어두고 필요할 때 재사용하는 방식으로 성능을 높입니다.
@@ -52,6 +59,9 @@ public class SpringConfiguration {
         basicDataSource.setPassword(password);  // db.properties에서 가져온 DB 비밀번호 설정
         // DB에 접속할 때 사용할 비밀번호를 설정합니다. 사용자 인증 과정에서 사용됩니다.
 
+        // 추가 설명: 커넥션 풀링은 동일한 DB에 대한 여러 연결을 미리 열어두고 필요한 때 사용하고, 사용이 끝나면 풀로 반환하여 재사용하는 방식으로
+        // 애플리케이션의 성능을 향상시킵니다. 특히 DB와의 연결은 비용이 많이 드는 작업이기 때문에 커넥션 풀링은 매우 유용합니다.
+
         return basicDataSource;  // 설정된 DataSource 객체 반환. 이 DataSource는 이후에 DB 연결에 사용됩니다.
         // 이 메서드는 Bean으로 등록된 DataSource 객체를 반환하여 Spring이 관리할 수 있도록 합니다.
     }
@@ -66,9 +76,47 @@ public class SpringConfiguration {
         // SqlSessionFactory는 설정된 DataSource를 기반으로 SQL 세션을 관리합니다.
         sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("spring/mybatis-config.xml"));  // MyBatis 설정 파일 위치 설정
         // MyBatis의 환경 설정 파일(mybatis-config.xml)을 지정합니다. 이 파일에서 매퍼 설정, 캐시 설정, 트랜잭션 설정 등을 관리할 수 있습니다.
-        sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("mapper/userMapper.xml"));  // MyBatis 매퍼 파일 설정. SQL 쿼리와 자바 객체를 매핑하는 데 사용됩니다.
+        //sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("mapper/userMapper.xml"));  // 1개의 매퍼파일, MyBatis 매퍼 파일 설정. SQL 쿼리와 자바 객체를 매핑하는 데 사용됩니다.
         // userMapper.xml 파일은 실제 SQL 쿼리문과 매핑된 자바 메서드를 정의한 파일입니다. 이 파일에서 각 SQL 문이 어떤 메서드와 매핑되는지 관리합니다.
-
+        
+        // 2개의 매퍼파일 연결
+//        sqlSessionFactoryBean.setMapperLocations(
+//        						new ClassPathResource("mapper/userMapper.xml"),
+//        						new ClassPathResource("mapper/userUploadMapper.xml"));
+        // 위의 코드에서는 두 개의 MyBatis 매퍼 파일(userMapper.xml, userUploadMapper.xml)을 설정하고 있습니다.
+        // MyBatis에서 매퍼 파일은 SQL 쿼리문과 자바 객체 간의 매핑을 정의하는 XML 파일입니다.
+        // 각 매퍼 파일은 특정 DAO(데이터 접근 객체) 또는 서비스와 연동되어, 해당 매퍼 파일에 정의된 SQL을 통해 데이터베이스 작업을 처리합니다.
+        // setMapperLocations 메서드를 통해 각각의 XML 파일 경로를 ClassPathResource로 지정하여, MyBatis가 이 파일들을 로드하고 처리할 수 있도록 설정합니다.
+        // 예를 들어, userMapper.xml은 User 관련된 DB 작업을 정의하고, userUploadMapper.xml은 파일 업로드 관련 작업을 처리할 수 있습니다.
+        
+        // 다수의 매퍼파일 연결
+        sqlSessionFactoryBean.setMapperLocations(
+        						context.getResources("classpath:mapper/*Mapper.xml"));
+        // 위의 코드에서는 다수의 MyBatis 매퍼 파일을 한꺼번에 설정하고 있습니다.
+        // context.getResources("classpath:mapper/*Mapper.xml")은 Spring의 ApplicationContext를 사용하여
+        // classpath 내의 "mapper" 디렉토리에서 "*Mapper.xml"로 끝나는 모든 매퍼 파일을 로드합니다.
+        // 즉, "mapper" 폴더 내에 있는 모든 매퍼 파일이 자동으로 등록됩니다.
+        // 이는 매퍼 파일이 여러 개일 때, 각각의 파일을 수동으로 지정할 필요 없이 일괄로 설정할 수 있게 해주어 개발의 편의성을 높입니다.
+        // 예를 들어, userMapper.xml, orderMapper.xml, productMapper.xml 등 다양한 매퍼 파일을 한 번에 로드할 수 있습니다.
+        // Spring이 제공하는 "classpath:" 접두어를 사용하여 클래스 경로(classpath)에 있는 리소스를 참조하며, "*.xml" 형식을 사용해 와일드카드로 여러 파일을 지정할 수 있습니다.        
+        
+        
+        //sqlSessionFactoryBean.setTypeAliasesPackage("user.bean");
+        sqlSessionFactoryBean.setTypeAliasesPackage("*.bean");
+        // user.bean 안에 있는 패키지 모두 알리아스로 지정
+        // user.bean.UserDTO -> userDTO
+	     // SQL 세션 팩토리 빈 객체에 TypeAliasPackage 설정을 한다.
+	     // "setTypeAliasesPackage" 메소드는 MyBatis에서 사용되는 메서드로, 
+	     // 특정 패키지 안에 있는 클래스들을 MyBatis의 타입 별칭(Type Alias)으로 등록할 수 있게 해준다.
+	     // "Type Alias"는 MyBatis에서 사용되는 개념으로, 클래스의 전체 경로를 줄여서 사용할 수 있는 짧은 이름을 제공해준다.
+	     // 여기서는 "*.bean" 이라는 패키지명을 전달하고 있는데, 
+	     // 이 패턴은 'bean' 이라는 이름을 포함한 패키지 안의 모든 클래스에 대해 별칭을 적용하려는 의도로 보인다.
+	     // 주의: "*.bean" 패턴은 실제로 제대로 동작하지 않을 수 있음.
+	     // 정확한 패키지 경로를 명시하는 것이 일반적으로 권장된다. 예를 들어 "com.example.bean" 와 같이 사용할 수 있다.
+        
+        
+        
+        
         return sqlSessionFactoryBean.getObject();  // 팩토리 빈에서 실제 SqlSessionFactory 객체를 반환
         // SqlSessionFactory 객체가 생성되면 이를 반환하여, MyBatis와 DB 간의 트랜잭션을 처리하는 데 사용됩니다.
     }

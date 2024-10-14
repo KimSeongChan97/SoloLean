@@ -34,5 +34,7 @@
      이 설정은 MyBatis와 Spring의 통합을 위해 사용됩니다. -->
 <!-- <mybatis-spring:scan base-package="user.dao" />	 -->
 
+<!-- @Mapper -->
+
 			
 </beans>

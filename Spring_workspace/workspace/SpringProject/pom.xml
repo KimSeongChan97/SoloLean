@@ -34,7 +34,7 @@
 		</dependency>
 		
 		<!-- ****************** -->
-		
+				
       <!-- JDBC -->
       <dependency>
           <groupId>org.springframework</groupId>
@@ -112,6 +112,13 @@
 	    <artifactId>commons-fileupload</artifactId>
 	    <version>1.5</version>
 	</dependency>
+	
+	<!-- FileUpload_AWS -->
+	<dependency>
+	    <groupId>com.amazonaws</groupId>
+	    <artifactId>aws-java-sdk-s3</artifactId>
+	    <version>1.12.610</version>
+	</dependency>	
 	
      <!-- lombok -->
       <dependency>

@@ -35,7 +35,7 @@
         <p><a href="/spring/user/uploadForm">파일 업로드</a></p>
         <p><a href="/spring/user/uploadAJaxForm">파일 업로드 AJax</a></p>
         <br/>
-        <p><a href="/spring/user/uploadList">이미지 출력</a></p>
+        <p><a href="/spring/user/uploadList">이미지 출력 목록</a></p>
     </h3>
 </div>
 
@@ -45,58 +45,71 @@
 </html>
 
 <!-- 
-Spring Framework + Maven + MySQL + MyBatis(@Mapper 사용) + JSP(jQuery) + NCP (예정)
+Spring Framework + Maven + MySQL + MyBatis(@Mapper 사용) + JSP(jQuery) + NCP (배포)
 
 Project: SpringProject
+--------------------------------
 src/main/java
 	com.controller.SpringProject
 		MainController.java
-	user.controller
-		UserController.java
-		UserUploadController.java
-	user.service
-		UserService.java (Interface)
-	user.service.impl
-		UserServiceImpl.java	
-	user.dao
-		UserDAO.java (Interface)
-	user.dao.impl
-		UserMyBatisDAO.java ===> 제거	
+	spring.conf
+		SpringConfiguration.java
+		NaverConfiguration.java
 	user.bean
 		UserDTO.java
 		UserPaging.java
 		UserUploadDTO.java
-		
-	
-	
-		
-		
-		
+	user.controller
+		UserController.java
+		UserUploadController.java
+	user.dao
+		UserDAO.java (Interface)
+		UserUploadDAO.java (Interface)
+	user.service
+		UserService.java (Interface)
+		UserUploadService.java (Interface)
+		ObjectStorageService.java (Interface)
+	user.service.impl
+		UserServiceImpl.java
+		UserUploadServiceImpl.java
+		NCPObjectStorageService.java	
+	user.dao.impl
+		UserMyBatisDAO.java ===> 제거	
+--------------------------------		
 src/main/resources
 	mapper
 		userMapper.xml
+		userUploadMapper.xml
 	spring
-		applicationContext.xml
+		db.properties
+		mybatis-config.xml ===> 제거
+		naver.properties
 	sql
-		usertable.sql				
+		usertable.sql
+		userUpload.sq
+--------------------------------						
 src/main/webapp
 	WEB-INF
 		css
-			write.css
-			...
+			*.css
 		js
 			write.js
-			..
+			delete.js
+			update.js
+			uploadAJax.js
+		spring
+			appServlet
+				servler-context.xml
+			root-context.xml								
 		image
 			*.png
 		user
-			..
+			...
 		upload
 			uploadForm.jsp
+			...
 		storage(가상주소, 업로드의 위치)
 				
-		spring
-			..							
 		
 
  -->

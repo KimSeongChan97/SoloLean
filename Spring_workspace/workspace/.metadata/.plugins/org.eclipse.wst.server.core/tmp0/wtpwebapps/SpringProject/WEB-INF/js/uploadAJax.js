@@ -17,6 +17,7 @@ $(function(){
             success: function(data) { 
                 // 요청이 성공적으로 완료되었을 때 실행되는 콜백 함수
                 // 업로드가 완료되면, 페이지를 "/spring/user/uploadList"로 리다이렉트합니다.
+                alert('이미지 업로드 완료');
                 location.href = "/spring/user/uploadList"; 
             },
             error: function(e) { 
