@@ -3,7 +3,6 @@ package user.service;
 import java.util.Map;
 
 import user.bean.UserDTO;
-import user.bean.UserUploadDTO;
 
 public interface UserService {
     
