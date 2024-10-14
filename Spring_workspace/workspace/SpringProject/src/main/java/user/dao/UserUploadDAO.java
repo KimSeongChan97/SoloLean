@@ -12,6 +12,12 @@ public interface UserUploadDAO {
 	public void upload(List<UserUploadDTO> imageUploadList);
 
 	public List<UserUploadDTO> uploadList();
+
+	public UserUploadDTO getuploadDTO(String seq);
+
+	public String getImageFileName(int seq);
+
+	public void uploadUpdate(UserUploadDTO userUploadDTO);
 	
 	
 }

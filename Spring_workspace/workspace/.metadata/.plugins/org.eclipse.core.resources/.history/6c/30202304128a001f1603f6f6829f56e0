@@ -1,0 +1,18 @@
+document.getElementById('selectAll').addEventListener('click', function () {
+    const selectAll = this.checked;
+    const checkboxes = document.querySelectorAll('.selectItem');
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.checked = selectAll;
+    });
+});
+
+document.querySelectorAll('.selectItem').forEach(function (checkbox) {
+    checkbox.addEventListener('click', function () {
+        const selectAll = document.getElementById('selectAll');
+        const allChecked = document.querySelectorAll('.selectItem:checked').length === document.querySelectorAll('.selectItem').length;
+        selectAll.checked = allChecked;
+    });
+});
+
+

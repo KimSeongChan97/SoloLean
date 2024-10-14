@@ -21,53 +21,81 @@ import user.service.ObjectStorageService;
 @Service
 public class NCPObjectStorageService implements ObjectStorageService {
     // Amazon S3 클라이언트 객체를 final로 선언하여 변경되지 않도록 설정
+    // final 키워드는 이 변수 값이 한 번 할당된 후 변경되지 않음을 보장합니다.
     final AmazonS3 s3;
 
     // NaverConfiguration 클래스에서 AWS S3와 관련된 설정값을 주입받아 S3 클라이언트를 초기화
+    // 생성자를 통해 NaverConfiguration 객체를 주입받아 사용합니다. 이 객체는 설정 정보를 담고 있습니다.
     public NCPObjectStorageService(NaverConfiguration naverConfiguration) {
         // AmazonS3 클라이언트 빌더로 설정을 구성
+        // AmazonS3ClientBuilder는 Amazon S3와의 연결을 설정하고, 이를 통해 클라이언트 객체를 만듭니다.
         s3 = AmazonS3ClientBuilder.standard()
                 .withEndpointConfiguration(
                         new AwsClientBuilder.EndpointConfiguration(
                             naverConfiguration.getEndPoint(),  // 네이버 클라우드의 엔드포인트를 가져옴
                             naverConfiguration.getRegionName()))  // 리전(지역) 이름을 가져옴
+                            // EndpointConfiguration은 AWS 리전 및 서비스에 대한 엔드포인트 정보를 설정합니다.
                 .withCredentials(
                         new AWSStaticCredentialsProvider(
                                 new BasicAWSCredentials(
                                     naverConfiguration.getAccessKey(),  // 액세스 키를 가져옴
                                     naverConfiguration.getSecretKey())))  // 시크릿 키를 가져옴
+                                    // AWSStaticCredentialsProvider는 인증 정보를 제공합니다. 여기서는 액세스 키와 시크릿 키를 사용합니다.
                 .build();  // Amazon S3 클라이언트 객체를 생성
+                // build() 메서드는 모든 설정을 토대로 S3 클라이언트 객체를 생성합니다.
     }
 
     // S3 버킷에 파일 업로드 메서드 구현
+    // 파일을 AWS S3 버킷에 업로드하고, 해당 파일의 이름(경로 포함)을 반환하는 메서드입니다.
     @Override
     public String uploadFile(String bucketName, String directoryPath, MultipartFile img) {
         // try-with-resources 구문을 사용해 InputStream을 자동으로 닫도록 설정
+        // try-with-resources 구문은 자원을 자동으로 해제하는 기능을 제공하는데, 여기서는 InputStream을 자동으로 닫습니다.
         try (InputStream inputStream = img.getInputStream()) {
             // UUID를 사용하여 고유한 파일 이름을 생성
+            // UUID는 각 파일마다 고유한 식별자를 생성하기 위한 표준 방법입니다.
             String imageFileName = UUID.randomUUID().toString();  // 고유한 파일 이름 생성
+            // UUID.randomUUID()는 고유한 값을 생성하여 파일 이름이 중복되지 않도록 해줍니다.
 
             // ObjectMetadata 객체 생성 및 메타데이터 설정
+            // 메타데이터는 파일에 대한 추가적인 정보를 저장합니다. 여기서는 파일 크기와 파일 타입을 저장합니다.
             ObjectMetadata objectMetadata = new ObjectMetadata();
             objectMetadata.setContentLength(img.getSize());  // 파일 크기를 메타데이터에 설정
             objectMetadata.setContentType(img.getContentType());  // 파일의 Content-Type을 설정 (예: image/png, image/jpeg)
-
+            // setContentLength는 파일의 바이트 크기를 설정하며, setContentType은 파일의 MIME 타입을 설정합니다.
+            
             // S3 업로드를 위한 PutObjectRequest 객체 생성
+            // PutObjectRequest는 AWS S3에 파일을 업로드할 때 필요한 모든 정보를 담고 있는 객체입니다.
             PutObjectRequest putObjectRequest = 
                 new PutObjectRequest(bucketName,  // 업로드할 버킷 이름
                                      directoryPath + imageFileName,  // 저장할 파일 경로와 이름
                                      inputStream,  // 파일 데이터 스트림
                                      objectMetadata)  // 파일 메타데이터
                 .withCannedAcl(CannedAccessControlList.PublicRead);  // 파일을 퍼블릭 읽기 권한으로 설정하여 외부 접근 허용
+                // CannedAccessControlList.PublicRead는 파일에 대해 공개 읽기 권한을 설정합니다.
+                // 이를 통해 외부에서 해당 파일에 접근할 수 있게 됩니다.
 
             // S3에 파일 업로드 요청
+            // putObject 메서드는 S3에 파일을 업로드하는 작업을 수행합니다.
             s3.putObject(putObjectRequest);  // S3에 파일을 업로드
 
             // 업로드된 파일의 고유한 이름을 반환
+            // 업로드된 파일의 이름(고유 ID)을 반환하여 이후에 이 파일에 접근할 때 사용됩니다.
             return imageFileName;  // S3에 업로드된 파일의 이름을 반환
         } catch (Exception e) {
             // 파일 업로드 중 예외가 발생하면 런타임 예외로 처리
+            // 예외가 발생하면 이를 처리하고, 업로드 실패를 알리는 메시지를 던집니다.
             throw new RuntimeException("파일 업로드 에러");  // 업로드 중 예외가 발생하면 에러를 던짐
+            // RuntimeException은 실행 중에 발생한 예외를 처리하기 위한 기본 예외 클래스입니다.
         }
     }
+    
+    // S3 버킷에서 파일을 삭제하는 메서드 구현
+    @Override
+    public void deleteFile(String bucketName, String directoryPath, String imageFileName) {
+    	// S3에서 특정 버킷의 경로에 있는 파일을 삭제합니다.
+    	s3.deleteObject(bucketName, directoryPath + imageFileName);
+    	// deleteObject 메서드는 주어진 버킷과 경로에서 파일을 삭제하는 기능을 합니다.
+    }
+    
 }

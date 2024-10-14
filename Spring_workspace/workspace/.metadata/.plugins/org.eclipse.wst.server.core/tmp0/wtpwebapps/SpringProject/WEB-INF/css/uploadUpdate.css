@@ -1,0 +1,151 @@
+@charset "UTF-8";
+/* 부트스트랩 기본 설정 포함 */
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* 전체 폼 컨테이너 스타일 */
+#uploadUpdateForm {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* 폼 안의 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+th {
+    text-align: left;
+    width: 25%;
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], textarea {
+    width: calc(100% - 30px); /* 좌우 padding을 뺀 너비 */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* 이미지 미리보기 스타일 */
+#showImageList img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+/* 카메라 아이콘과 파일 입력 스타일 */
+#camera {
+    font-size: 30px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#camera:hover {
+    color: #0056b3;
+}
+
+input[type="file"] {
+    display: none; /* 파일 선택 창 숨김 */
+}
+
+/* 버튼 스타일 */
+input[type="button"], input[type="reset"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+input[type="button"]:hover, input[type="reset"]:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 안의 버튼 정렬 */
+td[colspan="2"] {
+    text-align: center;
+}
+
+/* 홈 버튼 스타일 */
+.home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.home-container a:hover {
+    color: #0056b3;
+}
+
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #uploadUpdateForm {
+        width: 100%;
+    }
+
+    #showImageList img {
+        width: 80px;
+        height: 80px;
+    }
+
+    input[type="button"], input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,96 @@
+@charset "UTF-8";  
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.home-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    transition: background-color 0.9s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 컨테이너에 스크롤을 적용 */
+.table-container {
+    width: 80%;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* 행 스타일 */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 이미지 스타일 */
+img {
+    border-radius: 8px;
+    transition: transform 0.8s ease;
+    display: block;
+    /* block으로 설정해 이미지와 테두리 간의 여백 제거 */
+    margin: 0 auto;
+    /* 이미지가 중앙에 정렬되도록 설정 */
+    box-shadow: none; /* 확대 전 테두리 효과 제거 */
+}
+
+img:hover {
+    transform: scale(1.5);
+    /* 확대 시 이미지 크기 1.5배로 조정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 확대 시 약간의 그림자 효과 추가 */
+}

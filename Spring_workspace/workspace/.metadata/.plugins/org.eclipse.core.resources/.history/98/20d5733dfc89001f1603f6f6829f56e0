@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 View 사이트</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/uploadView.css">
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td rowspan="3">
+				<img src="http://kr.object.ncloudstorage.com/bitcamp-9th-bucket-65/storage/${userUploadDTO.imageFileName}" alt="${userUploadDTO.imageName }">
+			</td>
+			
+			<td>번호 : ${userUploadDTO.seq }</td>
+		</tr>
+		
+		<tr>
+			<td>상품명 : ${userUploadDTO.imageName }</td>
+		</tr>
+		<tr>
+			<td>파일명 : ${userUploadDTO.imageOriginalFileName }</td>
+		</tr>
+		
+	</table>
+	
+</body>
+</html>

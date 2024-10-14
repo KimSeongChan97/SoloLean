@@ -1,132 +1,149 @@
-@charset "UTF-8";  
+@charset "UTF-8";
 
+/* 전체 body에 대해 기본적인 스타일 적용 */
 body {
-    font-family: 'Orbitron';
-   
-    background-color: #f4f4f9;
-    /* 배경색을 연한 회색(#f4f4f9)으로 설정하여 깔끔한 느낌을 줍니다. */
-    
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5f5;
     color: #333;
-    /* 본문 텍스트 색상을 어두운 회색(#333)으로 설정합니다. 이 색상은 눈에 부담을 주지 않고 가독성을 높여줍니다. */
-    
     margin: 0;
-    padding: 20px;
-    /* 페이지의 외곽 여백을 없애고, 내부 여백을 20px로 설정하여 콘텐츠가 페이지의 가장자리와 겹치지 않도록 합니다. */
-    
+    padding: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    /* 페이지 레이아웃을 Flexbox로 설정하고, 콘텐츠를 세로 방향으로 정렬하며, 가운데로 정렬되도록 설정합니다. */
-    
-    height: 100vh;
-    /* 페이지 높이를 뷰포트(사용자의 화면 크기)에 맞추어 100%로 설정합니다. */
+    min-height: 100vh; /* 최소 높이를 100%로 설정하여 화면 전체를 채움 */
 }
 
+/* 홈 버튼을 감싸는 컨테이너 */
 .home-container {
-    width: 100%;
-    text-align: center;
-    /* 'HOME' 버튼을 페이지의 중앙에 위치시키기 위해 컨테이너를 100% 너비로 설정하고 텍스트를 가운데 정렬합니다. */
-    
-    margin-bottom: 20px;
-    /* 홈 버튼과 아래의 콘텐츠 사이에 20px의 간격을 둡니다. */
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-a {
+.home-container a {
     text-decoration: none;
-    /* 링크에 밑줄이 표시되지 않도록 설정합니다. */
-    
-    color: #fff;
-    background-color: #007bff;
-    /* 링크의 배경색을 파란색(#007bff)으로 설정하고, 텍스트 색상을 흰색으로 설정하여 가독성을 높입니다. */
-    
-    padding: 10px 15px;
-    /* 버튼의 내부에 여백을 주어 클릭할 수 있는 영역을 넓히고 버튼의 가독성을 향상시킵니다. */
-    
-    border-radius: 5px;
-    /* 버튼의 모서리를 둥글게 만들어 좀 더 부드러운 느낌을 줍니다. */
-    
-    font-size: 16px;
-    /* 버튼 텍스트의 크기를 16px로 설정하여 가독성을 높입니다. */
-    
-    display: inline-block;
-    /* 버튼이 인라인 요소이지만 블록 요소처럼 작동하게 하여 padding과 margin을 적용할 수 있게 합니다. */
-    
-    transition: background-color 0.9s ease;
-    /* 마우스를 올렸을 때 배경색이 서서히 변경되도록 0.9초 동안 부드러운 전환 효과를 추가합니다. */
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
 }
 
-a:hover {
-    background-color: #0056b3;
-    /* 마우스를 올렸을 때 버튼의 배경색이 더 어두운 파란색(#0056b3)으로 변경됩니다. */
+.home-container a:hover {
+    color: #0056b3;
 }
 
-/* 테이블 컨테이너에 스크롤을 적용 */
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 테이블 컨테이너의 스타일 */
 .table-container {
-    width: 80%;
-    /* 테이블 컨테이너의 너비를 80%로 설정하여 페이지의 중앙에 위치시키고 적절한 너비로 설정합니다. */
-    
-    height: 60vh;
-    /* 테이블 컨테이너의 높이를 뷰포트 높이의 60%로 설정하여 화면의 일정 부분만을 차지하게 합니다. */
-    
-    overflow-y: auto;
-    /* 테이블 내용이 컨테이너의 높이를 초과할 경우, 세로 스크롤이 가능하도록 설정합니다. */
-    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* 테이블 주위에 약간의 그림자 효과를 추가하여 테이블이 입체적으로 보이도록 합니다. */
-    
+    width: 90%; /* 테이블의 전체 너비를 화면 크기에 맞게 조정 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 30px auto;
     background-color: #fff;
-    /* 테이블 컨테이너의 배경색을 흰색으로 설정하여 내용과 배경을 구분하고 깔끔한 느낌을 줍니다. */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: auto; /* 화면이 작아지면 가로 스크롤 가능하게 설정 */
 }
 
+/* 테이블 스타일 */
 table {
     width: 100%;
-    /* 테이블의 너비를 100%로 설정하여 컨테이너 내에서 가득 차도록 만듭니다. */
-    
     border-collapse: collapse;
-    /* 테이블의 경계선을 겹치게 하여 중복된 선을 제거하고 깔끔한 테이블을 만듭니다. */
+    text-align: left;
 }
 
-th, td {
-    padding: 15px;
-    /* 각 셀에 15px의 내부 여백을 추가하여 텍스트가 셀의 가장자리에 붙지 않도록 설정합니다. */
-    
-    text-align: center;
-    /* 테이블 헤더(th)와 데이터(td)의 텍스트를 중앙 정렬합니다. */
+/* 체크박스 열의 너비를 줄임 */
+th:nth-child(1), td:nth-child(1) {
+    width: 5%; /* 체크박스 열의 너비를 5%로 설정 */
+}
+
+table th, table td {
+    padding: 12px; /* 패딩을 약간 줄여 화면에 더 많은 내용을 표시 */
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center; /* 텍스트를 중앙으로 정렬 */
 }
 
 th {
     background-color: #007bff;
     color: white;
-    /* 테이블 헤더의 배경색을 파란색(#007bff)으로 설정하고, 텍스트 색상을 흰색으로 설정하여 시각적인 구분을 명확히 합니다. */
-    
-    font-weight: bold;
-    /* 테이블 헤더의 텍스트를 굵게 설정하여 가독성을 높입니다. */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    white-space: nowrap; /* 제목이 너무 길어지면 줄바꿈하지 않고, 한 줄로 표시 */
 }
 
 td {
-    border-bottom: 1px solid #ddd;
-    /* 테이블 데이터 셀 사이에 연한 회색(#ddd)의 경계선을 추가하여 각 셀을 구분합니다. */
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word; /* 긴 텍스트가 있을 경우 줄바꿈을 허용 */
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-    /* 짝수 번째 행의 배경색을 연한 회색(#f9f9f9)으로 설정하여, 행이 교차되며 시각적으로 구분되도록 만듭니다. */
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-    /* 마우스를 올렸을 때 행의 배경색이 더 진한 회색(#f1f1f1)으로 변경되어 사용자가 선택한 행을 쉽게 인식할 수 있도록 합니다. */
-}
-
-img {
+/* 이미지 셀 중앙 정렬 및 스타일 */
+td img {
     border-radius: 8px;
-    /* 이미지의 모서리를 8px 정도 둥글게 만들어서 부드러운 모서리를 가진 이미지를 만듭니다. */
-    
-    transition: transform 0.8s ease;
-    /* 마우스를 올렸을 때 이미지 크기가 부드럽게 변화하도록 전환 시간을 0.8초로 설정합니다. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%; /* 이미지가 셀을 넘어가지 않도록 설정 */
+    height: auto; /* 이미지 비율을 유지하면서 자동으로 크기 조정 */
 }
 
-img:hover {
-    transform: scale(1.5);
-    /* 마우스를 올렸을 때 이미지가 1.5배로 확대되며 사용자의 시선을 끌 수 있도록 설정합니다. */
+td img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 각 열 데이터 중앙 정렬 */
+td {
+    text-align: center;
+}
+
+/* 테이블 행에 마우스 오버 시 효과 추가 */
+tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* 삭제 버튼 스타일 */
+input[type="button"] {
+    background-color: #ff4c4c; /* 삭제 버튼 배경색 설정 */
+    color: white;
+    padding: 10px 20px; /* 버튼 패딩 설정 */
+    border: none;
+    border-radius: 5px; /* 모서리를 둥글게 설정 */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* 삭제 버튼 호버 효과 */
+input[type="button"]:hover {
+    background-color: #e60000; /* 호버 시 버튼 배경색 변경 */
+    transform: scale(1.05); /* 버튼이 살짝 커지도록 애니메이션 적용 */
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%; /* 작은 화면에서는 테이블이 전체 화면 너비를 차지하도록 설정 */
+    }
+
+    th, td {
+        padding: 8px; /* 모바일에서 패딩을 더 줄임 */
+        font-size: 14px; /* 글씨 크기를 작게 조정 */
+    }
+
+    td img {
+        width: 60px; /* 작은 화면에서는 이미지 크기를 줄임 */
+        height: auto;
+    }
+
+    input[type="button"] {
+        font-size: 14px; /* 작은 화면에서는 버튼 글씨 크기를 줄임 */
+        padding: 8px 16px; /* 버튼 패딩을 줄여서 화면에 맞춤 */
+    }
 }

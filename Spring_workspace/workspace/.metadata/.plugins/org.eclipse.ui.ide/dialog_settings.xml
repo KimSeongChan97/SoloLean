@@ -116,6 +116,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\Spring\Spring_Team"/>
+			<item value="D:\Spring\Spring_TeamProject"/>
 			<item value="D:\Spring\workspace\SpringHotel"/>
 			<item value="D:\Spring\work"/>
 		</list>
