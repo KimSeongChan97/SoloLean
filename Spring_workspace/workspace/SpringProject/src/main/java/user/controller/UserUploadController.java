@@ -179,7 +179,7 @@ public class UserUploadController {
 	}
 	
 	// 파일 업데이트 처리
-	@RequestMapping(value="uploadUpdate")
+	@RequestMapping(value="uploadUpdate", produces = "text/html; charset=UTF-8")
 	@ResponseBody  // 결과를 HTTP 응답 본문에 직접 씁니다.
 	public String uploadUpdate(@ModelAttribute UserUploadDTO userUploadDTO,
 			 			  @RequestParam("img") MultipartFile img){
@@ -187,8 +187,44 @@ public class UserUploadController {
 		// 수정된 파일 정보를 DB와 Object Storage에 반영합니다.
 		userUploadService.uploadUpdate(userUploadDTO, img);
 		
-		return "이미지 수정 완료 !!!!";  // 업데이트 완료 메시지를 반환합니다.
+		return "이미지 수정 완료";  // 업데이트 완료 메시지를 반환합니다.
 	}
+	
+	// 파일 선택한 것 삭제
+	@RequestMapping(value="uploadDelete")
+	@ResponseBody
+	// @RequestMapping 어노테이션은 이 메서드가 "/uploadDelete" URL로 들어오는 HTTP 요청을 처리한다는 것을 나타냅니다.
+	// value="uploadDelete"는 클라이언트에서 이 URL로 요청이 들어올 때 해당 메서드를 호출하도록 매핑합니다.
+	// @ResponseBody는 이 메서드가 결과를 HTTP 응답으로 직접 반환한다는 의미입니다. 
+	// 여기서는 반환 값이 없지만, 이 어노테이션은 메서드가 HTML 페이지가 아닌 데이터를 반환할 때 사용됩니다.
+	public void uploadDelete(@RequestParam String[] check) {
+	    // @RequestParam 어노테이션은 클라이언트에서 전달된 파라미터를 받아오는 역할을 합니다.
+	    // 여기서는 'check'라는 이름의 배열을 받아옵니다. 
+	    // 이 배열은 사용자가 삭제하려고 선택한 파일들의 ID를 담고 있습니다.
+	    
+	    for(String seq : check) {
+	        // 사용자가 선택한 파일들의 ID를 하나씩 순회하면서 처리합니다.
+	        // for문을 사용해 check 배열에 담긴 각 ID를 순차적으로 처리합니다.
+	        
+	        // 각 ID(seq)를 출력하여 실제로 어떤 파일이 삭제될 예정인지 확인합니다.
+	        // 이 출력은 디버깅 용도로, 삭제할 항목의 ID를 콘솔에 출력합니다.
+	        System.out.println(" 삭제할 seq 번호 = " + seq);
+	        // seq는 삭제할 파일의 고유 번호를 의미합니다.
+	        // 이 번호는 데이터베이스 또는 파일 시스템에서 파일을 식별하는 데 사용됩니다.
+	        
+	    } // for
+	    
+	    // userUploadService.uploadDelete(check)는 서비스 계층에서 파일 삭제를 처리하는 메서드입니다.
+	    // check 배열에는 삭제할 파일 ID들이 담겨 있으며, 이 배열을 서비스에 넘겨 해당 파일을 삭제하도록 요청합니다.
+	    // 서비스 계층은 비즈니스 로직을 처리하는 역할을 하며, 데이터베이스나 파일 시스템에서 실제 삭제 작업을 수행합니다.
+	    userUploadService.uploadDelete(check);
+	    // 이 메서드는 반환 값이 없습니다(void). 
+	    // 클라이언트 측에서는 이 메서드를 호출하여 파일 삭제를 요청하며, 성공적으로 삭제가 완료되면 별도의 응답을 받지 않습니다.
+	    
+	} // uploadDelete
+	
+	
+	
 }
 
 // Mapper -> DAO Interface -> ServiceImpl -> Service Interface -> controller

@@ -1,6 +1,7 @@
 package user.service.impl;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -90,12 +91,51 @@ public class NCPObjectStorageService implements ObjectStorageService {
         }
     }
     
-    // S3 버킷에서 파일을 삭제하는 메서드 구현
+ // S3 버킷에서 파일을 삭제하는 메서드 구현
     @Override
     public void deleteFile(String bucketName, String directoryPath, String imageFileName) {
-    	// S3에서 특정 버킷의 경로에 있는 파일을 삭제합니다.
-    	s3.deleteObject(bucketName, directoryPath + imageFileName);
-    	// deleteObject 메서드는 주어진 버킷과 경로에서 파일을 삭제하는 기능을 합니다.
+        // S3에서 특정 버킷의 경로에 있는 파일을 삭제합니다.
+        // bucketName은 AWS S3에서 사용되는 버킷 이름을 의미합니다. 
+        // 버킷은 S3에서 파일을 저장하는 일종의 "컨테이너" 같은 개념입니다.
+        // directoryPath는 파일이 저장된 디렉토리 경로를 나타냅니다. 
+        // S3에서는 파일을 계층 구조로 저장할 수 있기 때문에 경로가 포함됩니다.
+        // imageFileName은 삭제하고자 하는 파일의 이름입니다.
+        
+        s3.deleteObject(bucketName, directoryPath + imageFileName);
+        // s3.deleteObject()는 AWS S3 클라이언트가 제공하는 메서드로, 
+        // 해당 버킷의 특정 경로에 있는 파일을 삭제하는 역할을 합니다.
+        // 이 메서드는 첫 번째 인자로 버킷 이름을, 두 번째 인자로 삭제할 파일의 경로를 받습니다.
+        // directoryPath + imageFileName은 경로와 파일 이름을 결합한 것으로,
+        // S3에 저장된 파일의 정확한 위치를 나타냅니다.
+        
+        // deleteObject 메서드는 주어진 버킷과 경로에서 파일을 삭제하는 기능을 합니다
+        // 이 메서드를 호출하면 S3에서 해당 파일이 삭제되고, 성공 시 특별한 반환값은 없습니다.
+        // 삭제 후에는 더 이상 해당 파일을 S3에서 찾을 수 없습니다.
     }
+
+    // S3 버킷에서 파일을 삭제하는 메서드 구현
+    @Override
+    public void deleteFile(String bucketName, String directoryPath, List<String> list) {
+        // 이 메서드는 여러 개의 파일을 한꺼번에 삭제할 수 있도록 리스트를 인자로 받습니다.
+        // 첫 번째 인자인 bucketName은 삭제하고자 하는 파일들이 속해 있는 S3 버킷 이름입니다.
+        // 두 번째 인자인 directoryPath는 파일들이 저장된 경로를 의미하며,
+        // S3의 특정 경로에 있는 파일들을 모두 삭제할 수 있습니다.
+        // 세 번째 인자인 list는 삭제하고자 하는 파일 이름들의 리스트입니다.
+        
+        for (String imageFileName : list) {
+            // 리스트에 있는 각 파일 이름을 하나씩 순회하면서 삭제 작업을 수행합니다.
+            // for-each 문을 사용하여 리스트 안에 있는 파일 이름들을 하나씩 꺼냅니다.
+            
+            s3.deleteObject(bucketName, directoryPath + imageFileName);
+            // 이 부분은 위의 메서드와 동일한 deleteObject 메서드를 사용합니다.
+            // 리스트 안에 있는 각 파일 이름에 대해 S3의 해당 경로에서 삭제 작업을 수행합니다.
+            // directoryPath와 imageFileName을 합쳐서 해당 파일의 전체 경로를 만들고,
+            // S3에서 그 파일을 삭제합니다.
+        }
+        
+        // 전체적으로 이 메서드는 여러 파일을 리스트 형태로 받아서 순차적으로 S3에서 삭제하는 역할을 합니다.
+        // 리스트에 있는 모든 파일이 삭제될 때까지 for-each 문이 반복됩니다.
+    }
+
     
 }

@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 <link rel="icon" href="../image/sakura_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/delete.css">
+<link rel="icon" href="${pageContext.request.contextPath}/static/favicon.ico" type="image/x-icon">
+
 <title>회원탈퇴</title>
 </head>
 <body>

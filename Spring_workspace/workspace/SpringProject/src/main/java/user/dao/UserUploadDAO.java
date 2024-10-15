@@ -18,6 +18,9 @@ public interface UserUploadDAO {
 	public String getImageFileName(int seq);
 
 	public void uploadUpdate(UserUploadDTO userUploadDTO);
+
+	public void uploadDelete(List<String> list);
+	
 	
 	
 }

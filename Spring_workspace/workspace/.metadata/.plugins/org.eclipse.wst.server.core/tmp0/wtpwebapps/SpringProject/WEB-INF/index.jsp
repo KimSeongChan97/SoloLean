@@ -8,6 +8,8 @@
     <!-- 부트스트랩 CSS 불러오기 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon">
+    
 </head>
 <body>
 
@@ -50,67 +52,53 @@ Spring Framework + Maven + MySQL + MyBatis(@Mapper 사용) + JSP(jQuery) + NCP (
 Project: SpringProject
 --------------------------------
 src/main/java
-	com.controller.SpringProject
-		MainController.java
-	spring.conf
-		SpringConfiguration.java
-		NaverConfiguration.java
-	user.bean
-		UserDTO.java
-		UserPaging.java
-		UserUploadDTO.java
-	user.controller
-		UserController.java
-		UserUploadController.java
-	user.dao
-		UserDAO.java (Interface)
-		UserUploadDAO.java (Interface)
-	user.service
-		UserService.java (Interface)
-		UserUploadService.java (Interface)
-		ObjectStorageService.java (Interface)
-	user.service.impl
-		UserServiceImpl.java
-		UserUploadServiceImpl.java
-		NCPObjectStorageService.java	
-	user.dao.impl
-		UserMyBatisDAO.java ===> 제거	
---------------------------------		
+
+com.controller.SpringProject
+MainController.java
+spring.conf
+SpringConfiguration.java
+NaverConfiguration.java
+user.bean
+UserDTO.java
+UserPaging.java
+UserUploadDTO.java
+user.controller
+UserController.java
+UserUploadController.java
+user.dao
+UserDAO.java (Interface)
+UserUploadDAO.java (Interface)
+user.service
+UserService.java (Interface)
+UserUploadService.java (Interface)
+ObjectStorageService.java (Interface)
+user.service.impl
+UserServiceImpl.java
+UserUploadServiceImpl.java
+NCPObjectStorageService.java
+--------------------------------
 src/main/resources
-	mapper
-		userMapper.xml
-		userUploadMapper.xml
-	spring
-		db.properties
-		mybatis-config.xml ===> 제거
-		naver.properties
-	sql
-		usertable.sql
-		userUpload.sq
---------------------------------						
+mapper
+userMapper.xml
+userUploadMapper.xml
+spring
+db.properties
+naver.properties
+sql
+usertable.sql
+userUpload.sql
 src/main/webapp
-	WEB-INF
-		css
-			*.css
-		js
-			write.js
-			delete.js
-			update.js
-			uploadAJax.js
-		spring
-			appServlet
-				servler-context.xml
-			root-context.xml								
-		image
-			*.png
-		user
-			...
-		upload
-			uploadForm.jsp
-			...
-		storage(가상주소, 업로드의 위치)
-				
-		
+--------------------------------
+WEB-INF
+css/*.css
+js/*.js
+spring/appServlet/servler-context.xml
+spring/root-context.xml
+image/*.png
+user/...
+upload/uploadForm.jsp
+		...
+storage/ (가상 주소, 업로드 위치)
 
  -->
 

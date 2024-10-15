@@ -2,8 +2,8 @@
 
 /* 전체 body에 대한 기본 설정 */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,12 +13,20 @@ body {
     color: #333;
 }
 
+/* 고정 이미지 */
 .fixed-image {
     width: 500px;
     height: 500px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.fixed-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
 
 /* 홈 버튼을 감싸는 컨테이너 */
 .home-container {
@@ -30,15 +38,15 @@ body {
 .home-container a {
     text-decoration: none;
     font-size: 18px;
-    color: #007bff;
-    font-weight: bold;
+    color: #1e90ff;
+    font-weight: 600;
     display: flex;
     align-items: center;
     transition: color 0.3s ease;
 }
 
 .home-container a:hover {
-    color: #0056b3;
+    color: #1c75d8;
 }
 
 .home-container i {
@@ -50,46 +58,61 @@ body {
     display: flex;
     align-items: flex-start;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    padding: 20px;
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.table-container:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
 /* 이미지 스타일 */
 .table-container img {
-    width: 250px;
-    height: 250px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    height: 280px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .table-container img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* 오른쪽 텍스트 정보를 담는 컨테이너 */
 .info-container {
-    margin-left: 20px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-left: 5px solid #007bff;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-left: 5px solid #1e90ff;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.info-container:hover {
+    background-color: #e9ecef;
 }
 
 .info-container p {
-    font-size: 16px;
-    margin: 5px 0;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 /* 업로드 설명을 포함한 내용 */
 td pre {
     font-size: 14px;
-    color: #555;
+    color: #666;
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-top: 15px;
@@ -102,19 +125,20 @@ td pre {
 }
 
 input[type="button"] {
-    padding: 10px 20px;
+    padding: 12px 25px;
     margin-right: 10px;
-    background-color: #007bff;
+    background-color: #1e90ff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 input[type="button"]:hover {
-    background-color: #0056b3;
+    background-color: #1c75d8;
+    transform: translateY(-2px);
 }
 
 /* 반응형 디자인 */
@@ -128,7 +152,7 @@ input[type="button"]:hover {
         margin-left: 0;
         margin-top: 15px;
         border-left: none;
-        border-top: 5px solid #007bff;
+        border-top: 5px solid #1e90ff;
         width: 100%;
     }
 

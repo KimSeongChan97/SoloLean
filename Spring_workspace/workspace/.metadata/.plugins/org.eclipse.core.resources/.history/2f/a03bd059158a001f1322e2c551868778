@@ -1,0 +1,5 @@
+package answer.bean;
+
+public class AnswerDTO {
+
+}

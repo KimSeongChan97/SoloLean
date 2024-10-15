@@ -7,6 +7,8 @@
 <title>Upload File Update Page</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/uploadUpdate.css">
+<link rel="icon" href="${pageContext.request.contextPath}/static/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 <div class="home-container">

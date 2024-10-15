@@ -52,7 +52,8 @@
 	- `mapping`은 브라우저가 요청하는 URL 패턴을 의미합니다. 예를 들어, 사용자가 "/css/style.css"와 같은 URL을 요청하면 Spring이 "/WEB-INF/css/style.css" 파일을 반환하게 됩니다.
 	이렇게 설정하면 외부에서 요청한 경로와 실제 파일의 위치를 연결해 줍니다.
 	-->
-
+	<resources location="/WEB-INF/static/" mapping="/static/**" />
+	
 	
 	
 </beans:beans>

@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <!-- 외부 CSS 파일을 불러와 스타일을 적용합니다. -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/uploadForm.css">
+<link rel="icon" href="${pageContext.request.contextPath}/static/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 <!-- 홈으로 돌아가는 링크를 제공합니다. Font Awesome의 집 모양 아이콘을 사용하고 있습니다. -->

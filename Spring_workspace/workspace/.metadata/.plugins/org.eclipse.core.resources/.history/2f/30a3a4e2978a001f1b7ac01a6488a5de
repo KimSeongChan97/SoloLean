@@ -1,0 +1,22 @@
+$(function() {
+	
+
+});
+
+
+$(function(){
+	$('#deleteBtn').click(function(){
+		$.ajax({
+			type: '',
+                url: '',
+                data: '',
+                dataType: 'json',
+                success: function(data) {
+                	
+                },
+                error: function(e) {
+                    console.log(e); 
+                }
+		}); // $.ajax
+	}); // #deleteButton
+});

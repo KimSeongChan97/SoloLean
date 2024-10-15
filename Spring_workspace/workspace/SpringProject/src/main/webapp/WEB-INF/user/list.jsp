@@ -13,6 +13,8 @@
 <!-- Font Awesome 라이브러리를 불러와 아이콘을 사용합니다 -->
 <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="icon" href="${pageContext.request.contextPath}/static/favicon.ico" type="image/x-icon">
+    
 </head>
 <body>
 <div id="header">
