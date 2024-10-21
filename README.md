@@ -42,7 +42,7 @@ Project
 2. https://github.com/KimSeongChan97/SoloPageMakingProject01.git
 3. https://github.com/KimSeongChan97/SoloProject01.git
 4. https://github.com/bitcamp-aiaas-9/FilmNote.git
-   [ 정리 ] : [FilmNote Folder](https://github.com/KimSeongChan97/SoloLean/tree/main/SoloLean/Web_workspace/workspace/FilmNote)
+4-1. [ 정리 ] : [FilmNote](https://github.com/KimSeongChan97/SoloLean/tree/main/Web_workspace/workspace/FilmNote)
 5. [팀플] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
 6. Spring Boot + JPA + React 
 
