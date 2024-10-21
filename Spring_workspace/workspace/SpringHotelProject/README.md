@@ -29,7 +29,7 @@
 
 ### 2. **Back-End**
 
-- **Spring Boot**: RESTful API로 클라이언트-서버 간 데이터 통신 처리
+- **Spring Framework**: RESTful API로 클라이언트-서버 간 데이터 통신 처리
 - **Spring Security**: 이메일 인증을 포함한 사용자 인증 및 권한 관리
 - **MySQL**: 관계형 데이터베이스로 예약, 회원, 리뷰 및 QnA 데이터 관리
 
