@@ -7,14 +7,14 @@
 - MySQL 학습 
 - NaverCloudPlatform 학습
 - Spring 학습
-- Spring Boot 학습 진행예정
-- JPA 학습 진행예정
 - Spring + JDBC + .. 그외 연결하여 이용(MyBatis 등)
 - NCP 연동
-- Docker 이용해보기
+- Docker 학습
 - Jenkins 이용해보기
 - 리눅스 이용해보기
-- React(Node.js) 학습 진행예정
+- React(Node.js) 학습 진행중
+- Spring Boot 학습 진행예정
+- JPA 학습 진행예정
 
 ==============================================
 semi project
@@ -43,7 +43,7 @@ Project
 3. https://github.com/KimSeongChan97/SoloProject01.git
 4. https://github.com/bitcamp-aiaas-9/FilmNote.git
    [ 정리 ] : [FilmNote Folder](https://github.com/KimSeongChan97/SoloLean/tree/main/SoloLean/Web_workspace/workspace/FilmNote)
-5. Spring Framework 를 활용한 TeamProject 예정
+5. [팀플] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
 6. Spring Boot + JPA + React 
 
 
