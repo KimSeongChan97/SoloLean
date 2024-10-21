@@ -20,8 +20,7 @@
 ---
 
 ## 📂 프로젝트 구조
-
-![기술 스택](https://github.com/user-attachments/assets/aaccf862-f8e9-4a66-bedd-b1bdfb3e0a12)
+![기술_스택](https://github.com/user-attachments/assets/204e5907-1556-4454-9889-8b174eeb0c06)
 
 ---
 
