@@ -1,4 +1,3 @@
-
 ### 🏨 SpringHotel - README.md
 
 ---
@@ -59,21 +58,43 @@
 ### 1. **메인 페이지**
 - **메뉴**: 로그인 전, 후의 접근 가능 메뉴가 다름
 - **호텔 사진**: 호텔 사진 슬라이더 구현함
+
+ ![image](https://github.com/user-attachments/assets/4381ba87-fa89-4f50-984c-213b36b7cfbe)
  
 ---
 
 ### 2. **객실 상세 정보 모달**
 - 선택한 객실의 **상세 설명**, 가격, 편의시설, 리뷰를 모달로 제공
 
+![image](https://github.com/user-attachments/assets/d0dbe511-81d9-4802-989d-f910bf633848)
+
+![image](https://github.com/user-attachments/assets/03daca86-090e-4d4b-9f06-f014f925c984)
+
+![image](https://github.com/user-attachments/assets/77dab157-b85c-4bbe-bcde-84685f6feb83)
+
 ---
 
 ### 3. **예약 페이지**
 - 날짜와 인원(성인, 어린이)의 조건으로 검색 후, 예약 가능 객실을 선택하여 예약 진행 및 최종 예약 요약 확인
 
+![image](https://github.com/user-attachments/assets/2831ea4a-65cd-4979-a278-d3cd937131a9)
+
+![image](https://github.com/user-attachments/assets/1f57b46f-f36c-497d-8c46-0b0395425c83)
+
+![image](https://github.com/user-attachments/assets/7314e5f8-5c6a-43a9-8720-c1c7bbccedfa)
+
+![image](https://github.com/user-attachments/assets/4acb5b71-4235-4e50-a7a1-6bcaeb304d33)
+
+![image](https://github.com/user-attachments/assets/e07ca076-581d-4384-ba4c-aed62af66c74)
+
 ---
 
 ### 4. **회원가입 및 이메일 인증**
 - 회원가입 시, 고객이 이메일 인증을 완료해야 계정이 활성화됨
+
+![image](https://github.com/user-attachments/assets/a80d9803-ffec-4526-8809-f0177acd2ed9)
+
+![image](https://github.com/user-attachments/assets/ed6598b9-d7de-43c8-a9f5-aee6a462d2c2)
 
 ---
 
@@ -92,5 +113,5 @@
 
 - [프로젝트 Notion 페이지](https://fresh-second-b8f.notion.site/241017_Spring-Hotel-11e42d6fe7d7801b9127dfdf9a6cc0c6)
 - [GitHub 저장소](https://github.com/ujin302/SpringHotel)
-- [Spring Hotel PDF] ([Uploading Spring Hotel.pdf…]())
+
 ---
