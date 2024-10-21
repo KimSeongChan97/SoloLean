@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>리뷰 작성</title>
+</head>
+<body>
+    <h2>리뷰 작성</h2>
+    <form action="/review/write" method="post">
+        객실 ID: <input type="text" name="roomId"/><br/>
+        사용자 ID: <input type="text" name="userId"/><br/>
+        평점: <input type="number" name="rating" min="1" max="5"/><br/>
+        리뷰 내용: <textarea name="comment"></textarea><br/>
+        <input type="submit" value="작성"/>
+    </form>
+</body>
+</html>

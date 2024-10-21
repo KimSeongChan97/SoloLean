@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.dao.RoomDAO">
+
+    <!-- 모든 room 정보 가져오기 -->
+    <select id="getAllRooms" resultType="room.bean.RoomDTO">
+        SELECT * FROM room
+    </select>
+    
+    <!-- 객실 ID로 객실 정보 가져오기 -->
+    <select id="getRoomById" parameterType="int" resultType="room.bean.RoomDTO">
+        SELECT * FROM room WHERE room_id = #{roomId}
+    </select>
+
+    <!-- 객실 ID로 이미지 정보 가져오기 -->
+    <select id="getRoomImagesByRoomId" parameterType="int" resultType="room.bean.RoomImgDTO">
+        SELECT * FROM roomimg WHERE room_id = #{roomId}
+    </select>
+
+</mapper>

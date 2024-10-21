@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+/* Google Fonts 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+/* 전체적인 배경 및 텍스트 스타일 */
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #f7f4ef; /* 고급스러운 아이보리 배경 */
+    color: #3d3d3d;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* 컨테이너 스타일 */
+.container[data-view="roomView"] {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f7f4ef;
+    display: flex;
+    justify-content: center; /* 컨텐츠를 중앙에 배치 */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 페이지 타이틀 */
+h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    color: #3d3d3d;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 카드 그리드 레이아웃 */
+.slider-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 데스크탑에서는 4개의 카드가 가로로 나란히 배치 */
+    gap: 2rem; /* 카드들 사이에 적절한 간격 */
+    justify-items: center; /* 그리드 항목들을 중앙 정렬 */
+    width: 100%;
+    max-width: 1400px; /* 카드 영역의 최대 너비 설정 */
+}
+
+/* 카드 개별 스타일 */
+.slider-item {
+    width: 100%; /* 각 카드가 그리드 셀을 꽉 채우도록 설정 */
+    box-sizing: border-box;
+}
+
+/* 카드 스타일 */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 5px solid #b8860b; /* 상단 금색 강조 */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+}
+
+/* 카드 이미지 */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #b8860b; /* 금색 테두리 */
+}
+
+/* 카드 본문 */
+.card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fafafa;
+    color: #3d3d3d;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* 카드 타이틀 */
+.card-title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b8860b;
+    margin-bottom: 1rem;
+}
+
+/* 카드 텍스트 */
+.card-text {
+    font-size: 1.125rem;
+    color: #3d3d3d;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* 버튼 스타일 */
+.btn-outline-primary {
+    font-family: 'Montserrat', sans-serif;
+    border-color: #b8860b;
+    color: #b8860b;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.btn-outline-primary:hover {
+    background-color: #b8860b;
+    color: #ffffff; /* 버튼 클릭 시 텍스트 흰색으로 */
+}
+
+.btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #b8860b;
+    border-color: #b8860b;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #a05a00; /* 더 진한 금색 */
+}
+
+/* 반응형 디자인 */
+
+/* 태블릿 이하에서 카드 배치 */
+@media (max-width: 1024px) {
+    .slider-container {
+        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 2개의 카드가 가로로 배치 */
+    }
+}
+
+/* 모바일 화면에서 카드 배치 */
+@media (max-width: 768px) {
+    .slider-container {
+        grid-template-columns: 1fr; /* 모바일에서는 한 줄에 카드 하나씩 */
+    }
+
+    .card-img-top {
+        max-height: 160px;
+    }
+}

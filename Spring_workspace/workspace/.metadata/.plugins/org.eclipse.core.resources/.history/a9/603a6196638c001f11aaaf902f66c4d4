@@ -1,0 +1,77 @@
+$(document).ready(function() {
+
+    // 로딩 인디케이터를 모달에 표시
+    function showLoadingIndicator() {
+        $('#modalContent').html($('#loadingIndicator').show());
+    }
+
+    // 모달에 내용을 로드하는 함수
+    function loadModalContent(url) {
+        showLoadingIndicator(); // 로딩 인디케이터 표시
+        $('#modalContent').load(url, function() {
+            $('#loadingIndicator').hide(); // 로딩 완료 후 인디케이터 숨김
+            $('#reviewModal').modal('show'); // 모달 표시
+        });
+    }
+
+    // 리뷰 목록 보기 버튼 클릭 시
+    $('.room-actions .btn-outline-secondary').click(function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href'); // 클릭한 URL 가져오기
+        loadModalContent(url); // 모달에 콘텐츠 로드
+    });
+
+    // 리뷰 작성하기 버튼 클릭 시
+    $('.room-actions .btn-outline-primary').click(function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        loadModalContent(url); // 모달에 작성 폼 로드
+    });
+
+    // 리뷰 수정 버튼 클릭 시
+    $(document).on('click', '.update-btn', function() {
+        const reviewId = $(this).data('id');
+        window.location.href = '/review/reviewUpdateForm?reviewId=' + reviewId;
+    });
+
+    // 리뷰 삭제 버튼 클릭 시
+    $(document).on('click', '.delete-btn', function() {
+        const reviewId = $(this).data('id');
+        if (confirm('정말로 리뷰를 삭제하시겠습니까?')) {
+            $.ajax({
+                url: '/review/deleteReview',
+                type: 'POST',
+                data: { reviewId: reviewId },
+                success: function(response) {
+                    alert(response);  // 서버에서 전달된 성공 메시지 출력
+                    location.reload(); // 페이지 리로드
+                },
+                error: function(err) {
+                    alert(err.responseText);  // 오류 메시지 출력
+                }
+            });
+        }
+    });
+
+    // 리뷰 수정 저장 버튼 클릭 시
+    $(document).on('click', '.save-btn', function() {
+        const reviewData = {
+            reviewId: $('#reviewId').val(),
+            content: $('#content').val(),
+            rating: $('#rating').val()
+        };
+
+        $.ajax({
+            url: '/review/updateReview',
+            type: 'POST',
+            data: reviewData,
+            success: function(response) {
+                alert(response);  // 성공 메시지 출력
+                window.location.href = '/review/reviewList';  // 리뷰 목록으로 이동
+            },
+            error: function(err) {
+                alert(err.responseText);  // 오류 메시지 출력
+            }
+        });
+    });
+});

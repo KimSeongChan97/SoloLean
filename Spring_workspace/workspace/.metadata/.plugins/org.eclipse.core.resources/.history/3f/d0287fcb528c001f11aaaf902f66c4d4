@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.dao.RoomDAO">
+
+    <!-- 모든 room 정보 가져오기 -->
+    <select id="getAllRooms" resultType="room.bean.RoomDTO">
+        SELECT r.*, ri.imageFileName 
+	    FROM room r 
+	    LEFT JOIN roomimg ri ON r.roomid = ri.roomid
+    </select>
+    <resultMap id="roomResultMap" type="room.bean.RoomDTO">
+    <id property="roomId" column="roomid" />
+    <result property="type" column="type" />
+    <result property="size" column="size" />
+    <result property="capacity" column="capacity" />
+    <result property="price" column="price" />
+    <result property="count" column="count" />
+    <result property="description" column="description" />
+    <result property="form" column="form" />
+    <result property="view" column="view" />
+    <result property="bedtype" column="bedtype" />
+    <association property="roomImg" javaType="room.bean.RoomImgDTO">
+        <result property="imageFileName" column="imageFileName" />
+    </association>
+	</resultMap>
+    
+    <!-- 객실 ID로 객실 정보 가져오기 -->
+    <select id="getRoomById" parameterType="int" resultType="room.bean.RoomDTO">
+        SELECT * FROM room WHERE roomid = #{roomId}
+    </select>
+
+    <!-- 객실 ID로 이미지 정보 가져오기 -->
+    <select id="getRoomImagesByRoomId" parameterType="int" resultType="room.bean.RoomImgDTO">
+        SELECT * FROM roomimg WHERE roomid = #{roomId}
+    </select>
+
+</mapper>

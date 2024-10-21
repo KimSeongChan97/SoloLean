@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user.dao.UserDAO"> 
+	<insert id="joinUser" parameterType="userDTO">
+	    INSERT INTO user (
+	        userid, pwd, name, gender, birth1, birth2, birth3, email, emailcheck, 
+	        tel1, tel2, tel3, logintype
+	    ) VALUES (
+	        #{userId}, #{pwd}, #{name}, #{gender}, #{birth1}, #{birth2}, #{birth3}, #{email}, #{emailCheck}, 
+	        #{tel1}, #{tel2}, #{tel3}, #{logintype}
+	    )
+	</insert>
+	
+	<select id="loginSH" parameterType="map" resultType="userDTO">
+		select * from user where userid = #{userid} and pwd = #{pwd} and logintype = 'SH'
+	</select>
+	
+	<select id="checkNaverLoginId" resultType="userDTO">
+		select * from user where userid = #{userId} and logintype = 'NAVER'
+	</select>
+	
+	<select id="checkUserId">
+		select count(*) from user where userid = #{userId}
+	</select>
+	
+</mapper>	

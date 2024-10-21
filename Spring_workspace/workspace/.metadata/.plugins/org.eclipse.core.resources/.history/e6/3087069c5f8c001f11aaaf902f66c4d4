@@ -1,0 +1,95 @@
+$(document).ready(function() {
+    // 리뷰 목록 보기 버튼 클릭 시 모달에 리스트 로드
+    $('.room-actions .btn-outline-secondary').click(function(event) {
+        event.preventDefault(); // 링크 기본 동작 막기
+        var url = $(this).attr('href'); // 클릭한 링크의 URL 가져오기
+        $('#modalContent').load(url, function() {
+            $('#reviewModal').modal('show'); // 모달 보여주기
+        });
+    });
+
+    // 리뷰 작성하기 버튼 클릭 시 작성 폼을 모달에 로드
+    $('.room-actions .btn-outline-primary').click(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $('#modalContent').load(url, function() {
+            $('#reviewModal').modal('show');
+        });
+    });
+});
+
+$(document).ready(function() {
+    // 리뷰 목록 보기
+    $('.room-actions .btn-outline-secondary').click(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $('#modalContent').html($('#loadingIndicator').show());
+        $('#modalContent').load(url, function() {
+            $('#loadingIndicator').hide();
+            $('#reviewModal').modal('show');
+        });
+    });
+
+    // 리뷰 작성하기
+    $('.room-actions .btn-outline-primary').click(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $('#modalContent').html($('#loadingIndicator').show());
+        $('#modalContent').load(url, function() {
+            $('#loadingIndicator').hide();
+            $('#reviewModal').modal('show');
+        });
+    });
+});
+
+
+
+$(document).ready(function() {
+	
+    // Update button click
+    $('.update-btn').click(function() {
+        const reviewId = $(this).data('id');
+        window.location.href = '/review/reviewUpdateForm?reviewId=' + reviewId;  // 경로가 맞는지 확인
+    });
+
+    // Delete button click
+    $('.delete-btn').click(function() {
+        const reviewId = $(this).data('id');
+        if (confirm('정말로 리뷰를 삭제하시겠습니까?')) {
+            $.ajax({
+                url: '/review/deleteReview',  // 정확한 경로 설정
+                type: 'POST',
+                data: { reviewId: reviewId },
+                success: function(response) {
+                    alert(response);  // 서버에서 전달된 성공 메시지 출력
+                    location.reload(); // 삭제 후 페이지 리로드
+                },
+                error: function(err) {
+                    alert(err.responseText);  // 서버에서 전달된 오류 메시지 출력
+                }
+            });
+        }
+    });
+
+    // Update button click for review update
+    $('.save-btn').click(function() {
+        const reviewData = {
+            reviewId: $('#reviewId').val(),
+            content: $('#content').val(),
+            rating: $('#rating').val()
+        };
+
+        $.ajax({
+            url: '/review/updateReview',
+            type: 'POST',
+            data: reviewData,
+            success: function(response) {
+                alert(response);  // 성공 메시지
+                window.location.href = '/review/reviewList';  // 리뷰 목록으로 이동
+            },
+            error: function(err) {
+                alert(err.responseText);  // 오류 메시지
+            }
+        });
+    });
+});

@@ -1,0 +1,115 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리뷰 작성</title>
+<link rel="stylesheet" href="/SpringHotel/resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/review.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+		<div class="navbar-header">
+         	<button type="button" class="navbar-toggle collapsed"
+            	data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            	aria-expanded="false">
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+         	</button>
+         	<a class="navbar-brand" href="${pageContext.request.contextPath}/">Spring Hotel</a>
+     	 </div>
+     	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         	<ul class="nav navbar-nav">
+            	<li class="active"><a href="${pageContext.request.contextPath}/">HOME</a></li>
+            	 <li><a href="${pageContext.request.contextPath}/room/roomView">객실 정보</a></li>
+               <li><a href="reservation1.jsp">예약</a></li>
+               <li><a href="reserveInfo.jsp">예약내역</a></li>
+               <li><a href="inquiryList.jsp">Q&A</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            	<li class="dropdown">
+               		<a href="#" class="dropdown-toggle"
+                  		data-toggle="dropdown" role="button" aria-haspopup="true"
+                  		aria-expanded="false">접속하기<span class="caret"></span></a>
+           			<ul class="dropdown-menu">
+                	  	<li class="active"><a href="login.jsp">로그인</a></li>
+                  		<li><a href="join.jsp">회원가입</a></li>
+               		</ul>
+            	</li>
+         	</ul>
+     	 </div> 
+	</nav>
+	
+	
+<h2>리뷰 작성</h2>
+
+<form action="${pageContext.request.contextPath}/review/insertReview" method="post">
+	<input type="hidden" name="roomId" value="${roomId}">
+    <!-- 객실 ID 입력 -->
+    <label for="roomId">Room ID:</label>
+    <input type="text" id="roomId" name="roomId" value="${roomId}" readonly /><br/><br/>
+    
+    <!-- 사용자 name 입력 (readonly) -->
+    <%-- <label for="userName">User Name:</label>
+    <input type="text" id="userName" name="userName" value="${userName}" readonly /><br/><br/> --%>
+    <!-- 아직 로그인 로직이 구현되지 않아 빈 값으로 작성 완료가 되어야 함 -->
+    
+<!-- 평점 입력 (0.5 ~ 5 별 선택) -->
+<label for="rating">Rating:</label>
+<div class="star-rating">
+    <input type="radio" id="star10" name="rating" value="5" required />
+    <label for="star10" class="full">★</label>
+    
+    <input type="radio" id="star9half" name="rating" value="4.5" />
+    <label for="star9half" class="half">★</label>
+    
+    <input type="radio" id="star9" name="rating" value="4" />
+    <label for="star9" class="full">★</label>
+    
+    <input type="radio" id="star8half" name="rating" value="3.5" />
+    <label for="star8half" class="half">★</label>
+    
+    <input type="radio" id="star8" name="rating" value="3" />
+    <label for="star8" class="full">★</label>
+    
+    <input type="radio" id="star7half" name="rating" value="2.5" />
+    <label for="star7half" class="half">★</label>
+    
+    <input type="radio" id="star7" name="rating" value="2" />
+    <label for="star7" class="full">★</label>
+    
+    <input type="radio" id="star6half" name="rating" value="1.5" />
+    <label for="star6half" class="half">★</label>
+    
+    <input type="radio" id="star6" name="rating" value="1" />
+    <label for="star6" class="full">★</label>
+    
+    <input type="radio" id="star5half" name="rating" value="0.5" />
+    <label for="star5half" class="half">★</label>
+</div>
+    <br/><br/>
+    
+    <!-- 리뷰 코멘트 입력 -->
+    <label for="comment">Comment:</label>
+    <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br/><br/>
+    
+    <!-- 리뷰 제출 버튼 -->
+    <button type="submit">리뷰 작성</button>
+</form>
+
+<!-- 리뷰 목록 이동하는 버튼 -->
+<input type="button" value="List" onclick="window.location.href='${pageContext.request.contextPath}/review/reviewList';">
+<script type="text/javascript">
+document.querySelectorAll('.star-rating input[type="radio"]').forEach(function(star) {
+    star.addEventListener('change', function() {
+        console.log('Rating selected: ' + this.value);  // 선택한 별점 값을 출력
+    });
+});
+
+</script>
+
+</body>
+</html>

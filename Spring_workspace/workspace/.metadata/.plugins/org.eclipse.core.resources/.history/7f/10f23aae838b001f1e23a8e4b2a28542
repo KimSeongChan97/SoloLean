@@ -1,0 +1,27 @@
+package room.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import room.bean.RoomDTO;
+import room.service.RoomService;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/room")
+public class RoomController {
+
+    @Autowired
+    private RoomService roomService;
+
+    @RequestMapping(value = "/roomView", method = RequestMethod.GET)
+    public String getAllRooms(Model model) {
+        List<RoomDTO> rooms = roomService.getAllRooms();
+        model.addAttribute("rooms", rooms);  // Model에 rooms 추가
+        return "room/roomView";  // roomView.jsp로 이동
+    }
+}

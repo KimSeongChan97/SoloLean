@@ -1,0 +1,53 @@
+$(document).ready(function() {
+    // 리뷰 목록 보기 버튼 클릭 시 AJAX로 리뷰 목록 페이지 로드
+    $('#loadReviewList').click(function(event) {
+        event.preventDefault();
+        const roomId = $(this).data('room-id');
+        if (roomId) {
+            loadReviewList(roomId);
+        } else {
+            alert('roomId가 없습니다.');
+        }
+    });
+
+    // 리뷰 작성하기 버튼 클릭 시 AJAX로 리뷰 작성 페이지 로드
+    $('#loadReviewWriteForm').click(function(event) {
+        event.preventDefault();
+        const roomId = $(this).data('room-id');
+        if (roomId) {
+            loadReviewWriteForm(roomId);
+        } else {
+            alert('roomId가 없습니다.');
+        }
+    });
+
+    // 리뷰 목록을 불러오는 함수
+    function loadReviewList(roomId) {
+        $.ajax({
+            url: '/review/reviewList',
+            type: 'GET',
+            data: { roomId: roomId },
+            success: function(response) {
+                $('#contentContainer').html(response);  // 리뷰 목록 페이지 내용을 해당 div에 삽입
+            },
+            error: function() {
+                alert('리뷰 목록을 불러오는 중 오류가 발생했습니다.');
+            }
+        });
+    }
+
+    // 리뷰 작성 폼을 불러오는 함수
+    function loadReviewWriteForm(roomId) {
+        $.ajax({
+            url: '/review/reviewWriteForm',
+            type: 'GET',
+            data: { roomId: roomId },
+            success: function(response) {
+                $('#contentContainer').html(response);  // 리뷰 작성 폼 내용을 해당 div에 삽입
+            },
+            error: function() {
+                alert('리뷰 작성 폼을 불러오는 중 오류가 발생했습니다.');
+            }
+        });
+    }
+});

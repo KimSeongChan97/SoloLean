@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Oct 2024 00:32:44 GMT</lastBuildDate><item><title><![CDATA[Spring Batch 5.2.0-M2 is available now!]]></title><link>https://spring.io/blog/2024/10/11/spring-batch-5-2-0-m2-is-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/10/11/spring-batch-5-2-0-m2-is-available-now</guid><dc:creator><![CDATA[Mahmoud Ben Hassine]]></dc:creator><pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am pleased to announce that the second milestone of Spring Batch 5.2 is now available from our milestones repository. This blog post walks you through the main changes in Spring Batch 5.2:&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 21 Oct 2024 00:33:58 GMT</lastBuildDate><item><title><![CDATA[Spring Data 2024.1.0 goes RC1]]></title><link>https://spring.io/blog/2024/10/18/spring-data-2024-1-0-goes-rc1</link><guid isPermaLink="true">https://spring.io/blog/2024/10/18/spring-data-2024-1-0-goes-rc1</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 18 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I°Øm pleased to announce that Spring Data release train &lt;code&gt;2024.1&lt;/code&gt; has entered the release candidate phase with &lt;code&gt;2024.1.0-RC1&lt;/code&gt; being available now.&lt;/p&gt;
+&lt;p&gt;This release completes our Value Expression support across modules allowing you to leverage property placeholders in &lt;code&gt;@Query&lt;/code&gt; along with the existing SpEL support.
+Developers of Spring Data fragments now can leverage &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/data-commons/3.4/repositories/custom-implementations.html#repositories.spring-factories&quot;&gt;fragment registration through &lt;code&gt;spring.factories&lt;/code&gt;&lt;/a&gt; and obtain invocation metadata.&lt;/p&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/wiki/Spring-Data-2024.1-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
+&lt;p&gt;Going forward, we aim for a GA release in mid November. The release is as usual picked by by Spring Boot.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;p&gt;Finally, here are the links to the documentation and release notes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/4.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/4.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/7.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/4.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/5.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/5.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.4 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.4.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/3.4/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.4.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Data 2024.0.5 and 2023.1.11 released]]></title><link>https://spring.io/blog/2024/10/18/spring-data-2024-0-5-and-2023-1-11-released</link><guid isPermaLink="true">https://spring.io/blog/2024/10/18/spring-data-2024-0-5-and-2023-1-11-released</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 18 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I°Øm pleased to announce the availability of &lt;code&gt;2024.0.5&lt;/code&gt; and &lt;code&gt;2023.1.11&lt;/code&gt; service releases. These releases ship with dependency upgrades, fixes for regressions, and selected improvements.&lt;/p&gt;
+&lt;p&gt;The upcoming Spring Boot releases &lt;code&gt;3.3.5&lt;/code&gt;, respective &lt;code&gt;3.2.11&lt;/code&gt; will pick up the above releases by next week.&lt;/p&gt;
+&lt;h2 id=&quot;202405&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#202405&quot; aria-label=&quot;202405 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2024.0.5&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/4.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/4.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/7.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/4.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/5.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/5.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.3.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.3.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/3.3/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.3.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2023111&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2023111&quot; aria-label=&quot;2023111 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2023.1.11&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/4.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/4.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/7.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/4.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/5.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/5.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.2.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.2.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/3.2/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.2.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Tools 4.26.0 released]]></title><link>https://spring.io/blog/2024/10/17/spring-tools-4-26-0-released</link><guid isPermaLink="true">https://spring.io/blog/2024/10/17/spring-tools-4-26-0-released</guid><dc:creator><![CDATA[Martin Lippert]]></dc:creator><pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Dear Spring Community,&lt;/p&gt;
+&lt;p&gt;I am happy to announce the 4.26.0 release of the Spring Tools 4 for Visual Studio Code, Eclipse and Theia.&lt;/p&gt;
+&lt;h4 id=&quot;important-highlights&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#important-highlights&quot; aria-label=&quot;important highlights permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;important highlights&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; CRON expressions have auto completion and a nice description as inlay hints now&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; &lt;code&gt;@ConditionalOnBean&lt;/code&gt; and &lt;code&gt;@ConditinalOnMissingBean&lt;/code&gt; have auto completion support now for bean names, including support for &lt;code&gt;go to definition&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; support for &lt;code&gt;go to definition&lt;/code&gt; for beans and methods in SPEL expressions&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; Improvements to completion proposals ordering for application.properties files&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; Fixes to PostgreSql validation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Detailed changes can be found in the release notes: &lt;a href=&quot;https://github.com/spring-projects/sts4/releases/tag/4.26.0.RELEASE&quot;&gt;https://github.com/spring-projects/sts4/releases/tag/4.26.0.RELEASE&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;downloads&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#downloads&quot; aria-label=&quot;downloads permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;downloads&lt;/h4&gt;
+&lt;p&gt;To download the distribution for Eclipse and find links to the marketplace entries for Visual Studio Code and Theia, please go visit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Tools 4: &lt;a href=&quot;https://spring.io/tools/&quot;&gt;https://spring.io/tools/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Spring Tools 4.27.0 is scheduled to be released in mid December 2024.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework CVE-2024-38819 and CVE-2024-38820 published]]></title><link>https://spring.io/blog/2024/10/17/spring-framework-cve-2024-38819-and-cve-2024-38820-published</link><guid isPermaLink="true">https://spring.io/blog/2024/10/17/spring-framework-cve-2024-38819-and-cve-2024-38820-published</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;The Spring Framework has released version 6.1.14 that contains a fix for both:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/security/cve-2024-38819&quot;&gt;CVE-2024-38819&lt;/a&gt;: Path traversal vulnerability in functional web frameworks (2nd report)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/security/cve-2024-38820&quot;&gt;CVE-2024-38820&lt;/a&gt;: Spring Framework DataBinder case sensitive match exception&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that open source support for Spring Framework 5.3.x and 6.0.x generations has ended last August, &lt;a href=&quot;https://spring.io/blog/2024/03/01/support-timeline-announcement-for-spring-framework-6-0-x-and-5-3-x&quot;&gt;as announced previously&lt;/a&gt;. This fix has been applied to the 5.3.41 and 6.0.25 commercial releases, available now.&lt;/p&gt;
+&lt;p&gt;If you are not a commercial customer, &lt;a href=&quot;https://spring.io/projects/spring-framework/#support&quot;&gt;please consider upgrading to an open source supported version&lt;/a&gt; at your earliest convenience.&lt;/p&gt;
+&lt;h3 id=&quot;upgrading-your-project&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upgrading-your-project&quot; aria-label=&quot;upgrading your project permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upgrading Your Project&lt;/h3&gt;
+&lt;p&gt;Commercial customers using Spring Boot 2.7, 3.0, or 3.1 can make use of Spring Boot Hotfix releases 2.7.22.2, 3.0.17.2, and 3.1.13.2. Releases are available now on the Spring commercial artifact repository and can be accessed with a &lt;a href=&quot;https://enterprise.spring.io&quot;&gt;Spring Enterprise Subscription&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.2.0-RC2 available now]]></title><link>https://spring.io/blog/2024/10/17/spring-framework-6-2-0-rc2-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/10/17/spring-framework-6-2-0-rc2-available-now</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;We are happy to announce the availability of the second release candidate of Spring Framework 6.2. We have been working on fixing regressions from previous milestones and shipping performance improvements.&lt;/p&gt;
+&lt;p&gt;Spring Framework 6.2.0-RC2 is available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;repo.spring.io/milestone&lt;/a&gt; now, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.2.0-RC2&quot;&gt;detailed changelog for this version&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Spring &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/352&quot;&gt;3.4.0-RC1&lt;/a&gt; will be released next week, a good opportunity for testing the upcoming Spring generation in existing applications!&lt;/p&gt;
+&lt;h2 id=&quot;62-features-recap&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#62-features-recap&quot; aria-label=&quot;62 features recap permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6.2 features recap&lt;/h2&gt;
+&lt;p&gt;Check out our &lt;a href=&quot;https://github.com/spring-projects/spring-framework/wiki/What&amp;#x27;s-New-in-Spring-Framework-6.x#whats-new-in-version-62&quot;&gt;What&apos;s New page&lt;/a&gt; for details about the new features available at this point.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.1.14 Available Now]]></title><link>https://spring.io/blog/2024/10/17/spring-framework-6-1-14-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/10/17/spring-framework-6-1-14-available-now</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;6.1.14&lt;/code&gt; is available now.&lt;/p&gt;
+&lt;p&gt;Spring Framework &lt;code&gt;6.1.14&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.1.14&quot;&gt;25 fixes and documentation improvements&lt;/a&gt;. This version will be shipped with &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/358&quot;&gt;Spring Boot 3.2.11&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/359&quot;&gt;Spring Boot 3.3.5&lt;/a&gt; next week.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-framework/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-framework/reference/&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: Oracle Developer Advocate Andres Almiray]]></title><link>https://spring.io/blog/2024/10/17/a-bootiful-podcast-oracle-developer-advocate-andres-almiray</link><guid isPermaLink="true">https://spring.io/blog/2024/10/17/a-bootiful-podcast-oracle-developer-advocate-andres-almiray</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 17 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment I talk to Oracle developer advocate Andres Almiray about the latest-and-greatest in the amazing Oracle database. #Oracle #SQL #Java #JConf&lt;/p&gt;
+&lt;iframe title=&quot;Oracle Developer Advocate Andres Almiray&quot; allowtransparency=&quot;true&quot; height=&quot;300&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:300px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?from=embed&amp;i=auef7-170d1b5-pb&amp;square=1&amp;share=1&amp;download=1&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;rtl=0&amp;logo_link=&amp;btn-skin=7&amp;size=300&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 15th, 2024]]></title><link>https://spring.io/blog/2024/10/15/this-week-in-spring-october-15th-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/10/15/this-week-in-spring-october-15th-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Welcome to another rip-roaring and ever-so-riveting installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I&apos;m in Amsterdam, at the moment, rounding out a week between Antwerp, Beglium, and Amsterdam, the Netherlands. Today I&apos;m off to Dubai for the fantastic GITEX/DevSlam event. Then I return back to Europe for Voxxed Days Thessaloniki, in Greece. Should be a fun week!&lt;/p&gt;
+&lt;p&gt;It&apos;s certainly &lt;em&gt;been&lt;/em&gt; a fun week! Let&apos;s dive right into it!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/10/08/spring-ai-1-0-0-m3-released&quot;&gt;Spring AI 1.0.0. M3 has been released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In last week&apos;s installment of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, &lt;a href=&quot;https://spring.io/blog/2024/10/10/a-bootiful-podcast-new-york-java-sig-chair-and-founder-frank-greco-on&quot;&gt;I talk to New York Java SIG chair and founder Frank Greco about community, AI, and more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/10/09/spring-cloud-2024-0-0-m2-aka-moorgate-has-been-released&quot;&gt;Spring Cloud 2024.0.0.-M2 (aka Moorgate) has been released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/10/11/spring-batch-5-2-0-m2-is-available-now&quot;&gt;Spring Batch 5.2.0 M2 is available now&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Oded Shopen, friend of Spring, has updated the distributed microservices implementation of Petclinic &lt;a href=&quot;https://t.co/S3MIfPBrP5&quot;&gt;to feature a Spring Ai assistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Framework committer Sebastien Deleuze was part of this &lt;a href=&quot;https://www.youtube.com/watch?v=78HV0MRtfiw&quot;&gt;Devoxx Belgium talk looking at Project Leyden, along with Per Minborg, and it&apos;s quite amazing what&apos;s possible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Have you checked out &lt;a href=&quot;https://github.com/wiremock/wiremock-spring-boot&quot;&gt;the Wiremock Spring Boot integration?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;want to follow my advice and never use field injection? Spring Tools 4 - our Eclipse and Visual Studio Code integrations - has a built-in validation and automatic quick fix for you.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.infoworld.com/article/3540494/spring-ai-generative-ai-for-java-developers.html&quot;&gt;InfoWorld has a nice writeup of Spring AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;want to see how you, in your Spring Boot starters, can better communicate what a developer might do if they&apos;re &quot;holding it wrong&quot;? &lt;a href=&quot;https://github.com/viritin/viritin-sb/commit/322822f8deeffc26082211ca61584de45ee203ba#diff-fc98a151bed015a668fc18498509564ac5c9520eebea110694b71ac599cc257bR13&quot;&gt;Check out the Vaadin team&apos;s first new failure analyzer&lt;/a&gt;. Failure analyzers are a mechanism in Spring Boot to detect and report detailed errors and possibly even suggest paths forward. Nice!&lt;/li&gt;
+&lt;li&gt;Dan Vega has a nice example looking at how to &lt;a href=&quot;https://github.com/danvega/spring-ai-streaming&quot;&gt;do Spring AI streaming&lt;/a&gt; in a chat box scenario.&lt;/li&gt;
+&lt;li&gt;I thought this was a kind of interesting tool from Spring community member Wim Deblauwe: a CLI to make generating a &lt;a href=&quot;https://github.com/wimdeblauwe/ttcli&quot;&gt;new Spring Boot and Thymeleaf application as trivial as possible.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In Spring Framework 6.2, &lt;a href=&quot;https://x.com/sam_brannen/status/1843686805528555673?s=12&quot;&gt;you&apos;ll be able to use &lt;code&gt;@MockitoBean&lt;/code&gt; and &lt;code&gt;@TestBean&lt;/code&gt; in AOT mode on the JVM and within a GraalVM native image!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Batch 5.2.0-M2 is available now!]]></title><link>https://spring.io/blog/2024/10/11/spring-batch-5-2-0-m2-is-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/10/11/spring-batch-5-2-0-m2-is-available-now</guid><dc:creator><![CDATA[Mahmoud Ben Hassine]]></dc:creator><pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am pleased to announce that the second milestone of Spring Batch 5.2 is now available from our milestones repository. This blog post walks you through the main changes in Spring Batch 5.2:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;MongoDB job repository support&lt;/li&gt;
 &lt;li&gt;New resourceless job repository&lt;/li&gt;
@@ -67,853 +167,4 @@ public CompositeItemReader&amp;#x3C;Person&gt; itemReader() {
 &lt;a href=&quot;https://github.com/spring-projects/spring-batch/discussions&quot;&gt;Github Discussions&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/springbatch&quot;&gt;Twitter&lt;/a&gt;, and &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-batch&quot;&gt;StackOverflow&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please note that 5.1.x will be out of OSS support by November 22, 2024. Therefore, I encourage our users to start planning to upgrade their apps to Spring Batch 5.2.0 as soon as it is released.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-batch&quot;&gt;Spring Batch Home&lt;/a&gt;|&lt;a href=&quot;https://github.com/spring-projects/spring-batch&quot;&gt;Source on Github&lt;/a&gt;|&lt;a href=&quot;https://docs.spring.io/spring-batch/reference/index.html&quot;&gt;Reference documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: New York Java SIG chair and founder Frank Greco on community, AI, and more]]></title><link>https://spring.io/blog/2024/10/10/a-bootiful-podcast-new-york-java-sig-chair-and-founder-frank-greco-on</link><guid isPermaLink="true">https://spring.io/blog/2024/10/10/a-bootiful-podcast-new-york-java-sig-chair-and-founder-frank-greco-on</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 10 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment, I talk to New York Java SIG chair and founder Frank Greco about AI, safety, Java, community, and more!&lt;/p&gt;
-&lt;iframe title=&quot;New York Java SIG chair and founder Frank Greco on community, AI, and more&quot; allowtransparency=&quot;true&quot; height=&quot;300&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:300px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?from=embed&amp;i=x3c7v-1700aca-pb&amp;square=1&amp;share=1&amp;download=1&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;rtl=0&amp;logo_link=&amp;btn-skin=7&amp;size=300&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Spring Cloud 2024.0.0-M2 (aka Moorgate) Has Been Released]]></title><link>https://spring.io/blog/2024/10/09/spring-cloud-2024-0-0-m2-aka-moorgate-has-been-released</link><guid isPermaLink="true">https://spring.io/blog/2024/10/09/spring-cloud-2024-0-0-m2-aka-moorgate-has-been-released</guid><dc:creator><![CDATA[Ryan Baxter]]></dc:creator><pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the community, I am pleased to announce that the Milestone 2 (M2) of the &lt;a href=&quot;https://cloud.spring.io&quot;&gt;Spring Cloud 2024.0.0&lt;/a&gt; Release Train is available today. The release can be found in &lt;a href=&quot;https://repo.spring.io/milestone/&quot;&gt;Spring Milestone&lt;/a&gt; repository. You can check out the 2024.0.0 &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2024.0-Release-Notes&quot;&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;notable-changes-in-the-202400-m2-release-train&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notable-changes-in-the-202400-m2-release-train&quot; aria-label=&quot;notable changes in the 202400 m2 release train permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notable Changes in the 2024.0.0-M2 Release Train&lt;/h2&gt;
-&lt;p&gt;This release of Spring Cloud is based on Spring Boot 3.4.0-M3.&lt;/p&gt;
-&lt;p&gt;The GitHub project for this release can be found &lt;a href=&quot;https://github.com/orgs/spring-cloud/projects/153/views/1&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;spring-cloud-openfeign&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-openfeign&quot; aria-label=&quot;spring cloud openfeign permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud OpenFeign&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Support &lt;code&gt;ignorecase&lt;/code&gt; with &lt;code&gt;Pageable&lt;/code&gt; (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-openfeign/pull/1047&quot;&gt;#1047&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-commons&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-commons&quot; aria-label=&quot;spring cloud commons permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Commons&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a TrustStore without requiring a KeyStore (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-commons/pull/1394&quot;&gt;#1394&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-config&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-config&quot; aria-label=&quot;spring cloud config permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Config&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Resources can be stored and received with a given charset (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/issues/2115&quot;&gt;#2115&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Add MongoDB environment repository support &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/pull/2390&quot;&gt;(#2390)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Support Multiple Labels In Environment Repositories &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/issues/2449&quot;&gt;(#2449)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-gateway&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-gateway&quot; aria-label=&quot;spring cloud gateway permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Gateway&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Webflux Java DSL gets a method to nest boolean predicates &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/pull/2598&quot;&gt;(#2598 )&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Adds an enabled flag to a route &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/pull/3026&quot;&gt;(#3026)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;QPS, Latency etc metrics added to grafana template &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/pull/3014&quot;&gt;(#3014)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Fix for same redis rate limiter bucket used with multiple routes &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/pull/2517&quot;&gt;(#2517)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-stream&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-stream&quot; aria-label=&quot;spring cloud stream permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Stream&lt;/h3&gt;
-&lt;p&gt;Spring Cloud Stream &lt;code&gt;4.2.0-M2&lt;/code&gt; release contains some new enhancements and bug fixes. For more information, see &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/releases/tag/v4.2.0-M2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;For further details, see the &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/milestone/98?closed=1&quot;&gt;4.2.0-M2 milestone&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The following modules were updated as part of 2024.0.0-M2:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Module&lt;/th&gt;
-&lt;th&gt;Version&lt;/th&gt;
-&lt;th&gt;Issues&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Bus&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-bus/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Contract&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-contract/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Circuitbreaker&lt;/td&gt;
-&lt;td&gt;3.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-circuitbreaker/releases/tag/v3.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Zookeeper&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-zookeeper/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Task&lt;/td&gt;
-&lt;td&gt;3.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-task/releases/tag/v3.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Kubernetes&lt;/td&gt;
-&lt;td&gt;3.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-kubernetes/releases/tag/v3.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Starter Build&lt;/td&gt;
-&lt;td&gt;2024.0.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-starter-build/releases/tag/v2024.0.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Netflix&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-netflix/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Openfeign&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-openfeign/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Commons&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-commons/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Consul&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-consul/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Config&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Vault&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-vault/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Build&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-build/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Gateway&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Stream&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Function&lt;/td&gt;
-&lt;td&gt;4.2.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-function/releases/tag/v4.2.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;As always, we welcome feedback on &lt;a href=&quot;https://github.com/spring-cloud/&quot;&gt;GitHub&lt;/a&gt;, on &lt;a href=&quot;https://gitter.im/spring-cloud/spring-cloud&quot;&gt;Gitter&lt;/a&gt;, on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-cloud&quot;&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href=&quot;https://twitter.com/SpringCloud&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;    &amp;#x3C;repositories&gt;
-        &amp;#x3C;repository&gt;
-            &amp;#x3C;id&gt;spring-milestones&amp;#x3C;/id&gt;
-            &amp;#x3C;name&gt;Spring Milestones&amp;#x3C;/name&gt;
-            &amp;#x3C;url&gt;https://repo.spring.io/milestone&amp;#x3C;/url&gt;
-            &amp;#x3C;snapshots&gt;
-                &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
-            &amp;#x3C;/snapshots&gt;
-        &amp;#x3C;/repository&gt;
-    &amp;#x3C;/repositories&gt;
-&amp;#x3C;dependencyManagement&gt;
-    &amp;#x3C;dependencies&gt;
-        &amp;#x3C;dependency&gt;
-            &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-            &amp;#x3C;artifactId&gt;spring-cloud-dependencies&amp;#x3C;/artifactId&gt;
-            &amp;#x3C;version&gt;2024.0.0-M2&amp;#x3C;/version&gt;
-            &amp;#x3C;type&gt;pom&amp;#x3C;/type&gt;
-            &amp;#x3C;scope&gt;import&amp;#x3C;/scope&gt;
-        &amp;#x3C;/dependency&gt;
-    &amp;#x3C;/dependencies&gt;
-&amp;#x3C;/dependencyManagement&gt;
-&amp;#x3C;dependencies&gt;
-    &amp;#x3C;dependency&gt;
-        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-        &amp;#x3C;artifactId&gt;spring-cloud-starter-config&amp;#x3C;/artifactId&gt;
-    &amp;#x3C;/dependency&gt;
-    &amp;#x3C;dependency&gt;
-        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-        &amp;#x3C;artifactId&gt;spring-cloud-starter-netflix-eureka-client&amp;#x3C;/artifactId&gt;
-    &amp;#x3C;/dependency&gt;
-    ...
-&amp;#x3C;/dependencies&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or with Gradle:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-groovy&quot;&gt;plugins {
-  id &apos;java&apos;
-  id &apos;org.springframework.boot&apos; version &apos;3.4.0-M3&apos;
-  id &apos;io.spring.dependency-management&apos; version &apos;1.1.6&apos;
-}
-
-repositories {
-  mavenCentral()
-  maven { url &apos;https://repo.spring.io/milestone&apos; }
-}
-
-ext {
-  set(&apos;springCloudVersion&apos;, &quot;2024.0.0-M2&quot;)
-}
-
-dependencies {
-  implementation &apos;org.springframework.cloud:spring-cloud-starter-config&apos;
-  implementation &apos;org.springframework.cloud:spring-cloud-starter-netflix-eureka-client&apos;
-}
-
-dependencyManagement {
-  imports {
-    mavenBom &quot;org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}&quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[Spring AI 1.0.0 M3 Released]]></title><link>https://spring.io/blog/2024/10/08/spring-ai-1-0-0-m3-released</link><guid isPermaLink="true">https://spring.io/blog/2024/10/08/spring-ai-1-0-0-m3-released</guid><dc:creator><![CDATA[Mark Pollack]]></dc:creator><pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;We are happy to announce the 1.0.0 Milestone 3 release of Spring AI.&lt;/p&gt;
-&lt;p&gt;This release brings significant enhancements and new features across various areas.&lt;/p&gt;
-&lt;h2 id=&quot;observability&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#observability&quot; aria-label=&quot;observability permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Observability&lt;/h2&gt;
-&lt;p&gt;This release introduces many refinements to the observability stack, particularly for streaming responses from Chat Models.
-Many thanks to Thomas Vitale and Dariusz Jedrzejczyk for all their help in this area!&lt;/p&gt;
-&lt;p&gt;Observability covers the ChatClient, ChatModel, Embedding Models and Vector stores enabling you to view all touchpoints with your AI infrstructure in fine grained detail..&lt;/p&gt;
-&lt;p&gt;In the M2 release we introduced observability support for OpenAI, OIlama, Mistral and Anthropic models.  Now we have expanded this to include support for&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Azure OpenAI&lt;/li&gt;
-&lt;li&gt;Google Vertex  AI&lt;/li&gt;
-&lt;li&gt;Transformers (ONNX)&lt;/li&gt;
-&lt;li&gt;MiniMax&lt;/li&gt;
-&lt;li&gt;Moonshot&lt;/li&gt;
-&lt;li&gt;Baidu QianFan&lt;/li&gt;
-&lt;li&gt;Zhipu AI&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Thanks to Geng Rong for implementing observability to the Chinese models.&lt;/p&gt;
-&lt;p&gt;You can find more detailed information on the available metrics and traces that are available in the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/observabilty/index.html&quot;&gt;observability reference documentation&lt;/a&gt;.  Here are some graphs to demonstrate what&apos;s possible.&lt;/p&gt;
-&lt;h3 id=&quot;grafana-dashboard&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#grafana-dashboard&quot; aria-label=&quot;grafana dashboard permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Grafana Dashboard&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5ujIisbD7ZH1XLR8cKtAut/455952c1de2d75279a06f28324e6ec14/grafana-spring-ai.png&quot; alt=&quot;Grafana Dashboard&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;tracing-dashboard&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tracing-dashboard&quot; aria-label=&quot;tracing dashboard permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tracing Dashboard&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/ayqJ1lUDb4gr5NaFW51d1/b482bedd33d21c2875856350ab507a58/tempo-spring-ai.png&quot; alt=&quot;Tempo Dashboard&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;advisor-improvements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#advisor-improvements&quot; aria-label=&quot;advisor improvements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Advisor Improvements&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/advisors.html&quot;&gt;Spring AI Advisors&lt;/a&gt; are components that intercept and potentially modify the flow of chat-completion requests and responses in your AI applications.
-Advisors can also choose to block the request by not making the call to invoke the next advisor in the chain.&lt;/p&gt;
-&lt;p&gt;The key player in this system is the AroundAdvisor, which allows developers to dynamically transform or utilize information within these interactions.&lt;/p&gt;
-&lt;p&gt;The main benefits of using Advisors include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Encapsulation of Recurring Tasks:&lt;/strong&gt; Package common GenAI patterns into reusable units.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Transformation:&lt;/strong&gt; Augment data sent to Language Models (LLMs) and format responses sent back to clients.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Portability:&lt;/strong&gt; Create reusable transformation components that work across various models and use cases.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;We have revisited the Advisor API model and made many design changes and improved it&apos;s ability to apply to streaming request and responses.  You can also explicitly define the order of the advisor&apos;s using Spring&apos;s &lt;code&gt;Ordered&lt;/code&gt; interface.&lt;/p&gt;
-&lt;p&gt;Depending on what areas of the API you have used, there can be breaking changes, see the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/advisors.html#_breaking_api_changes&quot;&gt;docs&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;The flow of the around advisor is depicted below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/3pLYS0XVnehcx6e7s0zTSF/3374ca5501f7137205848019d063c8ae/spring-ai-advisors-flow.svg&quot; alt=&quot;Advisor Flow&quot;&gt;&lt;/p&gt;
-&lt;p&gt;You can read Christian Tzolov&apos;s recent blog &lt;a href=&quot;https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors&quot;&gt;Supercharging Your AI Applications with Spring AI Advisors&lt;/a&gt; for more detials.&lt;/p&gt;
-&lt;h2 id=&quot;function-calling-improvements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#function-calling-improvements&quot; aria-label=&quot;function calling improvements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Function calling improvements&lt;/h2&gt;
-&lt;p&gt;Spring AI now supports passing additional contextual information to function callbacks through a &lt;code&gt;ToolContext&lt;/code&gt; class that contains key-value pairs.
-This feature allows you to provide extra data that can be used within the function execution.&lt;/p&gt;
-&lt;p&gt;In this example we are passing in a &lt;code&gt;sessionId&lt;/code&gt;, so that the context is aware of that value:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;String content = chatClient.prompt(&quot;What&apos;s the weather like in San Francisco, Tokyo, and Paris?&quot;)
-    .functions(&quot;weatherFunctionWithContext&quot;)
-    .toolContext(Map.of(&quot;sessionId&quot;, &quot;123&quot;))
-    .call()
-    .content();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Also note that you can pass the user text in the &lt;code&gt;prompt&lt;/code&gt; method as an alternative to using the &lt;code&gt;user&lt;/code&gt; method.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;ToolContext&lt;/code&gt; is available by using a java.util.BiFunction.  Here is the bean definition:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@Bean
-@Description(&quot;Get the weather in location&quot;)
-public BiFunction&amp;#x3C;WeatherService.Request, ToolContext, WeatherService.Response&gt; weatherFunctionWithContext() {
-    return (request, toolContext) -&gt; {
-        String sessionId = (String) toolContext.getContext().get(&quot;sessionId&quot;);
-
-        // use session id as appropriate...
-        System.out.println(sessionId);
-
-        return new WeatherService().apply(request);
-    };
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;fine-grained-control-over-function-calling&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fine-grained-control-over-function-calling&quot; aria-label=&quot;fine grained control over function calling permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Fine grained control over function calling&lt;/h2&gt;
-&lt;p&gt;If you prefer to handle the function calling conversation yourself, you can set the &lt;code&gt;proxyToolCalls&lt;/code&gt; option.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PortableFunctionCallingOptions functionOptions = FunctionCallingOptions.builder()
-    .withFunction(&quot;weatherFunction&quot;)
-    .withProxyToolCalls(true)
-    .build();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And passing these optionsa call to the model via a ChatModel or ChatClient will return a ChatResponse that contains the first message sent at the start of the AI model°Øs function calling conversation.&lt;/p&gt;
-&lt;h2 id=&quot;fact-based-evaluation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fact-based-evaluation&quot; aria-label=&quot;fact based evaluation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Fact-based Evaluation&lt;/h2&gt;
-&lt;p&gt;There have been some notable innovations in the area of factual evaluation with a new leaderboard named &lt;a href=&quot;https://llm-aggrefact.github.io/&quot;&gt;LLM-AggreFact&lt;/a&gt;. A model currently leading the benchmark is °∞bespoke-minicheck°± developed by &lt;a href=&quot;https://bespokelabs.ai/&quot;&gt;Bespoke Labs&lt;/a&gt;.
-Part of what makes this model compelling is that is much smaller and cheaper to run as compared to so called °∞flagship°± models such as GPT4o.
-You can read more into the research behind this model in the paper °∞&lt;a href=&quot;https://arxiv.org/pdf/2404.10774&quot;&gt;MiniCheck:  Efficient Fact-Checking of LLMs of Grounding Documents&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The Spring AI FactCheckingEvaluator is based on that work and can be used with the &lt;a href=&quot;https://ollama.com/blog/reduce-hallucinations-with-bespoke-minicheck&quot;&gt;Bespoke-minicheck model deployed on Ollama&lt;/a&gt;.  See the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/testing.html#_factcheckingevaluator&quot;&gt;documentation&lt;/a&gt; for more information.  Thanks to Edd? Mel?ndez for his work in this area.&lt;/p&gt;
-&lt;h2 id=&quot;embedding-model-batch-processing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#embedding-model-batch-processing&quot; aria-label=&quot;embedding model batch processing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Embedding Model Batch Processing&lt;/h2&gt;
-&lt;p&gt;Previously, embedding a list of documents required making calls item by item, which was not very performant.
-Spring AI now supports batching multiple documents together so that multiple embeddings can be computed in a single call to the model.
-Since embedding models have token limits, documents are grouped such that each batch doesn&apos;t exceed the token limit for the embedding model.&lt;/p&gt;
-&lt;p&gt;The new class TokenCountingBatchingStrategy takes into account the token size and allocates a 10% reserve buffer, as token estimation isn&apos;t an exact science.
-You can customize your own implementations of the BatchingStrategy interface.&lt;/p&gt;
-&lt;p&gt;Additionally, JDBC-based embedding models can now more easily customize the batch size to use when doing bulk inserts.&lt;/p&gt;
-&lt;p&gt;Thanks to Soby Chacko for his work in this area and other contributions as a new member of the Spring AI team.&lt;/p&gt;
-&lt;h2 id=&quot;some-model-providers-specific-details&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#some-model-providers-specific-details&quot; aria-label=&quot;some model providers specific details permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Some model providers specific details&lt;/h2&gt;
-&lt;p&gt;Azure AI&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Added Observability&lt;/li&gt;
-&lt;li&gt;Fixed streaming responses&lt;/li&gt;
-&lt;li&gt;Enabled custom HTTP headers&lt;/li&gt;
-&lt;li&gt;Added previously missing calling options&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Vertex AI&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Added Observability&lt;/li&gt;
-&lt;li&gt;Added support for Google Search as a tool&lt;/li&gt;
-&lt;li&gt;Implemented retry support&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;general-improvements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#general-improvements&quot; aria-label=&quot;general improvements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;General improvements&lt;/h2&gt;
-&lt;p&gt;Many refactoring, bug fixing, documentation enhancements across the board by a wide range of contributors. If we haven°Øt gotten to your PR yet, we will, please be patient. Thanks to&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/mudabirhussain&quot;&gt;Mudabir Hussain (mudabirhussain)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/l-trotta&quot;&gt;Laura Trotta (l-trotta)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Jang990&quot;&gt;Jang990 (Jang990)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/ktm&quot;&gt;ktm (ktm)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/threos&quot;&gt;Eray Ocak (threos)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Claudio-code&quot;&gt;claudio-code (Claudio-code)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/alexcheng1982&quot;&gt;Fu Cheng (alexcheng1982)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/habuma&quot;&gt;Craig Walls (habuma)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Hyune-c&quot;&gt;Hyune-c (Hyune-c)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/PARK-afk&quot;&gt;PARK-afk (PARK-afk)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/anders-swanson&quot;&gt;Anders Swanson (anders-swanson)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/ricken07&quot;&gt;Ricken Bazolo (ricken07)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/ilopezluna&quot;&gt;Ignasi (ilopezluna)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/sobychacko&quot;&gt;Soby Chacko (sobychacko)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/jxblum&quot;&gt;John Blum (jxblum)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/dafriz&quot;&gt;dafriz (dafriz)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/eddumelendez&quot;&gt;Edd? Mel?ndez (eddumelendez)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/PabloSanchi&quot;&gt;PabloSanchi (PabloSanchi)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/junsepar&quot;&gt;π⁄¡ÿº≠ (junsepar)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/yuhangbin&quot;&gt;cboy (yuhangbin)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/ashni-mongodb&quot;&gt;ashni (ashni-mongodb)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/bruno-oliveira&quot;&gt;Bruno Oliveira (bruno-oliveira)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/tzolov&quot;&gt;Christian Tzolov (tzolov)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/ThomasVitale&quot;&gt;Thomas Vitale (ThomasVitale)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/izeye&quot;&gt;Johnny Lim (izeye)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Peter Dolukhanov&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/inpink&quot;&gt;inpink (inpink)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/StudiousXiaoYu&quot;&gt;“Ω’ÙÓ‹·≥ÈÎ (StudiousXiaoYu)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 8th, 2024]]></title><link>https://spring.io/blog/2024/10/08/this-week-in-spring-october-8th-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/10/08/this-week-in-spring-october-8th-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I&apos;m in Antwerp, Belgium, for the amazing Devoxx Belgium 2024 event! I am so happy to be back here, one of the best shows in the Java ecosystem!&lt;/p&gt;
-&lt;p&gt;We&apos;ve got a lot to get into so let&apos;s dive right in!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/10/07/from-spring-cloud-data-flow-2-11-x-to-3-0&quot;&gt;From Spring Cloud Data Flow 2.11.x to 3.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors&quot;&gt;Supercharging your AI Applications with Spring AI Advisors&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://andresalmiray.com/maven-verify-or-clean-install/&quot;&gt;&lt;code&gt;mvn clean install&lt;/code&gt; or &lt;code&gt;mvn verify&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://mail.openjdk.org/pipermail/jdk-dev/2024-October/009433.html&quot;&gt;the new informational JEP: 14&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.wimdeblauwe.com/blog/2024/10/03/authoring-web-components-in-a-spring-boot-thymeleaf-project/&quot;&gt;authoring webcomponents in a Spring Boot Thymeleaf project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&quot;...After evaluating various options, &lt;a href=&quot;https://github.com/spring-projects/spring-framework/issues/28797#issuecomment-2387137015&quot;&gt;we have decided to tentatively migrate Spring Framework 7 to JSpecify annotations and deprecate Spring null-safety annotations&lt;/a&gt;&quot; - woohoo!&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://x.com/tschuehly/status/1840765081799344438?s=12&quot;&gt;Did we mention that JTE is on the Spring Initializr?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/spring-boot-banner-change-hide-customize-ascii-art-example-remove&quot;&gt;What is this blasphemy? Who would want to change the Spring Boot banner?&lt;/a&gt; - this article is an example of what never to do!&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=KoWgHSWA1cc&quot;&gt;I love this video looking at the newly supported JTE templating library in Spring Boot&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.mongodb.com/resources/products/compatibilities/spring-boot&quot;&gt;MongoDB has a nice page on using Spring Boot and MongoDB together&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[From Spring Cloud Data Flow 2.11.x to 3.0]]></title><link>https://spring.io/blog/2024/10/07/from-spring-cloud-data-flow-2-11-x-to-3-0</link><guid isPermaLink="true">https://spring.io/blog/2024/10/07/from-spring-cloud-data-flow-2-11-x-to-3-0</guid><dc:creator><![CDATA[Ilayaperumal Gopinathan]]></dc:creator><pubDate>Mon, 07 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Dear Spring Community,&lt;/p&gt;
-&lt;p&gt;With the recent announcement of Spring Framework 7.0 and Spring Boot 4.0, the Spring Cloud Data Flow team is pleased to announce the next major release, SCDF 3.0, to align with both Spring Framework 7.0 and Spring Boot 4.0.&lt;/p&gt;
-&lt;p&gt;This will bring the following SCDF ecosystem of projects in line with Spring Framework 7.0 and Spring Boot 4.0:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Cloud Data Flow server components (SCDF core and Skipper servers)&lt;/li&gt;
-&lt;li&gt;Composed Task Runner, SCDF Shell, Single Step Batch Job, and Task Launcher&lt;/li&gt;
-&lt;li&gt;Spring Cloud Deployer Implementations for both Cloud Foundry and Kubernetes&lt;/li&gt;
-&lt;li&gt;Spring Cloud Data Flow UI&lt;/li&gt;
-&lt;li&gt;Spring Cloud Stream/Task workloads based on Spring Boot 4.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The GA release is planned shortly after Spring Boot 4.0 and Spring Cloud 2025.1 (November 2025).&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Supercharging Your AI Applications with Spring AI Advisors]]></title><link>https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors</link><guid isPermaLink="true">https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors</guid><dc:creator><![CDATA[Christian Tzolov]]></dc:creator><pubDate>Wed, 02 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In the rapidly evolving world of artificial intelligence, developers are constantly seeking ways to enhance their AI applications.
-&lt;a href=&quot;https://docs.spring.io/spring-ai/reference/index.html&quot;&gt;Spring AI&lt;/a&gt;, a Java framework for building AI-powered applications, has introduced a powerful feature: the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/advisors.html&quot;&gt;Spring AI Advisors&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The advisors can supercharge your AI applications, making them more modular, portable and easier to maintain.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;If reading the post isn&apos;t convenient, you can listen to this &lt;strong&gt;experimental&lt;/strong&gt; podcast, &lt;strong&gt;AI-generated&lt;/strong&gt; from blog&apos;s content:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;iframe title=&quot;Supercharging Your AI Applications with Spring AI Advisors&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=97h9v-16edd64-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=8bbb4e&amp;font-color=ffffff&amp;logo_link=episode_page&amp;btn-skin=666666&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
-&lt;h2 id=&quot;what-are-spring-ai-advisors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-are-spring-ai-advisors&quot; aria-label=&quot;what are spring ai advisors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What are Spring AI Advisors?&lt;/h2&gt;
-&lt;p&gt;At their core, Spring AI Advisors are components that intercept and potentially modify the flow of chat-completion requests and responses in your AI applications. The key player in this system is the &lt;strong&gt;AroundAdvisor&lt;/strong&gt;, which allows developers to dynamically transform or utilize information within these interactions.&lt;/p&gt;
-&lt;p&gt;The main benefits of using Advisors include:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Encapsulation of Recurring Tasks&lt;/strong&gt;: Package common GenAI patterns into reusable units.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Transformation&lt;/strong&gt;: Augment data sent to Language Models (LLMs) and format responses sent back to clients.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Portability&lt;/strong&gt;: Create reusable transformation components that work across various models and use cases.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;how-advisors-work&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-advisors-work&quot; aria-label=&quot;how advisors work permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How Advisors Work&lt;/h2&gt;
-&lt;p&gt;The Advisor system operates as a chain, with each Advisor in the sequence having the opportunity to process both the incoming request and the outgoing response. Here&apos;s a simplified flow:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/37AlBDteUgim6Re0QuiU1Y/5b2705044672cdaf1ec5c87af9db92ac/spring-ai-advisors-flow.svg&quot; alt=&quot;spring-ai-advisors-flow&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;An &lt;code&gt;AdvisedRequest&lt;/code&gt; is created from the user&apos;s prompt, along with an empty &lt;code&gt;advisor-context&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Each Advisor in the chain processes the request, potentially modifying it and then forwards the execution to the next advisor in the chain. Alternatively, it can choose to block the request by not making the call to invoke the next entity.&lt;/li&gt;
-&lt;li&gt;The final Advisor sends the request to the Chat Model.&lt;/li&gt;
-&lt;li&gt;The Chat Model&apos;s response is passed back through the advisor chain as an &lt;code&gt;AdvisedResponse&lt;/code&gt; a combination of the original &lt;code&gt;ChatResponse&lt;/code&gt; and the advise context from the input path of the chain.&lt;/li&gt;
-&lt;li&gt;Each Advisor can process or modify the response.&lt;/li&gt;
-&lt;li&gt;The augmented &lt;code&gt;ChatResponse&lt;/code&gt; from the final &lt;code&gt;AdvisedResponse&lt;/code&gt; is returned to the client.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;using-advisors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-advisors&quot; aria-label=&quot;using advisors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using Advisors&lt;/h2&gt;
-&lt;p&gt;Spring AI comes with several pre-built Advisors to handle common scenarios and Gen AI patterns:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/MessageChatMemoryAdvisor.java&quot;&gt;MessageChatMemoryAdvisor&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/PromptChatMemoryAdvisor.java&quot;&gt;PromptChatMemoryAdvisor&lt;/a&gt;, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/VectorStoreChatMemoryAdvisor.java&quot;&gt;VectorStoreChatMemoryAdvisor&lt;/a&gt;: These manage conversation history in various ways.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/QuestionAnswerAdvisor.java&quot;&gt;QuestionAnswerAdvisor&lt;/a&gt;: Implements the RAG (Retrieval-Augmented Generation) pattern for improved question-answering capabilities.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/SafeGuardAdvisor.java&quot;&gt;SafeGuardAdvisor&lt;/a&gt;: Very basic, sensitive words based advisor, that helps prevent the model from generating harmful or inappropriate content. It demonstrates how to block a request by not making the call to invoke the next adviser in the chain. In this case, it&apos;s advisor&apos;s responsible for filling out the response or throw and error.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;With the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/chatclient.html#_advisor_configuration_in_chatclient&quot;&gt;ChatClient API&lt;/a&gt; you can register the advisors needed for your pipeline:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;var chatClient = ChatClient.builder(chatModel)
-    .defaultAdvisors(
-        new MessageChatMemoryAdvisor(chatMemory), // chat-memory advisor
-        new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()) // RAG advisor
-    )
-    .build();
-
-String response = chatClient.prompt()
-    // Set chat memory parameters at runtime
-    .advisors(advisor -&gt; advisor.param(&quot;chat_memory_conversation_id&quot;, &quot;678&quot;)
-            .param(&quot;chat_memory_response_size&quot;, 100))
-    .user(userText)
-    .call()
-	.content();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;implementing-your-own-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-your-own-advisor&quot; aria-label=&quot;implementing your own advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Implementing Your Own Advisor&lt;/h2&gt;
-&lt;p&gt;The Advisor API consists of &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/CallAroundAdvisor.java&quot;&gt;CallAroundAdvisor&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/CallAroundAdvisorChain.java&quot;&gt;CallAroundAdvisorChain&lt;/a&gt; for non-streaming, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/StreamAroundAdvisor.java&quot;&gt;StreamAroundAdvisor&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/StreamAroundAdvisorChain.java&quot;&gt;StreamAroundAdvisorChain&lt;/a&gt; for streaming scenarios.
-It also includes &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedRequest.java&quot;&gt;AdvisedRequest&lt;/a&gt; to represent the unsealed Prompt request data, and &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedResponse.java&quot;&gt;AdvisedResponse&lt;/a&gt; for the chat completion data.
-The &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedRequest.java&quot;&gt;AdvisedRequest&lt;/a&gt; and the &lt;a href=&quot;https://github.com/spring-projects/spring-ai/blob/main/spring-ai-core/src/main/java/org/springframework/ai/chat/client/advisor/api/AdvisedResponse.java&quot;&gt;AdvisedResponse&lt;/a&gt; have an &lt;code&gt;advise-context&lt;/code&gt; field, used to share state across the advisor chain.&lt;/p&gt;
-&lt;h4 id=&quot;simple-logging-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#simple-logging-advisor&quot; aria-label=&quot;simple logging advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Simple Logging Advisor&lt;/h4&gt;
-&lt;p&gt;Creating a custom Advisor is straightforward. Let&apos;s implement a simple logging Advisor to demonstrate the process:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class SimpleLoggerAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
-    private static final Logger logger = LoggerFactory.getLogger(SimpleLoggerAdvisor.class);
-
-    @Override
-    public String getName() {
-        return this.getClass().getSimpleName();
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
-
-    @Override
-    public AdvisedResponse aroundCall(AdvisedRequest advisedRequest, CallAroundAdvisorChain chain) {
-        logger.debug(&quot;BEFORE: {}&quot;, advisedRequest);
-        AdvisedResponse advisedResponse = chain.nextAroundCall(advisedRequest);
-        logger.debug(&quot;AFTER: {}&quot;, advisedResponse);
-        return advisedResponse;
-    }
-
-    @Override
-    public Flux&amp;#x3C;AdvisedResponse&gt; aroundStream(AdvisedRequest advisedRequest, StreamAroundAdvisorChain chain) {
-        logger.debug(&quot;BEFORE: {}&quot;, advisedRequest);
-        Flux&amp;#x3C;AdvisedResponse&gt; advisedResponses = chain.nextAroundStream(advisedRequest);
-        return new MessageAggregator().aggregateAdvisedResponse(advisedResponses,
-                advisedResponse -&gt; logger.debug(&quot;AFTER: {}&quot;, advisedResponse));
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This Advisor logs the request before it&apos;s processed and the response after it&apos;s received, providing valuable insights into the AI interaction process.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;aggregateAdvisedResponse(...)&lt;/code&gt; utility combines &lt;code&gt;AdviseResponse&lt;/code&gt; chunks into a single &lt;code&gt;AdvisedResponse&lt;/code&gt;, returning the original stream and accepting a &lt;code&gt;Consumer&lt;/code&gt; callback for the completed result.
-It preserves original content and context.&lt;/p&gt;
-&lt;h4 id=&quot;re-reading-re2-advisor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#re-reading-re2-advisor&quot; aria-label=&quot;re reading re2 advisor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Re-Reading (Re2) Advisor&lt;/h4&gt;
-&lt;p&gt;Let&apos;s implement a more advanced Advisor based on the Re-Reading (Re2) technique, inspired by this &lt;a href=&quot;https://arxiv.org/pdf/2309.06275&quot;&gt;paper&lt;/a&gt;, which can improve the reasoning capabilities of large language models:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class ReReadingAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
-    private static final String DEFAULT_USER_TEXT_ADVISE = &quot;&quot;&quot;
-        {re2_input_query}
-        Read the question again: {re2_input_query}
-        &quot;&quot;&quot;;
-
-    @Override
-    public String getName() {
-        return this.getClass().getSimpleName();
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
-
-    private AdvisedRequest before(AdvisedRequest advisedRequest) {
-
-        String inputQuery = advisedRequest.userText(); //original user query
-
-        Map&amp;#x3C;String, Object&gt; params = new HashMap&amp;#x3C;&gt;(advisedRequest.userParams());        
-        params.put(&quot;re2_input_query&quot;, inputQuery);
-
-        return AdvisedRequest.from(advisedRequest)
-                .withUserText(DEFAULT_USER_TEXT_ADVISE)
-                .withUserParams(params)
-                .build();
-    }
-
-    @Override
-    public AdvisedResponse aroundCall(AdvisedRequest advisedRequest, CallAroundAdvisorChain chain) {
-        return chain.nextAroundCall(before(advisedRequest));
-    }
-
-    @Override
-    public Flux&amp;#x3C;AdvisedResponse&gt; aroundStream(AdvisedRequest advisedRequest, StreamAroundAdvisorChain chain) {
-        return chain.nextAroundStream(before(advisedRequest));
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This Advisor modifies the input query to include a &quot;re-reading&quot; step, potentially improving the AI model&apos;s understanding and reasoning about the question.&lt;/p&gt;
-&lt;h2 id=&quot;advanced-topics&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#advanced-topics&quot; aria-label=&quot;advanced topics permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Advanced Topics&lt;/h2&gt;
-&lt;p&gt;Spring AI&apos;s advanced topics encompass important aspects of advisor management, including &lt;em&gt;order control&lt;/em&gt;, &lt;em&gt;state sharing&lt;/em&gt;, and &lt;em&gt;streaming capabilities&lt;/em&gt;. Advisor execution order is determined by the getOrder() method. State sharing between advisors is enabled through a shared advise-context object, facilitating complex multi-advisor scenarios. The system supports both streaming and non-streaming advisors, allowing for processing of complete requests and responses or handling continuous data streams using reactive programming concepts.&lt;/p&gt;
-&lt;h3 id=&quot;controlling-advisor-order&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controlling-advisor-order&quot; aria-label=&quot;controlling advisor order permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controlling Advisor Order&lt;/h3&gt;
-&lt;p&gt;The order of Advisors in the chain is crucial and is determined by the &lt;code&gt;getOrder()&lt;/code&gt; method. Advisors with lower order values are executed first.
-Because the advisor chain is a stack, the first advisor in the chain is the last to process the request and the first to process the response.
-If you want to ensure that an advisor is executed last, set its order close to the &lt;code&gt;Ordered.LOWEST_PRECEDENCE&lt;/code&gt; value and vice versa to execute first set the order close to the &lt;code&gt;Ordered.HIGHEST_PRECEDENCE&lt;/code&gt; value.
-If you have multiple advisors with the same order value, the order of execution is not guaranteed.&lt;/p&gt;
-&lt;h3 id=&quot;using-advisorcontext-for-state-sharing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-advisorcontext-for-state-sharing&quot; aria-label=&quot;using advisorcontext for state sharing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using AdvisorContext for State Sharing&lt;/h3&gt;
-&lt;p&gt;Both the &lt;code&gt;AdvisedRequest&lt;/code&gt; and the &lt;code&gt;AdvisedResponse&lt;/code&gt; share an  advise-context object.
-You can use the &lt;code&gt;advise-context&lt;/code&gt; to share state between the advisors in the chain, and build more complex processing scenarios that involve multiple advisors.&lt;/p&gt;
-&lt;h3 id=&quot;streaming-vs-non-streaming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#streaming-vs-non-streaming&quot; aria-label=&quot;streaming vs non streaming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Streaming vs. Non-Streaming&lt;/h3&gt;
-&lt;p&gt;Spring AI supports both streaming and non-streaming Advisors.
-Non-streaming Advisors work with complete requests and responses, while streaming Advisors handle continuous streams using reactive programming concepts (e.g., Flux for responses).&lt;/p&gt;
-&lt;p&gt;For streaming advisors, it&apos;s crucial to note that a single &lt;code&gt;AdvisedResponse&lt;/code&gt; instance represents only a chunk (i.e., part) of the entire &lt;code&gt;Flux&amp;#x3C;AdvisedResponse&gt;&lt;/code&gt; response. In contrast, for non-streaming advisors, the &lt;code&gt;AdvisedResponse&lt;/code&gt; encompasses the complete response.&lt;/p&gt;
-&lt;h2 id=&quot;best-practices&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#best-practices&quot; aria-label=&quot;best practices permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Best Practices&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Keep Advisors focused on specific tasks for better modularity.&lt;/li&gt;
-&lt;li&gt;Use the &lt;code&gt;advise-context&lt;/code&gt; to share state between Advisors when necessary.&lt;/li&gt;
-&lt;li&gt;Implement both streaming and non-streaming versions of your Advisor for maximum flexibility.&lt;/li&gt;
-&lt;li&gt;Carefully consider the order of Advisors in your chain to ensure proper data flow.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Spring AI Advisors provide a powerful and flexible way to enhance your AI applications. By leveraging this API, you can create more sophisticated, reusable, and maintainable AI components. Whether you&apos;re implementing custom logic, managing conversation history, or improving model reasoning, Advisors offer a clean and efficient solution.&lt;/p&gt;
-&lt;p&gt;We encourage you to experiment with Spring AI Advisors in your projects and share your custom implementations with the community. The possibilities are endless, and your innovations could help shape the future of AI application development!&lt;/p&gt;
-&lt;p&gt;Happy coding, and may your AI applications be ever more intelligent and responsive!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 1st, 2024]]></title><link>https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/10/01/this-week-in-spring-october-1st-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! it&apos;s the first of October! We&apos;re officially in the fourth quarter of 2024! Time&apos;s moving too quickly. Way too quickly. But as always, there&apos;s awesome stuff afoot, so let&apos;s dive right in!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Framework lead Juergen Hoeller looks at the road ahead, to &lt;a href=&quot;https://spring.io/blog/2024/10/01/from-spring-framework-6-2-to-7-0&quot;&gt;Spring Framework 6.2 and Spring Framework 7.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;In this first installment, Oded Shopin looks at integrating &lt;a href=&quot;https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i&quot;&gt;Spring AI into the famous Spring Petclinic application&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Oded Shopin continues his &lt;a href=&quot;https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part&quot;&gt;effort in this second part&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring director Michael Minella looks &lt;a href=&quot;https://spring.io/blog/2024/09/27/spring-boot-2-7-support-period-extended&quot;&gt;at the extension of Spring Boot 2.7&apos;s support timeline&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;In this installment of the podcast, I talk &lt;a href=&quot;https://spring.io/blog/2024/09/26/a-bootiful-podcast-oracle-java-developer-advocate-billy-korando-on-java-23&quot;&gt;to Oracle Java Developer Advocate Billy Korando, looking at Java 23, Structured Concurrency, and more&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Want to be a good public speaker? &lt;a href=&quot;https://toolscloud.activehosted.com/index.php?action=social&amp;#x26;c=1407&amp;#x26;m=1585&quot;&gt;Check out this post that relays some of my ideas posted to a private mailing list.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://x.com/tschuehly/status/1840765081799344438?s=12&amp;#x26;mx=2&quot;&gt;JTE is on the Spring Initializr&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://x.com/springtools4/status/1839559243982074054?s=12&quot;&gt;new feature in Spring Tools!&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[From Spring Framework 6.2 to 7.0]]></title><link>https://spring.io/blog/2024/10/01/from-spring-framework-6-2-to-7-0</link><guid isPermaLink="true">https://spring.io/blog/2024/10/01/from-spring-framework-6-2-to-7-0</guid><dc:creator><![CDATA[Juergen Hoeller]]></dc:creator><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Dear Spring community,&lt;/p&gt;
-&lt;p&gt;Spring Framework 6.2 is shaping up for general availability in November 2024, with particularly significant revisions in the core container and in our web support: see &lt;a href=&quot;https://github.com/spring-projects/spring-framework/wiki/What&amp;#x27;s-New-in-Spring-Framework-6.x#whats-new-in-version-62&quot;&gt;&quot;What&apos;s New in Spring Framework 6.2&quot;&lt;/a&gt;. This release is designed for use with JDK 17-23 and Jakarta EE 9-10.&lt;/p&gt;
-&lt;p&gt;At the same time, we are planning toward 2025 already, and it is my pleasure to announce that our November 2025 release will be the start of a new major generation: &lt;strong&gt;Spring Framework 7.0!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;We will upgrade our baseline to &lt;strong&gt;Jakarta EE 11&lt;/strong&gt; (Tomcat 11, Hibernate ORM 7, Hibernate Validator 9) and embrace the upcoming &lt;strong&gt;JDK 25 LTS&lt;/strong&gt;, while retaining a &lt;strong&gt;JDK 17 baseline&lt;/strong&gt; in alignment with the wider Java ecosystem. For Kotlin applications, we intend to base Spring Framework 7&apos;s support on &lt;strong&gt;Kotlin 2&lt;/strong&gt;. Last but not least, our null-safety strategy is converging with the recently released &lt;strong&gt;JSpecify&lt;/strong&gt; annotations.&lt;/p&gt;
-&lt;p&gt;Our strategic alignment with GraalVM and Project Leyden will continue, as well as our focus on Spring AOT. In terms of the programming model, we expect a revision of Spring&apos;s JPA and JMS support and some deprecations of outdated functionality, while generally aiming for a smooth upgrade path.&lt;/p&gt;
-&lt;p&gt;A first Spring Framework 7.0 milestone is expected to arrive in early 2025. Note that Spring Boot 3.5 and Spring Cloud 2025.0 (May 2025) will still be based on Spring Framework 6.2.x, whereas Spring Boot 4.0 and Spring Cloud 2025.1 (November 2025) are going to build on Spring Framework 7.0 GA.&lt;/p&gt;
-&lt;p&gt;Cheers,
-Juergen&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AI Meets Spring Petclinic: Implementing an AI Assistant with Spring AI (Part II)]]></title><link>https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part</link><guid isPermaLink="true">https://spring.io/blog/2024/09/27/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part</guid><dc:creator><![CDATA[Oded Shopen]]></dc:creator><pubDate>Fri, 27 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;recap-of-part-i&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#recap-of-part-i&quot; aria-label=&quot;recap of part i permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Recap of Part I&lt;/h2&gt;
-&lt;p&gt;In the &lt;a href=&quot;https://spring.io/blog/2024/09/26/ai-meets-spring-petclinic-implementing-an-ai-assistant-with-spring-ai-part-i&quot;&gt;first part&lt;/a&gt; of this blog series, we explored the basics of integrating Spring AI with large language models. We walked through building a custom ChatClient, leveraging Function Calling for dynamic interactions, and refining our prompts to suit the Spring Petclinic use case. By the end, we had a functional AI assistant capable of understanding and processing requests related to our veterinary clinic domain.&lt;/p&gt;
-&lt;p&gt;Now, in Part II, we°Øll go a step further by exploring Retrieval-Augmented Generation (RAG), a technique that enables us to handle large datasets that wouldn°Øt fit within the constraints of a typical Function Calling approach. Let°Øs see how RAG can seamlessly integrate AI with domain-specific knowledge.&lt;/p&gt;
-&lt;h2 id=&quot;retrieval-augmented-generation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#retrieval-augmented-generation&quot; aria-label=&quot;retrieval augmented generation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Retrieval-Augmented Generation&lt;/h2&gt;
-&lt;p&gt;While listing veterinarians could have been a straightforward implementation, I chose this as an opportunity to showcase the power of Retrieval-Augmented Generation (RAG).&lt;/p&gt;
-&lt;p&gt;RAG integrates large language models with real-time data retrieval to produce more accurate and contextually relevant text. Although this concept aligns with our previous work, RAG typically emphasizes data retrieval from a vector store.&lt;/p&gt;
-&lt;p&gt;A vector store contains data in the form of &lt;em&gt;embeddings&lt;/em&gt;?numerical representations that capture the meaning of the information, such as the data about our veterinarians. These embeddings are stored as high-dimensional vectors, facilitating efficient &lt;em&gt;similarity searches&lt;/em&gt; based on &lt;em&gt;semantics&lt;/em&gt; rather than traditional text-based searches.&lt;/p&gt;
-&lt;p&gt;For instance, consider the following veterinarians and their specialties:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Dr. Alice Brown - &lt;strong&gt;Cardiology&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dr. Bob Smith - &lt;strong&gt;Dentistry&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dr. Carol White - &lt;strong&gt;Dermatology&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In a conventional search, a query for &quot;Teeth Cleaning&quot; would yield no exact matches. However, with semantic search powered by embeddings, the system recognizes that &quot;Teeth Cleaning&quot; relates to &quot;Dentistry.&quot; Consequently, Dr. Bob Smith would be returned as the best match, even though his specialty was never explicitly mentioned in the query. This illustrates how embeddings capture the underlying &lt;em&gt;meaning&lt;/em&gt; rather than merely relying on exact keywords. While the implementation of this process is beyond the scope of this article, you can learn more by checking out this &lt;a href=&quot;https://youtu.be/eMlx5fFNoYc?si=Lyjb1doyeAt3_EKG&quot;&gt;YouTube video&lt;/a&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Fun fact - this example was &lt;a href=&quot;https://chatgpt.com/share/66eef934-696c-8008-9961-93da0740c8f2&quot;&gt;generated by ChatGPT itself.&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In essence, similarity searches operate by identifying the nearest numerical values of the search query to those of the source data. The closest match is returned. The process of transforming text into these numerical embeddings is also handled by the LLM.&lt;/p&gt;
-&lt;h3 id=&quot;generating-test-data&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#generating-test-data&quot; aria-label=&quot;generating test data permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Generating Test Data&lt;/h3&gt;
-&lt;p&gt;Utilizing a vector store is most effective when handling a substantial amount of data. Given that six veterinarians can easily be processed in a single call to the LLM, I aimed to increase the number to 256. While even 256 may still be relatively small, it serves well for illustrating our process.&lt;/p&gt;
-&lt;p&gt;Veterinarians in this setup can have zero, one, or two specialties, mirroring the original examples from Spring Petclinic. To avoid the tedious task of creating all this mock data manually, I enlisted ChatGPT&apos;s assistance. It generated a union query that produces 250 veterinarians and assigns specialties to 80% of them:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;-- Create a list of first names and last names
-WITH first_names AS (
-    SELECT &apos;James&apos; AS name UNION ALL
-    SELECT &apos;Mary&apos; UNION ALL
-    SELECT &apos;John&apos; UNION ALL
-    ...
-),
-last_names AS (
-    SELECT &apos;Smith&apos; AS name UNION ALL
-    SELECT &apos;Johnson&apos; UNION ALL
-    SELECT &apos;Williams&apos; UNION ALL
-    ...
-),
-random_names AS (
-    SELECT
-        first_names.name AS first_name,
-        last_names.name AS last_name
-    FROM
-        first_names
-    CROSS JOIN
-        last_names
-    ORDER BY
-        RAND()
-    LIMIT 250
-)
-INSERT INTO vets (first_name, last_name)
-SELECT first_name, last_name FROM random_names;
-
--- Add specialties for 80% of the vets
-WITH vet_ids AS (
-    SELECT id
-    FROM vets
-    ORDER BY RAND()
-    LIMIT 200  -- 80% of 250
-),
-specialties AS (
-    SELECT id
-    FROM specialties
-),
-random_specialties AS (
-    SELECT 
-        vet_ids.id AS vet_id,
-        specialties.id AS specialty_id
-    FROM 
-        vet_ids
-    CROSS JOIN 
-        specialties
-    ORDER BY 
-        RAND()
-    LIMIT 300  -- 2 specialties per vet on average
-)
-INSERT INTO vet_specialties (vet_id, specialty_id)
-SELECT 
-    vet_id,
-    specialty_id
-FROM (
-    SELECT 
-        vet_id,
-        specialty_id,
-        ROW_NUMBER() OVER (PARTITION BY vet_id ORDER BY RAND()) AS rn
-    FROM 
-        random_specialties
-) tmp
-WHERE 
-    rn &amp;#x3C;= 2;  -- Assign at most 2 specialties per vet
-
--- The remaining 20% of vets will have no specialties, so no need for additional insertion commands
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To ensure that my data remains static and consistent across runs, I exported the relevant tables from the H2 database as hardcoded insert statements. These statements were then added to the &lt;code&gt;data.sql&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;INSERT INTO vets VALUES (default, &apos;James&apos;, &apos;Carter&apos;);
-INSERT INTO vets VALUES (default, &apos;Helen&apos;, &apos;Leary&apos;);
-INSERT INTO vets VALUES (default, &apos;Linda&apos;, &apos;Douglas&apos;);
-INSERT INTO vets VALUES (default, &apos;Rafael&apos;, &apos;Ortega&apos;);
-INSERT INTO vets VALUES (default, &apos;Henry&apos;, &apos;Stevens&apos;);
-INSERT INTO vets VALUES (default, &apos;Sharon&apos;, &apos;Jenkins&apos;);
-INSERT INTO vets VALUES (default, &apos;Matthew&apos;, &apos;Alexander&apos;);
-INSERT INTO vets VALUES (default, &apos;Alice&apos;, &apos;Anderson&apos;);
-INSERT INTO vets VALUES (default, &apos;James&apos;, &apos;Rogers&apos;);
-INSERT INTO vets VALUES (default, &apos;Lauren&apos;, &apos;Butler&apos;);
-INSERT INTO vets VALUES (default, &apos;Cheryl&apos;, &apos;Rodriguez&apos;);
-...
-...
--- Total of 256 vets
-
--- First, let&apos;s make sure we have 5 specialties
-INSERT INTO specialties (name) VALUES (&apos;radiology&apos;);
-INSERT INTO specialties (name) VALUES (&apos;surgery&apos;);
-INSERT INTO specialties (name) VALUES (&apos;dentistry&apos;);
-INSERT INTO specialties (name) VALUES (&apos;cardiology&apos;);
-INSERT INTO specialties (name) VALUES (&apos;anesthesia&apos;);
-
-INSERT INTO vet_specialties VALUES (&apos;220&apos;, &apos;2&apos;);
-INSERT INTO vet_specialties VALUES (&apos;131&apos;, &apos;1&apos;);
-INSERT INTO vet_specialties VALUES (&apos;58&apos;, &apos;3&apos;);
-INSERT INTO vet_specialties VALUES (&apos;43&apos;, &apos;4&apos;);
-INSERT INTO vet_specialties VALUES (&apos;110&apos;, &apos;3&apos;);
-INSERT INTO vet_specialties VALUES (&apos;63&apos;, &apos;5&apos;);
-INSERT INTO vet_specialties VALUES (&apos;206&apos;, &apos;4&apos;);
-INSERT INTO vet_specialties VALUES (&apos;29&apos;, &apos;3&apos;);
-INSERT INTO vet_specialties VALUES (&apos;189&apos;, &apos;3&apos;);
-...
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;embedding-the-test-data&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#embedding-the-test-data&quot; aria-label=&quot;embedding the test data permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Embedding the Test Data&lt;/h3&gt;
-&lt;p&gt;We have several options available for the vector store itself. Postgres with the pgVector extension is probably the most popular choice. Greenplum?a massively parallel Postgres database?also supports pgVector. The Spring AI &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/api/vectordbs.html&quot;&gt;reference documentation&lt;/a&gt; lists the currently supported vector stores.&lt;/p&gt;
-&lt;p&gt;For our simple use case, I opted to use the Spring AI-provided &lt;code&gt;SimpleVectorStore&lt;/code&gt;. This class implements a vector store using a straightforward Java &lt;code&gt;ConcurrentHashMap&lt;/code&gt;, which is more than sufficient for our small dataset of 256 vets. The configuration for this vector store, along with the chat memory implementation, is defined in the &lt;code&gt;AIBeanConfiguration&lt;/code&gt; class annotated with &lt;code&gt;@Configuration&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@Configuration
-@Profile(&quot;openai&quot;)
-public class AIBeanConfiguration {
-
-	@Bean
-	public ChatMemory chatMemory() {
-		return new InMemoryChatMemory();
-	}
-
-	@Bean
-	VectorStore vectorStore(EmbeddingModel embeddingModel) {
-		return new SimpleVectorStore(embeddingModel);
-	}
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The vector store needs to embed the veterinarian data as soon as the application starts. To achieve this, I added a &lt;code&gt;VectorStoreController&lt;/code&gt; bean, which includes an &lt;code&gt;@EventListener&lt;/code&gt; that listens for the &lt;code&gt;ApplicationStartedEvent&lt;/code&gt;. This method is automatically invoked by Spring as soon as the application is up and running, ensuring that the veterinarian data is embedded into the vector store at the appropriate time:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@EventListener
-	public void loadVetDataToVectorStoreOnStartup(ApplicationStartedEvent event) throws IOException {
-		// Fetches all Vet entites and creates a document per vet
-		Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
-		Page&amp;#x3C;Vet&gt; vetsPage = vetRepository.findAll(pageable);
-
-		Resource vetsAsJson = convertListToJsonResource(vetsPage.getContent());
-		DocumentReader reader = new JsonReader(vetsAsJson);
-
-		List&amp;#x3C;Document&gt; documents = reader.get();
-		// add the documents to the vector store
-		this.vectorStore.add(documents);
-
-		if (vectorStore instanceof SimpleVectorStore) {
-			var file = File.createTempFile(&quot;vectorstore&quot;, &quot;.json&quot;);
-			((SimpleVectorStore) this.vectorStore).save(file);
-			logger.info(&quot;vector store contents written to {}&quot;, file.getAbsolutePath());
-		}
-
-		logger.info(&quot;vector store loaded with {} documents&quot;, documents.size());
-	}
-
-	public Resource convertListToJsonResource(List&amp;#x3C;Vet&gt; vets) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			// Convert List&amp;#x3C;Vet&gt; to JSON string
-			String json = objectMapper.writeValueAsString(vets);
-
-			// Convert JSON string to byte array
-			byte[] jsonBytes = json.getBytes();
-
-			// Create a ByteArrayResource from the byte array
-			return new ByteArrayResource(jsonBytes);
-		}
-		catch (JsonProcessingException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There°Øs a lot to unpack here, so let°Øs walk through the code:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Similar to &lt;code&gt;listOwners&lt;/code&gt;, we begin by retrieving all vets from the database.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring AI embeds entities of type &lt;code&gt;Document&lt;/code&gt; into the vector store. A &lt;code&gt;Document&lt;/code&gt; represents the embedded numerical data alongside its original, human-readable text data. This dual representation allows our code to map correlations between the embedded vectors and the natural text.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;To create these &lt;code&gt;Document&lt;/code&gt; entities, we need to convert our &lt;code&gt;Vet&lt;/code&gt; entities into a textual format. Spring AI provides two built-in readers for this purpose: &lt;code&gt;JsonReader&lt;/code&gt; and &lt;code&gt;TextReader&lt;/code&gt;. Since our &lt;code&gt;Vet&lt;/code&gt; entities are structured data, it makes sense to represent them as JSON. To achieve this, we use the helper method &lt;code&gt;convertListToJsonResource&lt;/code&gt;, which leverages the Jackson parser to convert the list of vets into an in-memory JSON resource.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Next, we call the &lt;code&gt;add(documents)&lt;/code&gt; method on the vector store. This method is responsible for embedding the data by iterating over the list of documents (our vets in JSON format) and embedding each one while associating the original metadata with it.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Though not strictly required, we also generate a &lt;code&gt;vectorstore.json&lt;/code&gt; file, which represents the state of our &lt;code&gt;SimpleVectorStore&lt;/code&gt; database. This file allows us to observe how Spring AI interprets the stored data behind the scenes. Let°Øs take a look at the generated file to understand what Spring AI sees.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;dd919c71-06bb-4777-b974-120dfee8b9f9&quot; : {
-    &quot;embedding&quot; : [ 0.013877872, 0.03598228, 0.008212427, 0.00917901, -0.036433823, 0.03253927, -0.018089917, -0.0030867155, -0.0017038669, -0.048145704, 0.008974405, 0.017624263, 0.017539598, -4.7888185E-4, 0.013842596, -0.0028221398, 0.033414137, -0.02847539, -0.0066955267, -0.021885695, -0.0072387885, 0.01673529, -0.007386951, 0.014661016, -0.015380662, 0.016184973, 0.00787377, -0.019881975, -0.0028785826, -0.023875304, 0.024778388, -0.02357898, -0.023748307, -0.043094076, -0.029322032, ... ],
-    &quot;content&quot; : &quot;{id=31, firstName=Samantha, lastName=Walker, new=false, specialties=[{id=2, name=surgery, new=false}]}&quot;,
-    &quot;id&quot; : &quot;dd919c71-06bb-4777-b974-120dfee8b9f9&quot;,
-    &quot;metadata&quot; : { },
-    &quot;media&quot; : [ ]
-  },
-  &quot;4f9aabed-c15c-43f6-9dbc-46ed9a18e176&quot; : {
-    &quot;embedding&quot; : [ 0.01051745, 0.032714732, 0.007800559, -0.0020621764, -0.03240663, 0.025530376, 0.0037602335, -0.0023702774, -0.004978633, -0.037364256, 0.0012831709, 0.032742742, 0.005430281, 0.00847278, -0.004285406, 0.01146276, 0.03036196, -0.029941821, 0.013220336, -0.03207052, -7.518716E-4, 0.016665466, -0.0052062077, 0.010678503, 0.0026591222, 0.0091940155, ... ],
-    &quot;content&quot; : &quot;{id=195, firstName=Shirley, lastName=Martinez, new=false, specialties=[{id=1, name=radiology, new=false}, {id=2, name=surgery, new=false}]}&quot;,
-    &quot;id&quot; : &quot;4f9aabed-c15c-43f6-9dbc-46ed9a18e176&quot;,
-    &quot;metadata&quot; : { },
-    &quot;media&quot; : [ ]
-  },
-  &quot;55b13970-cd55-476b-b7c9-62337855ae0a&quot; : {
-    &quot;embedding&quot; : [ -0.0031563698, 0.03546827, 0.018778138, -0.01324492, -0.020253662, 0.027756566, 0.007182742, -0.008637386, -0.0075725033, -0.025543278, 5.850768E-4, 0.02568248, 0.0140383635, -0.017330453, 0.003935892, ... ],
-    &quot;content&quot; : &quot;{id=19, firstName=Jacqueline, lastName=Ross, new=false, specialties=[{id=4, name=cardiology, new=false}]}&quot;,
-    &quot;id&quot; : &quot;55b13970-cd55-476b-b7c9-62337855ae0a&quot;,
-    &quot;metadata&quot; : { },
-    &quot;media&quot; : [ ]
-  },
-...
-...
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pretty cool! We have a &lt;code&gt;Vet&lt;/code&gt; in JSON format alongside a set of numbers that, while they might not make much sense to us, are highly meaningful to the LLM. These numbers represent the embedded vector data, which the model uses to understand the relationships and semantics of the &lt;code&gt;Vet&lt;/code&gt; entity in a way far beyond simple text matching.&lt;/p&gt;
-&lt;h3 id=&quot;optimizing-for-cost-and-fast-startup&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#optimizing-for-cost-and-fast-startup&quot; aria-label=&quot;optimizing for cost and fast startup permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Optimizing for Cost and Fast Startup&lt;/h3&gt;
-&lt;p&gt;If we were to run this embedding method on every application restart, it would lead to two significant drawbacks:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Long Startup Times&lt;/strong&gt;: Each &lt;code&gt;Vet&lt;/code&gt; JSON document would need to be re-embedded by making calls to the LLM again, delaying application readiness.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Increased Costs&lt;/strong&gt;: Embedding 256 documents would send 256 requests to the LLM every time the app starts, leading to unnecessary usage of LLM credits.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Embeddings are better suited for ETL (Extract, Transform, Load) or streaming processes, which run independently of the main web application. These processes can handle embedding in the background without impacting user experience or causing unnecessary cost.&lt;/p&gt;
-&lt;p&gt;To keep things simple in the Spring Petclinic, I decided to load the pre-embedded vector store on startup. This approach provides instant loading and avoids any additional LLM costs. Here°Øs the addition to the method to achieve that:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@EventListener
-	public void loadVetDataToVectorStoreOnStartup(ApplicationStartedEvent event) throws IOException {
-		Resource resource = new ClassPathResource(&quot;vectorstore.json&quot;);
-
-		// Check if file exists
-		if (resource.exists()) {
-			// In order to save on AI credits, use a pre-embedded database that was saved
-			// to disk based on the current data in the h2 data.sql file
-			File file = resource.getFile();
-			((SimpleVectorStore) this.vectorStore).load(file);
-			logger.info(&quot;vector store loaded from existing vectorstore.json file in the classpath&quot;);
-			return;
-		}
-        // Rest of the method as before
-        ...
-        ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;vectorstore.json&lt;/code&gt; file is located under &lt;code&gt;src/main/resources&lt;/code&gt;, ensuring that the application will always load the pre-embedded vector store on startup, rather than re-embedding the data from scratch. If we ever need to regenerate the vector store, we can simply delete the existing &lt;code&gt;vectorstore.json&lt;/code&gt; file and restart the application. Once the updated vector store is generated, we can place the new &lt;code&gt;vectorstore.json&lt;/code&gt; file back into &lt;code&gt;src/main/resources&lt;/code&gt;. This approach gives us flexibility while avoiding unnecessary re-embedding processes during regular restarts.&lt;/p&gt;
-&lt;h3 id=&quot;implementing-similarity-search&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-similarity-search&quot; aria-label=&quot;implementing similarity search permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Implementing Similarity Search&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;With our vector store ready, implementing the &lt;code&gt;listVets&lt;/code&gt; function becomes straightforward. The function is defined as follows:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
-	@Description(&quot;List the veterinarians that the pet clinic has&quot;)
-	public Function&amp;#x3C;VetRequest, VetResponse&gt; listVets(AIDataProvider petclinicAiProvider) {
-		return request -&gt; {
-			try {
-				return petclinicAiProvider.getVets(request);
-			}
-			catch (JsonProcessingException e) {
-				e.printStackTrace();
-				return null;
-			}
-		};
-	}
-    record VetResponse(List&amp;#x3C;String&gt; vet) {
-    };
-
-    record VetRequest(Vet vet) {
-    }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here is the implementation in &lt;code&gt;AIDataProvider&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	public VetResponse getVets(VetRequest request) throws JsonProcessingException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		String vetAsJson = objectMapper.writeValueAsString(request.vet());
-
-		SearchRequest sr = SearchRequest.from(SearchRequest.defaults()).withQuery(vetAsJson).withTopK(20);
-		if (request.vet() == null) {
-			// Provide a limit of 50 results when zero parameters are sent
-			sr = sr.withTopK(50);
-		}
-
-		List&amp;#x3C;Document&gt; topMatches = this.vectorStore.similaritySearch(sr);
-		List&amp;#x3C;String&gt; results = topMatches.stream().map(document -&gt; document.getContent()).toList();
-		return new VetResponse(results);
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let&apos;s review what we&apos;ve done here:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;We start with a &lt;code&gt;Vet&lt;/code&gt; entity in the request. Since the records in our vector store are represented as JSON, the first step is to convert the &lt;code&gt;Vet&lt;/code&gt; entity into JSON as well.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Next, we create a &lt;code&gt;SearchRequest&lt;/code&gt;, which is the parameter passed to the &lt;code&gt;similaritySearch&lt;/code&gt; method of the vector store. The &lt;code&gt;SearchRequest&lt;/code&gt; allows us to fine-tune the search based on our specific needs. In this case, we mostly use the defaults, except for the &lt;code&gt;topK&lt;/code&gt; parameter, which determines how many results to return. By default, this is set to 4, but in our case, we increase it to 20. This lets us handle broader queries like °∞How many vets specialize in cardiology?°±&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;If no filters are provided in the request (i.e., the &lt;code&gt;Vet&lt;/code&gt; entity is empty), we increase the &lt;code&gt;topK&lt;/code&gt; value to 50. This enables us to return up to 50 vets for queries like °∞list the vets in the clinic.°± Of course, this won&apos;t be the entire list, as we want to avoid overwhelming the LLM with too much data. However, we should be fine because we carefully fine-tuned the system text to manage these cases:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;When dealing with vets, if the user is unsure about the returned results, 
-explain that there may be additional data that was not returned.
-Only if the user is asking about the total number of all vets, 
-answer that there are a lot and ask for some additional criteria. 
-For owners, pets or visits - answer the correct data.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The final step is to call the &lt;code&gt;similaritySearch&lt;/code&gt; method. We then map the &lt;code&gt;getContent()&lt;/code&gt; of each returned result, as this contains the actual Vet JSONs rather than the embedded data.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;From here, it&apos;s business as usual. The LLM completes the function call, retrieves the results, and determines how best to display the data in the chat.&lt;/p&gt;
-&lt;p&gt;Let°Øs see it in action:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5wG4tLVKpvQDisv1lDhdNt/f02071aa957b0e95820e1bbaa5dcce5e/5e16fa8b-4073-4d4f-ab1a-ca1324a83616.png&quot; alt=&quot;5e16fa8b-4073-4d4f-ab1a-ca1324a83616&quot;&gt;&lt;/p&gt;
-&lt;p&gt;It looks like our system text is functioning as expected, preventing any overload. Now, let°Øs try providing some specific criteria:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/5DN525RS77mhOU8Y1hgVUi/d961abf6573e1aead917625879c3847e/76dcf069-0393-4749-b730-1f59a5cba3bd.png&quot; alt=&quot;76dcf069-0393-4749-b730-1f59a5cba3bd&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The data returned from the LLM is exactly what we expect. Let°Øs try a broader question:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/aWWHPPEQfKugQR49zbdgD/91c4e0589e2e05fd924c62b2beef9f16/8ec546df-dcb4-4e1d-9f34-891dd39ff9e5.png&quot; alt=&quot;8ec546df-dcb4-4e1d-9f34-891dd39ff9e5&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The LLM successfully identified at least 20 vets specializing in cardiology, adhering to our defined upper limit of topK (20). However, if there°Øs any uncertainty about the results, the LLM notes that there may be additional vets available, as specified in our system text.&lt;/p&gt;
-&lt;h2 id=&quot;implementing-the-ui&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implementing-the-ui&quot; aria-label=&quot;implementing the ui permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Implementing the UI&lt;/h2&gt;
-&lt;p&gt;Implementing the chatbot UI involves working with Thymeleaf, JavaScript, CSS, and the SCSS preprocessor.&lt;/p&gt;
-&lt;p&gt;After reviewing the code, I decided to place the chatbot in a location accessible from any tab, making &lt;code&gt;layout.html&lt;/code&gt; the ideal choice.&lt;/p&gt;
-&lt;p&gt;During discussions about the PR with Dr. Dave Syer, I realized that I shouldn&apos;t modify &lt;code&gt;petclinic.css&lt;/code&gt; directly, as Spring Petclinic utilizes an SCSS preprocessor to generate the CSS file.&lt;/p&gt;
-&lt;p&gt;I&apos;ll admit?I°Øm primarily a backend Spring developer with a career focused on Spring, cloud architecture, Kubernetes, and Cloud Foundry. While I have some experience with Angular, I°Øm not an expert in frontend development. I could probably come up with something, but it likely wouldn°Øt look polished.&lt;/p&gt;
-&lt;p&gt;Fortunately, I had a great partner for pair programming?ChatGPT. If you&apos;re interested in how I developed the UI code, you can check out this &lt;a href=&quot;https://chatgpt.com/share/8c7accc2-8939-4fd6-8090-6abbb9d4e4cc&quot;&gt;ChatGPT session&lt;/a&gt;. It°Øs remarkable how much you can learn from collaborating with large language models on coding exercises. Just remember to thoroughly review the suggestions instead of blindly copy-pasting them.&lt;/p&gt;
-&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;After experimenting with Spring AI for a few months, I°Øve come to deeply appreciate the thought and effort behind this project. Spring AI is truly unique because it allows developers to explore the world of AI without needing to train hundreds of team members in a new language like Python. More importantly, this experience highlights an even greater advantage: your AI code can coexist in the same codebase as your existing business logic. You can easily enhance a legacy codebase with AI capabilities using just a few additional classes. The ability to avoid rebuilding all your data from scratch in a new AI-specific application significantly boosts productivity. Even simple features like automatic code completion for your existing JPA entities in the IDE make a tremendous difference.&lt;/p&gt;
-&lt;p&gt;Spring AI has the potential to significantly enhance Spring-based applications by simplifying the integration of AI capabilities. It empowers developers to leverage machine learning models and AI-powered services without needing deep expertise in data science. By abstracting complex AI operations and embedding them directly into familiar Spring frameworks, developers can focus on rapidly building intelligent, data-driven features. This seamless fusion of AI and Spring fosters an environment where innovation is not hindered by technical barriers, creating new opportunities for developing smarter, more adaptive applications.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;iframe title=&quot;New York Java SIG chair and founder Frank Greco on community, AI, and more&quot; allowtransparency=&quot;true&quot; height=&quot;300&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:300px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?from=embed&amp;i=x3c7v-1700aca-pb&amp;square=1&amp;share=1&amp;download=1&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;rtl=0&amp;logo_link=&amp;btn-skin=7&amp;size=300&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content:encoded></item></channel></rss>

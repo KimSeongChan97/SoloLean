@@ -1,0 +1,40 @@
+package review.service;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import review.bean.ReviewDTO;
+import review.dao.ReviewDAO;
+
+import java.util.List;
+
+@Service
+@Repository
+public class ReviewServiceImpl implements ReviewDAO {
+
+    @Autowired
+    private SqlSession sqlSession;
+    
+    private static final String namespace = "reviewSQL";
+
+    @Override
+    public void insertReview(ReviewDTO review) throws Exception {
+        sqlSession.insert(namespace + ".insertReview", review);
+    }
+
+    @Override
+    public List<ReviewDTO> getAllReviews() throws Exception {
+        return sqlSession.selectList(namespace + ".getAllReviews");
+    }
+
+    @Override
+    public void updateReview(ReviewDTO review) throws Exception {
+        sqlSession.update(namespace + ".updateReview", review);
+    }
+
+    @Override
+    public void deleteReview(int reviewId) throws Exception {
+        sqlSession.delete(namespace + ".deleteReview", reviewId);
+    }
+}

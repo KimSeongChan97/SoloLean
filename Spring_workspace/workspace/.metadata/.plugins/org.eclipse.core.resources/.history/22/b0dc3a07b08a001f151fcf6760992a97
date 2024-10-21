@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 페이지 전체 배경 설정 */
+ body {
+     font-family: 'Roboto', sans-serif;
+     margin: 0;
+     padding: 0;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: url('https://source.unsplash.com/1600x900/?sunset,landscape') no-repeat center center fixed;
+     background-size: cover;
+     color: white;
+     text-align: center;
+     background-color: #f4f4f9;
+ }
+
+ /* h3 스타일 */
+ h3 {
+     font-size: 36px;
+     font-weight: bold;
+     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+     animation: fadeIn 2s ease-in-out;
+ }
+
+ /* 애니메이션 효과 */
+ @keyframes fadeIn {
+     0% {
+         opacity: 0;
+         transform: translateY(-20px);
+     }
+     100% {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* 중앙에 카드형 박스를 추가 */
+ .card {
+     background: rgba(255, 255, 255, 0.2);
+     padding: 20px;
+     border-radius: 15px;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+     backdrop-filter: blur(10px);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .card:hover {
+     transform: translateY(-10px);
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+ }
+
+ /* 링크 스타일 */
+ a {
+     color: #00bfff;
+     font-size: 18px;
+     text-decoration: none;
+     transition: color 0.3s ease;
+ }
+
+ a:hover {
+     color: #1e90ff;
+ }

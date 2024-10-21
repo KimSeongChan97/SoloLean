@@ -1,0 +1,4 @@
+CREATE TABLE qtypes (
+    qtypes_id INT AUTO_INCREMENT PRIMARY KEY,
+    typename VARCHAR(100) NOT NULL
+);

@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+/* Google Fonts 적용 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+/* 전반적인 스타일 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f5ef;   /* 밝고 고급스러운 베이지색 배경 */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2.room-detail-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #8d6e63;  /* 고급스러운 갈색 계열 */
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-bottom: 3px solid #d2b48c; /* 베이지색 포인트 */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* 객실 이미지 섹션 */
+.room-images {
+    text-align: center; /* 이미지 가운데 정렬 */
+    margin-bottom: 40px;
+}
+
+.room-images .card {
+    max-width: 750px; /* 카드 크기 줄이기 */
+    margin: 0 auto;   /* 가운데 정렬 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 시 애니메이션 */
+}
+
+.room-images .card:hover {
+    transform: scale(1.05); /* 호버 시 이미지 살짝 확대 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+}
+
+.room-images img {
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 객실 정보 섹션 */
+.room-details {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.room-details p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.room-details p i {
+    color: #d2b48c;
+    margin-right: 10px;
+}
+
+/* 추가 정보 섹션 */
+.additional-info {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* 리뷰 버튼 스타일 */
+.room-actions button {
+    padding: 12px 30px; /* 여유 있는 패딩 */
+    font-size: 1.2em; /* 글자 크기 */
+    font-weight: 700; /* 두꺼운 글씨 */
+    border-radius: 50px; /* 둥근 모서리 */
+    text-transform: uppercase; /* 대문자 변환 */
+    transition: background-color 0.4s ease, transform 0.2s ease; /* 부드러운 전환 효과 */
+    border: none; /* 기본 테두리 제거 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+}
+
+/* 기본 버튼 스타일 */
+.room-actions button.btn-outline-primary {
+    background-color: #f7f7f7; /* 부드러운 배경색 */
+    color: #8d6e63; /* 고급스러운 갈색 */
+    border: 2px solid #8d6e63; /* 테두리 색상 */
+}
+
+.room-actions button.btn-outline-primary:hover {
+    background-color: #8d6e63; /* 호버 시 배경색 */
+    color: white; /* 호버 시 텍스트 색상 */
+}
+
+/* 보조 버튼 스타일 */
+.room-actions button.btn-outline-secondary {
+    background-color: #ffffff; /* 흰색 배경 */
+    color: #a1887f; /* 부드러운 갈색 */
+    border: 2px solid #a1887f; /* 테두리 색상 */
+}
+
+.room-actions button.btn-outline-secondary:hover {
+    background-color: #a1887f; /* 호버 시 배경색 */
+    color: white; /* 호버 시 텍스트 색상 */
+}
+
+/* 버튼 그룹 스타일 */
+.room-actions {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: center; /* 중앙 정렬 */
+    gap: 15px; /* 버튼 간격 */
+}
+
+/* 모달 창 기본 스타일 */
+.modal-content {
+    background-color: #fdfdfd; /* 밝고 부드러운 배경색 */
+    border-radius: 15px; /* 모서리를 더 둥글게 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 깊은 그림자 효과 */
+    padding: 20px; /* 여유 있는 패딩 */
+}
+
+/* 모달 헤더 */
+.modal-header {
+    background-color: #5d4037; /* 고급스러운 짙은 갈색 */
+    color: #fff; /* 텍스트 색상 */
+    border-top-left-radius: 15px; /* 둥근 모서리 */
+    border-top-right-radius: 15px; /* 둥근 모서리 */
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em; /* 헤더 텍스트 크기 */
+}
+
+/* 모달 바디 */
+.modal-body {
+    background-color: #fafafa; /* 밝고 부드러운 배경색 */
+    color: #333; /* 텍스트 색상 */
+    font-size: 1.1em; /* 폰트 크기 */
+    line-height: 1.8; /* 텍스트 간격 */
+    padding: 30px; /* 여유 있는 패딩 */
+    border-bottom-left-radius: 15px; /* 하단 모서리 둥글게 */
+    border-bottom-right-radius: 15px; /* 하단 모서리 둥글게 */
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05); /* 내부 그림자 */
+}
+
+/* 모달 바디 입력 폼 스타일 */
+.modal-body input,
+.modal-body textarea {
+    border: 1px solid #dcdcdc; /* 부드러운 테두리 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    padding: 10px;
+    width: 100%;
+    font-size: 1.1em;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* 내부 그림자 */
+    transition: all 0.3s ease;
+}
+
+.modal-body input:focus,
+.modal-body textarea:focus {
+    border-color: #8d6e63; /* 포커스 시 갈색 테두리 */
+    box-shadow: 0 0 8px rgba(141, 110, 99, 0.3); /* 포커스 시 외부 그림자 */
+}
+
+/* 모달 푸터 */
+.modal-footer {
+    background-color: #f7f7f7;
+    padding: 15px 20px;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 기본 버튼 스타일 */
+.modal-footer .btn-primary {
+    background-color: #8d6e63;
+    color: #fff;
+    border: none;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #5d4037; /* 더 짙은 갈색 */
+    transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+}
+
+.modal-footer .btn-secondary {
+    background-color: #ffffff;
+    color: #5d4037;
+    border: 2px solid #5d4037;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5d4037;
+    color: white;
+}
+
+/* 모달 닫기 버튼 스타일 */
+.modal-header .close {
+    font-size: 1.5em;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.modal-header .close:hover {
+    opacity: 1;
+}
+
+/* 리뷰 별점 선택 스타일 */
+#starRating {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.star {
+    font-size: 35px;
+    color: #ccc; /* 기본 별 색상 */
+    transition: color 0.3s ease;
+}
+
+.star.selected {
+    color: #ffca28; /* 선택된 별 색상 */
+}
+
+.star:hover {
+    color: #ffca28; /* 호버 시 색상 */
+    cursor: pointer;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2.2em;
+    }
+
+    .room-details p {
+        font-size: 1.1em;
+    }
+
+    .room-images .card {
+        max-width: 90%; /* 작은 화면에서 이미지 크기 줄이기 */
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-footer button {
+        padding: 8px 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .room-details {
+        padding: 20px;
+    }
+
+    .room-details p {
+        font-size: 1em;
+    }
+
+    .room-images img {
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+/* 추가적인 섹션 스타일 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.star {
+    font-size: 30px; /* 별 크기 조정 */
+    color: #ccc; /* 기본 색상 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+}
+
+.star.selected {
+    color: #f39c12; /* 선택된 별 색상 */
+}

@@ -1,0 +1,96 @@
+$(document).ready(function () {
+    const track = $('#sliderTrack');
+    const slideItems = $('.slider-item');
+    let slideWidth = slideItems.outerWidth(true);
+    let slideCount = slideItems.length;
+    let currentPosition = -slideWidth;
+    let isAnimating = false;
+    let sliderInterval;
+    let isDragging = false;
+    let startPosition = 0;
+    let dragOffset = 0;
+
+    // 슬라이드 복제 (처음과 끝 슬라이드를 복제하여 트랙에 추가)
+    function cloneSlides() {
+        track.empty(); // 기존 슬라이드를 지움
+        slideItems.each(function () {
+            const clone = $(this).clone(true); // clone(true)로 이벤트 포함 복제
+            track.append(clone);
+        });
+    }
+
+    function updateSliderPosition() {
+        track.css('width', slideWidth * slideItems.length + 'px');
+        track.css('transform', `translateX(${currentPosition}px)`);
+    }
+
+    // 슬라이드 이동 함수
+    function moveSlider(forward = true) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        if (forward) {
+            currentPosition -= slideWidth;
+        } else {
+            currentPosition += slideWidth;
+        }
+
+        track.css('transition', 'transform 0.5s ease');
+        track.css('transform', 'translateX(' + currentPosition + 'px)');
+
+        setTimeout(function () {
+            isAnimating = false;
+        }, 500);
+    }
+
+    // 슬라이드 자동 이동 시작
+    function startSlider() {
+        sliderInterval = setInterval(function () {
+            moveSlider(true);
+        }, 3000);
+    }
+
+    // 슬라이드 자동 이동 중지
+    function stopSlider() {
+        clearInterval(sliderInterval);
+    }
+
+    // 마우스 드래그로 슬라이드 이동
+    track.on('mousedown touchstart', function (e) {
+        isDragging = true;
+        stopSlider(); // 드래그 중일 때 자동 슬라이드 중지
+        startPosition = e.pageX || e.originalEvent.touches[0].pageX;
+        dragOffset = 0;
+        track.css('transition', 'none');
+    });
+
+    $(document).on('mousemove touchmove', function (e) {
+        if (!isDragging) return;
+        const currentMousePosition = e.pageX || e.originalEvent.touches[0].pageX;
+        dragOffset = currentMousePosition - startPosition;
+        track.css('transform', 'translateX(' + (currentPosition + dragOffset) + 'px)');
+    });
+
+    $(document).on('mouseup touchend', function () {
+        if (!isDragging) return;
+        isDragging = false;
+
+        if (Math.abs(dragOffset) > slideWidth / 4) {
+            if (dragOffset < 0) {
+                moveSlider(true); // 드래그 방향에 따라 슬라이드 이동
+            } else {
+                moveSlider(false);
+            }
+        } else {
+            track.css('transition', 'transform 0.5s ease');
+            track.css('transform', 'translateX(' + currentPosition + 'px)');
+        }
+
+        startSlider(); // 드래그 끝난 후 다시 슬라이드 시작
+    });
+
+    // 초기화 및 시작
+    cloneSlides();
+    updateSliderPosition();
+    startSlider();
+});

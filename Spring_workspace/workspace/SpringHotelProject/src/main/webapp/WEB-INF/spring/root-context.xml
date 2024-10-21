@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+<!-- Root Context: defines shared resources visible to all other web components -->
+<!-- 루트 컨텍스트: 모든 웹 구성 요소에서 볼 수 있는 공유 리소스를 정의합니다. 이 설정 파일은 Spring의 전역 설정과 각 패키지의 빈을 관리하는 설정입니다. -->
+
+<!-- User 관련 설정 -->
+<context:component-scan base-package="user.bean" /> <!-- user.bean 패키지에 있는 모든 @Component, @Service, @Repository 어노테이션이 붙은 클래스를 스캔하여 빈으로 등록 -->
+<context:component-scan base-package="user.service.impl"/> <!-- user.service.impl 패키지에 있는 구현체들을 빈으로 등록 -->
+<mybatis-spring:scan base-package="user.dao"/> <!-- MyBatis를 사용하여 user.dao 패키지의 Mapper 인터페이스를 스캔하고, 이들을 빈으로 등록 -->
+
+<!-- Admin 관련 설정 -->
+<context:component-scan base-package="admin.bean" /> <!-- admin.bean 패키지의 컴포넌트들을 스캔하여 빈으로 등록 -->
+<context:component-scan base-package="admin.service.impl" /> <!-- admin.service.impl 패키지의 구현체들을 스캔하여 빈으로 등록 -->
+
+<!-- 문의사항 관련 설정 -->
+<context:component-scan base-package="questions.bean" /> <!-- questions.bean 패키지의 컴포넌트를 스캔하여 빈으로 등록 -->
+
+<!-- Answer 관련 설정 -->
+<context:component-scan base-package="answer.bean" /> <!-- answer.bean 패키지의 컴포넌트를 스캔하여 빈으로 등록 -->
+
+<!-- Room 관련 설정 -->
+<context:component-scan base-package="room.bean" /> <!-- room.bean 패키지의 컴포넌트를 스캔하여 빈으로 등록 -->
+<context:component-scan base-package="room.service" /> <!-- room.service 패키지의 서비스 클래스들을 스캔하여 빈으로 등록 -->
+
+<!-- Review 관련 설정 -->
+<context:component-scan base-package="review.bean" /> <!-- review.bean 패키지의 컴포넌트를 스캔하여 빈으로 등록 -->
+<context:component-scan base-package="review.service" /> <!-- review.service 패키지의 서비스 클래스들을 스캔하여 빈으로 등록 -->
+
+<!-- Spring 설정 파일에 대한 스캔 -->
+<context:component-scan base-package="spring.conf" /> <!-- spring.conf 패키지를 스캔하여 스프링 설정 빈들을 등록 -->
+
+<!-- JSON 메시지 변환기 설정 -->
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <property name="messageConverters">
+        <list>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+            <!-- MappingJackson2HttpMessageConverter는 JSON 형식의 데이터를 변환하는 데 사용 -->
+        </list>
+    </property>
+</bean>
+
+<!-- 이메일 인증 관련 등록 -->
+<!-- JavaMailSender 설정: 이메일을 발송하기 위한 SMTP 서버 및 인증 정보를 설정 -->
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.naver.com"/> <!-- 이메일을 보내기 위한 네이버 SMTP 서버 설정 -->
+    <property name="port" value="587"/> <!-- SMTP 서버의 포트 번호 (587번 포트는 TLS 보안 연결에 사용됨) -->
+    <property name="username" value="springhotel"/> <!-- 네이버 SMTP 계정 사용자 이름 (발신 이메일 계정) -->
+    <property name="password" value="Spring123!@#"/> <!-- 해당 SMTP 계정의 비밀번호 -->
+
+    <!-- 보안연결 SSL과 관련된 설정 -->
+    <property name="javaMailProperties">
+        <props>
+            <prop key="mail.smtp.auth">true</prop> <!-- SMTP 인증 사용 -->
+            <prop key="mail.smtp.starttls.enable">true</prop> <!-- STARTTLS를 통해 보안 연결 활성화 -->
+            <prop key="mail.smtps.checkserveridentity">true</prop> <!-- 서버 인증서 확인 -->
+            <prop key="mail.smtps.ssl.trust">*</prop> <!-- 모든 SSL 인증서를 신뢰 -->
+            <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop> <!-- TLS 1.2 프로토콜 사용 -->
+            <prop key="mail.debug">true</prop> <!-- 이메일 전송 시 디버그 로그 출력 -->
+            <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> <!-- SSL 소켓 팩토리 설정 -->
+        </props>
+    </property>
+</bean>
+
+</beans>

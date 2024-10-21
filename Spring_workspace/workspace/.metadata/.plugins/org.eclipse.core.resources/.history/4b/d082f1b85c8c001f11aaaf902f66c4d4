@@ -1,0 +1,60 @@
+$(document).ready(function() {
+    const track = $('#sliderTrack');
+    let slideWidth = $('.slider-item').outerWidth(true); // 슬라이드 아이템의 전체 너비
+    let slideCount = $('.slider-item').length; // 슬라이드 아이템의 개수
+    let currentPosition = 0;
+    let isAnimating = false;
+    let sliderInterval;
+
+    // 트랙의 총 너비 설정
+    track.css('width', slideWidth * slideCount + 'px');
+
+    function moveSlider() {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        currentPosition -= slideWidth;
+
+        track.css('transform', 'translateX(' + currentPosition + 'px)');
+
+        // 마지막 슬라이드일 경우
+        if (Math.abs(currentPosition) >= slideWidth * (slideCount - 1)) {
+            setTimeout(function() {
+                track.css('transition', 'none');
+                currentPosition = 0;
+                track.css('transform', 'translateX(' + currentPosition + 'px)');
+                setTimeout(function() {
+                    track.css('transition', 'transform 0.8s ease');
+                    isAnimating = false;
+                }, 50); // 애니메이션을 잠시 중단
+            }, 800); // 슬라이드 애니메이션 끝난 후
+        } else {
+            setTimeout(function() {
+                isAnimating = false;
+            }, 800); // 애니메이션 시간과 동일하게 설정
+        }
+    }
+
+    // 슬라이드 자동 이동 함수 시작
+    function startSlider() {
+        sliderInterval = setInterval(moveSlider, 2000); // 2초마다 슬라이드 이동
+    }
+
+    // 슬라이드 자동 이동 중지 함수
+    function stopSlider() {
+        clearInterval(sliderInterval); // 슬라이드 중지
+    }
+
+    // 마우스 호버 시 슬라이드 멈춤
+    $('.slider-item').on('mouseenter', function() {
+        stopSlider();
+    });
+
+    // 마우스 호버 아웃 시 슬라이드 재개
+    $('.slider-item').on('mouseleave', function() {
+        startSlider();
+    });
+
+    // 초기 슬라이드 시작
+    startSlider();
+});

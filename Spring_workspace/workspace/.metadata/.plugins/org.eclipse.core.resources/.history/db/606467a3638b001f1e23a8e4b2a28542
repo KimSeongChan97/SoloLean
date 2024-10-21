@@ -1,0 +1,9 @@
+package review.dao;
+
+import review.bean.ReviewDTO;
+import java.util.List;
+
+public interface ReviewDAO {
+    void saveReview(ReviewDTO reviewDTO);
+    List<ReviewDTO> getAllReviews();
+}
