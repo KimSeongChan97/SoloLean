@@ -4,6 +4,7 @@ import Test02 from './components/Test02';
 import Test03 from './components/Test03';
 import Test04 from './components/Test04';
 import Test05 from './components/Test05';
+import Test06 from './components/Test06';
 
 const App = () => {
      return (
@@ -18,7 +19,8 @@ const App = () => {
                     <hr/>
                     <Test05 />
                     <hr/>
-                    
+                    <Test06 />
+                    <hr/>
           </div>
      );
 };
