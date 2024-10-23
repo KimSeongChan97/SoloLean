@@ -10,11 +10,12 @@
 - Spring + JDBC + .. 그외 연결하여 이용(MyBatis 등)
 - NCP 연동
 - Docker 학습
-- Jenkins 이용해보기
-- 리눅스 이용해보기
+- Jenkins 이용하여 Deploy 해보았다
+- 리눅스 이용해보았다(기초적인 문법)
 - React(Node.js) 학습 진행중
 - Spring Boot 학습 진행예정
 - JPA 학습 진행예정
+-  ... NCP 추가 교육 예정
 
 ==============================================
 semi project
