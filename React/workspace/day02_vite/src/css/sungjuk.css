@@ -1,0 +1,93 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+body {
+    background-color: #0d0d0d; /* 전체 배경을 어두운 색으로 설정 */
+    color: #e0e0e0; /* 기본 텍스트는 밝은 회색 */
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* 전체 컨테이너 */
+.app-container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 900px;
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+}
+
+/* 성적 리스트 컨테이너 */
+.sungjuk-container {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(102, 204, 255, 0.3); /* 네온 블루 효과 */
+    background-color: #1a1a1a; /* 어두운 배경 */
+    transition: all 0.3s ease;
+}
+
+.sungjuk-container:hover {
+    box-shadow: 0px 15px 30px rgba(102, 204, 255, 0.5); /* 호버 시 네온 효과 확대 */
+}
+
+/* 테이블 스타일 */
+.sungjuk-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #232323; /* 테이블 배경도 어두운 톤 */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 테이블 헤더 스타일 */
+.sungjuk-table th {
+    background-color: #6633ff; /* 네온 퍼플 헤더 */
+    color: #00ff99; /* 네온 그린 텍스트 */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
+    font-size: 16px;
+}
+
+/* 테이블 셀 스타일 */
+.sungjuk-table td {
+    background-color: #2a2a2a;
+    color: #00ffcc; /* 밝은 네온 블루-그린 */
+    padding: 12px;
+    border: 1px solid #3a3a3a;
+    text-align: center;
+}
+
+/* 테이블 행에 마우스 호버 시 효과 */
+.sungjuk-item:hover {
+    background-color: #6633ff; /* 네온 퍼플로 강조 */
+    cursor: pointer;
+}
+
+.sungjuk-item td {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 테이블 행 호버 시 네온 효과 */
+.sungjuk-item:hover td {
+    background-color: #6633ff; /* 네온 퍼플 */
+    color: #00ff99; /* 네온 그린 */
+}
+
+/* 제목 스타일 */
+h1 {
+    color: #00ccff; /* 네온 블루 */
+    font-size: 28px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    color: #00ff99; /* 네온 그린 */
+    font-size: 22px;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+}

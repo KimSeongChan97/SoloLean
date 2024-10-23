@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>push_concat</title>
+</head>
+<body>
+
+     <script>
+          const arr1 = [10, 20, 30];
+          arr1.push(40);
+          arr1.push(50);
+          arr1.push(60);
+          console.log(arr1);
+          // push 메서드를 사용하여 배열 arr1의 끝에 값(40, 50, 60)을 차례대로 추가합니다.
+          // push는 기존 배열을 직접 수정하므로 arr1 배열의 값이 변경됩니다.
+          // 결과적으로 arr1은 [10, 20, 30, 40, 50, 60]이 됩니다.
+          console.log('------------------');
+
+          const arr2 = [10, 20, 30];
+          const arr3 = arr2.concat; // 복제
+          console.log(arr2);
+          console.log(arr1);
+          // 여기서 arr2는 [10, 20, 30]으로 선언된 배열이고, arr3는 arr2 배열을 복제하려는 의도로 작성된 것 같습니다.
+          // 그러나 concat 메서드는 배열에 값을 병합할 때 사용하는 메서드이므로, 실제로는 복제되지 않습니다.
+          // arr2.concat()처럼 괄호를 포함하여 호출해야 사본이 만들어집니다.
+          console.log('------------------');
+
+          const arr4 = arr2.concat(40, 50, 60);
+          console.log(arr2);
+          console.log(arr4);
+          // concat 메서드를 사용하여 arr2 배열에 40, 50, 60 값을 병합하여 새로운 배열 arr4를 만듭니다.
+          // concat은 원본 배열(arr2)을 수정하지 않고, 새로운 배열(arr4)을 반환합니다.
+          // 결과적으로 arr2는 그대로 [10, 20, 30]이며, arr4는 [10, 20, 30, 40, 50, 60]이 됩니다.
+          console.log('------------------');
+
+          const data1 = [{
+               id: 1, name: '홍길동', age: 25
+                         }, {
+               id: 2, name: '어피치', age: 20                
+                         }, {
+               id: 3, name: '프로도', age: 30
+                         }];
+          console.log(data1[0].id + " " + data1[0].name + " " + data1[0].age);      
+          // 객체 배열 data1은 3개의 객체로 구성된 배열입니다.
+          // data1[0]은 첫 번째 객체인 { id: 1, name: '홍길동', age: 25 }를 의미하며,
+          // 이 객체의 id, name, age 속성 값을 각각 출력합니다.
+          // 결과는 "1 홍길동 25"가 됩니다.
+
+          // 문제
+          // data2 라고 data1의 사본을 만들면서 항목을 추가 => id 는 4 name 은 라이언, age 는 28
+          const data2 = data1.concat({id: 4, name: '라이언', age: 28});
+          console.log(data2);
+          // concat 메서드를 사용하여 data1 배열에 새 객체 {id: 4, name: '라이언', age: 28}을 병합합니다.
+          // data1 배열은 수정되지 않으며, 새로운 배열 data2가 만들어집니다.
+          // data2는 data1 배열에 추가된 항목을 포함하므로, 총 4개의 객체를 가지게 됩니다.
+          // 원본 배열인 data1은 변하지 않고, 새로운 배열 data2에는 네 번째 객체가 추가됩니다.
+          // 결과적으로 data2는 [{id: 1, ...}, {id: 2, ...}, {id: 3, ...}, {id: 4, name: '라이언', age: 28}]이 됩니다.
+          
+     </script>     
+
+</body>
+</html>
+
+<!-- 
+배열, 메서드() 중 불변성 유지
+① push : 배열 뒷부분에 값을 삽입 (배열의 값이 변경된다)
+     // push는 기존 배열의 값을 변경(수정)하는 메서드입니다. 따라서 배열의 불변성을 유지하지 않습니다.
+② concat : 다수의 배열을 합치고 병합된 배열의 사본을 반환
+           기존의 배열은 건드리지 않음 - 불변성 유지
+     // concat은 기존 배열을 변경하지 않고 새로운 배열을 반환하므로, 불변성을 유지할 수 있습니다.
+ -->

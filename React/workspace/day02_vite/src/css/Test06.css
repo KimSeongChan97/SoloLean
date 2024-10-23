@@ -1,0 +1,47 @@
+caption {position: absolute; text-indent: -9999em;}
+/* caption 태그는 표의 제목을 나타냅니다. 하지만 여기서는 화면에서 보이지 않도록 설정되었습니다.
+   position: absolute를 사용해 캡션의 위치를 문서 흐름에서 제거하고, text-indent: -9999em을 적용해
+   화면 밖으로 텍스트를 밀어내는 방식으로 시각적으로 숨깁니다. 이는 접근성을 위해 여전히 코드에
+   포함되지만, 화면에 보이지 않게 설정한 것입니다. */
+
+.list {width: 600px; margin: 10px auto;}
+/* .list 클래스는 테이블의 전체적인 스타일을 정의합니다.
+   테이블의 너비를 600px로 고정하고, margin을 사용해 상하로 10px 간격을 설정하고
+   auto로 수평 가운데 정렬을 합니다. 이로 인해 테이블이 가운데 정렬된 형태를 갖춥니다. */
+
+.list .seq {width: 10%;}
+/* .seq 클래스는 테이블 열 중에서 순번을 표시하는 열의 너비를 10%로 설정합니다.
+   전체 테이블의 너비를 기준으로 10%의 공간을 차지하도록 합니다. */
+
+.list .name {width: 20%;}
+/* .name 클래스는 이름 열의 너비를 20%로 설정합니다.
+   이는 전체 테이블 너비의 20%를 차지하게 됩니다. */
+
+.list .age {width: 25%;}
+/* .age 클래스는 나이 열의 너비를 25%로 설정합니다.
+   전체 테이블 너비의 25%를 차지하게 됩니다. */
+
+.list .addr {width: 20%;}
+/* .addr 클래스는 주소 열의 너비를 20%로 설정합니다.
+   이는 전체 테이블의 20%를 차지하게 하여, 주소 데이터를 적절하게 표시할 수 있도록 합니다. */
+
+.list .done {width: 20%;}
+/* .done 클래스는 완료 여부와 같은 열의 너비를 20%로 설정합니다.
+   테이블의 20%를 차지하게 됩니다. */
+
+.list th, .list td {border: 1px solid #000; height: 40px; vertical-align: middle; text-align: center;}
+/* 테이블의 헤더(th)와 데이터(td)에 공통으로 적용되는 스타일입니다.
+   모든 셀에 1px의 검은색 테두리(border)를 적용하고, 셀의 높이(height)를 40px로 고정합니다.
+   vertical-align: middle은 셀 내부의 텍스트를 수직 중앙 정렬하고, text-align: center는 
+   텍스트를 수평 중앙 정렬합니다. 즉, 각 셀의 텍스트가 중앙에 위치하게 됩니다. */
+
+.list tbody tr:nth-child(odd) {background: beige;}
+/* tbody 내에서 홀수번째 행에만 스타일을 적용합니다.
+   nth-child(odd)는 1, 3, 5, ...와 같이 홀수 번째 행에 적용되며, 배경색을 beige로 설정합니다.
+   이로 인해 테이블의 홀수 행은 beige 배경색을 가지게 됩니다. */
+
+.list tbody tr:nth-child(even) {background: bisque;}
+/* tbody 내에서 짝수번째 행에만 스타일을 적용합니다.
+   nth-child(even)은 2, 4, 6, ...와 같이 짝수 번째 행에 적용되며, 배경색을 bisque로 설정합니다.
+   테이블의 짝수 행은 bisque 배경색을 가지게 됩니다. 이는 행마다 교차 색상을 적용해
+   가독성을 높이는 데 도움이 됩니다. */
