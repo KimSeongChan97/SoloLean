@@ -32,8 +32,8 @@ const Test06 = () => {
           // name에 해당하는 필드의 값을 업데이트함
           // name은 입력 필드의 'name' 속성과 대응되며, 이는 상태 필드의 key와 일치함
           setDto({
-               ...dto, // 기존 dto 객체의 복사본을 생성
-               [name] : value // 해당 name 필드의 값을 변경
+               ...dto, // 기존 dto 객체의 복사본을 생성, 먼저 객체를 복사하고
+               [name] : value // 해당 name 필드의 값을 변경, 원하는 값 (name or id or pwd) 만 수정한다.
           });
      }; 
 
@@ -80,6 +80,10 @@ const Test06 = () => {
                          </tr>
                     </tbody>
                </table>
+               <hr/>
+               <h3> 이름 : {name} </h3>
+               <h3> 아이디 : {id} </h3>
+               <h3> 비밀번호 : {pwd} </h3>
           </div>
      );
 };

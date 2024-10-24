@@ -1,0 +1,18 @@
+.Todos {
+     width: 450px;
+     margin: 10px auto;
+     background: linear-gradient(45deg, #93c3f3, #cba9eb); /* 그라데이션 배경 */
+     border-radius: 15px;
+     padding: 20px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+   }
+   
+   .Todos h1 {
+     text-align: center;
+     padding: 10px 0;
+     font-size: 24px;
+     font-weight: bold;
+     color: #495057;
+     font-family: 'Arial', sans-serif; /* 현대적인 폰트 */
+   }
+   

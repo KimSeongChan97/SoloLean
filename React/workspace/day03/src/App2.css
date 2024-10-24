@@ -1,7 +1,8 @@
 /* App.js 의 css 코드 */
 
 body {
-    background-color: rgb(165, 189, 209);
+    background: linear-gradient(to top right, #beebcc, #d491f3);
+    transition:  0.3s ease;
 }
 
 
@@ -14,12 +15,13 @@ hr {
  
  /* hr 태그와 hr 태그 사이의 모든 div를 박스로 처리 */
  hr + div {
-     background-color: #aba2b1; /* 부드러운 배경색 */
-     padding: 10px;
-     margin: 10px auto; /* 중앙 정렬을 위한 auto margin */
+     /* background-color: #aba2b1; 부드러운 배경색 */
+     background: linear-gradient(85deg, #d3bfeb, #bcd9f5);
+     padding: 100px;
+     margin: 100px auto; /* 중앙 정렬을 위한 auto margin */
      max-width: 1000px; /* 중앙 정렬을 위한 최대 너비 */
      border-radius: 20px; /* 박스 모서리 둥글게 */
-     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* 부드러운 그림자 */
+     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5); /* 부드러운 그림자 */
      text-align: center; /* 텍스트 가운데 정렬 */
  }
  

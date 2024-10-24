@@ -14,21 +14,20 @@
 
 /* 전체 컨테이너 */
 .wrap {
-  width: 400px;
-  border-radius: 15px; /* 둥근 모서리 */
-  background: linear-gradient(135deg, #e0e4e8, #f8fafc); /* 그라데이션 배경 */
+  width: 600px;
+  border-radius: 15px; 
+  background: linear-gradient(127deg, #d3bfeb, #bcd9f5); 
   padding: 40px;
   margin: 50px auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
   transition: all 0.3s ease;
 }
 
 .wrap:hover {
-  transform: translateY(-10px); /* 컨테이너가 살짝 떠오르는 효과 */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* 더 진해지는 그림자 */
+  transform: translateY(-10px); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); 
 }
 
-/* 텍스트 입력과 라벨 스타일 */
 .wrap p {
   margin-bottom: 15px;
 }
@@ -46,8 +45,8 @@
   height: 35px;
   width: 240px;
   padding: 0 15px;
-  border: 1px solid #aaa; /* 경계선을 다소 진하게 */
-  border-radius: 5px; /* 둥근 입력 필드 */
+  border: 1px solid #aaa; 
+  border-radius: 5px; 
   font-size: 16px;
   color: #333;
   background-color: #fff;
@@ -55,36 +54,35 @@
 }
 
 .wrap p input:focus {
-  border-color: #00bcd4; /* 포커스 시 시안 블루 색상 경계선 */
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2); /* 포커스 시 부드러운 그림자 */
+  border-color: #00bcd4; 
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2); 
   outline: none;
 }
 
-/* 버튼 스타일 */
+
 .wrap p:last-child {
   margin-top: 40px;
-  text-align: center; /* 버튼 가운데 정렬 */
+  text-align: center; 
 }
 
 .wrap p button {
   width: 160px;
   height: 45px;
-  background: linear-gradient(135deg, #007bff, #00bcd4); /* 파란색과 시안의 그라데이션 버튼 */
+  background: linear-gradient(135deg, #007bff, #00bcd4); 
   color: #fff;
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 25px; /* 둥근 버튼 */
+  border-radius: 25px; 
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .wrap p button:hover {
-  background: linear-gradient(135deg, #0056b3, #008ba3); /* 호버 시 더 진한 그라데이션 색상 */
-  box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4); /* 호버 시 그림자 강조 */
+  background: linear-gradient(135deg, #0056b3, #008ba3); 
+  box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4); 
 }
 
-/* 입력 확인 화면에서 li 태그 스타일 */
 .wrap ul {
   padding: 0;
 }
@@ -116,7 +114,7 @@
   text-align: center;
   font-size: 30px;
   font-weight: 700;
-  color: #333;
+  color: #333433;
   margin-bottom: 40px;
 }
 
@@ -124,7 +122,7 @@
   display: block;
   font-size: 20px;
   font-weight: 400;
-  color: #666;
+  color: #5a6486;
   margin-top: 10px;
 }
 
@@ -144,15 +142,14 @@
   animation: fadeIn 0.9s ease-in-out;
 }
 
-/* 전반적인 입력 필드 및 컨테이너에서 형광 느낌 제거 */
 .wrap input, .wrap button {
   box-shadow: none;
 }
 
 .wrap p input:focus {
-  box-shadow: 0 0 10px rgba(0, 188, 212, 0.2); /* 포커스 시 살짝 더 부드러운 느낌의 그림자 */
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.2); 
 }
 
 .wrap p button:hover {
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); /* 버튼 호버 시 그림자만 강조 */
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); 
 }

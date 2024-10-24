@@ -8,6 +8,10 @@ import Test04 from './components/Test04';
 import Test05 from './components/Test05';
 import Test06 from './components/Test06';
 import Test07Main from './components/Test07Main';
+import Test08Gallary from './components/Test08Gallary';
+import Test09 from './components/Test09';
+import Test10 from './components/Test10';
+import Test11 from './components/Test11';
 
 const App = () => {
   return (
@@ -29,7 +33,17 @@ const App = () => {
       <hr/>    
       <Test07Main />
       <hr/>
-      
+      {/* <Test08Gallary />
+      <hr/> */}
+      <hr/>
+        <Test09 />
+      <hr/>
+        <Test10 />
+      <hr/>
+        <Test11 />
+      <hr/>
+        
+      <hr/>
     </div>
   );
 };

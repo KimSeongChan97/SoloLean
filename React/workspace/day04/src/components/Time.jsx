@@ -14,9 +14,11 @@ const Time = () => {
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Orbitron'}}>
+    <div style={{ textAlign: 'center', fontFamily: 'Orbitron' }}>
       <div>
-        <h1 style={{ fontWeight: 'bold', fontSize: '2em' }}>{time}</h1>
+        <h1 style={{ fontWeight: 'bold', fontSize: '2em' }}>
+          {time}
+          </h1>
       </div>
     </div>
   );

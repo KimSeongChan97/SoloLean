@@ -33,13 +33,25 @@ const Test07Main = () => {
      연결되어 데이터를 저장할 수 있음. 기존 dto 객체를 그대로 유지하고, 수정된 부분만 업데이트하는 방식으로 동작.
      */
 
+          /* 
+     선생님 답안. 
+     const onInput = (e) => {
+               console.log(e.target)
+               const { name, value } = e.target;
+               setDto({
+                         ...dto,
+                         [ name ] : value
+               });
+          };
+     */
+
      const [ count, setCount ] = useState(1);
      /*
      count라는 상태변수를 통해 현재 설문 페이지의 상태를 나타냄.
      count가 1일 때는 Test07Input 화면, 2일 때는 Test07Print 화면, 3일 때는 Test07Output 화면을 보여줌.
      */
 
-     const Next = () => {
+     const onNext = () => {
           if ( count < 3 ) {
                setCount(count + 1);
           }
@@ -49,7 +61,7 @@ const Test07Main = () => {
      count가 3보다 작을 때만 count 값을 증가시켜 페이지를 이동할 수 있도록 제어함.
      */
 
-     const Prev = () => {
+     const onPrev = () => {
           if ( count > 1 ) {
                setCount(count - 1);
           }
@@ -67,11 +79,12 @@ const Test07Main = () => {
                count === 2이면 Test07Print 컴포넌트를,
                count === 3이면 Test07Output 컴포넌트를 렌더링함.
                */}
+               {/* 함수 && 참이라면 ~ 해당 함수 변수 = { 값 } */}
                {
-                    count === 1 && <Test07Input dto={ dto } onChange={ onChange } onNext={ Next } />
+                    count === 1 && <Test07Input dto={ dto } onChange={ onChange } onNext={ onNext } />
                }
                {
-                    count === 2 && <Test07Print dto={ dto } onPrev={ Prev } onNext={ Next } />
+                    count === 2 && <Test07Print dto={ dto } onPrev={ onPrev } onNext={ onNext } />
                }
                {
                     count === 3 && <Test07Output dto={ dto } />
