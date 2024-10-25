@@ -14,7 +14,7 @@ const Time = () => {
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Orbitron', background: 'linear-gradient(132deg, #d3bfeb, #bcd9f5)' }}>
+    <div style={{ textAlign: 'center', fontFamily: 'Orbitron', background: 'linear-gradient(243deg, #d3bfeb, #bcd9f5)' }}>
       <div>
         <h1 style={{ fontWeight: 'bold', fontSize: '2em' }}>
           {time}
