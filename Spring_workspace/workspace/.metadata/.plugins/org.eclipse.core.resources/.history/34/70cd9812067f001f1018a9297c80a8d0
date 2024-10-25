@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBean" class="sample01.MessageBeanKo" scope="prototype">
+	    <!-- 
+	    1. <bean> 태그는 스프링에서 관리할 객체(빈)를 정의하는 태그입니다.
+	       이 태그는 스프링 컨테이너가 객체를 생성하고 관리하도록 합니다.
+	    
+	    2. id="messageBean"
+	       - id 속성은 이 빈을 참조할 때 사용할 고유 식별자입니다.
+	       - 스프링 애플리케이션에서 이 id를 사용하여 해당 빈을 가져올 수 있습니다.
+	       - 예를 들어, Java 코드에서 context.getBean("messageBean")을 호출하여 이 빈을 가져옵니다.
+	    
+	    3. class="sample01.MessageBeanKo"
+	       - class 속성은 이 빈이 생성될 때 사용할 클래스의 전체 경로를 지정합니다.
+	       - 여기서 'sample01.MessageBeanKo'는 'sample01' 패키지 안에 있는 MessageBeanKo 클래스를 의미합니다.
+	       - 스프링은 이 클래스를 기반으로 인스턴스를 생성하고, 이를 관리하게 됩니다.
+	
+	    4. scope="prototype"
+	       - scope 속성은 스프링이 빈을 어떻게 관리할지 정의하는 속성입니다.
+	       - 기본적으로 스프링 빈은 싱글톤(singleton)으로 관리되며, 이는 애플리케이션 내에서 해당 클래스의 인스턴스가 하나만 생성됨을 의미합니다.
+	       - 그러나 `prototype` 스코프는 getBean() 메서드를 호출할 때마다 새로운 인스턴스를 생성하게 합니다.
+	       - 즉, 이 빈은 싱글톤이 아니며, 매번 새로운 객체가 필요할 때마다 스프링이 인스턴스를 새로 생성해줍니다.
+	       - `prototype` 스코프는 상태를 가진 객체나, 매번 다른 동작을 해야 하는 객체의 경우 유용하게 사용됩니다.
+	
+	    5. 이 빈 정의는 MessageBeanKo라는 클래스를 스프링이 대신 생성하고 관리하도록 설정한 것입니다.
+	       스코프가 "prototype"이므로, Java 코드에서 `context.getBean("messageBean")`을 호출할 때마다 새로운 인스턴스가 반환됩니다.
+	       즉, new MessageBeanKo()를 직접 호출하지 않고도 스프링이 매번 새로운 객체를 생성해줍니다.
+	    -->
+	</bean>
+	
+	<bean id="calcAdd" class="sample02.CalcAdd" />
+	<bean id="calcMul" class="sample02.CalcMul" />
+
+
+
+</beans>

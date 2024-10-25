@@ -1,0 +1,9 @@
+# macOS 파일
+.DS_Store
+
+# Java 클래스 파일
+*.class
+
+# 빌드 디렉토리
+/bin/
+target/

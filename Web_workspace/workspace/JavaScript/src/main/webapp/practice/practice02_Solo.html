@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단 출력</title>
+    <style>
+        /* 구구단을 담을 컨테이너 div에 flexbox 레이아웃을 적용 */
+        .dan-container {
+            display: flex; /* 요소들을 가로로 배치 */
+            flex-wrap: wrap; /* 화면 크기에 따라 자동으로 다음 줄로 이동하게 함 */
+            justify-content: space-around; /* 각 단이 동일한 간격을 유지하도록 배치 */
+        }
+
+        /* 각 단을 담는 개별 div의 스타일을 지정 */
+        .dan {
+            margin: 20px; /* 각 단 사이의 여백을 설정 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 페이지 제목을 출력하는 부분 -->
+    <h1>2단부터 9단까지 구구단</h1>
+
+    <!-- 구구단이 출력될 영역을 표시할 div 요소 -->
+    <div id="dan" class="dan-container"></div> <!-- class로 스타일을 추가한 dan-container 사용 -->
+
+    <script>
+        // 구구단을 2단부터 9단까지 출력하는 함수 정의
+        function printDan() {
+            let output = ''; // 구구단 출력을 담을 변수를 선언 (문자열 형태로 저장)
+
+            // 2단부터 9단까지 각 단을 처리하기 위한 첫 번째 for 반복문
+            // 이 반복문은 단(dan)을 나타냄, i는 2부터 시작하여 9까지 증가
+            for (let i = 2; i <= 9; i++) {
+                // 각 단을 출력하기 위해 <div> 요소로 감싸고 'dan' 클래스를 추가
+                output += `<div class="dan"><h3>${i}단</h3>`; // 현재 단(i단)을 제목(h3 태그)으로 추가하고 div로 감싸줌
+
+                // 각 단에 대한 구구단의 곱셈 결과를 처리하는 두 번째 for 반복문
+                // 이 반복문은 곱할 숫자(multiplicand)를 나타냄, j는 1부터 9까지 증가
+                for (let j = 1; j <= 9; j++) {
+                    // 구구단 결과를 문자열로 추가
+                    // 예: "2 * 1 = 2", "2 * 2 = 4" 등
+                    output += `${i} * ${j} = ${i * j}<br>`;
+                    // <br> 태그는 결과를 줄바꿈하기 위해 사용됨
+                }
+
+                // 각 단의 출력이 끝나면 div를 닫음
+                output += '</div>'; // 각 단이 끝난 후 div 닫기
+            }
+
+            // 최종적으로 만들어진 구구단 문자열을 HTML 요소(div)의 innerHTML로 출력
+            // id가 'dan'인 div 요소의 내부 HTML 내용을 우리가 만든 구구단 내용으로 대체
+            document.getElementById('dan').innerHTML = output;
+        }
+
+        // 페이지가 로드되면 즉시 printDan 함수를 실행하여 구구단을 출력
+        // 이 이벤트 핸들러는 브라우저가 HTML 문서의 로딩을 완료한 후 호출됨
+        window.onload = printDan;
+    </script>
+</body>
+</html>

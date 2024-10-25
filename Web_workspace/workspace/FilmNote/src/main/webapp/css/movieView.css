@@ -1,0 +1,106 @@
+/* FilmNote/src/main/webapp/css/movieBoard.css */
+/* 문자 인코딩을 UTF-8로 설정합니다. */
+@charset "UTF-8";
+
+/* 기본 스타일을 설정한 init.css 파일을 가져옵니다. */
+@import url("init.css");
+
+/* 메뉴 항목에 마우스를 올렸을 때 배경색을 변경합니다. */
+div.menu-div:hover {
+	background: #DEC5D2; /* 배경색을 연한 핑크색(#DEC5D2)으로 변경 */
+}
+
+/* 영화 상세 조회 폼의 스타일 설정 */
+form#movie-view-form {
+	margin: 40px 40px 20px 40px;
+    /* 폼 주위에 상단과 좌우는 40px, 하단은 20px의 여백을 줍니다. */
+    border: 1px solid #ddd;
+    /* 폼의 테두리를 연한 회색(#ddd)으로 설정합니다. */
+    border-radius: 20px;
+    /* 테두리의 모서리를 20px 둥글게 처리합니다. */
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+    /* 폼에 그림자를 추가하여 입체감을 줍니다. (가로 4px, 세로 0px, 흐림 6px, 색상은 투명한 검정) */
+}
+
+/* 테이블 스타일 설정 */
+table {
+	margin: 20px 0;
+    /* 테이블 상단과 하단에 20px의 여백을 줍니다. */
+	width: 1020px;
+    /* 테이블의 너비를 1020px로 고정합니다. */
+	border-collapse: collapse;
+    /* 셀 간의 간격을 제거하여 테두리가 겹쳐 보이게 설정합니다. */
+	border-spacing: 0px;
+    /* 셀 간의 여백을 0으로 설정하여 테두리를 밀착시킵니다. */
+	text-align: center;
+    /* 테이블 셀의 내용을 가운데 정렬합니다. */
+}
+
+/* 테이블 헤더(th)와 데이터 셀(td) 스타일 */
+th, td {
+	border-bottom: 1px solid #ddd;
+    /* 셀의 하단에 연한 회색(#ddd) 테두리를 추가합니다. */
+    padding: 10px;
+    /* 셀 내부에 10px의 여백을 추가하여 내용과 테두리 사이의 간격을 유지합니다. */
+    height: 50px;
+    /* 셀의 높이를 50px로 고정하여 균일한 레이아웃을 유지합니다. */
+    vertical-align: middle;
+    /* 셀 내의 텍스트를 수직으로 가운데 정렬합니다. */
+}
+
+/* 정보 셀의 텍스트를 왼쪽 정렬합니다. */
+.info-cell {
+	text-align: left;
+}
+
+/* 버튼 컨테이너의 스타일 설정 */
+div.button-container {
+	margin: 20px 50px;
+    /* 상단과 하단에 20px, 좌우에 50px의 여백을 추가하여 버튼이 너무 붙지 않게 합니다. */
+	display: flex;
+    /* 버튼들을 플렉스 박스 레이아웃으로 정렬합니다. */
+	justify-content: flex-end;
+    /* 버튼들을 오른쪽 끝에 배치합니다. */
+	align-items: center;
+    /* 버튼들을 수직으로 가운데 정렬합니다. */
+	gap: 10px;
+    /* 버튼 간의 간격을 10px로 설정합니다. */
+}
+
+/* 공통 버튼 스타일 설정 (CRUD 버튼) */
+.crudBtn {
+    display: flex; 
+    /* 플렉스 박스 레이아웃으로 버튼 내부 요소를 정렬합니다. */
+    align-items: center; 
+    justify-content: center; 
+    padding: 5px 20px;
+    /* 버튼 안의 텍스트와 아이콘에 5px의 상하 여백, 20px의 좌우 여백을 줍니다. */
+    background: transparent;
+    /* 배경을 투명하게 설정합니다. */
+    border: 1px solid #ccc;
+    /* 버튼 테두리를 연한 회색(#ccc)으로 설정합니다. */
+    color: #5A5A5A;
+    /* 버튼 텍스트 색상을 진한 회색(#5A5A5A)으로 설정합니다. */
+    text-decoration: none;
+    /* 텍스트의 밑줄을 제거합니다. */
+    border-radius: 3px;
+    /* 버튼 모서리를 3px 둥글게 처리하여 부드러운 느낌을 줍니다. */
+    font-size: 16px;
+    /* 텍스트 크기를 16px로 설정하여 보기 좋은 크기로 만듭니다. */
+    text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
+    transition: background-color 0.3s ease;
+    /* 배경색 전환을 부드럽게 0.3초 동안 애니메이션 효과로 처리합니다. */
+    cursor: pointer;
+    /* 마우스를 올리면 커서를 손가락 모양으로 변경합니다. */
+}
+
+/* CRUD 버튼에 마우스를 올렸을 때의 스타일 */
+.crudBtn:hover {
+    background: #DEC5D2;
+    /* 마우스를 올리면 배경색이 연한 핑크(#DEC5D2)로 변경됩니다. */
+    color: #5A5A5A;
+    /* 버튼 텍스트 색상은 동일하게 유지됩니다. */
+    cursor: pointer;
+    /* 커서가 손가락 모양으로 변경됩니다. */
+}

@@ -1,0 +1,17 @@
+..
+특강 및 발표 
+
+DB / Linux
+
+//
+
+HTML , CSS , JavaScript
+
+-> // -> AJax , jQuery  ---> 3일 프로젝트
+
+Servlet
+
+JSP
+------------Semi !
+
+Readme 에 ppt 정보와 프로젝트 정보 정리.

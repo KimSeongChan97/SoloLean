@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/* 전체 body에 대해 모던하고 감각적인 스타일 적용 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s ease-in-out;
+}
+
+/* 홈 버튼을 감싸는 컨테이너 */
+.home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #3498db;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.home-container a:hover {
+    color: #2980b9;
+    transform: scale(1.1);
+}
+
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 테이블 컨테이너의 스타일 */
+.table-container {
+    width: 80%; /* 화면에 맞춰 컴팩트하게 조정 */
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.table-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px 15px; /* 패딩을 줄여 좀 더 컴팩트하게 조정 */
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+/* th 크기 조정 */
+th {
+    background-color: #3498db;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* 선택박스(th) 크기 조정 */
+th:nth-child(1), td:nth-child(1) {
+    width: 3%; /* 선택박스 열의 너비를 줄임 */
+}
+
+td {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+/* 이미지 셀 중앙 정렬 및 스타일 */
+td img {
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 80px; /* 이미지 크기를 작게 조정 */
+    height: auto;
+}
+
+td img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 테이블 행에 마우스 오버 시 효과 추가 */
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 삭제 버튼 스타일 */
+input[type="button"] {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 20px; /* 패딩을 줄여서 버튼을 작게 만듦 */
+    border: none;
+    border-radius: 30px;
+    font-size: 14px; /* 버튼 글씨 크기 조정 */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin: 5px 0;
+    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+}
+
+input[type="button"]:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    td img {
+        width: 50px;
+    }
+
+    input[type="button"] {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+}

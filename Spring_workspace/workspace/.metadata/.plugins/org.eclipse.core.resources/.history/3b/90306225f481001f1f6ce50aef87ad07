@@ -1,0 +1,28 @@
+package sample01;
+
+public class MessageBeanImp implements MessageBean {
+
+	private String str;
+
+
+
+
+	@Override
+	public void showPrintBefore() {
+		
+
+	}
+
+	@Override
+	public void viewPrintBefore() {
+		
+
+	}
+
+	@Override
+	public void display() {
+		
+
+	}
+
+}

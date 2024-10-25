@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+/* 전체 body에 대해 기본적인 스타일 적용 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 최소 높이를 100%로 설정하여 화면 전체를 채움 */
+}
+
+/* 홈 버튼을 감싸는 컨테이너 */
+.home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.home-container a:hover {
+    color: #0056b3;
+}
+
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 테이블 컨테이너의 스타일 */
+.table-container {
+    width: 90%; /* 테이블의 전체 너비를 화면 크기에 맞게 조정 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: auto; /* 화면이 작아지면 가로 스크롤 가능하게 설정 */
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* 체크박스 열의 너비를 줄임 */
+th:nth-child(1), td:nth-child(1) {
+    width: 5%; /* 체크박스 열의 너비를 5%로 설정 */
+}
+
+table th, table td {
+    padding: 12px; /* 패딩을 약간 줄여 화면에 더 많은 내용을 표시 */
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center; /* 텍스트를 중앙으로 정렬 */
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    white-space: nowrap; /* 제목이 너무 길어지면 줄바꿈하지 않고, 한 줄로 표시 */
+}
+
+td {
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word; /* 긴 텍스트가 있을 경우 줄바꿈을 허용 */
+}
+
+/* 이미지 셀 중앙 정렬 및 스타일 */
+td img {
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%; /* 이미지가 셀을 넘어가지 않도록 설정 */
+    height: auto; /* 이미지 비율을 유지하면서 자동으로 크기 조정 */
+}
+
+td img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 각 열 데이터 중앙 정렬 */
+td {
+    text-align: center;
+}
+
+/* 테이블 행에 마우스 오버 시 효과 추가 */
+tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* 삭제 버튼 스타일 */
+input[type="button"] {
+    background-color: #ff4c4c; /* 삭제 버튼 배경색 설정 */
+    color: white;
+    padding: 10px 20px; /* 버튼 패딩 설정 */
+    border: none;
+    border-radius: 5px; /* 모서리를 둥글게 설정 */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* 삭제 버튼 호버 효과 */
+input[type="button"]:hover {
+    background-color: #e60000; /* 호버 시 버튼 배경색 변경 */
+    transform: scale(1.05); /* 버튼이 살짝 커지도록 애니메이션 적용 */
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%; /* 작은 화면에서는 테이블이 전체 화면 너비를 차지하도록 설정 */
+    }
+
+    th, td {
+        padding: 8px; /* 모바일에서 패딩을 더 줄임 */
+        font-size: 14px; /* 글씨 크기를 작게 조정 */
+    }
+
+    td img {
+        width: 60px; /* 작은 화면에서는 이미지 크기를 줄임 */
+        height: auto;
+    }
+
+    input[type="button"] {
+        font-size: 14px; /* 작은 화면에서는 버튼 글씨 크기를 줄임 */
+        padding: 8px 16px; /* 버튼 패딩을 줄여서 화면에 맞춤 */
+    }
+}

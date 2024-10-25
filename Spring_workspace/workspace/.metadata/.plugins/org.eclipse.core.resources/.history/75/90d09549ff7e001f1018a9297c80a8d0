@@ -1,0 +1,15 @@
+package sample01;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		//sayHello 메서도 호출
+        // MessageBeanKo messageBeanKo = new MessageBeanKo(); // 1:1 관계, 결합도 100%
+		// 클래스가 많을 때는 클래스를 생성하는 코드가 많아짐
+		// 부모 = 자식, 다형성, 결합도 낮추기
+		MessageBean messageBean = new MessageBeanEn(); // 내부적으로 생성자 
+		messageBean.sayHello("Spring");
+			
+	}
+
+}

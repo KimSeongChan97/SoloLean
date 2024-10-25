@@ -1,0 +1,63 @@
+.button {
+    padding: 20px 40px;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #00b3ff; /* 네온 블루 색상 */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 10px rgba(0, 179, 255, 0.8), 0 0 40px rgba(0, 179, 255, 0.6), 0 0 80px rgba(0, 179, 255, 0.4);
+    transition: all 0.3s ease;
+    margin: 0 auto; /* 중앙 정렬을 위한 설정 */
+    display: block; /* 버튼을 block 요소로 만들어서 중앙에 배치 */
+}
+
+.button:hover {
+    background-color: #ff007a; /* 호버 시 핑크색으로 변경 */
+    box-shadow: 0 0 20px rgba(255, 0, 122, 0.8), 0 0 50px rgba(255, 0, 122, 0.6), 0 0 100px rgba(255, 0, 122, 0.4); /* 네온 핑크 */
+    transform: scale(1.05); /* 버튼에 살짝 커지는 애니메이션 */
+}
+
+.button:active {
+    transform: scale(0.95); /* 클릭 시 살짝 작아짐 */
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #000;
+    opacity: 0.6;
+}
+.popup {
+    width: 400px;
+    height: 500px;
+    background: beige; 
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    padding: 30px;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%); 
+}
+.popup .closex {
+    position: absolute;
+    right: 20px;
+    bottom: 0px;
+    cursor: pointer;
+    border: 1px solid #000;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 40px;
+}
+.popup h2 {
+    font-size: 50px;
+}

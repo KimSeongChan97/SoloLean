@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="review.dao.ReviewDAO">
+
+    <insert id="insertReview" parameterType="review.bean.ReviewDTO">
+        INSERT INTO review (roomid, userid, rating, comment, logtime, updatetime)
+        VALUES (#{roomId}, #{userId}, #{rating}, #{comment}, NOW(), NOW())
+    </insert>
+
+		<select id="getAllReviews" resultType="review.bean.ReviewDTO">
+		    SELECT r.reviewId, r.roomId, r.userId, u.name AS userName, r.rating, r.comment, r.logtime, r.updatetime
+		    FROM review r
+		    LEFT JOIN user u ON r.userId = u.seq  <!-- user 테이블과 조인 -->
+		</select>
+
+    <select id="getReviewsSortedByRating" resultType="review.bean.ReviewDTO">
+    SELECT * FROM review ORDER BY rating DESC
+	</select>
+	
+	<select id="findReviewsByRoomId" parameterType="int" resultType="review.bean.ReviewDTO">
+	    SELECT r.reviewId, r.roomId, r.userId, u.name AS userName, r.rating, r.comment, r.logtime
+	    FROM review r
+	    LEFT JOIN user u ON r.userId = u.seq
+	    WHERE r.roomId = #{roomId}
+	</select>
+
+	<update id="updateReview" parameterType="review.bean.ReviewDTO">
+    UPDATE review
+    SET rating = #{rating}, comment = #{comment}, updatetime = NOW()
+    WHERE reviewid = #{reviewId}
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+    DELETE FROM review
+    WHERE reviewid = #{reviewId}
+	</delete>
+	
+
+</mapper>
+ 

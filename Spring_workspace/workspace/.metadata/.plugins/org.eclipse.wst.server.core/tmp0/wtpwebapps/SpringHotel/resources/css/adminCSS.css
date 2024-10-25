@@ -1,0 +1,414 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+html, body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 공통 header 스타일 */
+.header {
+	text-align: center; 
+	font-size: 22px;
+}
+.header tr th {
+	width: 13%;
+}
+.header a {
+	text-align: center; 
+	color: black;
+	text-decoration: none;
+}
+/* 로그인 페이지 스타일 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 로그인 페이지 스타일 */
+#loginComment {
+	width: 630px;
+	margin-top: 20%;
+	margin-bottom: 4%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: x-large;
+	border-bottom: 2px solid #623f30;
+}
+.login-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+.log {
+	background: #f1ebd5;
+	padding: 20px;
+	margin: auto;
+	width: 470px;
+	height: 500px;
+	text-align: center;
+	border-radius: 1em;
+	margin-top: 50px; /* header와의 간격 추가 */
+}
+
+.log th {
+	height: 30px;
+	font-size: xx-large;
+	margin-top: 20px;
+}
+
+.log td {
+	height: 10px;
+	padding: 0;
+	font-size: larger;
+}
+
+/* input 필드 */
+.input {
+	height: 35px;
+	width: 70%;
+	margin: 2px 0;
+	border-right: 0px;
+	border-left: 0px;
+	border-top: 0px;
+	border-bottom: 1px solid #9f8a7b;
+	font-size: larger;
+	padding-left: 7px;
+}
+
+/* 버튼 스타일 */
+.btn {
+	background-color: #382f24;
+	width: 70%;
+	height: 45px;
+	border-radius: 0.5em;
+	font-size: medium;
+	color: #f1ebd5;
+	margin-top: 5px;
+}
+/* 미디어 쿼리: 768px 이하 */
+@media (max-width: 768px) {
+    .log {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .log th {
+        font-size: 18px;
+    }
+
+    .input, .btn {
+        font-size: 16px;
+        padding: 5px;
+    }
+}
+
+/* 미디어 쿼리: 480px 이하 */
+@media (max-width: 480px) {
+    .log th {
+        font-size: 16px;
+    }
+
+    .input, .btn {
+        font-size: 14px;
+        height: 35px;
+    }
+}
+.btn:hover {
+	color: white;
+	background-color: #45392a;
+}
+
+/* 글쓰기 버튼 크기 조정 */
+.small-btn {
+	width: 150px; /* 너비를 줄였습니다 */
+	height: 40px;
+}
+
+
+/* 작은 화면에서 테이블을 세로로 배치 */
+@media (max-width: 768px) {
+    .reserveInfo {
+        width: 100%;
+    }
+
+    .reserveInfo tr {
+        display: block;
+        margin-bottom: 10px;  /* 행 간의 간격 추가 */
+    }
+
+    .reserveInfo td {
+        display: block;
+        width: 100%;
+        text-align: center; /* 텍스트 중앙 정렬 */
+    }
+
+    .reserveInfo td img {
+        width: 100%;  /* 이미지를 화면 너비에 맞춤 */
+        height: auto; /* 비율에 맞춰 높이 조절 */
+    }
+}
+/* 더 작은 화면에서 */
+@media (max-width: 480px) {
+    .reserveInfo {
+        font-size: 14px; /* 작은 글씨 크기 조정 */
+    }
+
+    #reserveTitle {
+        font-size: 8vw; /* 글자 크기 더 작게 */
+    }
+
+    .btn, .small-btn {
+        height: 35px; /* 버튼 높이 조정 */
+    }
+}
+
+/*checkReserve.jsp */
+#reserveTitle {
+    width: 100%;  
+    height: auto;
+    margin: 10px auto; /* 위쪽 여백을 줄임 */
+    text-align: center;
+    font-size: 5vw;  
+}
+
+.reserveInfo {
+    width: 70%;
+    margin: 20px auto; /* 위쪽과 아래쪽 여백을 줄임 */
+    border-top: 3px solid #623f30;
+    border-collapse: collapse;
+}
+
+.reserveInfo tr{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+}
+
+.reserveInfo tr td{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+	height:45px;
+}
+
+#list > td{
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+    height:50px;
+}
+
+/*InquiryList.jsp*/
+.reserveInfo a:link {					/* a 태그 클릭 안한 상태 */
+	text-align:center; 
+	color: black;
+	text-decoration : none;	/*밑줄 제거*/
+}
+
+.reserveInfo a:visited { 				/* a 태그 1회 이상 클릭 했을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;
+}
+
+.reserveInfo a:hover { 					/* a 태그에 마우스 올렸을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;	
+}
+
+/*InquiryDetail.jsp*/
+.inquiryDetail{
+	width:300px;
+	height:70px;
+	margin-bottom:80px;
+	border-top: 3px solid #623f30;
+	border-collapse: collapse;
+}
+
+.inquiryDetail tr{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+}
+
+.inquiryDetail tr td{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+	height:30px;
+}
+
+#detail{
+	text-align:center;
+	width:130px;
+	height:40px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+#detailcontent{
+	text-align:center;
+	width:130px;
+	height:440px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+#detailtextarea{
+	width:100%;
+	height:440px;
+	font-size:18px;
+	border:none
+}
+
+#comment{
+	padding-left: 150px;
+}
+
+
+
+#commentBtn{
+	width:75px;
+	height:25px;
+	border: none;
+	background-color: #876f55;
+	color:#f1ebd5;
+}
+
+#commentWriteBtn{
+	position:absolute;
+	width:120px; 
+	height:50px; 
+	background-color: #876f55; 
+	color:#f1ebd5;
+	border: none;
+	margin-top:20px;
+	margin-left:25px;
+}
+
+/*updateRoomInfo.jsp*/
+#inquiryTitle {
+    width: 100%;        /* 전체 너비 사용 */
+    height: auto;       /* 높이는 내용에 맞게 자동 조정 */
+    margin: 3% auto;    /* 상하 3%씩의 여백 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    font-size: 5vw;     /* 화면 너비의 5%로 폰트 크기 설정 */
+}
+
+.inquiryDetail{
+	width:65%;
+	margin-top:30px;
+	margin-bottom:80px;
+	border-top: 3px solid #623f30;
+	border-collapse: collapse;
+}
+
+.inquiryDetail tr{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+}
+
+.inquiryDetail tr td{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+	height:30px;
+}
+
+#detail{
+	text-align:center;
+	width:130px;
+	height:40px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+.writeTitle{
+	text-align:center;
+	width:100%;
+	height:35px;
+	font-size:20px;
+	border:none;
+}
+
+.price{
+	text-align:center;
+	width:100%;
+	height:35px;
+	font-size:20px;
+	border:none;
+}
+
+.writeTitle:focus{
+	outline:none;
+}
+
+#commentWrite {
+    position: fixed; /* 고정 위치 설정 */
+    bottom: 80px; /* 아래에서 80px 여백 */
+    left: 50%; /* 화면 중앙으로 이동 */
+    transform: translateX(-50%); /* 중앙 정렬 조정 */
+}
+
+#commentWriteBtn {
+    width: 120px; 
+    height: 50px; 
+    background-color: #876f55; 
+    color: #f1ebd5;
+    border: none;
+}
+
+.pagination {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    display: flex; /* Flexbox 활성화 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    margin-top: 50px; /* 위쪽 여백 */
+    z-index: 1; /* 다른 요소 위에 표시 */
+    left: 50%;
+    
+}
+.pagination {
+    position: fixed; /* 고정 위치 설정 */
+    bottom: 20px; /* 아래에서 20px 여백 */
+    left: 50%; /* 화면의 중앙으로 이동 */
+    transform: translateX(-50%); /* 중앙 정렬 조정 */
+
+}
+#paging, #currentPaging {
+    display: inline-block; /* 블록 형태로 나열 */
+    padding: 10px 15px; /* 여백 */
+    margin: 0 5px; /* 좌우 여백 */
+    border: 1px solid #876f55; /* 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f8f8f8; /* 배경색 */
+    color: #382f24; /* 글자색 */
+    text-decoration: none; /* 밑줄 제거 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 호버 효과 전환 */
+}
+
+#currentPaging {
+    display: inline-block; /* 블록 형태로 나열 */
+    padding: 10px 15px; /* 여백 */
+    margin: 0 5px; /* 좌우 여백 */
+    border: 1px solid #876f55; /* 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #623f30; /* 현재 페이지 활성화 색상 */
+    color: #ffffff; /* 활성화 시 글자색 */
+    cursor: default; /* 기본 커서 */
+}
+
+#paging:hover {
+    background-color: #876f55; /* 호버 시 배경색 변경 */
+    color: #f1ebd5; /* 호버 시 글자색 변경 */
+}

@@ -1,0 +1,117 @@
+@charset "UTF-8";  
+
+/* 기본적인 전반적인 설정 */
+body {
+    font-family: 'Poppins', sans-serif; /* 좀 더 세련된 폰트로 변경 */
+    background: linear-gradient(to bottom right, #ece9e6, #ffffff); /* 부드러운 그라디언트 배경 추가 */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* 뷰포트 크기에 맞추어 레이아웃이 꽉 차도록 설정 */
+}
+
+/* 홈 버튼 스타일 */
+.home-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #1f78d1; /* 좀 더 밝고 생동감 있는 파란색으로 버튼을 설정 */
+    padding: 12px 20px;
+    border-radius: 30px; /* 버튼을 더욱 둥글게 하여 현대적인 느낌을 줌 */
+    font-size: 18px;
+    font-weight: bold; /* 버튼의 텍스트를 굵게 설정하여 가독성 향상 */
+    transition: all 0.5s ease; /* 전반적인 전환 효과 추가 */
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3); /* 입체적인 그림자 효과 추가 */
+}
+
+a:hover {
+    background-color: #0056b3; /* 호버 시 더 짙은 파란색으로 변경 */
+    transform: translateY(-5px); /* 버튼이 살짝 올라가는 효과 */
+    box-shadow: 0 15px 20px rgba(0, 123, 255, 0.4); /* 그림자를 더 강하게 */
+}
+
+/* 테이블 컨테이너 */
+.table-container {
+    width: 85%; /* 화면에서 차지하는 너비를 넓게 설정 */
+    max-height: 70vh; /* 테이블의 최대 높이를 늘림 */
+    overflow-y: auto; /* 세로 스크롤 가능 */
+    background: rgba(255, 255, 255, 0.8); /* 약간 투명한 흰색 배경으로 테이블을 부각 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 테두리에 부드러운 그림자 효과 */
+    border-radius: 10px; /* 컨테이너의 모서리를 둥글게 설정 */
+    padding: 20px; /* 테이블과 경계선 사이에 여백을 추가 */
+    margin-top: 30px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse; /* 중복된 경계선을 제거 */
+    background-color: #fff; /* 흰색 배경 */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* 배경색 전환이 부드럽게 적용되도록 함 */
+}
+
+/* 테이블 헤더 스타일 */
+th {
+    background-color: #1f78d1; /* 파란색 헤더 */
+    color: white;
+    text-transform: uppercase; /* 대문자 처리하여 강조 */
+    letter-spacing: 1px; /* 글자 간격을 약간 넓힘 */
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3; /* 테두리를 약간 진한 파란색으로 강조 */
+}
+
+/* 테이블 데이터 스타일 */
+td {
+    border-bottom: 1px solid #ddd;
+    color: #555;
+    border: none; /* 테두리 없애기 */
+}
+
+/* 짝수 행 스타일 */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* 연한 회색 배경으로 행을 구분 */
+}
+
+/* 행에 마우스를 올렸을 때 */
+tr:hover {
+    background-color: #e0f7fa; /* 연한 파란색으로 변경 */
+}
+
+/* 이미지 스타일 */
+img {
+    border-radius: 12px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* 확대 효과와 그림자 변환을 동시에 부드럽게 설정 */
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    border: none; /* 이미지 테두리 제거 */
+    outline: none;
+}
+
+img:hover {
+    transform: scale(1.2); /* 확대 시 조금 더 부드럽고 자연스럽게 설정 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 확대 시 이미지 주위에 그림자 효과 추가 */
+    outline: none;
+}
+
+/* 부드러운 전환 효과를 더하여 행에 가볍게 움직임을 추가 */
+tr:hover img {
+    transform: scale(1.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none; /* 확대 시에도 테두리가 생기지 않도록 설정 */
+}

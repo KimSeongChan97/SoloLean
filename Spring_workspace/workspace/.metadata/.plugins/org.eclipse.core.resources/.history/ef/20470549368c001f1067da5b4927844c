@@ -1,0 +1,27 @@
+$(document).ready(function() {
+	
+    // Update button click
+    $('.update-btn').click(function() {
+        const reviewId = $(this).data('id');
+        window.location.href = contextPath + '/review/reviewUpdateForm?reviewId=' + reviewId;  // 경로가 맞는지 확인
+    });
+
+    // Delete button click
+    $('.delete-btn').click(function() {
+        const reviewId = $(this).data('id');
+        if (confirm('정말로 리뷰를 삭제하시겠습니까?')) {
+            $.ajax({
+                url: contextPath + '/review/deleteReview',  // 정확한 경로 설정
+                type: 'POST',
+                data: { reviewId: reviewId },
+                success: function(response) {
+                    alert('리뷰 삭제 성공');
+                    location.reload(); // 삭제 후 페이지 리로드
+                },
+                error: function(err) {
+                    alert('리뷰 삭제 실패');
+                }
+            });
+        }
+    });
+});

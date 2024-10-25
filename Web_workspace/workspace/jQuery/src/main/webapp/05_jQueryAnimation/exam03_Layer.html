@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Layer</title>
+<style type="text/css">
+
+/* ul 태그는 너비가 700px로 설정되어 있으며, 중앙 정렬됩니다. 
+   이로 인해 이미지 목록이 페이지의 중앙에 배치됩니다. 
+   리스트 스타일은 none으로 설정되어 있어서 기본 목록 스타일(점, 숫자 등)이 표시되지 않습니다. */
+ul { 
+    width: 700px;
+    margin: auto;
+    list-style: none;
+}
+
+/* ul li 태그는 float: left로 설정되어 있어서 리스트 아이템들이 가로로 나열되도록 배치됩니다.
+   이미지를 순차적으로 왼쪽에서 오른쪽으로 배치하기 위한 설정입니다. */
+ul li { 
+    float: left;
+}
+
+/* ul li img 태그는 이미지 주변의 기본 테두리(border)를 제거하고, 
+   각 이미지에 10px의 여백(margin)을 추가하여 이미지들 간의 간격을 확보합니다. */
+ul li img { 
+    border: 0;
+    margin: 10px;
+}
+
+/* div#glayLayer는 초기에는 보이지 않도록 설정되어 있으며(display: none),
+   화면 전체를 덮는 고정된 위치에 배경 레이어로 배치됩니다. 
+   검정색 배경에 60% 투명도(opacity: 0.60)를 적용하여 반투명한 효과를 줍니다. 
+   position: fixed는 화면 스크롤에 관계없이 항상 화면에 고정된 위치에 있도록 만듭니다. */
+div#glayLayer {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: black;
+    /* filter: alpha(opacity=60); */ /* IE 전용 필터로, 투명도를 설정할 수 있습니다. 최신 브라우저에서는 opacity 속성을 사용합니다. */
+    opacity: 0.60;  /* 0.0 ~ 1.0, 값이 작을수록 더 투명하게 만든다. 0.60은 60% 불투명도입니다. */
+}
+
+/* #overLayer는 초기에는 보이지 않으며(display: none), 화면 가운데에 위치하도록 설정됩니다.
+   position: fixed로 설정되어 있어서 화면을 스크롤해도 항상 화면 가운데에 고정됩니다.
+   margin-top과 margin-left 값은 음수로 설정되어 이미지 크기와 위치를 중앙으로 맞추기 위한 설정입니다.
+   음수 값은 요소를 더 위로 혹은 더 왼쪽으로 이동시킵니다. 
+   예를 들어, margin-top: -244px은 요소를 위쪽으로 244px 이동시킵니다. 이 값들은 표시할 이미지의 크기에 맞게 조정됩니다. */
+#overLayer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -244px; /* 양수 값은 인접 요소와 거리를 넓히고, 음수 값은 더 좁힌다. 여기서는 이미지를 화면 중앙에 배치하기 위해 사용됩니다. */
+    margin-left: -325px; /* 이미지의 너비가 650px인 경우, 중앙에 배치되도록 이 값을 설정합니다. */
+}
+
+</style>
+</head>
+<body>
+	<!-- 화면 전체를 덮는 반투명한 검정색 배경 레이어 -->
+	<div id='glayLayer'></div>
+	
+	<!-- 클릭한 이미지를 표시하는 레이어. 초기에는 display: none으로 보이지 않으며, 클릭 시 이미지가 이곳에 표시됨 -->
+	<div id='overLayer'></div>
+	
+	<!-- 이미지 목록을 포함하는 ul 태그. 각 이미지는 작은 썸네일로 표시되며, 클릭하면 큰 이미지를 표시하는 모달이 나타남 -->
+	<ul>
+		<li>
+			<a href="../image/photo1.jpg" class="modal">
+				<img src="../image/photo1_thum.jpg" alt="샹드리아"></a>
+		</li>
+		<li>
+			<a href="../image/photo2.jpg" class="modal">
+				<img src="../image/photo2_thum.jpg" alt="장미"></a>
+		</li>
+		<li>
+			<a href="../image/photo3.jpg" class="modal">
+				<img src="../image/photo3_thum.jpg" alt="소금사막"></a>
+		</li>
+		<li>
+			<a href="../image/photo4.jpg" class="modal">
+				<img src="../image/photo4_thum.jpg" alt="하늘종"></a>
+		</li>
+		<li>
+			<a href="../image/photo5.jpg" class="modal">
+				<img src="../image/photo5_thum.jpg" alt="해변"></a>
+		</li>
+		<li>
+			<a href="../image/photo6.jpg" class="modal">
+				<img src="../image/photo6_thum.jpg" alt="수국"></a>
+		</li>
+		<li>
+			<a href="../image/photo7.jpg" class="modal">
+				<img src="../image/photo7_thum.jpg" alt="오로라"></a>
+		</li>
+		<li>
+			<a href="../image/photo8.jpg" class="modal">
+				<img src="../image/photo8_thum.jpg" alt="야경"></a>
+		</li>
+	</ul>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+// 문서가 준비되면 아래의 jQuery 코드를 실행합니다. 이 함수를 통해 페이지가 완전히 로드된 이후에만 코드가 실행됩니다.
+$(function(){
+	// 'modal' 클래스를 가진 a 태그(이미지 링크)를 클릭했을 때 실행되는 함수입니다.
+	$('a.modal').click(function(){
+		// 반투명한 검정색 배경(glayLayer)을 서서히 나타냅니다. 300ms 동안 서서히 나타나는 효과를 줍니다.
+		$('#glayLayer').fadeIn(300);
+		// 중앙에 위치한 이미지 표시 레이어(overLayer)도 서서히 나타납니다. fadeIn 메서드는 지정한 시간 동안 서서히 나타나는 애니메이션을 수행합니다.
+		$('#overLayer').fadeIn(300);
+		
+		// overLayer에 클릭한 이미지의 href 속성을 가져와서 그 이미지를 표시합니다.
+		// $(this)는 클릭된 요소(a 태그)를 참조하며, .attr('href')를 통해 a 태그의 href 속성 값을 가져옵니다. 이 값을 사용해 큰 이미지를 표시합니다.
+		$('#overLayer').html('<img src="' + $(this).attr('href') + '">');
+		
+		// a 태그의 기본 동작(링크 이동)을 막기 위해 false를 반환합니다.
+		// 기본적으로 a 태그를 클릭하면 링크로 이동하는데, 이를 방지하고 모달 창이 나타나도록 합니다.
+		return false;
+	});
+	
+	// 반투명한 배경(glayLayer)을 클릭하면 실행되는 함수입니다.
+	$('#glayLayer').click(function(){
+		// 배경(glayLayer)을 서서히 사라지게 합니다. 300ms 동안 서서히 사라지면서 모달 창이 닫히는 효과를 줍니다.
+		$(this).fadeOut(300);
+		// 이미지가 표시된 레이어(overLayer)도 함께 서서히 사라집니다.
+		$('#overLayer').fadeOut(300);
+	});
+	
+});
+</script>
+
+</body>
+</html>

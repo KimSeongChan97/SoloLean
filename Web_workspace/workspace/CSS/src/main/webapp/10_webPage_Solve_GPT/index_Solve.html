@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Company Info - my website</title>
+<!-- 문서의 문자 인코딩을 UTF-8로 설정하고, 웹 페이지의 제목을 'Company Info - my website'로 설정합니다. UTF-8은 모든 문자를 표현할 수 있는 인코딩 방식으로, 다국어 지원에 유리합니다. -->
+<link rel="stylesheet" href="reset_Solve.css">
+<!-- 브라우저마다 기본적으로 제공되는 스타일을 초기화하는 reset CSS 파일을 불러옵니다. -->
+<link rel="stylesheet" href="main_Solve.css">
+<!-- 이 웹 페이지의 메인 스타일을 담당하는 CSS 파일을 불러옵니다. -->
+</head>
+<body>
+	<dl class="skip">
+		<dt class="blind">skip navigation</dt>
+		<!-- 스크린 리더 사용자에게만 보이는 제목으로, 사용자가 네비게이션을 건너뛰고 본문으로 바로 이동할 수 있도록 돕습니다. -->
+		<dd>
+			<a href="#content">skip to content</a>
+			<!-- '본문으로 이동' 링크입니다. 키보드나 스크린 리더 사용자가 본문으로 바로 이동할 수 있도록 합니다. -->
+		</dd>
+	</dl>
+	<!-- //skip -->
+	<hr />
+	<!-- 시각적 구분을 위한 수평선(hr)입니다. 논리적인 구분을 나타내며, 콘텐츠를 구분합니다. -->
+
+	<div id="wrap">
+		<!-- 페이지 전체를 감싸는 래퍼(div)입니다. 모든 콘텐츠를 포함하여 레이아웃을 설정할 수 있게 합니다. -->
+		<div id="header">
+			<!-- 페이지의 헤더 부분입니다. 주로 사이트의 로고와 주요 네비게이션이 포함됩니다. -->
+			<h1 class="logo">
+				<a href="#">LOGO</a>
+				<!-- 사이트 로고 위치입니다. 이 곳에 로고 이미지나 텍스트를 배치할 수 있습니다. -->
+			</h1>
+
+			<dl class="topnav">
+				<!-- 상단 네비게이션 바입니다. 로그인, 회원가입, 사이트맵 등의 링크를 포함합니다. -->
+				<dt class="blind">top navigation</dt>
+				<!-- 스크린 리더용 텍스트로, 상단 네비게이션을 설명합니다. -->
+				<dd><a href="#">Login</a></dd>
+				<dd><a href="#">Member join</a></dd>
+				<dd><a href="#">Sitemap</a></dd>
+			</dl>
+
+			<h2 class="blind">main navigation</h2>
+			<!-- 메인 네비게이션의 제목입니다. 스크린 리더용 텍스트로만 보입니다. -->
+			<ul class="mainnav">
+				<!-- 메인 네비게이션 리스트입니다. 주로 주요 섹션으로의 링크가 포함됩니다. -->
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact us</a></li>
+			</ul>
+		</div>
+		<!-- header -->
+
+		<hr />
+		<!-- 또 하나의 수평선으로, 헤더와 본문 콘텐츠를 시각적으로 구분합니다. -->
+
+		<div id="container">
+			<!-- 메인 콘텐츠 영역을 감싸는 컨테이너입니다. 이 영역에는 사이드바와 본문이 포함됩니다. -->
+			<div class="snb">
+				<!-- Sub Navigation Bar: 현재 섹션과 관련된 하위 메뉴를 제공합니다. -->
+				<h2>About</h2>
+				<!-- 현재 섹션의 제목으로, 'About'을 나타냅니다. -->
+				<ul>
+					<li><a href="#">Company Info</a></li>
+					<li><a href="#">History</a></li>
+					<li><a href="#">Location</a></li>
+				</ul>
+			</div>
+			<!-- snb -->
+
+			<hr />
+			<!-- 서브 네비게이션과 메인 콘텐츠를 구분하는 수평선입니다. -->
+
+			<div id="content">
+				<!-- 메인 콘텐츠를 담는 영역입니다. 텍스트, 이미지 등의 콘텐츠 요소가 포함됩니다. -->
+				<p class="locate">
+					<a href="#">Home</a> &gt;
+					<a href="#">About</a> &gt;
+					<a href="#">Company Info</a>
+				</p>
+				<!-- 페이지 위치를 표시하는 내비게이션 요소로, 'breadcrumbs'라고도 불립니다. -->
+
+				<h2>Company Info</h2>
+				<!-- 현재 페이지의 주제 제목입니다. 'Company Info'라는 주제를 나타냅니다. -->
+
+				<p class="thum">
+					<img src="../image/treethum.png" alt="tree thumbnail photo">
+					<!-- 이미지 파일 'image.png'를 표시합니다. alt 속성은 이미지가 표시되지 않을 때 대체 텍스트로 사용됩니다. -->
+				</p>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ea, impedit ut 
+            		perspiciatis assumenda ipsam minus veritatis tenetur nisi commodi laboriosam 
+            		quae sint nulla? Obcaecati, corrupti, placeat, quasi repudiandae deleniti quod 
+            		aliquam facere vitae cumque sapiente sequi qui asperiores eos ipsum perferendis 
+            		tenetur veritatis nesciunt dolores corporis sint nisi numquam excepturi dolor 
+            		aspernatur natus provident et itaque quaerat saepe unde quo quidem odit sunt 
+            		soluta animi incidunt beatae. Quod, amet recusandae earum iste debitis! Amet, 
+            		expedita, aperiam, sint omnis fuga magnam eos quidem alias soluta nobis sunt 
+            		unde incidunt! Ratione, autem eligendi molestiae saepe et numquam facilis 
+            		pariatur voluptates ipsum!
+				</p>
+				
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ea, impedit ut 
+            		perspiciatis assumenda ipsam minus veritatis tenetur nisi commodi laboriosam 
+            		quae sint nulla? Obcaecati, corrupti, placeat, quasi repudiandae deleniti quod 
+            		aliquam facere vitae cumque sapiente sequi qui asperiores eos ipsum perferendis 
+            		tenetur veritatis nesciunt dolores corporis sint nisi numquam excepturi dolor 
+            		aspernatur natus provident et itaque quaerat saepe unde quo quidem odit sunt 
+            		soluta animi incidunt beatae. Quod, amet recusandae earum iste debitis! Amet, 
+            		expedita, aperiam, sint omnis fuga magnam eos quidem alias soluta nobis sunt 
+            		unde incidunt! Ratione, autem eligendi molestiae saepe et numquam facilis 
+            		pariatur voluptates ipsum!
+				</p>
+			</div>
+			<!-- content -->
+		</div>
+		<!-- container -->
+
+		<hr />
+		<!-- 본문과 푸터를 구분하는 수평선입니다. -->
+
+		<div id="footer">
+			<!-- 페이지 하단의 푸터 영역으로, 저작권 정보 및 추가 네비게이션 링크 등이 포함됩니다. -->
+			<dl class="btmnav">
+				<dt>bottom navigation</dt>
+				<!-- 하단 네비게이션 바의 제목입니다. 이 제목은 시각적으로도 표시됩니다. -->
+				<dd><a href="#">About</a></dd>
+				<dd><a href="#">Services</a></dd>
+				<dd><a href="#">Portfolio</a></dd>
+				<dd><a href="#">Contact us</a></dd>
+				<dd><a href="#">Location</a></dd>
+			</dl>
+			
+			<p class="copy">
+				Copyright &copy; COMPANY Design<br>
+				<!-- 회사의 저작권 정보를 표시하는 부분입니다. 보통 회사명과 함께 © 기호를 사용하여 저작권을 주장합니다. -->
+				Powered by Webazit, e-mail : webmaster@company.com
+				<!-- 웹사이트의 개발사나 관리자의 정보를 표시합니다. 'webmaster@company.com'은 웹사이트 관리자와 연락할 수 있는 이메일 주소를 나타냅니다. -->
+			</p>	
+		</div>
+		<!-- footer -->
+	</div>
+	<!-- wrap -->
+</body>
+</html>

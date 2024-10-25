@@ -1,0 +1,16 @@
+package thread;
+
+class Synchronized extends Thread {
+	
+}
+
+
+//----------------------------------------
+public class SynchronizedMain {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

@@ -1,0 +1,11 @@
+CREATE TABLE review (
+    review_id INT AUTO_INCREMENT PRIMARY KEY, -- 리뷰 고유 ID
+    room_id INT NOT NULL, -- 해당 리뷰가 속한 객실 ID (room 테이블 참조)
+    user_id INT, -- 리뷰를 작성한 사용자 ID (user 테이블의 seq 참조)
+    rating INT CHECK (rating >= 1 AND rating <= 5), -- 리뷰 점수 (1~5 사이)
+    comment TEXT, -- 리뷰 내용
+    logtime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 리뷰 작성 날짜
+    updatetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 리뷰 수정 날짜
+    CONSTRAINT fk_room_review FOREIGN KEY (room_id) REFERENCES room(room_id) ON DELETE CASCADE, -- room 테이블과 관계 설정
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(seq) ON DELETE SET NULL -- 사용자 삭제 시 NULL 처리
+);

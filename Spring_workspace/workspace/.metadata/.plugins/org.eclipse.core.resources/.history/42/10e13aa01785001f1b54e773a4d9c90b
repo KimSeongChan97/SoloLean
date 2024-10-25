@@ -1,0 +1,29 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class SumController {
+	
+	@RequestMapping(value="input.do", method=RequestMethod.GET)
+    public ModelAndView input() {
+		 ModelAndView mav = new ModelAndView();
+		 mav.addObject("result", " Hello Spring MVC!! ");
+		 mav.setViewName("sum/input");
+		 return mav;
+	}
+	
+	@RequestMapping(value="result.do", method=RequestMethod.GET, produces="text/html; charset=UTF-8")
+    @ResponseBody
+    public String result(){
+        
+        return " 안녕하세요 ! 스프링 !! ";
+	}
+	
+	
+}
+	

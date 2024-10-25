@@ -1,0 +1,260 @@
+/* FilmNote/src/main/webapp/css/userSignUp.css */
+
+/* 문자 인코딩을 UTF-8로 설정 */
+@charset "UTF-8";
+/* 초기 스타일 시트를 가져옴 */
+@import url("init.css");
+
+/* 모든 요소의 기본 스타일 초기화 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans CJK KR', sans-serif; /* 기본 폰트 설정 */
+}
+
+/* 페이지의 기본 배경과 텍스트 색상 설정 */
+body {
+    background-color: #f4f4f4; /* 연한 회색 배경 */
+    color: #333; /* 텍스트 색상: 어두운 회색 */
+    margin-top: 10px; /* 상단 여백 10px */
+}
+
+/* 중앙 정렬 및 여백 설정 */
+#write-jsp {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-top: 20px; /* 상단 여백 20px */
+}
+
+/* 링크 스타일 */
+a {
+    margin: 10px 0; /* 위아래 여백 10px */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    display: inline-block; /* 인라인 블록 요소로 변환 */
+}
+
+/* 테이블의 중앙 정렬 및 스타일 설정 */
+table {
+    margin: 20px auto; /* 테이블을 가운데 배치하고 위아래 여백 20px */
+    border: 2px solid black; /* 테두리 설정 */
+    border-collapse: collapse; /* 테두리 간격 제거 */
+    border-spacing: 0; /* 테두리 간격 제거 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    width: 800px; /* 테이블 너비 */
+}
+
+/* 테이블 헤더와 데이터 셀 스타일 */
+th, td {
+    border: 1px solid black; /* 테두리 설정 */
+    padding: 10px; /* 내부 여백 */
+    vertical-align: middle; /* 세로 정렬: 가운데 */
+}
+
+/* 라벨의 기본 너비 설정 */
+.label {
+    width: 20%; /* 라벨의 너비 20% */
+}
+
+/* 입력 필드가 있는 셀의 정렬 및 너비 설정 */
+.input {
+    text-align: left; /* 왼쪽 정렬 */
+    width: 80%; /* 너비 80% */
+}
+
+/* 텍스트 및 비밀번호 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 200px; /* 입력 필드 너비 */
+    border-radius: 5px; /* 둥근 테두리 */
+    height: 30px; /* 입력 필드 높이 */
+    padding: 0 5px; /* 좌우 여백 */
+    background-color: transparent; /* 배경 투명 */
+}
+
+/* 라디오 버튼 스타일 */
+input[type="radio"] {
+    margin-right: 5px; /* 오른쪽 여백 */
+}
+
+/* 이메일 및 전화번호 입력 필드 스타일 */
+input[type="text"].input-email, select.input-email, input[type="text"].input-tel, select.input-tel {
+    border-radius: 5px; /* 둥근 테두리 */
+    height: 30px; /* 높이 설정 */
+    background-color: transparent; /* 배경 투명 */
+}
+
+/* 이메일 입력 필드 크기 */
+input[type="text"].input-email, select.input-email {
+    width: 170px !important; /* 너비 170px */
+    margin-right: 3px; /* 오른쪽 여백 3px */
+}
+
+/* 전화번호 입력 필드 크기 */
+input[type="text"].input-tel, select.input-tel {
+    width: 100px !important; /* 너비 100px */
+}
+
+/* 버튼 스타일 */
+button {
+    width: 130px; /* 너비 설정 */
+    height: 30px; /* 높이 설정 */
+    padding: 3px 10px; /* 내부 여백 */
+    background: linear-gradient(135deg, #4a90e2, #9013fe); /* 그라데이션 배경 */
+    border: none; /* 테두리 없음 */
+    color: white; /* 텍스트 색상 */
+    text-decoration: none; /* 텍스트 장식 없음 */
+    border-radius: 25px; /* 둥근 테두리 */
+    font-size: 14px; /* 폰트 크기 */
+    font-weight: bold; /* 굵은 폰트 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 배경 및 변형 전환 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    margin-bottom: 10px; /* 하단 여백 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 버튼에 마우스를 올렸을 때의 효과 */
+button:hover {
+    background: linear-gradient(135deg, #9013fe, #4a90e2); /* 그라데이션 반전 */
+    transform: translateY(-2px); /* 위로 2px 이동 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 더 진한 그림자 */
+}
+
+/* 입력 필드 오류 메시지 숨기기 */
+#nameDiv, #idDiv, #pwdDiv, #repwdDiv, #birthDiv, #emailDiv, #telDiv {
+    display: none; /* 처음에 보이지 않음 */
+    padding: 5px 0 0 3px; /* 내부 여백 */
+    font-size: 10pt; /* 폰트 크기 */
+}
+
+/* ID 검증 메시지의 스타일 */
+#uidDiv {
+    padding: 5px 0 0 3px;
+    font-size: 10pt;
+}
+
+/* jQuery UI 모달 창 스타일 */
+.ui-dialog {
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(43, 43, 43, 0.9), rgba(31, 31, 31, 0.8)); /* 그라데이션 배경 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+    overflow: hidden;
+    animation: fadeIn 0.6s ease, scaleUp 0.6s ease; /* 등장 애니메이션 */
+    width: 60%; /* 너비 60% */
+    max-width: 800px;
+    min-width: 300px;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 모달 등장 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 모달 확대 애니메이션 */
+@keyframes scaleUp {
+    from { transform: scale(0.85); }
+    to { transform: scale(1); }
+}
+
+/* 모달 제목 바 스타일 */
+.ui-dialog-titlebar {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b); /* 그라데이션 배경 */
+    color: #fff; /* 흰색 텍스트 */
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Bebas Neue', cursive; /* 폰트 */
+    letter-spacing: 2px;
+    font-size: 1.4em;
+    text-transform: uppercase; /* 대문자 */
+}
+
+/* 모달 제목 스타일 */
+.ui-dialog-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* 그림자 효과 */
+}
+
+/* 모달 닫기 버튼 스타일 */
+.ui-dialog-titlebar-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.3em;
+    opacity: 0.8; /* 투명도 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 애니메이션 */
+}
+
+/* 닫기 버튼에 마우스를 올렸을 때 */
+.ui-dialog-titlebar-close:hover {
+    opacity: 1; /* 투명도 변화 */
+    transform: rotate(90deg); /* 90도 회전 */
+}
+
+/* 모달 내용 스타일 */
+.ui-dialog-content {
+    padding: 20px;
+    font-size: 1em;
+    color: #e8e8e8;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, rgba(43, 43, 43, 0.8), rgba(31, 31, 31, 0.7)); /* 그라데이션 배경 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* 텍스트 그림자 */
+    border-radius: 0 0 15px 15px;
+}
+
+/* 모달 버튼 영역 스타일 */
+.ui-dialog-buttonpane {
+    background: #1f1f1f;
+    border-top: 2px solid #3a3a3a;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 모달 버튼 스타일 */
+.ui-dialog-buttonset button {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b); /* 그라데이션 배경 */
+    color: #fff; /* 흰색 텍스트 */
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 1em;
+    font-family: "Brush Script MT", cursive; /* 폰트 */
+    text-transform: uppercase; /* 대문자 */
+    letter-spacing: 1px; /* 자간 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 126, 95, 0.4); /* 그림자 효과 */
+}
+
+/* 모달 버튼에 마우스를 올렸을 때 */
+.ui-dialog-buttonset button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f); /* 그라데이션 반전 */
+    transform: translateY(-2px); /* 위로 2px 이동 */
+    box-shadow: 0 6px 15px rgba(255, 126, 95, 0.5); /* 더 진한 그림자 */
+}
+
+/* 경고 메시지 스타일 */
+#warningMessage {
+    text-align: center; /* 중앙 정렬 */
+    margin-top: 20px;
+    font-size: 12pt;
+    color: #e74c3c; /* 빨간색 경고 메시지 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    
+    /* 네온사인 효과 */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 128, 0.8),   /* 청록색 */
+        0 0 10px rgba(255, 0, 128, 0.6),  /* 자주색 */
+        0 0 15px rgba(255, 255, 255, 0.8); /* 흰색 */
+    
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
+}
+
+/* 'show' 클래스가 적용된 경고 메시지 */
+.show {
+    display: block;
+    opacity: 1;
+}

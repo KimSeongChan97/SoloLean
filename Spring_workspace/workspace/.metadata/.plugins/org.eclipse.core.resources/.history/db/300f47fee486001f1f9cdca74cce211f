@@ -1,0 +1,324 @@
+@charset "UTF-8"; /* 파일의 문자 인코딩을 UTF-8로 설정 */
+
+/* 전체적인 초기화 및 박스 모델 설정 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Arial'; /* 기본 폰트를 Arial로 설정 */
+    /* 
+    모든 HTML 요소에 대한 기본 스타일을 초기화하여, 
+    padding, margin을 0으로 설정하고 box-sizing을 border-box로 지정함으로써 
+    요소의 크기를 계산할 때 padding과 border를 포함시키도록 함.
+    */
+}
+
+/* 배경 및 폰트 설정 */
+html, body {
+    width: 100%; /* 페이지의 너비를 100%로 설정 */
+    height: 100%; /* 페이지의 높이를 100%로 설정 */
+    background-color: #f5f7fa; /* 밝고 깔끔한 배경색 */
+    color: #333; /* 텍스트는 어두운 색으로 설정 */
+    font-family: 'Arial'; /* 폰트를 Arial로 설정 */
+    /* 
+    페이지 전체에 적용되는 스타일로, 
+    배경색은 밝은 회색 (#f5f7fa)이고, 텍스트는 짙은 회색 (#333)으로 설정됨.
+    페이지 전반적인 분위기를 밝고 읽기 쉽게 만들기 위한 스타일 설정.
+    */
+}
+
+/* 전체 레이아웃 */
+#write-jsp {
+	display: flex;
+	justify-content: space-between; /* 좌우 공간을 균등하게 분배 */
+    width: 100%; /* 전체 너비를 100%로 설정 */
+    height: 100vh; /* 높이를 100vh(viewport height)로 설정 */
+    color: #333; /* 기본 텍스트 색상 */
+    /*
+    #write-jsp는 전체 페이지의 레이아웃을 담당하는 컨테이너로,
+    flexbox를 사용해 내부 요소들이 좌우로 정렬되고 공간을 균등하게 나누도록 함.
+    */
+}
+
+/* 왼쪽 사이드바 */
+#left {
+	width: 25%; /* 페이지의 25% 너비를 차지 */
+	height: 100vh; /* 페이지 전체 높이를 차지 */
+	border-right: 1px solid #ddd; /* 오른쪽에 얇은 구분선 추가 */
+	background-color: #fff; /* 배경색을 흰색으로 설정 */
+    padding: 20px; /* 내부 여백을 20px 설정 */
+    /*
+    왼쪽 사이드바는 페이지의 1/4 너비를 차지하며, 
+    흰색 배경과 구분선을 적용하여 시각적으로 다른 영역과 구별되게 함.
+    */
+}
+
+/* 오른쪽 메인 컨텐츠 */
+#right {
+	width: 72%; /* 페이지의 72% 너비를 차지 */
+	display: flex;
+	justify-content: center; /* 내부 요소를 중앙으로 정렬 */
+	align-items: center; /* 수직으로 중앙 정렬 */
+    background-color: #fff; /* 배경색을 흰색으로 설정 */
+    padding: 40px; /* 내부 여백을 40px 설정 */
+    /*
+    오른쪽 영역은 페이지의 72%를 차지하며, 
+    내부에 있는 컨텐츠가 중앙에 배치될 수 있도록 flexbox를 사용함.
+    흰색 배경을 사용하여 깔끔한 디자인을 유지.
+    */
+}
+
+/** <div id="left"> */
+#header {
+	margin-bottom: 50px; /* 하단에 50px 간격을 추가 */
+    display: flex; /* 내부 요소들을 가로로 배치 */
+    justify-content: start; /* 왼쪽 정렬 */
+    align-items: center; /* 수직으로 중앙 정렬 */
+    gap: 10px; /* 요소들 사이에 10px 간격을 추가 */
+    /*
+    #header는 상단 메뉴의 로고와 링크를 담는 컨테이너로,
+    내부 아이템들이 가로로 나열되고 적당한 간격을 유지하며 왼쪽에 정렬됨.
+    */
+}
+
+#header a {
+    display: flex;       
+    align-items: center; /* 링크 안의 요소를 수직 중앙 정렬 */
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: #007bff; /* 현대적인 블루 색상 */
+    font-size: 20px; /* 글자 크기를 20px로 설정 */
+    font-weight: bold; /* 글씨를 굵게 설정 */
+    /*
+    #header a는 로고와 링크 스타일을 정의함. 
+    파란색 링크 텍스트와 굵은 글씨를 통해 클릭 가능한 요소임을 명확히 함.
+    */
+}
+
+/* 프로필 섹션 */
+#profile {
+	margin: 50px auto; /* 상단과 하단에 50px의 간격을 설정하고, 좌우 중앙 정렬 */
+	display: flex; /* 내부 요소들을 가로 혹은 세로로 배치 */
+	flex-direction: column; /* 내부 요소를 세로로 배치 */
+	justify-content: center; /* 수직 중앙 정렬 */
+	align-items: center; /* 수평 중앙 정렬 */
+	gap: 10px; /* 요소들 간의 간격을 10px로 설정 */
+    /*
+    프로필 영역은 사용자 사진이나 정보를 세로로 정렬하여 중앙에 배치함.
+    공간 배치를 위해 flexbox를 사용하여 수직 및 수평 정렬을 동시에 해결.
+    */
+}
+
+#profile #profile-name {
+	font-weight: bold; /* 텍스트를 굵게 설정 */
+	font-size: 24px; /* 글자 크기를 24px로 설정 */
+	color: #333; /* 텍스트 색상을 진한 회색으로 설정 */
+    /*
+    사용자 이름을 강조하기 위해 굵은 텍스트와 큰 폰트 크기를 사용함.
+    */
+}
+
+#profile  #profile-email {
+	color: #888; /* 텍스트 색상을 연한 회색으로 설정 */
+	font-style: italic; /* 기울임꼴로 텍스트 스타일 설정 */
+    /*
+    사용자 이메일은 부차적인 정보로, 
+    색상을 연하게 하고 기울임꼴로 스타일을 지정하여 구분됨.
+    */
+}
+
+/* 링크 섹션 */
+#links {
+	border-top: 1px solid #ddd; /* 상단에 얇은 테두리를 추가 */
+    margin-top: 20px; /* 상단에 20px 간격을 추가 */
+    font-size: 14px; /* 글자 크기를 14px로 설정 */
+    color: #555; /* 텍스트 색상을 중간 회색으로 설정 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    padding: 20px 0; /* 위아래로 20px의 여백을 추가 */
+    /*
+    하단 링크 섹션은 다른 요소들과 구분되도록 상단에 테두리를 두고,
+    텍스트 크기와 색상을 조절하여 정보의 중요도에 따라 시각적으로 차별화함.
+    */
+}
+
+#links a {
+    color: #007bff; /* 링크 색상을 파란색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+    margin: 0 5px; /* 링크 사이에 5px 간격 추가 */
+    transition: color 0.3s ease; /* 색상 변경에 부드러운 전환 효과 추가 */
+    /*
+    링크는 파란색으로 표시되고, 마우스를 올렸을 때 색상이 부드럽게 변하도록 설정됨.
+    간결하고 명확한 디자인을 유지하면서 사용자 상호작용을 쉽게 인식할 수 있게 만듦.
+    */
+}
+
+#links a:hover {
+    color: #0056b3; /* 마우스 오버 시 링크 색상을 진한 파란색으로 변경 */
+    text-decoration: underline; /* 마우스 오버 시 밑줄 추가 */
+    /*
+    마우스를 올렸을 때 사용자가 쉽게 인지할 수 있도록
+    색상이 변하고 밑줄이 추가되어 시각적인 피드백을 제공함.
+    */
+}
+
+/** <div id="right"> */
+#container {
+    width: 90%; /* 컨테이너 너비를 90%로 설정 */
+    border: 2px solid #ddd; /* 얇은 테두리 */
+    border-radius: 10px; /* 테두리를 둥글게 설정 */
+    background-color: #f9f9f9; /* 부드러운 회색 배경 */
+    padding: 20px; /* 내부 여백을 20px 설정 */
+    /*
+    오른쪽 영역의 컨텐츠를 감싸는 컨테이너로,
+    부드러운 테두리와 여백을 사용하여 콘텐츠가 화면에 잘 정렬되도록 함.
+    */
+}
+
+#container #edit-header {
+	border-radius: 10px 10px 0 0; /* 상단 모서리만 둥글게 설정 */
+	background: #007bff; /* 블루 배경 색상 */
+	color: white; /* 텍스트 색상을 흰색으로 설정 */
+	height: 60px; /* 높이를 60px로 설정 */
+	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */
+	justify-content: center; /* 수평 중앙 정렬 */
+	font-size: 24px; /* 글자 크기를 24px로 설정 */
+	font-weight: bold; /* 글자를 굵게 설정 */
+    /*
+    페이지 상단의 헤더를 정의하며,
+    배경은 파란색, 텍스트는 흰색으로 대비를 줘서 강조하고, 중앙에 배치됨.
+    */
+}
+
+/* 폼과 테이블 스타일 */
+form {
+	margin: 0 20px; /* 좌우에 20px 여백 추가 */
+    /*
+    폼의 양 옆에 여백을 추가하여 폼 요소들이 적절한 위치에 배치되도록 함.
+    */
+}
+
+table {
+	width: 100%; /* 테이블의 너비를 100%로 설정 */
+    margin: 40px auto; /* 위아래로 40px의 간격을 추가하고 중앙 정렬 */
+    border-collapse: collapse; /* 테두리 겹침을 제거하여 하나의 테두리로 보이게 함 */
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    color: #333; /* 텍스트 색상을 진한 회색으로 설정 */
+    /*
+    테이블은 폼 안에서 입력 필드를 배치하기 위한 구조로 사용되며,
+    넓은 간격과 중앙 정렬을 통해 가독성을 높임.
+    */
+}
+
+th, td {
+    border-bottom: 1px solid #ddd; /* 하단에 얇은 테두리 추가 */
+    padding: 15px; /* 셀 안에 15px의 여백을 추가 */
+    vertical-align: middle; /* 내용이 셀의 중앙에 오도록 설정 */
+    background-color: #fff; /* 배경색을 흰색으로 설정 */
+    /*
+    테이블 셀 안의 텍스트가 중앙에 배치되며, 적절한 여백과 배경색을 통해
+    텍스트 가독성을 높이고 깔끔하게 보이도록 함.
+    */
+}
+
+td[colspan="2"] {
+    border-bottom: none; /* 하단 테두리 제거 */
+    /*
+    두 열을 차지하는 셀의 경우, 하단에 불필요한 테두리가 나타나지 않도록 제거함.
+    */
+}
+
+.label {
+    width: 30%; /* 레이블 셀의 너비를 30%로 설정 */
+}
+
+.input {
+    width: 70%; /* 입력 필드 셀의 너비를 70%로 설정 */
+    text-align: left; /* 입력 필드 내용을 왼쪽 정렬 */
+}
+
+/* 입력 필드 */
+input[type="text"], input[type="password"] {
+    width: 100%; /* 입력 필드의 너비를 100%로 설정 */
+    height: 40px; /* 입력 필드의 높이를 40px로 설정 */
+    padding: 10px; /* 입력 필드 안에 10px의 여백을 추가 */
+    border-radius: 5px; /* 테두리를 둥글게 설정 */
+    border: 1px solid #ccc; /* 얇은 회색 테두리 설정 */
+    background-color: #fff; /* 배경색을 흰색으로 설정 */
+    color: #333; /* 텍스트 색상을 진한 회색으로 설정 */
+    /*
+    입력 필드의 스타일은 가독성과 사용성을 고려하여 깔끔하고
+    편안한 크기와 배경색으로 설정되어 있음.
+    */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007bff; /* 포커스 시 파란색 테두리로 변경 */
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 파란색 그림자 추가 */
+    /*
+    입력 필드에 포커스가 가면 시각적으로 인식할 수 있도록 테두리 색상과 그림자를 변경함.
+    */
+}
+
+/* 버튼 스타일 */
+button {
+    width: 150px; /* 버튼의 너비를 150px로 설정 */
+    height: 45px; /* 버튼의 높이를 45px로 설정 */
+    padding: 10px; /* 버튼 안에 10px 여백 추가 */
+    background: #007bff; /* 버튼 배경을 파란색으로 설정 */
+    border: none; /* 버튼 테두리를 제거 */
+    color: #fff; /* 버튼 텍스트를 흰색으로 설정 */
+    font-size: 16px; /* 텍스트 크기를 16px로 설정 */
+    font-weight: bold; /* 텍스트를 굵게 설정 */
+    border-radius: 5px; /* 버튼의 테두리를 둥글게 설정 */
+    cursor: pointer; /* 마우스 포인터를 클릭 가능한 형태로 변경 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 배경색과 그림자 전환 효과 */
+    /*
+    버튼은 사용하기 쉬운 크기와 시각적으로 명확한 스타일을 갖추고 있으며,
+    배경색과 전환 효과를 통해 사용자에게 인터랙션 피드백을 제공함.
+    */
+}
+
+button:hover {
+    background-color: #0056b3; /* 마우스 오버 시 배경색을 진한 파란색으로 변경 */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* 마우스 오버 시 부드러운 그림자 효과 */
+    /*
+    마우스를 올렸을 때 버튼의 배경색이 변경되고, 그림자가 추가되어 시각적인 강조를 줌.
+    */
+}
+
+/* 공통 스타일 */
+#nameDiv, #idDiv, #pwdDiv {
+   padding: 5px 0 0 3px;
+   font-size: 10pt; /* 글자 크기를 조금 더 키움 */
+   background-color: rgba(255, 77, 79, 0.1); /* 오류 메시지 배경에 연한 빨간색 추가 */
+   border-left: 4px solid transparent; /* 기본적으로 투명하게 설정 */
+   border-radius: 4px; /* 모서리를 부드럽게 */
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가로 부드러운 느낌 */
+   margin-top: 5px;
+   display: none; /* 초기에는 여전히 숨김 */
+   opacity: 0; /* 투명도로 사라지는 효과를 위해 */
+   transition: opacity 0.5s ease, transform 0.5s ease, border-left-color 0.5s ease; /* 부드러운 애니메이션 효과 추가 */
+}
+
+/* 메시지가 표시될 때 적용될 클래스 */
+#nameDiv.show, #idDiv.show, #pwdDiv.show {
+   display: block; /* 필요 시 표시 */
+   opacity: 1; /* 점점 보이게 */
+   transform: translateY(0); /* 아래에서 위로 올라오는 효과 */
+}
+
+/* 오류 스타일 */
+#nameDiv.error, #idDiv.error, #pwdDiv.error {
+   color: #ff4d4f; /* 오류일 때의 빨간색 */
+   border-left-color: #ff4d4f; /* 왼쪽 보더의 빨간색 */
+   background-color: rgba(255, 77, 79, 0.1); /* 연한 빨간색 배경 */
+}
+
+/* 성공 스타일 */
+#nameDiv.success, #idDiv.success, #pwdDiv.success {
+   color: #4caf50; /* 성공일 때의 녹색 */
+   border-left-color: #4caf50; /* 왼쪽 보더의 녹색 */
+   background-color: rgba(76, 175, 80, 0.1); /* 연한 녹색 배경 */
+}
+

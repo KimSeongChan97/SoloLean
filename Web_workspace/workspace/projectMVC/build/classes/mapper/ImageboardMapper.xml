@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="imageboardSQL">
+    <insert id="imageboardWrite" parameterType="imageboard">
+        INSERT INTO imageboard(imageId, imageName, imagePrice, imageQty, imageContent, image1)
+        VALUES (#{imageId}, #{imageName}, #{imagePrice}, #{imageQty}, #{imageContent}, #{image1})
+    </insert>
+
+    <select id="getImageboardList" parameterType="java.util.Map" resultType="imageboard">
+        SELECT * FROM imageboard ORDER BY seq DESC LIMIT #{startNum}, #{endNum}
+    </select>
+
+    <select id="getTotalA" resultType="int">
+        SELECT COUNT(*) FROM imageboard
+    </select>
+
+    <select id="getImageboardBySeq" parameterType="int" resultType="imageboard">
+        SELECT * FROM imageboard WHERE seq = #{seq}
+    </select>
+
+    <update id="updateImage" parameterType="imageboard">
+        UPDATE imageboard SET image1 = #{image1} WHERE seq = #{seq}
+    </update>
+
+    <delete id="deleteImages" parameterType="java.util.List">
+        DELETE FROM imageboard WHERE seq IN
+        <foreach item="seq" collection="list" open="(" separator="," close=")">
+            #{seq}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event 처리, 중요한 것임.</title>
+</head>
+<body>
+	<!-- 간단한 덧셈 문제를 보여주는 HTML -->
+	<h1>10 + 50 = <span id="question">?</span></h1>
+	<!-- 버튼을 클릭하면 결과가 나타나는 이벤트 처리 -->
+	<input type="button" value="결과보기" onclick="printResult()" />
+	<!-- 
+		버튼을 클릭했을 때 이벤트가 발생하며, 이 이벤트는 JavaScript의 printResult() 함수를 호출합니다.
+		'on~' 접두어는 해당 이벤트가 언제 발생할지를 정의합니다.
+		예를 들어, 이 코드에서는 버튼이 클릭(onClick)될 때 printResult() 함수를 호출하라는 의미입니다.
+	-->
+<script type="text/javascript">
+	
+// sum 함수는 두 개의 숫자를 받아서 그 합을 반환합니다.
+function sum(x, y){
+	return x + y;
+}	
+	
+// printResult 함수는 버튼 클릭 시 호출되며, 덧셈 결과를 화면에 출력합니다.
+function printResult(){
+	// sum 함수를 호출하여 10과 50의 합을 계산하여 result 변수에 저장합니다.
+	var result = sum(10, 50);
+	
+	// <span> 태그를 얻어오기 위해 document.getElementById() 함수를 사용합니다.
+	// 이 함수는 HTML 문서에서 id가 "question"인 요소를 찾아 반환합니다.
+	var myTag = document.getElementById("question");
+	
+	// getElementById 함수는 HTML 문서 내에서 특정 id 값을 가진 요소를 찾아 반환하는 DOM 메서드입니다.
+	// 이 경우, <span id="question"> 요소를 가져옵니다.
+	
+	// alert(myTag); -> myTag 변수에는 해당 태그의 DOM 객체가 저장되어 있으므로, alert로 호출하면 해당 태그의 주소를 나타냅니다.
+	// 태그의 이름을 확인하려면 tagName 속성을 사용합니다.
+	alert(myTag.tagName);  // 결과: SPAN (해당 태그의 이름을 나타냄)
+	
+	// 이제 myTag의 내용을 변경하여 result 값을 표시합니다.
+	// myTag.innerHTML 속성은 해당 요소의 HTML 콘텐츠를 변경할 수 있게 해줍니다.
+	// 여기서는 result 값을 붉은 글씨로 표시하도록 <font color='red'> 태그로 감싸서 삽입합니다.
+	myTag.innerHTML = "<font color='red'>" + result + "</font>";
+	// 결과적으로 <span> 태그 안에 덧셈 결과가 붉은 글씨로 표시됩니다.
+}	
+
+</script>
+</body>
+</html>
+
+<!-- 
+
+이벤트 처리 : 사용자의 특정 동작에 반응하여 JavaScript 코드를 실행하는 것을 의미합니다.
+예를 들어, 사용자가 버튼을 클릭했을 때 그에 맞는 동작을 처리하는 것이 이벤트 처리입니다.
+이 코드는 "결과보기" 버튼을 클릭하면 10 + 50의 결과가 화면에 출력되도록 이벤트를 처리하는 예시입니다.
+
+특정한 상황(이벤트)이 발생했을 때, 사용자가 정의한 동작(함수)이 호출되도록 할 수 있습니다.
+JavaScript는 주로 HTML 문서 안의 요소들(태그)이 사용자의 이벤트에 반응하도록 제어하는 데 사용됩니다.
+
+(1) 이벤트 종류:
+onBlur - 입력 포커스가 사라질 때 발생
+onClick - 요소가 클릭되었을 때 발생
+onFocus - 요소가 입력 포커스를 받을 때 발생
+onLoad - 문서나 이미지가 로드될 때 발생
+onMouseOver - 요소 위로 마우스 커서가 올라갈 때 발생
+onMouseOut - 요소 위에서 마우스 커서가 나갈 때 발생
+
+(2) 제어 대상 지정:
+특정 태그를 제어하려면 해당 태그에 id 속성을 부여하고, JavaScript에서 document.getElementById("아이디")를 사용하여 해당 태그를 가져옵니다.
+이렇게 가져온 태그는 JavaScript에서 제어할 수 있게 됩니다.
+-->

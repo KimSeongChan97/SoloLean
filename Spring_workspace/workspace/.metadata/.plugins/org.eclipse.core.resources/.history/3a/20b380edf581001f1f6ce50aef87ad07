@@ -1,0 +1,11 @@
+package sample01;
+
+
+//공통관심사항(부가적인 기능)
+public class LoggingAdvice {
+	public void beforeTrace() {
+        System.out.println("before trace");
+    }
+     
+	
+}

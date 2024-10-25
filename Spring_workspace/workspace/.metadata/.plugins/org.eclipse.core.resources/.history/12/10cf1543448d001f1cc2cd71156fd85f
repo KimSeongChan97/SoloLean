@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+/* Google Fonts 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400;700&family=Montserrat:wght@500;700&display=swap');
+
+/* 전체적인 배경 및 텍스트 스타일 */
+body {
+    font-family: 'Lato', sans-serif; /* 부드러운 본문용 폰트 */
+    background-color: #f5efe4; /* 우아한 베이지 배경색 */
+    color: #333;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* 슬라이더 섹션과 부대시설 섹션 간의 간격 완전히 제거 */
+.container[data-view="roomView"] {
+    margin-top: 0 !important;
+    margin-bottom: 5 !important;
+    padding-bottom: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* 부대시설 섹션 상단 간격 제거 */
+.amenity-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background-color: #f5efe4; /* 베이지색 배경 */
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+/* 전체적인 카드 배치 */
+.slider-container {
+    display: flex; /* 플렉스 레이아웃으로 카드들을 나란히 배치 */
+    flex-wrap: wrap; /* 여러 줄로 카드가 배치될 수 있도록 설정 */
+    gap: 1rem; /* 카드들 사이에 적절한 간격 추가 */
+    justify-content: center; /* 카드들을 중앙 정렬 */
+    padding: 1rem;
+    overflow: visible; /* 슬라이더 관련 속성 제거 */
+}
+
+/* 슬라이드 트랙 (카드들이 담긴 트랙) */
+.slider-track {
+    display: flex;
+    transition: transform 1.8s ease-in-out;
+}
+
+/* 개별 카드 스타일 */
+.slider-item {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-bottom: 0.5rem !important;
+    max-width: 80%;
+}
+
+/* 카드 스타일 */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    background-color: #2e2e30; /* 좀 더 부드러운 검은색 배경 */
+    transition: all 0.3s ease;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.6);
+}
+
+/* 카드 이미지 스타일 */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 3px solid #ffd700; /* 금색 하단 테두리 */
+}
+
+/* 카드 본문 */
+.card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #333333; /* 카드 본문 배경 검은색 */
+    color: #ffd700; /* 본문 텍스트 황금색 */
+    font-family: 'Lato', sans-serif; /* 본문 텍스트 폰트 */
+}
+
+/* 타이틀 및 텍스트 크기 조정 */
+.card-title {
+    font-family: 'Roboto Slab', serif; /* 제목용 캐주얼 폰트 */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700; /* 황금색 타이틀 */
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.card-text {
+    font-size: 1.125rem;
+    color: #d4af37; /* 황금빛 텍스트 */
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+
+/* 버튼 스타일 */
+.btn-outline-primary {
+    font-family: 'Montserrat', sans-serif; /* 버튼용 폰트 */
+    border-color: #ffd700; /* 황금색 테두리 */
+    color: #ffd700;
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffd700;
+    color: #121212; /* 버튼 클릭 시 텍스트 검은색으로 */
+}
+
+.btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffd700;
+    border-color: #ffd700;
+    color: #121212; /* 검은색 텍스트 */
+}
+
+.btn-primary:hover {
+    background-color: #b8860b; /* 호버 시 더 진한 황금색 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .slider-item {
+        flex: 0 0 33.33%;
+    }
+    .card-img-top {
+        max-height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-item {
+        flex: 0 0 50%;
+    }
+    .card-img-top {
+        max-height: 140px;
+    }
+
+    .card-body {
+        padding: 1.2rem;  /* 태블릿에서 카드 본문 패딩 줄임 */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-item {
+        flex: 0 0 100%;
+    }
+    .card-img-top {
+        max-height: 120px;
+    }
+    h3 {
+        font-family: 'Roboto Slab', serif;
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 0.85rem;
+    }
+}

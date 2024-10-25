@@ -1,0 +1,25 @@
+package review.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import review.bean.ReviewDTO;
+import review.dao.ReviewDAO;
+
+import java.util.List;
+
+@Service
+public class ReviewServiceImpl implements ReviewService {
+
+    @Autowired
+    private ReviewDAO reviewDAO;
+
+    @Override
+    public void saveReview(ReviewDTO reviewDTO) {
+        reviewDAO.saveReview(reviewDTO);
+    }
+
+    @Override
+    public List<ReviewDTO> getAllReviews() {
+        return reviewDAO.getAllReviews();
+    }
+}

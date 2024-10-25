@@ -1,0 +1,17 @@
+package sample02;
+
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class HelloSpring {
+    public static void main(String[] args) {
+        GenericXmlApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
+
+        Calc addCalc = (Calc) context.getBean("add");
+        addCalc.calculate();
+
+        Calc mulCalc = (Calc) context.getBean("mul");
+        mulCalc.calculate();
+
+        
+    }
+}

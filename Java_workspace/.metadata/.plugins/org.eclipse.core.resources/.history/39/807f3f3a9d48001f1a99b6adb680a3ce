@@ -1,0 +1,44 @@
+package thread;
+
+class Singleton {
+	private int num=3;
+	private static Singleton instance; // 변수 생성
+	
+	public static ? getInstance() {
+		if(instance == null) {
+			
+		}
+	}
+	
+	public void calc() {
+		num++;
+	}
+	public void disp() {
+		System.out.println("num = " + num);
+	}
+	
+}
+
+//---------------------------------
+public class SingletonMain {
+
+	public static void main(String[] args) {
+		Singleton aa = new Singleton();
+		aa.calc();
+		aa.disp();
+		System.out.println();
+		
+		Singleton bb = new Singleton();
+		bb.calc();
+		bb.disp();
+		System.out.println();
+		
+		Singleton cc = new Singleton();
+		cc.calc();
+		cc.disp();
+		System.out.println();
+		
+		
+	}
+
+}

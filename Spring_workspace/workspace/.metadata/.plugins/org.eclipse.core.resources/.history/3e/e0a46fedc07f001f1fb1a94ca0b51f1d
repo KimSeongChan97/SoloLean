@@ -1,0 +1,11 @@
+package sample04;
+
+public class SungJukOutput implements SungJuk {
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

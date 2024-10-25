@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+	<!-- 글쓰기 -->
+	<!-- 게시글을 작성하는 SQL 쿼리입니다. 'board' 테이블에 새로운 게시글을 삽입하며, 각 필드에는 seq, id, name, 
+		email, subject, content, ref 값이 들어갑니다. 'seq_board.NEXTVAL'은 새로운 게시글의 고유 번호(시퀀스)를 
+		생성하며, 'ref'는 같은 시퀀스를 공유하는 게시글(일반적으로 답글)에 대한 참조 값으로 사용됩니다. 여기서 'seq_board.CURRVAL'은 
+		방금 생성된 시퀀스 값을 참조하는 데 사용됩니다. 즉, 작성된 글과 같은 'ref' 값을 가지게 되어 이후 답글 정렬에 사용될 수 
+		있습니다. -->
+		<!-- Oracle -->
+		<!-- 
+	<insert id="boardWrite" parameterType="java.util.Map">
+		
+		INSERT INTO board (seq, id, name, email, subject, content, ref)
+		VALUES (seq_board.NEXTVAL, #{id}, #{name}, #{email}, #{subject}, #{content},
+		seq_board.CURRVAL) 	
+	</insert>
+	-->	
+	
+		<!-- MySQL -->
+		<insert id="boardWrite" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="seq">
+		  <!-- 새 게시글 삽입 후, ref 값은 새로 생성된 seq 값을 사용 -->
+		  <!-- 이 코드는 새로운 게시글을 데이터베이스에 삽입하는 역할을 합니다.
+		       MyBatis의 <insert> 태그는 SQL INSERT 문을 실행할 때 사용되며,
+		       여기서는 새 게시글이 추가된 후에 그 게시글의 시퀀스(seq)를 자동으로 가져옵니다. -->
+		  
+		  <!-- useGeneratedKeys="true"는 MyBatis가 자동으로 생성된 키 값을 가져오도록 설정하는 속성입니다.
+		       여기서는 INSERT문이 실행된 후 자동으로 생성된 기본 키(예: AUTO_INCREMENT로 증가한 값)를 seq에 저장하게 됩니다. -->
+		
+		  <!-- keyProperty="seq"는 자동으로 생성된 키가 저장될 자바 객체의 속성을 지정합니다.
+		       이 경우, 새로 삽입된 게시글의 시퀀스 값을 Map의 'seq' 키에 저장하게 됩니다. -->
+		
+		  INSERT INTO board (id, name, email, subject, content, ref)
+		  VALUES (#{id}, #{name}, #{email}, #{subject}, #{content}, LAST_INSERT_ID());
+		  <!-- 이 부분은 SQL INSERT 문입니다.
+		       새 게시글의 id, name, email, subject, content 값을 각각 바인딩 변수(#{})로 받아
+		       board 테이블에 삽입합니다. -->
+		
+		  <!-- 마지막의 ref 값은 MySQL의 LAST_INSERT_ID() 함수를 사용하여 삽입된 마지막 시퀀스 값을 참조합니다.
+		       즉, 새로운 게시글을 삽입한 후, 그 게시글의 시퀀스를 참조하는 ref 값에도 동일한 시퀀스를 삽입하는 것입니다.
+		       여기서 중요한 점은 MySQL에서 LAST_INSERT_ID()는 최근에 AUTO_INCREMENT로 생성된 ID 값을 반환합니다. -->
+		</insert>
+		
+		<update id="refUpdate">
+		  update board set ref=LAST_INSERT_ID() where seq=LAST_INSERT_ID()
+		  <!-- 게시글 삽입 후, ref 값을 새로 생성된 seq 값으로 업데이트하는 부분입니다.
+		       seq가 새로 생성된 값(LAST_INSERT_ID())인 경우에 해당하는 레코드의 ref 값을 동일하게 업데이트합니다. -->
+		
+		  <!-- update 문은 board 테이블에서 특정 레코드를 업데이트하는 SQL 구문입니다.
+		       여기서는 ref 값을 MySQL의 LAST_INSERT_ID() 함수를 사용하여 가장 최근에 삽입된 시퀀스 값으로 업데이트합니다. -->
+		
+		  <!-- update 구문의 조건절인 where 절에서는 seq가 새로 생성된 시퀀스 값(LAST_INSERT_ID())과 일치하는 경우에만 업데이트가 진행됩니다.
+		       이를 통해 방금 삽입된 레코드의 ref 값을 업데이트하게 됩니다. -->
+		</update>
+
+		
+	<!-- 총글수 -->
+	<!-- 'board' 테이블의 전체 게시글 수를 반환하는 SQL 쿼리입니다. 게시판의 총 게시글 수를 계산하여 페이징 처리나 통계 
+		등을 위해 사용될 수 있습니다. 'COUNT(*)' 함수는 테이블의 모든 레코드를 세어 그 개수를 반환합니다. -->
+	<select id="getTotalA" resultType="int">
+		select count(*) from board
+	</select>
+
+	<!-- 목록 -->
+	<!-- 주어진 페이지 번호에 해당하는 게시글 목록을 가져오는 SQL 쿼리입니다. 이 쿼리는 페이징 처리를 위해 사용되며, 한 번에 
+		표시할 게시글의 범위를 지정하여 'startNum'과 'endNum' 사이의 게시글만 가져옵니다. 쿼리 내에서 'rownum'은 가상으로 
+		부여된 행 번호로, 'ref'와 'step'을 기준으로 게시글을 정렬한 후 특정 범위의 게시글만 반환합니다. 'ref'는 답글이 어떤 
+		게시글에 속하는지(원글에 대한 참조)를 나타내며, 'step'은 해당 답글이 몇 번째에 위치하는지(답글의 순서)를 결정합니다. 'CDATA' 
+		섹션을 사용하여 '<'와 같은 특수 문자가 포함된 SQL 코드를 XML에서 사용 가능하게 합니다. -->
+	<select id="boardList" parameterType="java.util.Map"
+		resultType="board">
+		<!-- Oracle -->
+		<!-- select * from (select rownum rn, tt.* from (select * from board order 
+			by ref desc, step asc)tt )where rn between #{startNum} and #{endNum} -->
+
+		<!-- select * from (select rownum rn, tt.* from (select * from board order 
+			by ref desc, step asc)tt )where rn >= #{startNum} and rn &lt;= #{endNum} -->
+      
+      <!-- <![CDATA[
+         select * from
+         (select rownum rn, tt.* from
+         (select * from board order by ref desc, step asc)tt
+         )where rn >= #{startNum} and rn <= #{endNum}
+      ]]>
+       -->
+       
+       <!-- MySQL -->
+       select * from board 
+       order by ref desc, step asc 
+       limit #{startNum}, #{endNum}
+	</select>
+
+	<!-- 한개의 글을 view -->
+	<select id="getBoard" parameterType="int" resultType="board">
+		<!-- Oracle -->
+		<!-- select * from board where seq=#{seq} -->
+		
+		<!-- MySQL -->
+		select * from board where seq=#{seq}
+	</select>
+
+	<!-- 조회수 증가 -->
+	<update id="hitUpdate" parameterType="int">
+		<!-- Oracle -->
+		<!-- UPDATE board SET hit=hit+1 WHERE seq=#{seq} -->
+		
+		<!-- MySQL -->
+		UPDATE board SET hit=hit+1 WHERE seq=#{seq}
+	</update>
+
+	<!-- 게시글 수정 -->
+	<update id="boardUpdate" parameterType="java.util.Map">
+		<!-- Oracle -->
+		<!-- UPDATE board
+		SET subject=#{subject }, content=#{content }, 
+		logtime=sysdate
+		WHERE seq=#{seq } -->
+		
+		<!-- MySQL -->
+		UPDATE board
+		SET subject=#{subject}, content=#{content}, 
+		logtime=now()
+		WHERE seq=#{seq}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="boardDelete" parameterType="int">
+		<!-- Oracle -->
+		<!-- DELETE FROM board WHERE seq=#{seq} -->
+		
+		<!-- MySQL -->
+		DELETE FROM board WHERE seq=#{seq}
+	</delete>
+</mapper>

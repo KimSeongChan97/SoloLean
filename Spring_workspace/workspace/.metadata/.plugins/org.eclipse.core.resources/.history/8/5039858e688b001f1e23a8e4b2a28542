@@ -1,0 +1,9 @@
+package review.service;
+
+import review.bean.ReviewDTO;
+import java.util.List;
+
+public interface ReviewService {
+    public void saveReview(ReviewDTO reviewDTO);
+    List<ReviewDTO> getAllReviews();
+}

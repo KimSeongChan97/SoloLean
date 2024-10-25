@@ -1,0 +1,13 @@
+$(function(){
+
+	$('#uploadUpdateBtn').click(function(){
+		let formData = new FormData($('#uploadUpdateForm')[0]); 
+		$.ajax({
+		type: 'post',
+		url: '/spring/user/uploadUpdate',
+		
+		}); // $.ajax
+		
+	}); // #uploadUpdateBtn
+	
+}); // $(function)

@@ -1,0 +1,29 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HelloController {
+	
+	@RequestMapping(value="hello.do", method=RequestMethod.GET)
+	public ? hello() { // 사용자가 만든 콜백메서드
+		ModelAndView mav = new ModelAndView();
+		
+	}
+	
+	
+	
+}
+
+/*
+
+ 서블릿 주기 함수
+ init()
+ 
+ doGet() / doPost()
+ 
+ destroy()
+
+ */

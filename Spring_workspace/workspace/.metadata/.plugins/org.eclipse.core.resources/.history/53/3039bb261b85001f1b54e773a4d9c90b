@@ -1,0 +1,28 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class SumController {
+	
+	@RequestMapping(value="input.do", method=RequestMethod.GET, produces="text/html; charset=UTF-8")
+    public String input(){
+        
+        return "sum/input";
+	}
+	
+	@RequestMapping(value = "result.do", method = RequestMethod.GET)
+    public ModelAndView result(int x, int y) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("sum", x + y);  // x와 y의 합을 결과로 전달
+        mav.setViewName("sum/result");  // 결과 페이지로 이동
+        return mav;
+    }	
+	
+	
+}
+	

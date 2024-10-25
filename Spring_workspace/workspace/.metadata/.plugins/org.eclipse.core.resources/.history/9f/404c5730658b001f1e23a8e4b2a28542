@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring Hotel</title>
+</head>
+<body>
+
+
+
+-----
+<br/>
+
+
+<a href="">Room</a>
+<a href="${pageContext.request.contextPath}/review/reviewList">리뷰 리스트</a>
+<a href="${pageContext.request.contextPath}/review/reviewWrite">리뷰 작성</a>
+
+
+</body>
+</html>

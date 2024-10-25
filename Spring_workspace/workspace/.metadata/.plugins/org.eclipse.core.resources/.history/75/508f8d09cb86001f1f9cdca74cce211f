@@ -1,0 +1,96 @@
+@charset "UTF-8"; /* 파일의 문자 인코딩을 UTF-8로 설정 */
+
+/* 전역 설정 (user.css에서의 초기화 설정을 반영) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* 기본 폰트를 Arial로 설정 */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f7fa; /* 배경색 */
+    color: #333; /* 텍스트 색상 */
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 메인 컨테이너 스타일 */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100vh - 80px); /* 헤더를 제외한 높이 */
+    padding: 20px;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    width: 25%;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar a {
+    display: block;
+    margin-bottom: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* 콘텐츠 영역 스타일 */
+.content {
+    width: 70%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 버튼 스타일 */
+button {
+    width: 150px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

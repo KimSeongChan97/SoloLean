@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.dao.ReserveDAO">
+	<insert id="submitReserve" parameterType="map">
+		INSERT INTO RESERVE (
+	        userid,
+	        roomid,
+	        adults,
+	        kids,
+	        checkin,
+	        checkout,
+	        price
+	    ) VALUES (
+	        #{userSeq},
+	        #{roomId},
+	        #{adults},
+	        #{kids},
+	        #{checkin},
+	        #{checkout},
+	        #{price}
+	    )
+	</insert>
+
+	<resultMap id="findRoomResultMap" type="room.bean.RoomDTO">
+        <id property="roomId" column="roomid" />
+        <result property="type" column="type" />
+        <result property="size" column="size" />
+        <result property="capacity" column="capacity" />
+        <result property="price" column="price" />
+        <result property="count" column="count" />
+        <result property="description" column="description" />
+        <result property="form" column="form" />
+        <result property="view" column="view" />
+        <result property="bedtype" column="bedtype" />
+        <!-- roomImg와의 association -->
+        <association property="roomImg" javaType="room.bean.RoomImgDTO">
+            <result property="imageFileName" column="imageFileName" />
+        </association>
+    </resultMap>
+    
+	<select id="findRoomList" parameterType="map" resultMap="findRoomResultMap">
+		<![CDATA[ 
+			SELECT r.roomid, UPPER(r.`type`) as type, r.size, r.capacity, r.price, r.count, r.description, r.form, r.view, r.bedtype, ri.imageFileName
+		    FROM room r
+		    LEFT JOIN (
+		        SELECT roomid, COUNT(*) AS reserved_count
+		        FROM RESERVE
+		        WHERE (checkin <= #{checkout} AND checkout >= #{checkin})
+		        GROUP BY roomid
+		    ) AS reserved_rooms ON r.roomid = reserved_rooms.roomid
+		    LEFT JOIN roomImg ri ON r.roomid = ri.roomid
+		    WHERE r.capacity >= #{people}
+		    AND (reserved_rooms.reserved_count IS NULL OR r.count > reserved_rooms.reserved_count) 
+		]]>
+	</select>
+
+	<resultMap id="getReserveListMap" type="room.bean.ReserveDTO">
+        <id property="reserveId" column="reserveId" />
+        <result property="roomId" column="roomid" />
+        <result property="checkin" column="checkin" />
+        <result property="checkout" column="checkout" />
+        <result property="price" column="price" />
+        <result property="time" column="time" />
+        <association property="room" javaType="room.bean.RoomDTO">
+            <result property="type" column="type" />
+        </association>
+    </resultMap>
+    
+	<select id="getReserveList" resultMap="getReserveListMap">
+		select re.reserveId, re.roomid, re.checkin, re.checkout, re.price, re.`time`, UPPER(rm.`type`) as type
+		from reserve re
+		left join room rm on rm.roomid = re.roomid 
+		where re.userid = #{userSeq}
+	</select>
+	
+	<resultMap id="getReserveDetaliMap" type="room.bean.ReserveDTO">
+        <id property="reserveId" column="reserveId" />
+        <result property="roomId" column="roomid" />
+        <result property="adults" column="adults" />
+        <result property="kids" column="kids" />
+        <result property="price" column="price" />
+        <result property="checkin" column="checkin" />
+        <result property="checkout" column="checkout" />
+        <result property="time" column="time" />
+        <association property="room" javaType="room.bean.RoomDTO">
+            <result property="type" column="type" />
+            <result property="view" column="view" />
+            <result property="bedtype" column="bedtype" />
+        	<result property="price" column="rprice" />
+        </association>
+        <association property="roomImgDTO" javaType="room.bean.RoomImgDTO">
+            <result property="imageFileName" column="imageFileName" />
+        </association>
+    </resultMap>
+    
+	<select id="getReserveDetali" resultMap="getReserveDetaliMap">
+		select re.reserveid, re.roomid, re.adults, re.kids, re.price, re.checkin, re.checkout, re.`time`, UPPER(rm.`type`) as type, rm.`view`, rm.bedtype, rm.price as rprice, ri.imageFileName 
+		from reserve re
+		left join room rm on rm.roomid = re.roomid 
+		left join roomimg ri on rm.roomid = ri.roomid 
+		where re.reserveid = #{reserveId}
+	</select>
+	
+	<update id="updateUserGrade" parameterType="String">
+        <![CDATA[
+        	UPDATE `user`
+			SET grade = CASE
+			    WHEN (
+			        SELECT sum(DATEDIFF(r.checkout, r.checkin)) as alldays
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 50 
+			    AND (
+			        SELECT sum(r.price) as allprice
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 2000000
+			    THEN 'VIP'
+			    WHEN (
+			        SELECT sum(DATEDIFF(r.checkout, r.checkin)) as alldays
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 25
+			    AND (
+			        SELECT sum(r.price) as allprice
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 1000000
+			    THEN 'GOLD'
+			    WHEN (
+			        SELECT sum(DATEDIFF(r.checkout, r.checkin)) as alldays
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 5
+			    AND (
+			        SELECT sum(r.price) as allprice
+			        FROM reserve r
+			        WHERE r.userid = #{userSeq}
+			    ) >= 500000
+			    THEN 'SILVER'
+			    ELSE '일반'
+			END
+			WHERE seq = #{userSeq};
+        ]]>
+   </update>
+   
+   <select id="getUserInfo">
+		select * from user where seq = #{userSeq}
+	</select>
+</mapper>	

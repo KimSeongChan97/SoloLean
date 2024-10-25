@@ -1,0 +1,48 @@
+package review.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import review.bean.ReviewDTO;
+import review.service.ReviewService;
+
+@Controller
+@RequestMapping("/review")
+public class ReviewController {
+
+    @Autowired
+    private ReviewService reviewService;
+
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    public String insertReview(@ModelAttribute ReviewDTO review) throws Exception {
+        reviewService.insertReview(review);
+        return "redirect:/review/review";  // 리뷰 추가 후 목록으로 이동
+    }
+
+    @RequestMapping(value="/reviewlist", method = RequestMethod.GET)
+    public String getAllReviews(Model model) throws Exception {
+        List<ReviewDTO> reviews = reviewService.getAllReviews();
+        model.addAttribute("reviews", reviews);
+        return "review/review";  // 리뷰 목록 페이지로 이동
+    }
+
+    @RequestMapping(value="/updateReview", method = RequestMethod.POST)
+    public String updateReview(@ModelAttribute ReviewDTO review) throws Exception {
+        reviewService.updateReview(review);
+        return "redirect:/review/review";  // 리뷰 수정 후 목록으로 이동
+    }
+
+    @RequestMapping(value="/deleteReview", method = RequestMethod.POST)
+    public String deleteReview(@RequestParam("reviewId") int reviewId) throws Exception {
+        reviewService.deleteReview(reviewId);
+        return "redirect:/review/review";  // 리뷰 삭제 후 목록으로 이동
+    }
+}
+
+

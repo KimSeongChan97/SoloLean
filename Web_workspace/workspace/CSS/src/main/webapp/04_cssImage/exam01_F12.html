@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 이 부분은 HTML 문서의 헤더를 정의합니다.
+     - <!DOCTYPE html>: 문서의 형식을 HTML5로 선언합니다.
+     - <meta charset="UTF-8">: 문서의 문자 인코딩을 UTF-8로 설정합니다.
+     - <title>Insert title here</title>: 웹 페이지의 제목을 설정하는 부분으로, 
+       브라우저 탭에 표시됩니다. 현재 "Insert title here"로 되어 있으나 
+       실제 제목을 적어야 합니다. -->
+
+<style type="text/css">
+/* 이 부분은 스타일을 정의하는 섹션입니다. CSS를 사용하여 HTML 요소의 외관을 지정합니다.
+   - type="text/css": CSS 스타일임을 명시합니다. */
+
+body {
+	background: ghostwhite;
+	/* body 태그는 웹 페이지의 전체 배경을 설정합니다.
+	   여기서는 웹 페이지 배경색을 'ghostwhite'로 설정합니다. 
+	   'ghostwhite'는 매우 옅은 회백색으로 화면 전체에 적용됩니다. */
+}
+
+span {
+	background: deepskyblue;
+	/* span 태그는 인라인 요소에 스타일을 적용합니다.
+	   여기서는 배경색을 'deepskyblue'로 설정하여, 
+	   span 태그로 감싸진 텍스트 영역의 배경이 하늘색으로 표시됩니다. */
+}
+
+div.box {
+	background: yellow;
+	/* div 태그의 클래스 'box'에 스타일을 적용합니다.
+	   이 div 요소의 배경색은 노란색(yellow)으로 설정됩니다. */
+	   
+	border-style: solid;
+	/* 테두리 스타일을 'solid'로 설정하여, 
+	   단색 실선 테두리를 만듭니다. */
+
+	border-color: peru;
+	/* 테두리 색상을 'peru'로 설정합니다. 
+	   'peru'는 갈색 계열의 색상입니다. */
+
+	margin: 40px;
+	/* div 요소의 바깥쪽 여백을 40픽셀로 설정합니다.
+	   이 여백은 div 박스와 그 바깥의 다른 요소 사이의 거리를 의미합니다. */
+
+	border-width: 30px;
+	/* 테두리의 두께를 30픽셀로 설정합니다.
+	   테두리가 두꺼운 갈색 실선으로 보이게 됩니다. */
+
+	padding: 20px;
+	/* div 박스 내부의 콘텐츠와 테두리 사이의 여백을 20픽셀로 설정합니다. 
+	   즉, 노란색 배경 내부에서 텍스트가 테두리와 떨어진 위치에 표시됩니다. */
+}
+</style>
+</head>
+<body>
+    <!-- 본격적인 웹 페이지의 내용이 시작되는 부분입니다. -->
+	<div class="box">
+		<!-- <div>: 블록 레벨 요소를 정의하는 태그입니다. 
+		             주로 컨테이너 역할을 하며, 다양한 콘텐츠를 담을 수 있습니다.
+		             이 div 태그는 "box"라는 클래스를 가지고 있으며, 
+		             이 클래스에 따라 스타일이 적용됩니다. -->
+
+		<span>DIVDIVDIV</span>
+		<!-- <span>: 인라인 요소를 정의하는 태그입니다. 
+		             인라인 요소는 같은 줄에서 다른 요소들과 함께 표시됩니다.
+		             여기서는 "DIVDIVDIV"라는 텍스트를 포함하고 있으며,
+		             이 텍스트는 앞서 설정된 CSS에 의해 하늘색(deepskyblue) 배경을 가집니다. -->
+	</div>
+</body>
+</html>

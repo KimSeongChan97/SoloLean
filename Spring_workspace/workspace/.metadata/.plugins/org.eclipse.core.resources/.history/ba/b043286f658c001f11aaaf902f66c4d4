@@ -1,0 +1,61 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+    <title>Review List</title>
+    <link rel="stylesheet" href="/SpringHotel/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/reviewList.css">
+</head>
+<body>
+
+    <div class="review-modal">
+        <div class="review-modal-header">
+            <h2 class="modal-title">Customer Reviews</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+        <div class="review-list-container">
+            <c:forEach var="review" items="${reviews}">
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="user-info">
+                            <h4 class="user-name">${review.userName}</h4>
+                            <span class="rating">
+                                <c:forEach begin="1" end="5" varStatus="loop">
+                                    <!-- 별을 표시할 때, loop.index와 rating 값을 비교하여 클래스 동적으로 지정 -->
+                                    <c:if test="${loop.index <= review.rating}">
+                                        <i class="fas fa-star filled"></i>
+                                    </c:if>
+                                    <c:if test="${loop.index > review.rating}">
+                                        <i class="fas fa-star"></i>
+                                    </c:if>
+                                </c:forEach>
+                            </span>
+                        </div>
+                        <div class="review-logtime">${review.logtime}</div>
+                    </div>
+                    <div class="review-content">
+                        <p>${review.comment}</p>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-outline-primary update-btn" data-id="${review.reviewId}">Update</button>
+                        <button class="btn btn-outline-danger delete-btn" data-id="${review.reviewId}">Delete</button>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        
+        <div class="review-modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/SpringHotel/resources/js/review.js"></script>
+</body>
+</html>

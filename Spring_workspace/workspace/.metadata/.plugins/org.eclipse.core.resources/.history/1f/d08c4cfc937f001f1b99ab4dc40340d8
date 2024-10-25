@@ -1,0 +1,14 @@
+package sample03;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		//SungJukImpl sungJukImpl = new SungJukImpl();
+		ApplicationContext context = new ClassPathXmlApplicationContext("sample03/applicationContext.xml");
+		SungJuk sungJuk = (SungJuk) context.getBean("sungJukImpl");
+		sungJuk.calc();
+		sungJuk.display();
+
+	}
+
+}

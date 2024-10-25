@@ -1,0 +1,36 @@
+/* TodoItem.module.css */
+
+.TodoItem {
+  padding: 15px 30px;
+  border-bottom: 1px solid #b6eeab;
+  background: linear-gradient(90deg, #fc003f, #f5b561); /* 그라데이션 배경 */
+  border-radius: 10px; /* 라운드 코너 */
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 리스트 항목 그림자 */
+  display: flex;
+  justify-content: space-between; /* 버튼과 텍스트를 양 끝에 배치 */
+  align-items: center;
+}
+
+.TodoItem span {
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.TodoItem button {
+  background: #f0f7ff;
+  color: #352c2c;
+  border-radius: 20px; /* 버튼의 라운드 코너 */
+  width: 80px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 마우스 호버 시 변화 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 버튼 그림자 */
+}
+
+.TodoItem button:hover {
+  background: #d5befa; /* 호버 시 버튼 색상 변화 */
+}

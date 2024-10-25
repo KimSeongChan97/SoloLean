@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Animate</title>
+<style type="text/css">
+
+/* #box는 애니메이션의 대상이 되는 요소로, 
+   파란색 테두리와 연두색 배경색을 가진 사각형입니다.
+   크기는 100px x 100px이며, position: absolute로 설정되어 있어 부모 요소의 위치에 구애받지 않고 
+   left와 top 값을 통해 화면에 배치됩니다. 여기서는 left가 0으로 설정되어 시작 위치가 왼쪽에 고정됩니다. */
+#box {
+	border: 1px solid blue;
+    background: #98bf21;
+    height: 100px;
+    width: 100px;
+    position: absolute; /* 부모 div 영역 밖으로 밀려 나간다. 부모 요소와 무관하게 위치를 지정할 수 있음 */
+    left: 0; /* 애니메이션의 시작 위치를 왼쪽으로부터 0으로 설정 */
+}
+
+</style>
+</head>
+<body>
+	<h1>Animate</h1>
+	<!-- 애니메이션 동작을 제어하는 여러 버튼을 추가했습니다. 
+	     각 버튼은 클릭 시 특정 애니메이션을 트리거합니다. -->
+	<button>Reset</button> <!-- 애니메이션 영역을 초기화하는 버튼 -->
+	<button>Ani1</button> <!-- 첫 번째 애니메이션 버튼 -->
+	<button>Ani2</button> <!-- 두 번째 애니메이션 버튼 -->
+	<button>Ani3</button> <!-- 세 번째 애니메이션 버튼 -->
+	<button>Ani4</button> <!-- 네 번째 애니메이션 버튼 -->
+	
+	<!-- 애니메이션이 실행되는 영역입니다. 
+	     이 영역 내에서 #box가 움직이며, 애니메이션이 발생합니다. 
+	     빨간 테두리로 구분된 영역 안에서 div가 애니메이션을 통해 움직임을 보여줍니다. -->
+	<div id="animation-area" style="border: 1px solid red;">
+		<div id="box">div 안의 내용</div>
+	</div>
+	
+		
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+// 문서가 준비되면 jQuery 코드가 실행됩니다.
+// $(function(){})는 jQuery가 제공하는 기본 함수로, 문서가 완전히 로드된 후 실행되는 함수입니다.
+$(function(){
+	// Reset 버튼을 클릭하면 #animation-area 내의 내용을 초기화합니다.
+	// 초기화는 HTML 내용을 다시 설정하는 방식으로 이루어지며, #box의 원래 상태로 복원됩니다.
+	$('button:eq(0)').click(function(){
+		$('#animation-area').html('<div id="box">div 안의 내용</div>');
+	});
+	
+	// Ani1 버튼을 클릭하면 #box가 왼쪽으로부터 250px 만큼 이동하는 애니메이션이 실행됩니다.
+	$('button:eq(1)').click(function(){
+		$('#box').animate({ 
+			'left': '250px' // box 요소가 왼쪽에서 250px 위치로 이동. 'left'는 CSS의 left 속성을 의미합니다.
+		}, 1000, 'swing', function(){
+			// 애니메이션이 완료되면 이 콜백 함수가 실행됩니다.
+			alert('애니메이션 종료'); // 애니메이션이 끝나면 알림 메시지가 뜹니다.
+		});
+	});
+	
+	// Ani2 버튼을 클릭하면 #box가 250px 이동하고, 높이와 너비가 각각 150px로 변경됩니다.
+	$('button:eq(2)').click(function(){
+		$('#box').animate({ 
+			'left' : '250px', // 250px 만큼 왼쪽에서 오른쪽으로 이동
+			'height' : '150px', // 높이를 150px로 변경
+			'width' : '150px'  // 너비를 150px로 변경
+		}, 1000); // 애니메이션의 지속 시간은 1000ms (1초)
+	});
+	
+	// Ani3 버튼을 클릭하면 #box가 50px씩 이동하면서, 너비와 높이가 50px씩 커집니다.
+	$('button:eq(3)').click(function(){
+		$('#box').animate({ 
+			'left' : '+=50px',  // 현재 위치에서 50px 더 오른쪽으로 이동 ('+='는 현재 값에서 더하는 것을 의미)
+			'height' : '+=50px', // 높이를 현재 값에서 50px 더 크게 변경
+			'width' : '+=50px'   // 너비를 현재 값에서 50px 더 크게 변경
+		}, 300); // 애니메이션 지속 시간은 300ms (0.3초)
+	});
+	
+	// Ani4 버튼을 클릭하면 여러 애니메이션이 순차적으로 실행됩니다.
+	$('button:eq(4)').click(function(){
+		var div = $('#box'); // #box 요소를 선택하여 변수 div에 저장합니다.
+		
+		// 첫 번째 애니메이션: 높이를 300px로 변경 (1초 동안)
+		div.animate({ height: '300px' }, 1000);
+		// 두 번째 애니메이션: 너비를 300px로 변경 (0.5초 동안)
+		div.animate({ width: '300px' }, 500);
+		// 세 번째 애니메이션: 높이를 다시 100px로 축소 (0.8초 동안)
+		div.animate({ height: '100px' }, 800);
+		// 네 번째 애니메이션: 너비를 다시 100px로 축소 (0.3초 동안)
+		div.animate({ width: '100px' }, 300);
+	});
+
+});
+
+/* 
+:eq() 선택자는 jQuery의 기본 선택자로, 주어진 인덱스 번호에 해당하는 요소를 선택할 수 있습니다.
+   인덱스는 0부터 시작합니다. 예를 들어, $('button:eq(0)')는 첫 번째 버튼 요소를 선택합니다.
+   이 코드에서는 Reset 버튼이 0번째 요소, Ani1 버튼이 1번째 요소로, 각각 해당 인덱스를 통해 선택됩니다.
+*/
+
+</script>
+</body>
+</html>
+
+<!-- 
+animate() 함수를 사용한 CSS 속성의 애니메이션 처리
+좀 더 다이나믹한 애니메이션을 구현할 수 있다.
+animate() 함수는 수치값을 지정하는 CSS 속성들을 제어하여 애니메이션 효과를 만들어 낸다.
+구조
+animate(properties [, duration][, easing][, complete])
+
+① properties 
+  
+움직임을 만들어 낼수 있는 CSS 속성들. json 형식으로 기술된다.
+② duration
+  
+애니메이션의 지속시간 설정
+③ easing
+  
+움직임에 변화를 줄 수 있는 속성. 
+swing : 끝점에 가서 속도가 살짝 느려짐
+linear : 균일한 속도 유지
+④ complete
+  
+움직임이 멈춘 후 실행될 속성. 
+움직임이 완료된 다음 이 속성에 지정된 함수가 실행된다.
+-->

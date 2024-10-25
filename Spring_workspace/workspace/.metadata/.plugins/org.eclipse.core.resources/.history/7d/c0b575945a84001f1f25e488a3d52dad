@@ -1,0 +1,18 @@
+package spring.conf;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SpringConfiguration {
+	
+	public BasicDataSource dataSource(){
+		BasicDataSource basicDataSource = new BasicDataSource();
+		
+		basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		
+		
+		return basicDataSource;
+	}
+	
+}

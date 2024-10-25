@@ -1,0 +1,38 @@
+/* FilmNote/src/main/webapp/css/init.css */
+@charset "UTF-8"; 
+/* UTF-8 문자 인코딩을 사용하겠다는 선언입니다. CSS 파일의 인코딩 방식을 지정해 텍스트를 올바르게 해석할 수 있도록 합니다. */
+
+/* Google Fonts 링크 */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Lora:wght@400;700&family=Oswald:wght@400&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Brush+Script&display=swap');
+/* Google Fonts에서 가져온 폰트를 사용합니다.
+   Montserrat, Roboto, Lora, Oswald, Playfair Display, Gowun Batang, Nanum Brush Script 폰트가 포함되어 있습니다.
+   각각 다양한 스타일과 가중치(굵기)를 지원하며, 웹 페이지에 다양한 글꼴을 사용할 수 있습니다. */
+ 
+/* CSS 리셋: 모든 HTML 요소의 기본 여백과 패딩을 제거합니다. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* box-sizing: border-box를 사용하면 요소의 크기를 계산할 때 패딩과 테두리를 포함하여 크기를 결정합니다. */
+}
+
+body {
+	/* font-family: 'Roboto', sans-serif; */
+	/* Roboto 폰트를 주석 처리했습니다. 이 부분은 필요한 경우 주석을 해제하고 사용 가능합니다. */
+	font-family: 'Gowun Batang', sans-serif;		
+	/* Gowun Batang 폰트를 기본 글꼴로 설정합니다. 이 글꼴은 주로 한국어 텍스트에 적합한 서체입니다. */
+	width: 1100px;
+	/* 페이지 본문 영역의 너비를 1100px로 설정하여 콘텐츠가 고정된 크기 안에 배치되도록 합니다. */
+	margin: 0 auto;
+	/* margin: 0 auto는 페이지를 수평 중앙에 정렬하기 위해 사용됩니다. */
+	background-color: #f4f4f4;
+	/* 배경색을 연한 회색(#f4f4f4)으로 설정하여 페이지 배경이 더 부드럽고 시각적으로 편안하게 보입니다. */
+}
+
+a {
+	text-decoration: none;
+	/* 모든 링크(a 태그)의 밑줄을 제거하여 더 깔끔하게 보이도록 합니다. */
+	color: black;
+	/* 링크의 기본 텍스트 색상을 검정색으로 설정하여 더 명확하게 보이게 합니다. */
+}

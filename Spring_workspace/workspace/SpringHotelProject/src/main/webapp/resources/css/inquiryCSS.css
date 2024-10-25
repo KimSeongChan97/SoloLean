@@ -1,0 +1,250 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+html,body{
+	margin:0;
+	width:100%;
+	height:100%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*모든 폴더의 header에 적용*/
+.header{
+	height:8%;
+	text-align:center; 
+	font-size: 22px;
+}
+.header tr th{
+	width:13%;
+}
+.header a:link {					/* a 태그 클릭 안한 상태 */
+	text-align:center; 
+	color: black;
+	text-decoration : none;	/*밑줄 제거*/
+}
+
+.header a:visited { 				/* a 태그 1회 이상 클릭 했을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;
+}
+
+.header a:hover { 					/* a 태그에 마우스 올렸을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;	
+}
+
+/* Select 요소 스타일 */
+#typename {
+    width: auto; /* 너비 자동 설정 */
+    padding: 10px; /* 내부 여백 추가 */
+    font-size: 16px; /* 글씨 크기 설정 */
+    border: 1px solid #c0c0c0; /* 경계선 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f8f8f8; /* 배경색 추가 */
+    color: #382f24; /* 글자색 설정 */
+    margin-bottom: 10px;
+}
+
+/* Input 텍스트 박스 스타일 */
+input[type="text"] {
+    width: 100%; /* 전체 너비 사용 */
+    padding: 10px; /* 내부 여백 추가 */
+    font-size: 16px; /* 글씨 크기 설정 */
+    border: 1px solid #c0c0c0; /* 경계선 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f8f8f8; /* 배경색 추가 */
+    color: #382f24; /* 글자색 설정 */
+}
+
+input[type="text"]:focus {
+    border-color: #623f30; /* 포커스 시 경계선 색 변경 */
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+
+footer{
+	bottom: 0;
+	width: 100%;
+}
+
+#reserveTitle {
+    width: 100%;  /* 전체 너비 사용 */
+    height: auto;
+    margin: 3% auto;
+    text-align: center;
+    font-size: 5vw;  /* 화면 너비의 5%로 폰트 크기 설정 */
+}
+/* inquiryList.jsp */
+.inquiryInfo{
+	width:70%;
+	margin-top:70px;
+	margin-bottom:220px;
+	border-top: 3px solid #623f30;
+	border-collapse: collapse;
+}
+
+.inquiryInfo tr{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+}
+
+.inquiryInfo tr td{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+	height:35px;
+
+}
+
+#list > td{
+	height:40px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+.inquiryInfo a:link {					/* a 태그 클릭 안한 상태 */
+	text-align:center; 
+	color: black;
+	text-decoration : none;	/*밑줄 제거*/
+}
+
+.inquiryInfo a:visited { 				/* a 태그 1회 이상 클릭 했을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;
+}
+
+.inquiryInfo a:hover { 					/* a 태그에 마우스 올렸을 때 상태 */
+ 	color: black; 
+ 	text-decoration: none;	
+}
+
+#listcomment{
+	width:50%;
+	height:100px;
+	text-align:center;
+	margin: 10px auto;
+	font-size:x-large;
+}
+
+/*inquiryDetail.jsp*/
+#detailcomment {
+    width: 50%;
+    height: auto; /* 자동 높이 조정 */
+    text-align: center;
+    margin: 40px auto;
+    font-size: large; /* 기존 x-large에서 large로 줄임 */
+    overflow-wrap: break-word; /* 긴 단어를 줄 바꿈 */
+    word-wrap: break-word; /* 긴 단어를 줄 바꿈 (구형 브라우저 호환) */
+    hyphens: auto; /* 자동 하이픈 삽입 */
+}
+
+.inquiryDetail{
+	width:70%;
+	margin-top:30px;
+	margin-bottom:80px;
+	border-top: 3px solid #623f30;
+	border-collapse: collapse;
+}
+
+.inquiryDetail tr{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+}
+
+.inquiryDetail tr td{
+	border-bottom:2px solid #e6e6e6;
+	padding:10px;
+	height:30px;
+}
+
+#detail{
+	text-align:center;
+	width:130px;
+	height:40px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+#detailcontent{
+	text-align:center;
+	width:130px;
+	height:440px;
+	color:#967e5d;
+    font-weight:900;
+    background-color:#e6dfc6;
+}
+
+#detailtextarea{
+	width:100%;
+	height:440px;
+	font-size:18px;
+	border:none
+}
+
+#detailtextarea:focus{
+	outline:none;
+}
+
+/* 댓글 목록 스타일 */
+#comment {
+    padding-left: 150px;
+    width: 70%; /* 댓글 목록과 동일한 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 댓글 작성 영역 스타일 */
+#commentWrite {
+    
+    justify-content: center; /* 수평 중앙 정렬 */
+    margin: 20px 0; /* 위아래 여백 추가 */
+    width: 70%; /* 댓글 목록과 동일한 너비 설정 */
+    margin: 20px auto; /* 가운데 정렬 */
+}
+
+#commentBtn{
+	width:70px;
+	height:25px;
+	border: none;
+	background-color: #876f55;
+	color:#f1ebd5;
+}
+.updateCommentBtn, .deleteCommentBtn {	
+	width:70px;
+	height:25px;
+	border: none;
+	background-color: #876f55;
+	color:#f1ebd5;
+}
+#commentWriteBtn {
+    width: 120px; /* 고정 너비로 설정 */
+    height: 50px; 
+    background-color: #876f55; 
+    color: #f1ebd5;
+    border: none;
+}
+
+/*inquiryWrite.jsp*/
+#writeTitle{
+	width:100%;
+	height:35px;
+	font-size:20px;
+	border:none;
+	
+}
+
+#writeTitle:focus{
+	outline:none;
+}
+
+#content{
+	width:100%;
+	height:300px;
+	font-size:20px;
+	border:none
+}
+
+#content:focus{
+	outline:none;
+}
+

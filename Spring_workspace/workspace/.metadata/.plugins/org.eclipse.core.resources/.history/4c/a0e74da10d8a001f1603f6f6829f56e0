@@ -1,0 +1,108 @@
+@charset "UTF-8";  
+
+/* 전체 body에 대해 기본적인 스타일 적용 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 홈 버튼을 감싸는 컨테이너 */
+.home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.home-container a:hover {
+    color: #0056b3;
+}
+
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 테이블 컨테이너의 스타일 */
+.table-container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+td {
+    font-size: 16px;
+    color: #333;
+}
+
+/* 이미지 셀 중앙 정렬 및 스타일 */
+td img {
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+td img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 각 열 데이터 중앙 정렬 */
+td {
+    text-align: center;
+}
+
+/* 테이블 행에 마우스 오버 시 효과 추가 */
+tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .table-container {
+        width: 95%;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

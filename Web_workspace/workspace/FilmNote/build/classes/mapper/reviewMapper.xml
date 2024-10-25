@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/reviewMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewSQL">
+	
+	<!-- 리뷰 데이터 삽입 -->
+	<!-- 새로운 리뷰를 review_tb 테이블에 삽입 -->
+	<insert id="insertReviewDTO" parameterType="review">
+		insert into review_tb values(null, #{movie_code}, #{user_id}, #{content}, now(), #{score})
+		<!-- null: rcode는 AUTO_INCREMENT로 자동 생성 -->
+		<!-- now(): 작성 시간을 현재 시간으로 설정 -->
+		<!-- #{movie_code}, #{user_id}, #{content}, #{score}: 파라미터로 전달된 값들 -->
+	</insert>
+	
+	<!-- 특정 영화에 대한 리뷰 총 개수 조회 -->
+	<!-- 해당 영화(mcode)의 리뷰 개수를 가져옴 -->
+	<select id="getTotalA" parameterType="int" resultType="int">
+		select count(rcode) from review_tb where movie_code = #{mcode} order by logtime desc
+		<!-- 영화 코드(mcode)에 해당하는 리뷰의 개수를 반환 -->
+	</select>
+	
+	<!-- 특정 영화의 리뷰 리스트 조회 -->
+	<!-- 리뷰를 페이지 단위로 가져오고, 작성 시간을 기준으로 내림차순 정렬 -->
+	<select id="getReviewList" parameterType="map" resultType="review">
+		select rcode, movie_code, ut.uname, content, logtime, score 
+		from review_tb rt 
+		left join user_tb ut on rt.user_id = ut.uid 
+		where rt.movie_code = #{mcode}
+		order by rt.logtime desc
+		limit #{pg}, #{pgSize}
+		<!-- 리뷰와 작성자 정보를 함께 가져오기 위해 user_tb와 left join -->
+		<!-- 리뷰 리스트는 작성 시간을 기준으로 최신 리뷰부터 가져옴 -->
+		<!-- #{pg}: 현재 페이지 번호, #{pgSize}: 한 페이지에 표시할 리뷰 개수 -->
+	</select>
+	
+	<!-- 리뷰 수정 -->
+	<!-- 특정 리뷰의 내용을 업데이트 (영화 코드, 리뷰 코드, 사용자 ID에 맞는 리뷰 수정) -->
+	<update id="updateReviewDTO" parameterType="review">
+		update review_tb set content=#{content}, score=#{score} 
+		WHERE rcode = #{rcode} and movie_code = #{movie_code} and user_id = #{user_id}
+		<!-- rcode, movie_code, user_id로 특정 리뷰를 찾아 content와 score를 업데이트 -->
+	</update>
+	
+	<!-- 리뷰 삭제 -->
+	<!-- 특정 리뷰(r 코드에 해당하는)를 삭제 -->
+	<delete id="deleteReviedDTO" parameterType="int">
+		delete from review_tb where rcode = #{rcode}
+		<!-- rcode로 특정 리뷰를 삭제 -->
+	</delete>
+
+	
+</mapper>

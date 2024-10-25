@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/* 부트스트랩 기본 스타일 포함 */
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* 홈 버튼 스타일 */
+a {
+    font-size: 20px;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    table-layout: fixed; /* 셀 너비를 고정 */
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 30%; /* 너비 고정 */
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    width: 70%; /* 너비 고정 */
+}
+
+input[type="text"], textarea, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="submit"], input[type="reset"] {
+    width: 150px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+input[type="reset"]:hover {
+    background-color: #c82333;
+}
+
+/* 아이콘 스타일 */
+i {
+    color: #007bff;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    table {
+        width: 90%;
+    }
+
+    th, td {
+        font-size: 16px;
+    }
+}

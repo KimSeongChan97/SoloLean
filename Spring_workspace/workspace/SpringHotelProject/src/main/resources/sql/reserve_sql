@@ -1,0 +1,13 @@
+CREATE TABLE RESERVE (
+    reserve_id INT PRIMARY KEY AUTO_INCREMENT, -- 예약 Id
+    user_id INT NOT NULL, -- 예약한 사용자 ID (user 테이블의 seq 참조)
+    room_id INT NOT NULL, -- 방 Id (room 테이블 참조)
+    adults INT NOT NULL, -- 어른 수
+    kids INT default 0, -- 아이 수
+    checkin DATE, -- 체크인 날짜
+    checkout DATE, -- 체크아웃 날짜
+    price INT, -- 가격
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 예약 시간
+    CONSTRAINT fk_user_reserve FOREIGN KEY (user_id) REFERENCES user(seq) ON DELETE CASCADE, -- user 테이블과 FK 설정
+    CONSTRAINT fk_room_reserve FOREIGN KEY (room_id) REFERENCES room(room_id) ON DELETE CASCADE -- room 테이블과 FK 설정
+);

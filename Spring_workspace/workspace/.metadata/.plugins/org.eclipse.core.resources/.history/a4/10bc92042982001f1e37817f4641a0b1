@@ -1,0 +1,18 @@
+package user.dao.impl;
+
+import user.bean.UserDTO;
+import user.dao.UserDAO;
+
+public class UserDAOImpl implements UserDAO {
+	// 템플릿 클래스
+	private JdbcTemplate jdbcTemplate; 
+	
+	@Override
+	public void write(UserDTO userDTO) {
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,47 @@
+(projectMVC 는 나중에_)
+
+회원가입 로그인 게시판 만들기 프로젝트
+
+미니 프로젝트
+
+http://localhost:8080/projectJSP/index.jsp
+
+projectJSP
+	member.bean(package)
+		MemberDTO.java
+	member.dao(package)
+		MemberDAO.java		
+	board.bean(package)
+		BoardDTO.java
+	board.dao(package
+		BoardDAO.java		
+
+	index.jsp (메인화면)
+	updateForm.jsp
+	
+	image(folder)
+		imageFiles
+	SQL(folder)
+		member.sql
+		board.sql
+	js(folder)
+		member.js
+		
+	member(folder)
+		memberWrite.jsp
+		memberWriteForm.jsp
+		checkid.jsp
+		memberLoginForm.jsp
+		memberLogin.jsp
+			loginOk.jsp
+			loginFail.jsp
+		
+	board(folder)
+		boardWriteForm.jsp
+		boardWrite.jsp
+
+-================
+mybatis.org 
+-================
+paging  관련
+board.bean.BoardPaging.java

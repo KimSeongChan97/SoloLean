@@ -1,0 +1,124 @@
+/* FilmNote/src/main/webapp/css/userSignUp.css */
+
+/* UTF-8 인코딩을 사용하여 파일이 올바르게 해석되도록 설정 */
+@charset "UTF-8";
+/* 기본적인 초기화 스타일을 가져오기 위해 init.css 파일을 가져옴 */
+@import url("init.css");
+
+/* 모든 요소에 대한 기본 스타일 설정 */
+* {
+    padding: 0; /* 기본 여백을 0으로 설정 */
+    margin: 0; /* 기본 외부 여백을 0으로 설정 */
+    box-sizing: border-box; /* 요소의 크기를 패딩과 테두리를 포함한 전체 크기로 계산 */
+    font-family: 'Noto Sans CJK KR', sans-serif; /* 기본 폰트를 Noto Sans CJK KR로 설정 */
+}
+
+/* 페이지 배경 및 텍스트 색상 설정 */
+body {
+    background-color: #f4f4f4; /* 연한 회색 배경 */
+    color: #333; /* 어두운 텍스트 색상 */
+}
+
+/* 페이지 내부에서 사용자 편집 영역에 대한 스타일 */
+#userEdit-jsp {
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    margin-top: 20px; /* 상단 여백 20px */
+}
+
+/* 링크에 대한 기본 스타일 */
+a {
+    margin: 10px 0; /* 위아래 10px의 여백 */
+    text-align: center; /* 중앙 정렬 */
+    display: inline-block; /* 인라인 블록 형태로 배치 */
+}
+
+/* 테이블 스타일 설정 */
+table {
+    margin: 20px auto; /* 테이블을 가운데 정렬하고, 위아래 여백 20px */
+    border: 2px solid black; /* 테두리 2px의 검은색 실선 */
+    border-collapse: collapse; /* 테두리를 하나로 합침 */
+    border-spacing: 0; /* 셀 간 간격을 없앰 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    width: 800px; /* 테이블의 전체 너비 */
+}
+
+/* 테이블 헤더와 셀의 스타일 */
+th, td {
+    border: 1px solid black; /* 1px의 검은색 테두리 */
+    padding: 10px; /* 안쪽 여백 10px */
+    vertical-align: middle; /* 세로 중앙 정렬 */
+}
+
+/* 라벨 영역의 스타일 */
+.label {
+    width: 20%; /* 라벨 셀의 너비를 테이블 너비의 20%로 설정 */
+}
+
+/* 입력 필드 영역의 스타일 */
+.input {
+    text-align: left; /* 입력 필드를 왼쪽 정렬 */
+    width: 80%; /* 입력 필드 셀의 너비를 테이블 너비의 80%로 설정 */
+}
+
+/* 텍스트와 비밀번호 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 200px; /* 필드의 너비 200px */
+    border-radius: 5px; /* 모서리를 둥글게 설정 */
+    height: 30px; /* 필드 높이를 30px로 설정 */
+    padding: 0 5px; /* 안쪽 여백을 좌우로 5px */
+}
+
+/* 라디오 버튼 스타일 */
+input[type="radio"] {
+    margin-right: 5px; /* 오른쪽 여백 5px */
+}
+
+/* 이메일 입력 필드 스타일 */
+input[type="text"].input-email, select.input-email {
+    width: 170px !important; /* 너비 170px로 고정, !important로 우선순위 지정 */
+    border-radius: 5px; /* 모서리를 둥글게 설정 */
+    height: 30px; /* 높이 30px */
+    margin-right: 3px; /* 오른쪽 여백 3px */
+}
+
+/* 전화번호 입력 필드 스타일 */
+input[type="text"].input-tel, select.input-tel {
+    width: 100px !important; /* 너비 100px로 고정, !important로 우선순위 지정 */
+    border-radius: 5px; /* 모서리를 둥글게 설정 */
+    height: 30px; /* 높이 30px */
+}
+
+/* 버튼 스타일 */
+button {
+    width: 130px; /* 버튼 너비를 130px로 설정 */
+    height: 30px; /* 버튼 높이를 30px로 설정 */
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    vertical-align: middle; /* 수직 중앙 정렬 */
+    padding: 3px 10px; /* 안쪽 여백 설정 */
+    background: linear-gradient(135deg, #4a90e2, #9013fe); /* 그라데이션 배경 설정 */
+    border: none; /* 테두리 없음 */
+    color: white; /* 텍스트 색상 흰색 */
+    text-decoration: none; /* 텍스트 장식 없음 */
+    border-radius: 25px; /* 테두리 둥글게 설정 */
+    font-size: 14px; /* 텍스트 크기 14px */
+    font-weight: bold; /* 텍스트 굵게 설정 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 배경과 위치 전환 효과 */
+    cursor: pointer; /* 클릭 가능한 손 모양 커서 */
+    margin-bottom: 10px; /* 아래쪽 여백 10px */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 버튼에 마우스를 올렸을 때 */
+button:hover {
+    background: linear-gradient(135deg, #9013fe, #4a90e2); /* 배경색 반전 */
+    transform: translateY(-2px); /* 버튼을 살짝 위로 이동 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 그림자 더 진하게 */
+}
+
+/* 경고 메시지 영역 스타일 */
+#nameDiv, #idDiv, #pwdDiv, #repwdDiv, #birthDiv, #emailDiv, #telDiv {
+    display: none; /* 기본적으로 보이지 않음 */
+    padding: 5px 0 0 3px; /* 위쪽 여백 5px, 왼쪽 여백 3px */
+    color: red; /* 텍스트 색상 빨간색 */
+    font-size: 10pt; /* 작은 폰트 크기 */
+}

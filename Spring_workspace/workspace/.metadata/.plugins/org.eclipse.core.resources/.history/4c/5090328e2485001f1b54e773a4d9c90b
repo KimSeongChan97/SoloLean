@@ -1,0 +1,36 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bean.SungJukDTO;
+
+@Controller
+public class SungJukController {
+	
+	@RequestMapping(value = "/sungJuk/input.do", method = RequestMethod.GET)
+    public String input() {
+        return "sungJuk/input";
+    }
+	
+	@RequestMapping(value = "/sungJuk/result.do", method = RequestMethod.POST)
+    public String result(@ModelAttribute SungJukDTO sungJukDTO, Model model) {
+        // 총점과 평균 계산
+        int tot = sungJukDTO.getKor() + sungJukDTO.getEng() + sungJukDTO.getMath();
+        double avg = tot / 3.0;
+
+        // SungJukDTO에 총점과 평균을 설정
+        sungJukDTO.setTot(tot);
+        sungJukDTO.setAvg(avg);
+
+        // Model을 통해 뷰에 DTO 전달
+        model.addAttribute("sungJukDTO", sungJukDTO);
+
+        return "sungJuk/result";
+    }
+	
+	
+}

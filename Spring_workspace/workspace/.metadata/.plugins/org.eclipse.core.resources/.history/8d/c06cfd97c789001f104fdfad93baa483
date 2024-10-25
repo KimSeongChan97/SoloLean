@@ -1,0 +1,22 @@
+package user.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import user.bean.UserUploadDTO;
+import user.service.UserUploadService;
+
+@Service
+public class UserUploadServiceImpl implements UserUploadService {
+		
+		private UserUploadDAO userUploadDAO;
+	
+	
+		@Override
+		public void upload(List<UserUploadDTO> imageUploadList) {
+			
+			
+		}
+	
+}

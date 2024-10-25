@@ -1,0 +1,40 @@
+package sample03;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class HelloSpring {
+    public static void main(String[] args) {
+        // Spring 설정 파일을 로드하여 ApplicationContext 생성
+        // 추가 설명: ClassPathXmlApplicationContext는 지정된 Spring XML 설정 파일(applicationContext.xml)을 읽어들여 
+        // Bean 설정과 의존성을 관리하는 Spring의 ApplicationContext를 생성합니다.
+        // Spring은 이를 통해 Bean을 관리하고, 필요할 때마다 적절하게 주입합니다.
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Bean을 가져옴
+        // 추가 설명: applicationContext.xml에서 정의된 'sungJukImpl' Bean을 가져옵니다.
+        // context.getBean() 메서드는 Spring 컨테이너에서 해당 Bean을 찾아 반환합니다.
+        // 두 번째 인자로는 클래스 타입(SungJuk.class)을 지정하여, 반환된 객체가 SungJuk 인터페이스의 구현체임을 명시합니다.
+        // 이 Bean은 sungJukImpl이라는 id로 등록된 SungJukImpl 객체를 반환합니다.
+        SungJuk sungJuk = context.getBean("sungJukImpl", SungJuk.class);
+        
+        System.out.println();
+        // 총점 및 평균 계산 후 출력
+        // 추가 설명: calcTot() 메서드는 총점을 계산하고, calcAvg() 메서드는 평균을 계산합니다.
+        // display() 메서드는 이름, 국어, 영어, 수학 점수와 함께 총점과 평균을 출력하는 역할을 합니다.
+        // 이 과정은 Spring이 관리하는 Bean을 사용하여 실행됩니다.
+        sungJuk.calcTot();
+        sungJuk.calcAvg();
+        sungJuk.display();
+        System.out.println();
+
+        // modify를 통해 데이터 수정 및 재출력
+        // 추가 설명: modify() 메서드는 사용자로부터 입력을 받아 기존 데이터를 수정합니다.
+        // 사용자가 입력한 데이터를 바탕으로 총점과 평균을 다시 계산하고, display() 메서드를 호출하여 수정된 데이터를 출력합니다.
+        // 이 부분은 프로그램 실행 중 데이터를 동적으로 수정하고, 그 결과를 즉시 확인할 수 있는 기능입니다.
+        sungJuk.modify();
+        sungJuk.display();
+        System.out.println();
+        // 추가 설명: 데이터가 수정된 후, display() 메서드를 다시 호출하여 수정된 내용이 출력되는 것을 확인할 수 있습니다.
+    }
+}

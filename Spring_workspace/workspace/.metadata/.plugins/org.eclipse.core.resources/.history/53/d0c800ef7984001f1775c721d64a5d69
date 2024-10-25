@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd">
+
+
+<context:component-scan base-package="spring.conf" />
+
+<!-- SqlSessionFactory -->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:spring/mybatis-config.xml" />
+	<property name="mapperLocations" value="classpath:mapper/userMapper.xml" />
+</bean>
+
+<!-- SqlSession -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSessionFactory" />
+</bean>
+
+<!-- Transaction -->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<constructor-arg ref="dataSource" />
+</bean>
+
+<bean id="userMybatisDAO" class="user.dao.impl.UserMybatisDAO" >
+	<property name="sqlSession" ref="sqlSession" />
+</bean>
+
+<bean id="helloSpring" class="user.main.HelloSpring" />
+
+<bean id="userInsertService" class="user.service.UserInsertService">
+    <property name="userDTO" ref="userDTO" />
+    <property name="userDAO" ref="userMybatisDAO" />
+</bean>
+
+<bean id="userSelectService" class="user.service.UserSelectService">
+    <property name="userDAO" ref="userMybatisDAO" />
+</bean>
+
+
+<bean id="userUpdateService" class="user.service.UserUpdateService">
+    <property name="userDAO" ref="userMybatisDAO" />
+</bean>
+
+
+<bean id="userDeleteService" class="user.service.UserDeleteService">
+    <property name="userDAO" ref="userMybatisDAO" />
+</bean>
+
+<bean id="userDTO" class="user.bean.UserDTO" />
+
+
+<!-- <bean id="userDAOImpl" class="user.dao.impl.UserDAOImpl">
+    <property name="dataSource" ref="dataSource" />
+</bean> -->
+
+</beans>

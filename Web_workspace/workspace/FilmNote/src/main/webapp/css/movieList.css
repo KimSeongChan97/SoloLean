@@ -1,0 +1,185 @@
+/* FilmNote/src/main/webapp/css/movieList.css */
+/* 문자 인코딩을 UTF-8로 설정 */
+@charset "UTF-8";
+/* 기본 스타일을 설정한 init.css 파일을 가져옵니다. */
+@import url("init.css");  /* FilmNote/src/main/webapp/css/init.css */
+
+/* 모든 텍스트 요소에 폰트를 'Gowun Batang'으로 설정 */
+body, a, button, select, input, div, select {
+	font-family: 'Gowun Batang', sans-serif;	
+}
+
+/* 글 삭제 & 검색 카드 박스 */
+div.card {
+	margin: 40px 40px 0 40px;
+    /* 상단과 좌우에 40px의 여백을 추가합니다. */
+}
+
+.card #card-title {
+	font-size: 15px;
+	margin-bottom: 8px;
+    /* 제목과 컨텐츠 사이에 8px 간격을 둡니다. */
+}
+
+.card #card-content {
+	height: 50px;
+	border-top: 1px solid #5A5A5A;
+	border-bottom : 1px solid #5A5A5A;
+    /* 위와 아래에 얇은 회색 테두리를 추가합니다. */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+    /* 좌우 20px 여백을 추가합니다. */
+}
+
+/* 검색창과 옵션을 정렬 */
+#card-content #search-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    /* 옵션과 입력 박스 사이에 10px 간격을 둡니다. */
+}
+
+/* 검색 옵션 및 입력 박스 기본 스타일 */
+#search-div .search-opt, #search-div .input-box {
+    height: 30px;
+    border: 1px solid #5A5A5A;
+    border-radius: 3px;
+    /* 높이는 30px, 테두리는 1px 회색, 모서리는 둥글게 설정합니다. */
+    font-size: 16px;    
+    padding: 0 5px;
+    /* 입력 텍스트와 테두리 사이에 5px의 여백을 추가합니다. */
+}
+
+/* 검색 옵션 선택 박스 스타일 */
+#card-content .search-opt {
+    letter-spacing: 3px;
+    /* 텍스트 간의 간격을 넓게 설정합니다. */
+    width: 150px;
+    /* 선택 박스의 너비를 150px로 고정합니다. */
+}
+
+/* 검색 입력 박스 스타일 */
+#search-div .input-box {
+    width: 500px;
+    /* 검색 입력 박스의 너비를 500px로 설정합니다. */
+}
+
+/* 버튼 스타일 설정 */
+.cardBtn {
+	padding: 0;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    /* 버튼의 높이와 너비, 텍스트 스타일을 설정하여 일관된 버튼 레이아웃을 만듭니다. */
+}
+
+/* 삭제 버튼 스타일 */
+#deleteBtn {
+    background: #77B3D9;
+	color: white;
+	border: 1px solid #77B3D9;	
+	margin-right: 10px;
+    /* 배경색을 파란색(#77B3D9)으로 설정하고, 텍스트 색상은 흰색으로 변경합니다. */
+}
+
+/* 검색 버튼 스타일 */
+#searchBtn {
+    background: #457ABF;
+	color: white;
+	border: 1px solid #457ABF;	
+    /* 배경색을 더 짙은 파란색(#457ABF)으로 설정하고, 텍스트 색상은 흰색으로 변경합니다. */
+}
+
+/* 삭제 및 검색 버튼에 마우스를 올렸을 때의 스타일 */
+#deleteBtn:hover, #searchBtn:hover {
+    transition: background-color 0.3s ease; 
+	background-color: #3d3d3d;
+	color: #FFFFFF;
+	border: 1px solid #3d3d3d;	
+	cursor: pointer;
+    /* 배경색을 짙은 회색(#3d3d3d)으로 바꾸고, 마우스 포인터를 변경합니다. */
+}
+
+/* 테이블 스타일 */
+table {
+	margin: 20px 40px 0 40px;
+    /* 테이블 위와 좌우에 40px, 아래에 0px의 여백을 추가합니다. */
+	width: 1020px;
+	border-collapse: collapse;
+    /* 셀 간의 간격을 제거하여 테두리가 겹쳐 보이게 합니다. */
+	border-spacing: 0px;
+	text-align: center;
+    /* 테이블 셀의 내용을 가운데 정렬합니다. */
+}
+
+/* 테이블 헤더(th)와 데이터 셀(td) 스타일 */
+th, td {
+   border-bottom: 1px solid black;
+   padding: 10px;
+   vertical-align: middle;
+    /* 셀 아래에 1px 검정 테두리와 상하 10px의 여백을 추가하고, 내용을 수직으로 가운데 정렬합니다. */
+}
+
+th {
+   border-bottom: 3px solid black;
+    /* 테이블 헤더에 더 두꺼운(3px) 테두리를 추가합니다. */
+}
+
+/* 체크박스 스타일 */
+.check-size, .board-list-check {
+	transform: scale(1.4);
+	cursor: pointer;
+	margin-right: 5px;
+    /* 체크박스 크기를 1.4배로 확대하고, 오른쪽에 5px의 여백을 둡니다. */
+}
+
+/* 제목에 마우스를 올렸을 때 스타일 */
+.subject-a:hover {
+	text-decoration: underline;
+    /* 마우스를 올리면 제목에 밑줄을 표시합니다. */
+}
+
+/* 페이지 네비게이션 블록 */
+.page-block {
+   margin: 20px auto;
+   font-size: 13pt;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+    /* 페이지 번호들이 가운데 정렬되고, 번호들 사이에 5px의 간격을 둡니다. */
+}
+
+/* 현재 페이지 스타일 */
+#currentPaging {
+   background-color: #e5e7ea;
+   border-radius: 5px;
+   padding: 5px 8px;
+   font-weight: bold;
+    /* 현재 페이지는 회색 배경과 굵은 글씨로 강조됩니다. */
+}
+
+/* 페이지 번호 스타일 */
+#paging {
+   border-radius: 5px;
+   padding: 5px 8px;
+    /* 페이지 번호를 둥글게 처리하고, 클릭 가능하도록 설정합니다. */
+}
+
+/* 페이지 번호에 마우스를 올렸을 때의 스타일 */
+span:hover {
+   text-decoration: underline;
+   cursor: pointer;
+}
+    /* 페이지 번호에 마우스를 올리면 밑줄을 추가하고, 포인터를 변경합니다. */
+

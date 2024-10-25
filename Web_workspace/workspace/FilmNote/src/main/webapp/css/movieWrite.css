@@ -1,0 +1,168 @@
+/* FilmNote/src/main/webapp/css/movieWrite.css */
+@charset "UTF-8";
+/* UTF-8 인코딩 설정을 통해 파일의 문자 인코딩을 정의합니다. */
+
+/* 기본 스타일을 설정한 init.css 파일을 가져옵니다. */
+@import url("init.css");
+
+/* 영화 등록 폼의 스타일 설정 */
+form#movie-write-form {
+	margin: 40px 40px 20px 40px;
+    /* 상단과 좌우에 40px, 하단에 20px의 여백을 줍니다. */
+    border: 1px solid #ddd;
+    /* 폼 테두리를 연한 회색(#ddd)으로 설정합니다. */
+    border-radius: 20px;
+    /* 모서리를 둥글게(20px) 처리합니다. */
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+    /* 약간의 그림자를 추가하여 폼이 떠 있는 느낌을 줍니다. */
+}
+
+/* 영화 등록 테이블의 스타일 설정 */
+table {
+	margin: 20px 0;
+    /* 테이블 상단과 하단에 20px의 여백을 줍니다. */
+	width: 1020px;
+    /* 테이블 너비를 1020px로 고정합니다. */
+	border-collapse: collapse;
+    /* 테두리의 여백을 제거하여 테두리가 겹쳐 보이게 합니다. */
+	border-spacing: 0px;
+    /* 셀 간의 간격을 0으로 설정합니다. */
+	text-align: center;
+    /* 모든 셀의 내용을 가운데 정렬합니다. */
+}
+
+/* 테이블의 헤더(th)와 데이터(td) 셀 스타일 */
+th, td {
+	border-bottom: 1px solid #ddd;
+    /* 셀의 하단에 얇은 회색(#ddd) 테두리를 추가합니다. */
+    padding: 10px;
+    /* 셀 안쪽 여백을 10px으로 설정하여 텍스트가 셀 내부에서 간격을 유지합니다. */
+    height: 50px;
+    /* 셀의 높이를 50px로 고정하여 정돈된 레이아웃을 유지합니다. */
+    vertical-align: middle;
+    /* 셀 내의 텍스트를 수직으로 가운데 정렬합니다. */
+}
+
+/* 영화 정보 셀에 텍스트를 왼쪽 정렬합니다. */
+.info-cell {
+	text-align: left;
+}
+
+/* 파일 아이콘과 텍스트가 한 줄에 표시되도록 합니다. */
+#fileIcon, #fileNotice {
+	display: inline;
+}
+
+/* 파일 아이콘과 텍스트에 마우스를 올렸을 때 커서를 변경하여 클릭 가능하게 보이게 합니다. */
+#fileIcon:hover, #fileNotice:hover {
+	cursor: pointer;
+}
+
+/* 파일 입력 아이콘의 크기를 확대하여 클릭 영역을 더 크게 만듭니다. */
+#fileinput > #fileIcon {
+	transform: scale(1.7);
+    /* 아이콘 크기를 1.7배로 확대합니다. */
+	padding: 5px;
+    /* 아이콘 주위에 5px의 여백을 줍니다. */
+}
+
+/* 파일 입력 텍스트에 여백을 추가합니다. */
+#fileinput > #fileNotice {
+	padding: 5px;
+}
+
+/* 텍스트 입력 필드와 텍스트 영역의 스타일을 설정합니다. */
+input[type="text"], textarea {
+    height: 30px;
+    /* 입력 필드의 높이를 30px로 고정합니다. */
+    line-height: 30px; 
+    /* 텍스트의 높이를 필드 높이와 일치시켜 중앙에 배치되도록 합니다. */
+    padding: 0 5px; 
+    /* 입력 필드 내부의 양쪽에 5px의 여백을 줍니다. */
+    background: transparent;
+    /* 배경색을 투명으로 설정합니다. */
+    border: 1px solid #ccc;
+    /* 테두리를 연한 회색(#ccc)으로 설정합니다. */
+}
+
+/* 텍스트 입력 필드의 너비를 230px로 설정합니다. */
+input[type="text"] {
+	width: 230px;
+}
+
+/* 텍스트 영역의 높이를 100px로 설정하고 세로 크기 조정만 가능하게 합니다. */
+textarea {
+	height: 100px;
+	resize: vertical; 
+    /* 세로 방향으로만 크기 조정이 가능합니다. */
+    overflow-y: auto;
+    /* 텍스트가 넘칠 경우 세로 스크롤바를 표시합니다. */
+}
+
+/* 유효성 검사 메시지 스타일 */
+.validationDiv {
+	display: none;
+    /* 기본적으로 메시지를 숨깁니다. */
+	padding-top: 5px;
+    /* 메시지와 입력 필드 사이에 5px의 간격을 줍니다. */
+	color: red;
+    /* 메시지 색상을 빨간색으로 설정하여 경고 느낌을 줍니다. */
+	font-weight: 600;
+    /* 메시지를 굵게 표시합니다. */
+	font-size: 10pt;
+    /* 메시지의 글꼴 크기를 10pt로 설정합니다. */
+}
+
+/* 버튼 컨테이너 스타일 */
+div.button-container {
+	margin: 20px 50px;
+    /* 버튼 컨테이너 상단과 하단에 20px, 좌우에 50px의 여백을 줍니다. */
+	display: flex;
+    /* 버튼을 플렉스 박스로 정렬합니다. */
+	justify-content: flex-end;
+    /* 버튼들을 오른쪽에 배치합니다. */
+	align-items: center;
+    /* 버튼들을 수직으로 가운데 정렬합니다. */
+	gap: 10px;
+    /* 버튼 간의 간격을 10px로 설정합니다. */
+}
+
+/* CRUD 버튼 스타일 */
+.crudBtn {
+	width: 80px;
+    /* 버튼의 너비를 80px로 설정합니다. */
+    display: flex; 
+    /* 플렉스 박스를 사용하여 버튼 내부 요소들을 정렬합니다. */
+    align-items: center; 
+    justify-content: center; 
+    padding: 5px;
+    /* 버튼 내부의 여백을 5px로 설정합니다. */
+    background: transparent;
+    /* 버튼의 배경색을 투명하게 설정합니다. */
+    border: 1px solid #ccc;
+    /* 버튼의 테두리를 연한 회색(#ccc)으로 설정합니다. */
+    color: #5A5A5A;
+    /* 버튼의 텍스트 색상을 진한 회색(#5A5A5A)으로 설정합니다. */
+    text-decoration: none;
+    /* 텍스트의 밑줄을 제거합니다. */
+    border-radius: 3px;
+    /* 버튼의 모서리를 3px 둥글게 처리합니다. */
+    font-size: 16px;
+    /* 버튼의 텍스트 크기를 16px로 설정합니다. */
+    text-align: center;
+    /* 버튼의 텍스트를 가운데 정렬합니다. */
+    transition: background-color 0.3s ease;
+    /* 배경색이 0.3초에 걸쳐 부드럽게 변하도록 설정합니다. */
+    cursor: pointer;
+    /* 버튼에 마우스를 올렸을 때 커서가 손가락 모양으로 변경됩니다. */
+}
+
+/* CRUD 버튼에 마우스를 올렸을 때의 스타일 */
+.crudBtn:hover {
+    background: #DEC5D2;
+    /* 마우스를 올리면 배경색이 연한 핑크(#DEC5D2)로 변경됩니다. */
+    color: #5A5A5A;
+    /* 텍스트 색상은 동일하게 유지됩니다. */
+    cursor: pointer;
+    /* 커서가 손가락 모양으로 변경됩니다. */
+}

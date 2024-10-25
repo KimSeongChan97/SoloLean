@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/* 전체적인 배경 및 텍스트 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #faf9f6;
+    color: #333;
+    font-size: 16px;
+}
+
+/* 슬라이더 섹션과 부대시설 섹션 간의 간격 완전히 제거 */
+.container[data-view="roomView"] {
+    margin-top: 1rem;
+    margin-bottom: 0; /* 슬라이더 섹션과 부대시설 섹션 사이 간격 제거 */
+    padding-bottom: 0; /* 슬라이더와 부대시설 사이의 padding 제거 */
+}
+
+/* 슬라이더 컨테이너 스타일 */
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 0; /* 아래쪽 여백 완전히 제거 */
+}
+
+.slider-container:hover {
+    overflow-x: scroll;
+}
+
+/* 슬라이드 트랙 (카드들이 담긴 트랙) */
+.slider-track {
+    display: flex;
+    transition: transform 1.8s ease-in-out;
+}
+
+/* 개별 카드 스타일 */
+.slider-item {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin-bottom: 0; /* 슬라이더와 부대시설 간의 간격 완전히 제거 */
+    max-width: 100%;
+}
+
+/* 카드 스타일 */
+.card {
+    border: none;
+    border-radius: 0.9375rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
+}
+
+/* 카드 이미지 스타일 */
+.card-img-top {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.9375rem 0.9375rem 0 0;
+}
+
+/* 카드 본문 */
+.card-body {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 타이틀 및 텍스트 크기 조정 */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b89d64;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-size: 1.125rem;
+    color: #555;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+
+/* 버튼 스타일 */
+.btn-outline-primary {
+    border-color: #b89d64;
+    color: #b89d64;
+}
+
+.btn-outline-primary:hover {
+    background-color: #b89d64;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #b89d64;
+    border-color: #b89d64;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8a6f45;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .slider-item {
+        flex: 0 0 33.33%;
+    }
+    .card-img-top {
+        height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-item {
+        flex: 0 0 50%;
+    }
+    .card-img-top {
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-item {
+        flex: 0 0 100%;
+    }
+    .card-img-top {
+        height: 120px;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 0.8rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 0.85rem;
+    }
+}

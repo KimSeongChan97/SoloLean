@@ -1,0 +1,92 @@
+$(document).ready(function() {
+    // 리뷰 목록을 동적으로 로드하는 함수
+    function loadReviewList(roomId) {
+        $.ajax({
+            url: '/review/reviewListByRoom',
+            type: 'GET',
+            data: { roomId: roomId },
+            success: function(response) {
+                $('#contentContainer').html(response);  // 리뷰 목록을 동적으로 삽입
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + xhr.responseText);  // 서버 응답 로그 출력
+                alert('리뷰 목록을 불러오는 중 오류가 발생했습니다.');
+            }
+        });
+    }
+
+    // 리뷰 삭제 버튼 클릭 시
+    $(document).on('click', '.delete-btn', function() {
+        const reviewId = $(this).data('id');
+        const roomId = $(this).data('room-id');
+        if (confirm('리뷰를 삭제하시겠습니까?')) {
+            $.ajax({
+                url: '/review/deleteReview',
+                type: 'POST',
+                data: { reviewId: reviewId, roomId: roomId },
+                success: function(response) {
+                    loadReviewList(roomId);  // 리뷰 삭제 후 목록을 다시 로드
+                },
+                error: function() {
+                    alert('리뷰 삭제 중 오류가 발생했습니다.');
+                }
+            });
+        }
+    });
+
+    // 리뷰 작성 폼 제출 시
+    $('#reviewForm').on('submit', function(event) {
+        event.preventDefault();  // 기본 제출 방지
+        const formData = $(this).serialize();
+        const roomId = $('#roomId').val();
+
+        $.ajax({
+            url: '/review/insertReview',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                loadReviewList(roomId);  // 리뷰 작성 후 목록을 다시 로드
+            },
+            error: function() {
+                alert('리뷰 작성 중 오류가 발생했습니다.');
+            }
+        });
+    });
+
+    // 리뷰 목록 보기 버튼 클릭 시
+    $('#loadReviewList').click(function(event) {
+        event.preventDefault();
+        const roomId = $(this).data('room-id');
+        if (roomId) {
+            loadReviewList(roomId);
+        } else {
+            alert('roomId가 없습니다.');
+        }
+    });
+
+    // 리뷰 작성하기 버튼 클릭 시
+    $('#loadReviewWriteForm').click(function(event) {
+        event.preventDefault();
+        const roomId = $(this).data('room-id');
+        if (roomId) {
+            loadReviewWriteForm(roomId);
+        } else {
+            alert('roomId가 없습니다.');
+        }
+    });
+
+    // 리뷰 작성 폼을 불러오는 함수
+    function loadReviewWriteForm(roomId) {
+        $.ajax({
+            url: '/review/reviewWriteForm',
+            type: 'GET',
+            data: { roomId: roomId },
+            success: function(response) {
+                $('#contentContainer').html(response);  // 리뷰 작성 폼 내용을 해당 div에 삽입
+            },
+            error: function() {
+                alert('리뷰 작성 폼을 불러오는 중 오류가 발생했습니다.');
+            }
+        });
+    }
+});

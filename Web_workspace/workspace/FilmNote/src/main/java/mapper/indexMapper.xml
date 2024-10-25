@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FilmNote/src/main/java/mapper/movieMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="indexSQL">
+
+	<select id="getMovieBoardList" resultType="movie">
+    <!-- 영화 목록을 가져오는 SQL문 -->
+    <!-- movie_tb 테이블의 모든 데이터를 조회하여 영화 목록을 가져옴 -->
+    select * from movie_tb
+	</select>
+	
+	<select id="getMovieBoardView" resultType="movie">
+	    <!-- 특정 영화의 상세 정보를 가져오는 SQL문 -->
+	    <!-- movie_tb 테이블에서 영화 코드(mcode)가 일치하는 행을 조회하여 해당 영화의 상세 정보를 가져옴 -->
+	    select * from movie_tb where mcode=#{mcode}
+	    <!-- #{mcode}는 MyBatis에서 파라미터로 전달된 값이 동적으로 삽입됨 -->
+	</select>
+	
+	<insert id="insertMovieAPIData" parameterType="movie">
+	    <!-- 영화 데이터를 추가하는 SQL문 -->
+	    <!-- movie_tb 테이블에 새로운 영화 데이터를 삽입 -->
+	    insert into movie_tb values (null, #{title}, #{director}, #{genre}, #{release_date}, #{rating}, 0, #{synopsis}, #{poster})
+	    <!-- null: mcode(영화코드)는 AUTO_INCREMENT이므로 자동으로 생성됨 -->
+	    <!-- #{title}, #{director}, #{genre}, #{release_date}, #{rating}, #{synopsis}, #{poster}: 영화 정보는 파라미터로 전달된 값이 동적으로 삽입됨 -->
+	</insert>
+
+	
+</mapper>

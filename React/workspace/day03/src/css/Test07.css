@@ -1,0 +1,155 @@
+/* .wrap { width: 400px; border: 1px solid #000; padding: 30px; margin: 30px auto;  }
+.wrap p { margin-bottom: 10px; }
+.wrap p label {display: inline-block; width: 80px; }
+.wrap p input { margin-left: 10px; height: 30px; width: 200px; padding: 0 15px;
+                border: 1px solid #999; }
+.wrap p:last-child { margin-top: 30px; }
+.wrap p button { width: 150px; height: 40px; background: #333; color: #fff;
+                 border: none; margin-right: 10px; }
+.wrap ul li { border-bottom: 1px dotted #dcdcdc; line-height: 3; }
+.wrap ul li span { display: inline-block; width: 80px; }
+.wrap ul li em { margin-left: 10px; height: 30px; width: 200px; padding: 0 15px; }
+.wrap h3 { text-align: center; font-size: 40px; font-weight: 500; } 
+.wrap h3 span { display: block; } */
+
+/* 전체 컨테이너 */
+.wrap {
+  width: 600px;
+  border-radius: 15px; 
+  background: linear-gradient(127deg, #d3bfeb, #bcd9f5); 
+  padding: 40px;
+  margin: 50px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease;
+}
+
+.wrap:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); 
+}
+
+.wrap p {
+  margin-bottom: 15px;
+}
+
+.wrap p label {
+  display: inline-block;
+  width: 100px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.wrap p input {
+  margin-left: 10px;
+  height: 35px;
+  width: 240px;
+  padding: 0 15px;
+  border: 1px solid #aaa; 
+  border-radius: 5px; 
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.wrap p input:focus {
+  border-color: #00bcd4; 
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2); 
+  outline: none;
+}
+
+
+.wrap p:last-child {
+  margin-top: 40px;
+  text-align: center; 
+}
+
+.wrap p button {
+  width: 160px;
+  height: 45px;
+  background: linear-gradient(135deg, #007bff, #00bcd4); 
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px; 
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wrap p button:hover {
+  background: linear-gradient(135deg, #0056b3, #008ba3); 
+  box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4); 
+}
+
+.wrap ul {
+  padding: 0;
+}
+
+.wrap ul li {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  line-height: 1.8;
+}
+
+.wrap ul li span {
+  display: inline-block;
+  width: 100px;
+  font-size: 16px;
+  color: #555;
+  font-weight: 600;
+}
+
+.wrap ul li em {
+  margin-left: 10px;
+  font-style: normal;
+  font-size: 16px;
+  color: #00bcd4;
+}
+
+/* 제목 스타일 */
+.wrap h3 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #333433;
+  margin-bottom: 40px;
+}
+
+.wrap h3 span {
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  color: #5a6486;
+  margin-top: 10px;
+}
+
+/* 애니메이션 추가 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrap {
+  animation: fadeIn 0.9s ease-in-out;
+}
+
+.wrap input, .wrap button {
+  box-shadow: none;
+}
+
+.wrap p input:focus {
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.2); 
+}
+
+.wrap p button:hover {
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); 
+}

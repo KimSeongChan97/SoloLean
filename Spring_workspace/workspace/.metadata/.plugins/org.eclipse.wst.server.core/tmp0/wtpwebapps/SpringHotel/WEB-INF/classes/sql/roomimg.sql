@@ -1,0 +1,7 @@
+CREATE TABLE roomImg (
+	roomImg_id INT PRIMARY KEY AUTO_INCREMENT,
+	room_id INT,
+	imageFileName VARCHAR(100) NOT NULL,
+	imgaeOriginalFileName VARCHAR(100) NOT NULL,
+	CONSTRAINT fk_room FOREIGN KEY (room_id ) REFERENCES ROOM(room_id ) ON DELETE CASCADE
+);

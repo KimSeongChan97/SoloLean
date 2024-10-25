@@ -1,0 +1,122 @@
+/* 전체 body에 대한 기본 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* 홈 버튼을 감싸는 컨테이너 */
+.home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.home-container a:hover {
+    color: #0056b3;
+}
+
+.home-container i {
+    margin-right: 8px;
+}
+
+/* 테이블 기본 스타일 */
+table {
+    width: 600px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* 첫 번째 열에 들어가는 이미지 스타일 */
+td img {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+td img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 테이블 안 텍스트 스타일 */
+td:first-child {
+    text-align: center;
+}
+
+td pre {
+    font-size: 14px;
+    color: #555;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* 번호, 상품명, 파일명 텍스트 */
+td:nth-child(2) {
+    background-color: #f9f9f9;
+    border-left: 5px solid #007bff;
+    font-size: 16px;
+}
+
+/* 버튼 스타일 */
+input[type="button"] {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    td img {
+        width: 200px;
+        height: 200px;
+    }
+
+    input[type="button"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

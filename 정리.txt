@@ -1,0 +1,35 @@
+projectJSP - Connection Pool
+projectMyBatis
+
+기존은
+모델1기법
+->개발속도 빠르다
+->확장성X, 유지보수 X
+
+
+MVC
+ 모델2기법
+ -> 비즈니스 코드(java) 와 프리젠테이션(web) 분리
+
+java 코드 를 사용하면 안됨
+<% %>
+<%= %> 
+$( ) 은 jQuery
+
+->> ${ } 를 사용 해야함 
+
+커스텀 태그 를 사용했었다.. ( 호환이 안됬음 )
+
+A회사가
+<if
+<for
+
+B회사가
+<if
+<forEach
+-> 호환이 되는 걸 만듦
+JSTL ( JSP Standard Tag Library )
+
+
+
+Spring

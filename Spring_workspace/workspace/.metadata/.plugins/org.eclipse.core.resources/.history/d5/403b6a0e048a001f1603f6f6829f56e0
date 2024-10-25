@@ -1,0 +1,7 @@
+$(funtion(){
+	$.ajax({
+		type: 'post',
+		url: '/spring/user/uploadUpdate',
+		
+	});
+});

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/* 기본 스타일 */
+#reservation {
+	width: 99%;
+	margin: 0 auto;
+}
+#reservation #menu1 {
+	margin: 5% 0;
+	font-size: 2.7rem;
+}
+
+#reservation #menu1 .nav-tabs {
+	padding-left: 5%;
+}
+
+#reservation #menu1 .nav-tabs .nav-link {
+	color: #382f24;
+}
+
+/* 화면 너비가 1024px 이하일 때 (태블릿) */
+@media (max-width: 1024px) {
+    #menu1 .nav-link {
+        font-size: 2.3rem; /* 폰트 크기 축소 */
+        /* padding: 15px 20px; 패딩 조정 */
+    }
+}
+
+/* 화면 너비가 768px 이하일 때 (작은 태블릿 및 큰 스마트폰) */
+@media (max-width: 768px) {
+    #menu1 {
+        display: block; /* 세로로 쌓이도록 변경 */
+        margin-bottom: 10px;
+    }
+
+    #menu1 .nav-link {
+        font-size: 1.9rem; /* 폰트 크기 축소 */
+        width: 100%; /* 전체 너비 사용 */
+        padding: 10px 5px; /* 패딩 상하로 조정 */
+    }
+}
+
+/* 화면 너비가 480px 이하일 때 (스마트폰) */
+@media (max-width: 480px) {
+    #menu1 {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    #menu1 .nav-link {
+        font-size: 1.5rem; /* 폰트 크기 축소 */
+        width: 100%; /* 100% 너비 */
+        padding: 8px 3px; /* 패딩 상하로 조정 */
+    }
+}

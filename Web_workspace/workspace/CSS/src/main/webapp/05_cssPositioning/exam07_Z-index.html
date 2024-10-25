@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 모든 div 요소에 대해 position 속성을 absolute로 설정 */
+div {
+	position: absolute; /* div 요소를 절대 위치로 설정하여 부모 요소의 기준에서 자유롭게 배치 가능 */
+}
+
+/* 모든 img 요소에 대해 position 속성을 absolute로 설정 */
+img {
+	position: absolute; /* 이미지 요소를 절대 위치로 설정하여 이미지 간 겹침을 제어 */
+}
+
+/* id가 spadeA인 이미지의 위치와 z-index 설정 */
+#spadeA {
+	left: 10px; /* 왼쪽에서 10px 떨어진 위치에 배치 */
+	top: 20px; /* 위에서 20px 떨어진 위치에 배치 */
+	z-index: -3; /* z-index를 -3으로 설정하여 이 이미지가 다른 이미지들보다 뒤로 가도록 함 */
+}
+
+/* id가 spade2인 이미지의 위치와 z-index 설정 */
+#spade2 {
+	left: 40px; /* 왼쪽에서 40px 떨어진 위치에 배치 */
+	top: 30px; /* 위에서 30px 떨어진 위치에 배치 */
+	z-index: 2; /* z-index를 2로 설정하여 이 이미지가 다른 이미지들보다 앞으로 가도록 함 */
+}
+
+/* id가 spade7인 이미지의 위치와 z-index 설정 */
+#spade7 {
+	left: 80px; /* 왼쪽에서 80px 떨어진 위치에 배치 */
+	top: 40px; /* 위에서 40px 떨어진 위치에 배치 */
+	z-index: 7; /* z-index를 7로 설정하여 이 이미지가 다른 이미지들보다 가장 앞에 오도록 함 */
+}
+
+/* id가 spade3인 이미지의 위치와 z-index 설정 */
+#spade3 {
+	left: 120px; /* 왼쪽에서 120px 떨어진 위치에 배치 */
+	top: 50px; /* 위에서 50px 떨어진 위치에 배치 */
+	z-index: 3; /* z-index를 3으로 설정하여 이 이미지가 다른 이미지들보다 중간 정도에 오도록 함 */
+}
+</style>
+</head>
+<body>
+	<h3>z-index 프로퍼티</h3> <!-- 페이지의 주제(제목)인 "z-index 프로퍼티"를 표시 -->
+	<hr> <!-- 수평선을 그어 콘텐츠를 구분 -->
+
+	<!-- div 요소 내에 겹치는 이미지들을 배치 -->
+	<div>
+		<!-- 스페이드 A 카드 이미지 -->
+		<img id="spadeA" src="../image/spade-A.png" width="100" height="140" alt="스페이드A">
+		<!-- 스페이드 2 카드 이미지 -->
+		<img id="spade2" src="../image/spade-2.png" width="100" height="140" alt="스페이드2">
+		<!-- 스페이드 7 카드 이미지 -->
+		<img id="spade7" src="../image/spade-7.png" width="100" height="140" alt="스페이드7">
+		<!-- 스페이드 3 카드 이미지 -->
+		<img id="spade3" src="../image/spade-3.png" width="100" height="140" alt="스페이드3">
+	</div>
+</body>
+</html>

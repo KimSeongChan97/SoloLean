@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내장함수</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// eval() 내장함수
+document.write("*** eval 내장함수 ***<br>");
+var str = "100 + 1";  // 문자열로 표현된 수식
+document.write(str + "<br>");  // "100 + 1"이라는 문자열 출력
+
+// eval 함수는 전달된 문자열을 실제 자바스크립트 코드로 평가하고 실행합니다.
+// 이 경우 "100 + 1"이라는 문자열이 실제 수식으로 평가되어 101이 됩니다.
+var result = eval("100 + 1");  // 가지고 있는 문자열을 수식으로 변경, "100 + 1" => 100 + 1
+document.write(result + "<br><br>");  // 결과 101 출력
+
+
+// Number(), parseInt() 내장함수
+document.write("*** Number, parseInt 내장함수 ***<br>");
+var value1= "100";  // 문자열 "100"
+var num1 = Number(value1);  // Number()는 문자열을 숫자로 변환. 여기서는 "100"을 숫자 100으로 변환.
+var num2 = parseInt(value1);  // parseInt()는 문자열을 정수로 변환. 여기서도 "100"을 정수 100으로 변환.
+
+var r1 = value1 + 1;  // 문자열 "100"에 1을 더하면 문자열 결합이 일어나 "1001"이 됩니다.
+var r2 = num1 + 1;  // num1은 숫자 100이므로 100 + 1 = 101
+var r3 = num2 + 1;  // num2도 숫자 100이므로 100 + 1 = 101
+
+document.write("r1 = " + r1 + "<br>");  // r1은 "1001" 출력 (문자열 결합)
+document.write("r2 = " + r2 + "<br>");  // r2는 101 출력 (숫자 연산)
+document.write("r3 = " + r3 + "<br>");  // r3는 101 출력 (숫자 연산)
+
+document.write("<br>");
+
+var value2 = "100.6";  // 문자열 "100.6"
+var num3 = Number(value2);  // Number()는 실수도 변환할 수 있습니다. 여기서 "100.6"은 실수 100.6으로 변환.
+var num4 = parseInt(value2);  // parseInt()는 소수점 이하를 무시하고 정수로 변환. "100.6" -> 100
+var num5 = parseFloat(value2);  // parseFloat()는 실수로 변환. 여기서는 "100.6"을 실수 100.6으로 변환.
+
+var r4 = num3 + 1;  // num3은 실수 100.6이므로 100.6 + 1 = 101.6
+var r5 = num4 + 1;  // num4는 정수 100이므로 100 + 1 = 101
+var r6 = num5 + 1;  // num5는 실수 100.6이므로 100.6 + 1 = 101.6
+
+document.write("r4 = " + r4 + "<br>");  // r4는 101.6 출력
+document.write("r5 = " + r5 + "<br>");  // r5는 101 출력
+document.write("r6 = " + r6 + "<br>");  // r6는 101.6 출력
+
+</script>
+</body>
+</html>
+
+<!-- 
+내장함수 (많이 사용되는 함수들)
+
+1. eval(문자열) : 문자열을 수식으로 변환하여 실행
+    - 예: eval("100 + 1") -> 101
+    - eval은 문자열을 자바스크립트 코드로 평가할 때 사용됩니다. 보안과 성능상의 이유로 신중하게 사용해야 합니다.
+
+2. Number(문자열) : 문자열을 숫자로 변환 (정수, 실수 모두 가능)
+    - 예: Number("100") -> 100, Number("100.6") -> 100.6
+    - Number()는 문자열을 숫자로 변환하며, 정수와 실수를 모두 지원합니다.
+
+3. parseInt(문자열) : 문자열을 정수로 변환 (소수점 이하 버림)
+    - 예: parseInt("100.6") -> 100
+    - parseInt()는 문자열에서 정수 부분만 변환하며, 소수점 이하를 무시합니다.
+
+4. parseFloat(문자열) : 문자열을 실수로 변환
+    - 예: parseFloat("100.6") -> 100.6
+    - parseFloat()는 문자열을 실수로 변환할 때 사용됩니다.
+
+5. isNaN(문자열) : 문자열이 숫자 형식이 아니면 true, 숫자 형식이면 false 반환
+    - 예: isNaN("ABC") -> true, isNaN("100") -> false
+
+6. alert(문자열) : 문자열을 대화 상자로 출력
+    - 예: alert("안녕하세요");
+
+7. confirm(문자열) : 확인/취소 버튼이 있는 대화 상자로 출력
+    - 예: confirm("정말로 삭제하시겠습니까?");
+
+8. prompt(문자열) : 값을 입력받기 위한 대화 상자 호출
+    - 예: prompt("이름을 입력하세요");
+
+이 예제에서는 eval(), Number(), parseInt(), parseFloat() 함수를 사용하여 문자열을 숫자로 변환하고 연산하는 방법을 설명합니다.
+-->

@@ -1,0 +1,12 @@
+$(function(){
+	$('#uploadAJaxBtn').click(function(){
+		let formData = new FormData($('#uploadAJaxBtn')[0]);
+		
+		$.ajax({
+			type: 'post',
+			url: '/spring/user/',
+			
+		}); // $.ajax	
+		
+	}); // #uploadAJaxBtn
+});

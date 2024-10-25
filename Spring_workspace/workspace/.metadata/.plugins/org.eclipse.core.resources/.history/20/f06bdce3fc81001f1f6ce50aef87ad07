@@ -1,0 +1,83 @@
+package sample01;
+
+import lombok.Setter;
+
+// 타겟 클래스
+// 이 클래스는 MessageBean 인터페이스를 구현하며, AOP에서 공통 관심사를 적용할 수 있는 타겟 클래스입니다.
+public class MessageBeanImpl implements MessageBean {
+    
+    @Setter // Lombok의 @Setter 어노테이션을 사용하여 자동으로 setStr() 메서드를 생성
+    // str 필드에 대한 setter 메서드가 자동으로 생성됩니다.
+    private String str; // 문자열 변수 str, 이 값은 외부에서 주입(setter 주입)됩니다.
+    
+    // 주석으로 처리된 setStr 메서드는 Lombok의 @Setter 어노테이션을 통해 대체됨.
+    // Lombok을 사용하지 않는다면 아래와 같은 setter 메서드를 수동으로 작성해야 함.
+    /*
+    public void setStr(String str) {
+        this.str = str;
+    }
+    */
+    
+    // PointCut
+    // AOP의 PointCut에 해당하는 메서드입니다. 공통 관심사를 적용할 수 있는 지점입니다.
+    @Override
+    public void showPrintBefore() {
+        // System.out.println("before trace"); 
+        // before trace는 AOP의 before advice를 통해 로그를 출력하는 부분으로 대체될 수 있음.
+        System.out.println("showPrintBefore 메세지 = " + str); // 핵심코드
+        // str 필드의 값을 출력하는 핵심 비즈니스 로직
+        // 공통 관심 사항과는 무관한 메서드의 본래 동작을 수행
+    } // joinPoint
+    // joinPoint는 AOP에서 공통 관심 사항을 적용할 수 있는 메서드 실행 지점입니다.
+    
+    // PointCut
+    // AOP의 PointCut에 해당하는 메서드로, 공통 관심사를 적용할 수 있는 지점입니다.
+    @Override
+    public void viewPrintBefore() {
+        // System.out.println("before trace"); 
+        // before trace는 AOP의 before advice를 통해 처리될 수 있는 부분입니다.
+        try {
+            Thread.sleep(1000); // 단위: 1/1000초, 1초 동안 메서드를 일시 정지시킵니다.
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // 예외가 발생할 경우 스택 트레이스를 출력합니다.
+        } 
+        System.out.println("viewPrintBefore 메세지 = " + str);
+        // str 필드의 값을 출력하는 핵심 비즈니스 로직
+    }  // joinPoint
+    // 이 메서드 역시 AOP에서 joinPoint로 작동하며, 공통 관심 사항을 적용할 수 있습니다.
+    
+    @Override
+    public void showPrintAfter() {
+        System.out.println("showPrintAfter 메세지 = " + str); // 핵심코드
+        // after advice에서 적용될 수 있는 메서드 실행 후 로직
+    }
+    
+    @Override
+    public void viewPrintAfter() {
+        try {
+            Thread.sleep(1000); // 단위: 1/1000초, 1초 동안 메서드를 일시 정지시킵니다.
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // 예외가 발생할 경우 스택 트레이스를 출력합니다.
+        } 
+        System.out.println("viewPrintAfter 메세지 = " + str);
+    }
+    
+    @Override
+    public void showPrint() {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
+    @Override
+    public void viewPrint() {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
+    
+    @Override
+    public void display() {
+        System.out.println("display 메세지 = " + str);
+        // 이 메서드는 핵심 비즈니스 로직을 수행하며, AOP와는 관계없이 실행됩니다.
+    }
+}

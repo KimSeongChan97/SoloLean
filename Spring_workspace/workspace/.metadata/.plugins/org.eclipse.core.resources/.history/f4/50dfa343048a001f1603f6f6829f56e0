@@ -1,0 +1,8 @@
+$(function(){
+	
+	$.ajax({
+		type: 'post',
+		url: '/spring/user/uploadUpdate',
+		
+	}); // $.ajax
+}); // $(function)

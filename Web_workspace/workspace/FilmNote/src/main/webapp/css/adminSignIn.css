@@ -1,0 +1,168 @@
+/* FilmNote/src/main/webapp/css/adminSignIn.css */
+
+/* 문자 인코딩을 UTF-8로 설정 */
+@charset "UTF-8";
+/* 기본 스타일 설정을 위한 init.css 파일을 가져옴 */
+@import url("init.css");
+
+/* 모든 요소에 기본 패딩, 마진 제거 및 박스 크기 조절 설정 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans CJK KR', sans-serif; /* 기본 폰트 설정 */
+}
+
+/* 바디 배경색 및 기본 글자색 설정 */
+body {
+    background-color: #f4f4f4; /* 밝은 회색 배경 */
+    color: #333; /* 기본 텍스트 색상: 어두운 회색 */
+}
+
+/* 로그인 페이지 전체 레이아웃 설정 */
+#login-jsp {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-top: 50px; /* 상단에 50px 여백 */
+    background: #fff; /* 배경을 흰색으로 설정 */
+    padding: 40px; /* 내부 여백을 40px 설정 */
+    border-radius: 10px; /* 테두리를 둥글게 설정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35); /* 그림자 효과 추가 */
+    width: 400px; /* 고정된 너비 설정 */
+    margin: 50px auto; /* 상하 50px 여백, 좌우 가운데 정렬 */
+}
+
+/* 제목 스타일 */
+h2 {
+    margin-bottom: 40px; /* 제목과 아래 요소 간의 간격 */
+    font-size: 24px; /* 폰트 크기를 24px로 설정 */
+    color: #333; /* 어두운 회색 텍스트 */
+}
+
+/* 링크 스타일 */
+a {
+    margin: 10px 0; /* 위아래에 10px 간격 */
+    text-align: center;
+    display: inline-block; /* 인라인 블록으로 설정하여 텍스트 너비 조절 */
+    color: #007BFF; /* 파란색 텍스트 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 링크에 마우스를 올렸을 때 밑줄 추가 */
+a:hover {
+    text-decoration: underline;
+}
+
+/* 로그인 폼 내 테이블 스타일 */
+table {
+    margin: 20px auto; /* 위아래 여백 20px, 가운데 정렬 */
+    border-collapse: collapse; /* 테이블 셀 간의 간격을 제거 */
+    border-spacing: 0;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 테이블 너비를 100%로 설정 */
+}
+
+/* 테이블 헤더와 데이터 셀 스타일 */
+th, td {
+    border: none; /* 테두리 제거 */
+    padding: 5px; /* 내부 여백 5px */
+    vertical-align: top; /* 세로 정렬을 위쪽으로 설정 */
+}
+
+/* 라벨 셀 스타일 */
+.label {
+    width: 30%; /* 너비 30% 설정 */
+    padding-top: 5px;
+    padding-right: 5px;
+    text-align: right; /* 텍스트 오른쪽 정렬 */
+    color: #555; /* 어두운 회색 텍스트 */
+}
+
+/* 입력 필드 셀 스타일 */
+.input {
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    width: 70%; /* 너비 70% 설정 */
+}
+
+/* 텍스트와 비밀번호 입력 필드 스타일 */
+input[type="text"], input[type="password"] {
+    width: 100%; /* 입력 필드 너비 100% */
+    border-radius: 5px; /* 둥근 테두리 */
+    height: 40px; /* 높이 40px */
+    padding: 0 10px; /* 좌우에 10px 여백 */
+    border: 1px solid #ddd; /* 회색 테두리 */
+    margin-bottom: 5px; /* 아래에 5px 여백 */
+    font-size: 14px; /* 폰트 크기 14px */
+}
+
+/* 입력 필드에 포커스 시 테두리 색상 변경 */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007BFF; /* 테두리를 파란색으로 변경 */
+    outline: none; /* 기본 포커스 효과 제거 */
+}
+
+/* 로그인 버튼 스타일 */
+#adminLoginBtn {
+    width: 100%; /* 너비 100% */
+    height: 40px; /* 높이 40px */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    vertical-align: middle;
+    padding: 10px;
+    background: linear-gradient(135deg, #4a90e2, #9013fe); /* 그라데이션 배경 */
+    border: none; /* 테두리 제거 */
+    color: white; /* 텍스트 색상 흰색 */
+    text-decoration: none; /* 텍스트 밑줄 제거 */
+    border-radius: 25px; /* 둥근 테두리 */
+    font-size: 16px; /* 폰트 크기 16px */
+    font-weight: bold; /* 굵은 텍스트 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 배경색과 변형 전환 효과 */
+    cursor: pointer; /* 클릭 가능한 커서 */
+    margin-top: 30px; /* 위쪽에 30px 여백 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+
+/* 로그인 버튼에 마우스를 올렸을 때 효과 */
+#adminLoginBtn:hover {
+    background: linear-gradient(135deg, #9013fe, #4a90e2); /* 그라데이션 색상 반전 */
+    transform: translateY(-2px); /* 버튼이 위로 살짝 이동 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 그림자 효과 강조 */
+}
+
+/* 관리자 버튼 스타일 */
+#adminBtn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background: #333; /* 어두운 배경 */
+    color: white; /* 흰색 텍스트 */
+}
+
+/* 관리자 버튼에 마우스를 올렸을 때 배경색 변경 */
+#adminBtn:hover {
+    background: #555; /* 배경을 더 밝은 회색으로 변경 */
+}
+
+/* 관리자 로그인 에러 메시지 스타일 */
+#adminLoginErrorDiv {
+	margin-top: 20px;
+    padding: 5px 0;
+    color: #e74c3c; /* 기존 빨간색 경고 메시지 */
+    font-size: 12pt;
+    font-family: 'Noto Sans KR', sans-serif; /* 한글 폰트 설정 */
+    text-align: center;
+    margin-left: 0;
+    font-weight: bold; /* 굵은 텍스트 */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 128, 0.8),   /* 진한 청록색 그림자 */
+        0 0 10px rgba(255, 0, 128, 0.6),  /* 자주색 그림자 */
+        0 0 15px rgba(255, 255, 255, 0.8); /* 흰색 그림자 */
+    /* 네온사인 효과 추가 */
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
+    /* 텍스트 그림자와 투명도 전환 효과 */
+}
+
+/* 'show' 클래스가 적용되면 메시지를 보이게 함 */
+.show {
+    display: block;
+    opacity: 1;
+    /* 투명도 설정 */
+}

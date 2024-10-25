@@ -1,0 +1,41 @@
+package thread;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+class ATM implements Runnable {
+	private long depositMoney = 100000; // 금액
+	private long balance; // 찾고자 하는 금액
+	@Override
+	public void run() {
+		System.out.println("안녕하세요 " + Thread.currentThread().getName() + " 고객님 "); // Thread 목롱 중에서 이름만을 뽑아 와라.
+		// IO 를 이용하여 돈을 뽑아 보자 ( IO 공부를 위해 Scanner 는 자제한다. )
+		// Scanner 에 사용하던 System.in 에서 in 은 InputStream 이다. 그러므로 InputStreamReader -> buffer -> BufferedReader 를 통해 java 파일에 입력한다.
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		
+	}
+	
+	
+}
+
+//------------------------------
+public class ATMMain {
+
+	public static void main(String[] args) {
+		// thread 생성
+		
+		ATM atm = new ATM();
+		Thread mom = new Thread(atm, "엄마"); // this 라고 쓰면 안됨, static 영역에서는 this 값이 없음.
+		Thread son = new Thread(atm, "아들"); // mom 과 son 둘다 동기화로 같이 사용 가능한 thread 생성. , 이름 생성도 같이 진행.
+		
+		mom.start(); // thread 시작 -> thread 실행 ( run() 으로 감 )
+		son.start(); // thread 시작 -> thread 실행 ( run() 으로 감 )
+		
+			
+		
+		
+
+	}
+
+}

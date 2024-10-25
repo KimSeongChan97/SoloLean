@@ -1,0 +1,461 @@
+네이버 관계자
+
+이용진 차장
+
+클라우드 ㅋㅍㅌ
+
+1번까지 자격증 무료
+
+saa(aws)  클라우드 심화 자격증
+
+네이버 클라우드 플랫폼 (계정생성)
+-> 비싸보이는거 건드리지 X.. (gpu/빅데이터 등 gpt)
+
+ clova x
+
+보안
+
+클라우드 취업
+Cloud Service P 少
+MSP (기술제안) 多
+
+해커톤
+
+============================================
+============================================
+오연의 강사
+010-8812-0737
+AI, Cloud 수업 X
+
+1. 흐름
+2. Error 수정 ☆
+3. gpt 활용 및 제어
+4. ->> 화합이 잘 되느냐?
+5. 포폴 정리
+6. 지각X // 휴가제도? 프로젝트 할 때
+7. 스프링 ( XML )
+윈도우[Eclipse] 주요활용 예정
+
+세미프로젝트
+스프링 // 마이바티스/ 제이쿼리(구버전 전용)  or   스프링 부트 / 마이바티스 / 타임리프
+ 
+최종 프로젝트
+스프링 부트 / JPA / React 사용됨.
+===============================================
+Java 
+웹/앱
+(C# -> ERP 기업전산화 에 이용)
+인공지능
+Pyton 
+
+it영어
+
+순서
+~~~~~
+JAVA
+Linux / Git 
+Oracle /  MySQL 
+docker / Jenkins( 프로그램 통합&배포 CICD ) / NCP 네이버클라우드플랫폼 (서버만들어서 업로드)
+
+10月 즈음 네이버클라우드 수업
+
+ Web
+Html / JavaScript ★ / CSS / jQuery (이후 스프링 / 마이바티스 등 고려. )
+리액트 SPA -> Next.js 개별공부 필요
+ Servlet / JSP
+Spring / Spring Boot
+(이후 스프링 / 마이바티스 등 고려. )
+
+MyBatis 주요사용
+JPA 유지보수
+
+R e a c t 
+~~~~ 6月 과정
+중간 중간 추가적으로 개인 공부 필요함.
+
+프로젝트 3개 할 것.
+-> 최종프로젝트 1月 소요 (12.06~01.06) [ 5~7 名 ]
+
+2개 일정 짧음. ( 2 名 )
+================= 오전 종료 / 오후 시작  
+
+[네이버 클라우드 캠프 AIaas 9기]
+
+유튜브강의 or 블로그 => O
+ 문제풀이 진행(질문)
+<복습*>
+programmers / 백준 
+-> 코테 준비
+
+장치이름 : bit
+
+컴퓨터이름, 계정(관리자) => 한글X, 공백X
+
+잔디/웨일/알캡처/반디집/Editplus 노트북 다운로드
+==
+eclipse.org
+java.oracle.com
+
+파일명.확장자
+
+컴파일러 (입력변환) : Java - jdk
+
+
+1.다운로드
+2.설치  default
+
+~환경설정~
+3. java 설치 버전 적용
+① JAVA_HOME (JDK 설치 위치)
+C:\Program Files\Java\jdk-17
+중복 제거를 위해 객체지향 사용
+
+②Path
+C:\Program Files\Java\jdk-17\bin;
+=
+JAVA_HOME\bin;
+
+철수 010-1234-1234
+
+%철수% "철수"가 의미하는 것을 불러옴.
+
+-> %JAVA_HOME%\bin; = C:\Program Files\Java\jdk-17
+
+
+실습을 위한 편집기
+-> 메모장, Eclipse, IntelliJS
+
+Java는?
+1. 객체지향프로그램 (OOP) ObjectOrientedProgramming - 중복방지.
+class단위
+
+2. 모든 명령어는 소문자로 시작.
+-> 카멜의 법칙 ( class 명의 첫 글자는 대문자로 시작한다. 단어가 바뀌면 다시 대문자로 시작)
+-> 단어가 바뀔 때, _를 쓰기도 하고 대문자를 새로 쓰기도 한다. => 단어결합
+메모장 코딩시 엔터 후 탭 필요 ( 함수의 자리 )
+* 구역은 { } // 함수는 ( ) 
+
+3. 함수(함수내용) - > ?
+명령어들의 집합체.
+-> Java가 제공하는 default함수는 main함수
+ex)
+class HelloTest {
+	public static void main(String[] args){  <- "시작함수"
+		명령어
+	}
+}
+
+4. 콘솔 : 자바에서 사용하는 클래스 : System  (* " . " 은 소속관계로 나타냄 )
+- 입력 (키보드) System.in
+- 출력 (화면)  System.out
+ex1) 소스1
+class HelloTest {
+	public static void main(String[] args){
+		System.out.print("안녕하세요");
+		System.out.print("안녕하세요\n");
+		System.out.println("안녕하세요");
+		System.out.print("사과\t딸기\t바나나");
+
+	}
+}
+
+5. 자바의 파일명은 클래스 명과 동일하다.
+
+파일명.java ( c언어 .c / c++ .cpp )
+
+HelloTest.java -- 원시파일 ( 소스2 )
+↓ 기계언어로 처리=컴파일  (컴파일러)  *파이썬은 입력과 결과가 동시에 발생.
+
+cmd파일처리
+
+C:\Users\BITCAMP>cd\
+
+C:\>d:
+
+D:\>cd java
+
+D:\Java>cd workspace
+
+D:\Java\workspace>javac HelloTest.java
+HelloTest.java:5: error: cannot find symbol
+                System.out.printIn("안녕하세요");
+                          ^
+  symbol:   method printIn(String)
+  location: variable out of type PrintStream
+1 error
+
+D:\Java\workspace>java HelloTest
+Error: Could not find or load main class HelloTest
+Caused by: java.lang.ClassNotFoundException: HelloTest
+
+★ 에러 수정을 위해  printIn (대문자 I) 을 println (소문자L) 로 수정. ★
+
+D:\Java\workspace>javac HelloTest.java
+
+D:\Java\workspace>java HelloTest
+안녕하세요안녕하세요
+안녕하세요
+사과    딸기    바나나
+
+:: printIn 이 아닌 println ( 소문자 L ) 
+:: \n => new line
+:: \t => tab
+
+
+ex2) 소스2
+
+class NumberTest {	
+	public static void main(String[] args){
+		System.out.println(25 + 3);
+		System.out.println("25" + "3");
+		System.out.println("25 + 3");
+		System.out.println("25 + 3 = " + 25 + 3);
+	}
+}
+
+결과
+
+D:\Java\workspace>javac NumberTest.java
+
+D:\Java\workspace>java NumberTest
+28
+253
+25 + 3
+25 + 3 = 253
+
+D:\Java\workspace>
+
+구분 필요 : 숫자, '문자' , "문자열"
+
+2 숫자 / '2' 2라는 문자 / "2" 2라는 문자열
+
+~소스 해석~
+
+System.out.println(25 + 3); 숫자이므로 28이라는 계산 결과가 도출 됨.
+
+System.out.println("25" + "3"); 문자열이므로 253 결과 도출 ( 주석은 // 문자열의 더하기는 결합의 의미 )
+
+System.out.println("25 + 3"); 문자열이므로 [ 25 + 3 ] 이라는 문자열을 도출.
+
+System.out.println("25 + 3 = " + 25 + 3); 에서 숫자의 합으로 수정할려면
+System.out.println("25 + 3 = " + (25 + 3)); 을 추가하면 됨.
+
+** 결과 **
+
+class NumberTest {	
+	public static void main(String[] args){
+		System.out.println(25 + 3);
+		System.out.println("25" + "3"); //문자열의 더하기는 결합의 의미
+		System.out.println("25 + 3");
+		System.out.println("25 + 3 = " + 25 + 3);
+		System.out.println("25 + 3 = " + (25 + 3));
+	}
+}
+
+컴파일 진행.
+
+D:\Java\workspace>javac NumberTest.java
+
+D:\Java\workspace>java NumberTest
+28
+253
+25 + 3
+25 + 3 = 253
+25 + 3 = 28
+
+라는 결과가 도출 됨.
+
+여기서 사칙연산을 적용하게 되었을 경우
+
+class NumberTest {	
+	public static void main(String[] args){
+		System.out.println(25 + 3);
+		System.out.println("25" + "3"); //문자열의 더하기는 결합의 의미
+		System.out.println("25 + 3");
+		System.out.println("25 + 3 = " + 25 + 3);
+		System.out.println("25 + 3 = " + (25 + 3));
+		System.out.println();
+		System.out.println("26 + 3 = " + (26 + 3));
+		System.out.println("26 - 3 = " + (26 - 3));
+		System.out.println("26 * 3 = " + (26 * 3));
+		System.out.println("26 / 3 = " + (26 / 3));
+	}
+}
+
+의 코드를 가지고
+
+D:\Java\workspace>javac NumberTest.java
+
+D:\Java\workspace>java NumberTest
+28
+253
+25 + 3
+25 + 3 = 253
+25 + 3 = 28
+
+26 + 3 = 29
+26 - 3 = 23
+26 * 3 = 78
+26 / 3 = 8
+
+결과가 나옴.
+
+26 / 3 = 8 이 나오는 이유는
+JAVA에서는 정수 / 정수 = 정수 (소수점 없음)
+               정수 / 정수 =  
+                 ↓
+               실수 변경시 다른 정수가 자동으로 실수로 변경됨 (자동변환)
+
+System.out.println("26 / 3 = " + (26. / 3)); 코드 추가하여 
+
+D:\Java\workspace>javac NumberTest.java
+
+D:\Java\workspace>java NumberTest
+28
+253
+25 + 3
+25 + 3 = 253
+25 + 3 = 28
+
+26 + 3 = 29
+26 - 3 = 23
+26 * 3 = 78
+26 / 3 = 8
+26 / 3 = 8.666666666666666
+
+결과 도출.
+
+(//소수 이하 2째자리 주석추가시) 
+
+( * 정수 => %d
+( * 실수 => %f => %4.2f  ( 8.66에서 8 / . / 6 / 6 의 4, 0.66의 뒤 2자리 하여 2)
+                           -> 4. 에서 4 생략 가능 -> 소수점 앞에 정수 부분이 없어도 유효한 표현으로 간주 하기 때문에 !  
+(예시 )
+double number = .5; // 이는 0.5와 동일한 값으로 간주됩니다.
+이렇게 하는 이유는 가독성이 더 좋기 때문이다.
+
+class NumberTest {	
+	public static void main(String[] args){
+		System.out.println(25 + 3);
+		System.out.println("25" + "3"); //문자열의 더하기는 결합의 의미
+		System.out.println("25 + 3");
+		System.out.println("25 + 3 = " + 25 + 3);
+		System.out.println("25 + 3 = " + (25 + 3));
+		System.out.println();
+		System.out.println("26 + 3 = " + (26 + 3));
+		System.out.println("26 - 3 = " + (26 - 3));
+		System.out.println("26 * 3 = " + (26 * 3));
+		System.out.println("26 / 3 = " + (26 / 3));
+		System.out.println("26 / 3 = " + String.format("%4.2f", (26. / 3))); //소수 이하 2째자리
+		System.out.println("26 / 3 = " + String.format("%.2f", (26. / 3)));
+	}
+}
+
+의 결과.
+
+D:\Java\workspace>javac NumberTest.java
+
+D:\Java\workspace>java NumberTest
+28
+253
+25 + 3
+25 + 3 = 253
+25 + 3 = 28
+
+26 + 3 = 29
+26 - 3 = 23
+26 * 3 = 78
+26 / 3 = 8
+26 / 3 = 8.67
+26 / 3 = 8.67
+
+가 도출된다.
+
+*
+이제 eclipse를 배워볼 차례.
+
+메모장 -> 파일 생성
+이클립스
+1. 프로젝트 생성. - test
+  본인 자바 버전에 맞게 설정
+   module-info 자바 파일 해제
+-> src : 모든 java 파일 
+-> bin : .class 파일
+
+2. 패키지 생성 - basic
+(폴더 생성) 윈도우:폴더 / 리눅스:디렉토리 / 자바:패키지
+
+3. 파일 생성 - HelloTest.java
+ (  Ctrl+Shift + / - (글씨크기조정) )
+
+명령어 ( 몇글자 치고 Ctrl space )
+
+1. 우클 -> run as -> java application
+2.  crtl + f11
+
+
+======
+sys out (단축키)
+17버전
+
+
+종료...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

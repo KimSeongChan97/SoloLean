@@ -1,0 +1,11 @@
+package sample02;
+
+public class CalcMul implements Calc {
+
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

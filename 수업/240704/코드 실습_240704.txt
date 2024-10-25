@@ -1,0 +1,57 @@
+package basic;
+
+public class HelloTest {
+
+	public static void main(String[] args) {
+		System.out.println("안녕하세요");
+		System.out.println();
+		
+		System.out.println('A' + 32); // 65+32 (문자변동 +-32)
+		System.out.println((char)('A' + 32)); //강제형변환, Cast 연산
+		System.out.println();
+		
+		System.out.println(2 + 3);
+		System.out.println('2' + '3'); // 50+51
+		
+		//결과가 5가 나오도록 하시오.
+		System.out.println('2'-48 + '3'-48); // 숫자 변동은 +-48
+		
+		System.out.println("2" + "3"); //23(결합)
+
+		//결과가 5가 나오도록 하시오.
+		System.out.println(Integer.parseInt("2") + Integer.parseInt("3")); // 문자열에는 +-48이 안됨
+		
+		System.out.println("12.5" + "36.8");
+		
+		//결과가 49.3가 나오도록 하시오.
+		System.out.println(Double.parseDouble("12.5") + Double.parseDouble("36.8")); //Double.parseDouble 추가
+				
+		
+	}
+
+}
+
+[실행결과]
+안녕하세요
+
+97
+a
+
+5
+101
+5
+23
+5
+12.536.8
+49.3
+
+
+
+
+
+
+
+
+
+
+
