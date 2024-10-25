@@ -37,6 +37,7 @@ const App = () => {
             */}
             <hr/>
               <Todos />
+            <hr/>
               
             <hr/>
         </div>
