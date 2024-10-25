@@ -49,13 +49,13 @@ const Test05 = () => {
           setSearch(text);
      };
 
-     // 글자가 바뀌면 바로 검색되게 하는 것.
+     // 글자가 바뀌면 바로 검색되게 하는 것입니다.
      // 사용자가 입력한 text 상태가 변경될 때마다 검색 결과를 즉시 필터링하여 list 상태에 반영합니다.
      useEffect(() => {
           setList(user.filter(item => item.name.toLowerCase().includes(text.toLowerCase())))
      }, [text]); // text 상태가 변경될 때마다 useEffect 훅이 실행됩니다.
 
-     // onChange 함수는 input 필드에서 사용자가 입력한 값을 text 상태에 저장합니다.
+     // onChange 함수는 input 필드에서 사용자가 입력한 값을 text 상태에 저장합니다.!!
      const onChange = (e) => {
           setText(e.target.value); // 입력한 값을 text 상태에 저장하여 실시간으로 관리합니다.
           // 사용자가 입력할 때마다 text 상태가 업데이트되어 검색어가 바뀔 때마다 즉시 반영됩니다.

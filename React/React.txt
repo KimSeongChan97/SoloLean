@@ -100,6 +100,15 @@ day01_vite : cd day01_vite -> npm run dev
 화면에는 index.html 이 반응하지만(root 태그 안에)
 작업은 src/App.js 에서 한다 ( .root 로 연결 )
 
+-----------------------------------------------------------
+
+다른폴더에서 git  설정한 폴더에 있는 폴더로 워크트리를 하여 이용하는 방법
+
+git --git-dir=D:/git/SoloLean/.git --work-tree=D:/React/workspace add .
+
+git --git-dir=D:/git/SoloLean/.git --work-tree=D:/React/workspace add .
+git --git-dir=D:/git/SoloLean/.git --work-tree=D:/React/workspace commit -m "Your commit message"
+git --git-dir=D:/git/SoloLean/.git --work-tree=D:/React/workspace push origin main
 
 
 
