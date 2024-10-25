@@ -1,7 +1,0 @@
-$(funtion(){
-	$.ajax({
-		type: 'post',
-		url: '',
-		
-	});
-});

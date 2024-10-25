@@ -1,8 +1,0 @@
-package com.bean;
-
-@Getter
-@Setter
-public class SumDTO {
-	private int x;
-	private int y;
-}

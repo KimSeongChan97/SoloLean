@@ -1,5 +1,0 @@
-package sample05;
-
-public interface Outputter {
-	public void outputter(String Message);
-}

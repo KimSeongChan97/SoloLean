@@ -1,2 +1,0 @@
-*.msi filter=lfs diff=lfs merge=lfs -text
-Spring.workspace/lib/spring-tool-suite-3.9.18.RELEASE-e4.21.x-win32-x86_64.zip filter=lfs diff=lfs merge=lfs -text

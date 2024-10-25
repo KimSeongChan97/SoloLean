@@ -1,8 +1,0 @@
-package sample01;
-
-public class LoggingAdvice {
-	// 공통관심사항(부가적인 기능)
-	
-	
-	
-}

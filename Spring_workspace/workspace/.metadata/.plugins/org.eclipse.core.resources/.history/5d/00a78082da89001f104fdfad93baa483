@@ -1,7 +1,0 @@
-package user.service.impl;
-
-import user.service.ObjectStorageService;
-
-public class NCPObjectStorageService implements ObjectStorageService {
-
-}

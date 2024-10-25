@@ -1,5 +1,0 @@
-$(function(){
-	$('#uploadAJaxBtn').click(function(){
-		let formData = new FormData($('#uploadAJaxBtn')[0];
-	}); // #uploadAJaxBtn
-});

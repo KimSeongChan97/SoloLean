@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 6 elements from project &apos;00_solotest&apos;&#x0D;&#x0A;- Original project: &apos;00_solotest&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     00_solotest/src/basicsolo&#x0D;&#x0A;     00_solotest/src/fortest&#x0D;&#x0A;     00_solotest/src/homeworksolo&#x0D;&#x0A;     00_solotest/src/ifsolo&#x0D;&#x0A;     00_solotest/src/sololean&#x0D;&#x0A;     00_solotest/src/switchsolo" description="Delete elements" element1="/src&lt;switchsolo" element2="/src&lt;sololean" element3="/src&lt;ifsolo" element4="/src&lt;homeworksolo" element5="/src&lt;fortest" element6="/src&lt;basicsolo" elements="6" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1721099268009" subPackages="false" version="1.0"/>
-</session>

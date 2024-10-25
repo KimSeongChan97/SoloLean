@@ -1,8 +1,0 @@
-package user.bean;
-
-@Setter
-public class UserDTO {
-	String name;
-	String id;
-	String pwd;
-}

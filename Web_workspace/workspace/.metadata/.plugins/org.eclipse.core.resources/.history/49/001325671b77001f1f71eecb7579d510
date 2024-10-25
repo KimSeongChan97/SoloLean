@@ -1,4 +1,0 @@
-$('.subjectA').click(function(){
-	if($('#memId').val() == '') alert('먼저 로그인하세요!');
-	
-});

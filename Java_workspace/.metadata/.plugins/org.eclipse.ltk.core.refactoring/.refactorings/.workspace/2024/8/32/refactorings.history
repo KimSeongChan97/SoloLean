@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete 27 resources" deleteContents="false" description="Delete 27 resources" element1="/00_solotest" element10="/08_interface" element11="/09_nested" element12="/10_collection" element13="/11_Iio" element14="/12_thread" element15="/13_lambda" element16="/14_network" element17="/15_stream" element18="/board" element19="/board2" element2="/01_basic" element20="/dbtest" element21="/gitExam" element22="/gitTest" element23="/member" element24="/school" element25="/school2" element26="/Team_project" element27="/workspace" element3="/02_if" element4="/03_for" element5="/04_Array" element6="/04_array01" element7="/05_class" element8="/06_inheritance" element9="/07_abstract" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="27" stamp="1722921661099"/>
-</session>

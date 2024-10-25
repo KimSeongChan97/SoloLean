@@ -1,9 +1,0 @@
-package user.dao;
-
-import user.bean.UserDTO;
-
-public interface UserDAO {
-
-	void write(UserDTO userDTO);
-	
-}

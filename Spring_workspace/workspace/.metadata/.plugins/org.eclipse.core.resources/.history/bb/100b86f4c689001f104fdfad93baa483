@@ -1,7 +1,0 @@
-package user.service.impl;
-
-import user.service.UserUploadService;
-
-public class UserUploadServiceImpl implements UserUploadService {
-
-}
