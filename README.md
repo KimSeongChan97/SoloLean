@@ -12,7 +12,7 @@
 - Docker 학습
 - Jenkins 이용하여 Deploy 해보았다
 - 리눅스 이용해보았다(기초적인 문법)
-- React(Node.js) 학습 진행중
+- React(Node.js + yarn) 학습 진행중
 - Spring Boot 학습 진행예정
 - JPA 학습 진행예정
 -  ... NCP 추가 교육 예정
@@ -42,10 +42,10 @@ Project
 1. https://github.com/KimSeongChan97/TeamProject.git
 2. https://github.com/KimSeongChan97/SoloPageMakingProject01.git
 3. https://github.com/KimSeongChan97/SoloProject01.git
-4. https://github.com/bitcamp-aiaas-9/FilmNote.git
+4. [팀플(MVC) 팀주소 ] : [FilmNoteGitHub](https://github.com/bitcamp-aiaas-9/FilmNote.git)
 5. [ 팀플(MVC) ] : [FilmNote](https://github.com/KimSeongChan97/SoloLean/tree/main/Web_workspace/workspace/FilmNote)
 6. [ 팀플(SpringMVC) ] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
-7. React..?
+7. Spring Boot + React 프로젝트 예상
 8.
 9. Spring Boot + JPA + React 
 
