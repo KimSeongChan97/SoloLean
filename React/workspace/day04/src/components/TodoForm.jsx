@@ -49,8 +49,10 @@ const TodoForm = ({ seq, list, setList }) => {
                        onChange={onInput} // 입력 필드 값이 변경될 때마다 onInput 함수가 호출됨.
                        value={text} // input의 값은 항상 state와 일치하도록 함.
                        ref={textRef} // textRef를 통해 이 필드를 참조할 수 있게 함.
-                       placeholder='해야 할 일을 입력하세요'/> {/* 사용자가 할 일을 입력하는 필드 */}
-                <button type='submit'>추가</button> {/* 할 일을 추가하는 버튼 */}
+                       placeholder='해야 할 일을 입력하세요' // 사용자가 할 일을 입력하는 필드
+                        className={TodoStyle.input}
+                       /> 
+                <button type='submit' className={TodoStyle.button}>추가</button> {/* 할 일을 추가하는 버튼 */}
             </form>
         </div>
     );

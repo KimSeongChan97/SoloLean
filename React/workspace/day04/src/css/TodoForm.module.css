@@ -1,41 +1,41 @@
 /* TodoForm.module.css */
 
+/* TodoForm.module.css */
 .TodoForm {
-     text-align: center;
-     padding: 40px 0;
-     background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* 그라데이션 배경 */
-     border-radius: 15px;
-   }
-   
-   .TodoForm input {
-     width: 300px;
-     height: 35px;
-     padding: 0 20px;
-     box-sizing: border-box;
-     vertical-align: top;
-     border: 1px solid #dcdcdc;
-     border-radius: 20px; /* 입력창에 라운드 코너 */
-     transition: all 0.3s ease;
-   }
-   
-   .TodoForm input:focus {
-     border-color: #495057; /* 입력 시 테두리 색상 변경 */
-     outline: none;
-   }
-   
-   .TodoForm button {
-     width: 80px;
-     height: 35px;
-     border: none;
-     border-radius: 20px; /* 버튼에 라운드 코너 */
-     background: linear-gradient(135deg, #51cf66, #69db7c); /* 버튼 그라데이션 */
-     color: white;
-     cursor: pointer;
-     transition: all 0.3s ease;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 버튼에 그림자 추가 */
-   }
-   
-   .TodoForm button:hover {
-     background: #40c057; /* 호버 시 색상 변화 */
-   }
-   
+  text-align: center;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+}
+
+.input { /* input에 직접 클래스명 적용 */
+  width: 300px;
+  height: 35px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  vertical-align: top;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.input:focus { /* input에 focus 시 스타일 */
+  border-color: #8bb5df;
+  outline: none;
+}
+
+.button { /* button에 직접 클래스명 적용 */
+  width: 80px;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #51cf66, #69db7c);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover { /* button에 hover 시 스타일 */
+  background: #40c057;
+}

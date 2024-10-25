@@ -21,7 +21,7 @@
 
 .TodoItem button {
   background: #f0f7ff;
-  color: #080808;
+  color: #352c2c;
   border-radius: 20px; /* 버튼의 라운드 코너 */
   width: 80px;
   height: 35px;
@@ -32,5 +32,5 @@
 }
 
 .TodoItem button:hover {
-  background: #88f0f0; /* 호버 시 버튼 색상 변화 */
+  background: #d5befa; /* 호버 시 버튼 색상 변화 */
 }
