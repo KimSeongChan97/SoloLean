@@ -27,12 +27,5 @@ export default [
          description: '할로윈 잭 오 랜턴',
          photo: 'https://cdn.pixabay.com/photo/2019/10/28/21/21/halloween-4585684_1280.jpg',
          price: 35000
-     },
-     {
-         id: '5',
-         name: '까마귀와 호박',
-         description: '호박까마귀',
-         photo: 'https://cdn.pixabay.com/photo/2023/08/15/06/31/bird-8191339_1280.jpg',
-         price: 40000
      }
 ]     

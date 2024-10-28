@@ -1,89 +1,159 @@
 .menunav {
-  width: 100%; /* 메뉴 내비게이션 바의 너비를 화면 전체로 설정 */
-  background: #efefef; /* 메뉴 내비게이션 바의 배경색을 연한 회색(#efefef)으로 지정 */
-  padding: 25px 0; /* 위아래 여백을 각각 25px로 설정하여 내비게이션 바의 높이를 조절 */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8); 
+  padding: 20px 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
+  border-radius: 13px; 
+  backdrop-filter: blur(5px); 
 }
+
 .menunav ul {
-  display: flex; /* 메뉴 아이템들을 가로로 나열하기 위해 Flexbox를 사용 */
-  justify-content: center; /* 메뉴 아이템들을 수평으로 중앙에 배치 */
+  display: flex;
+  justify-content: center;
   list-style-type: none;
 }
+
 .menunav ul li {
-  margin-right: 30px; /* 각 메뉴 아이템 사이에 30px의 간격을 설정 */
+  margin-right: 30px;
 }
+
 .menunav ul li a {
-  transition: 0.3s; /* 링크에 마우스를 올렸을 때 색상이 0.3초 동안 부드럽게 전환되도록 설정 */
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #333;
+  letter-spacing: 1.2px; 
+  transition: color 0.3s, transform 0.4s ease-in-out; 
 }
+
 .menunav ul li a:hover {
-  color: tomato; /* 링크에 마우스를 올리면 글자색이 'tomato' 색상으로 변경됨 */
+  color: #ff6b6b; 
+  transform: translateY(-5px); 
 }
 
 .main {
-  width: 1000px; /* 메인 컨테이너의 너비를 1000px로 설정하여 화면 중앙에 고정된 너비로 보이게 함 */
-  margin: 50px auto; /* 컨테이너를 상하 50px의 여백을 두고 수평 중앙에 배치 */
-  text-align: center; /* 내부 텍스트를 모두 가운데 정렬 */
+  width: 1000px;
+  margin: 50px auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9); 
+  padding: 30px;
+  border-radius: 18px; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
+
 .main h1 {
-  font-size: 70px; /* 메인 제목(h1)의 폰트 크기를 70px로 설정하여 큰 글씨로 표시 */
-  margin-bottom: 15px; /* 제목과 다음 요소 사이에 15px의 간격을 추가 */
+  font-size: 64px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #34495e;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); 
 }
+
 .main h2 {
-  font-size: 50px; /* 메인 부제목(h2)의 폰트 크기를 50px로 설정하여 h1보다는 작지만 크게 보이게 함 */
+  font-size: 40px;
+  color: #2c3e50;
 }
 
 .products {
-  width: 1100px; /* 제품 리스트 컨테이너의 너비를 1100px로 설정하여 중앙에 고정된 넓이로 보이게 함 */
-  margin: 50px auto; /* 제품 리스트를 화면의 수평 중앙에 배치하고 상하 여백을 50px로 설정 */
+  width: 1100px;
+  margin: 50px auto;
 }
+
 .products h2 {
-  font-size: 40px; /* 제품 리스트의 제목(h2) 크기를 40px로 설정 */
-  margin-bottom: 20px; /* 제목과 다음 요소 사이에 20px의 간격을 추가 */
-  font-weight: 600; /* 글자의 굵기를 600으로 설정하여 제목을 강조 */
+  font-size: 38px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #4a4a4a;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); 
 }
+
 .products div {
-  display: flex; /* 제품 목록을 Flexbox로 설정하여 가로로 나열 가능하게 함 */
-  justify-content: space-between; /* 제품들 사이의 공간을 고르게 분배하여 양 끝에 여백을 줌 */
+  display: flex;
+  justify-content: space-between;
 }
+
 .products article {
-  border: 1px solid #dcdcdc; /* 각 제품 카드에 1px 두께의 연한 회색(#dcdcdc) 테두리를 설정 */
-  padding: 20px; /* 제품 카드 내부에 20px의 여백을 주어 내용이 카드 안에 여유 있게 배치되도록 함 */
+  border: 1px solid #e0e0e0;
+  padding: 25px;
+  border-radius: 10px;
+  transition: transform 0.4s, box-shadow 0.5s ease-in-out; 
+  background: linear-gradient(135deg, #fdfbfb, #ebedee); 
 }
+
+.products article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 .products article h3 {
-  font-size: 25px; /* 제품 이름(h3)의 폰트 크기를 25px로 설정 */
-  margin-bottom: 15px; /* 제품 이름과 다음 요소 사이에 15px의 간격을 추가 */
-  text-align: center; /* 제품 이름을 카드 내에서 중앙 정렬 */
-  color: tomato; /* 제품 이름의 색상을 tomato 색상으로 설정 */
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #f75a3e;
 }
+
 .products article img {
-  width: 200px; /* 제품 이미지를 고정 너비 200px로 설정하여 크기를 일정하게 표시 */
+  width: 180px;
+  height: 180px;
+  margin-bottom: 15px;
+  border-radius: 80%; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); 
 }
 
 .item {
-  width: 1000px; /* 제품 상세보기 페이지의 컨테이너 너비를 1000px로 설정 */
-  margin: 50px auto; /* 수평 중앙 배치하고, 위아래 50px의 여백을 추가 */
-  text-align: center; /* 내부 텍스트를 중앙 정렬 */
+  width: 1000px;
+  margin: 50px auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 .item h2 {
-  font-size: 50px; /* 제품 이름(h2)의 폰트 크기를 50px로 설정하여 큰 글씨로 표시 */
-  margin-bottom: 20px; /* 제품 이름과 다음 요소 사이에 20px의 간격을 추가 */
-  color: tomato; /* 제품 이름의 글자 색상을 tomato 색상으로 설정 */
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #ff6b6b;
 }
+
 .item h3 {
-  font-size: 30px; /* 제품 가격(h3)의 폰트 크기를 30px로 설정하여 다른 텍스트보다 강조 */
-  margin-bottom: 15px; /* 가격과 다음 요소 사이에 15px의 간격을 추가 */
+  font-size: 30px;
+  color: #34495e;
+  margin-bottom: 15px;
 }
+
 .item img {
-  width: 300px; /* 제품 상세보기 이미지 크기를 고정 너비 300px로 설정하여 화면에 크게 표시 */
+  width: 300px;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6); 
+  transition: transform 0.5s ease; 
 }
+
+.item img:hover {
+  transform: scale(1.08); 
+}
+
 .item p:last-of-type {
-  margin-top: 20px; /* 마지막 <p> 태그 위쪽에 20px의 간격을 추가 */
-  font-size: 20px; /* 마지막 <p> 태그의 글자 크기를 20px로 설정하여 설명을 강조 */
-  margin-bottom: 15px; /* 설명과 다음 요소 사이에 15px의 간격을 추가 */
+  margin-top: 20px;
+  font-size: 20px;
+  color: #2b2626;
+  margin-bottom: 15px;
+  line-height: 1.8; 
 }
+
 .item button {
-  width: 200px; /* 버튼의 너비를 200px로 설정 */
-  height: 40px; /* 버튼의 높이를 40px로 설정하여 큰 버튼 느낌을 줌 */
-  background: #000; /* 버튼 배경색을 검정색(#000)으로 설정 */
-  color: #fff; /* 버튼 글자색을 흰색(#fff)으로 설정하여 배경과 대비되도록 만듦 */
-  border: none; /* 버튼 테두리를 없앰 */
+  width: 200px;
+  height: 45px;
+  background: #34495e;
+  color: #f1d0b4;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 25px; 
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.item button:hover {
+  background: #328ae2;
+  transform: translateY(-8px);
 }
