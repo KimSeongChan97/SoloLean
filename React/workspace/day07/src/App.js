@@ -24,7 +24,7 @@ const App = () => {
         <App03 />
         <hr/>
         <App04 /> */}
-        <hr/>
+        <br/>
         <App05 />
         <hr/>
       </div>

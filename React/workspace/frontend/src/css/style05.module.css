@@ -1,0 +1,136 @@
+/* 전체적인 네비게이션 메뉴 스타일 */
+.menunav {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8); 
+  padding: 15px 0;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px;
+  backdrop-filter: blur(4px); 
+}
+
+.menunav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menunav ul li {
+  margin: 0 15px;
+}
+
+.menunav ul li a {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #555;
+  letter-spacing: 1.2px;
+  transition: color 0.3s, transform 0.4s ease-in-out; 
+}
+
+.menunav ul li a:hover {
+  color: #ff6868; 
+  transform: scale(1.1);
+}
+
+/* 메인 페이지 스타일 */
+.main {
+  width: 80%;
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe8d5, #f4d4e0);
+  padding: 30px;
+  border-radius: 18px; 
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08); 
+}
+
+.main h1 {
+  font-size: 3rem;
+  margin-bottom: 8px;
+  color: #3a3d46;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.main h2 {
+  font-size: 1.8rem;
+  color: #52575c;
+  margin-bottom: 20px;
+}
+
+/* 글쓰기 및 목록 스타일 */
+.products {
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 15px;
+}
+
+.products h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3a3d46;
+  margin-bottom: 10px;
+}
+
+.products div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.products article {
+  width: calc(33% - 20px);
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.products article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.products article h3 {
+  font-size: 20px;
+  color: #ff6868;
+  margin-bottom: 10px;
+}
+
+.products article img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 50%; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+/* 버튼 스타일 */
+.item button {
+  width: 150px;
+  height: 40px;
+  background: #ff6868;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 20px; 
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: none;
+}
+
+.item button:hover {
+  background: #ff8282;
+  transform: translateY(-3px);
+}
+
+.item button:active {
+  transform: scale(0.98);
+}

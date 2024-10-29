@@ -88,7 +88,8 @@
   font-size: 24px;
   margin-bottom: 15px;
   text-align: center;
-  color: #f75a3e;
+  color: #f37e1e;
+  text-decoration: underline;
 }
 
 .products article img {
@@ -144,7 +145,7 @@
 .item button {
   width: 200px;
   height: 45px;
-  background: #34495e;
+  background: #6627f8;
   color: #f1d0b4;
   font-weight: bold;
   font-size: 16px;
@@ -154,6 +155,6 @@
 }
 
 .item button:hover {
-  background: #328ae2;
-  transform: translateY(-8px);
+  background: #c9a9fd;
+  transform: translateY(-3px);
 }

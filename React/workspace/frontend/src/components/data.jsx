@@ -1,5 +1,5 @@
 //  순수 데이터
-export default [
+const data = [
      {
          id: '1',
          name: '토심이 러브러브',
@@ -35,4 +35,5 @@ export default [
         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGU0sx2qwSLJcnHowFagM0D7elgxNPaUuF2g&s',
         price: 20000
     }
-]     
+];
+export default data;
