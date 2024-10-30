@@ -1,44 +1,40 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import loginStyle from '../../css/loginForm.module.css';
 import { useNavigate } from 'react-router-dom';
+import loginStyle from '../../css/loginForm.module.css';
 
 const LoginForm = () => {
   const [id, setId] = useState('');
   const [pwd, setPwd] = useState('');
   const [idDiv, setIdDiv] = useState('');
   const [pwdDiv, setPwdDiv] = useState('');
-  const [loginResult, setLoginResult] = useState('');
+  const [result, setResult] = useState('');
   const navigate = useNavigate();
 
   const onLoginSubmit = (e) => {
     e.preventDefault();
     setIdDiv('');
     setPwdDiv('');
-    setLoginResult('');
+    setResult('');
 
     if (!id) { 
       setIdDiv(' 아이디를 입력하시오 !');
     } else if (!pwd) { 
       setPwdDiv(' 비밀번호를 입력하시오 !');
     } else { 
-      // 로그인 요청
-      axios.get(`http://localhost:8080/spring/member/login?id=${id}&password=${pwd}`, {
-        withCredentials: true // CORS 정책에 따른 쿠키 전달
-      })
-      .then(res => {
-        if (res.data === 'success') {
-          setLoginResult('로그인 성공');
-          sessionStorage.setItem('userId', id); // 세션에 사용자 ID 저장
-          navigate('/'); // 로그인 성공 시 메인 페이지로 이동
-        } else {
-          setLoginResult('아이디 또는 비밀번호가 틀렸습니다.');
-        }
-      })
-      .catch(error => {
-        console.error('로그인 요청 오류', error);
-        setLoginResult('서버 요청 중 오류가 발생했습니다.');
-      });
+      axios.get(`http://localhost:8080/spring/member/login?id=${id}&pwd=${pwd}`, { withCredentials: true })
+        .then(res => {
+          if (res.data === 'success') {
+            alert('로그인 성공!');
+            navigate('/'); // 로그인 성공 시 메인 화면으로 이동
+          } else {
+            setResult('아이디 또는 비밀번호가 틀렸습니다');
+          }
+        })
+        .catch(error => {
+          console.error('로그인 중 오류 발생:', error);
+          setResult('Spring 과의 연결이 올바르지 않음');
+        });
     }
   };
 
@@ -81,7 +77,8 @@ const LoginForm = () => {
             </tr>
           </tbody>
         </table>
-        <div>{loginResult}</div>
+        <br/>
+        <div id={loginStyle.result}>{result}</div>
       </form>
     </div>
   );

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="board.dao.BoardDAO">
+ 
+ 	<!-- 글쓰기  -->
+ 	<insert id="boardWrite" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="seq">
+        INSERT INTO board (id, name, email, subject, content) 
+        VALUES (#{id}, #{name}, #{email}, #{subject}, #{content})
+    </insert>
+ 	<update id="refUpdate">
+ 		update board set ref=LAST_INSERT_ID() where seq=LAST_INSERT_ID()
+ 	</update>
+ 	
+ 	<!-- 글 목록 조회  -->
+ 	<select id="BoardList" resultType="boardDTO">
+        SELECT * FROM board ORDER BY seq DESC
+    </select>
+ 
+ </mapper>

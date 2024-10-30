@@ -1,0 +1,113 @@
+/* BoardWriteForm.module.css */
+
+/* 전체 화면을 중앙 정렬 */
+.BoardWriteForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #f0f4f8; /* 부드러운 회색-파랑 배경색 */
+}
+
+/* 컨테이너 스타일 */
+.container {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-4px);
+}
+
+/* 제목 스타일 */
+.title {
+  font-size: 26px;
+  color: #2d3748; /* 어두운 회색 */
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* 라벨 스타일 */
+.label {
+  font-size: 16px;
+  color: #4a5568; /* 중간 회색 */
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+}
+
+/* 입력 필드 스타일 */
+.input, .textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  outline: none;
+  box-sizing: border-box;
+  margin-top: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  box-shadow: 0px 4px 8px rgba(56, 132, 255, 0.2);
+  border-color: #3182ce; /* 집중 시 밝은 파란색 */
+}
+
+/* 텍스트 영역 스타일 */
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* 경고 메시지 스타일 */
+#subjectDiv, #contentDiv {
+  color: #e53e3e; /* 경고용 빨간색 */
+  font-size: 13px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* 버튼 스타일 */
+.button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #3182ce;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 18px;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+.button:hover {
+  background-color: #2b6cb0;
+}
+
+.button:active {
+  background-color: #2c5282;
+  transform: scale(0.98);
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px 0;
+}
+

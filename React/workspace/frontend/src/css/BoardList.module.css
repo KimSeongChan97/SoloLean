@@ -1,0 +1,85 @@
+/* BoardList.module.css */
+
+.Boardlist {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 30px;
+     background: linear-gradient(135deg, #e3f2fd, #ede7f6);
+     min-height: 90vh;
+     border-radius: 8px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ }
+ 
+ /* 제목 스타일 */
+ h1 {
+     font-size: 30px;
+     font-weight: 700;
+     color: #333;
+     margin-bottom: 40px;
+     text-align: center;
+     letter-spacing: 1px;
+     color: #333;
+ }
+ 
+ /* 테이블 스타일 */
+ table {
+     width: 100%;
+     max-width: 900px;
+     border-collapse: separate;
+     background-color: rgba(255, 255, 255, 0.8);
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+     margin-bottom: 30px;
+     backdrop-filter: blur(10px);
+ }
+ 
+ /* 테이블 헤더 스타일 */
+ thead th {
+     background-color: #5c6bc0;
+     color: #ffffff;
+     font-size: 18px;
+     font-weight: 600;
+     padding: 18px;
+     text-align: center;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+ }
+ 
+ /* 테이블 본문 스타일 */
+ tbody td {
+     font-size: 16px;
+     color: #444;
+     padding: 16px;
+     text-align: center;
+     border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+ }
+ 
+ /* 테이블 행에 호버 효과 추가 */
+ tbody tr:hover {
+     background-color: rgba(233, 244, 251, 0.7);
+     transform: translateY(-3px);
+     transition: transform 0.2s ease, background-color 0.2s ease;
+ }
+ 
+ /* 게시글 항목 스타일 */
+ .listItem {
+     cursor: pointer;
+     transition: color 0.2s ease;
+ }
+ 
+ .listItem:hover .postTitle {
+     color: #3f51b5;
+     text-decoration: underline;
+ }
+ 
+ /* 게시글 항목의 제목 스타일 */
+ .postTitle {
+     font-size: 20px;
+     font-weight: bold;
+     color: #333;
+     margin-bottom: 10px;
+     line-height: 1.4;
+ }
+ 
