@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../../css/BoardList.module.css';
 import axios from 'axios';
 
 const Boardlist = () => {
-    const [ list, setList ] = useState([]);
+    const [list, setList] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8080/spring/board/BoardList`)
@@ -16,27 +17,27 @@ const Boardlist = () => {
 
     return (
         <div className={styles.Boardlist}>
-            <h1> BoardList </h1>
+            <h1>BoardList</h1>
 
             <table border={1} frame='hsides' rules='rows'>
                 <thead>
                     <tr>
-                        <th> 번호 </th>
-                        <th> 제목 </th>
-                        <th> 작성자 </th>
-                        <th> 조회수 </th>
-                        <th> 작성일 </th>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>작성일</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         list.map(board => (
-                            <tr key={ board.seq }>
-                                <td>{ board.seq }</td> 
-                                <td>{ board.subject }</td> 
-                                <td>{ board.name }</td> 
-                                <td>{ board.hit }</td>  
-                                <td>{ board.logtime }</td>
+                            <tr key={board.seq}>
+                                <td>{board.seq}</td> 
+                                <td><Link to={`/board/BoardDetail/${board.seq}`}>{board.subject}</Link></td> 
+                                <td>{board.name}</td> 
+                                <td>{board.hit}</td>  
+                                <td>{board.logtime}</td>
                             </tr>
                         ))
                     }

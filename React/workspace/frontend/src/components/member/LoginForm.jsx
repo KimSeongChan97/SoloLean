@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import loginStyle from '../../css/loginForm.module.css';
 
-const LoginForm = () => {
+const LoginForm = ({ setIsLoggedIn }) => {
   const [id, setId] = useState('');
   const [pwd, setPwd] = useState('');
   const [idDiv, setIdDiv] = useState('');
@@ -26,6 +26,7 @@ const LoginForm = () => {
         .then(res => {
           if (res.data === 'success') {
             alert('로그인 성공!');
+            setIsLoggedIn(true); // 로그인 상태 갱신
             navigate('/'); // 로그인 성공 시 메인 화면으로 이동
           } else {
             setResult('아이디 또는 비밀번호가 틀렸습니다');

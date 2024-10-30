@@ -22,7 +22,7 @@ public class BoardDTO {
     private int reply; 
     private int hit;
     
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd") // Jackson 에서 제공
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy년 MM월 dd일 / HH시 mm분", timezone = "Asia/Seoul") // Jackson 에서 제공
     private Date logtime;
     
 }

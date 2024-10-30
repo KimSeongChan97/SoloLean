@@ -18,5 +18,14 @@
  	<select id="BoardList" resultType="boardDTO">
         SELECT * FROM board ORDER BY seq DESC
     </select>
+    
+    <!-- 글 상세보기  -->
+	<select id="BoardDetail" parameterType="int" resultType="boardDTO">
+	    SELECT * FROM board WHERE seq = #{seq}
+	</select>
+    <!-- 글 상세보기 시 조회수 증가  -->
+    <update id="HitCount" parameterType="int">
+    	 UPDATE board SET hit = hit + 1 WHERE seq = #{seq}
+    </update>
  
  </mapper>

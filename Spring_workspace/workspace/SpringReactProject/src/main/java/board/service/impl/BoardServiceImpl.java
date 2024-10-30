@@ -49,6 +49,17 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
+	@Override
+	public BoardDTO BoardDetail(int seq) {
+		
+		return boardDAO.BoardDetail(seq);
+	}
+	
+	@Override
+	public void HitCount(int seq) {
+		
+		boardDAO.HitCount(seq);
+	}
 	
 	
 }

@@ -15,5 +15,9 @@ public interface BoardDAO {
 
 	public List<BoardDTO> BoardList();
 	
+	public BoardDTO BoardDetail(int seq);
+	
+	public void HitCount(int seq);
+	
 	
 }
