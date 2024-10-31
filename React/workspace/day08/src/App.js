@@ -3,6 +3,8 @@ import Time from './Time';
 import Color from './components/Color';
 import Count from './components/Count';
 import Animal from './components/Animal';
+import CoffeeResult from './components/CoffeeResult';
+import CoffeeOrder from './components/CoffeeOrder';
 
 const App = () => {
   return (
@@ -14,14 +16,18 @@ const App = () => {
         <div>
           <br/>
           <Time />
+          {/*
           <br/>
-          <Color />  
+           <Color />  
           <br/>
           <Count />
           <br/>
           <Animal />
+          <br/> */}
           <br/>
-
+          <CoffeeOrder />
+          <br/>
+          <CoffeeResult />
           <br/>
           
           <br/>
