@@ -27,7 +27,7 @@ const CoffeeOrder = () => {
                 <tbody>
                     {items.map(it => (
                         <tr key={it.id} className={styles.row}>
-                            <td className={styles.itemName}>{it.name}</td>
+                            <td className={styles.itemName}>🍵 {it.name} </td>
                             <td className={styles.itemPrice}>{it.price.toLocaleString()} 원</td>
                             <td>
                                 <input

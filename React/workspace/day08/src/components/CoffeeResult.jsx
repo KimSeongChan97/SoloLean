@@ -18,17 +18,17 @@ const CoffeeResult = () => {
             <table className={styles.table}>
                 <thead>
                     <tr className={styles.headerRow}>
-                        <th>품목</th>
-                        <th>수량</th>
-                        <th>총합</th>
+                        <th>😜 품목</th>
+                        <th>🍵 수량</th>
+                        <th>✅ 총합</th>
                     </tr>
                 </thead>
                 <tbody>
                     {selected.map(it => (
                         <tr key={it.id} className={styles.row}>
                             <td className={styles.itemName}>{it.name}</td>
-                            <td className={styles.itemQty}>{it.qty} 개</td>
-                            <td className={styles.itemTotal}>{ (it.price * it.qty).toLocaleString() } 원</td>
+                            <td className={styles.itemQty}>🍵 {it.qty} 잔</td>
+                            <td className={styles.itemTotal}>✅ { (it.price * it.qty).toLocaleString() } 원 </td>
                         </tr>
                     ))}
                 </tbody>
