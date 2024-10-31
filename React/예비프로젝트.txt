@@ -1,0 +1,350 @@
+예비프로젝트
+-----------
+
+로그인 상태와 사용자 정보를 관리하고, 인증 상태에 따라 접근 권한을 제어하며, 애니메이션 제어와 페이지 상태 관리, 알림 기능을 포함한 리덕스 기반의 프로젝트를 만들어보겠습니다. 이 프로젝트는 다음과 같은 기능을 포함합니다:
+
+1. **로그인/로그아웃**: 사용자의 로그인 상태와 사용자 정보를 관리합니다.
+2. **권한에 따른 페이지 접근 제어**: 로그인 상태에 따라 특정 페이지 접근을 제한합니다.
+3. **사용자 정보 변경**: 사용자가 정보를 수정할 수 있습니다.
+4. **애니메이션 제어**: 로그인/로그아웃 시 간단한 애니메이션 효과를 적용합니다.
+5. **알림 제공**: 로그인 성공/실패, 정보 변경 등의 알림을 제공합니다.
+6. **페이지 상태 관리**: 여러 페이지를 구성하고 각 페이지의 상태를 관리합니다.
+
+### 프로젝트 구조
+```plaintext
+src/
+│
+├── components/
+│   ├── AuthRoute.jsx                // 권한에 따른 페이지 접근 제어 컴포넌트
+│   ├── Home.jsx                     // 홈 페이지 컴포넌트
+│   ├── Login.jsx                    // 로그인 페이지 컴포넌트
+│   ├── Profile.jsx                  // 프로필 페이지 컴포넌트 (사용자 정보 변경)
+│   └── Notification.jsx             // 알림 컴포넌트
+│
+├── modules/
+│   ├── auth.js                      // 로그인 상태 및 사용자 정보 관리 리덕스 모듈
+│   ├── notification.js              // 알림 관리 리덕스 모듈
+│
+├── store/
+│   └── index.js                     // 리덕스 스토어 생성 및 리듀서 결합
+│
+└── App.js                           // 메인 애플리케이션 컴포넌트
+└── index.js                         // ReactDOM.render 및 Provider 설정
+```
+
+---
+
+### 1. **`modules/auth.js`** - 로그인 상태와 사용자 정보 관리 리덕스 모듈
+
+```javascript
+// modules/auth.js
+
+// 1. 액션 타입 정의
+const LOGIN = 'auth/LOGIN';
+const LOGOUT = 'auth/LOGOUT';
+const UPDATE_USER = 'auth/UPDATE_USER';
+
+// 2. 액션 생성 함수
+export const login = (user) => ({ type: LOGIN, payload: user });
+export const logout = () => ({ type: LOGOUT });
+export const updateUser = (user) => ({ type: UPDATE_USER, payload: user });
+
+// 3. 초기 상태
+const initialState = {
+    isLoggedIn: false, // 로그인 여부
+    user: null         // 사용자 정보
+};
+
+// 4. 리듀서
+const authReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOGIN:
+            return { ...state, isLoggedIn: true, user: action.payload };
+        case LOGOUT:
+            return { ...state, isLoggedIn: false, user: null };
+        case UPDATE_USER:
+            return { ...state, user: { ...state.user, ...action.payload } };
+        default:
+            return state;
+    }
+};
+
+export default authReducer;
+```
+
+---
+
+### 2. **`modules/notification.js`** - 알림 관리 리덕스 모듈
+
+```javascript
+// modules/notification.js
+
+// 1. 액션 타입 정의
+const SET_NOTIFICATION = 'notification/SET_NOTIFICATION';
+const CLEAR_NOTIFICATION = 'notification/CLEAR_NOTIFICATION';
+
+// 2. 액션 생성 함수
+export const setNotification = (message) => ({ type: SET_NOTIFICATION, payload: message });
+export const clearNotification = () => ({ type: CLEAR_NOTIFICATION });
+
+// 3. 초기 상태
+const initialState = {
+    message: null // 알림 메시지
+};
+
+// 4. 리듀서
+const notificationReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case SET_NOTIFICATION:
+            return { ...state, message: action.payload };
+        case CLEAR_NOTIFICATION:
+            return { ...state, message: null };
+        default:
+            return state;
+    }
+};
+
+export default notificationReducer;
+```
+
+---
+
+### 3. **`store/index.js`** - 스토어 생성 및 리듀서 결합
+
+```javascript
+// store/index.js
+import { createStore, combineReducers } from 'redux';
+import authReducer from '../modules/auth';
+import notificationReducer from '../modules/notification';
+
+const rootReducer = combineReducers({
+    auth: authReducer,
+    notification: notificationReducer
+});
+
+const store = createStore(rootReducer);
+
+export default store;
+```
+
+---
+
+### 4. **`components/Login.jsx`** - 로그인 페이지 컴포넌트
+
+```javascript
+// components/Login.jsx
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login, setNotification } from '../modules/auth';
+
+const Login = () => {
+    const [username, setUsername] = useState('');
+    const dispatch = useDispatch();
+
+    const handleLogin = () => {
+        const user = { name: username };
+        dispatch(login(user));
+        dispatch(setNotification('로그인 성공!'));
+    };
+
+    return (
+        <div>
+            <h2>로그인 페이지</h2>
+            <input
+                type="text"
+                placeholder="사용자 이름"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <button onClick={handleLogin}>로그인</button>
+        </div>
+    );
+};
+
+export default Login;
+```
+
+---
+
+### 5. **`components/Profile.jsx`** - 프로필 페이지 컴포넌트 (사용자 정보 변경)
+
+```javascript
+// components/Profile.jsx
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser, setNotification } from '../modules/auth';
+
+const Profile = () => {
+    const user = useSelector((state) => state.auth.user);
+    const [name, setName] = useState(user ? user.name : '');
+    const dispatch = useDispatch();
+
+    const handleUpdate = () => {
+        dispatch(updateUser({ name }));
+        dispatch(setNotification('사용자 정보가 업데이트되었습니다.'));
+    };
+
+    return (
+        <div>
+            <h2>프로필 페이지</h2>
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <button onClick={handleUpdate}>정보 업데이트</button>
+        </div>
+    );
+};
+
+export default Profile;
+```
+
+---
+
+### 6. **`components/Home.jsx`** - 홈 페이지 컴포넌트
+
+```javascript
+// components/Home.jsx
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const Home = () => {
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+    return (
+        <div>
+            <h1>홈 페이지</h1>
+            <p>{isLoggedIn ? '로그인 상태입니다.' : '로그아웃 상태입니다.'}</p>
+        </div>
+    );
+};
+
+export default Home;
+```
+
+---
+
+### 7. **`components/Notification.jsx`** - 알림 컴포넌트
+
+```javascript
+// components/Notification.jsx
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearNotification } from '../modules/notification';
+
+const Notification = () => {
+    const message = useSelector((state) => state.notification.message);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => dispatch(clearNotification()), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [message, dispatch]);
+
+    if (!message) return null;
+
+    return (
+        <div className="notification">
+            {message}
+        </div>
+    );
+};
+
+export default Notification;
+```
+
+---
+
+### 8. **`components/AuthRoute.jsx`** - 권한에 따른 페이지 접근 제어 컴포넌트
+
+```javascript
+// components/AuthRoute.jsx
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect, Route } from 'react-router-dom';
+
+const AuthRoute = ({ component: Component, ...rest }) => {
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+    return (
+        <Route
+            {...rest}
+            render={(props) =>
+                isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />
+            }
+        />
+    );
+};
+
+export default AuthRoute;
+```
+
+---
+
+### 9. **`App.js`** - 메인 애플리케이션 컴포넌트
+
+```javascript
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import AuthRoute from './components/AuthRoute';
+import Notification from './components/Notification';
+
+const App = () => {
+    return (
+        <Router>
+            <div>
+                <Notification />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/login" component={Login} />
+                    <AuthRoute path="/profile" component={Profile} />
+                </Switch>
+            </div>
+        </Router>
+    );
+};
+
+export default App;
+```
+
+---
+
+### 10. **`index.js`** - ReactDOM
+
+.render 및 Redux Provider 설정
+
+```javascript
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App';
+import store from './store';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
+```
+
+---
+
+### 설명
+이 프로젝트는 다음과 같은 리덕스 기능을 활용하여 구현되었습니다.
+
+- **인증 관리**: 로그인, 로그아웃, 사용자 정보 업데이트 기능을 통해 인증 상태를 관리합니다.
+- **권한 기반 페이지 접근 제어**: 로그인 상태에 따라 특정 페이지 접근을 제한합니다.
+- **알림 제공**: 로그인 성공, 정보 변경 등과 같은 이벤트에 알림을 제공합니다.
+- **애니메이션**: 알림 메시지에 일정 시간 동안 보여지는 애니메이션 효과를 적용했습니다.
+- **페이지 상태 관리**: 각 페이지의 상태를 리덕스를 통해 관리합니다. 
+
+이 코드 구조를 통해 사용자는 로그인 후 특정 페이지에 접근할 수 있으며, 정보 변경 시 알림을 받을 수 있습니다.
