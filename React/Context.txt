@@ -1,0 +1,9 @@
+Context
+
+--------------------
+Theme(테마)
+Context와 Reducer 결합
+
+동적인 Context 값 예제
+Context를 이용해 상태 관리를 할 때, 동적인 값을 전달하고 싶다면 useState를 함께 사용
+

@@ -58,6 +58,10 @@ reportWebVitals();
 - **Dispatch**: 액션을 리듀서에 전달하여 상태를 변경하는 메소드.
 
 ### 설치 및 설정
+yarn add react-redux
+yarn add react-router-dom
+yarn add axioxyarn add axiox
+
 1. `yarn add react-redux redux redux-devtools-extension`
 2. **createStore**: Redux 저장소 생성.
 3. **combineReducers**: 여러 리듀서를 루트 리듀서로 결합.

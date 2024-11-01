@@ -1,0 +1,58 @@
+day09
+	src
+		components
+			{/*
+			Count.jsx
+			Color.jsx
+			ChangeColor.jsx
+			ChangeCount.jsx	
+
+			Counter.jsx
+			*/}
+
+			Todos.jsx
+			TodoInput.jsx
+			TodoList.jsx
+			TodoItem.jsx
+		contexts
+			{/*
+			CountContext.jsx
+			ColorContext.jsx
+			ChangeColorContext.jsx
+			ChangeCountContext.jsx
+
+			CounterContext.jsx
+			ToggleContext.jsx
+			*/}
+
+			TodosContext.jsx
+
+---
+
+TodosContext.jsx: 
+할 일 목록을 관리하는 context로, 목록 상태와 이를 추가, 삭제, 상태 변경할 수 있는 기능을 제공
+
+Todos.jsx:
+ 전체 할 일 관리 컴포넌트를 담당하는 최상위 컴포넌트로, 할 일 추가 및 리스트 컴포넌트를 포함
+
+TodoInput.jsx:
+ 할 일 항목을 추가할 수 있는 입력 폼을 담당
+
+TodoList.jsx:
+ 할 일 목록을 렌더링하며, 각각의 항목을 TodoItem 컴포넌트로 표시
+
+TodoItem.jsx:
+ 개별 할 일 항목을 렌더링하며, 상태 변경(체크박스) 및 삭제 기능을 제공
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+/* src/css/TodoInput.module.css */
+
+.inputContainer {
+     display: flex;
+     justify-content: center;
+     margin: 15px 0;
+ }
+ 
+ .inputField {
+     padding: 8px 12px;
+     font-size: 16px;
+     border: 1px solid #b0bec5;
+     border-radius: 8px;
+     outline: none;
+     margin-right: 10px;
+     width: 70%;
+     transition: all 0.3s;
+ }
+ 
+ .inputField:focus {
+     border-color: #00796b; 
+     box-shadow: 0 0 8px rgba(0, 150, 136, 0.3);
+ }
+ 
+ .addButton {
+     padding: 8px 15px;
+     font-size: 15px;
+     color: white;
+     background-color: #ff7043;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     box-shadow: 0 4px 8px rgba(255, 112, 67, 0.4);
+     transition: background-color 0.3s, transform 0.2s;
+ }
+ 
+ .addButton:hover {
+     background-color: #ff5722;
+     transform: scale(1.05);
+ }
+ 

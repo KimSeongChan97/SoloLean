@@ -1,0 +1,25 @@
+/* src/css/Todos.module.css */
+
+.container {
+     max-width: 420px;
+     margin: 20px auto;
+     padding: 25px;
+     background: linear-gradient(135deg, #f0f4ff, #e0f7fa);
+     border-radius: 16px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+     text-align: center;
+ }
+ 
+ .title {
+     font-size: 26px;
+     color: #00796b; 
+     margin-bottom: 20px;
+ }
+ 
+ .subtitle {
+     font-size: 20px;
+     color: #37474f; 
+     margin: 15px 0;
+     text-align: center;
+ }
+ 
