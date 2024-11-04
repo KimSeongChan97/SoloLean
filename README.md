@@ -12,9 +12,9 @@
 - Docker 학습
 - Jenkins 이용하여 Deploy 해보았다
 - 리눅스 이용해보았다(기초적인 문법)
-- React(Node.js + yarn) 학습 진행중
-- Spring Boot 학습 진행예정
-- JPA 학습 진행예정
+- React(Node.js + yarn) 학습
+- Spring Boot 학습
+- JPA 학습
 -  ... NCP 추가 교육 예정
 
 ==============================================
