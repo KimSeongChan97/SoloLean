@@ -66,7 +66,6 @@ const App = () => {
               </CounterProvider>
  */}
           <br/>
-
                 <TodosProvider>
                   <ColorProvider>
                     <CountProvider>
@@ -78,7 +77,6 @@ const App = () => {
                     </CountProvider>
                   </ColorProvider>
                 </TodosProvider>
-
           <br/>
       </div>
     </div>
