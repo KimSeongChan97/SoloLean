@@ -1,0 +1,60 @@
+/* BoardInput.module.css */
+
+.container {
+     padding: 30px;
+     background-color: rgba(224, 248, 255, 0.95); 
+     border-radius: 15px;
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+     max-width: 600px;
+     margin: 20px auto;
+     font-family: 'Orbitron', sans-serif;
+     transition: transform 0.2s ease;
+   }
+   
+   .container:hover {
+     transform: scale(1.02); 
+   }
+   
+   .form {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+   }
+   
+   .input, .textarea {
+     padding: 12px;
+     font-size: 16px;
+     border-radius: 8px;
+     border: 1px solid #89c9b8;
+     background-color: #e0ffff;
+     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+     transition: border 0.3s ease, box-shadow 0.3s ease;
+   }
+   
+   .input:focus, .textarea:focus {
+     border-color: #00b4d8;
+     box-shadow: 0 0 8px rgba(0, 180, 216, 0.5);
+     outline: none;
+   }
+   
+   .textarea {
+     resize: vertical;
+   }
+   
+   .button {
+     padding: 14px;
+     font-size: 16px;
+     color: white;
+     background: linear-gradient(135deg, #0077b6, #0096c7); 
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     transition: background 0.3s ease, transform 0.2s ease;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   }
+   
+   .button:hover {
+     background: linear-gradient(135deg, #0096c7, #0077b6); 
+     transform: translateY(-2px); 
+   }
+   
