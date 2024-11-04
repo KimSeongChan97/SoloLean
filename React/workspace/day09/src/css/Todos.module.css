@@ -1,25 +1,25 @@
 /* src/css/Todos.module.css */
 
 .container {
-     max-width: 420px;
-     margin: 20px auto;
-     padding: 25px;
-     background: linear-gradient(135deg, #f0f4ff, #e0f7fa);
-     border-radius: 16px;
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-     text-align: center;
- }
- 
- .title {
-     font-size: 26px;
-     color: #00796b; 
-     margin-bottom: 20px;
- }
- 
- .subtitle {
-     font-size: 20px;
-     color: #37474f; 
-     margin: 15px 0;
-     text-align: center;
- }
- 
+    max-width: 500px; /* 최대 너비를 500px로 제한하여 화면 중앙에 적절한 크기로 표시합니다. */
+    margin: 20px auto; /* 자동 여백을 사용하여 수평 가운데 정렬하고, 상단과 하단에 20px 여백을 추가합니다. */
+    padding: 25px; /* 컨테이너 내부에 25px 패딩을 추가하여 내용이 가장자리와 떨어지도록 합니다. */
+    background: linear-gradient(135deg, #f0f4ff, #e0f7fa); /* 부드러운 색상의 그라데이션 배경을 적용하여 시각적인 매력을 더합니다. */
+    border-radius: 16px; /* 모서리를 16px 반경으로 둥글게 만들어 부드러운 느낌을 줍니다. */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 그림자를 추가하여 컨테이너가 배경에서 살짝 떠 있는 듯한 효과를 줍니다. */
+    text-align: center; /* 텍스트와 내부 요소들을 중앙 정렬하여 균형 있게 배치합니다. */
+}
+
+.title {
+    font-size: 26px; /* 제목의 폰트 크기를 26px로 설정하여 눈에 띄게 만듭니다. */
+    color: #00796b; /* 텍스트 색상을 진한 청록색으로 설정하여 배경과 대비되도록 합니다. */
+    margin-bottom: 20px; /* 제목 아래에 20px 여백을 추가하여 다른 요소들과의 간격을 확보합니다. */
+}
+
+.subtitle {
+    font-size: 20px; /* 소제목의 폰트 크기를 20px로 설정하여 주제와 제목 사이의 중요도를 나타냅니다. */
+    color: #37474f; /* 소제목의 텍스트 색상을 어두운 회색으로 설정하여 가독성을 높입니다. */
+    margin: 15px 0; /* 위아래로 각각 15px 여백을 추가하여 요소 간 간격을 유지합니다. */
+    text-align: center; /* 소제목 텍스트를 중앙에 정렬하여 전체적인 균형을 맞춥니다. */
+}
+

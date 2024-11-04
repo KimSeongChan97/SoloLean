@@ -1,80 +1,76 @@
 /* src/css/TodoItem.module.css */
 
 .item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 15px;
-    margin: 8px auto;
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    transition: transform 0.2s, box-shadow 0.3s;
+    display: flex; /* Flexbox를 사용하여 요소를 가로로 배치합니다. */
+    align-items: center; /* Flexbox 요소들을 수직 가운데 정렬합니다. */
+    justify-content: space-between; /* 요소들을 양쪽 끝으로 배치하여 균형 잡힌 배치를 만듭니다. */
+    padding: 10px 15px; /* 내부에 여백을 추가하여 텍스트와 가장자리가 떨어지도록 합니다. */
+    margin: 8px auto; /* 요소 간 8px의 간격을 추가하고, 가운데 정렬되도록 설정합니다. */
+    font-family: 'Poppins', sans-serif; /* 텍스트에 ‘Poppins’ 폰트를 적용하여 현대적인 느낌을 줍니다. */
+    background-color: #ffffff; /* 배경색을 흰색으로 설정하여 텍스트가 선명하게 보이도록 합니다. */
+    border-radius: 10px; /* 모서리를 둥글게 만들어 부드러운 느낌을 줍니다. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자를 추가하여 항목이 배경에서 살짝 떠 있는 효과를 줍니다. */
+    max-width: 350px; /* 요소의 최대 너비를 설정하여 가로폭을 제한합니다. */
+    transition: transform 0.2s, box-shadow 0.3s; /* 호버 시 부드러운 전환 효과를 추가하여 상호작용감을 높입니다. */
 }
 
 .item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* 호버 시 약간 위로 이동하여 입체감을 줍니다. */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 그림자를 짙게 변경하여 시각적 피드백을 줍니다. */
 }
 
-/* 숨겨진 기본 체크박스 */
 .checkbox {
-    display: none;
+    display: none; /* 기본 체크박스를 숨겨 사용자 정의 스타일을 적용할 준비를 합니다. */
 }
 
-/* 체크박스 라벨 스타일 */
 .checkboxLabel {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
+    display: flex; /* 체크박스와 텍스트를 가로로 배치합니다. */
+    align-items: center; /* 텍스트와 체크박스가 수직으로 정렬되도록 합니다. */
+    font-size: 20px; /* 체크박스 라벨의 크기를 20px로 설정하여 쉽게 볼 수 있도록 합니다. */
+    margin-right: 15px; /* 텍스트와 체크박스 사이에 15px 간격을 추가하여 여유 공간을 만듭니다. */
+    cursor: pointer; /* 라벨에 포인터 커서를 설정하여 클릭 가능함을 나타냅니다. */
 }
 
-/* 체크되지 않은 상태 */
 .checkboxLabel::before {
-    content: '⬜️'; /* 빈 사각형 */
-    font-size: 20px;
-    margin-right: 5px;
-    transition: color 0.3s;
+    content: '⬜️'; /* 체크되지 않은 상태에서는 빈 사각형으로 표시됩니다. */
+    font-size: 20px; /* 빈 사각형의 크기를 설정하여 텍스트와 일관성을 유지합니다. */
+    margin-right: 5px; /* 사각형과 텍스트 사이에 여백을 추가하여 가독성을 높입니다. */
+    transition: color 0.3s; /* 색상 변화에 전환 효과를 추가하여 시각적 피드백을 부드럽게 만듭니다. */
 }
 
-/* 체크된 상태 */
 .checkbox:checked + .checkboxLabel::before {
-    content: '✅'; /* 체크된 상태의 이모지 */
-    color: #00796b; /* 체크된 색상 */
+    content: '✅'; /* 체크된 상태에서는 체크 아이콘으로 표시합니다. */
+    color: #00796b; /* 체크된 상태의 색상을 청록색으로 설정하여 완료를 시각적으로 표시합니다. */
 }
 
 .text {
-    font-size: 17px;
-    color: #00796b;
-    flex-grow: 1;
-    text-align: left;
+    font-size: 17px; /* 할 일 텍스트의 크기를 17px로 설정하여 읽기 쉽게 만듭니다. */
+    color: #00796b; /* 텍스트 색상을 청록색으로 설정하여 완료된 항목과 차별화합니다. */
+    flex-grow: 1; /* 텍스트가 남은 가로 공간을 차지하도록 설정합니다. */
+    text-align: left; /* 텍스트를 왼쪽 정렬하여 시각적으로 깔끔하게 정렬합니다. */
 }
 
 .textCompleted {
-    color: #d32f2f;
-    text-decoration: line-through;
-    flex-grow: 1;
-    text-align: left;
+    color: #d32f2f; /* 완료된 할 일 텍스트는 빨간색으로 설정하여 시각적으로 구분합니다. */
+    text-decoration: line-through; /* 취소선을 추가하여 완료 상태를 표시합니다. */
+    flex-grow: 1; /* 텍스트가 남은 가로 공간을 차지하도록 설정합니다. */
+    text-align: left; /* 텍스트를 왼쪽 정렬하여 깔끔하게 정렬합니다. */
 }
 
 .button {
-    padding: 5px 12px;
-    background-color: #ff5252;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 13px;
-    margin-left: 12px;
-    box-shadow: 0 4px 8px rgba(255, 82, 82, 0.4);
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 5px 12px; /* 버튼 내부의 여백을 설정하여 클릭 영역을 확보합니다. */
+    background-color: #ff5252; /* 버튼 배경을 빨간색으로 설정하여 삭제 기능을 강조합니다. */
+    color: white; /* 버튼 텍스트 색상을 흰색으로 설정하여 배경과 대비를 줍니다. */
+    border: none; /* 테두리를 제거하여 깔끔하게 만듭니다. */
+    cursor: pointer; /* 커서를 포인터로 설정하여 클릭 가능함을 나타냅니다. */
+    border-radius: 8px; /* 버튼 모서리를 둥글게 만들어 부드러운 디자인을 만듭니다. */
+    font-size: 13px; /* 버튼 텍스트 크기를 13px로 설정하여 깔끔하게 보이도록 합니다. */
+    margin-left: 12px; /* 버튼과 텍스트 사이에 12px 간격을 추가합니다. */
+    box-shadow: 0 4px 8px rgba(255, 82, 82, 0.4); /* 그림자를 추가하여 버튼이 떠 있는 듯한 효과를 줍니다. */
+    transition: background-color 0.3s, transform 0.2s; /* 색상과 크기 변화에 전환 효과를 추가하여 피드백을 부드럽게 합니다. */
 }
 
 .button:hover {
-    background-color: #ff1744;
-    transform: scale(1.1);
+    background-color: #ff1744; /* 호버 시 배경색을 진하게 변경하여 시각적 피드백을 줍니다. */
+    transform: scale(1.1); /* 약간 확대하여 버튼이 강조되는 효과를 줍니다. */
 }
