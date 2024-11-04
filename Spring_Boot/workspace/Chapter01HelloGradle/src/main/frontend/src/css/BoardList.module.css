@@ -50,18 +50,4 @@
      padding: 12px;
    }
    
-   .deleteButton {
-     padding: 6px 12px;
-     font-size: 14px;
-     color: white;
-     background-color: #e63946; /* 붉은 색상 */
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     transition: background 0.3s ease;
-   }
-   
-   .deleteButton:hover {
-     background-color: #d62839; /* 더 진한 붉은 색상 */
-   }
    

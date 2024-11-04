@@ -18,8 +18,8 @@ const App = () => {
       <Time />
       <BrowserRouter>
         <nav className={styles.navbar}>
-          <Link to="/boardInput" className={styles.navLink}>🌊 Board Input</Link>
-          <Link to="/boardList" className={styles.navLink}>🌊 Board List</Link>
+          <Link to="/boardInput" className={styles.navLink}>🌊 게시글 등록 </Link>
+          <Link to="/boardList" className={styles.navLink}>🌊 게시글 목록 </Link>
         </nav>
         <Routes>
           <Route path="/boardInput" element={<BoardInput />} />
