@@ -94,6 +94,10 @@ Spring Security 연동
 	주석 내용
 <!--*/-->
 
+
+** 리터럴
+
+
 --------------------------------
 Project: 
 ThymeleafTest
@@ -102,11 +106,16 @@ ThymeleafTest
 			ThymeleafrTestApplication.java
 		thymeleaf.controller
 			ThymeleafController.java
+		thymeleaf.bean
+			PersonDTO.java
 	src/main/resources
 		templates
 			index.html
 		templates.basic
 			hithymeleaf.html
+			literal.html
+			variable.html
+			operation.html
 			
 
 		
