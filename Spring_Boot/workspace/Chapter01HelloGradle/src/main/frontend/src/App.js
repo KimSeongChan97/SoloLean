@@ -13,7 +13,7 @@ const App = () => {
       fontFamily: 'Orbitron', 
       textAlign: 'center',
       minHeight: '90vh',
-      padding: '20px'
+      padding: '30px'
     }}>
       <Time />
       <BrowserRouter>

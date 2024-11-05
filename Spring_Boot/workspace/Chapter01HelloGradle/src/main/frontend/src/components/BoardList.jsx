@@ -8,7 +8,6 @@ const BoardList = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get('http://localhost:9000/board2/boardList'); // 서버로부터 게시글 목록을 가져옴
-      console.log('GET:', res); // 디버깅용 로그 - 서버 응답 확인
       setBoardList(res.data); // 서버로부터 받은 데이터를 boardList 상태에 저장
     } catch (error) {
       console.error('GET 목록불러오기 실패', error); // 에러 발생 시 메시지 출력

@@ -1,53 +1,72 @@
 /* BoardList.module.css */
 
 .container {
-     padding: 30px;
-     background-color: rgba(224, 248, 255, 0.95); 
-     border-radius: 15px;
-     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-     max-width: 800px;
-     margin: 20px auto;
-     transition: transform 0.2s ease;
-   }
-   
-   .container:hover {
-     transform: scale(1.02); 
-   }
-   
-   .table {
-     width: 100%;
-     border-collapse: collapse;
-     font-family: 'Orbitron', sans-serif;
-   }
-   
-   .table th,
-   .table td {
-     padding: 14px;
-     border: 1px solid #a2d5e6; 
-     text-align: center;
-   }
-   
-   .table th {
-     background: linear-gradient(135deg, #0077b6, #0096c7); 
-     color: white;
-     font-weight: bold;
-   }
-   
-   .table tr:nth-child(even) {
-     background-color: rgba(190, 235, 250, 0.7); 
-   }
-   
-   .table tr:hover {
-     background-color: rgba(173, 216, 230, 0.4); 
-     transition: background 0.3s ease;
-   }
-   
-   tfoot td {
-     font-weight: bold;
-     text-align: center;
-     background-color: rgba(173, 216, 230, 0.2); 
-     color: #333;
-     padding: 12px;
-   }
-   
-   
+  /* 리스트를 감싸는 컨테이너에 여유 공간을 주고 중앙에 배치합니다 */
+  padding: 30px;
+  /* 컨테이너 배경을 밝은 하늘색으로 설정하고 반투명 효과를 줍니다 */
+  background-color: rgba(224, 248, 255, 0.95); 
+  /* 둥근 모서리와 그림자 효과로 입체감을 더합니다 */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* 컨테이너 최대 너비를 800px로 지정하고 중앙 정렬합니다 */
+  max-width: 800px;
+  margin: 20px auto;
+  /* 마우스 오버 시 확대 효과를 적용합니다 */
+  transition: transform 0.2s ease;
+}
+
+.container:hover {
+  /* 컨테이너가 마우스 오버 시 약간 확대됩니다 */
+  transform: scale(1.02); 
+}
+
+.table {
+  /* 테이블 너비를 100%로 설정하여 컨테이너에 맞게 채웁니다 */
+  width: 100%;
+  /* 테이블 셀 간격을 없애고 깔끔한 테두리를 적용합니다 */
+  border-collapse: collapse;
+  /* Google Fonts에서 불러온 'Orbitron' 폰트를 적용합니다 */
+  font-family: 'Orbitron', sans-serif;
+}
+
+.table th,
+.table td {
+  /* 셀 내부 여백을 추가하여 글씨와 셀의 경계를 분명히 합니다 */
+  padding: 14px;
+  /* 셀에 연한 파란색 테두리를 추가하여 구분합니다 */
+  border: 1px solid #a2d5e6; 
+  /* 텍스트를 중앙 정렬하여 데이터의 가독성을 높입니다 */
+  text-align: center;
+}
+
+.table th {
+  /* 테이블 헤더에 그라데이션 색상을 추가하여 강조합니다 */
+  background: linear-gradient(135deg, #0077b6, #0096c7); 
+  /* 헤더 텍스트를 흰색으로 설정하여 대비를 줍니다 */
+  color: white;
+  /* 헤더 텍스트를 볼드체로 지정하여 강조합니다 */
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  /* 짝수 행에 연한 배경색을 추가하여 가독성을 높입니다 */
+  background-color: rgba(190, 235, 250, 0.7); 
+}
+
+.table tr:hover {
+  /* 마우스 오버 시 행의 배경색이 약간 변하도록 설정합니다 */
+  background-color: rgba(173, 216, 230, 0.4); 
+  /* 배경색 변경이 부드럽게 전환되도록 합니다 */
+  transition: background 0.3s ease;
+}
+
+tfoot td {
+  /* 테이블 하단 요약 행을 강조하기 위해 텍스트를 볼드체로 설정합니다 */
+  font-weight: bold;
+  /* 하단 행의 배경색을 연한 파란색으로 설정하여 시각적 구분을 줍니다 */
+  background-color: rgba(173, 216, 230, 0.2); 
+  /* 텍스트 색상을 어두운 회색으로 설정하여 가독성을 높입니다 */
+  color: #333;
+  /* 요약 행의 셀 내부 여백을 12px로 설정하여 여유 공간을 줍니다 */
+  padding: 12px;
+}

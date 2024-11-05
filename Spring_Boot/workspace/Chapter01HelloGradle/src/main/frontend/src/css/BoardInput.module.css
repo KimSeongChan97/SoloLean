@@ -1,60 +1,126 @@
 /* BoardInput.module.css */
 
+/* 배경색과 크기, 그림자 설정을 통해 중앙에서 돋보이는 스타일 */
 .container {
-     padding: 30px;
-     background-color: rgba(224, 248, 255, 0.95); 
-     border-radius: 15px;
-     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-     max-width: 600px;
-     margin: 20px auto;
-     font-family: 'Orbitron', sans-serif;
-     transition: transform 0.2s ease;
-   }
-   
-   .container:hover {
-     transform: scale(1.02); 
-   }
-   
-   .form {
-     display: flex;
-     flex-direction: column;
-     gap: 15px;
-   }
-   
-   .input, .textarea {
-     padding: 12px;
-     font-size: 16px;
-     border-radius: 8px;
-     border: 1px solid #89c9b8;
-     background-color: #e0ffff;
-     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-     transition: border 0.3s ease, box-shadow 0.3s ease;
-   }
-   
-   .input:focus, .textarea:focus {
-     border-color: #00b4d8;
-     box-shadow: 0 0 8px rgba(0, 180, 216, 0.5);
-     outline: none;
-   }
-   
-   .textarea {
-     resize: vertical;
-   }
-   
-   .button {
-     padding: 14px;
-     font-size: 16px;
-     color: white;
-     background: linear-gradient(135deg, #0077b6, #0096c7); 
-     border: none;
-     border-radius: 8px;
-     cursor: pointer;
-     transition: background 0.3s ease, transform 0.2s ease;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   }
-   
-   .button:hover {
-     background: linear-gradient(135deg, #0096c7, #0077b6); 
-     transform: translateY(-2px); 
-   }
-   
+  padding: 40px;
+  background-color: #f8fbfe; /* 부드러운 흰색 계열의 배경색 */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  margin: 40px auto;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+/* 중앙 정렬 및 간격 조정 */
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 세련된 테이블 스타일 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+/* 테이블 헤더 스타일 - 고급스러운 색상과 둥근 모서리 */
+.table th {
+  background-color: #1d3557;
+  color: #f1faee;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+}
+
+/* 테이블 셀 스타일 - 색상 대비와 여백을 통해 깔끔한 느낌 */
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/* 행마다 다른 배경색 적용 */
+.table tbody tr:nth-child(odd) {
+  background-color: #e8f0f2;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f5f9fb;
+}
+
+.table tbody tr:hover {
+  background-color: #a8dadc;
+  transition: background 0.3s ease;
+}
+
+/* 입력 필드 스타일 - 균일한 크기와 색상으로 세련됨 */
+.input, .textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #bcd4e6;
+  background-color: #f1faee;
+  color: #333;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus, .textarea:focus {
+  border-color: #457b9d;
+  box-shadow: 0 0 10px rgba(69, 123, 157, 0.5);
+  outline: none;
+}
+
+/* 텍스트 영역 추가 설정 */
+.textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+/* 버튼 스타일 - 현대적이고 명확한 클릭 피드백 제공 */
+.button {
+  padding: 12px 25px;
+  font-size: 16px;
+  color: white;
+  background-color: #457b9d;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:hover {
+  background-color: #1d3557;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset 버튼 - 약간 다른 색상으로 구분 */
+.button.reset {
+  background-color: #e63946;
+}
+
+.button.reset:hover {
+  background-color: #d62828;
+}
+
+.nameDiv, .subjectDiv, .contentDiv {
+  color: red; 
+  font-size: 12pt;
+  font-weight: bold;
+}
