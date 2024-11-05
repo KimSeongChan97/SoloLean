@@ -81,13 +81,35 @@ Spring Security 연동
     <p>관리자만 볼 수 있는 콘텐츠입니다.</p>
 </div>
 
+
+* HTML
+<!-- -->
+
+* Thymeleaf
+1 줄 주석
+<!--/*  */-->
+
+2 줄 이상
+<!--/*-->
+	주석 내용
+<!--*/-->
+
 --------------------------------
 Project: 
 ThymeleafTest
 	src/main/java
 		com.example.damo
 			ThymeleafrTestApplication.java
-	src
+		thymeleaf.controller
+			ThymeleafController.java
+	src/main/resources
+		templates
+			index.html
+		templates.basic
+			hithymeleaf.html
+			
+
+		
 
 
 
