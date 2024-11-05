@@ -1,0 +1,134 @@
+Thymeleaf
+
+----------
+
+Java 기반 템플릿 엔진입니다. 
+HTML을 템플릿으로 활용하면서 
+서버 측 데이터를 웹 페이지에 
+동적으로 바인딩할 수 있게 해줍니다. 
+
+
+HTML 템플릿을 "내추럴 템플릿(natural template)"으로 유지
+
+****
+주요 속성
+
+th:text : 변수 값을 텍스트로 출력합니다.
+th:utext : HTML 태그를 파싱하여 HTML로 출력합니다.
+th:href : 링크에 URL을 동적으로 설정할 수 있습니다.
+th:src : 이미지나 스크립트의 src 속성에 동적 값을 넣을 때 사용합니다.
+th:each : 반복문을 사용해 여러 개의 데이터를 렌더링할 수 있게 합니다.
+th:if / th:unless : 조건문을 통해 특정 조건이 만족될 때만 렌더링하도록 할 수 있습니다.
+th:with : 변수를 설정할 때 사용합니다. 특정 범위에서만 사용할 수 있는 변수를 선언할 때 유용합니다.
+****
+
+데이터 바인딩
+컨트롤러에서 model.addAttribute("name", "John")으로 데이터를 보냈다면,
+ 뷰에서는 th:text="${name}"으로 name 변수를 표시
+****
+리터럴 사용법
+리터럴에는 문자 리터럴과 URL 리터럴이 있으며, 각각 '와 @{} 기호를 사용
+
+<p th:text="'Hello, ' + ${name} + '!'"></p>
+<a th:href="@{/user/profile/{id}(id=${userId})}">Profile</a>
+
+***
+변수 표현
+<h1 th:text="'Hello, ' + ${name} + '!'">Hello, Guest!</h1>
+서버에서 전달받은 name 변수의 값을 텍스트로 출력합니다. 예를 들어, name이 "John"이라면 "Hello, John!"이 출력됩니다.
+****
+조건문
+<p th:if="${isAdmin}">Welcome, Admin!</p>
+isAdmin 변수가 true일 때만 "Welcome, Admin!"
+****
+반복문
+<ul>
+    <li th:each="item : ${items}" th:text="${item}"></li>
+</ul>
+items 리스트의 각 요소가 <li> 태그 안에 표시
+********
+Fragment와 Layout
+타임리프는 프래그먼트(fragment) 기능을 제공해 재사용 가능한 템플릿을 만들 수 있습니다.
+ 보통 header, footer, sidebar와 같은 공통 요소를 프래그먼트로 정의하고,
+ 다른 페이지에서 불러와 사용
+예))
+
+header.html
+<div th:fragment="header">
+    <h1>My Website</h1>
+</div>
+
+main.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <div th:insert="~{header :: header}"></div>
+    <p>Welcome to the main page.</p>
+</body>
+</html>
+****
+ URL 매핑과 경로 변수 사용
+URL을 동적으로 생성하는 기능을 제공합니다.
+ URL 매핑을 위해 @{} 구문을 사용합니다. 예를 들어, 경로 변수와 함께 URL
+<a th:href="@{/user/{id}(id=${user.id})}">View Profile</a>
+***
+Spring Security 연동
+타임리프는 Spring Security와 연동되어 사용자가 인증
+<div sec:authorize="hasRole('ADMIN')">
+    <p>관리자만 볼 수 있는 콘텐츠입니다.</p>
+</div>
+
+--------------------------------
+Project: 
+ThymeleafTest
+	src/main/java
+		com.example.damo
+			ThymeleafrTestApplication.java
+	src
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

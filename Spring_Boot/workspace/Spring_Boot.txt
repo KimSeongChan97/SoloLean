@@ -265,11 +265,6 @@ STS4 : spring.io ( 스프링 공식 사이트 )
 프로젝트 명은 메인 메소드 class 에 따라 대문자로 시작하기를 추천
 >> 클래스명 : 프로젝트명+Application.java	
 
-http://localhost:9000/board2/boardInput
-http://localhost:9000/board2/boardList
-=> 입력시 seq 는 useRef() 로 처리한다.
-=> 입력시 name, subject, content 는 <Input /> 에서 입력받는다.
-( 시간은 new DateTime )
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
