@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Time from './Time';
 import BoardInput from './components/BoardInput';
 import BoardList from './components/BoardList';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-
 import styles from './css/AppNav.module.css';
 
 const App = () => {
+
   return (
     <div style={{
       background: 'linear-gradient(128deg, #a0e7e5, #b4f2e1)', 
