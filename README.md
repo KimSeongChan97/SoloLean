@@ -1,26 +1,35 @@
-[ Eclipse ]
+** Stack **
+--------------------
+**[ Eclipse ]**
 - Java 학습
 - Web(HTML/CSS/JavaScript/jQuery/AJax/Servlet) 학습
 - EL / JSTL 학습
 - MVC 학습
-[ SqlDevloper ]
+
+**[ SqlDevloper ]**
 - Oracle(DB) 학습
 - MyBatis 학습
-[ Workbeanch / DBeaver ]
+
+**[ Workbeanch / DBeaver ]**
 - MySQL 학습
-[ Naver Cloud Prlatfrom ]
+
+**[ Naver Cloud Prlatfrom ]**
 - NaverCloudPlatform 학습
- [ STS 3 ]
+
+**[ STS 3 ]**
 - Spring 학습
 - Spring + JDBC + .. 그외 연결하여 이용(MyBatis 등)
 - NCP 연동
- [ Jenkins ]
+
+**[ Jenkins ]**
 - Docker 학습
 - Jenkins 이용하여 Deploy 해보았다
 - 리눅스 이용해보았다(기초적인 문법)
-[ VS 편집기 ]
+
+**[ VS 편집기 ]**
 - React(Node.js + yarn) 학습
-[ STS 4 ]
+
+**[ STS 4 ]**
 - Spring Boot 학습
 - JPA 학습
 -  ... NCP 추가 교육 예정
