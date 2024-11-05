@@ -36,16 +36,10 @@
 -  ... NCP 추가 교육 예정
 
 ==============================================
-semi project
-
-1. Spring Framework + MyBatis(MySQL) + JSP(jQuery)
-2. Sprginf Boot + MyBatis(MySQL) + HTML(ThymeLeaf)
-3. Sprginf Boot + MyBatis(MySQL) + JSP(jQuery)
-
-==============================================
 Final project
-
-1. Sprginf Boot + JPA + React
+ Sprginf Boot + JPA + React
+ 진행중...
+ [Project] : [FileName](파일주소)
 
 ==============================================
 
