@@ -31,6 +31,7 @@
 
 **[ STS 4 ]**
 - Spring Boot 학습
+- Thymeleaf 일부 학습
 - JPA 학습
 -  ... NCP 추가 교육 예정
 
