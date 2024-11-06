@@ -74,16 +74,30 @@ public class UserController {
     @RequestMapping(value = "/login/naver")
     public String loginNaver(@RequestParam Map<String, String> map, HttpSession session, ModelMap mMap) {
         // 네이버 로그인 처리
-        UserDTO userDTO = userService.loginNaver(map, session);  // 네이버 로그인 서비스 호출
-        mMap.addAttribute("userDTO", userDTO);  // 로그인된 사용자 정보를 모델에 추가
+        UserDTO userDTO = userService.loginNaver(map, session); // 네이버 로그인 서비스 호출
+        mMap.addAttribute("userDTO", userDTO); // 로그인된 사용자 정보를 모델에 추가
         
         // 신규 사용자 또는 기존 사용자에 따라 다른 페이지로 이동
-        if(userDTO == null) {  // 기존 사용자
-            return "index";  // 메인 페이지로 이동
-        } else {  // 신규 사용자
-            return "user/join";  // 회원가입 페이지로 이동
+        if(userDTO == null) { // 기존 사용자
+            return "index"; // 메인 페이지로 이동
+        } else { // 신규 사용자
+            return "user/join"; // 회원가입 페이지로 이동
         }
     }
+    
+//    @RequestMapping(value = "/login/kakao")
+//    public String loginKakao(@RequestParam Map<String, String> map, HttpSession session, ModelMap mMap) {
+//        // 네이버 로그인 처리
+//        UserDTO userDTO = userService.loginKakao(map, session); // 카카오 로그인 서비스 호출
+//        mMap.addAttribute("userDTO", userDTO); // 로그인된 사용자 정보를 모델에 추가
+//        
+//        // 신규 사용자 또는 기존 사용자에 따라 다른 페이지로 이동
+//        if(userDTO == null) { // 기존 사용자
+//            return "index"; // 메인 페이지로 이동
+//        } else { // 신규 사용자
+//            return "user/join"; // 회원가입 페이지로 이동
+//        }
+//    }
     
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session) {

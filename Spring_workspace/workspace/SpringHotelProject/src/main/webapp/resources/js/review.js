@@ -1,4 +1,6 @@
 $(document).ready(function() {
+console.log($('#userSeq').val() === null);
+console.log($('#userSeq').val());
     // 리뷰 목록을 동적으로 로드하는 함수
     function loadReviewList(roomId) {
         // Ajax 요청을 통해 서버에서 해당 방의 리뷰 목록을 가져옴
@@ -14,10 +16,19 @@ $(document).ready(function() {
                             <h4>${review.userName}</h4>
                             <p>Rating: ${review.rating}/5</p>
                             <p>${review.comment}</p>
-                            <button class="btn btn-warning edit-btn" data-id="${review.reviewId}" data-rating="${review.rating}" data-comment="${review.comment}" data-room-id="${roomId}">수정</button>
-                            <button class="btn btn-danger delete-btn" data-id="${review.reviewId}" data-room-id="${roomId}">삭제</button>
-                        </div>
                     `); // 각각의 리뷰를 HTML로 추가 (사용자 이름, 평점, 코멘트, 수정 및 삭제 버튼)
+                    
+                    if($('#userSeq').val() == review.userId){
+                    	$('#reviewListContainer').append(`
+	                    	<button class="btn btn-warning edit-btn" data-id="${review.reviewId}" data-rating="${review.rating}" data-comment="${review.comment}" data-room-id="${roomId}">수정</button>
+	                    	<button class="btn btn-danger delete-btn" data-id="${review.reviewId}" data-room-id="${roomId}">삭제</button>
+	                    `)
+                    }
+                    
+                    $('#reviewListContainer').append(`
+                    	</div>
+                        <hr>
+                    `)
                 });
                 $('#reviewListModal').modal('show'); // 리뷰 목록을 모달 창으로 표시
             },

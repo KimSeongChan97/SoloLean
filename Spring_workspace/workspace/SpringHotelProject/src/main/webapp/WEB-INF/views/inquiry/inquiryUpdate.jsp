@@ -96,7 +96,7 @@
             <td colspan="2">
             
               <input type="hidden" name="questionsId" value="${questionsId}">
-               <input type="button" class="btn" value="목록" onclick="location.href='/SpringHotel/inquiryList2.jsp'"/>
+               <input type="button" class="btn" value="목록" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryList2'"/>
                <input type="button" id="updateBtn" value="수정완료"/>
                <input type="button" class="btn" value="취소" onclick="history.back();" />
             </td>

@@ -295,12 +295,15 @@ public class AdminController {
     @RequestMapping(value = "inquiry/delete", method = RequestMethod.POST)
     @ResponseBody
     public String deleteInquiry(@RequestParam("questionsId") int questionsId) {
+    	System.out.println("deleteInquiry: " + questionsId);
         // 문의 삭제 처리
         try {
             adminService.deleteQuestions(questionsId);  // 문의 삭제 서비스 호출
+            System.out.println("sc");
             return "success";  // 성공 시 "success" 반환
         } catch (Exception e) {
             e.printStackTrace();  // 오류 발생 시 스택 트레이스 출력
+            System.out.println("f");
             return "fail";  // 실패 시 "fail" 반환
         }
     }

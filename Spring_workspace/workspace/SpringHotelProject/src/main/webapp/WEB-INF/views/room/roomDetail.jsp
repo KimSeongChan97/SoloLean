@@ -24,7 +24,8 @@
         <h2 class="text-center room-detail-title"><i class="fas fa-bed"></i> ${room.type} 상세 정보</h2>
         
         <!-- 세션에서 가져온 userId를 히든 필드로 저장 -->
-        <input type="hidden" name="userId" value="${sessionScope.userId}">
+        <input type="hidden" id="userSeq" name="userSeq" value="${sessionScope.userSeq}">
+        <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
         
         <!-- 세션에서 가져온 userName을 읽기 전용 필드로 표시 -->
         <input type="hidden" class="form-control" id="userName" name="userName" value="${sessionScope.userName}" readonly>

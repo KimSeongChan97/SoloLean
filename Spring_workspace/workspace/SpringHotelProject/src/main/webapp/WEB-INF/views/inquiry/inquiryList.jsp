@@ -53,9 +53,11 @@
 		</table>
 		
 		<div style="text-align: center; margin-top: 20px;">
-			<a href="/SpringHotel/admin/inquiryWrite">
-				<button class="btn small-btn" style="margin-bottom: 20px;">글쓰기</button>
-			</a>
+			<c:if test="${sessionScope.userName != null}">
+    			<a href="/SpringHotel/admin/inquiryWrite">
+					<button class="btn small-btn" style="margin-bottom: 20px;">글쓰기</button>
+				</a>
+    		</c:if>
 		</div>
 		<div class="pagination" style="align-items: center;">
 			${map2.adminPaging.pagingHTML}
@@ -71,6 +73,8 @@
 function adminPaging(pg){
 	location.href = "/SpringHotel/admin/inquiryList2?pg=" + pg;
 }
+
+
 </script>
 </body>
 </html>

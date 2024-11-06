@@ -74,7 +74,7 @@
  					<!-- 현재 로그인한 사용자가 작성자인지 확인하여 수정, 삭제 버튼 표시 -->
                     <c:if test="${sessionScope.userSeq == seq}">
                         <input type="button" class="btn" id="Updatebtn" value="수정" onclick="location.href='/SpringHotel/admin/inquiryUpdate?questionsId=${questionsDTO.questionsId}&typename=${typename}&content=${questionsDTO.content}'" />
-                        <input type="button" class="btn" id="Deletebtn" value="삭제" onclick="location.href='/SpringHotel/admin/inquiryDelete?questionsId=${questionsDTO.questionsId}'" />
+                        <input type="button" class="btn" id="Deletebtn" value="삭제" data-id="${questionsDTO.questionsId}" onclick="deleteItem()"/>
                     </c:if>
                 </td>
             </tr>
@@ -95,6 +95,18 @@
 <script src="/SpringHotel/resources/js/bootstrap.js"></script>
 <script src="/SpringHotel/resources/js/header.js"></script>
 <script src="/SpringHotel/resources/js/admin.js"></script>
-	
+<script type="text/javascript">
+function deleteItem() {
+	$.ajax({
+	    type: 'get', // HTTP GET 방식 사용
+	    url: '/SpringHotel/inquiry/delete?questionsId=' + $('#Deletebtn').data('id'), // 서버의 아이디 체크 URL에 현재 아이디 값을 전달
+	    dataType: 'text', // 서버 응답 데이터 타입을 텍스트로 지정
+	    success: function(data) { // 서버로부터 응답이 성공적으로 오면 실행
+	        console.log(data.trim()); // 서버로부터 받은 데이터를 콘솔에 출력 (공백 제거)
+	        location.href = '/SpringHotel/admin/inquiryList2' // 예약 화면으로 이동
+	    }
+	})	
+}
+</script>
 </body>
 </html>
