@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>condition</title>
+<style type="text/css">
+
+table, th, td {
+	border: 1px solid red;
+	
+}
+
+</style>
+</head>
+<body>
+		
+		
+		
+</body>
+</html>

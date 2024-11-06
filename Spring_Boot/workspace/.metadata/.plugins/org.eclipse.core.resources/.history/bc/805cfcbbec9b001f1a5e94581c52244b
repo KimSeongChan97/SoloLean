@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Creative Table Design</title>
+<style type="text/css">
+
+body {
+	background-color: #f0f4f8;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Pacifico', cursive; 
+	color: #4a4a4a;
+	margin: 20px 0;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	font-size: 2.5em;
+	letter-spacing: 1.5px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 90%;
+	max-width: 800px;
+	margin: 20px auto;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	background-color: #ffffff;
+}
+
+
+th {
+	padding: 14px;
+	background-color: #3498db; 
+	color: #ffffff;
+	font-family: 'Comic Sans MS', sans-serif;
+	font-size: 18px;
+	border-bottom: 4px solid #2980b9;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+td {
+	text-align: center;
+	padding: 14px;
+	font-family: 'Comic Sans MS', sans-serif;
+	font-size: 16px;
+	color: #333;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+tr:nth-child(even) td {
+	background-color: #f7fbff;
+}
+
+tr:nth-child(odd) td {
+	background-color: #eef6fc;
+}
+
+tr:hover td {
+	background-color: #d1ecff;
+	transition: background-color 0.3s ease;
+}
+
+
+table:first-of-type {
+	border-top: 6px solid #4CAF50;
+}
+
+table:nth-of-type(2) {
+	border-top: 6px solid #e67e22;
+}
+
+
+span {
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #2c3e50;
+}
+</style>
+</head>
+<body>
+	<h1> 기본 테이블 </h1>
+	<table>
+		<tr>
+			<th width="100"> 이름 </th>
+			<th width="100"> 나이 </th>
+		</tr>
+
+		<tr th:each="dto : ${list}">
+			<td th:text="${dto.name}">name</td>	
+			<td th:text="${dto.age}">0</td>	
+		</tr>
+	</table>
+	
+	<br/>
+	<h1> 반복 상태 유지 </h1>
+	<table>
+		<tr>
+			<th width="50"> 번호 </th>
+			<th width="100"> 이름 </th>
+			<th width="100"> 나이 </th>
+			<th width="100"> etc </th>
+		</tr>
+		
+		<tr th:each="dto, dtoState : ${list}">
+			<td th:text="${dtoState.count}">1</td>
+			<td th:text="${dto.name}">name</td>	
+			<td th:text="${dto.age}">age</td>
+			<td>
+				index = <span th:text="${dtoState.index}"></span>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

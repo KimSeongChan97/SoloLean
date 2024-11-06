@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>link</title>
+</head>
+<body>
+<h1> URL 링크</h1>
+
+<ul>
+	<li><a href="">Basic URL</a></li>
+	<li><a th:href="@{/hello}">Basic URL</a></li>
+	<li><a th:href="@{/hello}(name)">Query Param</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

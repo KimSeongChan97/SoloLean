@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ifcondition</title>
+</head>
+<body>
+	<h1> if, unless </h1>
+	<br/>
+	<h3 th:text="'시청 불가'" th:if="${age < 19}"></h3>
+	
+	
+	
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>each</title>
+<style type="text/css">
+table {
+	padding: 10px;
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+	background-color: #f9f9f9;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+th {
+	padding: 12px;
+	background-color: #4CAF50; 
+	color: white;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 16px;
+	border-bottom: 2px solid #d4d4d4;
+}
+
+td {
+	text-align: center;
+	padding: 10px;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 15px;
+	color: #333;
+	border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #d1ffd1; 
+	transition: background-color 0.3s ease;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Comic Sans MS', cursive;
+	color: #333;
+	margin-top: 20px;
+	text-shadow: 1px 1px 2px #bbb;
+}
+
+span {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	
+	<table border="1">
+	<tr>
+		<th width="50"> 목차 </th>
+		<th width="50"> 번호 </th>
+		<th width="100"> 이름 </th>
+		<th width="70"> 나이 </th>
+		<th width="70"> 30기준 </th>
+		<th width="70"> 기준 </th>
+	</tr>
+
+	<tr th:each="dto, dtoState : ${list}">
+		<td th:text="${dtoState.index}">1</td>
+		<td th:text="${dtoState.count}">1</td>
+		<td th:text="${dto.name}">name</td>	
+		<td th:text="${dto.age}">age</td>	
+		<td>
+			<span th:if="${dto.age < 30}" th:text="'미성년'"></span>
+			<span th:unless="${dto.age < 30}" th:text="'성인'"></span>
+		</td>
+		<td >
+			<span th:text="'성인'" th:if="${dto.age >= 19}"></span>
+			<span th:text="'청소년'" th:unless="${dto.age >= 19}"></span>
+		</td>					
+	</tr>
+</table>
+
+</body>
+</html>

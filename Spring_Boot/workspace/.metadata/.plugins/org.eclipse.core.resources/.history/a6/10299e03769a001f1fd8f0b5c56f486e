@@ -1,0 +1,21 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelloController {
+	// Bean 설정 하였다.
+	
+	public HelloController() {
+		System.out.println("HelloController 생성자 입니다.");	
+		
+	};
+	
+	@RequestMapping(value="/")
+	public String index() {
+		return "Hello Spring Boot";
+	};
+	
+	
+};

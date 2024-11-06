@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>condition</title>
+<style type="text/css">
+
+table {
+	padding: 5px;
+	border-collapse: collapse;
+	
+}
+
+td {
+	text-align: center;
+}
+
+
+
+
+</style>
+</head>
+<body>
+		
+<h1> if, unless </h1>
+
+<table border="1">
+	<tr>
+		<th width="50"> 목차 </th>
+		<th width="50"> 번호 </th>
+		<th width="100"> 이름 </th>
+		<th width="70"> 나이 </th>
+		<th width="70"> 30기준 </th>
+		<th width="70"> 기준 </th>
+	</tr>
+<!--/* 
+for(dto : PersonDTO) 
+<c:forEach var="dto" items="${list}" />
+*/-->
+	<tr th:each="dto, dtoState : ${list}">
+		<td th:text="${dtoState.index}">1</td>
+		<td th:text="${dtoState.count}">1</td>
+		<td th:text="${dto.name}">name</td>	
+		<td th:text="${dto.age}">age</td>	
+		<td>
+			<span th:if="${dto.age < 30}" th:text="'미성년'"></span>
+			<span th:unless="${dto.age < 30}" th:text="'성인'"></span>
+		</td>
+		<td >
+			<span th:text="'성인'" th:if="${dto.age >= 19}"></span>
+			<span th:text="'청소년'" th:unless="${dto.age >= 19}"></span>
+		</td>					
+	</tr>
+</table>
+	
+	<h1> switch </h1>
+	<!-- switch 는 같은 값을 찾는다 -->
+<table border="1">
+	<tr>
+		<th width="50"> 목차 </th>
+		<th width="50"> 번호 </th>
+		<th width="100"> 이름 </th>
+		<th width="70"> 나이 </th>
+		<th width="70"> 30기준 </th>
+		<th width="70"> 기준 </th>
+	</tr>
+	<tr th:each="dto, dtoState : ${list}">
+		<td th:text="${dtoState.index}">1</td>
+		<td th:text="${dtoState.count}">1</td>
+		<td th:text="${dto.name}">name</td>	
+		<td th:text="${dto.age}">age</td>	
+		<td>
+			<span th:if="${dto.age < 30}" th:text="'미성년'"></span>
+			<span th:unless="${dto.age < 30}" th:text="'성인'"></span>
+		</td>
+		<td th:switch="${dto.age}">
+			<span th:case="25">20대</span>
+			<span th:case="17">10대</span>
+			<span th:case="40">40대</span>
+		</td>					
+	</tr>
+</table>	
+	
+	
+	
+	
+	
+	
+	
+			
+</body>
+</html>

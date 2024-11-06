@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf 에 대해 아라보자</title>
+</head>
+<body>
+   <h1>Hello Thymeleaf</h1>
+   <p><a href="hithymeleaf">hithymeleaf.html</a></p>
+   <p><a href="literal">literal.html</a></p>
+   <p><a href="variable">variable.html</a></p>
+   <p><a href="operation">operation.html</a></p>
+
+</body>
+</html>

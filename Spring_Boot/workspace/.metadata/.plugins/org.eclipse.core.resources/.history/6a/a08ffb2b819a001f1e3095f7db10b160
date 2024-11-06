@@ -1,0 +1,9 @@
+package board.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Board2Controller {
+		
+	private List<BoardDTO> list = new ArrayList<>();
+}

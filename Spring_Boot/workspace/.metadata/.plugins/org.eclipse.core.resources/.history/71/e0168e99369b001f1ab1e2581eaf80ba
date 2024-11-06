@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    타임리프 시도해보기
+    Hello Thymeleaf !!
+    <br/>
+    <h1> 타임리프 예제 연습 </h1>
+    <!-- message 변수를 한 번만 표시하도록 수정 -->
+    <p th:text="${message}"> 타임리프를 통한 데이터 표시 </p>
+    <p th:text="'Hello, ' + ${name} + '!'"></p>
+	<a th:href="@{/user/profile/{id}(id=${userId})}">Profile</a>
+
+    
+</body>
+</html>

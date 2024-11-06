@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Creative Table Design</title>
+<style type="text/css">
+
+/* 기본 설정 */
+body {
+	background-color: #f0f8ff; /* 밝은 파란색 톤 배경 */
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Arial', sans-serif;
+	color: #333;
+}
+
+/* 제목 스타일 */
+h1 {
+	text-align: center;
+	font-family: 'Pacifico', cursive; /* 멋스러운 필기체 */
+	color: #34495e; /* 짙은 회색 */
+	margin: 30px 0;
+	text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+	font-size: 2.7em;
+	letter-spacing: 1.5px;
+}
+
+/* 테이블 기본 스타일 */
+table {
+	border-collapse: collapse;
+	width: 90%;
+	max-width: 800px;
+	margin: 25px auto;
+	border-radius: 16px; /* 둥근 테두리 */
+	overflow: hidden;
+	box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+	background-color: #ffffff;
+}
+
+/* 테이블 헤더 스타일 */
+th {
+	padding: 16px;
+	background-color: #8e44ad; /* 부드러운 보라색 */
+	color: #ffffff;
+	font-family: 'Comic Sans MS', cursive; /* 캐주얼한 폰트 */
+	font-size: 18px;
+	border-bottom: 6px solid #732d91; /* 짙은 보라색 테두리 */
+	text-transform: uppercase;
+	letter-spacing: 1.2px;
+}
+
+/* 테이블 데이터 셀 스타일 */
+td {
+	text-align: center;
+	padding: 14px;
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+	color: #555;
+	border-bottom: 1px solid #ecf0f1;
+}
+
+/* 줄마다 색상 변경 */
+tr:nth-child(even) td {
+	background-color: #fdf9ff; /* 연한 핑크색 */
+}
+
+tr:nth-child(odd) td {
+	background-color: #f3f9ff; /* 연한 파란색 */
+}
+
+/* 행을 마우스로 가리킬 때 효과 */
+tr:hover td {
+	background-color: #ffebcd; /* 부드러운 크림색 */
+	transition: background-color 0.3s ease;
+}
+
+/* 테이블 구분을 위한 상단 테두리 */
+table:first-of-type {
+	border-top: 8px solid #1abc9c; /* 상단 테두리: 민트색 */
+}
+
+table:nth-of-type(2) {
+	border-top: 8px solid #e67e22; /* 상단 테두리: 주황색 */
+}
+
+/* 강조된 텍스트 스타일 */
+span {
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #34495e;
+}
+
+</style>
+</head>
+<body>
+	<h1> 기본 테이블 </h1>
+	<table>
+		<tr>
+			<th width="100"> 이름 </th>
+			<th width="100"> 나이 </th>
+		</tr>
+
+		<tr th:each="dto : ${list}">
+			<td th:text="${dto.name}">name</td>	
+			<td th:text="${dto.age}">0</td>	
+		</tr>
+	</table>
+	
+	<br/>
+	<h1> 반복 상태 유지 </h1>
+	<table>
+		<tr>
+			<th width="50"> 번호 </th>
+			<th width="100"> 이름 </th>
+			<th width="100"> 나이 </th>
+			<th width="500"> etc </th>
+		</tr>
+		
+		<tr th:each="dto, dtoState : ${list}">
+			<td th:text="${dtoState.count}">1</td>
+			<td th:text="${dto.name}">name</td>	
+			<td th:text="${dto.age}">age</td>
+			<td>
+				index = <span th:text="${dtoState.index}"></span><br/>
+				count = <span th:text="${dtoState.count}"></span><br/>
+				size = <span th:text="${dtoState.size}"></span><br/>
+				even? = <span th:text="${dtoState.even}"></span><br/>
+				odd? = <span th:text="${dtoState.odd}"></span><br/>
+				first? = <span th:text="${dtoState.first}"></span><br/>
+				last? = <span th:text="${dtoState.last}"></span><br/>
+				current = <span th:text="${dtoState.current}"></span>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

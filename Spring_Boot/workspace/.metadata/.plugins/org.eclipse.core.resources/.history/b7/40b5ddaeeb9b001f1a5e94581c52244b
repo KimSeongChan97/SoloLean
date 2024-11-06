@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>each</title>
+<style type="text/css">
+
+
+table {
+	padding: 10px;
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+	background-color: #f9f9f9;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+
+th {
+	padding: 12px;
+	background-color: #4CAF50; 
+	color: white;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 16px;
+	border-bottom: 2px solid #d4d4d4;
+}
+
+
+td {
+	text-align: center;
+	padding: 10px;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 15px;
+	color: #333;
+	border-bottom: 1px solid #ddd;
+}
+
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #d1ffd1; 
+	transition: background-color 0.3s ease;
+}
+
+
+h1 {
+	text-align: center;
+	font-family: 'Comic Sans MS', cursive;
+	color: #333;
+	margin-top: 20px;
+	text-shadow: 1px 1px 2px #bbb;
+}
+
+span {
+	font-weight: bold;
+}
+
+
+</style>
+</head>
+<body>
+	<h1> 기본 테이블 </h1>
+	<table border="1">
+	<tr>
+		<th width="50"> 목차 </th>
+		<th width="50"> 번호 </th>
+		<th width="100"> 이름 </th>
+		<th width="70"> 나이 </th>
+		<th width="70"> 30기준 </th>
+		<th width="70"> 기준 </th>
+	</tr>
+<!-- 
+for(dto : PersonDTO) 
+<c:forEach var="dto" items="${list}" />
+-->
+	<tr th:each="dto, dtoState : ${list}">
+		<td th:text="${dtoState.index}">1</td>
+		<!-- th:text 속성을 사용하여 dtoState.index를 출력합니다. dtoState.index는 리스트의 현재 인덱스를 나타내며, 첫 번째 행부터 0, 1, 2, ... 순으로 증가합니다. -->
+		<td th:text="${dtoState.count}">1</td>
+		<!-- th:text 속성으로 dtoState.count 값을 출력합니다. count는 1부터 시작하여 리스트 항목 개수에 따라 1, 2, 3, ... 순으로 증가합니다. -->
+		<td th:text="${dto.name}">name</td>	
+		<!-- th:text 속성으로 dto 객체의 name 필드 값을 출력합니다. 이 필드는 사용자의 이름을 나타냅니다. -->
+		<td th:text="${dto.age}">age</td>	
+		<!-- th:text 속성으로 dto 객체의 age 필드 값을 출력합니다. 이 필드는 사용자의 나이를 나타냅니다. -->
+		<td>
+			<span th:if="${dto.age < 30}" th:text="'미성년'"></span>
+			<!-- th:if 조건문을 사용하여 dto.age 값이 30보다 작으면 "미성년"이라는 텍스트를 출력합니다. 조건이 참일 때만 해당 span 태그가 렌더링됩니다. -->
+			<span th:unless="${dto.age < 30}" th:text="'성인'"></span>
+			<!-- th:unless 조건문을 사용하여 dto.age 값이 30보다 작지 않을 때, 즉 30 이상일 경우 "성인"이라는 텍스트를 출력합니다. unless는 조건이 거짓일 때만 태그를 렌더링합니다. -->
+		</td>
+		<td >
+			<span th:text="'성인'" th:if="${dto.age >= 19}"></span>
+			<!-- th:if 조건문을 사용하여 dto.age 값이 19 이상일 경우 "성인"이라는 텍스트를 출력합니다. 나이가 19세 이상인 경우에만 해당 span 태그가 렌더링됩니다. -->
+			<span th:text="'청소년'" th:unless="${dto.age >= 19}"></span>
+			<!-- th:unless 조건문을 사용하여 dto.age 값이 19 미만일 경우 "청소년"이라는 텍스트를 출력합니다. 나이가 19세 미만인 경우에만 해당 span 태그가 렌더링됩니다. -->
+		</td>					
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>condition</title>
+<style type="text/css">
+
+table {
+	padding: 5px;
+	border-collapse: collapse;
+	
+}
+
+</style>
+</head>
+<body>
+		
+		<h1> if, unless </h1>
+	
+		<table>
+			<tr>
+				<th> 개수 </th>
+				<th> 이름 </th>
+				<th> 나이 </th>
+			</tr>
+			
+					<!--/* 
+					for(dto : PersonDTO) 
+					<c:forEach var="dto" items="${list}" />
+					*/-->
+			<tr th:each="dto : ${list}">
+				<td>1</td>
+				<td th:text="${dto.name}">name</td>	
+				<td th:text="${dto.age}">age</td>	
+										
+			</tr>
+			
+			
+		</table>
+	
+
+			
+</body>
+</html>

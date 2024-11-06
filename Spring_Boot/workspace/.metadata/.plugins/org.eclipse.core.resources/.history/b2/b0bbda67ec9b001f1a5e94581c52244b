@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>each</title>
+<style type="text/css">
+table {
+	padding: 10px;
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+	background-color: #f9f9f9;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+th {
+	padding: 12px;
+	background-color: #4CAF50; 
+	color: white;
+	font-family: 'Comic Sans MS', sans-serif;
+	font-size: 16px;
+	border-bottom: 2px solid #d4d4d4;
+}
+
+td {
+	text-align: center;
+	padding: 10px;
+	font-family: 'Comic Sans MS', sans-serif;
+	font-size: 15px;
+	color: #333;
+	border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #d1ffd1; 
+	transition: background-color 0.3s ease;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Comic Sans MS', cursive;
+	color: #333;
+	margin-top: 20px;
+	text-shadow: 1px 1px 2px #bbb;
+}
+
+span {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<h1> 기본 테이블 </h1>
+	<table border="1">
+	<tr>
+		<th width="100"> 이름 </th>
+		<th width="100"> 나이 </th>
+	</tr>
+
+	<tr th:each="dto : ${list}">
+		<td th:text="${dto.name}">name</td>	
+		<td th:text="${dto.age}">0</td>	
+				
+	</tr>
+</table>
+	<br/>
+	<h1> 반복 상태 유지 </h1>
+	<table border="1">
+		<tr>
+			<th width="50"> 번호 </th>
+			<th width="100"> 이름 </th>
+			<th width="100"> 나이 </th>
+			<th width="100"> etc </th>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+	</table>
+
+
+</body>
+</html>

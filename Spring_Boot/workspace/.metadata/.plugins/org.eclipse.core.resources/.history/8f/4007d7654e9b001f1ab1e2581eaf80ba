@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>variable</title>
+</head>
+<body>
+<h1> Spring El 표현식 </h1>
+	<h3>Object</h3>
+	<ul>
+		<li> ${aa.name} = <span th:text="${aa.name}"></span></li>
+		<li> ${aa['name']} = <span th:text="${aa['name']}"></span></li>
+		<li> ${aa.getName()} = <span th:text="${aa.getName()}"></span></li>
+		
+	</ul>
+
+	<h3>List</h3>
+	<ul>
+		<li>${list[1].name} = <span th:text="${list[1].name}"></span></li>
+		<li>${list[1]['name']} = <span th:text="${list[1]['name']}"></span></li>
+		<li>${list[1].getName()} = <span th:text="${list[1].getName()}"></span></li>
+	</ul>
+	
+		<h3>Map</h3>
+	<ul>
+		<li>${map['name'].name} = <span th:text="${map['name'].name}"></span></li>
+		<li>${map['name']} = <span th:text="${map['name']}"></span></li>
+		<li>${map['name']} = <span th:text="${map['name']}"></span></li>
+	</ul>
+</body>
+</html>

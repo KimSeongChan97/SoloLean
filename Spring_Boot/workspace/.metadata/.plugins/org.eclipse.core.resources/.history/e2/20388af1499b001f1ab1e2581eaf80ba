@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>리터럴 응답페이지</title>
+</head>
+<body>
+<h2>리터럴</h2>
+<ul>
+	<li>'Hello' + ' world ' = <span th:text="'Hello' + ' world '" ></span></li> <!-- 결합 -->
+	<li>'Hello world ' = <span th:text="'Hello world '" ></span></li> <!-- 문자열 -->
+	<li>'Hello ' + ${data} = <span th:text="'Hello ' + ${data}" ></span></li> <!-- 서버에서 보내주는 data 변수 값 -->
+</ul>
+</body>
+</html>

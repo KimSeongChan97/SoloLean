@@ -116,6 +116,14 @@ ThymeleafTest
 			literal.html
 			variable.html
 			operation.html
+			text-basic.html
+			attribute.html
+			ifcondition.html
+			condition.html
+			each.html
+			block.html
+			link.html
+			
 			
 
 		

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>condition</title>
+<style type="text/css">
+
+table {
+	padding: 5px;
+	border-collapse: collapse;
+	
+}
+
+</style>
+</head>
+<body>
+		
+		
+		
+</body>
+</html>

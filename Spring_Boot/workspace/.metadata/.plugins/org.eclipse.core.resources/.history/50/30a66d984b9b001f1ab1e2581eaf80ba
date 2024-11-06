@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>variable</title>
+</head>
+<body>
+<h1> Spring El 표현식 </h1>
+<h3>Object</h3>
+<ul>
+	<li> ${aa.name} 의 나이는 ${aa.age} 이다 </li>
+</ul>
+</body>
+</html>

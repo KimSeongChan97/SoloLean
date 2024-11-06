@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>link</title>
+</head>
+<body>
+<h1> URL 링크</h1>
+
+<ul>
+	<li><a href="">Basic URL</a></li>
+	<li><a th:href="@{/hello}">Basic URL</a></li>
+	<li><a th:href="@{/hello(name=${'홍길동'}, age=${25})}">Query Param</a></li>
+	<!--/* http://localhost:8080/hello?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=25 */-->
+	<!--/* http://localhost:8080/hello?name=홍길동&age=25 */-->
+	
+	<li><a th:href="@{/hello(name=${'홍길동'}, age=${25})}">Path Variable</a></li>
+	
+	
+</ul>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

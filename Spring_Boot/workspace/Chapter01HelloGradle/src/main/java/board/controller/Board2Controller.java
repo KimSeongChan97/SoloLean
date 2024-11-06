@@ -22,9 +22,8 @@ public class Board2Controller {
 	
 	@PostMapping("/boardInput") // POST 요청을 받아들여 새 게시글을 추가하는 메서드
 	public String boardInput(@RequestBody BoardDTO boardDTO) {
-		boardDTO.setSeq(list.size() + 1); // 게시글 번호를 설정, 현재 리스트 크기 + 1
 		boardDTO.setLogtime(new Date()); // 현재 시간을 게시글 생성 시간으로 설정
-		list.add(0, boardDTO); // 리스트의 맨 앞에 새 게시글 추가 (최신 글이 맨 위로 오도록)
+	    list.add(0, boardDTO); // 리스트의 맨 앞에 새 게시글 추가 (최신 글이 맨 위로 오도록)
 		return "success";
 	};
 	

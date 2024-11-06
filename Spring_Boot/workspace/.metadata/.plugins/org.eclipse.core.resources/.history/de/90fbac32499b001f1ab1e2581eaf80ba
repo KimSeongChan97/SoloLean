@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>리터럴 응답페이지</title>
+</head>
+<body>
+<h1>리터럴</h1>
+<ul>
+	<li>'Hello' + ' world ' = </li>
+</ul>
+</body>
+</html>

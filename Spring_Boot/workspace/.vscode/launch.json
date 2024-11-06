@@ -1,0 +1,24 @@
+{
+     "configurations": [
+          {
+               "type": "java",
+               "name": "Spring Boot-Chapter01HelloGradleApplication<Chapter01HelloGradle>",
+               "request": "launch",
+               "cwd": "${workspaceFolder}",
+               "mainClass": "com.example.demo.Chapter01HelloGradleApplication",
+               "projectName": "Chapter01HelloGradle",
+               "args": "",
+               "envFile": "${workspaceFolder}/.env"
+          },
+          {
+               "type": "java",
+               "name": "Spring Boot-ThymeleafTestApplication<ThymeleafTest>",
+               "request": "launch",
+               "cwd": "${workspaceFolder}",
+               "mainClass": "com.example.demo.ThymeleafTestApplication",
+               "projectName": "ThymeleafTest",
+               "args": "",
+               "envFile": "${workspaceFolder}/.env"
+          }
+     ]
+}

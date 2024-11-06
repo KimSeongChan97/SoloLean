@@ -1,0 +1,82 @@
+package board.controller; // 패키지 선언. 이 클래스가 'board.controller' 패키지에 속해 있음을 나타냅니다.
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping; // HTTP GET 요청을 특정 메서드와 매핑하기 위해 사용하는 어노테이션
+import org.springframework.web.bind.annotation.RequestParam; // 요청 파라미터를 메서드의 인자로 받을 때 사용하는 어노테이션
+import org.springframework.web.bind.annotation.RestController; // RESTful 웹 서비스를 위한 컨트롤러임을 나타내는 어노테이션
+
+import board.bean.BoardDTO;
+
+// - REST API와 같은 웹 서비스에서 주로 사용됩니다.
+// - JSP 같은 뷰를 별도로 만들지 않고, 메서드가 반환하는 데이터를 클라이언트에게 직접 전달할 때 유용합니다.
+@RestController // @RestController는 @Controller와 @ResponseBody가 결합된 형태로, 메서드의 반환값을 HTTP 응답 본문으로 전달합니다.
+public class BoardController { // BoardController 클래스 선언부. 이 클래스는 "board" 관련 요청을 처리하는 컨트롤러 역할을 합니다.
+    
+    public BoardController() { // BoardController 클래스의 생성자. 객체가 생성될 때 이 생성자가 호출됩니다.
+        System.out.println("BoardController 의 생성자 입니다. ");
+    };
+    // 생성자에 있는 값이 로그에 출력되지 못하는 것은 Bean 으로 등록이 되지 않아서 이다.
+    // 그러므로 강제 빈을 선택하는 component-scan 을 통해 설정한다.
+    // main method 에 어노테이션으로 설정하면 된다.
+    // - 스프링에서는 @ComponentScan을 통해 특정 패키지나 클래스가 빈(Bean)으로 등록되도록 설정할 수 있습니다.
+    // - 이 클래스를 빈으로 등록하려면, 스프링 부트 메인 애플리케이션 클래스에서 해당 패키지를 @ComponentScan 어노테이션으로 지정하면 됩니다.
+    // - 예를 들어, 메인 애플리케이션 클래스에 @ComponentScan("board.controller")로 설정하여 이 컨트롤러를 빈으로 등록할 수 있습니다.
+    
+    // - 이 메서드는 GET 요청을 처리하며, URL 경로는 "board/hello"입니다.
+    // - "/board/hello" 경로로 요청이 들어오면 아래의 hello() 메서드가 실행됩니다.
+    @GetMapping(value="board/hello") // HTTP GET 요청을 "/board/hello" 경로로 매핑합니다.
+    public String hello(@RequestParam(value="name") String name) { // 요청 파라미터 "name"을 메서드 파라미터로 받습니다.
+        return "Hello, " + name + " 님 !! ";
+        // "Hello, [name] 님 !!"이라는 문자열을 반환합니다.
+        // 예를 들어, http://localhost:9000/board/hello?name=홍길동 라고 요청하면
+        // "Hello, 홍길동 님 !!"이라는 응답이 반환됩니다.
+        // @RequestParam을 통해 클라이언트가 요청한 URL에서 전달된 파라미터를 받아와서 사용할 수 있습니다.
+        // 사용 예: http://localhost:9000/board/hello?name=홍길동
+        // !
+    };
+
+    @GetMapping(value="board/getBoard")
+    public BoardDTO getBoard() {
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.setSeq(10);
+        boardDTO.setName("허균");
+        boardDTO.setSubject("홍길동전");
+        boardDTO.setContent("호부호형");
+        boardDTO.setLogtime(new Date()); // 자동 JSON 변경
+
+        return boardDTO;
+    };
+
+    @GetMapping(value="board/getBoardList")
+    public List<BoardDTO> getBoardList() {
+        List<BoardDTO> list = new ArrayList<>();
+        
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.setSeq(10);
+        boardDTO.setName("허균");
+        boardDTO.setSubject("홍길동전");
+        boardDTO.setContent("호부호형");
+        boardDTO.setLogtime(new Date());
+        
+        boardDTO = new BoardDTO();
+        boardDTO.setSeq(11);
+        boardDTO.setName("김수정");
+        boardDTO.setSubject("아기공룡 둘리");
+        boardDTO.setContent("호잇 호잇");
+        boardDTO.setLogtime(new Date());
+        
+        return list;
+    };
+    
+}
+
+/*
+
+@RestController는 JSP 같은 뷰를 별도로 만들지 않는 대신에 컨트롤러 메소드가 리턴하는 데이터 자체를 클라이언트로 보낸다.
+클라이언트에 전달되는 데이터는 문자열, DTO, 컬렉션 형태의 자바 객체인데, 
+자바 객체가 전달되는 경우에는 자동으로 JSON으로 변환하여 처리하게 된다.
+
+ */

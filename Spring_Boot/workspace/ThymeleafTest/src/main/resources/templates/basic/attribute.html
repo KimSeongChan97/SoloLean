@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>attribute</title>
+</head>
+<body>
+		<h1>속성을 설정</h1>
+		<input type="text" name="mock" /> <!-- 과거 속성설정(Attribute) -->
+		<!-- 일반적인 HTML에서 속성 설정 방법으로, name 속성에 "mock" 값을 지정하여 서버에서 이 값을 식별할 수 있게 합니다. -->
+		<br/>
+		<input type="text" name="mock" th:name="userName" /> <!--/* Thymeleaf 에서 name 속성을 부여 */-->
+		<!-- 
+		     위와 같이 HTML에서 직접 설정할 수도 있지만, 
+		     Thymeleaf에서는 th:name 속성을 사용해 서버에서 동적으로 "name" 속성의 값을 설정할 수 있습니다.
+		     여기서는 "userName"으로 설정되며, 브라우저에서 실제 name 속성 값이 "userName"으로 렌더링됩니다. 
+		-->
+	
+		<h1> 속성 추가 </h1>
+		<input type="text" class="text" th:attrappend="class=' large'" />
+		<!-- 
+		     기존 class 속성값 "text"에 "large" 값을 추가하는 방법입니다. 
+		     결과적으로 class 값은 "text large"가 되며, 이는 두 클래스가 모두 적용된 스타일을 사용하게 합니다.
+		     Thymeleaf의 th:attrappend는 기존 속성의 값 뒤에 새 값을 덧붙이는 역할을 합니다. 
+		-->
+		<br/>
+		<input type="text" class="text" th:attrprepend="class='large '" />
+		<!-- 
+		     여기서는 기존 class 속성 값 "text" 앞에 "large"를 추가합니다. 
+		     최종 class 값은 "large text"가 되며, "large" 스타일이 우선 적용될 수 있습니다.
+		     th:attrprepend는 기존 속성의 값 앞에 새 값을 추가하여 순서의 영향을 줄 수 있습니다.
+		-->
+		<br/>
+		<input type="text" class="text" th:classappend="'large'" />
+		<!-- 
+		     th:classappend는 class 속성에 값을 추가하는 간단한 방법으로, 
+		     최종 class 속성값은 "text large"가 됩니다. 
+		     th:attrappend와 유사하지만, class 속성에만 사용할 수 있어 더 간결하게 사용할 수 있습니다.
+		-->
+		<br/>
+		
+		<h1> checked 처리</h1>
+		
+		<input type="checkbox" name="active" checked="checked" /> 사과
+		<!-- 
+		     기본 HTML 속성을 사용해 체크박스에 "checked" 속성을 직접 부여했습니다.
+		     이렇게 설정하면 페이지가 로드될 때 "사과" 체크박스는 기본적으로 체크된 상태가 됩니다. 
+		-->
+		<input type="checkbox" name="active" th:checked="true" /> 사과
+		<!-- 
+		     Thymeleaf의 th:checked 속성을 사용해 checked 속성에 동적으로 "true"를 설정합니다. 
+		     이는 페이지 로드 시 서버의 조건에 따라 체크 여부를 결정하는 방식입니다. 
+		     여기서는 true이므로 기본적으로 체크된 상태로 렌더링됩니다.
+		-->
+		<input type="checkbox" name="active" th:checked="false" /> 딸기
+		<!-- 
+		     여기서는 th:checked 속성을 "false"로 설정하여 기본적으로 체크되지 않게 설정했습니다. 
+		     사용자가 별도로 체크하지 않는 이상 "딸기" 체크박스는 체크되지 않은 상태로 유지됩니다.
+		-->
+		<input type="checkbox" name="active" /> 바나나 <!-- 기본이 false  -->
+		<!-- 
+		     "checked" 속성을 설정하지 않으면 체크박스는 기본적으로 체크되지 않은 상태가 됩니다.
+		     "바나나" 항목이 이에 해당하며, 페이지 로드 시 체크되지 않은 상태로 표시됩니다.
+		-->
+		<input type="checkbox" name="active" checked="false" /> 복숭아
+		<!-- 
+		     HTML에서 "checked=false"로 지정했지만, 이는 기본적으로 해석되지 않으며 "checked"가 없는 상태와 같습니다. 
+		     따라서 "복숭아" 항목도 체크되지 않은 상태로 표시됩니다.
+		-->
+		
+		
+		
+		
+</body>
+</html>

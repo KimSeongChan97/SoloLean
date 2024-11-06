@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>operation</title>
+</head>
+<body>
+<ul>
+	<li> 산술 연살자 
+		<ul>
+			<li> 25 + 36 = <span th:text="25 + 36"></span></li>
+			<li> 25 % 2 =  <span th:text="25 % 2"></span></li>
+			<li> 25 % 2 == 0 =  <span th:text="25 % 2 == 0"></span></li>
+			<!--  == 은 같은 값이 false 인지 true 인지 -->			
+		</ul>
+		<ul>
+			<li> 25 + 36 = [[${25 + 36}]]</li>
+			<li> 25 % 2 == 0 = [[${ 25 % 2 }]]</li>
+			<li> 25 % 2 == 0 = [[${ 25 % 2 == 0 }]]</li>
+		</ul>
+	</li>
+	<br />
+	<li> 비교 연산자 
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	
+</ul>
+</body>
+</html>

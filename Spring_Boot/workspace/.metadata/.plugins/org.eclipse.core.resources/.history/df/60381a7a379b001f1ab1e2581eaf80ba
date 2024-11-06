@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    타임리프 시도해보기
+    Hello Thymeleaf !!
+    <br/>
+    <h1> 타임리프 예제 연습 </h1>
+    <p th:text="${message}"> 타임리프를 통한 데이터 표시 </p>
+    <a th:href="@{/user/profile/{id}(id=${userId})}">Profile</a>
+
+</body>
+</html>
+
+
+<!-- 
+		th:text="${message} : 타임리프의 텍스트 바인딩 기능을 사용하여 서버에서 전달된 message 변수를 출력합니다.
+        - ${message} : 타임리프에서 사용하는 표현식으로, model에 담긴 message 데이터를 이 위치에 표시합니다.
+        - 타임리프의 템플릿 엔진이 동작하면서 ${message}가 실제 값으로 변환되어 브라우저에 렌더링됩니다.
+        - 이 요소가 렌더링될 때, 태그 내부의 텍스트인 "타임리프를 통한 데이터 표시"는 message 값으로 대체됩니다.
+        
+        th:text="'Hello, ' + ${name} + '!'" : 타임리프의 표현식을 사용하여 문자열과 변수를 결합하여 출력합니다.
+        - 'Hello, ' : 출력될 문자열의 시작 부분입니다. 문자열은 작은 따옴표로 감싸줍니다.
+        - ${name} : 타임리프에서 사용하는 표현식으로, model에 담긴 name 데이터를 이 위치에 삽입합니다.
+        - + '!' : 마지막으로 느낌표를 추가합니다. + 연산자를 사용하여 문자열을 이어 붙일 수 있습니다.
+        - 이 구문은 최종적으로 'Hello, [name 값]!' 형태로 렌더링됩니다. 예를 들어, name이 "John"이라면 "Hello, John!"이 출력됩니다.
+        
+        th:href="@{/user/profile/{id}(id=${userId})}" : 타임리프의 URL 경로 바인딩 기능을 사용하여 링크를 동적으로 생성합니다.
+        - @{} : 타임리프에서 URL을 정의하는 구문입니다. Spring의 URL 경로와 함께 사용됩니다.
+        - /user/profile/{id} : 사용자 프로필 페이지로 연결되는 경로입니다. {id}는 변수로, 실제 값은 뒤에 지정됩니다.
+        - (id=${userId}) : 경로의 {id} 부분을 실제 값으로 대체합니다. ${userId}는 서버에서 전달된 userId 변수 값입니다.
+        - 예를 들어, userId가 123이라면 최종 링크는 "/user/profile/123"으로 생성되어 프로필 페이지로 연결됩니다.
+        - 이 링크는 동적으로 생성되어, 각 사용자의 ID에 따라 해당 사용자의 프로필 페이지로 연결됩니다.        
+ -->
+
+

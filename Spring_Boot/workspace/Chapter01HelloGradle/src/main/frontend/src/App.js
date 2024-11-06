@@ -26,6 +26,8 @@ const App = () => {
           <Route path="/boardList" element={<BoardList />} />
         </Routes>
       </BrowserRouter>
+      <br/>
+      
     </div>
   );
 };

@@ -1,0 +1,13 @@
+package board.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BoardController {
+	
+	public BoardController() {
+		System.out.println(" BoardController 의 생성자 입니다. ");
+	};
+	
+	
+}

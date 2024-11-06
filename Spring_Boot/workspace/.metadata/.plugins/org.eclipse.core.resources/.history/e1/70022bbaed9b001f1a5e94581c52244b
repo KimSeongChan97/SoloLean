@@ -1,0 +1,116 @@
+package thymeleaf.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import thymeleaf.bean.PersonDTO;
+
+
+@Controller
+public class ThymeleafController {
+		
+	public ThymeleafController() {
+		System.out.println(" ThymeleafController 생성자 입니다. ");
+	};
+	
+	@GetMapping("hithymeleaf")
+	public String hithymeleaf(Model model) {
+		model.addAttribute("say", "안녕하세요!");
+		return "basic/hithymeleaf";
+	};
+	
+	@GetMapping("literal")
+	public String literal(Model model) {
+		model.addAttribute("data", "Spring Boot! Thymeleaf입니다");
+		return "basic/literal";
+	};
+	
+	@GetMapping("variable")
+	public String variable(Model model) {
+		PersonDTO aa = new PersonDTO("홍길동", 25);
+		PersonDTO bb = new PersonDTO("김태리", 32);
+		PersonDTO cc = new PersonDTO("이제훈", 40);
+		
+		List<PersonDTO> list = new ArrayList<>();
+		list.add(aa);
+		list.add(bb);
+		list.add(cc);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("cc", cc);
+		
+		model.addAttribute("aa", aa);
+		model.addAttribute("list", list);
+		model.addAttribute("map", map);
+		
+		return "basic/variable";
+	};
+	
+	@GetMapping("operation")
+	public String operation() {
+		return "basic/operation";
+	};
+	
+	@GetMapping("text_basic")
+	public String text_basic(ModelMap modelMap) {
+		modelMap.put("data", "SpringBoot");
+		return "basic/text_basic";
+	};
+	
+	@GetMapping("attribute")
+	public String attribute(ModelMap modelMap) {
+		modelMap.put("data", "SpringBoot");
+		return "basic/attribute";
+	};
+	
+	@GetMapping("ifcondition")
+	public String ifcondition(Model model) {
+		model.addAttribute("age", 18);
+		model.addAttribute("movie", "베놈");
+		model.addAttribute("today", "수요일");
+		
+		
+		return "basic/ifcondition";
+	};
+	
+	@GetMapping("condition")
+	public String condition(Model model) {
+		PersonDTO aa = new PersonDTO("홍길동", 25);
+		PersonDTO bb = new PersonDTO("김태리", 17);
+		PersonDTO cc = new PersonDTO("이제훈", 40);
+		
+		List<PersonDTO> list = new ArrayList<>();
+		list.add(aa);
+		list.add(bb);
+		list.add(cc);
+		
+		model.addAttribute("list", list);
+		
+		return "basic/condition";
+	};
+	
+	@GetMapping("each")
+	public String each(Model model) {
+		PersonDTO aa = new PersonDTO("홍길동", 25);
+		PersonDTO bb = new PersonDTO("김태리", 17);
+		PersonDTO cc = new PersonDTO("이제훈", 40);
+		
+		List<PersonDTO> list = new ArrayList<>();
+		list.add(aa);
+		list.add(bb);
+		list.add(cc);
+		
+		model.addAttribute("list", list);
+		
+		return "basic/each";
+	};
+	
+	
+}

@@ -1,0 +1,21 @@
+package thymeleaf.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ThymeleafController {
+		
+	public ThymeleafController() {
+		System.out.println(" ThymeleafController 생성자 입니다. ");
+	};
+	
+	
+	@GetMapping("/")
+	public String index(Model model) {
+		model.addAttribute("message", "메시지 테스트");
+		return "index";
+	}
+	
+}

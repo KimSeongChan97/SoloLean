@@ -1,0 +1,14 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class HelloController {
+	// Bean 설정 하였다.
+	
+	
+	public HelloController() {
+		System.out.println("HelloController 생성자 입니다.");	
+		
+	}
+}

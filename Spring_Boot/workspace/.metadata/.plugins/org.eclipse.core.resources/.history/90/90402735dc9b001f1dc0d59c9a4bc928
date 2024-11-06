@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>attribute</title>
+</head>
+<body>
+		<h1>속성을 설정</h1>
+		<input type="text" name="mock" /> <!-- 과거 속성설정(Attribute) -->
+		<input type="text" name="mock" th:name="userName" />
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class HelloController {
+		
+	public HelloController() {
+		System.out.println("HelloController 생성자 입니다.");	
+	}
+}

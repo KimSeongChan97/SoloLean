@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>리터럴 응답페이지</title>
+</head>
+<body>
+<h2>리터럴</h2>
+<ul>
+	<li>'Hello' + ' world ' = <span th:text="'Hello' + ' world '" ></span></li> <!-- 결합 -->
+    <!-- 'Hello' + ' world ' = : 타임리프에서는 작은따옴표(' ')로 감싸진 문자열을 서로 결합할 수 있습니다. -->
+    <!-- th:text="'Hello' + ' world '" : 'Hello'와 ' world '라는 두 문자열을 + 연산자를 사용해 결합한 결과를 렌더링하여 화면에 표시합니다. -->
+    <!-- 이 구문은 최종적으로 "Hello world "가 렌더링되며, 타임리프는 + 기호를 사용해 문자열을 이어 붙이는 방식을 지원합니다. -->
+
+	<li>'Hello world ' = <span th:text="'Hello world '" ></span></li> <!-- 문자열 -->
+    <!-- 'Hello world ' = : 단일 문자열을 출력하는 예제입니다. -->
+    <!-- th:text="'Hello world '" : 타임리프에서 문자열을 그대로 출력할 때는 작은따옴표(' ')로 감싸 사용합니다. -->
+    <!-- 이 구문은 최종적으로 'Hello world '가 화면에 출력되며, 이는 단순한 문자열 표현입니다. -->
+
+	<li>'Hello ' + ${data} = <span th:text="'Hello ' + ${data}" ></span></li> <!-- 서버에서 보내주는 data 변수 값 -->
+    <!-- 'Hello ' + ${data} = : 'Hello '라는 문자열과 서버에서 전달된 data 변수를 결합하여 출력하는 예제입니다. -->
+    <!-- th:text="'Hello ' + ${data}" : ${data}는 타임리프의 표현식으로, 모델에 담긴 데이터가 렌더링 시 출력됩니다. -->
+    <!-- 예를 들어, data가 'Thymeleaf'일 경우 최종적으로 'Hello Thymeleaf'가 화면에 표시됩니다. 이는 동적으로 문자열을 생성하여 사용자에게 출력하는 데 유용합니다. -->
+
+	<li>리터럴로 대체  |Hello ${data}| = <span th:text="|Hello ${data}|" ></span></li> <!-- ' 이나 + 대신에 대체 |  -->
+    <!-- 리터럴로 대체 |Hello ${data}| = : ' 이나 + 기호를 사용하지 않고, 파이프(| |) 문법을 사용해 문자열과 변수를 결합하여 출력하는 예제입니다. -->
+    <!-- th:text="|Hello ${data}|" : 타임리프에서는 파이프(| |) 문법을 사용해 문자열 내에 변수를 쉽게 삽입할 수 있습니다. -->
+    <!-- |Hello ${data}| : 'Hello'라는 문자열과 data 변수가 결합됩니다. 예를 들어 data가 'User'일 경우, 최종적으로 'Hello User'가 화면에 출력됩니다. -->
+    <!-- 파이프 문법은 문자열과 변수를 결합할 때 +를 사용할 필요 없이 직관적으로 사용할 수 있는 방식입니다. -->
+</ul>
+</body>
+</html>
+
+<!--/*
+파이프 기호 |를 사용하여 문자열을 출력할 수 있다.
+Thymeleaf에서 파이프 기호는 문자열 내에서 변수를 삽입할 때 사용된다.
+파이프 기호 문법은 리터럴 표현을 보다 직관적으로 작성하는 데 유용하며, 다양한 텍스트와 변수를 쉽게 결합할 수 있습니다.
+예를 들어, |Hello ${name}|는 'Hello' 문자열과 name 변수를 결합하여 렌더링하는 역할을 합니다.
+*/-->

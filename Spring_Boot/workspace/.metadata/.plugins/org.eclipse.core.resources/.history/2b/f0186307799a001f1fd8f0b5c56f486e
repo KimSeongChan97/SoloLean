@@ -1,0 +1,22 @@
+package board.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BoardController {
+	
+	public BoardController() {
+		System.out.println("BoardController 의 생성자 입니다. ");
+	};
+	// 생성자에 있는 값이 로그에 출력되지 못하는 것은 Bean 으로 등록이 되지 않아서 이다.
+	// 그러므로 강제 빈을 선택하는 component-scan 을 통해 설정한다.
+	// main method 에 어노테이션으로 설정하면 된다.
+	
+	@GetMapping(value="board/hello")
+	public String hello(@RequestParam(value="name") String name) {
+		return "Hello, " + name + " 님 !! ";
+	};
+	
+}

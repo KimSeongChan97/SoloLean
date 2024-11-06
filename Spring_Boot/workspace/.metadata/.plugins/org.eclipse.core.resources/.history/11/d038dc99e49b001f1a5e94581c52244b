@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ifcondition</title>
+</head>
+<body>
+	<h1> if, unless </h1>
+	<br/>
+	<h3 th:text="'시청 불가'" th:if="${age < 19}"></h3>
+	<h3 th:text="'시청 불가'" th:if="${age lt 19}"></h3>
+	<h3 th:text="'시청 가능'" th:unless="${age > 19}"></h3>
+	<!-- unless 거짓일 때 -->
+	<br/>
+	<ul th:if="${movie == '베놈2'}"> <!-- 조건이 참이면 ul 태그가 실행되고, 거짓이면 실행되지 않는다. -->
+		<li>라스트 댄스</li>
+		<li>기자 - 에디 브록</li>
+		<li>심비오트</li>	
+	</ul>
+	<br/>
+	<th:block th:if="${today == '수요일'}">
+		<h2>수요일에는 빨간 장미를 그대에게 ... </h2>
+		<h3>1주일의 가운데 즈음... </h3>
+		
+	</th:block> 
+	
+	
+	
+	
+	
+</body>
+</html>

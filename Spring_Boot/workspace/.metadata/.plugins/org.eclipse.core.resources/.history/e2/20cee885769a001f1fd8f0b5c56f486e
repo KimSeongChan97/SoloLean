@@ -1,0 +1,28 @@
+package com.example.demo.controller;
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+// @Controller 가 아닌 @RestController 를 통해 ResposeBody 의 역할을 대신 한다.
+@RestController
+public class HelloController {
+	// Bean 설정 하였다.
+	
+	public HelloController() {
+		System.out.println("HelloController 생성자 입니다.");	
+		
+	};
+	
+	@RequestMapping(value="/")
+	//@ResponseBody // Browser 에 문자열 바로 뿌리기(JSP, HTML 등을 거치지 않고..)
+	public String index() {
+		return "Hello Spring Boot Gradle !! ";
+	};
+	
+	@RequestMapping(value="/hello")
+	public String hello() {
+		return "안녕하세요 ! ";
+	};
+	
+};

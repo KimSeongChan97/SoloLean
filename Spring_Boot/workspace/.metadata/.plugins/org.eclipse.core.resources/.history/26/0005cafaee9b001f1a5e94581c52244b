@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>block</title>
+<style type="text/css">
+
+span {
+	color: blue;
+	/* 모든 <span> 요소의 텍스트 색상을 파란색으로 설정 */
+}
+
+</style>
+</head>
+<body>
+
+	<!-- th:block: Thymeleaf의 블록 태그로 반복문 사용을 위해 설정 -->
+	<th:block th:each="dto : ${list}">
+			<div>
+				 <!-- 이름 표시: 'dto' 객체의 'name' 속성 값을 화면에 출력하기 위해 사용 -->
+				 이름 : <span th:text="${dto.name}"></span> &emsp;
+				 <!-- 나이 표시: 'dto' 객체의 'age' 속성 값을 화면에 출력하기 위해 사용 -->
+				 나이 : <span th:text="${dto.age}"></span>
+			</div>
+			<div>
+				<!-- 요약 표시: 'dto' 객체의 'name'과 'age' 속성을 함께 표시하기 위해 설정 -->
+				<!-- 표현식 내에서 'dto.name'과 'dto.age'를 문자열로 연결하여 출력하는 부분 -->
+				요약 : <span th:text="${dto.name} + ' / ' + ${dto.age}" ></span>
+			</div>
+			<br/>
+	</th:block>
+	<!-- th:block은 반복문 등을 사용할 때 활용되는 Thymeleaf의 특수 태그입니다. 'list' 객체에 담긴 dto들을 하나씩 꺼내서 처리합니다. -->
+	<!-- 'th:each' 속성은 반복문을 실행하여 'list' 객체의 요소를 하나씩 가져와 'dto' 변수에 담아 출력할 수 있도록 합니다. -->
+	<!-- ${dto.name}과 ${dto.age}는 각각 'dto' 객체에서 'name'과 'age' 속성 값을 가져와서 출력하는 방식입니다. -->
+	<!-- 'th:text'는 HTML 요소에 텍스트를 삽입하는 Thymeleaf 속성입니다. --> 
+
+</body>
+</html>

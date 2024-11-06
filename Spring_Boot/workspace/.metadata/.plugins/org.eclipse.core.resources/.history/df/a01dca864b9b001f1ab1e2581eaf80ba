@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>variable</title>
+</head>
+<body>
+<h1> Spring El 표현식 </h1>
+<h3>Object</h3>
+<ul>
+	<li> ${aa} </li>
+</ul>
+</body>
+</html>

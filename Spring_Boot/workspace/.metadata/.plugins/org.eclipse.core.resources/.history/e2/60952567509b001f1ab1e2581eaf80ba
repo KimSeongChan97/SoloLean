@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>operation</title>
+</head>
+<body>
+<ul>
+	<li> 산술 연살자 
+		<ul>
+			<li> 25 + 36 = <span th:text="25 + 36"></span></li>
+			<li> 25 % 2 = <span th:text="25 % 2"></span></li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>

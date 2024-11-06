@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    타임리프 시도해보기
+    Hello Thymeleaf !!
+    <br/>
+    <h1> 타임리프 예제 연습 </h1>
+    <!-- message 변수를 한 번만 표시하도록 수정 -->
+    <p th:text="${message}"> 타임리프를 통한 데이터 표시 </p>
+    
+    <!-- 아래의 조건문은 메시지가 없는 경우에만 동작 -->
+    <p th:unless="${message != null}">메시지가 없습니다.</p>
+</body>
+</html>
