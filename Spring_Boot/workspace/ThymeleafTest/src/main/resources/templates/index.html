@@ -1,24 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf 에 대해 아라보자</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thymeleaf에 대해 알아보자</title>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #4a90e2;
+    font-size: 2em;
+    margin-top: 1em;
+    text-align: center;
+}
+
+p {
+    margin: 1em 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+</style>
 </head>
 <body>
-   <h1>Hello Thymeleaf</h1>
-   <p><a href="hithymeleaf">hithymeleaf.html</a></p>
-   <p><a href="literal">literal.html</a></p>
-   <p><a href="variable">variable.html</a></p>
-   <p><a href="operation">operation.html</a></p>
-   <p><a href="text_basic">text_basic.html</a></p>
-   <p><a href="attribute">attribute.html</a></p>
-   <p><a href="ifcondition">ifcondition.html</a></p>
-   <p><a href="condition">condition.html</a></p>
-   <p><a href="each">each.html</a></p>
-   <p><a href="block">block.html</a></p>
-   <p><a href="link">link.html</a></p>
-   
-
-
+    <h1>Hello Thymeleaf</h1>
+    <div class="link-container">
+        <p><a href="hithymeleaf">hithymeleaf.html</a></p>
+        <p><a href="literal">literal.html</a></p>
+        <p><a href="variable">variable.html</a></p>
+        <p><a href="operation">operation.html</a></p>
+        <p><a href="text_basic">text_basic.html</a></p>
+        <p><a href="attribute">attribute.html</a></p>
+        <p><a href="ifcondition">ifcondition.html</a></p>
+        <p><a href="condition">condition.html</a></p>
+        <p><a href="each">each.html</a></p>
+        <p><a href="block">block.html</a></p>
+        <p><a href="link">link.html</a></p>
+        <p><a href="basicObject">basicObject.html(파라메터 X)</a></p>
+        <p><a href="basicObject?paramData=Good">basicObject?paramData=Good.html</a></p>
+        <hr/>
+        <p><a href="fragmentMain1">fragmentMain1.html</a></p>
+        <p><a href="fragmentMain2">fragmentMain2.html</a></p>
+    </div>
 </body>
 </html>

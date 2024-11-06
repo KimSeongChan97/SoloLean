@@ -108,6 +108,7 @@ ThymeleafTest
 			ThymeleafController.java
 		thymeleaf.bean
 			PersonDTO.java
+			HelloTest.java
 	src/main/resources
 		templates
 			index.html
@@ -116,13 +117,21 @@ ThymeleafTest
 			literal.html
 			variable.html
 			operation.html
-			text-basic.html
+			text_basic.html
 			attribute.html
 			ifcondition.html
 			condition.html
 			each.html
 			block.html
 			link.html
+			basicObject.html
+
+			fragmentMain1.html
+			fragmentMain2.html
+		templates.basic.fragment
+			menu.html
+			info.html
+			footer.html
 			
 			
 

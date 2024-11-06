@@ -1,5 +1,6 @@
 package thymeleaf.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpSession;
 import thymeleaf.bean.PersonDTO;
 
 @Controller
@@ -168,16 +171,75 @@ public class ThymeleafController {
     // 단순한 문자열을 반환하여 JSON 또는 문자열 응답을 테스트
     @GetMapping("hello")
     @ResponseBody
-    public String hello() {
-        return "Basic URL"; // 응답으로 "Basic URL"이라는 문자열을 반환
+    public String hello(@RequestParam(name="name", defaultValue="noname") String name, 
+    					@RequestParam(name="age", defaultValue="0") int age) {
+        return name + " / " + age; 
     }
 
     // 경로 변수(Path Variable) 처리 예제 메서드
     // URL에 포함된 이름(name)과 나이(age)를 동적으로 처리하여 응답으로 반환합니다.
-    @GetMapping("/hello/{name}/{age}")
+    @GetMapping("/hello2/{name}/{age}")
     @ResponseBody
-    public String helloPathVariable(@PathVariable("name") String name, @PathVariable("age") int age) {
+    public String hello2(@PathVariable("name") String name, @PathVariable("age") int age) {
         // 경로 변수에서 전달된 "name"과 "age" 값을 사용하여 맞춤형 문자열 생성
-        return "Hello " + name + ", your age is " + age;
+        return name + " / " + age;
     }
+    
+    @GetMapping("/hello3/{name}")
+    @ResponseBody
+    public String hello3(@PathVariable("name") String name,
+    					 @RequestParam("age") int age) {
+    	return name + " / " + age;
+    };
+    
+    @GetMapping("/select")
+    @ResponseBody
+    public String select() {
+    	return "select 요청";
+    };
+    
+    @GetMapping("/insert")
+    @ResponseBody
+    public String insert(@RequestParam(name="pageno", defaultValue="1000") int pageno) {
+    	
+    	return "pageno = " + pageno;
+    };
+    
+    
+    @GetMapping("/character/detail/{name}/{number}")
+    @ResponseBody
+    public String character_detail(@PathVariable("name") String name,
+    							   @PathVariable("number") int number) {
+    	
+    	return name + " / " + number;
+    };
+    
+    @GetMapping("basicObject")
+    public String basicObject(HttpSession session,Model model) {
+    	
+    	LocalDateTime startTime = LocalDateTime.now();
+    	
+    	// 세션
+    	session.setAttribute("memId", "hong");
+    	session.setAttribute("memName", "홍길동");
+    	
+    	model.addAttribute("startTime", startTime);
+    	model.addAttribute("str", "   Spring Boot   ");
+    	model.addAttribute("num", "123456789.389");
+    	
+    	
+        return "basic/basicObject"; 
+    };
+    
+    @GetMapping("/fragmentMain1")
+    public String fragmentMain1() {
+    	return "basic/fragmentMain1";
+    };
+    
+    @GetMapping("/fragmentMain2")
+    public String fragmentMain2() {
+    	return "basic/fragmentMain2";
+    };
+
+    
 }

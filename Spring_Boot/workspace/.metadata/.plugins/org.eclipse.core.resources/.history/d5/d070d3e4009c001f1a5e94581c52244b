@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>link</title>
+</head>
+<body>
+<h1> URL 링크</h1>
+
+<ul>
+    <!-- 정적 URL 링크: 단순히 빈 링크를 제공합니다. URL이 설정되지 않아 클릭 시 아무런 동작을 하지 않습니다. -->
+	<li><a href="">Basic URL</a></li>
+	
+	<!-- th:href를 사용하여 동적으로 URL을 설정. "/hello"로 요청을 보내도록 설정되어, 클릭 시 "hello" 메서드로 이동합니다. -->
+	<li><a th:href="@{/hello}">Basic URL</a></li>
+	
+	<!-- 쿼리 파라미터 방식의 URL: @ 기호를 사용하여 URL을 설정하고, 쿼리 파라미터로 이름과 나이를 전달합니다.
+	     이름과 나이 값을 동적으로 설정하여 서버에 요청을 보냅니다.
+	     "홍길동"이라는 이름과 "25"라는 나이 정보가 파라미터로 전송되어 "hello" 메서드에서 사용할 수 있습니다. -->
+	<li><a th:href="@{/hello(name=${'홍길동'}, age=${25})}">Query Param</a></li>
+	<!--/* http://localhost:8080/hello?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=25 */-->
+	<!--/* http://localhost:8080/hello?name=홍길동&age=25 */-->
+	
+	<li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">Query Param(변수적용)</a></li>
+	<!-- http://localhost:8080/hello?param1=&param2=  -->
+	
+	<!-- 경로 변수(Path Variable) 방식의 URL: 경로 자체에 변수 값을 포함하여 동적으로 URL을 생성합니다.
+	     여기서는 "name"과 "age" 변수를 URL의 일부로 사용하고, 실제 값은 "hong"과 "25"로 설정됩니다.
+	     서버에서는 URL 경로에서 "name"과 "age" 값을 추출하여 사용할 수 있습니다. -->
+	<li><a th:href="@{/hello2/{name}/{age}(name=${'hong'}, age=${25})}">Path Variable</a></li>
+	<!--/* http://localhost:8080/hello2/hong/25 */-->
+	<!--/* 파라미더 / 주소 */-->
+	
+	
+	
+</ul>
+
+</body>
+</html>

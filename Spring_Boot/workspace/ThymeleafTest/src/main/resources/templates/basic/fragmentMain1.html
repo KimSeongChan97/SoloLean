@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>fragmentMain1</title>
+<style type="text/css">
+
+header {
+       height : 100px;
+       background-color : yellow; /* header 배경색을 노란색으로 설정합니다. */
+}
+footer {
+    height : 100px;
+    background-color : pink; /* footer 배경색을 분홍색으로 설정합니다. */
+}
+section {
+    height : 200px;
+    background-color : green; /* section 배경색을 초록색으로 설정합니다. */
+}
+</style>
+</head>
+<body>
+
+	<header th:insert="basic/fragment/menu :: header"> 여기는 menu </header>
+    <!-- `th:insert="basic/fragment/menu :: header"`: `menu.html` 파일의 "header" 프래그먼트를 삽입합니다.
+         즉, menu.html에서 정의된 헤더 영역이 이 위치에 표시됩니다. -->
+
+	<section>
+				여기는 fragmentMain1.html 페이지 입니다.
+        <!-- 본문 영역으로, 현재 페이지 이름과 기본 콘텐츠를 표시합니다. -->
+	</section>
+
+	<footer th:insert="basic/fragment/info"> 여기는 info </footer>
+    <!-- `th:insert="basic/fragment/info"`: `info.html` 파일의 "info" 프래그먼트를 삽입합니다.
+         즉, info.html에서 정의된 정보 영역이 이 위치에 표시됩니다. -->
+
+</body>
+</html>
+
+<!--/*
+th:insert는 다른 HTML 파일의 특정 프래그먼트를 현재 문서에 삽입 합니다.
+"basic/fragment/menu :: header" 는 basic/fragment/menu.html 파일의 header라는 이름의 프래그먼트를 삽입하겠다는 의미입니다.
+*/-->

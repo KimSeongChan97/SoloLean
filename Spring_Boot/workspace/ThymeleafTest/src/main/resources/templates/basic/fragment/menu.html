@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>menu</title>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- `th:fragment="header"`: 이 div 요소를 "header"라는 이름의 프래그먼트로 정의합니다. 
+         프래그먼트는 재사용 가능한 HTML 조각으로, 다른 페이지에서 이 "header"를 쉽게 불러와 사용할 수 있게 됩니다. -->
+	<a href="https://spring.io/"> 스프링 페이지 </a>
+    <!-- 스프링 프레임워크 공식 웹사이트로 이동하는 링크입니다. -->
+	<a href="https://www.thymeleaf.org/"> 타임리프 페이지 </a>
+    <!-- 타임리프(Thymeleaf) 템플릿 엔진 공식 웹사이트로 이동하는 링크입니다. -->
+</div>
+</body>
+</html>

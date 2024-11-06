@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>basicObject</title>
+<style type="text/css">
+
+body {
+    background-color: #2e1a1b; 
+    color: #f4e0c9; 
+    font-family: 'Georgia'; 
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #d4a373; 
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px 0;
+}
+
+span {
+    color: #f4e0c9; 
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #d4a373; 
+    margin: 20px 0;
+}
+
+</style>
+</head>
+<body>
+
+<h1> 표현식 기본 객체 (Expression Basic Objects) </h1>
+
+<ul>
+	<li> locale = <span th:text="${#locale}">현재 요청의 언어 및 지역 정보를 가져온다 </span></li>
+	<!--
+		#locale: 타임리프 내장 객체 중 하나로, 현재 사용자의 언어 및 지역 설정 정보를 나타낸다.
+		따라서, 현재 요청에 대한 언어 및 지역 설정을 가져오는 데 사용되며 다국어 지원을 할 때 유용하다.
+		예를 들어 한국에서 요청한 경우 "ko_KR"과 같은 형식으로 값을 제공한다.
+	 -->
+
+</ul>
+
+<h1> 편의 객체 </h1>
+<ul>
+	<li> Request Parameter = <span th:text="${param.paramData}"></span></li>
+	<!--
+		${param.paramData}: 현재 요청의 파라미터 중 paramData라는 이름을 가진 파라미터의 값을 출력한다.
+		param은 요청 파라미터를 Map 형태로 관리하여 여러 파라미터에 접근할 수 있게 한다.
+	-->
+
+	<li> spring bean = <span th:text="${@helloTest.hello('Spring Boot!')}"> </span></li>
+	<!--/* 
+		${@ } : 해당 기호는 스프링 빈을 참조 한다.
+		스프링 애플리케이션 컨텍스트의 등록한 빈의 이름이다.
+		helloTest 빈의 hello 메서드를 호출하고, 결과를 템플릿에 출력한다.
+		(thymeleaf.bean 패키지에 HelloTest.java 를 만들고 Component 등록을 하여 연결한다.)
+		@Component, @Service, @Repository, 등등 의 어노테이션을 사용하여 빈으로 생성된다.
+
+		주석 상세 설명: @helloTest는 Spring Bean을 호출하는 방식으로, 
+		@ 뒤에 지정한 Bean 이름을 통해 Spring Context에 등록된 Bean의 메서드나 속성에 접근한다.
+		예제에서는 helloTest라는 이름을 가진 Bean의 hello 메서드를 호출하고, 그 결과를 렌더링하는 방식이다.
+	 */-->
+</ul>
+<hr/>
+
+[[${startTime}]]<br/>
+[[${#temporals.format(startTime, 'yyyy-MM-dd HH:mm:ss')}]]<br/>
+[[${#temporals.format(startTime, 'yyyy년MM월dd일 HH시mm분ss초')}]]<br/>
+
+<!--/* 
+	타임리프에서는 [[]] 은 표현식(Expression)을 나타내는 구문이다.
+	[[ ]] 안에 작성된 내용은 변수나 표현식을 평가하여 결과를 HTML에 삽입하는데 사용된다.
+	위 표현식은 타임리프의 렌더링 엔진이 작동할 때 동적으로 HTML에 값이 삽입된다.
+	 */-->
+
+
+<hr/>
+
+<!--/* Thymeleaf 가 제공하는 내장 함수로, 현재 시각이나 날짜를 표현,#dates 및 #calendars 유틸리티 */-->
+[[${#dates}]]<br/>
+[[${#dates.createNow()}]]<br/>
+[[${#dates.createToday()}]]<br/>
+[[${#dates.format(#dates.createNow(), 'YYYY/MM/dd HH:mm')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'yyyy년 MMM d일')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'hh:mm:ss')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'ddd dd d')}]]<br/>
+[[${#calendars.dayOfWeekName(#dates.createNow())}]]<br/>
+<hr/>
+<!-- 
+	#dates: 날짜와 시간을 처리하기 위한 Thymeleaf 내장 객체로,
+	현재 시각을 생성(createNow)하거나, 날짜 포맷을 지정(format)하여 원하는 형식으로 표현 가능하다.
+	#calendars는 요일이나 주 등 달력 관련 정보들을 얻을 때 유용하게 사용할 수 있는 내장 객체이다.
+-->
+
+<!--/* 타임리프에서 [[strings]] 는 특정 문자열이나 변수의 값을 출력할 때 사용되는 표현식 */-->
+[[${#strings}]]<br/>
+[[${#strings.isEmpty(param.name)}]]<br/>
+[[${#strings.isEmpty(startTime)}]]<br/>
+[[${#strings.isEmpty(str)}]]<br/>
+[[${#strings.length(str)}]]<br/>
+'[[${#strings.toLowerCase(str)}]]'<br/>
+[[${str}]]<br/>
+[[${#strings.trim(str)}]]<br/>
+<hr/>
+<!--
+	#strings: 문자열을 다룰 수 있는 다양한 유틸리티 메서드를 제공하는 Thymeleaf 내장 객체.
+	예를 들어 isEmpty는 해당 문자열이 비어있는지 확인하고, toLowerCase는 문자열을 소문자로 변환한다.
+	trim은 문자열 양 끝의 공백을 제거하여, 사용자 입력 시 불필요한 공백을 없애는 데 유용하다.
+-->
+
+<ul>
+	<li>${num} = <span th:text="${num}"></span></li>
+	<li>
+		${#numbers.formatInteger(num, 3, 'COMMA')} = <span th:text="${#numbers.formatInteger(num, 3, 'COMMA')}"></span>
+	</li>
+	<li>
+	    ${#numbers.formatCurrency(num)} = <span th:text="${#numbers.formatCurrency(num)}"></span>
+	</li>
+	<li>
+		${#numbers.formatDecimal(num, 3, 'COMMA', 2, 'POINT')} = <span th:text="${#numbers.formatDecimal(num, 3, 'COMMA', 2, 'POINT')}"></span>
+	</li>	
+</ul>
+<hr/>
+<!--
+	#numbers: 숫자를 다양한 형식으로 변환하는 유틸리티 메서드를 제공하는 Thymeleaf 내장 객체.
+	formatInteger는 정수를 특정 자릿수로 포맷하고, formatCurrency는 금액 표현을 위한 포맷을 제공한다.
+	이러한 포맷팅을 통해 숫자를 사용자가 쉽게 읽을 수 있는 형태로 표시할 수 있다.
+-->
+
+[[${param}]]<br/>
+[[${param.size()}]]<br/>
+[[${param.isEmpty()}]]<br/>
+<hr/>
+<!-- 
+	param: 요청 파라미터를 관리하는 객체로, 현재 요청에서 전달된 모든 파라미터를 다룬다.
+	size는 파라미터의 개수를 확인하고, isEmpty는 파라미터가 비어있는지 검사한다.
+-->
+
+[[${session}]]<br/>
+[[${session.memId}]]<br/>
+[[${session.size()}]]<br/>
+[[${session.isEmpty()}]]<br/>
+[[${session.keySet()}]]<br/>
+<hr/>
+<!--
+	session: 현재 사용자 세션에 접근하여 세션에 저장된 정보를 다룰 수 있게 한다.
+	memId는 세션에 저장된 사용자 ID와 같은 정보를 가져오고, size는 세션 내에 저장된 항목 수를 확인한다.
+	세션을 활용하면 특정 사용자와 관련된 데이터를 서버에 저장하여, 여러 요청에 걸쳐 데이터를 유지할 수 있다.
+-->
+
+</body>
+</html>

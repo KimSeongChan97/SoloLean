@@ -16,7 +16,7 @@
 		<item value="org.eclipse.jgit:7.0.0.202409031743-r"/>
 		<item value="org.eclipse.jst.common.fproj.enablement.jdt:3.30.0.v202405122323"/>
 		<item value="org.eclipse.jst.enterprise_ui.feature:3.35.0.v202407060546"/>
-		<item value="org.eclipse.justj.openjdk.hotspot.jre.full:21.0.4.v20240802-1551"/>
+		<item value="org.eclipse.justj.openjdk.hotspot.jre.full:21.0.5.v20241023-1957"/>
 		<item value="org.eclipse.m2e.feature:2.6.2.20240828-1954"/>
 		<item value="org.eclipse.m2e.logback.feature:2.6.1.20240411-1743"/>
 		<item value="org.eclipse.m2e.wtp.feature:1.6.1.20231024-1618"/>
