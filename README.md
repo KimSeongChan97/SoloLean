@@ -52,9 +52,9 @@ Project
 4. [팀플(MVC) 팀주소 ] : [FilmNoteGitHub](https://github.com/bitcamp-aiaas-9/FilmNote.git)
 4-1. [ 팀플(MVC) ] : [FilmNote](https://github.com/KimSeongChan97/SoloLean/tree/main/Web_workspace/workspace/FilmNote)
 5. [ 팀플(SpringMVC) ] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
-6. Spring Boot + JPA + React 
+6. Spring Boot + JPA + React  : finall
 
 
-- 일정상 멈추고 Git S드
+- 일정상 Git 업로드 로 대체
 https://blog.naver.com/sck2270
 학습한 것 기술했던 블로그
