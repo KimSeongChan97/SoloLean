@@ -15,6 +15,7 @@
 
 **[ Naver Cloud Prlatfrom ]**
 - NaverCloudPlatform 학습
+- Server / Bucket 이용
 
 **[ STS 3 ]**
 - Spring 학습
@@ -26,7 +27,7 @@
 - Jenkins 이용하여 Deploy 해보았다
 - 리눅스 이용해보았다(기초적인 문법)
 
-**[ VS 편집기 ]**
+**[ VS Code ]**
 - React(Node.js + yarn) 학습
 
 **[ STS 4 ]**
