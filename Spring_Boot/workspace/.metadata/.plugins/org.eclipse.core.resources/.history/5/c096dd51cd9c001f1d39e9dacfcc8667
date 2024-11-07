@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+</head>
+<body>
+
+<!-- 이름 	 아이디 	 	비밀번호 테이블 형식 , 타임리프 사용 -->
+
+</body>
+</html>

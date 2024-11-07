@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List</title>
+<link rel="stylesheet" href="../css/list.css">
+</head>
+<body>
+    <a href="/"><h1>회원 목록 🧑‍🤝‍🧑</h1></a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름 📝</th>
+                <th>아이디 🆔</th>
+                <th>비밀번호 🔒</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${list}">
+                <td th:text="${user.name}">이름</td>
+                <td th:text="${user.id}">아이디</td>
+                <td th:text="${user.pwd}">비밀번호</td>
+            </tr>
+        </tbody>
+    </table>
+    
+<script>
+document.addEventListener('mousemove', (event) => {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // 각도 계산 (마우스 X 위치에 따라 변화)
+    const angle = Math.round((mouseX / windowWidth) * 360);
+
+    // 색상 계산 (마우스 X와 Y 위치에 따라 RGB 값 변화)
+    const red = Math.round((mouseX / windowWidth) * 255);
+    const blue = Math.round((mouseY / windowHeight) * 255);
+    const green = Math.round((red + blue) / 2); // RGB의 중간 값으로 설정
+
+    // 랜덤하게 두 번째 색상 생성
+    const secondRed = Math.round((mouseY / windowHeight) * 255);
+    const secondGreen = Math.round((mouseX / windowWidth) * 255);
+    const secondBlue = Math.round((secondRed + secondGreen) / 2);
+
+    // body의 배경을 업데이트
+    document.body.style.background = `linear-gradient(${angle}deg, rgb(${red}, ${green}, ${blue}), rgb(${secondRed}, ${secondGreen}, ${secondBlue}))`;
+});
+</script>
+</body>
+</html>

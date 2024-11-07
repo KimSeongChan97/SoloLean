@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>FragmentMain1</title>
+<style type="text/css">
+
+header {
+       height : 100px;
+       background-color : yellow;
+}
+footer {
+    height : 100px;
+    background-color : pink;
+}
+section {
+    height : 200px;
+    background-color : green;
+}
+
+</style>
+</head>
+<body>
+
+</body>
+</html>

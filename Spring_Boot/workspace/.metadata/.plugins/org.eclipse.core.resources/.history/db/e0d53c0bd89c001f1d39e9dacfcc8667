@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List</title>
+<link rel="stylesheet" href="../css/list.css">
+</head>
+<body>
+	<a href="/"><h1>회원 목록 🧑‍🤝‍🧑</h1></a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름 📝</th>
+				<th>아이디 🆔</th>
+				<th>비밀번호 🔒</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${list}">
+				<td th:text="${user.name}"><a th:href="@{/user/detail/{id}(id=${user.id})}">이름</a></td>
+				<td th:text="${user.id}"><a th:href="@{/user/detail/{id}(id=${user.id})}">아이디</a></td>
+				<td th:text="${user.pwd}"><a th:href="@{/user/detail/{id}(id=${user.id})}">비밀번호</a></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="../js/move.js"></script>
+</body>
+</html>

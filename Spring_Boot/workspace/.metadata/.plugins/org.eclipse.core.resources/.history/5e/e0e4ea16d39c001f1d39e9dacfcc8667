@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List</title>
+<link rel="stylesheet" href="../css/list.css">
+</head>
+<body>
+    <a href="/"><h1>회원 목록 🧑‍🤝‍🧑</h1></a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름 📝</th>
+                <th>아이디 🆔</th>
+                <th>비밀번호 🔒</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${list}">
+                <td th:text="${user.name}">이름</td>
+                <td th:text="${user.id}">아이디</td>
+                <td th:text="${user.pwd}">비밀번호</td>
+            </tr>
+        </tbody>
+    </table>
+    
+     <script>
+        document.addEventListener('mousemove', (event) => {
+            const image = document.getElementById('movingImage');
+            const windowWidth = window.innerWidth;
+            const mouseX = event.clientX;
+
+            // 계산: 마우스가 화면의 왼쪽 끝에서 오른쪽 끝으로 이동할 때 이미지가 좌우로 움직임
+            const moveAmount = (mouseX / windowWidth) * 50 - 25;
+            image.style.transform = `translateY(-50%) translateX(${moveAmount}%)`;
+        });
+    </script>
+</body>
+</html>
+
+<!--/* 
+
+서버에서 전달받은 데이터(list)를 순회하며 행을 동적으로 생성
+Thymeleaf의 th:each 속성을 사용하여 list 객체의 각 요소를 반복 처리합니다. 각 반복 시 변수명은 'user'
+'user' 객체의 'name' 속성값이 셀에 표시됩니다. 기본값은 "이름"으로 설정되어, 데이터가 없을 때에도 의미
+기본 텍스트는 데이터 바인딩이 실패할 경우 사용자에게 보이는 내용을 설정
+
+ */-->

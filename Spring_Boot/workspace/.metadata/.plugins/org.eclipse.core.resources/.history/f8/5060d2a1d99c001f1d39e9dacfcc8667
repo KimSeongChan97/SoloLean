@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail</title>
+    <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+    <h1>유저 상세 정보</h1>
+    <!-- 유저 정보 수정 및 유저 정보 삭제 폼 구현 -->
+    <div>
+        <p>이름: <span th:text="${user.name}">이름</span></p>
+        <p>아이디: <span th:text="${user.id}">아이디</span></p>
+        <p>비밀번호: <span th:text="${user.pwd}">비밀번호</span></p>
+    </div>
+    <a href="/">메인 페이지로 돌아가기</a>
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/move.js"></script>
+</body>
+</html>

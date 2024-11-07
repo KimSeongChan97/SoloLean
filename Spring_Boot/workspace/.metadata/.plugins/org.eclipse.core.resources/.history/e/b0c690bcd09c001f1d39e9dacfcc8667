@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+<link rel="stylesheet" href="../css/list.css">
+</head>
+<body>
+    <a href="/"><h1>회원 목록 🧑‍🤝‍🧑</h1></a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름 📝</th>
+                <th>아이디 🆔</th>
+                <th>비밀번호 🔒</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${list}">
+                <td th:text="${user.name}">이름</td>
+                <td th:text="${user.id}">아이디</td>
+                <td th:text="${user.pwd}">비밀번호</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

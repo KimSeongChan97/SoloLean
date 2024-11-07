@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script th:inline="javascript">
+/*  <![CDATA[  */
+		window.onload = function() {
+			$('#alertModalBody').text('회원가입 완료');
+			$('#alertModal').modal('show');
+			$('#alertModal').on('hidden.bs.modal', function() {
+				location.href = /* [[${'user/list'}]] */ "/user/list";
+			});
+		};
+/*   ]]>  */
+</script>
+</body>
+</html>

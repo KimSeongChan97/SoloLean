@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+</head>
+<body>
+<h3>*** Main Page ***</h3>
+<hr/>
+<p><a href="">등록</a>
+<p><a href="">목록</a>
+</body>
+</html>

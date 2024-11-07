@@ -1,0 +1,5 @@
+package thymeleaf.bean;
+
+public class HelloTest {
+
+}

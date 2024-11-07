@@ -1,0 +1,34 @@
+let isModalOpen = false; // 모달 상태 추적 변수
+
+function handleMouseMove(event) {
+    // 모달이 열려 있을 때는 배경 업데이트를 중단
+    if (isModalOpen) {
+        return;
+    }
+
+    const mouseX = event.clientX / window.innerWidth;
+    const mouseY = event.clientY / window.innerHeight;
+
+    const angle = Math.round(mouseX * 360);
+    const red = Math.round(mouseX * 255);
+    const blue = Math.round(mouseY * 255);
+    const green = Math.round((mouseX + mouseY) * 127.5);
+
+    const secondRed = Math.round(mouseY * 255);
+    const secondGreen = Math.round(mouseX * 255);
+    const secondBlue = Math.round((mouseX + mouseY) * 127.5);
+
+    document.body.style.background = `linear-gradient(${angle}deg, rgb(${red}, ${green}, ${blue}), rgb(${secondRed}, ${secondGreen}, ${secondBlue}))`;
+}
+
+// 초기 이벤트 리스너 추가
+document.addEventListener('mousemove', handleMouseMove);
+
+// 모달 열림/닫힘 상태를 감지하여 마우스 이벤트 처리 조정
+const modalElement = document.getElementById('confirmModal');
+modalElement.addEventListener('show.bs.modal', function () {
+    isModalOpen = true;
+});
+modalElement.addEventListener('hidden.bs.modal', function () {
+    isModalOpen = false;
+});

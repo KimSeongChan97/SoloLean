@@ -1,0 +1,120 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transition: background 0.5s ease;
+    color: #f4f4f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+h1, h2 {
+    color: #ffd700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    text-align: center; /* 제목을 중앙 정렬 */
+}
+
+.user-info-table, .user-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-info-table th, .user-info-table td,
+.user-form-table th, .user-form-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #fff;
+    color: #f4f4f9;
+}
+
+.user-info-table th {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.user-form input[type="text"]:focus,
+.user-form input[type="password"]:focus {
+    outline: none;
+    border-color: #00bcd4;
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.update-btn,
+.delete-btn {
+    background-color: #e91e63;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 10px auto; /* 중앙 정렬 및 여백 추가 */
+    text-align: center;
+    max-width: 200px; /* 적절한 너비 설정 */
+}
+
+.delete-btn {
+    background-color: #d32f2f; /* 삭제 버튼 색상 */
+}
+
+.update-btn:hover,
+.delete-btn:hover {
+    transform: scale(1.05);
+}
+
+.update-btn:hover {
+    background-color: #c2185b;
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+}
+
+a {
+    color: #00bcd4;
+    text-decoration: none;
+    display: block;
+    text-align: center; /* 링크를 중앙 정렬 */
+    margin-top: 15px; /* 위쪽 여백 추가 */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffd700;
+}
+
+/* 자동 색 변환 */
+@keyframes gradientMovement {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+}
+
+body:hover .container {
+    animation: gradientMovement 5s infinite alternate;
+}

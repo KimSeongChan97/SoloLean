@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail</title>
+    <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+    <h1>유저 상세 정보</h1>
+    <div>
+        <table class="user-info-table">
+            <tr>
+                <th>이름</th>
+                <td><span th:text="${user.name}">이름</span></td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td><span th:text="${user.id}">아이디</span></td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><span th:text="${user.pwd}">비밀번호</span></td>
+            </tr>
+        </table>
+    </div>
+    
+    <h2>회원 정보 수정</h2>
+    <form action="/user/update" method="post" class="user-form">
+        <table class="user-form-table">
+            <tr>
+                <th>이름</th>
+                <td><input type="text" name="name" th:value="${user.name}" required></td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><input type="password" name="pwd" required></td>
+            </tr>
+            <input type="hidden" name="id" th:value="${user.id}">
+            <tr>
+                <td colspan="2" class="form-buttons">
+                    <button type="submit" class="update-btn">수정</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <h2>회원 삭제</h2>
+    <form action="/user/delete" method="post">
+        <input type="hidden" name="id" th:value="${user.id}">
+        <button type="submit" class="delete-btn">삭제</button>
+    </form>
+
+    <a href="/">메인 페이지로 돌아가기</a>
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/move.js"></script>
+</body>
+</html>

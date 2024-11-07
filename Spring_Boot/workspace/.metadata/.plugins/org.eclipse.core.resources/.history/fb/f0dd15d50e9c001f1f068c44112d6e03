@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>basicObject</title>
+<style type="text/css">
+
+body {
+	text-align: center;
+    background-color: #f4f4f5;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul {
+	list-style-type: none;
+}
+
+</style>
+</head>
+<body>
+<h1> 표현식 기본 객체 (Expression Basic Objects) </h1>
+
+<ul>
+	<li> locale = <span th:text="${#locale}">현재 요청의 언어 및 지역 정보를 가져온다 </span></li>
+	
+</ul>
+
+<h1> 편의 객체 </h1>
+<ul>
+	<li> Request Parameter = <span th:text="${param.paramData}"></span></li>
+	<li> spring bean = <span th:text="${@helloTest.hello('Spring Boot!')}"> </span></li>
+	<!--/* 
+		${@ } : 해당 기호는 스프링 빈을 참조 한다.
+		스프링 애플리케이션 컨텍스트의 등록한 빈의 이름이다.
+		helloTest 빈의 hello 메서드를 호출하고, 결과를 템플릿에 출력한다.
+		(thymeleaf.bean 패키지에 HelloTest.java 를 만들고 Component 등록을 하여 연결한다.)
+		@Component, @Service, @Repository, 등등 의 어노테이션을 사용하여 빈으로 생성된다.
+	 */-->
+</ul>
+<hr/>
+
+[[${startTime}]]<br/>
+[[${#temporals.format(startTime, 'yyyy-MM-dd HH:mm:ss')}]]<br/>
+[[${#temporals.format(startTime, 'yyyy년MM월dd일 HH시mm분ss초')}]]<br/>
+
+<!--/* 
+	타임리프에서는 [[]] 은 표현식(Expression)을 나타내는 구문이다.
+	[[ ]] 안에 작성된 내용은 변수나 표현식을 평가하여 결과를 HTML에 삽입하는데 사용된다.
+ */-->
+
+<hr/>
+
+<!--/* Thymeleaf 가 제공하는 내장 함수로, 현재 시각이나 날짜를 표현,#dates 및 #calendars 유틸리티 */-->
+[[${#dates}]]<br/>
+[[${#dates.createNow()}]]<br/>
+[[${#dates.createToday()}]]<br/>
+[[${#dates.format(#dates.createNow(), 'YYYY/MM/dd HH:mm')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'yyyy년 MMM d일')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'hh:mm:ss')}]]<br/>
+[[${#dates.format(#dates.createNow(), 'ddd dd d')}]]<br/>
+[[${#calendars.dayOfWeekName(#dates.createNow())}]]<br/>
+<hr/>
+
+<!--/* 타임리프에서 [[strings]] 는 특정 문자열이나 변수의 값을 출력할 때 사용되는 표현식 */-->
+[[${#strings}]]
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>footer</title>
+</head>
+<body>
+<footer th:fragment="foot">
+	footer 자리 입니다.
+</footer>
+<footer th:fragment="footParam (param1, param2)">
+	<p> foot 파라미터 자리 입니다. </p>
+	<p th:text="${param1}"></p>
+	<p th:text="${param2}"></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+@ComponentScan(basePackages = {"user.controller", "user.service", "user.dao"})
+//  DataSourceAutoConfiguration 는 exclude 하여 잠시 DB 정지
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+public class Chapter02MySqlApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Chapter02MySqlApplication.class, args);
+	}
+
+}

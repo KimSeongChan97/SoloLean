@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/* Google Fonts import for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* General body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Deep black background */
+    color: #e0e0e0; /* Light gray text */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Page title styling */
+h1 {
+    color: #f05454; /* Soft red */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+/* Table styling */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #1e1e1e; /* Darker gray for contrast */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: center;
+    border-bottom: 1px solid #333; /* Thin separator lines */
+    font-size: 1em;
+}
+
+th {
+    background-color: #2b2b2b; /* Slightly darker header */
+    color: #f05454; /* Consistent soft red */
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #1e1e1e; /* Matches the table background */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2a2a2a; /* Alternating row color */
+}
+
+tbody tr:hover {
+    background-color: #333; /* Subtle hover effect */
+    transition: background-color 0.3s;
+}
+
+
+td:last-child, th:last-child {
+    border-right: none;
+}
+
+

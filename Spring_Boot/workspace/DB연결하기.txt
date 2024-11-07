@@ -1,0 +1,52 @@
+
+------------------
+
+Spring Boot 와 DB 연결하기
+
+Spring Framework :
+servlet-context.xml (웹)
+root-context.xml (독립,DB)
+
+Spring Boot :
+application.properties (통합)
+application.yml -> 단계를 정확하게 지켜야 함
+
+css, js, img 경로 추가 : resources/static 안에
+
+
+클라리언트 요청 : static
+서버 응답 : templates ( 렌더링 )
+src/main 폴더 안에 리액트 생성됨.
+
+----------------------------------------
+(MyBatis)
+Chapter02MySQL	
+
+src/main/java
+	com.example.demo
+		Chapter02MySqlApplication.java ( main )
+	user.controller
+		UserController.java
+	user.service
+		UserService.java ( interface )
+	user.service.impl
+		UserServiceImpl.java (구현)
+	user.dao
+		UserDAO.java ( interface )
+	
+
+src/main/resources
+	application.pro /
+	application.yml
+	mapper
+		userMapper.xml
+	static
+	    index.html
+	    css
+		writeForm.css
+	    js
+		write.js
+	    img
+		*.png                                  
+	templates.user
+		writeForm.html

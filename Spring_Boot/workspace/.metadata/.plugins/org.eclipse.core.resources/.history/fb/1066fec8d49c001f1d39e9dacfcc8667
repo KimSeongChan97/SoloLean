@@ -1,0 +1,18 @@
+document.addEventListener('mousemove', (event) => {
+    const mouseX = event.clientX / window.innerWidth;
+    const mouseY = event.clientY / window.innerHeight;
+
+    // 각도와 색상 계산
+    const angle = Math.round(mouseX * 360);
+    const red = Math.round(mouseX * 255);
+    const blue = Math.round(mouseY * 255);
+    const green = Math.round((mouseX + mouseY) * 127.5); // 255 / 2
+
+    // 두 번째 색상 계산 (X, Y 반대로)
+    const secondRed = Math.round(mouseY * 255);
+    const secondGreen = Math.round(mouseX * 255);
+    const secondBlue = Math.round((mouseX + mouseY) * 127.5); // 255 / 2
+
+    // 배경 업데이트
+    document.body.style.background = `linear-gradient(${angle}deg, rgb(${red}, ${green}, ${blue}), rgb(${secondRed}, ${secondGreen}, ${secondBlue}))`;
+});

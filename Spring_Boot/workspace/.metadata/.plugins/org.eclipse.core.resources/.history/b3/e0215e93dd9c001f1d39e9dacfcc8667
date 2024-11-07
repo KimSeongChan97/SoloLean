@@ -1,0 +1,159 @@
+/* detail.css */
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: radial-gradient(circle, #e8eaf6, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+h1, h2 {
+    color: #2d3a5f;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(50, 50, 93, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+.user-info-table, .user-form-table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.user-info-table th, .user-info-table td, .user-form-table th, .user-form-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.user-info-table th, .user-form-table th {
+    background-color: #2d3a5f;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.user-info-table td, .user-form-table td {
+    background-color: #f8f9fa;
+    color: #2d3a5f;
+}
+
+.user-info-table tr:hover td, .user-form-table tr:hover td {
+    background-color: #eceff7;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.update-btn, .delete-btn {
+    background-color: #2d3a5f;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 10px;
+    font-size: 17px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.update-btn:hover {
+    background-color: #3e4c79;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background-color: #e57373;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #2d3a5f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: color 0.3s;
+    letter-spacing: 0.05em;
+}
+
+a:hover {
+    color: #3e4c79;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 14px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #2d3a5f;
+    box-shadow: 0 0 8px rgba(45, 58, 95, 0.3);
+    outline: none;
+}
+
+/* Modal custom styles */
+.modal-content {
+    border-radius: 15px;
+    background: linear-gradient(135deg, #f8f9fa, #eceff7);
+    box-shadow: 0 8px 25px rgba(50, 50, 93, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.modal-header {
+    border-bottom: none;
+    background-color: #2d3a5f;
+    color: #ffffff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer .btn {
+    border-radius: 50px;
+    padding: 10px 20px;
+}

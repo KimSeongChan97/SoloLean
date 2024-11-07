@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>footer</title>
+</head>
+<body>
+<footer th:fragment="foot(styles)" th:attr="style=${styles}">
+    <!-- `th:fragment="foot"`: 이 footer 요소를 "foot"이라는 이름의 프래그먼트로 정의하여, 
+         다른 HTML 파일에서 쉽게 불러올 수 있습니다. -->
+	footer 자리 입니다.
+    <!-- 푸터 영역에 고정된 텍스트로 "footer 자리 입니다."라는 안내문을 표시합니다. -->
+</footer>
+<footer th:fragment="footParam (param1, param2, styles)" th:attr="style=${styles}">
+    <!-- `th:fragment="footParam (param1, param2)"`: footParam이라는 이름의 프래그먼트를 정의하며,
+         이 프래그먼트는 파라미터 `param1`, `param2`를 받을 수 있습니다. -->
+	<p> foot 파라미터 자리 입니다. </p>
+    <!-- 이 프래그먼트가 호출될 때 "foot 파라미터 자리 입니다."라는 텍스트를 표시합니다. -->
+	<p th:text="${param1}"></p>
+    <!-- `th:text="${param1}"`: 외부에서 전달된 `param1`의 값을 여기 표시합니다. 파라미터로 전달된 내용이 HTML에 표시됩니다. -->
+	<p th:text="${param2}"></p>
+    <!-- `th:text="${param2}"`: 외부에서 전달된 `param2`의 값을 여기 표시합니다. 파라미터로 전달된 내용이 HTML에 표시됩니다. -->
+</footer>
+</body>
+</html>

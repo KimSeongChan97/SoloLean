@@ -1,0 +1,7 @@
+document.addEventListener('mousemove', ({ clientX: x, clientY: y, currentTarget }) => {
+    const { innerWidth: w, innerHeight: h } = currentTarget;
+    const angle = Math.round((x / w) * 360);
+    const color1 = `rgb(${Math.round((x / w) * 255)}, ${Math.round((x + y) / (w + h) * 255)}, ${Math.round((y / h) * 255)})`;
+    const color2 = `rgb(${Math.round((y / h) * 255)}, ${Math.round((x / w) * 255)}, ${Math.round((x + y) / (w + h) * 255)})`;
+    document.body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+});

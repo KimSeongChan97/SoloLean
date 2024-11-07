@@ -1,0 +1,21 @@
+document.addEventListener('mousemove', (event) => {
+    // 마우스가 움직일 때마다 이벤트가 발생하고, 그 이벤트의 정보를 event 객체로 받음
+    const mouseX = event.clientX / window.innerWidth; // 마우스 X 위치를 화면 너비로 나눠 0과 1 사이의 비율로 변환.
+    const mouseY = event.clientY / window.innerHeight; // 마우스 Y 위치를 화면 높이로 나눠 0과 1 사이의 비율로 변환.
+
+    // 각도와 색상 계산
+    const angle = Math.round(mouseX * 360); // X 위치 비율에 따라 각도를 계산하여 0도에서 360도 사이의 값을 생성.
+    const red = Math.round(mouseX * 255); // X 위치 비율에 따라 빨간색 값(0~255)을 계산.
+    const blue = Math.round(mouseY * 255); // Y 위치 비율에 따라 파란색 값(0~255)을 계산.
+    const green = Math.round((mouseX + mouseY) * 127.5); // 255 / 2 // X와 Y 위치 비율을 더한 값을 평균화하여 초록색 값(0~255)을 계산.
+	// 마우스가 화면 중간에 위치할수록 밝은 색상.
+
+    // 두 번째 색상 계산 (X, Y 반대로)
+    const secondRed = Math.round(mouseY * 255); // Y 위치 비율에 따라 두 번째 빨간색 값(0~255)을 계산합니다. 기존 빨간색 값과 반대 축을 사용하여 다르게 변동.
+    const secondGreen = Math.round(mouseX * 255); // X 위치 비율에 따라 두 번째 초록색 값(0~255)을 계산합니다. 기존 초록색 값과 반대 축을 사용하여 다르게 변동.
+    const secondBlue = Math.round((mouseX + mouseY) * 127.5); // 255 / 2 // 두 번째 파란색 값은 기존과 동일한 방식으로 계산되어, 첫 번째 색상과 조화를 이루도록 설정.
+
+    // 배경 업데이트
+    document.body.style.background = `linear-gradient(${angle}deg, rgb(${red}, ${green}, ${blue}), rgb(${secondRed}, ${secondGreen}, ${secondBlue}))`; 
+    // 마우스 위치 비율에 따라 계산된 각도와 두 가지 색상을 사용해 화면의 배경을 선형 그라디언트로 업데이트. 각도는 그라디언트의 방향을 나타내며, 두 가지 색상은 그라디언트의 시작과 끝 색상으로 설정.
+});

@@ -1,0 +1,24 @@
+package user.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import user.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+	
+	private UserDAO userDAO;
+	
+	
+	
+	
+	@Override
+	public String getExistId(String id) {
+		
+		return null;
+	}
+	
+	
+	
+	
+}

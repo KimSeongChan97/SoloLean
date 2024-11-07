@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>basicObject</title>
+<style type="text/css">
+
+body {
+	text-align: center;
+    background-color: #f4f4f5;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul {
+	list-style-type: none;
+}
+
+</style>
+</head>
+<body>
+<h1> 표현식 기본 객체 (Expression Basic Objects) </h1>
+
+<ul>
+	<li> locale = <span th:text="${#locale}">현재 요청의 언어 및 지역 정보를 가져온다 </span></li>
+	
+</ul>
+
+<h1> 편의 객체 </h1>
+<ul>
+	<li> Request Parameter = <span th:text="${param.paramData}"></span></li>
+	<li> spring bean = <span th:text="${@helloTest.hello('Spring Boot!')}"> </span></li>
+	<!--/* 
+		${@ } : 해당 기호는 스프링 빈을 참조 한다.
+		스프링 애플리케이션 컨텍스트의 등록한 빈의 이름이다.
+		helloTest 빈의 hello 메서드를 호출하고, 결과를 템플릿에 출력한다.
+	 */-->
+</ul>
+<hr/>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>footer</title>
+</head>
+<body>
+<footer th:fragment="foot">
+	footer 자리 입니다.
+</footer>
+</body>
+</html>

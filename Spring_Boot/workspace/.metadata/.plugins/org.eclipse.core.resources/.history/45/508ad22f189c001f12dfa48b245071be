@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>fragmentMain2</title>
+</head>
+<body>
+
+<h1> 부분 포함 테스트 </h1>
+<hr/>
+
+<h2> 부분 포함 insert </h2>
+<div th:insert="~{basic/fragment/footer :: foot('color: red;')}"></div>
+<!-- `th:insert="~{basic/fragment/footer :: foot}"`: `footer.html` 파일의 "foot" 프래그먼트를 삽입하여 표시합니다.
+     파라미터 없이 기본 footer 내용을 빨간색 스타일로 렌더링합니다. -->
+
+<h2> 부분 포함 replace </h2>
+<div th:replace="~{basic/fragment/footer :: foot('color: blue;')}"></div>
+<!-- `th:replace="~{basic/fragment/footer :: foot}"`: "foot" 프래그먼트를 불러와서 현재 div를 대체합니다. 
+     이 div 자체가 footer 프래그먼트로 대체되며, 스타일은 파란색으로 지정됩니다. -->
+
+<h2> 부분 포함 단순표현식 </h2>
+<div th:insert="basic/fragment/footer :: foot('color: magenta;')"></div>
+<!-- `th:insert="basic/fragment/footer :: foot"`: 단순히 "foot" 프래그먼트를 마젠타 색으로 표시합니다.
+     틸다(~) 기호를 사용하지 않는 단순 표현식을 통해서도 프래그먼트를 불러올 수 있습니다. -->
+
+<h1> 파라미터 사용 </h1>
+<div th:replace="~{basic/fragment/footer :: footParam ('데이터1', '데이터2')}" style="color: green"></div>
+<!-- `th:replace="~{basic/fragment/footer :: footParam ('데이터1', '데이터2')}"`: 파라미터를 사용하여 footParam 프래그먼트를 가져옵니다.
+     '데이터1'과 '데이터2'를 파라미터로 전달하여 표시하며, 이 div는 프래그먼트로 대체되며 스타일은 초록색입니다. -->
+
+<div th:replace="basic/fragment/footer :: footParam ('데이터1', '데이터2')" style="color: cyan"></div>
+<!-- `th:replace="basic/fragment/footer :: footParam ('데이터1', '데이터2')"`: 같은 파라미터를 전달하여 footParam 프래그먼트를 표시합니다.
+     이번에는 틸다(~) 기호 없이 사용하여 동일한 프래그먼트를 가져오며, 스타일은 청록색입니다. -->
+
+</body>
+</html>

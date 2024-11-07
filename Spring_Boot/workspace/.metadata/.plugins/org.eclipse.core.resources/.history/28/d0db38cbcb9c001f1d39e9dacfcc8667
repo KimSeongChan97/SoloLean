@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<script th:inline="javascript">
+/*  <![CDATA[  */
+		window.onload = function(){
+				alert("회원가입 완료")
+				location.href = "/";
+		}
+/*   ]]>  */
+
+</script>
+</body>
+</html>

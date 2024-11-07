@@ -1,0 +1,129 @@
+/* Base styling */
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f5ff, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.5s;
+}
+
+h1, h2 {
+    color: #1f3a93;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-8px);
+}
+
+.user-info-table, .user-form-table {
+    width: 100%;
+    margin-bottom: 35px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f9faff;
+}
+
+.user-info-table th, .user-form-table th {
+    padding: 16px 20px;
+    background-color: #1f3a93;
+    color: #ffffff;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.user-info-table td, .user-form-table td {
+    padding: 16px 20px;
+    background-color: #ffffff;
+    color: #1f3a93;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.user-info-table td:last-child, .user-form-table td:last-child {
+    border-bottom: none;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+.update-btn, .delete-btn {
+    background-color: #1f3a93;
+    color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.update-btn:hover {
+    background-color: #344d7f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #1f3a93;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+a:hover {
+    color: #344d7f;
+    transform: translateY(-2px);
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 14px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f5f7fa;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #1f3a93;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(31, 58, 147, 0.2);
+}

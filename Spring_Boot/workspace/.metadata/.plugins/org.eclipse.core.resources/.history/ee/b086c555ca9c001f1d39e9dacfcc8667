@@ -1,0 +1,58 @@
+package user.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import user.bean.UserDTO;
+import user.service.UserService;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+@RequestMapping(value = "user")
+public class UserController {
+
+	
+	
+	private UserService userService;
+
+	// 생성자 Injection, Autowired 를 대신하여 사용
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
+
+
+	@GetMapping(value = "writeForm")
+	public String writeForm() {
+		return "user/writeForm";
+	};
+
+	@PostMapping("getExistId")
+	@ResponseBody
+	public String getExistId(@RequestParam("id") String id) {
+
+		return userService.getExistId(id);
+	};
+	
+	@PostMapping("write")
+    @ResponseBody
+    public void write(@ModelAttribute UserDTO userDTO) {
+         userService.write(userDTO);
+    };
+    
+    
+	@PostMapping("write2")
+    public void write2(@ModelAttribute UserDTO userDTO) {
+        System.out.println(userDTO); 
+		userService.write(userDTO);
+       
+		return "user/write";        
+    };
+	
+	
+
+}

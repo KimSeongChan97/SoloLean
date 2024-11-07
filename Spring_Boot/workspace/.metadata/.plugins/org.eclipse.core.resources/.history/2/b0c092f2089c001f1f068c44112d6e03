@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>basicObject</title>
+<style type="text/css">
+
+body {
+	text-align: center;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+</head>
+<body>
+
+</body>
+</html>

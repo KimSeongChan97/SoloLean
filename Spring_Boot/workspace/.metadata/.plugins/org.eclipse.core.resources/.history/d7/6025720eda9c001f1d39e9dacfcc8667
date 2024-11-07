@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #2a2a72;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-info-table, .user-form-table {
+    width: 80%;
+    margin: 0 auto 20px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-table th, .user-info-table td, .user-form-table th, .user-form-table td {
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.user-info-table th, .user-form-table th {
+    background-color: #e6e9f0;
+    width: 30%;
+}
+
+.form-buttons {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.update-btn, .delete-btn {
+    background-color: #2a2a72;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.update-btn:hover {
+    background-color: #4a4ab7;
+}
+
+.delete-btn {
+    background-color: #e63946;
+}
+
+.delete-btn:hover {
+    background-color: #b02a37;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #2a2a72;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}

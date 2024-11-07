@@ -1,0 +1,123 @@
+/* detail.css - 캐쥬얼하고 판타지적인 느낌의 디자인 */
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transition: background 0.5s ease;
+    color: #f4f4f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+h1, h2 {
+    color: #ffd700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.user-info-table, .user-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-info-table th, .user-info-table td,
+.user-form-table th, .user-form-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #fff;
+    color: #f4f4f9;
+}
+
+.user-info-table th {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.user-form input[type="text"]:focus,
+.user-form input[type="password"]:focus {
+    outline: none;
+    border-color: #00bcd4;
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.update-btn, .delete-btn {
+    background-color: #e91e63;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-btn:hover, .delete-btn:hover {
+    background-color: #c2185b;
+    transform: scale(1.05);
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.8);
+    color: #f4f4f9;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+}
+
+.btn-danger {
+    background-color: #ff6347;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.btn-secondary {
+    background-color: #607d8b;
+    border: none;
+}
+
+a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffd700;
+}
+
+@keyframes gradientMovement {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+}
+
+body:hover .container {
+    animation: gradientMovement 5s infinite alternate;
+}
