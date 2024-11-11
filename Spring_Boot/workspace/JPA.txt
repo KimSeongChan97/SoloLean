@@ -15,9 +15,19 @@ JPATest
 	src/main/java
 		exam.app
 			HelloJPA01.java ( main )
+			EntityTesAppt01.java -- 입력
+			EntityTesAppt02.java -- 출력
+			EntityTesAppt03.java -- 문제
+			EntityTesAppt04.java
+			EntityTesAppt05.java -- 삭제
+	
 		exam.entity
 			EntityTest01.java
-			EntityTesAppt01.java
+			EntityTest02.java
+			Person.java
+			EntityTest03.java
+			EntityTest04.java -- 날짜,시간			
+
 	src/main/resources
 		META-INF
 			persistence.xml
