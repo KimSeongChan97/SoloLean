@@ -11,11 +11,13 @@ lombok 1.18.34
 org.projectlombok:lombok
 
 
-
 JPATest
-
 	src/main/java
-
+		exam.app
+			HelloJPA01.java ( main )
+		exam.entity
+			EntityTest01.java
+			EntityTesAppt01.java
 	src/main/resources
 		META-INF
 			persistence.xml

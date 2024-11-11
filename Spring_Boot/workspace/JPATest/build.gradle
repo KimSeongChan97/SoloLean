@@ -29,6 +29,8 @@ dependencies {
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 	implementation group: 'org.hibernate', name: 'hibernate-core', version: '6.5.2.Final', ext: 'pom'
+	// error 수정
+	implementation 'org.hibernate:hibernate-jpamodelgen:6.5.2.Final'
 	// https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
 	implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.2.0'
 	// https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api

@@ -1,0 +1,13 @@
+package exam.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+
+@Entity // table 과 mapping 하는 클래스가 Entity 이다.
+@Table(name="entitytesttlb") // table 이름
+public class EntityTest01 {
+	
+	
+	
+}

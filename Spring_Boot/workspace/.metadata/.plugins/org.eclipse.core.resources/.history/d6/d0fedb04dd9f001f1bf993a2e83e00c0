@@ -1,0 +1,34 @@
+package exam.app;
+
+import java.time.LocalDateTime;
+
+import exam.entity.EntityTest01;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class EntityTesAppt01 {
+	
+	public static void main(String[] args) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+		EntityManager manager = factory.createEntityManager();
+		
+		EntityTest01 entityTest01;
+		
+		manager.getTransaction().begin();
+		entityTest01 = new EntityTest01();
+		entityTest01.setId(10);
+		entityTest01.setName("홍길동");
+		entityTest01.setAge(25);
+		entityTest01.setBirthday(LocalDateTime.now());
+		
+		manager.persist(entityTest01);
+		manager.getTransaction().commit();
+		manager.clear();
+		factory.close();
+		
+		
+	}
+	
+	
+}

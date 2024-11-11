@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moivo Project Page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="your-image-path.jpg" alt="Artistic portrait">
+        </div>
+        <div class="text-section">
+            <h1>Moivo</h1>
+            <p>Discover elegance redefined</p>
+            <p class="korean-text">한국어 테스트</p>
+            <p>Step into a world where style meets sophistication, crafted exclusively for those who dare to stand out.</p>
+        </div>
+    </div>
+</body>
+</html>

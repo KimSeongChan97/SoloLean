@@ -1,0 +1,22 @@
+package exam.entity;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity // table 과 mapping 하는 클래스가 Entity 이다.
+@Table(name="entitytesttlb") // table 이름
+public class EntityTest01 {
+	
+	@Id
+	private int id;
+	private String name;
+	private int age;
+	private LocalDateTime birthday;
+	
+	
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    transition: background 0.8s ease;
+}
+
+h3 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #2a2a72;
+    margin-top: 50px;
+    text-shadow: 1px 1px 5px #888;
+}
+
+p {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2a2a72;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+a:hover {
+    background-color: #4a4ab7;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+</style>
+</head>
+<body>
+<h3>*** Main Page ***</h3>
+<hr/>
+<p><a href="/user/writeForm">등록</a>
+<p><a href="/user/list">목록</a>
+<p><a href="/user/123">123</a></p>
+
+<script type="text/javascript" src="./js/move.js"></script>
+</body>
+</html>

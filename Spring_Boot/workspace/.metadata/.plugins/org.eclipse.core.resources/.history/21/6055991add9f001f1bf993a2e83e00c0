@@ -1,0 +1,43 @@
+package exam.app;
+
+import java.time.LocalDateTime; // 현재 날짜와 시간을 가져오기 위한 LocalDateTime 클래스 import
+
+import exam.entity.EntityTest01; // 엔티티 클래스 import
+import jakarta.persistence.EntityManager; // JPA에서 엔티티 매니저를 사용하기 위한 import
+import jakarta.persistence.EntityManagerFactory; // 엔티티 매니저 팩토리 import
+import jakarta.persistence.Persistence; // 영속성 유닛 관리를 위한 Persistence 클래스 import
+
+public class EntityTesAppt01 {
+    
+    public static void main(String[] args) {
+        // EntityManagerFactory를 통해 영속성 유닛을 생성. 이 영속성 유닛의 이름은 "entitytest"로 설정됨.
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+        // EntityManager는 엔티티를 관리하는 주요 인터페이스로, 데이터베이스와의 CRUD 작업을 수행함.
+        EntityManager manager = factory.createEntityManager();
+        
+        // EntityTest01 객체 선언
+        EntityTest01 entityTest01;
+        
+        // 트랜잭션 시작. 데이터베이스에 데이터 삽입, 수정, 삭제 작업 시 반드시 트랜잭션이 필요함.
+        manager.getTransaction().begin();
+        
+        // 새로운 엔티티 객체를 생성하여 필드 값 설정
+        entityTest01 = new EntityTest01();
+        entityTest01.setId(10); // 기본 키 값 설정
+        entityTest01.setName("홍길동"); // 이름 설정
+        entityTest01.setAge(25); // 나이 설정
+        entityTest01.setBirthday(LocalDateTime.now()); // 현재 시간을 생일 값으로 설정. 실제 애플리케이션에서는 사용자의 생일 입력 값을 사용함.
+        
+        // persist() 메서드는 새 엔티티 객체를 데이터베이스에 저장하기 위해 사용됨.
+        manager.persist(entityTest01);
+        
+        // 트랜잭션 커밋. 데이터베이스에 변경 내용을 적용함.
+        manager.getTransaction().commit();
+        
+        // 엔티티 매니저의 캐시를 비움. 메모리 사용을 줄이고, 다음 작업에서 최신 상태를 보장하기 위해 사용됨.
+        manager.clear();
+        
+        // 엔티티 매니저 팩토리를 닫아 자원을 해제함.
+        factory.close();
+    }
+}

@@ -1,0 +1,11 @@
+package exam.entity;
+
+import jakarta.persistence.Entity;
+
+// table 과 mapping 하는 클래스가 Entity 이다.
+@Entity
+public class EntityTest01 {
+	
+	
+	
+}

@@ -19,6 +19,16 @@
                "projectName": "ThymeleafTest",
                "args": "",
                "envFile": "${workspaceFolder}/.env"
+          },
+          {
+               "type": "java",
+               "name": "Spring Boot-Chapter02MySqlApplication<Chapter02MySQL>",
+               "request": "launch",
+               "cwd": "${workspaceFolder}",
+               "mainClass": "com.example.demo.Chapter02MySqlApplication",
+               "projectName": "Chapter02MySQL",
+               "args": "",
+               "envFile": "${workspaceFolder}/.env"
           }
      ]
 }

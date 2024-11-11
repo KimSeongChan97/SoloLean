@@ -1,0 +1,13 @@
+package exam.app;
+
+public class HelloJPA01 {
+
+	public static void main(String[] args) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+		System.out.println("EntityManagerFactory = " + factory.getClass().getName());
+		factory.close();
+		
+
+	}
+
+}
