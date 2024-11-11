@@ -1,0 +1,22 @@
+JPA
+------------------------------------
+ 통합해서 만들기 : 6.6.1버전 그래들, 
+JDK 11 이후 만들어진 프로젝트에서 업그레이드
+
+mysql-connector-java 8.0.28
+hibernate-core 6.5.2.Final
+jakarta.persistence-api 3.2
+jakarta.xml.bind-api 4.0.2
+lombok 1.18.34
+org.projectlombok:lombok
+
+
+
+JPATest
+
+	src/main/java
+
+	src/main/resources
+		META-INF
+			persistence.xml
+			
