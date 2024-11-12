@@ -1,0 +1,30 @@
+JPA + Spring
+
+-------------
+
+Spring Data
+
+
+Chapter03JPA
+	src/main/java
+		com.example.demo		
+			Chapter03JpaApplication.java
+			BoardController.java
+			BoardService.java (interface)
+			BoardServiceImpl.java
+			BoardDAO.java (interface)
+			BoardDTO.java
+			BoardEntity.java
+			
+	src/test/java
+		com.example.demo
+			Chapter03JpaApplicationTests.java
+			JPA_BoardRepositoryTest.java
+			JPA_BoardRepositoryTest2.java
+
+	src/main/resources
+		application.properties
+		templates
+		static
+     
+     
