@@ -1,0 +1,29 @@
+package exam.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
+@Data
+@Entity
+public class EntityTest05 {
+	
+	@Id
+	private int id;
+	
+	private String username;
+	
+	
+	// 연관 관계 매핑 ( join )
+	
+	// 다 대 일
+	@ManyToOne
+	private Team t; // FK
+
+	
+	
+	
+	
+	
+}

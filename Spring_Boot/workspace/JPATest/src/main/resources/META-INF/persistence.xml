@@ -10,8 +10,14 @@
  	<!-- provider는 JPA 구현체를 지정. Hibernate를 JPA 구현체로 사용하기 위해 HibernatePersistenceProvider를 명시함. -->
  	<class>exam.entity.EntityTest01</class>
  	<class>exam.entity.EntityTest02</class>
- 	<class>exam.entity.Person</class>
  	<class>exam.entity.EntityTest03</class>
+ 	<class>exam.entity.EntityTest04</class>
+ 	<class>exam.entity.EntityTest05</class>
+ 	<class>exam.entity.Person</class>
+ 	<class>exam.entity.Team</class>
+ 	<class>exam.entity.Emp</class>
+ 	<class>exam.entity.Dept</class>
+ 	<class>exam.entity.Locations</class>
  	<!-- JPA에서 관리할 엔티티 클래스 정의.  -->
  	
  	

@@ -1,0 +1,46 @@
+package exam.app;
+
+import java.util.List;
+
+import exam.entity.Emp;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+
+public class HelloJPA03 {
+
+    public static void main(String[] args) throws EntityNotFoundException, InterruptedException {
+        
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+        EntityManager manager = factory.createEntityManager();
+        
+        // JPQL을 사용해 Emp 엔티티의 모든 객체를 가져오는 쿼리 생성
+        Query query = manager.createQuery("select emp from Emp emp", Emp.class); // JPQL, Emp 은 Entity Class 이다.
+        List<Emp> list = query.getResultList();
+        System.out.println();
+        // 조회된 모든 Emp 객체에 대해 직원명과 부서명을 출력
+        for(Emp emp : list) {
+            System.out.println("직원명 : " + emp.getEname());
+            Thread.sleep(1000);
+            
+            // emp.getDeptno()가 null이 아닐 경우, 부서명을 출력
+            if(emp.getDeptno() != null) { 
+                System.out.println(" 부서명 : " + emp.getDeptno().getDname());
+                System.out.println();
+            } else {
+                System.out.println(" 부서명 : 없음 "); // 부서 정보가 없을 때 출력
+                System.out.println();
+            } // if
+        } // for
+        
+        // 총 레코드 개수를 출력
+        
+        System.out.println("데이터 총 갯수 = " + list.size());
+
+        manager.close();
+        factory.close();
+    }
+
+}

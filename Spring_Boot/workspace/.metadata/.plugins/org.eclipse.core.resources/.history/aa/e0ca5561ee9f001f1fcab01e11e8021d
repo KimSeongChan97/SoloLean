@@ -1,0 +1,23 @@
+package exam.app;
+
+import exam.entity.EntityTest01;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
+
+public class EntityTesAppt02 {
+	
+	public static void main(String[] args) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+		EntityManager manager = factory.createEntityManager();
+        
+
+        TypedQuery<EntityTest01> tq = manager.createQuery("");
+        
+        
+        
+        
+	}
+	
+}

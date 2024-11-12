@@ -1,0 +1,42 @@
+package exam.entity;
+
+import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import lombok.Data;
+
+@Data
+@Entity
+public class EntityTest03 {
+		
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+	
+	@Column(nullable = false, length = 10)
+	private String name;
+	
+	@Column(columnDefinition = "varchar(20) default '파랑'")
+	private String favoriteColor;
+	
+	@Column(name = "age", nullable = false)
+	private int num1; // DB 에는 age 이지만, 여기서는 num1 으로 지정 가능
+	
+	@Column(name = "score", precision = 6, scale = 2)
+	private BigDecimal num2;
+	
+	@Lob
+	private byte[] content1;
+	
+	@Lob
+	private char[] content2;
+	
+	@Lob
+	private String content3;
+	
+}

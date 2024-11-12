@@ -1,0 +1,5 @@
+package exam.entity;
+
+public class Locations {
+
+}

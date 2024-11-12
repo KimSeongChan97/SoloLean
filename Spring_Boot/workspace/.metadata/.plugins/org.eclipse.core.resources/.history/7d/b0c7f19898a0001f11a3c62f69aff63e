@@ -1,0 +1,16 @@
+package exam.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Team {
+	
+	@Column(name = "TEAM_ID")
+	@Id
+	private String id;
+	private String name; 
+	
+	
+}

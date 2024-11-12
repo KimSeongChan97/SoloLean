@@ -10,7 +10,6 @@ jakarta.xml.bind-api 4.0.2
 lombok 1.18.34
 org.projectlombok:lombok
 
-
 JPATest
 	src/main/java
 		exam.app
@@ -20,15 +19,24 @@ JPATest
 			EntityTesAppt03.java -- 문제
 			EntityTesAppt04.java
 			EntityTesAppt05.java -- 삭제
+			HelloJPA02.java -- join
+			HelloJPA03.java
+			HelloJPA04.java
 	
 		exam.entity
 			EntityTest01.java
 			EntityTest02.java
 			Person.java
 			EntityTest03.java
-			EntityTest04.java -- 날짜,시간			
+			EntityTest04.java -- 날짜,시간				Team.java
+			EntityTest05.java -- join
+			Emp.java
+			Dept.java
+			Locations.java	
 
 	src/main/resources
 		META-INF
 			persistence.xml
+==================================================
+
 			

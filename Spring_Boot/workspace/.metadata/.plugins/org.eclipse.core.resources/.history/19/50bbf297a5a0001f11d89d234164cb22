@@ -1,0 +1,29 @@
+package exam.app;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class HelloJPA04 {
+
+	public static void main(String[] args) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+        EntityManager manager = factory.createEntityManager();
+        
+        String fetchJoinJpql = "select distinct t " +
+        					   "from Emp t left join fetch t.deptno " +
+        					   "left join fetch t.deptno.loc_code";
+        
+        
+        
+        
+        
+        
+        
+        
+        manager.close();
+        factory.close();
+
+	}
+
+}

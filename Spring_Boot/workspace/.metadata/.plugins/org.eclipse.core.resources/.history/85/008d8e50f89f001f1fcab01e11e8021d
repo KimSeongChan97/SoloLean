@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+ version="3.0">
+ 
+ <persistence-unit name="entitytest">
+ 	<!-- persistence-unit은 JPA에서 특정 영속성 컨텍스트를 정의함. "entitytest"는 영속성 유닛의 이름으로, 애플리케이션에서 참조될 때 사용됨. -->
+ 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+ 	<!-- provider는 JPA 구현체를 지정. Hibernate를 JPA 구현체로 사용하기 위해 HibernatePersistenceProvider를 명시함. -->
+ 	<class>exam.entity.EntityTest01</class>
+ 	<class>exam.entity.EntityTest02</class>
+ 	<class>exam.entity.Person</class>
+ 	<!-- JPA에서 관리할 엔티티 클래스 정의.  -->
+ 	
+ 	
+ 	<properties>
+ 		<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+ 		<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul"/>
+ 		<property name="jakarta.persistence.jdbc.user" value="root"/>
+ 		<property name="jakarta.persistence.jdbc.password" value="1234"/>
+ 		
+ 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+ 		<property name="hibernate.show_sql" value="true"/>
+ 		<property name="hibernate.format_sql" value="true"/>
+ 		<property name="hibernate.use_sql_comments" value="true"/>
+ 		<property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create(새로 생성, 기존 DB삭제) / update(업데이트) -->
+ 		
+ 		
+ 		
+ 	</properties>
+ </persistence-unit>
+ 
+ </persistence>

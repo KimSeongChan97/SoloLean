@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+ version="3.0">
+ 
+ <persistence-unit name="entitytest">
+ 	<!-- persistence-unit은 JPA에서 특정 영속성 컨텍스트를 정의함. "entitytest"는 영속성 유닛의 이름으로, 애플리케이션에서 참조될 때 사용됨. -->
+ 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+ 	<!-- provider는 JPA 구현체를 지정. Hibernate를 JPA 구현체로 사용하기 위해 HibernatePersistenceProvider를 명시함. -->
+ 	<class>exam.entity.EntityTest01</class>
+ 	<class>exam.entity.EntityTest02</class>
+ 	<class>exam.entity.Person</class>
+ 	<class>exam.entity.EntityTest03</class>
+ 	<class>exam.entity.EntityTest04</class>
+ 	<class>exam.entity.Team</class>
+ 	<class>exam.entity.EntityTest05</class>
+ 	<class>exam.entity.Emp</class>
+ 	<class>exam.entity.Dept</class>
+ 	<!-- JPA에서 관리할 엔티티 클래스 정의.  -->
+ 	
+ 	
+ 	<properties>
+ 		<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+ 		<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul"/>
+ 		<property name="jakarta.persistence.jdbc.user" value="root"/>
+ 		<property name="jakarta.persistence.jdbc.password" value="1234"/>
+ 		
+ 		 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+        <!-- Hibernate의 방언(dialect)을 지정함. MySQLDialect는 Hibernate가 MySQL 데이터베이스와 상호작용할 수 있도록 도와줌.
+         데이터베이스의 SQL 문법을 지원하기 위해 필요함. -->
+        <property name="hibernate.show_sql" value="true"/>
+        <!-- SQL 로그를 콘솔에 출력. true로 설정하면 JPA가 실행하는 SQL 쿼리를 콘솔에서 볼 수 있음. 디버깅과 학습 목적으로 유용함. -->     
+        <property name="hibernate.format_sql" value="true"/>
+        <!-- 콘솔에 출력되는 SQL 쿼리를 보기 쉽게 포맷팅. true로 설정하면 SQL 쿼리가 포맷팅된 상태로 출력되어 가독성이 향상됨. -->        
+        <property name="hibernate.use_sql_comments" value="true"/>
+        <!-- SQL 쿼리와 함께 주석을 표시하여 쿼리의 의미를 이해하기 쉽게 해줌. true로 설정하면 Hibernate가 SQL 쿼리 주석을 출력함. -->        
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+        <!-- 엔티티와 데이터베이스 테이블을 동기화하는 전략을 지정함. "create"는 기존 테이블 구조를 유지하며 새로운 엔티티나 컬럼을 추가함. 
+             다른 옵션에는 "create" (새로운 테이블 생성, 기존 테이블 삭제), "create-drop" (애플리케이션 종료 시 테이블 삭제), "validate" (테이블 검증) 등이 있음. -->
+ 		
+ 		
+ 	</properties>
+ </persistence-unit>
+ 
+ </persistence>

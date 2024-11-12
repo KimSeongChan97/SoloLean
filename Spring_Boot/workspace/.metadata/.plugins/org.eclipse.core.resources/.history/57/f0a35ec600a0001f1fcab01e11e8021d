@@ -1,0 +1,38 @@
+package exam.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.Data;
+
+@Data
+@Entity
+public class EntityTest04 {
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private int id;
+	
+	@Temporal(TemporalType.TIME) // DB 타입이 time
+	private java.util.Date utilTime;
+	
+	@Temporal(TemporalType.DATE) // DB 타입이 date
+	private java.util.Date utilDate;
+	
+	@Temporal(TemporalType.TIMESTAMP) // DB 타입이 datetime
+	private java.util.Date utilTimestamp;
+	
+	
+	private java.util.Date utilPlainDate;
+	private java.sql.Date sqlPlainDate;
+	
+	
+	
+	
+	
+	
+	
+}

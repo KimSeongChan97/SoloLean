@@ -1,0 +1,24 @@
+package exam.app;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class HelloJPA02 {
+
+	public static void main(String[] args) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("entitytest");
+		EntityManager manager = factory.createEntityManager();
+		
+		// Query query = manager.createQuery("select * from 테이블객체");
+		Query query = manager.createQuery("select * from Emp emp", Emp.class);
+		
+		
+		
+		
+		
+		manager.close();
+		factory.close();
+	}
+
+}

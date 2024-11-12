@@ -31,9 +31,20 @@ public class EntityTesAppt04 {
 		List<EntityTest01> list = q.getResultList();
 		list.stream().forEach(System.out::println);		
 		
-		manager.getTransaction().commit(); // 트랜잭션 커밋. 데이터베이스에 변경 내용 적용.
+		manager.flush();
+		System.out.println("flush");
+		q = manager.createQuery("SELECT p FROM EntityTest01 p", EntityTest01.class);
+		list = q.getResultList();
+		list.stream().forEach(System.out::println);
 		
-
+		manager.getTransaction().rollback();
+		System.out.println("rollback");
+		q = manager.createQuery("SELECT p FROM EntityTest01 p", EntityTest01.class);
+		list = q.getResultList();
+		list.stream().forEach(System.out::println);
+		
+		//manager.getTransaction().commit(); // 트랜잭션 커밋. 데이터베이스에 변경 내용 적용.
+		
 		manager.close(); 
 		factory.close();
 
