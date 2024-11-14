@@ -4,7 +4,7 @@ JPA + Spring
 
 Spring Data
 
-
+-----------------------------------------------------------
 Chapter03JPA
 	src/main/java
 		com.example.demo		
@@ -26,5 +26,80 @@ Chapter03JPA
 		application.properties
 		templates
 		static
+-----------------------------------------------------------
+Chapter04JPA
+	src/main/java
+		com.example.demo		
+			Chapter04JpaApplication.java
+		main.controller
+			MainController.java
+		member.controller
+			MemberController.java
+		member.service
+			MemberService.java
+			MemberServiceImpl.java
+		member.dao
+			MemberRepository.java
+		member.bean
+			MemberDTO.java
+			MemberPaging.java
+		member.entity
+			MemberEntity.java
+			
+	src/test/java
+		com.example.demo
+			Chapter04JpaApplicationTests.java
+
+	src/main/resources
+		application.properties
+		templates
+		static
+
+http://localhost:8080/
+=> index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      
      

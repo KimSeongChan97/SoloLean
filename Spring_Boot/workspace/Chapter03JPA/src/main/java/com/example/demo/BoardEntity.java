@@ -44,4 +44,7 @@ public class BoardEntity {
     // @CreationTimestamp // 엔티티가 생성되는 시점의 시간 등록 - insert 할 때 자동으로 시간 등록
     @UpdateTimestamp // update 할 때 자동으로 시간 등록
     private LocalDateTime logtime = LocalDateTime.now(); // 현재 시간을 기본값으로 가지며, 자동으로 시간 갱신이 이루어질 필드입니다.
+    
+    // 
+    
 }

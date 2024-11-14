@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+h2 {
+    color: #333;
+}
+.form-table {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px;
+}
+table {
+    width: 100%;
+}
+td {
+    padding: 8px 0;
+    font-size: 14px;
+}
+input[type="text"], input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+#idDiv {
+    color: #FF5733; /* 밝은 빨간색 */
+    font-size: 15px;
+    height: 12px;
+    font-weight: bold;
+}
+#pwdDiv {
+    color: #33AFFF; /* 밝은 파란색 */
+    font-size: 15px;
+    height: 12px;
+    font-weight: bold;
+}
+#nameDiv {
+    color: #33FF57; /* 밝은 녹색 */
+    font-size: 15px;
+    height: 12px;
+    font-weight: bold;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.button {
+    width: 48%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button-submit {
+    background-color: #4CAF50;
+    color: white;
+}
+.button-submit:hover {
+    background-color: #45a049;
+}
+.button-reset {
+    background-color: #f44336;
+    color: white;
+}
+.button-reset:hover {
+    background-color: #e53935;
+}
+</style>
+</head>
+<body>
+
+<a href="/"><h2>회원가입</h2></a>
+<div class="form-table">
+    <form id="writeForm" action="/member/write" method="post"> <!-- action="/member/write" method="post" -->
+        <table>
+            <tr>
+                <td><label for="username">👤 아이디 : </label></td>
+                <td>
+                    <input type="text" id="id" name="id">
+                    <div id="idDiv" class="error-message"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">🔒 비밀번호 : </label></td>
+                <td>
+                    <input type="password" id="pwd" name="pwd">
+                    <div id="pwdDiv" class="error-message"></div>
+                </td>             
+            </tr>
+            <tr>
+                <td><label for="name">📝 이름 : </label></td>
+                <td>
+                    <input type="text" id="name" name="name">
+                    <div id="nameDiv" class="error-message"></div>
+                </td>               
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="button-container">
+                        <input type="button" value="입력" id="writeBtn" class="button button-submit" />
+                        <input type="reset" value="취소" class="button button-reset" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/js/write.js"></script>
+
+</body>
+</html>
