@@ -1,0 +1,75 @@
+$(function(){
+	// 회원가입
+    // 초기화: 입력 시 오류 메시지 제거
+    $('#id').on('input', function() {
+        $('#idDiv').empty();
+    });
+    $('#pwd').on('input', function() {
+        $('#pwdDiv').empty();
+    });
+    $('#name').on('input', function() {
+        $('#nameDiv').empty();
+    });
+
+    $('#writeBtn').click(function(){
+        // 모든 메시지 초기화
+        $('#idDiv').empty();
+        $('#pwdDiv').empty();
+        $('#nameDiv').empty();
+        
+        // 입력값 확인 및 오류 메시지 표시
+        if($('#id').val() == ''){
+            $('#idDiv').text('아이디 입력');
+            $('#id').focus();
+        } else if ($('#pwd').val() == ''){
+            $('#pwdDiv').text('비밀번호 입력');
+            $('#pwd').focus();
+        } else if ($('#name').val() == ''){
+            $('#nameDiv').text('이름 입력');
+            $('#name').focus();
+        } else {
+            $.ajax({
+				type: 'post',
+				url: '/member/write',
+				data: $('#writeForm').serialize(), // 변수=값&변수=값...
+				success: function(){
+					alert('회원가입 완료');
+					location.href='/member/list';
+				},
+				error: function(e){
+					console.log(e);
+				}
+            }); // $.ajax
+        }
+        
+    }); // 회원가입 버튼 클릭
+
+
+    // 아이디 중복 체크
+    $('#id').focusout(function(){
+        $('#idDiv').empty();
+
+        if($('#id').val() == '')
+            $('#idDiv').text('먼저 아이디 입력');
+        else
+            $.ajax({
+                type: 'post',
+                url: '/member/isExistId',
+                data: 'id=' + $('#id').val(), // 서버로 보내는 데이터
+                dataType: 'text', // 서버로부터 받는 데이터 타입
+                success: function(data){
+                    // alert(data);
+                    if(data == 'exist')
+                        $('#idDiv').html('사용 불가능').css('color', 'red');
+                    else if(data == 'non_exist')
+                        $('#idDiv').html('사용 가능').css('color', 'blue');
+                },
+                error: function(e){
+                    console.log(e);
+                }
+            }); // $.ajax
+    }); // 아이디 중복 체크
+
+
+
+});

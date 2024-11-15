@@ -1,7 +1,6 @@
 package member.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +70,7 @@ public class MemberServiceImpl implements MemberService {
     };
 
     @Override
-    public List<MemberEntity> getSearchList(String columnName, String value) {
+    public Map<String, Object> getSearchList(String columnName, String value, Pageable pageable) {
         // 특정 조건으로 회원을 검색하여 결과를 반환하는 메서드입니다.
         // 검색할 컬럼명(columnName)과 검색 값(value)을 받아 검색 결과를 반환합니다.
 
@@ -80,11 +79,20 @@ public class MemberServiceImpl implements MemberService {
         // 그렇지 않으면 findByIdContaining 메서드로 ID를 포함하는 결과를 찾습니다.
         
         // @Query 어노테이션을 통해 정의된 사용자 지정 메서드 호출
-        if(columnName.equals("name")) {
-            return memberRepository.getSearchName(value); // 이름 기준으로 검색 결과 반환
-        } else {
-            return memberRepository.getSearchId(value); // ID 기준으로 검색 결과 반환
-        }
+        //if(columnName.equals("name")) {
+        //    return memberRepository.getSearchName(value); // 이름 기준으로 검색 결과 반환
+        //} else {
+        //    return memberRepository.getSearchId(value); // ID 기준으로 검색 결과 반환
+        //}
+    	
+    	Page<MemberEntity> list = columnName.equals("name")
+                ? memberRepository.getSearchName(value, pageable)
+                : memberRepository.getSearchId(value, pageable);
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("list", list);
+            return map;
+    	
     };
 }
 

@@ -1,0 +1,80 @@
+package member.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import member.bean.MemberPaging;
+import member.dao.MemberRepository;
+import member.entity.MemberEntity;
+
+
+@Service
+public class MemberServiceImpl implements MemberService {
+
+	@Autowired
+	private MemberRepository memberRepository;
+	
+	@Autowired
+	private MemberPaging memberPaging;
+
+
+
+	@Override
+	public String isExistId(String id) {
+
+		// 기존의 findById 는 Int 값이 있어야 하며, 쿼리메서드를 따로 만들어서 MemberRepository 에 적용
+		MemberEntity memberEntity = memberRepository.findById(id); // select * from membertbl where id=?
+		System.out.println(memberEntity);
+
+          if(memberEntity == null)
+               return "non_exist"; // 사용가능
+          else
+               return "exist"; // 사용 가능
+	};
+	
+	@Override
+	public void write(MemberEntity memberEntity) {
+		memberRepository.save(memberEntity);
+		
+	};
+
+	@Override
+	public Map<String, Object> getMemberList(Pageable pageable) {
+		
+		Page<MemberEntity> list = memberRepository.findAll(pageable);
+		
+		// 총 글 수
+		int totalA = (int) memberRepository.count(); // 전체
+		System.out.println("totalA = " + totalA);
+		
+		memberPaging.setCurrentPage(pageable.getPageNumber() + 1); // 현재 페이지 번호를 설정
+		memberPaging.setPageBlock(3); // 페이지 블록 크기를 설정
+		memberPaging.setPageSize(3); // 페이지당 글 수를 설정
+		memberPaging.setTotalA(totalA); // 총 글 수를 설정
+		memberPaging.makePagingHTML(); // 페이징 HTML을 생성
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list); // 현재 페이지의 데이터 리스트
+	    map.put("memberPaging", memberPaging); // 페이징 정보를 포함하는 객체
+		
+		// memberRepository.findAll(pageable)
+		return map;
+	};
+	
+	@Override
+	public List<MemberRepository> getSearchList(String columnName, String value) {
+		// 쿼리 메서드
+		if(columnName.equals("name")) {
+			// select * from membertbl where name like concat('%', '홍', '%')
+			return memberRepository.findByNameContaining(value);
+		}
+			
+		return null;
+	}
+}

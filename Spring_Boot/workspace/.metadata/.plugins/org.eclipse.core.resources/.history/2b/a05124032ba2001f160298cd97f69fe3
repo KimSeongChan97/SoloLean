@@ -1,0 +1,9 @@
+package member.service;
+
+public interface MemberService {
+
+	public String isExistId(String id);
+
+     
+
+}

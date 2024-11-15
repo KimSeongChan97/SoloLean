@@ -1,0 +1,18 @@
+package member.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="membertbl")
+public class MemberEntity {
+	
+     
+    private String id;
+	private String pwd;
+	private String name;
+	
+	
+}

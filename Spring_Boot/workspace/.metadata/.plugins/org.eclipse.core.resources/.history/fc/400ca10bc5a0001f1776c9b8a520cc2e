@@ -1,0 +1,65 @@
+package com.example.demo;
+
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Sort;
+
+//@DataJpaTest 를 사용하면 자동으로 EmbededDatabase-H2를 사용하게 된다.
+//MySQL 과 같이 외부의 DB 를 연결하려는 경우엔 이 어노테이션을 설정한다.
+//@SpringBootTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // 내장 DB 가 H2를 수행하지 않는다.
+// @AutoConfigureTestDatabase 어노테이션은 테스트에 사용할 데이터베이스를 설정하는 역할을 합니다.
+// replace 속성을 AutoConfigureTestDatabase.Replace.NONE 으로 설정하여 기본적으로 사용하는 H2 내장 데이터베이스를 무시하고, 
+// 실제 외부 데이터베이스(MySQL 등)와 연결하도록 지정합니다.
+@DataJpaTest // 외부 DB 연결
+// @DataJpaTest 는 JPA 관련 컴포넌트만 테스트할 수 있는 어노테이션입니다.
+// 이 어노테이션을 사용하면 JPA와 관련된 설정만 활성화되고, 데이터베이스와의 상호작용을 테스트할 수 있습니다.
+// 주의할 점은 기본적으로 내장 데이터베이스(H2)를 사용하는데, 현재 설정에서는 외부 데이터베이스(MySQL)를 사용하도록 설정되어 있습니다.
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+// @TestMethodOrder 는 테스트 메서드의 실행 순서를 정의하는 어노테이션입니다.
+// 여기서는 MethodOrderer.OrderAnnotation.class 를 사용하여 @Order 어노테이션이 적용된 순서대로 테스트 메서드를 실행하도록 설정했습니다.
+public class JPA_BoardRepositoryTest {
+    
+    @Autowired
+    private BoardDAO boardDAO;
+    // @Autowired 를 통해 스프링이 BoardDAO 빈을 자동으로 주입(injection)합니다.
+    // 이로써 boardDAO 객체를 통해 데이터베이스에 접근하여 CRUD (Create, Read, Update, Delete) 작업을 수행할 수 있습니다.
+    // BoardDAO는 JPA Repository 혹은 CRUD Repository 인터페이스를 상속하여 데이터 액세스 계층의 기능을 제공합니다.
+    
+    @BeforeEach
+    public void solid() {
+    	System.out.println("-".repeat(80));
+    };
+    
+    @Test
+    public void list1() {
+        // list1 메서드는 데이터베이스에 있는 모든 게시판(BoardEntity) 데이터를 조회하는 테스트 메서드입니다.
+        List<BoardEntity> list = boardDAO.findAll();
+        // boardDAO의 findAll 메서드를 호출하여 BoardEntity 객체의 리스트를 가져옵니다.
+        // findAll() 메서드는 JPA Repository에서 제공하는 기본 메서드 중 하나로, 해당 엔티티 테이블의 모든 데이터를 조회합니다.
+        list.stream().forEach(System.out :: println);
+        // 가져온 list의 각 요소를 스트림으로 변환한 뒤, 각 요소를 System.out.println 으로 출력합니다.
+        // 이 부분은 리스트에 저장된 각 BoardEntity 객체의 정보를 콘솔에 출력하기 위해 사용됩니다.
+        // 콘솔 출력은 테스트 목적으로 데이터베이스의 데이터를 확인하는 용도로 사용됩니다.
+    };
+    
+    @Test
+    public void list2() {
+        List<BoardEntity> list = boardDAO.findAll(Sort.by("name").ascending());
+        list.stream().forEach(System.out :: println);
+    };
+    
+    @AfterEach
+    public void solid2() {
+    	System.out.println("-".repeat(80));
+    };
+    
+};

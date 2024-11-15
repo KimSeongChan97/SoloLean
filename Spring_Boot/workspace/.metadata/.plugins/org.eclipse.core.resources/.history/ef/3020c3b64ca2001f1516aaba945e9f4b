@@ -1,0 +1,24 @@
+$(function(){
+    $('#searchListBtn').click(function(){
+        if ($('#value').val() == '') {
+            alert('검색어를 입력하시오');
+        } else {
+            $.ajax({
+                type: 'get',
+                url: '/member/getSearchList',
+                data: {
+                    'columnName': $('#columnName').val(),
+                    'value': $('#value').val()
+                },
+                dataType: 'json',
+                success: function(data){
+                    updateTable(data);
+                },
+                error: function(e){
+                    console.log(e);
+                    alert("데이터를 불러오는 데 실패했습니다.");
+                }
+            });
+        }
+    });
+});

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+</head>
+<body>
+
+<table>
+	<tr>
+		<th> 번호 </th>
+		<th> 아이디 </th>
+		<th> 비밀번호 </th>
+		<th> 이름 </th>
+	</tr>
+</table>
+
+</body>
+</html>

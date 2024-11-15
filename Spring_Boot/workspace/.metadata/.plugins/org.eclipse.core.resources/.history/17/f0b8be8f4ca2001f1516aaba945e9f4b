@@ -1,0 +1,44 @@
+$(function(){
+    $('#searchListBtn').click(function(){
+        if ($('#value').val() == '') {
+            alert('검색어를 입력하시오');
+        } else {
+            $.ajax({
+                type: 'get',
+                url: '/member/getSearchList',
+                data: {
+                    'columnName': $('#columnName').val(),
+                    'value': $('#value').val()
+                },
+                dataType: 'json',
+                success: function(data){
+                    updateTable(data);
+                },
+                error: function(e){
+                    console.log(e);
+                    alert("데이터를 불러오는 데 실패했습니다.");
+                }
+            });
+        }
+    });
+});
+
+/*function updateTable(data) {
+    const tableBody = $('#memberTableBody');
+    tableBody.empty(); // 기존 테이블 내용 제거
+
+    if (data && data.length > 0) {
+        data.forEach(item => {
+            const row = `<tr>
+                <td align="center">${item.seq}</td>
+                <td align="center">${item.id}</td>
+                <td align="center">${item.pwd}</td>
+                <td align="center">${item.name}</td>
+            </tr>`;
+            tableBody.append(row); // 새로운 행 추가
+        });
+    } else {
+        tableBody.append('<tr><td colspan="4" align="center">검색 결과가 없습니다.</td></tr>');
+    }
+}
+*/

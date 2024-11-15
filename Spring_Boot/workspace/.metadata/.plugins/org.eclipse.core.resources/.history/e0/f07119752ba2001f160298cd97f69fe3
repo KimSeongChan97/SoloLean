@@ -1,0 +1,16 @@
+package member.service;
+
+import member.bean.MemberDTO;
+import member.entity.MemberEntity;
+
+public interface MemberService {
+
+	public String isExistId(String id);
+
+	public void write(MemberDTO memberDTO);
+
+	public void write(MemberEntity memberEntity);
+
+     
+
+}

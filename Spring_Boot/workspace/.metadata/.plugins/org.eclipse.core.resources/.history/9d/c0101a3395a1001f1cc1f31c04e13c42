@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+body {
+	text-align: center;
+	background: gray;
+}
+
+</style>
+</head>
+<body>
+<h2>*** 메인화면 ***</h2>
+    <p><a th:href="@{/write}">등록</a></p>
+    <p><a th:href="@{/list}">목록</a></p>
+</body>
+</html>

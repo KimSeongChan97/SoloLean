@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=Chapter02MySQL/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;user.service{UserService.java[UserService" modifiers="513" timestamp="1730964898367"/>
+    <typeInfo handle="=Chapter04JPA/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;member.service{MemberService.java[MemberService" modifiers="513" timestamp="1731573063132"/>
 </typeInfoHistroy>

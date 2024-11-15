@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+
+</head>
+<body>
+<a href="/"><h2>🏠 Home</h2></a>
+<table border="1">
+	<tr>
+		<th width="100"> 🔢 번호 </th>
+		<th width="200"> 👤 아이디 </th>
+		<th width="300"> 🔒 비밀번호 </th>
+		<th width="200"> 📝 이름 </th>
+	</tr>
+	<tr th:each="dto : ${list}">
+		<td th:text="${dto.seq}" align="center"></td>
+		<td th:text="${dto.id}" align="center"></td>
+		<td th:text="${dto.pwd}" align="center"></td>
+		<td th:text="${dto.name}" align="center"></td>
+	</tr>
+</table>
+
+</body>
+</html>

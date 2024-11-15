@@ -1,6 +1,5 @@
 package member.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,14 +70,20 @@ public class MemberController {
 
         return "member/list"; // "member/list" 뷰 페이지로 이동합니다.
     };
-
-    // 특정 조건에 맞는 회원 목록을 검색하여 반환하는 메서드입니다.
-    // columnName과 value 파라미터를 이용해 특정 속성에 대한 검색 결과를 반환합니다.
+    
+    
+    
     @GetMapping(value = "getSearchList")
-    @ResponseBody // 검색 결과를 JSON 형태로 반환하여 클라이언트에서 바로 사용할 수 있게 합니다.
-    public List<MemberEntity> getSearchList(@RequestParam(value = "columnName") String columnName,
-                                             @RequestParam(value = "value") String value) {
-        // 검색 결과로 회원 리스트를 반환하는 memberService 메서드를 호출합니다.
-        return memberService.getSearchList(columnName, value); // 검색된 회원 목록을 반환
-    };
+    @ResponseBody
+    public Map<String, Object> getSearchList(
+        @RequestParam(value = "columnName") String columnName,
+        @RequestParam(value = "value") String value,
+        @PageableDefault(page = 0, size = 3, sort = "seq", direction = Sort.Direction.DESC) Pageable pageable) {
+        return memberService.getSearchList(columnName, value, pageable);
+    }
+    
+    
+    
+    
+    
 }

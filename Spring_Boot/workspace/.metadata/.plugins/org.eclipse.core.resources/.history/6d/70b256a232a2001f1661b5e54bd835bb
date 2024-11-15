@@ -1,0 +1,64 @@
+package member.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import member.entity.MemberEntity;
+import member.service.MemberService;
+
+
+@Controller
+@RequestMapping(value = "member")
+public class MemberController {
+
+	@Autowired
+	private MemberService memberService;
+
+
+
+	@GetMapping(value = "writeForm")
+	public String writeForm() {
+
+		return "member/writeForm";
+	};
+
+	@PostMapping(value= "isExistId")
+	@ResponseBody
+	public String isExistId(@RequestParam(value="id") String id) {
+
+
+		return memberService.isExistId(id);
+	};
+
+	@PostMapping(value= "write")
+	@ResponseBody
+	public void write(@ModelAttribute MemberEntity memberEntity) {
+
+		memberService.write(memberEntity);
+
+	};
+	
+	
+	@GetMapping(value = "list")
+	public String list(@RequestParam(value = "pg", required = false, defaultValue = "1") String pg,
+					   @PageableDefault(pg = 0, size = 3, sort = "name", direction = Sort.Direction.DESC)
+					   Model model) {
+		List<MemberEntity> list = memberService.getMemberList();
+		
+		model.addAttribute("list", list);
+		
+		return "member/list";
+	};
+
+}

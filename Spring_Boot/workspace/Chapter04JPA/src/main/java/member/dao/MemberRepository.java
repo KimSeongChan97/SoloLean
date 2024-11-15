@@ -2,11 +2,12 @@ package member.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import member.entity.MemberEntity;
 
 //public interface MemberRepository extends JpaRepository<엔티티클래스, primary key> {}
@@ -38,11 +39,15 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
     // @Query를 사용하여 이름(name) 속성에서 특정 값(value)을 포함하는 모든 엔티티를 검색하는 쿼리입니다.
     // :value는 @Param("value")와 매핑되며, 런타임 시 전달된 파라미터 값으로 대체됩니다.
-    @Query("select entity from MemberEntity entity where name like concat('%', :value, '%')")
-    public List<MemberEntity> getSearchName(@Param("value") String value);
+    @Query("select entity from MemberEntity entity where entity.name like concat('%', :value, '%')")
+    public Page<MemberEntity> getSearchName(@Param("value") String value, Pageable pageable);
 
     // @Query를 사용하여 ID(id) 속성에서 특정 값(value)을 포함하는 모든 엔티티를 검색하는 쿼리입니다.
     // 위의 메서드와 동일하게, :value는 @Param("value")로 전달된 파라미터 값으로 대체됩니다.
-    @Query("select entity from MemberEntity entity where id like concat('%', :value, '%')")
-    public List<MemberEntity> getSearchId(@Param("value") String value);
+    @Query("select entity from MemberEntity entity where entity.id like concat('%', :value, '%')")
+    public Page<MemberEntity> getSearchId(@Param("value") String value, Pageable pageable);
+    
+    
+    
+    
 }

@@ -16,7 +16,7 @@ public class MemberPaging {
 	public void makePaingHTML() {
 		pagingHTML = new StringBuffer();
 		
-		int totalP = (totalA + pageSize-1) / pageSize;//총 페이지 수
+		int totalP = (totalA + pageSize-1) / pageSize; //총 페이지 수
 		
 		int startPage = (currentPage-1) / pageBlock * pageBlock + 1;
 		

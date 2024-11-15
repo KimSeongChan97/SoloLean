@@ -1,0 +1,625 @@
+배포
+테스트
+
+NCPSpringMaven - 배포 테스트용
+
+---------------------------------------------------------
+SpringBoot + React + NCP
+NCPSpringBootReactGradle - 배포 테스트
+-> SpringBootDevTools 
+-> Lombok
+-> SpringWeb 
+dependencies 필수
+
+NCPSpringBootReactGradle
+	src/main/java
+	src/main/resource
+	src/main/frontreact
+
+==========================================================
+react 설치 루트
+PS D:\Spring Boot\workspace\NCPSpringBootReactGradle\src\main>
+
+npx create-react-app frontreact
+
+1. Ubuntu 서버 2개 생성
+- CI / CD 를 위한 Jenkins(주로 사용) 
+: bitcamp-jenkins / bitcamp-springboot (서버 이름)
+
+ubuntu -> 
+serverType : Standard / 시간 요금제
+Network Interface : IP [ 10.0.1.ip ]
+새로운 공인 IP 할당
+
+인증키 bitcamp-20241015
+
+네트워크 접근 설정(ACG) : 9기 acg 설정
+
+2. 컨테이너 설정을 위한 Docker 설정
+
+관리자 암호 :
+서버 관리 및 설정 변경 -> 초기 관리자 비밀번호 ( 인증키.pem ) 적용
+bitcamp-jenkins : [A5*5y7h7!ar]
+bitcamp-springboot : [J2%!FigfrLc]
+
+ssh root@IP 주소 로 접속하여 로그인 과정 진행
+
+비밀번호 변경 : passwd
+[ bitcamp123!@# ]
+
+3. jenkins 쪽 부터..
+apt-get update
+
+curl (도커 플러그인 확인)
+curl: try 'curl --help' or 'curl --manual' for more information
+라고 반응이 되면, 이미 설치되었다는 의미이다.
+-> apt-get install curl 을 할 필요가 없다는 의미
+
+docker 설치 스크립트 다운로드
+curl https://get.docker.com > docker-install.sh
+
+ls -l 로 설치한 것들 확인 가능
+cat docker-install.sh
+
+-rw-r--r-- 1 root root 22115 Nov 15 11:49 docker-install.sh
+
+** 참고
+---------
+r  : 읽기
+w   : 저장
+x   : 실행
+r w x = 4 2 1
+---------
+1그룹	  / 2그룹/ 3그룹	
+-읽고,저장/ -읽고 / - 읽는다..
+rw : 6
+r : 4
+r: 4
+**
+파일 설치가 안되므로 권한을 바꿔야 한다.(7 5 5 로 변경)
+7 5 5 = rwx r-x r-x
+
+chmod 755 docker-install.sh 을 하게 되면
+-rwxr-xr-x 1 root root 22115 Nov 15 11:49 docker-install.sh
+으로 변경 됨
+
+4. docker 설치
+
+./docker-install.sh => 실행
+
+이후 설치 확인 : docker -v
+Docker version 27.3.1, build ce12230
+version 확인 가능하면 설치 완료이다.
+
+error 발생 방지
+1) apt-get update 를 자주 해야함
+2) apt install docker.io
+를 하게 되면
+ docker.io : Depends: containerd (>= 1.2.6-0ubuntu1~)
+E: Unable to correct problems, you have held broken packages.
+라는 결과가 나오므로
+
+apt install containerd
+을 통해 설치
+이후 다시 apt install docker.io 을 진행
+
+docker container ls
+로 컨테이너 종류 확인
+docker ps -a 
+로 컨테이너 실행 중인 사항 확인 가능
+
+5. Dockerfile 파일 생성
+IDE (STS4) 로 다시 와서
+프로젝트명 의 New -> File 을 통해
+스프링 부트 프로젝트에 Dockerfile 파일 생성
+
+"D:\Spring Boot\workspace\NCPSpringBootReactGradle\Dockerfile"
+
+******
+Dockerfile 은 컨테이너 이미지를 만들기 위한 설명서
+해당 파일에 기술된 명령어를 차례대로 실행하여 이미지(레이어)를 생성
+작성된 파일은 'docker build' 명령어에 의해서 사용
+'docker push' 명령어를 통해 컨테이너 레지스트리에 업로드
+******
+D:\Spring Boot\workspace\NCPSpringBootReactGradle\Dockerfile
+FROM openjdk:17
+ARG JAR_FILE=build/libs/NCPSpringBootReactGradle-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
+
+기술.
+
+6. Gradle 을 이용하여 프로젝트 빌드하기
+
+- 배포를 위해 하나의 jar 파일 혹은 패키지로 빌드 해야한다.
+
+- [ SpringBoot 프로젝트와 React 프로젝트가 하나의 패키지 ]
+  가 될 수 있는 build 구성이 완료 된다.
+
+- 설정한 build.gradle의 내용은 SpringBoot 프로젝트가 build 될 때 React 프로젝트를 먼저 build 하고 결과물을 SpringBoot 프로젝트 build 결과물에 포함시킨다는 스크립트이다.
+
+- gradle을 이용해 프로젝트를 build 하는 경우 task가 서로 의존 관계를 가지기 때문에 processResources를 기점으로 installReact > buildReact > copyReactBuildFiles 순으로 실행이 된다.
+
+->>>>
+build.gradle 에서
+
+plugins 에다가
+
+id 'com.github.node-gradle.node' version '7.0.0' 을 적용
+
+이후 맨 밑부터 기술...
+*****************************************************
+// React build 설정
+def reactAppDir = "${projectDir}/src/main/frontreact"
+
+// task간의 의존성 정의
+// processResources task 실행되기 전에 copyReactFile task를 먼저 실행한다.
+processResources {
+    dependsOn "copyReactFile"
+}
+
+task copyReactFile(type: Copy) {
+    dependsOn "buildReact"
+    // from 메서드를 통해 디렉토리의 복사할 파일들을 지정하고, into 메서드를 통해 복사 대상 디렉토리를 설정
+    from "$reactAppDir/build"
+    into "$projectDir/src/main/resources/static/"
+}
+
+// $reactAppDir 디렉토리의 변경 사항을 감지하고, 변경이 있을 경우에만 Task가 실행되도록 할 수 있다.
+// 이를 통해 변경 사항이 없는 경우에는 Task가 다시 실행되지 않아 빌드 성능을 향상시킬 수 있다.
+task buildReact(type: Exec) {
+    dependsOn "installReact"
+    workingDir "$reactAppDir"
+    inputs.dir "$reactAppDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine "npm.cmd", "run-script", "build"
+    } else {
+        commandLine "npm", "run-script", "build"
+    }
+}
+
+task installReact(type: Exec) {
+    workingDir "$reactAppDir"
+    inputs.dir "$reactAppDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine "npm.cmd", "audit", "fix"
+        commandLine "npm.cmd", "install"
+    } else {
+        commandLine "npm", "audit", "fix"
+        commandLine "npm", "install"
+    }
+}
+*****************************************************
+
+8. jar 파일 생성
+
+PS D:\Spring Boot\workspace\NCPSpringBootReactGradle> ./gradlew build
+
+을 통해 진행
+
+PS D:\Spring Boot\workspace\NCPSpringBootReactGradle\build\libs> ls   
+을 통해 jar 파일이 생성된 것을 확인 할 수 있다
+
+이후 
+PS D:\Spring Boot\workspace\NCPSpringBootReactGradle\build\libs> java -jar NCPSpringBootReactGradle-0.0.1-SNAPSHOT.jar
+을 통해 SpringBoot 가 실행된다.
+
+package.json 에서 "proxy": "http://localhost:8080" 을 맨 밑에 기술
+
+./gradlew build 는 추가적인 작업 이후 다시 jar 화 시키는거라고 이해함.
+
+localhost:3000 -> React 단독 실행
+localhost:8080  -> SpringBoot + React 통합
+
+이제 CI / CD 를 하는 배포를 진행해야 함
+
+즉, local 이 아닌 서버를 통한 jenkin 빌드 진행
+
+9. 배포 ( Jenkins 빌드 )
+
+9-1) Jenkins 빌드를 위해 source 파일이 필요함 -> Git Hub 에 업로드
+
+개발자 : Git Hub -> (git pull)
+NCPSpringBootReactGradle (저장소) -> 생성 : 도커 이미지 -> Docker Hub
+Jenkins Container + JDK 17
+Docker Engine
+bitcamp-jenkins (ubuntu 20.4)
+
+9-2) bitcamp-jenkins에 jenkins 설치
+
+- 젠킨스 도커 컨테이너에서 사용할 브릿지 네트워크 생성
+
+root@bitcamp-jenkins:~# 에서
+(naver cloud server)
+먼저,
+docker network ls
+로 네트워크 확인
+docker network create jenkins (필수는 아님)
+
+- 젠킨스 도커 이미지 가져오기
+
+도커 허브Docker Hub 로부터 가져옴
+docker pull jenkins/jenkins:lts-jdk17
+	   아이디명/repository이름:tag버전
+
+Status: Downloaded newer image for jenkins/jenkins:lts-jdk17
+docker.io/jenkins/jenkins:lts-jdk17
+
+라는 결과 도출
+docker image ls 로 확인 가능
+
+- Docker image 만들기
+
+9-DI-1> 작업 디렉토리 생성 : 
+mkdir jenkins
+cd jenkins
+root@bitcamp-jenkins:~/jenkins#
+
+9-DI-2> install-docker.sh 파일 생성
+root@bitcamp-jenkins:~/jenkins# vi install-docker.sh
+i ( 편집상태 )
+#!/bin/sh
+
+apt-get update
+
+apt-get -y install apt-transport-https \
+     apt-utils \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     zip \
+     unzip \
+     acl \
+     software-properties-common
+
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey
+
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable" && \
+
+apt-get update
+
+apt-get -y install docker-ce
+
+이후 esc -> wq
+
+9-3> 도커 빌드 파일 생성
+root@bitcamp-jenkins:~/jenkins# vi Dockerfile
+i (편집)
+FROM jenkins/jenkins:lts-jdk17
+USER root
+COPY install-docker.sh /install-docker.sh
+RUN chmod +x /install-docker.sh
+RUN /install-docker.sh
+RUN usermod -aG docker jenkins
+RUN setfacl -Rm d:g:docker:rwx,g:docker:rwx /var/run/
+USER jenkins
+
+9-4> 도커 이미지 생성
+docker login 하여 미리 생성한 계정 로그인
+root@bitcamp-jenkins:~/jenkins# docker build -t 계정명/레포이름:태그명 .
+root@bitcamp-jenkins:~/jenkins# docker build -t sck2270/hello-docker:1.0 .
+
+9-5> Docker Hub 사이트에 도커 이미지를 업로드
+
+docker push sck2270/hello-docker:1.0
+레포 생성 완료
+
+9-6> Container 생성 및 실행
+
+docker run \ 새로운 컨테이너 실행
+--privileged \ 컨테이너가 호스트 시스템의 관리자 권한 처럼 작동하도록 설정(Jenkins가 Docker 관리하기 위함 )
+-d \ 컨테이너를 백그라운드(데몬) 모드로 실행
+-v /var/run/docker.sock:/var/run/docker.sock \ Docker 호스트의 docker.sock 파일을 컨테이너 안으로 마운트 -> Jenkins 컨테이너가 Docker 데몬과 통신 가능
+-v jenkins_home:/var/jenkins_home \ Jenkins 데이터(설정, 플러그인, 작업 정보)를 호스트의 jenkins_home 볼륨에 저장
+-p 8080:8080 \ 호스트의 8080 포트를 컨테이너의 8080 포트와 연결
+-p 50000:50000 \ 호스트의 50000 포트를 컨테이너의 50000 포트와 연결(Jenkins 에이전트(노드)와의 통신)
+--restart=on-failure \ 컨테이너가 실패할 경우 자동으로 재시작
+--network="네트워크명" \ 컨테이너 를 "네트워크명"의 Docker 네트워크에 연결
+--name 컨테이너이름지정 \ 컨테이너의 이름을 지정함
+계정명/레포명:태그명 \ Docker 이미지와 태그를 지정 (계정/hello-docker:1.0)
+
+docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure --network="jenkins" --name docker-jenkins sck2270/hello-docker:1.0
+
+docker ps -a 로 container 확인 ( docker container ls 도 가능)
+
+* 컨테이너 지우기 : docker container stop --name에 해당하는 값
+		docker container stop docker-jenkins
+docker volume ls 로 볼륨 확인 후
+docker volume rm 이름 으로 지워야 함
+
+9-7> 젠킨스 초기설정 
+http://공인IP:8080 -> 
+암호는 docker logs 컨테이너명 를 통해 확인 가능
+이후 Install ~ 을 통해 설정
+
+이후 계정명/암호/이름/이메일 설정을 완료하면 jenkins 페이지 접속
+http://223.130.137.169:8080/
+젠킨스 ( CI 통합 , 배포 )
+
+* docker ps 로 실행중인 컨테이너 확인 가능
+-> 젠킨스 컨테이너 접속
+docker exec 실행 중인 도커 컨테이너 내에서 명령을 실행할 때 사용합니다.
+-i 표준 입력(Interactive)을 활성화하여 컨테이너와 상호작용할 수 있도록 설정합니다.
+-t TTY(Terminal)를 활성화하여 터미널 환경을 제공합니다.
+-u 0 사용자 계정을 지정합니다. 여기서 0은 root 사용자를 의미합니다. (0은 Linux 시스템에서 root 계정을 나타냅니다.)
+docker-jenkins 실행 중인 컨테이너의 이름 또는 ID입니다. 컨테이너 이름
+bash 컨테이너에서 실행할 명령어입니다. 여기서는 bash 셸을 실행하도록 지정했습니다.
+
+도커 실행 -터미널 관리자계정(root) 컨테이너명 배쉬
+docker exec -itu 0 docker-jenkins bash
+> root@5d5baefdf99f:/# 로 root 접속됨
+java -version 을 통해 자바 버전 확인 먼저.
+docker inspect docker-jenkins 을 통해 docker-jenkins 의 자세한 스펙을 확인.
+
+JAVA_HOME 확인..
+"JAVA_HOME=/opt/java/openjdk"
+
+9-8> 젠킨스 환경설정
+
+Jenkins 관리 
+-> Tools  : JDK / Gradle / NodeJS 설치해야함
+-> JDK installations 
+- Add JDK 에 설정 : /opt/java/openjdk
+-> Gradle installations
+- Add Gradle : version 설정
+save..
+React 를 위한 Node.js 설치
+Plugins -> Available plugins -> NodeJs 설치
+다시 Tools 에 가서
+-> NodeJS installations
+- Add 버전 적용
+
+이제, Project 를 등록 및 배포해야 한다.
+
+9-9> 프로젝트 등록 및 배포
+
+New Item ->
+
+Project명 / FreeStyle ->
+Git Hub 적용 Git Hub 프로젝트
+
+소스 코드 관리 ->
+Git : url 적용 , 인증 추가
+Username : github 사용자 이름
+Password : 깃 허브 토큰
+
+빌드환경 -> Provide Node & npm bin/ folder to PATH
+
+Build Steps -> Invoke Gradle script
+Gradle Version 적용
+Tasks : clean build
+
+까지가 CI(통합) 이다.
+
+빌드 완성되면
+http://공인IP:8080/job/myapp/ws/build/libs/
+에 jar 파일을 boot 에게 보내야 CD ..
+
+root@5d5baefdf99f:/# cd var
+root@5d5baefdf99f:/var# cd jenkins_home/
+root@5d5baefdf99f:/var/jenkins_home# cd workspace/
+root@5d5baefdf99f:/var/jenkins_home/workspace# ls -l
+
+drwxr-xr-x 7 jenkins jenkins 4096 Nov 15 08:21 myapp
+drwxr-xr-x 2 jenkins jenkins 4096 Nov 15 08:19 myapp@tmp
+
+root@5d5baefdf99f:/var/jenkins_home/workspace#
+root@5d5baefdf99f:/var/jenkins_home/workspace# cd myapp
+root@5d5baefdf99f:/var/jenkins_home/workspace/myapp# cd build
+root@5d5baefdf99f:/var/jenkins_home/workspace/myapp/build# cd libs
+root@5d5baefdf99f:/var/jenkins_home/workspace/myapp/build/libs# ls -l
+-rw-r--r-- 1 jenkins jenkins 20400038 Nov 15 08:21 NCPSpringBootReactGradle-0.0.1-SNAPSHOT.jar
+
+을 통해 확인 
+
+10. CD (배포)
+
+*
+Docker Pipeline Plugin
+docker login -u sck2270 -p $DOCKER_PASSWORD docker.io
+*
+
+myapp -> 구성 
+Build Steps -> Add build step -> Execute shell
+Command Script 작성 해야함.
+
+	    태그
+이미지를 만듦 지정 계정명/이미지명:태그버전 모든값(.)
+docker login -u 허브ID -p허브PWD docker.io
+
+docker build -t sck2270/hello-docker2:1.0 .
+docker login -u sck2270 -p sck090812 docker.io
+docker push sck2270/hello-docker2:1.0 
+
+이후 보안키 설정 ->>>
+
+root@bitcamp-jenkins:~# ls -l /var/run/docker.sock
+srw-rw---- 1 root docker 0 Nov 15 12:05 /var/run/docker.sock
+root@bitcamp-jenkins:~# chmod 666 /var/run/docker.sock
+root@bitcamp-jenkins:~# ls -l /var/run/docker.sock
+srw-rw-rw- 1 root docker 0 Nov 15 12:05 /var/run/docker.sock
+root@bitcamp-jenkins:~# 으로 방화벽 접근 설정
+
+mkdir springboot 
+cd springboot
+root@bitcamp-jenkins:~/springboot#
+root@bitcamp-jenkins:~/springboot# docker exec -itu 0 docker-jenkins bash
+root@5d5baefdf99f:/#
+
+ssh-keygen SSH 키를 생성하는 기본 명령어입니다.
+-t rsa SSH 키의 알고리즘을 지정합니다.
+여기서는 rsa 알고리즘을 사용하겠다는 의미입니다. RSA는 일반적으로 많이 사용되는 암호화 알고리즘 중 하나입니다.
+-C "docker-jenkins-key" 생성된 키에 주석(Comment)을 추가합니다.
+여기서는 "docker-jenkins-key"라는 주석이 추가되어, 이 키의 용도나 목적을 쉽게 파악할 수 있도록 도와줍니다.
+-m PEM 생성된 키의 형식을 지정합니다.
+PEM 형식을 사용하여 키를 생성하겠다는 의미입니다. 이는 OpenSSL과의 호환성을 보장해 주며, 일부 서비스에서 PEM 형식의 키가 요구될 수 있습니다.
+PEM 형식은 보통 .pem 확장자를 가진 키 파일에서 사용되는 형식입니다.
+-P "" 키에 비밀번호를 설정하는 옵션입니다.
+여기서는 빈 문자열("")이 제공되었으므로 비밀번호 없이 키가 생성됩니다.
+SSH 키를 비밀번호 없이 사용하면 보안이 낮아질 수 있으므로, 보안이 중요한 경우 비밀번호를 설정하는 것이 좋습니다.
+-f /root/.ssh/docker-jenkins-key 생성된 키의 파일 경로와 이름을 지정합니다.
+/root/.ssh/ 디렉토리에 docker-jenkins-key라는 이름으로 키 파일을 저장하겠다는 의미입니다.
+이 옵션을 사용하지 않으면 기본적으로 ~/.ssh/id_rsa에 저장됩니다.
+		
+ssh-keygen -t rsa -C "docker-jenkins-key" -m PEM -P "" -f /root/.ssh/docker-jenkins-key
+
+를 입력해야 보안 키를 설정한다.
+
+root@5d5baefdf99f:/# ls ~/.ssh
+-rw------- 1 root root 2459 Nov 15 08:43 docker-jenkins-key // 개인 key
+-rw-r--r-- 1 root root  572 Nov 15 08:43 docker-jenkins-key.pub // 공개key
+
+cat ~/.ssh/docker-jenkins-key
+cat ~/.ssh/docker-jenkins-key.pub 를 통해 확인 가능
+
+10-1> SSH-KEY 개인키를 젠킨스 홈 폴더에 복사하기
+
+cp ~/.ssh/docker-jenkins-key /var/jenkins-home
+ ls -l /var/jenkins_home/docker-jenkins-key
+을 통해 key 복사확인 
+
+읽기 모드 추가
+chmod +r /var/jenkins_home/docker-jenkins-key
+-rw-r--r-- 1 root root 2459 Nov 15 08:49 /var/jenkins_home/docker-jenkins-key
+
+10-2> SSH-KEY 공개키를 HOST에 복사하기
+
+root@bitcamp-jenkins:~/springboot# docker cp docker-jenkins:/root/.ssh/docker-jenkins-key.pub  ./docker-jenkins-key.pub
+
+-rw-r--r-- 1 root root 572 Nov 15 17:43 docker-jenkins-key.pub
+
+
+10-3> bitcamp-springboot 서버에 SSH-KEY 공개키 등록하기
+
+root@bitcamp-springboot:~# mkdir .ssh
+root@bitcamp-springboot:~# cd .ssh
+root@bitcamp-springboot:~/.ssh# vi authorized_keys
+docker-jenkins-key.pub의 공개 키를 입력
+
+root@bitcamp-springboot:~/.ssh# root@bitcamp-springboot:~/.ssh# cat authorized_keys
+
+으로 확인 가능
+
+10-4>. Jenkins 페이지에서 Publish Over SSH 플러그인 설정
+Jenkins 관리 -> Plugins
+Available -> Publish Over SSH Install
+
+Jenkins 관리 -> System
+Publish over SSH -> 
+Passphrase : Container 암호 
+Path to key : docker-jenkins-key(개인키)
+Key : 개인 키 파일 내용
+
+SSH Servers
+Name : 아무이름이나 가능
+Hostname : springboot 서버 공인IP
+Username : 관리자(root)
+
+이후 프로젝트의 구성에 와서
+
+빌드 환경의 Send files or execute commands over SSH after the build runs
+에서
+
+Exec command에다가..
+
+docker login -u 계정 -p 허브PWD docker.io
+docker pull 계정/hello-docker2:1.0
+docker rm -f springboot 2>/dev/null || true
+docker run -d --name springboot -p 8080:8080 계정/hello-docker2:1.0
+docker ps -a --filter "name=springboot"
+docker logs springboot
+
+// 2>/dev/null : 오류메시지 무시
+// || true : 컨테이너 없더도 진행
+
+
+>>> http://springboot서버IP:8080
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+package com.example.demo;
+
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+// @DataJpaTest 를 사용하면 자동으로 EmbededDatabase-H2를 사용하게 된다.
+// MySQL 과 같이 외부의 DB 를 연결하려는 경우엔 이 어노테이션을 설정한다.
+// @SpringBootTest
+@DataJpaTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class Chapter03JpaApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

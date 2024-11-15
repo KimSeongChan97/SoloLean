@@ -1,0 +1,20 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+// Browser 에 바로 뿌린다 
+@RestController
+public class BoardController {
+		
+	@Autowired
+	private BoardService boardService;
+	
+	@GetMapping(value = "/board/write")
+	public String write() {
+		boardService.write();
+		return "등록 성공"; // 문자열 반환 이므로 String 으로 적용
+	};
+	
+}

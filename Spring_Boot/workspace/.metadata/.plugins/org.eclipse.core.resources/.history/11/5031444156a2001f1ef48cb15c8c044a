@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+<style type="text/css">
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px 10px 40px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #34495e;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+a h2:hover {
+    color: #1abc9c;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #34495e;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    padding: 14px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+    border-bottom: 1px solid #e6e9ec;
+    transition: background-color 0.3s;
+}
+
+td:nth-child(odd) {
+    background-color: #f8fafb;
+}
+
+tr:hover td {
+    background-color: #f1f8fc;
+}
+
+/* 페이징 스타일 */
+#memberPagingDiv {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 페이징 버튼 기본 스타일 */
+#memberPagingDiv span {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #e0e0e0;
+    color: #34495e;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#memberPagingDiv span:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+/* 현재 페이지 표시 스타일 */
+#memberPagingDiv .currentPaging {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+#memberPagingDiv .currentPaging:hover {
+    background-color: #16a085;
+}
+
+/* 검색 영역 스타일 */
+#searchLostForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+#searchLostForm select, #searchLostForm input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#searchListBtn {
+    padding: 8px 16px;
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#searchListBtn:hover {
+    background-color: #16a085;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <a href="/"><h2>🏠 Home</h2></a>
+    <table border="1" id="listTable">
+        <thead>
+            <tr>
+                <th width="100"> 🔢 번호 </th>
+                <th width="200"> 👤 아이디 </th>
+                <th width="300"> 🔒 비밀번호 </th>
+                <th width="200"> 📝 이름 </th>
+            </tr>
+        </thead>
+        <tbody id="memberTableBody">
+            <tr th:each="dto : ${list}">
+                <td th:text="${dto.seq}" align="center"></td>
+                <td th:text="${dto.id}" align="center"></td>
+                <td th:text="${dto.pwd}" align="center"></td>
+                <td th:text="${dto.name}" align="center"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="memberPagingDiv" th:utext="${memberPaging.pagingHTML}"></div>
+
+    <div id="searchListForm">
+      <select id="columnName">
+         <option value="name">이름</option>
+         <option value="id">아이디</option>
+      </select>
+      <input type="text" id="value" placeholder="검색어 입력">
+      <input type="button" id="searchListBtn" value="검색">
+   </div>
+</div>
+
+<script type="text/javascript">
+function memberPaging(page){
+    location.href = "/member/list?page=" + (page-1);
+}
+</script>
+
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/js/list.js"></script>
+
+</body>
+</html>

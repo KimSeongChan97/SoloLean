@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+<style type="text/css">
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.container {
+    text-align: center;
+}
+
+
+a {
+    text-decoration: none;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+a h2:hover {
+    color: #1abc9c;
+}
+
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+th {
+    background-color: #2c3e50;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+td:nth-child(odd) {
+    background-color: #f9fbfc;
+}
+
+tr:hover td {
+    background-color: #e8f6ff;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <a href="/"><h2>🏠 Home</h2></a>
+    <table border="1">
+        <tr>
+            <th width="100"> 🔢 번호 </th>
+            <th width="200"> 👤 아이디 </th>
+            <th width="300"> 🔒 비밀번호 </th>
+            <th width="200"> 📝 이름 </th>
+        </tr>
+        <tr th:each="dto : ${map.list}">
+            <td th:text="${dto.seq}" align="center"></td>
+            <td th:text="${dto.id}" align="center"></td>
+            <td th:text="${dto.pwd}" align="center"></td>
+            <td th:text="${dto.name}" align="center"></td>
+        </tr>
+    </table>
+    <div th:text="${map.memberPaging.pagingHTML}"></div>
+</div>
+</body>
+</html>

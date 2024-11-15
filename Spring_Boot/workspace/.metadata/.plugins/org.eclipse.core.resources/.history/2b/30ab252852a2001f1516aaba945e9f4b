@@ -1,0 +1,25 @@
+package member.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import member.entity.MemberEntity;
+
+//public interface MemberRepository extends JpaRepository<엔티티클래스, primary key> {}
+
+@Repository
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer>{
+
+	public MemberEntity findById(String id);
+	
+	// 이름으로 검색
+	public List<MemberRepository> findByNameContaining(String value);
+	
+	// ID 으로 검색
+	public List<MemberRepository> findByIdContaining(String value);
+	
+	
+
+}

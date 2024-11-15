@@ -29,6 +29,16 @@
                "projectName": "Chapter02MySQL",
                "args": "",
                "envFile": "${workspaceFolder}/.env"
+          },
+          {
+               "type": "java",
+               "name": "Spring Boot-Chapter04JpaApplication<Chapter04JPA>",
+               "request": "launch",
+               "cwd": "${workspaceFolder}",
+               "mainClass": "com.example.demo.Chapter04JpaApplication",
+               "projectName": "Chapter04JPA",
+               "args": "",
+               "envFile": "${workspaceFolder}/.env"
           }
      ]
 }

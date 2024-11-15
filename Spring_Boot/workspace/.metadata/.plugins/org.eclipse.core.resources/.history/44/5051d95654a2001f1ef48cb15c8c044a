@@ -1,0 +1,35 @@
+package member.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import member.entity.MemberEntity;
+
+//public interface MemberRepository extends JpaRepository<엔티티클래스, primary key> {}
+
+@Repository
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer>{
+
+	public MemberEntity findById(String id);
+	
+	// 쿼리 메서드
+	// 이름으로 검색
+	public List<MemberEntity> findByNameContaining(String value);
+	
+	// ID 으로 검색
+	public List<MemberEntity> findByIdContaining(String value);
+	
+	// @Query 아노테이션
+	// 검색 대상이 테이블이 아닌 영속성 컨텍스트에 등록된 엔티티 이다. ( 클래스명, 객체명 )
+	// ?1 는 첫 번째 파라미터를 의미한다.
+	@Query("select entity from MemberEntity entity where name like concat('%', ?1 , '%')")
+	public List<MemberEntity> getSearchName(String value);
+	@Query("select entity from MemberEntity entity where id like concat('%', ?1 , '%')")
+	public List<MemberEntity> getSearchId(String value);
+	
+	
+
+}

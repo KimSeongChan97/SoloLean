@@ -1,0 +1,18 @@
+package member.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import member.bean.MemberDTO;
+import member.entity.MemberEntity;
+
+//public interface MemberRepository extends JpaRepository<엔티티클래스, primary key> {}
+
+@Repository
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer>{
+
+	public MemberEntity findById(String id);
+	
+	
+
+}

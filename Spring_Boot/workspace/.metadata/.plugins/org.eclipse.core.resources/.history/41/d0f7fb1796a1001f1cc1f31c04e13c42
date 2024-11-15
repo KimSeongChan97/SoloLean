@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>메인 페이지</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style type="text/css">
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+    background: radial-gradient(circle, rgba(40, 44, 52, 0.9), rgba(20, 24, 32, 0.9));
+    background-size: cover;
+}
+
+#rotating-box {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    background: rgba(235, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #a0c4ff;
+    animation: rotate3d 1.3s infinite linear;
+}
+
+@keyframes rotate3d {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+a {
+    display: inline-table;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    color: #a0c4ff;
+    text-decoration: none;
+    border: 2px solid #a0c4ff;
+    border-radius: 15px;
+    transition: background-color 0.5s ease, transform 0.8s ease;
+}
+
+a:hover {
+    background-color: rgba(160, 196, 255, 0.2);
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #a0c4ff;
+}
+
+</style>
+</head>
+<body>
+
+<div id="rotating-box">
+    Starrrrr
+</div>
+
+<h2>*** 메인화면 ***</h2>
+<p><a th:href="@{/write}">등록</a></p>
+<p><a th:href="@{/list}">목록</a></p>
+
+</body>
+</html>

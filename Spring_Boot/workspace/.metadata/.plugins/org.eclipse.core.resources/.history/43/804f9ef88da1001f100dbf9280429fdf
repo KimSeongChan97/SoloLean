@@ -1,0 +1,29 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+	
+	@Autowired
+	private BoardDAO boardDAO;
+	
+	@Override
+	public void write() {
+		BoardEntity boardEntity = new BoardEntity();
+		boardEntity.setId("melon");
+		boardEntity.setName("멜론");
+		boardEntity.setSubject("멜론덩이");
+		boardEntity.setContent("멜론은 맛있고 부드러운 겁니다");
+		
+		// DB 에 저장
+		boardDAO.save(boardEntity);
+		
+		
+		
+	}
+	
+	
+	
+}

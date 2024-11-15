@@ -1,0 +1,18 @@
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+// @DataJpaTest 를 사용하면 자동으로 EmbededDatabase-H2를 사용하게 된다.
+// MySQL 과 같이 외부의 DB 를 연결하려는 경우엔 이 어노테이션을 설정한다.
+// @SpringBootTest
+@DataJpaTest
+class Chapter03JpaApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

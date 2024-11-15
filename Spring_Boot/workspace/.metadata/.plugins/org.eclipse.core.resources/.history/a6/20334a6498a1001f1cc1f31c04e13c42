@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>writeForm</title>
+</head>
+<body>
+writeForm
+
+아이디
+비밀번호
+이름
+	회원가입 버튼 	취소 버튼
+
+
+회원가입 테이블 작성
+</body>
+</html>
+

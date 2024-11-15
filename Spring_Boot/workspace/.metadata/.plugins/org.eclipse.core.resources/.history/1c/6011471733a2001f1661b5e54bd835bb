@@ -1,0 +1,19 @@
+package member.service;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+
+import member.entity.MemberEntity;
+
+public interface MemberService {
+
+	public String isExistId(String id);
+
+	public void write(MemberEntity memberEntity);
+
+	public Page<MemberEntity> getMemberList();
+
+     
+
+}
