@@ -174,6 +174,30 @@ file
 
  /dev/stdin 파일의 종류 표시 :  file /dev/stdin
 
+=============================================================
+문제]
+root@bitcamp-jenkins:~#
+
+test 디렉토리 생성
+test 디렉토리에 /etc/crontab 파일 복사
+test 디렉토리에 crontab_link 하드 링크 만들기
+test 디렉토리에 inode 확인하기 ( crontab 파일과 crontab_link가 같은 inode 이어야 한다.)
+test 디렉토리에 crontab_slink 심볼릭 링크 만들기
+test 디렉토리에 inode 확인하기 ( crontab 파일과 crontab_slink가 다른 inode 이어야 한다.)
+test 디렉토리에 crontab_link2 하드 링크 만들기
+test 디렉토리에 crontab_link2 삭제하기
+test 디렉토리에 crontab_link2 가 삭제되고, inode의 값이 감소한 것 확인하기
+
+mkdir test
+cd test
+cp /etc/crontab crontab
+ln crontab crontab_link
+ln -s crontab crontab_slink
+ln crontab crontab_link2
+ls -i
+rm crontab_link2
+ls -i
+
 
 
 
