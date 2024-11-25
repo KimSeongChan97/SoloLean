@@ -27,7 +27,8 @@
 **[ Jenkins ]**
 - Docker 학습
 - Jenkins 이용하여 Deploy 해보았다
-- 리눅스 이용해보았다(기초적인 문법)
+- 리눅스 이용(기초적인 문법)
+- Docker 와 SpringBoot 를 서버(NCP) 2EA 를 이용하여 Jenkins 에 Deploy 하였다.(container 및 docker image file 을 이용한 CI / CD )
 
 **[ VS Code ]**
 - React(Node.js + yarn) 학습
@@ -36,6 +37,8 @@
 - Spring Boot 학습
 - Thymeleaf 일부 학습
 - JPA 학습
+
+ **[NCP]** 
 -  ... NCP 추가 교육 예정
 
 ==============================================
@@ -43,7 +46,7 @@
 Final project
  Sprginf Boot + JPA + React
  진행중...
- [Project] : [FileName](파일주소)
+ [Project] : [Moivo_projet](파일주소)
 
 ==============================================
 
