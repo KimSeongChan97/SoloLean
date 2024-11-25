@@ -45,8 +45,11 @@
 
 Final project
  Sprginf Boot + JPA + React
- 진행중...
- [Project] : [Moivo_projet](파일주소)
+ [Project] : [Moivo_projet]([파일주소](https://github.com/jokangmin/Moivo.git))
+
+ 주로 작업  : Frontend ( React )
+            : Backend ( SpringBoot )
+            -> 트래픽 관리, 서버 배포, React 와 SpringBoot 연동 , Front 전반 관리
 
 ==============================================
 
@@ -57,7 +60,7 @@ Project
 4. [팀플(MVC) 팀주소 ] : [FilmNoteGitHub](https://github.com/bitcamp-aiaas-9/FilmNote.git)
 4-1. [ 팀플(MVC) ] : [FilmNote](https://github.com/KimSeongChan97/SoloLean/tree/main/Web_workspace/workspace/FilmNote)
 5. [ 팀플(SpringMVC) ] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
-6. Spring Boot + JPA + React  : finall
+6. Spring Boot + JPA + React  : finall (https://github.com/jokangmin/Moivo.git) 
 
 
 - 일정상 Git 업로드 로 대체
