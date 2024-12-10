@@ -1,6 +1,6 @@
 ** Stack **
 --------------------
-** [네이버클라우드] 클라우드 기반의 AIaas 개발자 과정 **
+** [네이버클라우드] 클라우드 기반의 AIaas 웹 풀스택 개발자 과정 **
 
 **[ Eclipse ]**
 - Java 학습
@@ -45,7 +45,7 @@
 
 Final project
  Sprginf Boot + JPA + React
- [Project] : [Moivo_projet]([파일주소](https://github.com/jokangmin/Moivo.git))
+ [Project] : [Moivo_projet]([파일주소](https://github.com/jokangmin/Moivo_project.git))
 
  주로 작업  : Frontend ( React )
             : Backend ( SpringBoot )
