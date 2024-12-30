@@ -45,13 +45,11 @@
 
 Final project
  Sprginf Boot + JPA + React
- [Project] : [Moivo_projet]([파일주소]([https://github.com/jokangmin/Moivo_project.git]
-                            ( https://github.com/KimSeongChan97/Moivo_project.git )
+ [Project] : https://github.com/KimSeongChan97/Moivo_project.git
+           https://moivo.shop/
 
  주로 작업  : Frontend ( React )
             : Backend ( SpringBoot )
-            -> 트래픽 관리, 서버 배포, React 와 SpringBoot 연동 , Front 전반 관리
-
 ==============================================
 
 Project
