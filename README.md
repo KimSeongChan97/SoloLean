@@ -61,9 +61,7 @@ Project
 4. [팀플(MVC) 팀주소 ] : [FilmNoteGitHub](https://github.com/bitcamp-aiaas-9/FilmNote.git)
 4-1. [ 팀플(MVC) ] : [FilmNote](https://github.com/KimSeongChan97/SoloLean/tree/main/Web_workspace/workspace/FilmNote)
 5. [ 팀플(SpringMVC) ] : [SpringHotelProject](https://github.com/KimSeongChan97/SoloLean/tree/main/Spring_workspace/workspace/SpringHotelProject)
-6. Spring Boot + JPA + React  : finall (https://github.com/jokangmin/Moivo.git) 
+6. Spring Boot + JPA + React  : [Moivo] (https://github.com/KimSeongChan97/Moivo_project.git)
 
 
-- 일정상 Git 업로드 로 대체
-https://blog.naver.com/sck2270
-학습한 것 기술했던 블로그
+
